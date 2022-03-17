@@ -1,22 +1,15 @@
 /**
- * @module cookie cookie操作
- * @description cookie操作
- */
-
-/**
-   * 获取cookie
-   * @exports getCookie
-   * @param {string} key
-   * @param {string} [defaultval]
-   * @return {string} cookie值
-   *
-   * @example
-    import { getCookie, setCookie, clearCookie } from 'comm/utils/cookie';
- 
-    setCookie('name', 'mike', 1);
-    const res = getCookie('name')
-    // mike
-   */
+ * 获取cookie
+ * @exports getCookie
+ * @param {string} key
+ * @param {string} [defaultval]
+ * @return {string} cookie值
+ *
+ * @example
+  ```ts
+  const res = getCookie('name') // mike
+  ```
+  */
 export function getCookie(key, defaultval) {
   let cookie = ''
 
@@ -46,38 +39,31 @@ export function setCookie(name, value, Hours = 1) {
 }
 
 /**
-   * 清除cookie
-   * @exports clearCookie
-   * @param {string} key
-   *
-   * @example
-    import { getCookie, setCookie, clearCookie } from 'comm/utils/cookie';
- 
-    setCookie('name', 'mike', 1);
-    clearCookie('name');
-    const res2 = getCookie('name')
-    // mike
-   */
+ * 清除cookie
+ * @exports clearCookie
+ * @param {string} key
+ *
+ * @example
+  ```ts
+  clearCookie('name');
+  ```
+  */
 export function clearCookie(name) {
   setCookie(name, '', -1)
 }
 
 /**
  * 清除全部cookie
+ *
+ * @param domain 域名
  * @exports clearAll
  */
-export function clearAll() {
-  let domain = 'igame.qq.com'
-  if (location.host.indexOf('oa.com') !== -1) {
-    domain = 'pmd.oa.com'
-  }
+export function clearAll(domain: String = '') {
   const cookies = document.cookie.split(';')
-  console.log(cookies)
   for (let i = 0; i < cookies.length; i++) {
     const cookie = cookies[i]
     const eqPos = cookie.indexOf('=')
-    const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie
-    console.log()
+    const name = eqPos > -1 ? cookie.slice(0, eqPos) : cookie
     document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT; Domain=.${domain}; path=/`
   }
 }

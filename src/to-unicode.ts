@@ -28,7 +28,7 @@ export function toUnicodeAt(str: string, index: number = 0) {
  *
  * @example
  * ```ts
- * toUnicode('ABC', 1) // -> '\\u0041\\u0042\\u0043'
+ * toUnicode('ABC') // -> '\\u0041\\u0042\\u0043'
  * ```
  *
  * @beta
