@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.0.4](https://github.com/novlan1/t-comm/compare/v0.0.3...v0.0.4) (2022-03-17)
+
+
+### Features
+
+* 增加一些time函数 ([ab214a7](https://github.com/novlan1/t-comm/commit/ab214a7143423180b3bef3ef0f828bef88eec5a1))
+
+
+
 ## [0.0.3](https://github.com/novlan1/t-comm/compare/v0.0.2...v0.0.3) (2022-03-17)
 
 
