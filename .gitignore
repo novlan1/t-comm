@@ -103,3 +103,5 @@ dist
 lib
 temp
 *.bak
+
+package-lock.json
