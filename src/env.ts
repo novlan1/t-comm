@@ -4,7 +4,9 @@
  * @returns ua
  */
 function getRealUA(ua?: string) {
-  return ua || (typeof navigator !== 'undefined' && navigator.userAgent) || ''
+  if (ua) return ua
+  if (typeof navigator !== 'undefined') return navigator.userAgent
+  return ''
 }
 
 /**
