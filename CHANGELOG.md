@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.0.6](https://github.com/novlan1/t-comm/compare/v0.0.5...v0.0.6) (2022-03-22)
+
+
+### Features
+
+* 优化ua获取逻辑 ([4ee1bb8](https://github.com/novlan1/t-comm/commit/4ee1bb8f1599648ccc22d048ab055bc20e57b613))
+
+
+
 ## [0.0.5](https://github.com/novlan1/t-comm/compare/v0.0.4...v0.0.5) (2022-03-22)
 
 
