@@ -1,5 +1,15 @@
 # 工具库更新日志
 
+## [0.0.5](https://github.com/novlan1/t-comm/compare/v0.0.4...v0.0.5) (2022-03-22)
+
+
+### Features
+
+* 增加env ([131149e](https://github.com/novlan1/t-comm/commit/131149ebbf51a4d01c7960dd8660fef1d4ac76be))
+* 增加npmrc ([9f4400c](https://github.com/novlan1/t-comm/commit/9f4400c4066c979d306efc4d87c1dcd6fbef8f54))
+
+
+
 ## [0.0.4](https://github.com/novlan1/t-comm/compare/v0.0.3...v0.0.4) (2022-03-17)
 
 
