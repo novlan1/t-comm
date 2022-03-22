@@ -1,12 +1,9 @@
 /**
  * 获取UA
- * @param ua - useragent
  * @returns ua
  */
-function getRealUA(ua?: string) {
-  if (ua) return ua
-  if (typeof navigator !== 'undefined') return navigator.userAgent
-  return ''
+function getRealUA() {
+  return navigator.userAgent || ''
 }
 
 /**
@@ -19,8 +16,8 @@ function getRealUA(ua?: string) {
  * checkUAIsIOS() // true
  * ```
  */
-export function checkUAIsIOS(ua?: string) {
-  const realUA = getRealUA(ua)
+export function checkUAIsIOS() {
+  const realUA = getRealUA()
   return (
     /iphone|ipod|ipad|Mac OS X/i.test(realUA) ||
     !!realUA.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)
@@ -34,8 +31,8 @@ export function checkUAIsIOS(ua?: string) {
  * @returns map
  */
 
-export function getEnvUAType(u?: string) {
-  const ua = getRealUA(u)
+export function getEnvUAType() {
+  const ua = getRealUA()
   const isWeixin = ua.indexOf('micromessenger') !== -1
   const isWorkWeixin = ua.indexOf('wxwork') !== -1
   const isQQ = ua.indexOf(' qq/') !== -1
