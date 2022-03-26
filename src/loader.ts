@@ -61,9 +61,18 @@ export function loadJS(url, options) {
  * loadCSS('xxx.css')
  */
 export function loadCSS(url) {
-  const link = document.createElement('link')
-  link.type = 'text/css'
-  link.rel = 'stylesheet'
-  link.href = url
-  document.getElementsByTagName('head')[0].appendChild(link)
+  let addSign = true
+  const links = document.getElementsByTagName('link')
+  for (let i = 0; i < links.length; i++) {
+    if (links[i] && links[i].href && links[i].href.indexOf(url) !== -1) {
+      addSign = false
+    }
+  }
+  if (addSign) {
+    const link = document.createElement('link')
+    link.type = 'text/css'
+    link.rel = 'stylesheet'
+    link.href = url
+    document.getElementsByTagName('head')[0].appendChild(link)
+  }
 }
