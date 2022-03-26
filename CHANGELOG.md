@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.0.8](https://github.com/novlan1/t-comm/compare/v0.0.7...v0.0.8) (2022-03-26)
+
+
+### Features
+
+* 七彩石 ([e60335a](https://github.com/novlan1/t-comm/commit/e60335a0304f2329fec217c79152b0d599037195))
+
+
+
 ## [0.0.7](https://github.com/novlan1/t-comm/compare/v0.0.6...v0.0.7) (2022-03-22)
 
 
