@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.0.11](https://github.com/novlan1/t-comm/compare/v0.0.10...v0.0.11) (2022-03-28)
+
+
+### Features
+
+* 增加rainbow-user ([4630cf8](https://github.com/novlan1/t-comm/commit/4630cf8220258bf6dc011d83a503dd561c49690c))
+
+
+
 ## [0.0.10](https://github.com/novlan1/t-comm/compare/v0.0.9...v0.0.10) (2022-03-26)
 
 
