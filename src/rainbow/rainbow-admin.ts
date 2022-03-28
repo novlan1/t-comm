@@ -1,5 +1,5 @@
-import { baseRequestRainbow } from './rainbow-base-request'
-import { getVersion } from './helper'
+import { baseRequestRainbow } from './helper/rainbow-base-request'
+import { getVersion } from './helper/helper'
 import { SecretInfo, ValueType, ModifyConfigParem } from './index.type'
 
 /**

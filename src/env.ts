@@ -40,7 +40,7 @@ export function getEnvUAType() {
   const isTipApp = ua.indexOf(' gamelife/') !== -1
   const isAndroid = ua.indexOf('android') !== -1
   // env.isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') !== -1);
-  const isIos = checkUAIsIOS(ua)
+  const isIos = checkUAIsIOS()
   const isIOS = isIos
   const isMsdk = ua.indexOf(' msdk/') !== -1 // msdk
   const isMsdkV5 = ua.indexOf(' msdk/5') !== -1 // msdk V5

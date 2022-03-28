@@ -13,3 +13,5 @@ export function getVersion() {
   const ms = now.getMilliseconds()
   return `${year}${month}${day}${hour}${minute}${second}${ms}`
 }
+
+export const BASE_URL = 'http://api.rainbow.oa.com:8080'

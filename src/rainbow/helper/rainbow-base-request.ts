@@ -1,9 +1,8 @@
-import { SecretInfo } from './index.type'
+import { SecretInfo } from '../index.type'
 import { genRainbowHeaderSignature } from './rainbow-signature'
+import { BASE_URL } from './helper'
 
 const axios = require('axios')
-
-const BASE_URL = 'http://api.rainbow.oa.com:8080'
 
 interface ReqParam {
   url: string

@@ -6,6 +6,7 @@ const eslintrc = {
   rules: {
     // custom rules
   },
+  
 }
 
 module.exports = eslintrc
