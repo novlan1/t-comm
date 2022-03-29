@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.0.12](https://github.com/novlan1/t-comm/compare/v0.0.11...v0.0.12) (2022-03-29)
+
+
+### Features
+
+* 机器人发送消息 ([a2e0caa](https://github.com/novlan1/t-comm/commit/a2e0caaba7181cba4644e735430b0fb22b32f680))
+
+
+
 ## [0.0.11](https://github.com/novlan1/t-comm/compare/v0.0.10...v0.0.11) (2022-03-28)
 
 
