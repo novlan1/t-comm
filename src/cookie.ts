@@ -57,6 +57,11 @@ export function clearCookie(name) {
  *
  * @param domain 域名
  * @exports clearAll
+ *
+ * @example
+ * ```ts
+ * clearAll()
+ * ```
  */
 export function clearAll(domain: String = '') {
   const cookies = document.cookie.split(';')
