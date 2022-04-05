@@ -16,3 +16,25 @@ export const flatten = (list: Array<object>, key: string) =>
     acc[item[key]] = item
     return acc
   }, {})
+
+/**
+ * 打乱顺序
+ *
+ * @param array - 数组
+ * @returns 乱序后的数组
+ *
+ * @example
+ * ```ts
+ * shuffle([1, 2, 3, 4, 5]) // [3, 2, 1, 4, 5]
+ * ```
+ */
+export function shuffle(array) {
+  const arr = [...array]
+  let m = arr.length
+  while (m > 1) {
+    const index = Math.floor(Math.random() * m)
+    m -= 1
+    ;[arr[m], arr[index]] = [arr[index], arr[m]]
+  }
+  return arr
+}
