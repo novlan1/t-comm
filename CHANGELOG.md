@@ -1,5 +1,15 @@
 # 工具库更新日志
 
+## [0.0.14](https://github.com/novlan1/t-comm/compare/v0.0.13...v0.0.14) (2022-04-05)
+
+
+### Features
+
+* 导出function方法 ([ebd0799](https://github.com/novlan1/t-comm/commit/ebd0799edfa47ef24d132dc3f9524919c6aa9d04))
+* 增加parseFunction/shuffle ([f1a9bd7](https://github.com/novlan1/t-comm/commit/f1a9bd71417ffa55c70a49f6ffd697815f3ea427))
+
+
+
 ## [0.0.13](https://github.com/novlan1/t-comm/compare/v0.0.12...v0.0.13) (2022-04-01)
 
 
