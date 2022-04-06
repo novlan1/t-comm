@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.0.15](https://github.com/novlan1/t-comm/compare/v0.0.14...v0.0.15) (2022-04-06)
+
+
+### Features
+
+* **toHumpObj:** 对象key转驼峰 ([fd2cb6a](https://github.com/novlan1/t-comm/commit/fd2cb6a1d4c79f8e328a20a2dbae0924f4a6b653))
+
+
+
 ## [0.0.14](https://github.com/novlan1/t-comm/compare/v0.0.13...v0.0.14) (2022-04-05)
 
 
