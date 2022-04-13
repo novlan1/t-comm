@@ -49,6 +49,11 @@ export function timeStampFormat(
   return fmt
 }
 
+function beautiTime(time: number): string {
+  if (time >= 10) return `${time}`
+  return `0${time}`
+}
+
 /**
  * 将日期格式化
  * @exports dateFormat
@@ -201,22 +206,75 @@ export function getTimeAgoOrDate(time, format) {
  * getCountDownObj(1*24*60*60+200) // {day: 1, hour: 0, minute: 3, second: 20}
  *
  */
-export function getCountDownObj(time): object {
+export function getCountDownObj(
+  time,
+  maxUnit = 'DAY',
+): {
+  day?: Number
+  hour?: Number
+  minute?: Number
+  second?: Number
+  fDay?: String
+  fHour?: String
+  fMinute?: String
+  fSecond?: String
+} {
   if (!time) {
     return {}
   }
   time = parseInt(time, 10)
-  const day = parseInt(`${time / (24 * 60 * 60)}`, 10)
-  const hour = parseInt(`${(time - day * 24 * 60 * 60) / (60 * 60)}`, 10)
-  const minute = parseInt(
-    `${(time - day * 24 * 60 * 60 - hour * 60 * 60) / 60}`,
-    10,
-  )
-  const second = time - day * 24 * 60 * 60 - hour * 60 * 60 - minute * 60
-  return {
-    day,
-    hour,
-    minute,
-    second,
+
+  const second = Math.floor(time % 60)
+  // 秒是最大单位
+  if (maxUnit === 'SECOND') {
+    return {
+      second: time,
+      fSecond: beautiTime(second),
+    }
   }
+
+  let minute = Math.floor((time / 60) % 60)
+  // 分钟是最大单位
+  if (maxUnit === 'MINUTE') {
+    minute = Math.floor(time / 60)
+
+    return {
+      minute,
+      second,
+      fMinute: beautiTime(minute),
+      fSecond: beautiTime(second),
+    }
+  }
+
+  let hour = Math.floor((time / 60 / 60) % 24)
+  // 小时为最大单位
+  if (maxUnit === 'HOUR') {
+    hour = Math.floor(time / 60 / 60)
+
+    return {
+      hour,
+      minute,
+      second,
+      fHour: beautiTime(hour),
+      fMinute: beautiTime(minute),
+      fSecond: beautiTime(second),
+    }
+  }
+
+  // 天为最大单位
+  if (maxUnit === 'DAY') {
+    const day = Math.floor(time / 60 / 60 / 24)
+
+    return {
+      day,
+      hour,
+      minute,
+      second,
+      fDay: beautiTime(day),
+      fHour: beautiTime(hour),
+      fMinute: beautiTime(minute),
+      fSecond: beautiTime(second),
+    }
+  }
+  return {}
 }
