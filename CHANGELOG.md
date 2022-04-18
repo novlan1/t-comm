@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.0.18](https://github.com/novlan1/t-comm/compare/v0.0.17...v0.0.18) (2022-04-18)
+
+
+### Features
+
+* 去除enum-data ([9211f3b](https://github.com/novlan1/t-comm/commit/9211f3b30424528cb122bcef7b392fd8f340ab36))
+
+
+
 ## [0.0.17](https://github.com/novlan1/t-comm/compare/v0.0.16...v0.0.17) (2022-04-15)
 
 
