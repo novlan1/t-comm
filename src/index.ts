@@ -1,4 +1,3 @@
-export * from './enum-data'
 export * from './to-unicode'
 export * from './cookie'
 export * from './loader'
