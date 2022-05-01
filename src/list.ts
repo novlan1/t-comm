@@ -38,3 +38,25 @@ export function shuffle(array) {
   }
   return arr
 }
+
+/**
+ * 判断数组是否全部相等
+ * @param list - 数组
+ * @returns 是否全部相等
+ *
+ * @example
+ * ```ts
+ * isListAllEqual([0, 0, 0]) // true
+ * isListAllEqual([0, 0, 2]) // false
+ * ```
+ */
+export function isListAllEqual(list = []) {
+  if (!list.length) return true
+  const value = list[0]
+  // eslint-disable-next-line no-restricted-syntax
+  for (const item of list.slice(1)) {
+    if (item !== value) return false
+  }
+
+  return true
+}
