@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.0.22](https://github.com/novlan1/t-comm/compare/v0.0.21...v0.0.22) (2022-05-01)
+
+
+### Features
+
+* **list:** getKeyValuesMap ([3d45c04](https://github.com/novlan1/t-comm/commit/3d45c04a6ac07e102fb70ffc3417477d1491289b))
+
+
+
 ## [0.0.21](https://github.com/novlan1/t-comm/compare/v0.0.20...v0.0.21) (2022-05-01)
 
 
