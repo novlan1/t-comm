@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.0.21](https://github.com/novlan1/t-comm/compare/v0.0.20...v0.0.21) (2022-05-01)
+
+
+### Features
+
+* **canvas:** 绘制canvas的table ([ba48891](https://github.com/novlan1/t-comm/commit/ba48891e1807e58e3db90728f6c8e2511ebd953b))
+
+
+
 ## [0.0.20](https://github.com/novlan1/t-comm/compare/v0.0.19...v0.0.20) (2022-04-19)
 
 
