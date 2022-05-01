@@ -60,3 +60,50 @@ export function isListAllEqual(list = []) {
 
   return true
 }
+
+/**
+ * 获取对象的value列表，并输出大对象形式
+ * @param {*} data
+ * @returns
+ *
+ * @example
+ *
+ * ```ts
+ * const data = [
+ * {
+ *   Project: 'xx',
+ *   Request: 111,
+ *   Score: 111
+ * },
+ * {
+ *   Project: 'yy',
+ *   Request: 333,
+ *   Score: 555
+ * }]
+ *
+ * getKeyValuesMap(data)
+ *
+ * // 结果为
+ * {
+ *   Project: ['xx', 'yy'],
+     Request: [111, 333],
+     Score: [111, 555],
+   }
+    ```
+ */
+export function getKeyValuesMap(data: Array<any> = []) {
+  if (!data.length) return {}
+  const keys = Object.keys(data[0])
+  const keyValueMap = {}
+
+  data.forEach(item => {
+    keys.forEach(key => {
+      if (keyValueMap[key]) {
+        keyValueMap[key].push(item[key])
+      } else {
+        keyValueMap[key] = [item[key]]
+      }
+    })
+  })
+  return keyValueMap
+}
