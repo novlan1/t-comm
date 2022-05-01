@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.0.24](https://github.com/novlan1/t-comm/compare/v0.0.23...v0.0.24) (2022-05-01)
+
+
+### Features
+
+* **node-img:** node环境下img的处理 ([31c6091](https://github.com/novlan1/t-comm/commit/31c6091fef09bb1657707541004bb2756c8f73d6))
+
+
+
 ## [0.0.23](https://github.com/novlan1/t-comm/compare/v0.0.22...v0.0.23) (2022-05-01)
 
 
