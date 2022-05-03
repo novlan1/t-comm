@@ -10,6 +10,30 @@ const minColor = 'green'
 /**
  * 创建canvas的table
  * @param param0
+ * data格式如下
+ * [{  Request: {
+        value: 854,
+        name: 'Request',
+        idx: 19,
+        lastIdx: 19,
+        isMax: false,
+        isMin: false,
+        isSecondMax: false,
+        isSecondMin: true
+      },
+     {
+       HTTP: {
+        value: 204,
+        name: 'HTTP',
+        idx: 1,
+        lastIdx: 1,
+        isMax: false,
+        isMin: false,
+        isSecondMax: true,
+        isSecondMin: false
+      }
+    }]
+ *
  * @returns
  */
 export function createCanvasTable({

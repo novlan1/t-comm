@@ -1,3 +1,5 @@
+import { getUnitPreviousRatio } from './number'
+
 /**
  * 拉平数组
  *
@@ -106,4 +108,66 @@ export function getKeyValuesMap(data: Array<any> = []) {
     })
   })
   return keyValueMap
+}
+
+/**
+ * 获取相对上次的比例
+ * @param data
+ *
+ * [{
+ *   Project: { value: 'mj-match', name: 'Project' },
+ *   Request: {
+        value: 854,
+        name: 'Request',
+        idx: 19,
+        lastIdx: 19,
+        isMax: false,
+        isMin: false,
+        isSecondMax: false,
+        isSecondMin: true
+      },
+    }
+   }]
+ * @param preDataMap
+ *
+ * {
+     'mj-match': {
+      Project: 'mj-match',
+      Request: 4,
+      Score: 91.81,
+      FirstLoadTime: 178,
+      WholePageTime: 1035,
+      ParseDomTime: 484,
+      DNSLinkTime: 0,
+      DOMTime: 414,
+      TCP: 0,
+      HTTP: 275,
+      BackEnd: 60,
+      CGIFailNum: 0,
+      ErrorLogNum: 0,
+      CGIRequestNum: 83
+    },
+  }
+ */
+export function getPreviousRatio(
+  data = [],
+  preDataMap = {},
+  uniqKey = 'Project',
+) {
+  data.forEach(item => {
+    Object.keys(item).forEach(key => {
+      const obj = item[key] as any
+
+      if (typeof obj.value === 'number') {
+        const uniqVal = (item[uniqKey] as any).value
+        const preValue = preDataMap?.[uniqVal]?.[key]
+
+        if (preValue === undefined) {
+          obj.ratio = ''
+        } else {
+          obj.ratio = getUnitPreviousRatio(obj.value, preValue)
+        }
+      }
+    })
+  })
 }
