@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.0.25](https://github.com/novlan1/t-comm/compare/v0.0.24...v0.0.25) (2022-05-03)
+
+
+### Features
+
+* **list:** getPreviousRatio ([62aeb4b](https://github.com/novlan1/t-comm/commit/62aeb4b32b7d13a0320058f8f29e08391e43e9f8))
+
+
+
 ## [0.0.24](https://github.com/novlan1/t-comm/compare/v0.0.23...v0.0.24) (2022-05-01)
 
 
