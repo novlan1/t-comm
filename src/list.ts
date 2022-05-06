@@ -166,6 +166,7 @@ export function getPreviousRatio(
           obj.ratio = ''
         } else {
           obj.ratio = getUnitPreviousRatio(obj.value, preValue)
+          obj.previousValue = preValue
         }
       }
     })
