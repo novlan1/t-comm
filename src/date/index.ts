@@ -40,3 +40,39 @@ export function getMonthDay2(year, month) {
   }
   return days[month - 1]
 }
+
+function toMonday(dtm) {
+  const dte = new Date(dtm)
+  let day = dte.getDay()
+  const dty = dte.getDate()
+  if (day === 0) {
+    day = 7
+  }
+  dte.setDate(dty - day + 1)
+  return `${dte.getFullYear()}-${dte.getMonth()}-${dte.getDate()}`
+}
+
+/**
+ * 判断两个日期是否属于同一周
+ *
+ * 把两个日期均转换到周一，比较转换后的两日期是否相同。
+ *
+ * @param date1 第1个时间戳
+ * @param date2 第2个时间戳
+ * @returns 是否是同一周
+ * @example
+ * ```ts
+ * isSameWeek(1601308800000, 1601395200000) // true
+   isSameWeek(1601308800000, 1601913600000) // false
+ * ```
+ */
+export function isSameWeek(date1, date2) {
+  const dt1 = new Date()
+  dt1.setTime(date1)
+  const dt2 = new Date()
+  dt2.setTime(date2)
+
+  const md1 = toMonday(dt1)
+  const md2 = toMonday(dt2)
+  return md1 === md2
+}
