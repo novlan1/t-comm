@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.0.28](https://github.com/novlan1/t-comm/compare/v0.0.27...v0.0.28) (2022-05-11)
+
+
+### Features
+
+* **wechat:** 允许群发 ([bda2b95](https://github.com/novlan1/t-comm/commit/bda2b9569e7bc24421363dba78e628d8ad6bd167))
+
+
+
 ## [0.0.27](https://github.com/novlan1/t-comm/compare/v0.0.26...v0.0.27) (2022-05-06)
 
 
