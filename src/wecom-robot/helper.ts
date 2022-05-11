@@ -18,10 +18,10 @@ export function sendToRobot({ webhookUrl, params }): any {
       return
     }
 
-    if (!params.chatid) {
-      reject(new Error('缺少chatId，不允许群发！'))
-      return
-    }
+    // if (!params.chatid) {
+    //   reject(new Error('缺少chatId，不允许群发！'))
+    //   return
+    // }
 
     axios
       .post(webhookUrl, params)
