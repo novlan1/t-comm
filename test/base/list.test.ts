@@ -1,4 +1,4 @@
-import { flatten } from '../src'
+import { flatten } from '../../src'
 
 describe('flatten', () => {
   it('', () => {

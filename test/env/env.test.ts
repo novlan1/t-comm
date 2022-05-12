@@ -1,4 +1,4 @@
-import { getEnvUAType } from '../src'
+import { getEnvUAType } from '../../src'
 
 describe('getEnvUAType', () => {
   it('', () => {

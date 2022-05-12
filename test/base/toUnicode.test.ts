@@ -1,5 +1,5 @@
 import assert from 'assert'
-import { toUnicodeAt, toUnicode } from '../src'
+import { toUnicodeAt, toUnicode } from '../../src'
 
 describe('type:', () => {
   /**

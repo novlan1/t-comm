@@ -1,4 +1,4 @@
-import { toHumpObj } from '../src'
+import { toHumpObj } from '../../src'
 
 describe('toHumpObj', () => {
   it('', () => {

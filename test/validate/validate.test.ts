@@ -1,4 +1,4 @@
-import { isExternal, isQQNumber } from '../src'
+import { isExternal, isQQNumber } from '../../src'
 
 describe('isExternal', () => {
   it('', () => {

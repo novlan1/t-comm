@@ -1,4 +1,4 @@
-import { timeStampFormat, getCountDownObj } from '../src'
+import { timeStampFormat, getCountDownObj } from '../../src'
 
 describe('timeStampFormat', () => {
   it('', () => {

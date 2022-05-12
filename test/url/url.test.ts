@@ -1,4 +1,4 @@
-import { getQueryObj, composeUrlQuery } from '../src'
+import { getQueryObj, composeUrlQuery } from '../../src'
 
 describe('getQueryObj', () => {
   it('', () => {
