@@ -1,5 +1,5 @@
 import { BASE_URL } from './helper/helper'
-import { flatten } from '../list'
+import { flatten } from '../base'
 
 const axios = require('axios')
 

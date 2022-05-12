@@ -1,4 +1,4 @@
-import { getUnitPreviousRatio } from './number'
+import { getUnitPreviousRatio } from '../number'
 
 /**
  * 拉平数组
