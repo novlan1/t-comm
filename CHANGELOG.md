@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.0.30](https://github.com/novlan1/t-comm/compare/v0.0.29...v0.0.30) (2022-05-31)
+
+
+### Features
+
+* **url:** encodeUrlParam ([c9b5f58](https://github.com/novlan1/t-comm/commit/c9b5f589d1da40660865103031bebfb2e520be2d))
+
+
+
 ## [0.0.29](https://github.com/novlan1/t-comm/compare/v0.0.28...v0.0.29) (2022-05-12)
 
 
