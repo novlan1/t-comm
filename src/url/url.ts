@@ -2,7 +2,7 @@
  * url参数变数组
  * @param {*} url
  * @returns {Object} search对象
- * 
+ *
  * @example
    ```ts
   const res = getQueryObj('https://igame.qq.com?name=mike&age=18&feel=cold&from=china');
@@ -39,7 +39,7 @@ export function getQueryObj(url) {
  * @param {string} url
  * @param {Object} queryObj
  * @returns {string} 组装后的url
- * 
+ *
  * @example
    ```ts
   const res = composeUrlQuery('https://baidu.com', {
@@ -75,4 +75,21 @@ export function composeUrlQuery(url, queryObj) {
     pathname += `${i}=${allQuery[i]}&`
   })
   return pathname.substr(0, pathname.length - 1)
+}
+
+export function encodeUrlParam(obj) {
+  if (typeof obj === 'object') {
+    return encodeURIComponent(JSON.stringify(obj))
+  }
+  return encodeURIComponent(obj)
+}
+
+export function decodeUrlParam(str) {
+  let res = ''
+  try {
+    res = JSON.parse(decodeURIComponent(str))
+  } catch (err) {
+    console.log('decodeUrlParam.error', err)
+  }
+  return res
 }
