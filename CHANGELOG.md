@@ -1,5 +1,15 @@
 # 工具库更新日志
 
+## [0.0.31](https://github.com/novlan1/t-comm/compare/v0.0.30...v0.0.31) (2022-06-13)
+
+
+### Features
+
+* 导出cos ([eb14cd0](https://github.com/novlan1/t-comm/commit/eb14cd078aaa2a40f8ab2cc46a03c243e4035f28))
+* cos上传 ([aa60a83](https://github.com/novlan1/t-comm/commit/aa60a833954045aebfd94cf39b1115cecbc16bad))
+
+
+
 ## [0.0.30](https://github.com/novlan1/t-comm/compare/v0.0.29...v0.0.30) (2022-05-31)
 
 
