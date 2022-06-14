@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.0.32](https://github.com/novlan1/t-comm/compare/v0.0.31...v0.0.32) (2022-06-14)
+
+
+### Features
+
+* 增加发送企业微信机器人base64图片 ([3a232b2](https://github.com/novlan1/t-comm/commit/3a232b2d88d41c947b8d9d6bf769cfaa1b87c3b2))
+
+
+
 ## [0.0.31](https://github.com/novlan1/t-comm/compare/v0.0.30...v0.0.31) (2022-06-13)
 
 
