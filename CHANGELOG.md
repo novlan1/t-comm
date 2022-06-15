@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.0.34](https://github.com/novlan1/t-comm/compare/v0.0.33...v0.0.34) (2022-06-15)
+
+
+### Features
+
+* 添加处理数据的方法 ([0b5cba7](https://github.com/novlan1/t-comm/commit/0b5cba7545be487bc57453919d10bafb8d0a4fbc))
+
+
+
 ## [0.0.33](https://github.com/novlan1/t-comm/compare/v0.0.32...v0.0.33) (2022-06-14)
 
 
