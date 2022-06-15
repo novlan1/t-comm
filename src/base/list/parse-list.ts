@@ -59,10 +59,13 @@ export function getKeyValuesMap(data: Array<any> = []) {
 
   data.forEach(item => {
     keys.forEach(key => {
+      // 如果有value，就取value，否则直接取item[key]
+      const value = item[key]?.value || item[key]
+
       if (keyValueMap[key]) {
-        keyValueMap[key].push(item[key])
+        keyValueMap[key].push(value)
       } else {
-        keyValueMap[key] = [item[key]]
+        keyValueMap[key] = [value]
       }
     })
   })
