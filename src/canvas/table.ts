@@ -66,7 +66,7 @@ export function createCanvasTable({
     ctx.strokeStyle = '#ccc'
     ctx.textAlign = 'start'
     ctx.fillStyle = '#000'
-    ctx.fillText(title, 5, 10)
+    ctx.fillText(title || '', 5, 10)
   }
 
   // 表头绘制
@@ -92,7 +92,7 @@ export function createCanvasTable({
         0,
       )
       ctx.fillText(
-        headers[i],
+        headers[i] || '',
         Math.round(cellWidth / 2) + getAccCellWidth(i - 1) + extraWidth,
         13.5 + extraHeight,
       )
@@ -123,19 +123,19 @@ export function createCanvasTable({
         ctx.fillStyle = color
 
         if (obj.ratio) {
-          ctx.fillText(`${obj.value}       `, textWidth, textHeight)
+          ctx.fillText(`${obj.value || ''}       `, textWidth, textHeight)
 
           ctx.font = '5px Arial'
           ctx.textAlign = 'right'
           ctx.fillStyle = 'rgba(0,0,0,0.8)'
 
           // 绘制趋势
-          ctx.fillText(obj.ratio, textWidth + 30, textHeight)
+          ctx.fillText(obj.ratio || '', textWidth + 30, textHeight)
 
           ctx.font = '7px Arial'
           ctx.textAlign = 'center'
         } else {
-          ctx.fillText(`${obj.value}`, textWidth, textHeight)
+          ctx.fillText(`${obj.value || ''}`, textWidth, textHeight)
         }
       })
     }
