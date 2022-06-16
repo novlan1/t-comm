@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.0.36](https://github.com/novlan1/t-comm/compare/v0.0.35...v0.0.36) (2022-06-16)
+
+
+### Features
+
+* canvas画图兼容undefined ([461a809](https://github.com/novlan1/t-comm/commit/461a809836e635c260cc1f6b2defc42e7c719e67))
+
+
+
 ## [0.0.35](https://github.com/novlan1/t-comm/compare/v0.0.34...v0.0.35) (2022-06-15)
 
 
