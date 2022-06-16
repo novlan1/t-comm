@@ -7,6 +7,11 @@ const extraWidth = 3
 const maxColor = '#fc5531'
 const minColor = 'green'
 
+function parseCellValue(val) {
+  if (val === undefined || val === null) return ''
+  return val
+}
+
 /**
  * 创建canvas的table
  * @param param0
@@ -66,7 +71,7 @@ export function createCanvasTable({
     ctx.strokeStyle = '#ccc'
     ctx.textAlign = 'start'
     ctx.fillStyle = '#000'
-    ctx.fillText(title || '', 5, 10)
+    ctx.fillText(parseCellValue(title), 5, 10)
   }
 
   // 表头绘制
@@ -92,7 +97,7 @@ export function createCanvasTable({
         0,
       )
       ctx.fillText(
-        headers[i] || '',
+        parseCellValue(headers[i]),
         Math.round(cellWidth / 2) + getAccCellWidth(i - 1) + extraWidth,
         13.5 + extraHeight,
       )
@@ -123,19 +128,23 @@ export function createCanvasTable({
         ctx.fillStyle = color
 
         if (obj.ratio) {
-          ctx.fillText(`${obj.value || ''}       `, textWidth, textHeight)
+          ctx.fillText(
+            `${parseCellValue(obj.value)}       `,
+            textWidth,
+            textHeight,
+          )
 
           ctx.font = '5px Arial'
           ctx.textAlign = 'right'
           ctx.fillStyle = 'rgba(0,0,0,0.8)'
 
           // 绘制趋势
-          ctx.fillText(obj.ratio || '', textWidth + 30, textHeight)
+          ctx.fillText(parseCellValue(obj.ratio), textWidth + 30, textHeight)
 
           ctx.font = '7px Arial'
           ctx.textAlign = 'center'
         } else {
-          ctx.fillText(`${obj.value || ''}`, textWidth, textHeight)
+          ctx.fillText(`${parseCellValue(obj.value)}`, textWidth, textHeight)
         }
       })
     }
