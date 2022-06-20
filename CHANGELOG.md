@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.0.39](https://github.com/novlan1/t-comm/compare/v0.0.38...v0.0.39) (2022-06-20)
+
+
+### Features
+
+* 保存图片异步 ([8efb7e4](https://github.com/novlan1/t-comm/commit/8efb7e4dd88e75c07f210e5ae42eacda1251ff2c))
+
+
+
 ## [0.0.38](https://github.com/novlan1/t-comm/compare/v0.0.37...v0.0.38) (2022-06-20)
 
 
