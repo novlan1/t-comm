@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.0.38](https://github.com/novlan1/t-comm/compare/v0.0.37...v0.0.38) (2022-06-20)
+
+
+### Features
+
+* canvas绘制多张图片 ([f574758](https://github.com/novlan1/t-comm/commit/f574758dfb873320898644c1dff70254f3a27fe8))
+
+
+
 ## [0.0.37](https://github.com/novlan1/t-comm/compare/v0.0.36...v0.0.37) (2022-06-16)
 
 
