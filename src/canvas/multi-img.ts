@@ -34,7 +34,8 @@ export async function mergeMultiCanvasPic({
     const img = imgs[i]
     const savePath = getSavePath(i)
 
-    saveBase64ImgToFile({
+    // eslint-disable-next-line no-await-in-loop
+    await saveBase64ImgToFile({
       fs,
       imgUrl: img,
       savePath,
