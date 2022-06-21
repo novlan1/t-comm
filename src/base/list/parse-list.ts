@@ -222,7 +222,7 @@ export function getMaxAndMinIdx(
 
     keys.forEach(key => {
       const values = keyValueMap[key]
-      const itemInfo = item[key]
+      const itemInfo = item[key] || {}
 
       if (values && typeof itemInfo.value === 'number') {
         if (reverseScoreKeys.includes(key)) {
