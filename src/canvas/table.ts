@@ -70,12 +70,14 @@ export function createCanvasTable({
     ctx.lineWidth = 1
     ctx.strokeStyle = '#ccc'
     ctx.textAlign = 'start'
+    ctx.font = '9px Arial'
     ctx.fillStyle = '#000'
     ctx.fillText(parseCellValue(title), 5, 10)
   }
 
   // 表头绘制
   function fillTableHeader() {
+    ctx.font = '7px Arial'
     ctx.textAlign = 'center'
     const colors = [
       '#000000',

@@ -60,11 +60,13 @@ export async function mergeMultiCanvasPic({
     }
     return res
   }
+  const ONE_HEIGHT_GAP = 50
+  const getPastGap = index => index * ONE_HEIGHT_GAP
 
   const CANVAS_MARGIN_TOP = 0
   const canvas = createCanvas(
     getMaxWidth(),
-    getTotalHeight() + CANVAS_MARGIN_TOP,
+    getTotalHeight() + CANVAS_MARGIN_TOP + getPastGap(imgs.length - 1),
   )
 
   const ctx = canvas.getContext('2d')
@@ -86,7 +88,7 @@ export async function mergeMultiCanvasPic({
     ctx.drawImage(
       image,
       0,
-      getPastHeight(dimensionMap.height, i),
+      getPastHeight(dimensionMap.height, i) + getPastGap(i),
       oWidth,
       oHeight,
     )
