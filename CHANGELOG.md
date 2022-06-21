@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.0.40](https://github.com/novlan1/t-comm/compare/v0.0.39...v0.0.40) (2022-06-21)
+
+
+### Features
+
+* 优化画图 ([49d9646](https://github.com/novlan1/t-comm/commit/49d9646b658f822f8fbb997e21829bd8be85d3c2))
+
+
+
 ## [0.0.39](https://github.com/novlan1/t-comm/compare/v0.0.38...v0.0.39) (2022-06-20)
 
 
