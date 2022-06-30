@@ -1,5 +1,19 @@
 # 工具库更新日志
 
+## [0.0.41](https://github.com/novlan1/t-comm/compare/v0.0.40...v0.0.41) (2022-06-30)
+
+
+### Bug Fixes
+
+* 最大最小值严谨 ([de0f344](https://github.com/novlan1/t-comm/commit/de0f344de321e2f37b608dfa450abd437c1d9687))
+
+
+### Features
+
+* **toc:** 增加自动生成toc功能 ([9ef0b6c](https://github.com/novlan1/t-comm/commit/9ef0b6c099ca715b06feb9d0d8cf90a8a914bbe6))
+
+
+
 ## [0.0.40](https://github.com/novlan1/t-comm/compare/v0.0.39...v0.0.40) (2022-06-21)
 
 
