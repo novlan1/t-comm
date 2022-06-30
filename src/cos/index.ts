@@ -42,14 +42,14 @@ export const uploadCOSFile = function ({
         },
         onFileFinish(err, data, options) {
           resolve(data)
-          console.log('err', err)
+          // console.log('err', err)
           console.log(`${options.Key}上传${err ? '失败' : '完成'}`)
         },
       },
-      (err, data) => {
+      (/* err, data */) => {
         reject()
-        console.log('err', err)
-        console.log('upload res -> ', err || data)
+        // console.log('err', err)
+        // console.log('upload res -> ', err || data)
       },
     )
   })
