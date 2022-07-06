@@ -18,11 +18,12 @@ export enum ValueType {
   YAML = 20,
 }
 
-export interface ModifyConfigParem {
+export interface ModifyConfigParam {
   keyValue: {
     key: string
     value: string
   }
   valueType: ValueType
   secretInfo: SecretInfo
+  crypto: any
 }

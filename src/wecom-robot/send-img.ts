@@ -1,4 +1,3 @@
-import crypto from 'crypto'
 import { sendWxRobotImg } from './base'
 import { saveBase64ImgToFile, getImgMd5 } from '../node-img'
 
@@ -10,9 +9,11 @@ import { saveBase64ImgToFile, getImgMd5 } from '../node-img'
 export async function sendWxRobotBase64Img({
   img,
   chatId,
+  webhookUrl,
+
   path,
   fs,
-  webhookUrl,
+  crypto,
 }) {
   if (!chatId || !img || !path || !webhookUrl || !fs) return
 

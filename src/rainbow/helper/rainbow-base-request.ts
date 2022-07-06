@@ -8,6 +8,7 @@ interface ReqParam {
   url: string
   data: object
   secretInfo: SecretInfo
+  crypto: any
 }
 
 /**
@@ -19,6 +20,7 @@ export function baseRequestRainbow({
   url,
   data: reqData,
   secretInfo,
+  crypto,
 }: ReqParam) {
   const baseUrl = BASE_URL
   const { appID, userID, secretKey, envName, groupName } = secretInfo
@@ -26,6 +28,7 @@ export function baseRequestRainbow({
     appID,
     userID,
     secretKey,
+    crypto,
   })
 
   return new Promise((resolve, reject) => {

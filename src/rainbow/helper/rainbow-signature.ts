@@ -1,18 +1,16 @@
-import crypto from 'crypto'
-
 /**
  * 密码学随机数
  */
-const randomNum = () => {
+const randomNum = crypto => {
   const buf = crypto.randomBytes(6)
   const hexToDec = parseInt(buf.toString('hex'), 16)
   return hexToDec
 }
 
-const sha256 = (secret, content) =>
+const sha256 = (secret, content, crypto) =>
   crypto.createHmac('sha256', secret).update(content).digest('base64')
 
-const sha1 = (secret, content) =>
+const sha1 = (secret, content, crypto) =>
   crypto.createHmac('sha1', secret).update(content).digest('base64')
 
 /**
@@ -21,13 +19,13 @@ const sha1 = (secret, content) =>
  * @param content
  * @param signMethod
  */
-const signatureGenerator = (secret, content, signMethod) => {
+const signatureGenerator = (secret, content, signMethod, crypto) => {
   switch (signMethod) {
     case 'sha256':
-      return sha256(secret, content)
+      return sha256(secret, content, crypto)
     case 'sha1':
     default:
-      return sha1(secret, content)
+      return sha1(secret, content, crypto)
   }
 }
 
@@ -36,7 +34,7 @@ const signatureGenerator = (secret, content, signMethod) => {
  * @param signInfo
  */
 export const genRainbowHeaderSignature = signInfo => {
-  const { appID, userID, signMethod = 'sha1', secretKey } = signInfo
+  const { appID, userID, signMethod = 'sha1', secretKey, crypto } = signInfo
 
   if (!secretKey) {
     return {}
@@ -47,14 +45,19 @@ export const genRainbowHeaderSignature = signInfo => {
   const rainbowAppId = appID
   const rainbowUserId = userID
   const rainbowTimestamp = `${Math.ceil(new Date().getTime() / 1000)}` // ms => s
-  const rainbowNonce = `${randomNum()}`
+  const rainbowNonce = `${randomNum(crypto)}`
   const rainbowSgnMethod = signMethod
   const rainbowSgnBody = ''
 
   const content =
     `${rainbowVersion}.${rainbowAppId}.${rainbowUserId}.${rainbowTimestamp}.${rainbowNonce}` +
     `.${rainbowSgnMethod}.${rainbowSgnBody}`
-  const rainbowSignature = signatureGenerator(secretKey, content, signMethod)
+  const rainbowSignature = signatureGenerator(
+    secretKey,
+    content,
+    signMethod,
+    crypto,
+  )
   return {
     rainbow_sgn_type: rainbowSgnType, // 签名类型	该字段为 apisign
     rainbow_version: rainbowVersion, // 版本号	暂固定为2020

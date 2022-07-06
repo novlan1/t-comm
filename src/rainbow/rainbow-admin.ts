@@ -1,6 +1,6 @@
 import { baseRequestRainbow } from './helper/rainbow-base-request'
 import { getVersion } from './helper/helper'
-import { SecretInfo, ValueType, ModifyConfigParem } from './index.type'
+import { SecretInfo, ValueType, ModifyConfigParam } from './index.type'
 
 /**
  * 添加或更新配置
@@ -12,7 +12,8 @@ export function addOrUpdateRainbowKV({
   keyValue,
   valueType = 2,
   secretInfo,
-}: ModifyConfigParem) {
+  crypto,
+}: ModifyConfigParam) {
   return baseRequestRainbow({
     url: '/adminapi.Config/ChangeKeyReq',
     data: {
@@ -27,6 +28,7 @@ export function addOrUpdateRainbowKV({
       ],
     },
     secretInfo,
+    crypto,
   })
 }
 
@@ -40,7 +42,8 @@ export function addRainbowKV({
   keyValue,
   valueType = 2,
   secretInfo,
-}: ModifyConfigParem) {
+  crypto,
+}: ModifyConfigParam) {
   return baseRequestRainbow({
     url: '/adminapi.Config/ChangeKeyReq',
     data: {
@@ -55,6 +58,7 @@ export function addRainbowKV({
       ],
     },
     secretInfo,
+    crypto,
   })
 }
 
@@ -68,7 +72,8 @@ export function updateRainbowKV({
   keyValue,
   valueType = 2,
   secretInfo,
-}: ModifyConfigParem) {
+  crypto,
+}: ModifyConfigParam) {
   return baseRequestRainbow({
     url: '/adminapi.Config/ChangeKeyReq',
     data: {
@@ -83,6 +88,7 @@ export function updateRainbowKV({
       ],
     },
     secretInfo,
+    crypto,
   })
 }
 
@@ -92,7 +98,7 @@ export function updateRainbowKV({
  * @param obj - 配置信息
  * @returns
  */
-export function createRainbowPublishJob({ versionName, secretInfo }) {
+export function createRainbowPublishJob({ versionName, secretInfo, crypto }) {
   return baseRequestRainbow({
     url: '/adminapi.Config/CreateReleaseTaskReq',
     data: {
@@ -102,6 +108,7 @@ export function createRainbowPublishJob({ versionName, secretInfo }) {
       type: 0,
     },
     secretInfo,
+    crypto,
   })
 }
 
@@ -111,13 +118,14 @@ export function createRainbowPublishJob({ versionName, secretInfo }) {
  * @param obj - 配置信息
  * @returns
  */
-export function publishRainbowTask({ taskId, secretInfo }) {
+export function publishRainbowTask({ taskId, secretInfo, crypto }) {
   return baseRequestRainbow({
     url: '/adminapi.Release/ReleaseMainTaskReq',
     data: {
       task_id: taskId,
     },
     secretInfo,
+    crypto,
   })
 }
 
@@ -127,13 +135,14 @@ export function publishRainbowTask({ taskId, secretInfo }) {
  * @param obj - 配置信息
  * @returns
  */
-export function closeRainbowTask({ taskId, secretInfo }) {
+export function closeRainbowTask({ taskId, secretInfo, crypto }) {
   return baseRequestRainbow({
     url: '/adminapi.Release/CloseReleaseTaskReq',
     data: {
       task_id: taskId,
     },
     secretInfo,
+    crypto,
   })
 }
 
@@ -147,11 +156,13 @@ export async function updateRainbowKVAndPublish({
   value,
   valueType,
   secretInfo,
+  crypto,
 }: {
   key: string
   value: string
   valueType: ValueType
   secretInfo: SecretInfo
+  crypto: any
 }) {
   try {
     await addOrUpdateRainbowKV({
@@ -161,18 +172,22 @@ export async function updateRainbowKVAndPublish({
       },
       valueType,
       secretInfo,
+      crypto,
     })
     const taskRes: any = await createRainbowPublishJob({
       versionName: getVersion(),
       secretInfo,
+      crypto,
     })
     await publishRainbowTask({
       taskId: taskRes.task_id,
       secretInfo,
+      crypto,
     })
     await closeRainbowTask({
       taskId: taskRes.task_id,
       secretInfo,
+      crypto,
     })
     return taskRes
   } catch (err) {
@@ -187,6 +202,7 @@ export function queryGroupInfo({ secretInfo }) {
       url: '/adminapi.Config/QueryGroupInfoReq',
       data: {},
       secretInfo,
+      crypto,
     })
       .then((res: any) => {
         const keyValues = res.config_infos?.[0]?.key_values || []
