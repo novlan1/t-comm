@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.0.42](https://github.com/novlan1/t-comm/compare/v0.0.41...v0.0.42) (2022-07-06)
+
+
+### Features
+
+* 删除crypto ([b0b6f09](https://github.com/novlan1/t-comm/commit/b0b6f098b3bff77f77453597656c64ba3dfa866a))
+
+
+
 ## [0.0.41](https://github.com/novlan1/t-comm/compare/v0.0.40...v0.0.41) (2022-06-30)
 
 
