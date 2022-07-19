@@ -14,11 +14,14 @@
  */
 export function genVersion({ path, execFile, needPush = 0 }) {
   const bashFile = path.resolve(__dirname, './gen-version.bash')
-  execFile('bash', [bashFile, needPush], (error, stdout, stderr) => {
-    if (error) {
-      throw error
-    }
-    console.log(stdout)
-    console.log('stderr: ', stderr)
+
+  return new Promise((resolve, reject) => {
+    execFile('bash', [bashFile, needPush], (error, stdout, stderr) => {
+      if (error) {
+        reject(error)
+      } else {
+        resolve({ stdout, stderr })
+      }
+    })
   })
 }

@@ -158,6 +158,8 @@ function doStandardVerison() {
     msg_info "pushing..."
     git push --follow-tags origin
   fi;
+
+  msg_success "GEN VERSION SUCCESS"
 }
 
 main $1
