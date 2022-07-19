@@ -61,7 +61,7 @@ export function genVersionTip({ readmeFilePath, appInfo, fs }) {
     // repoName = repoLink.match(/(?<=com\/).+/);
   }
 
-  generatePublishInfo({
+  return generatePublishInfo({
     version,
     repoLink,
     appName,
