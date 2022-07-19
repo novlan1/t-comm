@@ -9,7 +9,8 @@
     "lib",
     "LICENSE",
     "CHANGELOG.md",
-    "README.md"
+    "README.md",
+    "script"
   ],
   "sideEffects": "false",
   "repository": {

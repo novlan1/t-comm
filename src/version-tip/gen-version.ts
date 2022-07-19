@@ -13,7 +13,7 @@
  * ```
  */
 export function genVersion({ path, execFile, needPush = 0 }) {
-  const bashFile = path.resolve(__dirname, './gen-version.bash')
+  const bashFile = path.resolve(__dirname, '../script/gen-version.bash')
 
   return new Promise((resolve, reject) => {
     execFile('bash', [bashFile, needPush], (error, stdout, stderr) => {
@@ -21,6 +21,8 @@ export function genVersion({ path, execFile, needPush = 0 }) {
         reject(error)
       } else {
         resolve({ stdout, stderr })
+        console.log(stdout)
+        console.log('stderr', stderr)
       }
     })
   })
