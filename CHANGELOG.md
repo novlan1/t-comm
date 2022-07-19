@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.0.44](https://github.com/novlan1/t-comm/compare/v0.0.43...v0.0.44) (2022-07-19)
+
+
+### Features
+
+* gen-version ([e2dd944](https://github.com/novlan1/t-comm/commit/e2dd94487fedb07330ec6263adc74533667ad19d))
+
+
+
 ## [0.0.43](https://github.com/novlan1/t-comm/compare/v0.0.42...v0.0.43) (2022-07-19)
 
 
