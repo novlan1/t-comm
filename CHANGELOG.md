@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.0.46](https://github.com/novlan1/t-comm/compare/v0.0.45...v0.0.46) (2022-07-19)
+
+
+### Features
+
+* 移动脚本位置 ([1044a7f](https://github.com/novlan1/t-comm/commit/1044a7fadc04910d2e82efd2fd83d578186840ca))
+
+
+
 ## [0.0.45](https://github.com/novlan1/t-comm/compare/v0.0.44...v0.0.45) (2022-07-19)
 
 
