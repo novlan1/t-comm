@@ -17,7 +17,7 @@ async function generatePublishInfo({
   const changelogStr = fs.readFileSync(readmeFilePath, 'utf8')
   const currentVersion = changelogStr.match(
     new RegExp(
-      `(?<=### \\[${targetVersion}\\].*\n).+?(?=\n### \\[\\d+.\\d+.\\d+)`,
+      `(?<=### \\[${targetVersion}\\].*\n).+?(?=\n##+ \\[?\\d+.\\d+.\\d+)`,
       's',
     ),
   )
