@@ -17,12 +17,12 @@ async function generatePublishInfo({
   const changelogStr = fs.readFileSync(readmeFilePath, 'utf8')
   const currentVersion = changelogStr.match(
     new RegExp(
-      `(?<=### \\[${targetVersion}\\].*\n).+?(?=\n##+ \\[?\\d+.\\d+.\\d+)`,
+      `(?<=### \\[${targetVersion}\\].*\n).*?(?=\n##+ \\[?\\d+.\\d+.\\d+)`,
       's',
     ),
   )
 
-  if (!currentVersion) {
+  if (!currentVersion || !currentVersion[0]) {
     console.log(
       '\x1b[33m%s\x1b[0m',
       `未找到${targetVersion}对应的 changelog 发布信息`,
