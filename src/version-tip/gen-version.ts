@@ -13,7 +13,7 @@
  * ```
  */
 
-export function genVersion({ path, fs, standardVersion, execSync, root }) {
+export function genVersion({ path, fs, execSync, root }) {
   if (!root) {
     console.log('\x1b[33m%s\x1b[0m', '请输入 root，可为 process.cwd()')
     return
@@ -62,21 +62,11 @@ export function genVersion({ path, fs, standardVersion, execSync, root }) {
   }
 
   function doRelease({ isFirstRelease }) {
-    return new Promise((resolve, reject) => {
-      standardVersion({
-        firstRelease: !!isFirstRelease,
-        releaseAs: 'patch',
-        // silent: true,
-        // noVerify: true,
-      })
-        .then(res => {
-          resolve(res)
-        })
-        .catch(err => {
-          console.error(`standard-version failed with message: ${err.message}`)
-          reject(err)
-        })
-    })
+    if (isFirstRelease) {
+      execCommand('npx standard-version --first-release')
+    } else {
+      execCommand('npx standard-version --release-as patch')
+    }
   }
 
   const gitPath = path.resolve(root, '.git')
