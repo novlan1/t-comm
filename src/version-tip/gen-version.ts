@@ -1,29 +1,119 @@
 /**
- * 生成version
- * @param execFile - child_process模块
- * @param needPush - 1 需要push，0 不需要
+ * 生成Version
+ * @param param - path/fs/standardVersion等
  * @example
- *
  * ```ts
  * genVersion({
-     execFile: require('child_process').execFile,
-     path: require('path'),
-     needPush: 1,
-   })
+ *   fs: require('fs'),
+ *   path: require('path'),
+ *   standardVersion: require('standard-version'),
+ *   execSync: require('child_process').execSync,
+ *   root: process.cwd()
+ * })
  * ```
  */
-export function genVersion({ path, execFile, needPush = 0 }) {
-  const bashFile = path.resolve(__dirname, '../script/gen-version.bash')
 
-  return new Promise((resolve, reject) => {
-    execFile('bash', [bashFile, needPush], (error, stdout, stderr) => {
-      if (error) {
-        reject(error)
-      } else {
-        resolve({ stdout, stderr })
-        console.log(stdout)
-        console.log('stderr', stderr)
-      }
+export function genVersion({ path, fs, standardVersion, execSync, root }) {
+  if (!root) {
+    console.log('\x1b[33m%s\x1b[0m', '请输入 root，可为 process.cwd()')
+    return
+  }
+
+  const INTERVAL_TIME = 24 * 60 * 60 * 1000
+
+  function execCommand(command) {
+    return (
+      execSync(command, {
+        cwd: root,
+        encoding: 'utf-8',
+        stdio: 'pipe',
+      })
+        .split('\n')[0]
+        ?.trim() || ''
+    )
+  }
+
+  function getLastTag() {
+    const fakeFirstTag = execCommand('git tag -l')
+    console.log('\x1B[32m%s\x1B[0m', `fakeFirstTag 为 ${fakeFirstTag}`)
+    if (!fakeFirstTag) return ''
+
+    // const command = 'git tag | head -1'
+    const command = 'git describe --abbrev=0'
+
+    const tag = execCommand(command)
+    return tag
+  }
+
+  function getCommitsBeforeTag(tag) {
+    const command = `git log ${tag}...HEAD --no-merges --oneline | wc -l`
+    const commits = execCommand(command)
+    return commits
+  }
+
+  function getTagTime(tag) {
+    const command = `git log -1 --format=%ai ${tag} | cat`
+    const tagTime = execCommand(command)
+    return tagTime
+  }
+
+  function getTimeStampFromDate(date) {
+    return new Date(date).getTime()
+  }
+
+  function doRelease({ isFirstRelease }) {
+    return new Promise((resolve, reject) => {
+      standardVersion({
+        firstRelease: !!isFirstRelease,
+        releaseAs: 'patch',
+        // silent: true,
+        // noVerify: true,
+      })
+        .then(res => {
+          resolve(res)
+        })
+        .catch(err => {
+          console.error(`standard-version failed with message: ${err.message}`)
+          reject(err)
+        })
     })
-  })
+  }
+
+  const gitPath = path.resolve(root, '.git')
+  if (!fs.existsSync(gitPath)) {
+    console.log('\x1b[33m%s\x1b[0m', `未找到 ${gitPath} ，不是 Git 目录。`)
+    return
+  }
+
+  const tag = getLastTag()
+  console.log('\x1B[32m%s\x1B[0m', `tag 为 ${tag}`)
+
+  if (!tag) {
+    doRelease({ isFirstRelease: true })
+    // eslint-disable-next-line consistent-return
+    return true
+  }
+
+  const tagDate = getTagTime(tag)
+  console.log('\x1B[32m%s\x1B[0m', `tagDate 为 ${tagDate}`)
+
+  const commits = getCommitsBeforeTag(tag)
+  console.log('\x1B[32m%s\x1B[0m', `commits 为 ${commits}`)
+
+  if (commits < 1) {
+    console.log('\x1b[33m%s\x1b[0m', `commits 为 ${commits}，小于 1`)
+    return
+  }
+
+  const tagTimeStamp = getTimeStampFromDate(tagDate)
+  console.log('\x1B[32m%s\x1B[0m', `tagTimeStamp 为 ${tagTimeStamp}`)
+
+  if (Date.now() - tagTimeStamp < INTERVAL_TIME) {
+    console.log('\x1b[33m%s\x1b[0m', `间隔小于${INTERVAL_TIME}`)
+    return
+  }
+
+  doRelease({ isFirstRelease: false })
+  // eslint-disable-next-line consistent-return
+  return true
 }
