@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.0.47](https://github.com/novlan1/t-comm/compare/v0.0.46...v0.0.47) (2022-07-20)
+
+
+### Features
+
+* 优化gen-version ([00f046c](https://github.com/novlan1/t-comm/commit/00f046c00ff2ec932723ec35d08ebf5ecf0861b7))
+
+
+
 ## [0.0.46](https://github.com/novlan1/t-comm/compare/v0.0.45...v0.0.46) (2022-07-19)
 
 
