@@ -196,7 +196,7 @@ export async function updateRainbowKVAndPublish({
 }
 
 // 查询分组配置
-export function queryGroupInfo({ secretInfo }) {
+export function queryGroupInfo({ secretInfo, crypto }) {
   return new Promise((resolve, reject) => {
     baseRequestRainbow({
       url: '/adminapi.Config/QueryGroupInfoReq',
