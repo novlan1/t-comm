@@ -109,8 +109,16 @@ const apiExtractorGenerate: TaskFunc = async cb => {
     // 删除多余的 .d.ts 文件
     const libFiles: string[] = await fse.readdir(paths.lib)
     libFiles.forEach(async file => {
+      const filePath = path.join(paths.lib, file)
       if (file.endsWith('.d.ts') && !file.includes('index')) {
-        await fse.remove(path.join(paths.lib, file))
+        await fse.remove(filePath)
+      }
+
+      // 删除所有子文件夹
+      const stat = fse.lstatSync(filePath)
+      if (stat.isDirectory()) {
+        log.progress(`正在删除文件夹：${file}`)
+        await fse.remove(filePath)
       }
     })
     log.progress('API Extractor completed successfully')
