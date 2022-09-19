@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.0.53](https://github.com/novlan1/t-comm/compare/v0.0.52...v0.0.53) (2022-09-19)
+
+
+### Features
+
+* 删除多余的打包产物 ([e86e0b9](https://github.com/novlan1/t-comm/commit/e86e0b96403d4440ab5f77b1dbcd8881b35c97a6))
+
+
+
 ## [0.0.52](https://github.com/novlan1/t-comm/compare/v0.0.51...v0.0.52) (2022-09-19)
 
 
