@@ -1,5 +1,4 @@
 async function generatePublishInfo({
-  fs,
   version: targetVersion,
   repoLink,
   appName,
@@ -7,6 +6,8 @@ async function generatePublishInfo({
   issueLink,
   readmeFilePath,
 }) {
+  // eslint-disable-next-line global-require
+  const fs = require('fs')
   if (!fs.existsSync(readmeFilePath)) {
     console.log(
       '\x1b[33m%s\x1b[0m',
@@ -47,7 +48,7 @@ async function generatePublishInfo({
   return content
 }
 
-export function genVersionTip({ readmeFilePath, appInfo, fs }) {
+export function genVersionTip({ readmeFilePath, appInfo }) {
   const { name: appName, version, homepage = '', bugs, repository } = appInfo
 
   // const repoName = '';
@@ -68,6 +69,5 @@ export function genVersionTip({ readmeFilePath, appInfo, fs }) {
     homepage,
     issueLink,
     readmeFilePath,
-    fs,
   })
 }
