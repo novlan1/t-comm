@@ -1,4 +1,8 @@
 /**
+ * @module base
+ */
+
+/**
  * 拉平数组
  *
  * @param list - 对象数组
@@ -11,11 +15,12 @@
  * flatten(list, 'id') // {1: {id: 1, name: 'a'}, 2: {id: 2, name: 'b'}}
  * ```
  */
-export const flatten = (list: Array<object>, key: string) =>
-  list.reduce((acc, item) => {
+export function flatten(list: Array<object>, key: string) {
+  return list.reduce((acc, item) => {
     acc[item[key]] = item
     return acc
   }, {})
+}
 
 /**
  * 打乱顺序

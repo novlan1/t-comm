@@ -1,6 +1,10 @@
 /**
+ * 一些校验方法
+ * @module validate
+ */
+
+/**
  * 判断是否外部资源
- * @exports isExternal
  * @param {string} path
  * @returns {Boolean}
  */
@@ -20,7 +24,6 @@ export function validUsername(str) {
 
 /**
  * 判断是否URL
- * @exports validURL
  * @param {string} url
  * @returns {Boolean}
  */
@@ -32,7 +35,6 @@ export function validURL(url) {
 
 /**
  * 判断是否小写
- * @exports validLowerCase
  * @param {string} str
  * @returns {Boolean}
  */
@@ -43,7 +45,6 @@ export function validLowerCase(str) {
 
 /**
  * 判断是否大写
- * @exports validUpperCase
  * @param {string} str
  * @returns {Boolean}
  */
@@ -54,7 +55,6 @@ export function validUpperCase(str) {
 
 /**
  * 判断是否字母字符串
- * @exports validAlphabets
  * @param {string} str
  * @returns {Boolean}
  */
@@ -65,7 +65,6 @@ export function validAlphabets(str) {
 
 /**
  * 判断是否合法邮箱地址
- * @exports validEmail
  * @param {string} email
  * @returns {Boolean}
  */
@@ -78,7 +77,6 @@ export function validEmail(email) {
 
 /**
  * 判断是否字符串
- * @exports isString
  * @param {string} str
  * @returns {Boolean}
  */
@@ -91,7 +89,6 @@ export function isString(str) {
 
 /**
  * 判断是否数组
- * @exports isArray
  * @param {Array} arg
  * @returns {Boolean}
  */
@@ -104,7 +101,6 @@ export function isArray(arg) {
 
 /**
  * 判断是否合法的QQ号码
- * @exports isQQNumber
  * @param {String} qq 待检测的qq号
  */
 export function isQQNumber(qq) {
@@ -117,7 +113,6 @@ export function isQQNumber(qq) {
 
 /**
  * 判断是否合法的邮箱号码
- * @exports isEmail
  * @param {String} email 待检测的邮箱号码
  */
 export function isEmail(email) {
@@ -133,7 +128,6 @@ export function isEmail(email) {
 
 /**
  * 判断是否合法的手机号
- * @exports isMobile
  * @param {String} phone 待检测的手机号
  */
 export function isMobile(phone) {
@@ -147,7 +141,7 @@ export function isMobile(phone) {
 
 /**
  * 判断是否合法的电话号码
- * @exports isTel
+ * @category String
  * @param {String} tel 待检测的电话号码
  */
 export function isTel(tel) {
@@ -159,7 +153,6 @@ export function isTel(tel) {
 }
 /**
  * 判断是否合法的身份证号
- * @exports isIdCard
  * @param {*} idCard
  */
 export function isIdCard(idCard) {

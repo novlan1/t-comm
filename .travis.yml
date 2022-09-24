@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+- '14'
+sudo: false
+branches:
+  only:
+  - master
+before_script:
+- npm install
+script:
+- npm run test
+after_success:
+- cd $TRAVIS_BUILD_DIR
+- chmod +x generateDocs.sh
+- bash generateDocs.sh
+env:
+  global:
+    secure: eGafAystSQr0wW+jAIVdQ8i08oFn4S6jGDURZyJ/N/c6uAslIEMlIabgqJjkYknXnOY05B3DpAkvj7e9Y4jNXAsSg3OW8BuQugch+G/kGPRWudWjHl+HE6VGR9TsGwgLyyrwCafXgToYI4nG707fcGOi3NyPJCvOoVICUUfKE5G5fpnnLKAPGzdJ6+bLUB2QigyclB5Cn9SVXeTAh1CqF84DHilyd1I3k2yTWiKaU8oKN3LCwNFNsZWzbF8bfP0K4aXB2bq1E8yki8LGQ0ZC1gtaRSI+kOk55XXYJ5wW7vN3mqKsOx3XV/fRy8YHhsbM+zMuReYpaFx0s8uH1bkk+XdWAjwF79dQDTfvZvK3PHMlAvOSfTKVC1wg/PIo5EF3pRodWBpcJt8whkPS9JWD7PUzhsWhIPzyimJLwXpuAFYFrApPtev9nxIFmolbfeAC/ZWgWbsse5iWvMYGUAmlSMhv8cWjtvc64kvfQNvKmCIScsbiCr+8n4jv5yQ/uI08kElfytbK4esSUTR2GuQkSmrqIbsGDgX2TCLJGI+U+1dL75quQpzUNUyzRNAbXZ1suCXz3vD6InfTCMnEWyxfvoLN/dhXszeoewO2gFQFQLytzr6Oo9F0rgzYihymCyWVAiDdAQLC57x7ThlxIl7ZkRj44hpvLGwG5hVQL8peRs4=

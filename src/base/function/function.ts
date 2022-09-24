@@ -1,7 +1,11 @@
 /**
+ * @module base
+ */
+
+/**
  * 将字符串转为函数
- * @param func
- * @returns
+ * @param func 字符串
+ * @returns 字符串对应的函数
  *
  * @example
  *
@@ -9,7 +13,7 @@
  * parseFunction('()=>console.log(1)') // ()=>console.log(1)
  * ```
  */
-export const parseFunction = func => {
+export function parseFunction(func) {
   if (typeof func !== 'string') return func
   let data = ''
   try {
