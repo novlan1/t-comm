@@ -39,7 +39,7 @@ echo "" > .nojekyll
 ################################################################################
 ##### Generate JSDOC documents.          #####
 echo 'Copying generated JSDoc code documentation...'
-# cp -R ../fixtures-doc/* ./ ;
+cp -R ../docs/* ./ ;
 
 echo "" > index.html
 
