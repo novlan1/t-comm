@@ -19,7 +19,8 @@ function insertSeparator(index, source) {
   const dom = document.querySelector(`nav ul li:nth-child(${index + 1})`)
   const ele = document.createElement('span')
   ele.innerHTML = getSeparatorStr(source)
-  ele.style = 'color: hsl(207, 1%, 60%);font-size: 12px;'
+  ele.style = 'color: hsl(207, 1%, 60%);font-size: 12px;display: block;'
+  ele.classList.add('nav-separator')
   parent.insertBefore(ele, dom)
 }
 
@@ -62,4 +63,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
   insertSeparator(0, sourceMap[navList[0]])
+
+  document.querySelector('#nav-search').addEventListener('input', event => {
+    const { value } = event.target
+    if (value) {
+      document.querySelectorAll('.nav-separator').forEach(item => {
+        item.style.display = 'none'
+      })
+    } else {
+      document.querySelectorAll('.nav-separator').forEach(item => {
+        item.style.display = 'block'
+      })
+    }
+  })
 })

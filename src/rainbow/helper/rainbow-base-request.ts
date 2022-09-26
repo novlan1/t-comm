@@ -15,6 +15,7 @@ interface ReqParam {
  *
  * @param config - 配置信息
  * @returns 接口信息
+ * @private
  */
 export function baseRequestRainbow({
   url,
