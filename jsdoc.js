@@ -53,6 +53,12 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('navList: ', navList)
   console.log('sourceMap: ', sourceMap)
 
+  const footer = document.querySelector('footer')
+
+  if (footer) {
+    footer.style.display = 'none'
+  }
+
   if (!Object.keys(sourceMap).length) {
     return
   }
