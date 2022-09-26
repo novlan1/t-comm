@@ -30,7 +30,7 @@
   "scripts": {
     "build": "gulp build",
     "api": "api-extractor run",
-    "docs:gen": "jsdoc -c jsdoc.json",
+    "docs:gen": "jsdoc -c script/docs/jsdoc.json && cp script/docs/jsdoc.js docs",
     "test": "jest --coverage --verbose -u",
     "lint": "eslint --ext .js,.ts --format=pretty ./src",
     "lint:fix": "eslint --fix --ext .js,.ts --format=pretty ./src",

@@ -41,7 +41,9 @@
     "typedefs": true,
     "commonNav": true,
     "removeQuotes": "none",
-    "scripts": [],
+    "scripts": [
+      "./jsdoc.js"
+    ],
     "menu":{
         "Github repo":{
             "href":"https://github.com/novlan1/t-comm",
