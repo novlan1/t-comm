@@ -63,21 +63,21 @@
   ```
  */
 export function getQueryObj(url) {
-  const query = {}
+  const query = {};
 
-  let qs = url.substr(url.indexOf('?') > -1 ? url.indexOf('?') + 1 : url.length)
-  let kvs
+  let qs = url.substr(url.indexOf('?') > -1 ? url.indexOf('?') + 1 : url.length);
+  let kvs;
 
-  qs = qs.split('&amp;')
-  qs.forEach(item => {
-    kvs = item.split('=')
+  qs = qs.split('&amp;');
+  qs.forEach((item) => {
+    kvs = item.split('=');
     if (kvs.length === 2) {
-      const value = kvs[1]
-      query[kvs[0]] = value
+      const value = kvs[1];
+      query[kvs[0]] = value;
     }
-  })
+  });
 
-  return query
+  return query;
 }
 
 /**
@@ -107,37 +107,37 @@ export function getQueryObj(url) {
   ```
   */
 export function composeUrlQuery(url, queryObj) {
-  const oriQuery = getQueryObj(url)
+  const oriQuery = getQueryObj(url);
   let pathname = url.substr(
     0,
     url.indexOf('?') > -1 ? url.indexOf('?') : url.length,
-  )
-  pathname += '?'
+  );
+  pathname += '?';
   const allQuery = {
     ...oriQuery,
     ...queryObj,
-  }
-  Object.keys(allQuery).forEach(i => {
-    pathname += `${i}=${allQuery[i]}&amp;`
-  })
-  return pathname.substr(0, pathname.length - 1)
+  };
+  Object.keys(allQuery).forEach((i) => {
+    pathname += `${i}=${allQuery[i]}&amp;`;
+  });
+  return pathname.substr(0, pathname.length - 1);
 }
 
 export function encodeUrlParam(obj) {
   if (typeof obj === 'object') {
-    return encodeURIComponent(JSON.stringify(obj))
+    return encodeURIComponent(JSON.stringify(obj));
   }
-  return encodeURIComponent(obj)
+  return encodeURIComponent(obj);
 }
 
 export function decodeUrlParam(str) {
-  let res = ''
+  let res = '';
   try {
-    res = JSON.parse(decodeURIComponent(str))
+    res = JSON.parse(decodeURIComponent(str));
   } catch (err) {
-    console.log('decodeUrlParam.error', err)
+    console.log('decodeUrlParam.error', err);
   }
-  return res
+  return res;
 }
 </code></pre>
         </article>
