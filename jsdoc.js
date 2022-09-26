@@ -53,6 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('navList: ', navList)
   console.log('sourceMap: ', sourceMap)
 
+  if (!Object.keys(sourceMap).length) {
+    return
+  }
+
   for (let i = navList.length - 1; i >= 1; i--) {
     const cur = navList[i]
     const source = sourceMap[cur]
