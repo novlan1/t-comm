@@ -4,7 +4,7 @@ const axios = require('axios')
  * 给机器人发消息的基本方法
  *
  * @param config - 包含webhookUrl, params
- * @returns
+ * @returns Promise
  */
 export function sendToRobot({ webhookUrl, params }): any {
   return new Promise((resolve, reject) => {

@@ -3,7 +3,7 @@ import { sendToRobot } from './helper'
 /**
  * 给机器人发送普通消息
  * @param config - { webhookUrl, chatId, alias, content }
- * @returns
+ * @returns Promise
  */
 export function sendWxRobotMsg({ webhookUrl, chatId, alias, content }) {
   return new Promise((resolve, reject) => {

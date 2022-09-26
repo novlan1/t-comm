@@ -109,3 +109,5 @@ package-lock.json
 .env.local
 
 /test.js
+repo/
+docs/

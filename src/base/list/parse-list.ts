@@ -107,7 +107,7 @@ function markMaxAndMinOfObj({ values, value, obj }) {
 
 /**
  * 获取相对上次的比例
- * @param data
+ * @param data - 输入数据
  *
  * [{
  *   Project: { value: 'mj-match', name: 'Project' },
@@ -123,7 +123,7 @@ function markMaxAndMinOfObj({ values, value, obj }) {
       },
     }
    }]
- * @param preDataMap
+ * @param preDataMap - 上次数据的map
  *
  * {
      'mj-match': {
