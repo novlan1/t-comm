@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Home - Documentation</title>
+    <title>base/parse-list - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -34,23 +34,192 @@
 
 <div id="main">
     
+    <h1 class="page-title">base/parse-list</h1>
+    
 
     
 
 
 
+
+<section>
+
+<header>
+    
+        
+    
+</header>
+
+<article>
+    
+        <div class="container-overview">
+        
+            
+
+            
+        
+        </div>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id=".isListAllEqual"><span class="type-signature">(static) </span>isListAllEqual<span class="signature">(list)</span><span class="type-signature"></span></h4>
+
     
 
 
-    <section class="package">
-        <h3> </h3>		
-    </section>
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="base_list_parse-list.ts.html">base/list/parse-list.ts</a>, <a href="base_list_parse-list.ts.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>判断数组是否全部相等</p>
+</div>
 
 
 
 
 
 
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>```ts
+isListAllEqual([0, 0, 0]) // true
+isListAllEqual([0, 0, 2]) // false
+```</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>list</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>数组</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>是否全部相等</p>
+</div>
 
 
 
@@ -58,11 +227,929 @@
 
 
 
-    <section class="readme usertext">
-        <article><h1 id="t-comm">t-comm</h1></article>
-    </section>
+        
+            
+
+    
+
+    <h4 class="name" id=".getKeyValuesMap"><span class="type-signature">(static) </span>getKeyValuesMap<span class="signature">(data)</span><span class="type-signature"></span></h4>
+
+    
 
 
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="base_list_parse-list.ts.html">base/list/parse-list.ts</a>, <a href="base_list_parse-list.ts.html#line56">line 56</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>获取对象的value列表，并输出大对象形式</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>```ts
+const data = [
+{
+  Project: 'xx',
+  Request: 111,
+  Score: 111
+},
+{
+  Project: 'yy',
+  Request: 333,
+  Score: 555
+}]
+
+getKeyValuesMap(data)
+
+// 结果为
+{
+  Project: ['xx', 'yy'],
+     Request: [111, 333],
+     Score: [111, 555],
+   }
+    ```</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>处理后的对象</p>
+</div>
+
+
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~markMaxAndMinOfObj"><span class="type-signature">(inner) </span>markMaxAndMinOfObj<span class="signature">(obj)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="base_list_parse-list.ts.html">base/list/parse-list.ts</a>, <a href="base_list_parse-list.ts.html#line80">line 80</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>标记最大最小值</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>处理后的对象</p>
+</div>
+
+
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".getPreviousRatio"><span class="type-signature">(static) </span>getPreviousRatio<span class="signature">(data, preDataMap)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="base_list_parse-list.ts.html">base/list/parse-list.ts</a>, <a href="base_list_parse-list.ts.html#line147">line 147</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>获取相对上次的比例</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>```ts
+  const data = [{
+    Project: { value: 'mj-match', name: 'Project' },
+    Request: {
+      value: 854,
+      name: 'Request',
+      idx: 19,
+      lastIdx: 19,
+      isMax: false,
+      isMin: false,
+      isSecondMax: false,
+      isSecondMin: true
+    },
+  }];
+
+  const preDataMap = {
+    'mj-match': {
+      Project: 'mj-match',
+      Request: 4,
+      Score: 91.81,
+      FirstLoadTime: 178,
+      WholePageTime: 1035,
+      ParseDomTime: 484,
+      DNSLinkTime: 0,
+      DOMTime: 414,
+      TCP: 0,
+      HTTP: 275,
+      BackEnd: 60,
+      CGIFailNum: 0,
+      ErrorLogNum: 0,
+      CGIRequestNum: 83
+    },
+  };
+
+  getPreviousRatio(data, preDataMap)
+```</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>输入数据</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>preDataMap</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>上次数据的map</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".getMaxAndMinIdx"><span class="type-signature">(static) </span>getMaxAndMinIdx<span class="signature">(data, reverseScoreKeys)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="base_list_parse-list.ts.html">base/list/parse-list.ts</a>, <a href="base_list_parse-list.ts.html#line205">line 205</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>添加isMax、isMin、、isSecondMax、isSecondMin、idx、lastIdx等属性</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>```ts
+// 将
+[{
+      ProjectName: { name: 'ProjectName', value: '麻将赛事' },
+      PagePv: { name: 'PagePv', value: 2877 },
+      PageUv: { name: 'PageUv', value: 544 },
+      Score: { name: 'Score', value: 99.83 },
+      PageDuration: { name: 'PageDuration', value: 527.21 },
+      PageError: { name: 'PageError', value: 0 },
+      ApiNum: { name: 'ApiNum', value: 11146 },
+      ApiFail: { name: 'ApiFail', value: 25 },
+      ApiDuration: { name: 'ApiDuration', value: 200.17 },
+      StaticNum: { name: 'StaticNum', value: 70249 },
+      StaticFail: { name: 'StaticFail', value: 0 },
+      StaticDuration: { name: 'StaticDuration', value: 42.13 }
+  }]
+  // 转化为：
+[{
+      ProjectName: { name: 'ProjectName', value: '麻将赛事' },
+      PagePv: {
+        name: 'PagePv',
+        value: 2877,
+        idx: 6,
+        lastIdx: 6,
+        isMax: false,
+        isMin: false,
+        isSecondMax: false,
+        isSecondMin: false
+      },
+    }]
+    ```
+    // 可见数据结构没有变化，只是添加了isMax、isMin、、isSecondMax、isSecondMin、idx、lastIdx等属性</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>原始数据</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reverseScoreKeys</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>逆序的key</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>处理后的数据</p>
+</div>
+
+
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".flattenPreData"><span class="type-signature">(static) </span>flattenPreData<span class="signature">(preDataList, key)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="base_list_parse-list.ts.html">base/list/parse-list.ts</a>, <a href="base_list_parse-list.ts.html#line270">line 270</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>拉平之前数据</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>flattenPreData(preDataList, 'ProjectName')
+```ts
+// 将
+[{
+      ProjectName: { name: 'ProjectName', value: '研发平台' },
+      PagePv: { name: 'PagePv', value: 152 },
+      PageUv: { name: 'PageUv', value: 7 },
+      Score: { name: 'Score', value: 93.92 },
+      PageDuration: { name: 'PageDuration', value: 1281.58 },
+      PageError: { name: 'PageError', value: 2 },
+      ApiNum: { name: 'ApiNum', value: 316 },
+      ApiFail: { name: 'ApiFail', value: 10 },
+      ApiDuration: { name: 'ApiDuration', value: 324.83 },
+      StaticNum: { name: 'StaticNum', value: 878 },
+      StaticFail: { name: 'StaticFail', value: 0 },
+      StaticDuration: { name: 'StaticDuration', value: 38.5 }
+   }]
+   // 转化为：
+{
+  '研发平台': {
+        ProjectName: '研发平台',
+        PagePv: 152,
+        PageUv: 7,
+        Score: 93.92,
+        PageDuration: 1281.58,
+        PageError: 2,
+      }
+    }
+    ```</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>preDataList</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>之前的数据，作为对照</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>主键</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>preDataMap</p>
+</div>
+
+
+
+    
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
