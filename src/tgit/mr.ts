@@ -1,4 +1,4 @@
-import { instance } from './helper'
+import { instance } from './helper';
 
 /**
  * 创建MR
@@ -11,8 +11,8 @@ export async function createMR({
 }) {
   return new Promise((resolve, reject) => {
     if (!sourceBranch || !targetBranch || !projectName) {
-      reject()
-      return
+      reject();
+      return;
     }
 
     instance({
@@ -29,13 +29,13 @@ export async function createMR({
         'PRIVATE-TOKEN': privateToken,
       },
     })
-      .then(res => {
-        resolve(res.data)
+      .then((res) => {
+        resolve(res.data);
       })
-      .catch(err => {
-        reject(err)
-      })
-  })
+      .catch((err) => {
+        reject(err);
+      });
+  });
 }
 
 /**
@@ -50,13 +50,13 @@ export function getMrList({ projectName, privateToken }) {
         'PRIVATE-TOKEN': privateToken,
       },
     })
-      .then(res => {
-        resolve(res.data)
+      .then((res) => {
+        resolve(res.data);
       })
-      .catch(err => {
-        reject(err)
-      })
-  })
+      .catch((err) => {
+        reject(err);
+      });
+  });
 }
 
 /**
@@ -65,19 +65,17 @@ export function getMrList({ projectName, privateToken }) {
 export function getOneMrComments({ mrId, projectName, privateToken }) {
   return new Promise((resolve, reject) => {
     instance({
-      url: `/projects/${encodeURIComponent(
-        projectName,
-      )}/merge_request/${mrId}/comments`,
+      url: `/projects/${encodeURIComponent(projectName)}/merge_request/${mrId}/comments`,
       method: 'GET',
       headers: {
         'PRIVATE-TOKEN': privateToken,
       },
     })
-      .then(res => {
-        resolve(res.data)
+      .then((res) => {
+        resolve(res.data);
       })
-      .catch(err => {
-        reject(err)
-      })
-  })
+      .catch((err) => {
+        reject(err);
+      });
+  });
 }

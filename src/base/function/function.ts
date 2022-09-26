@@ -9,13 +9,13 @@
  * ```
  */
 export function parseFunction(func) {
-  if (typeof func !== 'string') return func
-  let data = ''
+  if (typeof func !== 'string') return func;
+  let data = '';
   try {
-    // eslint-disable-next-line @typescript-eslint/no-implied-eval
-    data = new Function('', `return ${func}`)()
+    // eslint-disable-next-line no-new-func
+    data = new Function('', `return ${func}`)();
   } catch (e) {
-    console.error('解析失败', e)
+    console.error('解析失败', e);
   }
-  return data
+  return data;
 }

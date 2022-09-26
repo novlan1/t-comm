@@ -1,4 +1,4 @@
-import { saveBase64ImgToFile } from '../node-img'
+import { saveBase64ImgToFile } from '../node-img';
 
 /**
  * 绘制多张图
@@ -22,68 +22,65 @@ export async function mergeMultiCanvasPic({
   path,
   fs,
 }) {
-  const { createCanvas, loadImage } = canvasLibrary
+  const { createCanvas, loadImage } = canvasLibrary;
 
-  const getSavePath = i => path.resolve(__dirname, `${i}.png`)
+  const getSavePath = i => path.resolve(__dirname, `${i}.png`);
   const dimensionMap: {
     width: Array<number>
     height: Array<number>
-  } = { width: [], height: [] }
+  } = { width: [], height: [] };
 
   for (let i = 0; i < imgs.length; i++) {
-    const img = imgs[i]
-    const savePath = getSavePath(i)
+    const img = imgs[i];
+    const savePath = getSavePath(i);
 
-    // eslint-disable-next-line no-await-in-loop
     await saveBase64ImgToFile({
       fs,
       imgUrl: img,
       savePath,
-    })
+    });
 
-    const dimensions = sizeOf(savePath)
-    const { height: oHeight, width: oWidth } = dimensions
+    const dimensions = sizeOf(savePath);
+    const { height: oHeight, width: oWidth } = dimensions;
 
-    dimensionMap.width.push(oWidth)
-    dimensionMap.height.push(oHeight)
+    dimensionMap.width.push(oWidth);
+    dimensionMap.height.push(oHeight);
   }
 
-  const getMaxWidth = () => Math.max(...dimensionMap.width)
-  const getTotalHeight = () =>
-    dimensionMap.height.reduce((acc, item) => acc + item, 0)
+  const getMaxWidth = () => Math.max(...dimensionMap.width);
+  const getTotalHeight = () => dimensionMap.height.reduce((acc, item) => acc + item, 0);
   const getPastHeight = (heights, index) => {
-    let res = 0
+    let res = 0;
     for (let i = 0; i < heights.length; i++) {
       if (i < index) {
-        res += heights[i]
+        res += heights[i];
       }
     }
-    return res
-  }
-  const ONE_HEIGHT_GAP = 50
-  const getPastGap = index => index * ONE_HEIGHT_GAP
+    return res;
+  };
+  const ONE_HEIGHT_GAP = 50;
+  const getPastGap = index => index * ONE_HEIGHT_GAP;
 
-  const CANVAS_MARGIN_TOP = 0
+  const CANVAS_MARGIN_TOP = 0;
   const canvas = createCanvas(
     getMaxWidth(),
     getTotalHeight() + CANVAS_MARGIN_TOP + getPastGap(imgs.length - 1),
-  )
+  );
 
-  const ctx = canvas.getContext('2d')
+  const ctx = canvas.getContext('2d');
 
   function drawBackground() {
-    ctx.fillStyle = '#fff'
-    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
   }
 
-  drawBackground()
+  drawBackground();
 
   for (let i = 0; i < imgs.length; i++) {
-    const imgSrc = getSavePath(i)
-    const dimensions = sizeOf(imgSrc)
-    const { height: oHeight, width: oWidth } = dimensions
-    // eslint-disable-next-line no-await-in-loop
-    const image = await loadImage(imgSrc)
+    const imgSrc = getSavePath(i);
+    const dimensions = sizeOf(imgSrc);
+    const { height: oHeight, width: oWidth } = dimensions;
+    const image = await loadImage(imgSrc);
 
     ctx.drawImage(
       image,
@@ -91,9 +88,9 @@ export async function mergeMultiCanvasPic({
       getPastHeight(dimensionMap.height, i) + getPastGap(i),
       oWidth,
       oHeight,
-    )
+    );
   }
 
-  const imgUrl = canvas.toDataURL()
-  return imgUrl
+  const imgUrl = canvas.toDataURL();
+  return imgUrl;
 }

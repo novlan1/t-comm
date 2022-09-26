@@ -1,4 +1,4 @@
-import { sendToRobot } from './helper'
+import { sendToRobot } from './helper';
 
 /**
  * 给机器人发送普通消息
@@ -22,13 +22,13 @@ export function sendWxRobotMsg({ webhookUrl, chatId, alias, content }) {
         },
       },
     })
-      .then(res => {
-        resolve(res)
+      .then((res) => {
+        resolve(res);
       })
-      .catch(err => {
-        reject(err)
-      })
-  })
+      .catch((err) => {
+        reject(err);
+      });
+  });
 }
 
 /**
@@ -59,13 +59,13 @@ export function sendWxRobotMarkdown({
         },
       },
     })
-      .then(res => {
-        resolve(res)
+      .then((res) => {
+        resolve(res);
       })
-      .catch(err => {
-        reject(err)
-      })
-  })
+      .catch((err) => {
+        reject(err);
+      });
+  });
 }
 
 /**
@@ -90,11 +90,11 @@ export async function sendWxRobotImg({ webhookUrl, chatId, content, md5Val }) {
         },
       },
     })
-      .then(res => {
-        resolve(res)
+      .then((res) => {
+        resolve(res);
       })
-      .catch(err => {
-        reject(err)
-      })
-  })
+      .catch((err) => {
+        reject(err);
+      });
+  });
 }

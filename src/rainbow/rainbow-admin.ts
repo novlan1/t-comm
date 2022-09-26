@@ -1,6 +1,6 @@
-import { baseRequestRainbow } from './helper/rainbow-base-request'
-import { getVersion } from './helper/helper'
-import { SecretInfo, ValueType, ModifyConfigParam } from './index.type'
+import { baseRequestRainbow } from './helper/rainbow-base-request';
+import { getVersion } from './helper/helper';
+import { SecretInfo, ValueType, ModifyConfigParam } from './index.type';
 
 /**
  * 添加或更新配置
@@ -29,7 +29,7 @@ export function addOrUpdateRainbowKV({
     },
     secretInfo,
     crypto,
-  })
+  });
 }
 
 /**
@@ -59,7 +59,7 @@ export function addRainbowKV({
     },
     secretInfo,
     crypto,
-  })
+  });
 }
 
 /**
@@ -89,7 +89,7 @@ export function updateRainbowKV({
     },
     secretInfo,
     crypto,
-  })
+  });
 }
 
 /**
@@ -109,7 +109,7 @@ export function createRainbowPublishJob({ versionName, secretInfo, crypto }) {
     },
     secretInfo,
     crypto,
-  })
+  });
 }
 
 /**
@@ -126,7 +126,7 @@ export function publishRainbowTask({ taskId, secretInfo, crypto }) {
     },
     secretInfo,
     crypto,
-  })
+  });
 }
 
 /**
@@ -143,7 +143,7 @@ export function closeRainbowTask({ taskId, secretInfo, crypto }) {
     },
     secretInfo,
     crypto,
-  })
+  });
 }
 
 /**
@@ -173,25 +173,25 @@ export async function updateRainbowKVAndPublish({
       valueType,
       secretInfo,
       crypto,
-    })
+    });
     const taskRes: any = await createRainbowPublishJob({
       versionName: getVersion(),
       secretInfo,
       crypto,
-    })
+    });
     await publishRainbowTask({
       taskId: taskRes.task_id,
       secretInfo,
       crypto,
-    })
+    });
     await closeRainbowTask({
       taskId: taskRes.task_id,
       secretInfo,
       crypto,
-    })
-    return taskRes
+    });
+    return taskRes;
   } catch (err) {
-    return Promise.reject(err)
+    return Promise.reject(err);
   }
 }
 
@@ -205,11 +205,11 @@ export function queryGroupInfo({ secretInfo, crypto }) {
       crypto,
     })
       .then((res: any) => {
-        const keyValues = res.config_infos?.[0]?.key_values || []
-        resolve(keyValues)
+        const keyValues = res.config_infos?.[0]?.key_values || [];
+        resolve(keyValues);
       })
-      .catch(err => {
-        reject(err)
-      })
-  })
+      .catch((err) => {
+        reject(err);
+      });
+  });
 }

@@ -1,4 +1,5 @@
-const axios = require('axios')
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const axios = require('axios');
 
 /**
  * 给机器人发消息的基本方法
@@ -9,13 +10,13 @@ const axios = require('axios')
 export function sendToRobot({ webhookUrl, params }): any {
   return new Promise((resolve, reject) => {
     if (!webhookUrl) {
-      reject(new Error('缺少webhookUrl！'))
-      return
+      reject(new Error('缺少webhookUrl！'));
+      return;
     }
 
     if (!webhookUrl.startsWith('http') && !webhookUrl.startsWith('https')) {
-      reject()
-      return
+      reject();
+      return;
     }
 
     // if (!params.chatid) {
@@ -25,15 +26,15 @@ export function sendToRobot({ webhookUrl, params }): any {
 
     axios
       .post(webhookUrl, params)
-      .then(res => {
+      .then((res) => {
         if (res?.data?.errcode !== 0) {
-          reject(res)
+          reject(res);
         } else {
-          resolve(res)
+          resolve(res);
         }
       })
-      .catch(err => {
-        reject(err)
-      })
-  })
+      .catch((err) => {
+        reject(err);
+      });
+  });
 }

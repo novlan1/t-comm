@@ -1,8 +1,9 @@
-import { SecretInfo } from '../index.type'
-import { genRainbowHeaderSignature } from './rainbow-signature'
-import { BASE_URL } from './helper'
+import { SecretInfo } from '../index.type';
+import { genRainbowHeaderSignature } from './rainbow-signature';
+import { BASE_URL } from './helper';
 
-const axios = require('axios')
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const axios = require('axios');
 
 interface ReqParam {
   url: string
@@ -23,14 +24,14 @@ export function baseRequestRainbow({
   secretInfo,
   crypto,
 }: ReqParam) {
-  const baseUrl = BASE_URL
-  const { appID, userID, secretKey, envName, groupName } = secretInfo
+  const baseUrl = BASE_URL;
+  const { appID, userID, secretKey, envName, groupName } = secretInfo;
   const realSig = genRainbowHeaderSignature({
     appID,
     userID,
     secretKey,
     crypto,
-  })
+  });
 
   return new Promise((resolve, reject) => {
     axios({
@@ -47,15 +48,15 @@ export function baseRequestRainbow({
         ...realSig,
       },
     })
-      .then(res => {
+      .then((res) => {
         if (!res.data.ret_code) {
-          resolve(res.data)
+          resolve(res.data);
         } else {
-          reject(res.data)
+          reject(res.data);
         }
       })
-      .catch(e => {
-        reject(e)
-      })
-  })
+      .catch((e) => {
+        reject(e);
+      });
+  });
 }

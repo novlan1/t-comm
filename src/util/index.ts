@@ -4,7 +4,7 @@
  * @returns boolean
  */
 export function isRegExp(value) {
-  return Object.prototype.toString.call(value) === '[object RegExp]'
+  return Object.prototype.toString.call(value) === '[object RegExp]';
 }
 
 /**
@@ -13,14 +13,14 @@ export function isRegExp(value) {
  * @returns boolean
  */
 export function isDate(value) {
-  return Object.prototype.toString.call(value) === '[object Date]'
+  return Object.prototype.toString.call(value) === '[object Date]';
 }
 
 /**
  * 判断数据是不是函数
  */
 export function isFunction(value) {
-  return Object.prototype.toString.call(value) === '[object Function]'
+  return Object.prototype.toString.call(value) === '[object Function]';
 }
 
 /**
@@ -29,13 +29,13 @@ export function isFunction(value) {
  * @returns 函数计算结果
  */
 export function cached(fn) {
-  const cache = Object.create(null)
+  const cache = Object.create(null);
   return function cachedFn(str) {
-    const hit = cache[str]
-    if (hit) return hit
-    cache[str] = fn(str)
-    return cache(str)
-  }
+    const hit = cache[str];
+    if (hit) return hit;
+    cache[str] = fn(str);
+    return cache(str);
+  };
 }
 
 /**
@@ -49,8 +49,8 @@ export function cached(fn) {
  * ```
  */
 export function camelize(str) {
-  const camelizeRE = /-(\w)/g
-  return str.replace(camelizeRE, (_, c) => (c ? c.toUpperCase() : ''))
+  const camelizeRE = /-(\w)/g;
+  return str.replace(camelizeRE, (_, c) => (c ? c.toUpperCase() : ''));
 }
 
 /**
@@ -60,8 +60,8 @@ export function camelize(str) {
  *
  */
 export function hyphenate(str) {
-  const hyphenateRE = /\B([A-Z])/g
-  return str.replace(hyphenateRE, '-$1').toLowerCase()
+  const hyphenateRE = /\B([A-Z])/g;
+  return str.replace(hyphenateRE, '-$1').toLowerCase();
 }
 
 /**
@@ -70,7 +70,7 @@ export function hyphenate(str) {
  * @returns 处理后的字符串
  */
 export function capitalize(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1)
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 /**
@@ -87,10 +87,10 @@ export function capitalize(str) {
  */
 export function titleize(str) {
   if (typeof str !== 'string') {
-    throw new TypeError('Expected a string')
+    throw new TypeError('Expected a string');
   }
 
-  return str.toLowerCase().replace(/(?:^|\s|-)\S/g, x => x.toUpperCase())
+  return str.toLowerCase().replace(/(?:^|\s|-)\S/g, x => x.toUpperCase());
 }
 
 /**
@@ -102,9 +102,9 @@ export function titleize(str) {
 export function extend(to, _from) {
   // eslint-disable-next-line no-restricted-syntax, guard-for-in
   for (const key in _from) {
-    to[key] = _from[key]
+    to[key] = _from[key];
   }
-  return to
+  return to;
 }
 
 /**
@@ -117,8 +117,8 @@ export function extend(to, _from) {
  * ```
  */
 export function getThousandSeparator(value) {
-  const reg = /(?!^)(?=(\d{3})+$)/g
-  return `${value}`.replace(reg, ',')
+  const reg = /(?!^)(?=(\d{3})+$)/g;
+  return `${value}`.replace(reg, ',');
 }
 
 /**
@@ -130,6 +130,6 @@ export function getThousandSeparator(value) {
  */
 export function getThousandSeparator2(value) {
   // const reg = /(?!\b)(?=(\d{3})+\b)/g
-  const reg = /\B(?=(\d{3})+\b)/g
-  return `${value}`.replace(reg, ',')
+  const reg = /\B(?=(\d{3})+\b)/g;
+  return `${value}`.replace(reg, ',');
 }

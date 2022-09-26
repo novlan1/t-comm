@@ -1,13 +1,13 @@
 function isObjOrArray(obj) {
-  return obj instanceof Object
+  return obj instanceof Object;
 }
 
 function isArray(obj) {
-  return Array.isArray(obj)
+  return Array.isArray(obj);
 }
 
 function toHump(str) {
-  return str.replace(/_(\w)/g, (a, b) => b.toUpperCase())
+  return str.replace(/_(\w)/g, (a, b) => b.toUpperCase());
 }
 
 /**
@@ -38,24 +38,24 @@ function toHump(str) {
  */
 export function toHumpObj(obj, cache = new WeakMap()) {
   // 函数首次调用判断
-  if (!isObjOrArray(obj)) return obj
+  if (!isObjOrArray(obj)) return obj;
 
   if (cache.get(obj)) {
-    return cache.get(obj)
+    return cache.get(obj);
   }
 
-  const result = isArray(obj) ? [] : {}
-  cache.set(obj, result)
+  const result = isArray(obj) ? [] : {};
+  cache.set(obj, result);
 
-  const keys = Object.keys(obj)
+  const keys = Object.keys(obj);
 
-  keys.forEach(key => {
-    const value = obj[key]
+  keys.forEach((key) => {
+    const value = obj[key];
 
-    const nKey = toHump(key)
+    const nKey = toHump(key);
 
-    result[nKey] = isObjOrArray(value) ? toHumpObj(value, cache) : value
-  })
+    result[nKey] = isObjOrArray(value) ? toHumpObj(value, cache) : value;
+  });
 
-  return result
+  return result;
 }

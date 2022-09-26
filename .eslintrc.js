@@ -1,12 +1,7 @@
-const eslintrc = {
-  extends: [require.resolve('@yueqing/lint/lib/ts-eslint')],
+module.exports = {
+  root: true,
+  extends: ['eslint-config-light'],
   parserOptions: {
     project: './tsconfig.eslint.json',
   },
-  rules: {
-    // custom rules
-  },
-  
-}
-
-module.exports = eslintrc
+};

@@ -10,18 +10,18 @@
  * ```
  */
 export function getUnitPreviousRatio(value, preValue) {
-  const interval = value - preValue
-  const symbol = interval > 0 ? '+' : ''
+  const interval = value - preValue;
+  const symbol = interval > 0 ? '+' : '';
 
   if (preValue === 0) {
-    preValue = 0.01
+    preValue = 0.01;
   }
 
-  let intervalRatio = ((interval / preValue) * 100).toFixed(1)
+  let intervalRatio = ((interval / preValue) * 100).toFixed(1);
   if (+intervalRatio > 999) {
-    intervalRatio = '999+'
+    intervalRatio = '999+';
   }
-  return `${symbol}${intervalRatio}%`
+  return `${symbol}${intervalRatio}%`;
 }
 
 /**
@@ -54,4 +54,4 @@ export const NUMBER_CHI_MAP = {
   18: '十八',
   19: '十九',
   20: '二十',
-}
+};

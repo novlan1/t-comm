@@ -1,2 +1,2 @@
-export * from './table'
-export * from './multi-img'
+export * from './table';
+export * from './multi-img';

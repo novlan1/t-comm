@@ -1,15 +1,15 @@
-import { getAccCellWidth as oriGetAccCellWidth } from './helper'
+import { getAccCellWidth as oriGetAccCellWidth } from './helper';
 
-const cellHeight = 20
-const extraHeight = 15
-const extraBottom = 10
-const extraWidth = 3
-const maxColor = '#fc5531'
-const minColor = 'green'
+const cellHeight = 20;
+const extraHeight = 15;
+const extraBottom = 10;
+const extraWidth = 3;
+const maxColor = '#fc5531';
+const minColor = 'green';
 
 function parseCellValue(val) {
-  if (val === undefined || val === null) return ''
-  return val
+  if (val === undefined || val === null) return '';
+  return val;
 }
 
 /**
@@ -48,37 +48,36 @@ export function createCanvasTable({
   cellWidthList,
   createCanvas,
 }): {
-  createCanvas: Function
-} {
-  const getAccCellWidth = oriGetAccCellWidth.bind(null, cellWidthList)
+    createCanvas: Function
+  } {
+  const getAccCellWidth = oriGetAccCellWidth.bind(null, cellWidthList);
 
-  const width = getAccCellWidth(headers.length - 1) * 2 + extraWidth * 4
-  const height =
-    (data.length + 1) * cellHeight * 2 + extraHeight * 2 + extraBottom
+  const width = getAccCellWidth(headers.length - 1) * 2 + extraWidth * 4;
+  const height =    (data.length + 1) * cellHeight * 2 + extraHeight * 2 + extraBottom;
 
-  const canvas = createCanvas(width, height)
-  const ctx = canvas.getContext('2d')
+  const canvas = createCanvas(width, height);
+  const ctx = canvas.getContext('2d');
 
   function fillBackground() {
-    ctx.font = '7px Arial'
-    ctx.scale(2, 2)
-    ctx.fillStyle = '#fff'
-    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    ctx.font = '7px Arial';
+    ctx.scale(2, 2);
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
   }
 
   function fillTitle() {
-    ctx.lineWidth = 1
-    ctx.strokeStyle = '#ccc'
-    ctx.textAlign = 'start'
-    ctx.font = '9px Arial'
-    ctx.fillStyle = '#000'
-    ctx.fillText(parseCellValue(title), 5, 10)
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = '#ccc';
+    ctx.textAlign = 'start';
+    ctx.font = '9px Arial';
+    ctx.fillStyle = '#000';
+    ctx.fillText(parseCellValue(title), 5, 10);
   }
 
   // 表头绘制
   function fillTableHeader() {
-    ctx.font = '7px Arial'
-    ctx.textAlign = 'center'
+    ctx.font = '7px Arial';
+    ctx.textAlign = 'center';
     const colors = [
       '#000000',
       '#000000',
@@ -87,22 +86,21 @@ export function createCanvasTable({
       '#07c160',
       '#ff0000',
       '#006fff',
-    ]
+    ];
 
     for (let i = 0; i < headers.length; i++) {
-      const cellWidth = cellWidthList[i]
+      const cellWidth = cellWidthList[i];
 
-      // eslint-disable-next-line prefer-destructuring
-      ctx.fillStyle = colors[0]
+      ctx.fillStyle = colors[0];
       ctx.moveTo(
         Math.round(cellWidth / 2) + getAccCellWidth(i - 1) + extraWidth,
         0,
-      )
+      );
       ctx.fillText(
         parseCellValue(headers[i]),
         Math.round(cellWidth / 2) + getAccCellWidth(i - 1) + extraWidth,
         13.5 + extraHeight,
-      )
+      );
     }
   }
 
@@ -110,45 +108,44 @@ export function createCanvasTable({
   function fillCellText() {
     for (let i = 0; i < data.length; i++) {
       Object.keys(data[i]).forEach((item, idx) => {
-        let color
-        const obj = data[i][item]
+        let color;
+        const obj = data[i][item];
 
         if (obj.isMax || obj.isSecondMax) {
-          color = maxColor
+          color = maxColor;
         } else if (obj.isMin || obj.isSecondMin) {
-          color = minColor
+          color = minColor;
         } else {
-          color = '#000000'
+          color = '#000000';
         }
 
-        const cellWidth = cellWidthList[idx]
-        const textWidth =
-          Math.round(cellWidth / 2) + getAccCellWidth(idx - 1) + extraWidth
-        const textHeight = cellHeight * i + 33.5 + extraHeight
+        const cellWidth = cellWidthList[idx];
+        const textWidth =          Math.round(cellWidth / 2) + getAccCellWidth(idx - 1) + extraWidth;
+        const textHeight = cellHeight * i + 33.5 + extraHeight;
 
         // 少了序号，颜色值后移
-        ctx.fillStyle = color
+        ctx.fillStyle = color;
 
         if (obj.ratio) {
           ctx.fillText(
             `${parseCellValue(obj.value)}       `,
             textWidth,
             textHeight,
-          )
+          );
 
-          ctx.font = '5px Arial'
-          ctx.textAlign = 'right'
-          ctx.fillStyle = 'rgba(0,0,0,0.8)'
+          ctx.font = '5px Arial';
+          ctx.textAlign = 'right';
+          ctx.fillStyle = 'rgba(0,0,0,0.8)';
 
           // 绘制趋势
-          ctx.fillText(parseCellValue(obj.ratio), textWidth + 30, textHeight)
+          ctx.fillText(parseCellValue(obj.ratio), textWidth + 30, textHeight);
 
-          ctx.font = '7px Arial'
-          ctx.textAlign = 'center'
+          ctx.font = '7px Arial';
+          ctx.textAlign = 'center';
         } else {
-          ctx.fillText(`${parseCellValue(obj.value)}`, textWidth, textHeight)
+          ctx.fillText(`${parseCellValue(obj.value)}`, textWidth, textHeight);
         }
-      })
+      });
     }
   }
 
@@ -156,27 +153,27 @@ export function createCanvasTable({
   function drawLine() {
     // 竖线
     for (let i = 0; i < headers.length + 1; i++) {
-      ctx.moveTo(getAccCellWidth(i - 1) + extraWidth, 0 + extraHeight)
+      ctx.moveTo(getAccCellWidth(i - 1) + extraWidth, 0 + extraHeight);
       ctx.lineTo(
         getAccCellWidth(i - 1) + extraWidth,
         canvas.height / 2 - extraBottom / 2,
-      )
+      );
     }
 
     // 横线
     for (let i = 0; i < data.length + 2; i++) {
-      ctx.moveTo(0 + extraWidth, cellHeight * i + extraHeight)
-      ctx.lineTo(canvas.width / 2 - extraWidth, cellHeight * i + extraHeight)
+      ctx.moveTo(0 + extraWidth, cellHeight * i + extraHeight);
+      ctx.lineTo(canvas.width / 2 - extraWidth, cellHeight * i + extraHeight);
     }
-    ctx.stroke()
+    ctx.stroke();
   }
 
-  fillBackground()
-  fillTitle()
-  fillTableHeader()
-  fillCellText()
-  drawLine()
+  fillBackground();
+  fillTitle();
+  fillTableHeader();
+  fillCellText();
+  drawLine();
 
-  const imgUrl = canvas.toDataURL()
-  return imgUrl
+  const imgUrl = canvas.toDataURL();
+  return imgUrl;
 }

@@ -1,9 +1,9 @@
-import { getEnvUAType } from '../../src'
+import { getEnvUAType } from '../../src';
 
 describe('getEnvUAType', () => {
-  it('', () => {
-    expect(typeof getEnvUAType()).toBe('object')
+  it('getEnvUAType', () => {
+    expect(typeof getEnvUAType()).toBe('object');
 
-    expect(getEnvUAType().isQQ).toBe(false)
-  })
-})
+    expect(getEnvUAType().isQQ).toBe(false);
+  });
+});

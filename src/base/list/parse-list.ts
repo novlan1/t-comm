@@ -1,4 +1,4 @@
-import { getUnitPreviousRatio } from '../number'
+import { getUnitPreviousRatio } from '../number';
 
 /**
  * 判断数组是否全部相等
@@ -12,14 +12,13 @@ import { getUnitPreviousRatio } from '../number'
  * ```
  */
 export function isListAllEqual(list = []) {
-  if (!list.length) return true
-  const value = list[0]
-  // eslint-disable-next-line no-restricted-syntax
+  if (!list.length) return true;
+  const value = list[0];
   for (const item of list.slice(1)) {
-    if (item !== value) return false
+    if (item !== value) return false;
   }
 
-  return true
+  return true;
 }
 
 /**
@@ -53,23 +52,23 @@ export function isListAllEqual(list = []) {
     ```
  */
 export function getKeyValuesMap(data: Array<any> = []) {
-  if (!data.length) return {}
-  const keys = Object.keys(data[0])
-  const keyValueMap = {}
+  if (!data.length) return {};
+  const keys = Object.keys(data[0]);
+  const keyValueMap = {};
 
-  data.forEach(item => {
-    keys.forEach(key => {
+  data.forEach((item) => {
+    keys.forEach((key) => {
       // 如果有value，就取value，否则直接取item[key]
-      const value = item[key]?.value || item[key]
+      const value = item[key]?.value || item[key];
 
       if (keyValueMap[key]) {
-        keyValueMap[key].push(value)
+        keyValueMap[key].push(value);
       } else {
-        keyValueMap[key] = [value]
+        keyValueMap[key] = [value];
       }
-    })
-  })
-  return keyValueMap
+    });
+  });
+  return keyValueMap;
 }
 
 /**
@@ -78,21 +77,21 @@ export function getKeyValuesMap(data: Array<any> = []) {
  * @returns 处理后的对象
  */
 function markMaxAndMinOfObj({ values, value, obj }) {
-  const idx = values.indexOf(value)
-  const lastIdx = values.indexOf(value)
+  const idx = values.indexOf(value);
+  const lastIdx = values.indexOf(value);
 
   let newObj = {
     ...obj,
     idx,
     lastIdx,
-  }
+  };
 
   if (!isListAllEqual(values)) {
-    const len = values.length
-    const isMax = idx === 0
-    const isSecondMax = idx === 1
-    const isMin = idx === len - 1
-    const isSecondMin = idx === len - 2
+    const len = values.length;
+    const isMax = idx === 0;
+    const isSecondMax = idx === 1;
+    const isMin = idx === len - 1;
+    const isSecondMin = idx === len - 2;
 
     newObj = {
       ...newObj,
@@ -100,9 +99,9 @@ function markMaxAndMinOfObj({ values, value, obj }) {
       isMin,
       isSecondMax,
       isSecondMin,
-    }
+    };
   }
-  return newObj
+  return newObj;
 }
 
 /**
@@ -153,23 +152,23 @@ export function getPreviousRatio(
   preDataMap = {},
   uniqKey = 'Project',
 ) {
-  data.forEach(item => {
-    Object.keys(item).forEach(key => {
-      const obj = item[key] as any
+  data.forEach((item) => {
+    Object.keys(item).forEach((key) => {
+      const obj = item[key] as any;
 
       if (typeof obj.value === 'number') {
-        const uniqVal = (item[uniqKey] as any).value
-        const preValue = preDataMap?.[uniqVal]?.[key]
+        const uniqVal = (item[uniqKey] as any).value;
+        const preValue = preDataMap?.[uniqVal]?.[key];
 
         if (preValue === undefined) {
-          obj.ratio = ''
+          obj.ratio = '';
         } else {
-          obj.ratio = getUnitPreviousRatio(obj.value, preValue)
-          obj.previousValue = preValue
+          obj.ratio = getUnitPreviousRatio(obj.value, preValue);
+          obj.previousValue = preValue;
         }
       }
-    })
-  })
+    });
+  });
 }
 
 /**
@@ -216,36 +215,36 @@ export function getMaxAndMinIdx(
   data: Array<object> = [],
   reverseScoreKeys: Array<string> = [],
 ) {
-  if (!data.length) return []
-  const keys = Object.keys(data[0])
+  if (!data.length) return [];
+  const keys = Object.keys(data[0]);
 
-  const keyValueMap = getKeyValuesMap(data)
+  const keyValueMap = getKeyValuesMap(data);
 
-  const parsedData = data.map(item => {
-    const temp = { ...(item as any) }
+  const parsedData = data.map((item) => {
+    const temp = { ...(item as any) };
 
-    keys.forEach(key => {
-      const values = keyValueMap[key]
-      const itemInfo = item[key] || {}
+    keys.forEach((key) => {
+      const values = keyValueMap[key];
+      const itemInfo = item[key] || {};
 
       if (values && typeof itemInfo.value === 'number') {
         if (reverseScoreKeys.includes(key)) {
-          values.sort((a, b) => a - b)
+          values.sort((a, b) => a - b);
         } else {
-          values.sort((a, b) => b - a)
+          values.sort((a, b) => b - a);
         }
 
         temp[key] = markMaxAndMinOfObj({
           values,
           value: itemInfo.value,
           obj: temp[key],
-        })
+        });
       }
-    })
-    return temp
-  })
+    });
+    return temp;
+  });
 
-  return parsedData
+  return parsedData;
 }
 
 /**
@@ -288,10 +287,10 @@ export function getMaxAndMinIdx(
 export function flattenPreData(preDataList: Array<any>, key: string) {
   const preDataMap = preDataList.reduce((acc, item) => {
     acc[item[key].value] = Object.values(item).reduce((ac: any, it: any) => {
-      ac[it.name] = it.value
-      return ac
-    }, {})
-    return acc
-  }, {})
-  return preDataMap
+      ac[it.name] = it.value;
+      return ac;
+    }, {});
+    return acc;
+  }, {});
+  return preDataMap;
 }

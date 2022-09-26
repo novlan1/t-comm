@@ -12,9 +12,9 @@
  */
 export function flatten(list: Array<object>, key: string) {
   return list.reduce((acc, item) => {
-    acc[item[key]] = item
-    return acc
-  }, {})
+    acc[item[key]] = item;
+    return acc;
+  }, {});
 }
 
 /**
@@ -29,12 +29,12 @@ export function flatten(list: Array<object>, key: string) {
  * ```
  */
 export function shuffle(array) {
-  const arr = [...array]
-  let m = arr.length
+  const arr = [...array];
+  let m = arr.length;
   while (m > 1) {
-    const index = Math.floor(Math.random() * m)
+    const index = Math.floor(Math.random() * m);
     m -= 1
-    ;[arr[m], arr[index]] = [arr[index], arr[m]]
+    ;[arr[m], arr[index]] = [arr[index], arr[m]];
   }
-  return arr
+  return arr;
 }

@@ -1,5 +1,5 @@
-import { instance } from './helper'
-import { getOneProjectDetail } from './project'
+import { instance } from './helper';
+import { getOneProjectDetail } from './project';
 
 /**
  * 获取分支生命周期
@@ -7,7 +7,7 @@ import { getOneProjectDetail } from './project'
 export function getBranchLifeCycle({ projectName, branchName, privateToken }) {
   return new Promise((resolve, reject) => {
     if (!projectName || !branchName) {
-      return
+      return;
     }
     instance({
       url: `/projects/${encodeURIComponent(projectName)}/tloc/branch/lifecycle`,
@@ -19,13 +19,13 @@ export function getBranchLifeCycle({ projectName, branchName, privateToken }) {
         'PRIVATE-TOKEN': privateToken,
       },
     })
-      .then(res => {
-        resolve(res.data)
+      .then((res) => {
+        resolve(res.data);
       })
-      .catch(err => {
-        reject(err)
-      })
-  })
+      .catch((err) => {
+        reject(err);
+      });
+  });
 }
 
 /**
@@ -35,12 +35,12 @@ export async function getProjectDefaultBranch({ projectName, privateToken }) {
   const detail: any = await getOneProjectDetail({
     projectName,
     privateToken,
-  })
+  });
   function getMainBranch() {
-    return detail.default_branch || ''
+    return detail.default_branch || '';
   }
-  const branch = getMainBranch()
-  return branch
+  const branch = getMainBranch();
+  return branch;
 }
 
 /**
@@ -49,7 +49,7 @@ export async function getProjectDefaultBranch({ projectName, privateToken }) {
 export function getBranchesByProjectName({ projectName, privateToken }) {
   return new Promise((resolve, reject) => {
     if (!projectName) {
-      return
+      return;
     }
 
     instance({
@@ -62,13 +62,13 @@ export function getBranchesByProjectName({ projectName, privateToken }) {
         'PRIVATE-TOKEN': privateToken,
       },
     })
-      .then(res => {
-        resolve(res.data)
+      .then((res) => {
+        resolve(res.data);
       })
-      .catch(err => {
-        reject(err)
-      })
-  })
+      .catch((err) => {
+        reject(err);
+      });
+  });
 }
 
 /**
@@ -77,23 +77,21 @@ export function getBranchesByProjectName({ projectName, privateToken }) {
 export function getOneBranchDetail({ projectName, branchName, privateToken }) {
   return new Promise((resolve, reject) => {
     if (!projectName || !branchName) {
-      return
+      return;
     }
 
     instance({
-      url: `/projects/${encodeURIComponent(
-        projectName,
-      )}/repository/branches/${encodeURIComponent(branchName)}`,
+      url: `/projects/${encodeURIComponent(projectName)}/repository/branches/${encodeURIComponent(branchName)}`,
       method: 'GET',
       headers: {
         'PRIVATE-TOKEN': privateToken,
       },
     })
-      .then(res => {
-        resolve(res.data)
+      .then((res) => {
+        resolve(res.data);
       })
-      .catch(err => {
-        reject(err)
-      })
-  })
+      .catch((err) => {
+        reject(err);
+      });
+  });
 }

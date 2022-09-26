@@ -1,7 +1,8 @@
-import { BASE_URL } from './helper/helper'
-import { flatten } from '../base'
+import { BASE_URL } from './helper/helper';
+import { flatten } from '../base';
 
-const axios = require('axios')
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const axios = require('axios');
 
 /**
  * 拉去七彩石配置
@@ -15,7 +16,7 @@ const axios = require('axios')
  * ```
  */
 export function fetchRainbowConfig(key, secretInfo) {
-  const { appID, envName, groupName } = secretInfo
+  const { appID, envName, groupName } = secretInfo;
   return new Promise((resolve, reject) => {
     axios({
       url: `${BASE_URL}/config.v2.ConfigService/PullConfigReq`,
@@ -28,20 +29,20 @@ export function fetchRainbowConfig(key, secretInfo) {
         },
       },
     })
-      .then(res => {
+      .then((res) => {
         if (res.data.ret_code) {
-          reject(res.data)
-          return
+          reject(res.data);
+          return;
         }
 
-        const keyValues = res.data.config.items[0].key_values
-        const flattenValues = flatten(keyValues, 'key')
+        const keyValues = res.data.config.items[0].key_values;
+        const flattenValues = flatten(keyValues, 'key');
 
-        const resData = flattenValues[key]?.value
-        resolve(resData)
+        const resData = flattenValues[key]?.value;
+        resolve(resData);
       })
-      .catch(err => {
-        reject(err)
-      })
-  })
+      .catch((err) => {
+        reject(err);
+      });
+  });
 }

@@ -1,1 +1,1 @@
-export * from './to-unicode'
+export * from './to-unicode';

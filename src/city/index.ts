@@ -1,5 +1,5 @@
-import rawCityData from './data'
-import { ProvType } from './type'
+import rawCityData from './data';
+import { ProvType } from './type';
 
 /**
  * 获取城市列表
@@ -13,50 +13,50 @@ export function getAreaData(
   areaArray: Array<ProvType> = [],
   allProvFlag = false,
 ) {
-  const { cityData, provData } = data
+  const { cityData, provData } = data;
 
-  Object.keys(provData).forEach(key => {
+  Object.keys(provData).forEach((key) => {
     const provObject: ProvType = {
       text: provData[key],
       code: key,
-    }
-    areaArray.push(provObject)
-  })
+    };
+    areaArray.push(provObject);
+  });
 
-  Object.keys(cityData).forEach(key1 => {
-    const cityList = cityData[key1]
-    const array: Array<ProvType> = []
+  Object.keys(cityData).forEach((key1) => {
+    const cityList = cityData[key1];
+    const array: Array<ProvType> = [];
 
     if (Array.isArray(cityList)) {
       const cityObject: ProvType = {
         text: cityList[0],
         code: '0',
-      }
-      array.push(cityObject)
+      };
+      array.push(cityObject);
     } else {
       if (allProvFlag) {
         // 全省
-        array.push({ text: '全省', code: '0' })
+        array.push({ text: '全省', code: '0' });
       }
 
-      Object.keys(cityList).forEach(key2 => {
+      Object.keys(cityList).forEach((key2) => {
         const cityObject: ProvType = {
           text: cityList[key2],
           code: key2,
-        }
-        array.push(cityObject)
-      })
+        };
+        array.push(cityObject);
+      });
     }
 
     for (let index = 0; index < areaArray.length; index++) {
-      const element = areaArray[index]
+      const element = areaArray[index];
       if (element.code === key1) {
-        element.children = array
+        element.children = array;
       }
     }
-  })
+  });
 
-  return areaArray
+  return areaArray;
 }
 
 /**
@@ -110,18 +110,18 @@ export function getAreaData(
    ```
   */
 export function getAllAreaData() {
-  const areaArray: Array<ProvType> = []
+  const areaArray: Array<ProvType> = [];
 
   // 全国
   const provObject: ProvType = {
     text: '全国',
     code: '0',
     children: [{ text: '不限', code: '0' }],
-  }
-  areaArray.push(provObject)
+  };
+  areaArray.push(provObject);
 
-  getAreaData(rawCityData, areaArray, true)
-  return areaArray
+  getAreaData(rawCityData, areaArray, true);
+  return areaArray;
 }
 
 /**
@@ -137,28 +137,28 @@ export function getAllAreaData() {
   */
 export function getAreaCode(provinceStr, cityStr) {
   if (typeof provinceStr === 'undefined') {
-    return []
+    return [];
   }
-  provinceStr = provinceStr.replace('省', '').replace('市', '') // 考虑直辖市
-  cityStr = cityStr.replace('市', '')
+  provinceStr = provinceStr.replace('省', '').replace('市', ''); // 考虑直辖市
+  cityStr = cityStr.replace('市', '');
 
-  const areaList = getAreaData()
-  const codes: Array<String> = []
+  const areaList = getAreaData();
+  const codes: Array<String> = [];
 
   for (let i = 0; i < areaList.length; i++) {
     if (provinceStr === areaList[i].text) {
-      codes[0] = areaList[i].code as String
-      const list = areaList[i].children || []
+      codes[0] = areaList[i].code as String;
+      const list = areaList[i].children || [];
 
       for (let j = 0; j < list.length; j++) {
         if (cityStr === list[j].text) {
-          codes[1] = list[j].code as String
-          return codes
+          codes[1] = list[j].code as String;
+          return codes;
         }
       }
     }
   }
-  return codes
+  return codes;
 }
 
 /**
@@ -173,8 +173,8 @@ export function getAreaCode(provinceStr, cityStr) {
    ```
   */
 export function getProvName(provinceId) {
-  const provName = rawCityData.provData[provinceId]
-  return provName
+  const provName = rawCityData.provData[provinceId];
+  return provName;
 }
 
 /**
@@ -190,16 +190,16 @@ export function getProvName(provinceId) {
     ```
   */
 export function getCityName(provinceId, cityId) {
-  const provName = rawCityData.provData[provinceId]
-  let cityName = ''
-  const cityList = rawCityData.cityData[provinceId]
+  const provName = rawCityData.provData[provinceId];
+  let cityName = '';
+  const cityList = rawCityData.cityData[provinceId];
 
   if (Array.isArray(cityList)) {
-    cityName = provName
+    cityName = provName;
   } else if (cityList) {
-    cityName = cityList[cityId]
+    cityName = cityList[cityId];
   }
-  return cityName
+  return cityName;
 }
 
 /**
@@ -216,7 +216,7 @@ export function getCityName(provinceId, cityId) {
    ```
   */
 export function getAreaName(provinceId, cityId) {
-  const provName = getProvName(provinceId) || ''
-  const cityName = getCityName(provinceId, cityId) || ''
-  return [provName, cityName]
+  const provName = getProvName(provinceId) || '';
+  const cityName = getCityName(provinceId, cityId) || '';
+  return [provName, cityName];
 }

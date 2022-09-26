@@ -1,18 +1,18 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import path from 'path'
-import { RollupOptions } from 'rollup'
-import typescript from '@rollup/plugin-typescript'
-import babel from '@rollup/plugin-babel'
-import resolve from '@rollup/plugin-node-resolve'
-import commonjs from '@rollup/plugin-commonjs'
-import { DEFAULT_EXTENSIONS } from '@babel/core'
+import path from 'path';
+import { RollupOptions } from 'rollup';
+import typescript from '@rollup/plugin-typescript';
+import babel from '@rollup/plugin-babel';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import { DEFAULT_EXTENSIONS } from '@babel/core';
 
-import pkg from './package.json'
+import pkg from './package.json';
 
 const paths = {
   input: path.join(__dirname, '/src/index.ts'),
   output: path.join(__dirname, '/lib'),
-}
+};
 
 // rollup 配置项
 const rollupConfig: RollupOptions = {
@@ -55,6 +55,6 @@ const rollupConfig: RollupOptions = {
       extensions: [...DEFAULT_EXTENSIONS, '.ts'],
     }),
   ],
-}
+};
 
-export default rollupConfig
+export default rollupConfig;

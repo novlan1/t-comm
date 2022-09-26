@@ -14,8 +14,8 @@
  * ```
  */
 export function getMonthDay(year, month) {
-  const days = new Date(year, month, 0).getDate()
-  return days
+  const days = new Date(year, month, 0).getDate();
+  return days;
 }
 
 /**
@@ -34,22 +34,22 @@ export function getMonthDay(year, month) {
  * ```
  */
 export function getMonthDay2(year, month) {
-  const days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+  const days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   if (year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0)) {
-    days[1] = 29
+    days[1] = 29;
   }
-  return days[month - 1]
+  return days[month - 1];
 }
 
 function toMonday(dtm) {
-  const dte = new Date(dtm)
-  let day = dte.getDay()
-  const dty = dte.getDate()
+  const dte = new Date(dtm);
+  let day = dte.getDay();
+  const dty = dte.getDate();
   if (day === 0) {
-    day = 7
+    day = 7;
   }
-  dte.setDate(dty - day + 1)
-  return `${dte.getFullYear()}-${dte.getMonth()}-${dte.getDate()}`
+  dte.setDate(dty - day + 1);
+  return `${dte.getFullYear()}-${dte.getMonth()}-${dte.getDate()}`;
 }
 
 /**
@@ -67,12 +67,12 @@ function toMonday(dtm) {
  * ```
  */
 export function isSameWeek(date1, date2) {
-  const dt1 = new Date()
-  dt1.setTime(date1)
-  const dt2 = new Date()
-  dt2.setTime(date2)
+  const dt1 = new Date();
+  dt1.setTime(date1);
+  const dt2 = new Date();
+  dt2.setTime(date2);
 
-  const md1 = toMonday(dt1)
-  const md2 = toMonday(dt2)
-  return md1 === md2
+  const md1 = toMonday(dt1);
+  const md2 = toMonday(dt2);
+  return md1 === md2;
 }

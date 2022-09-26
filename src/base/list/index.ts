@@ -1,2 +1,2 @@
-export * from './list'
-export * from './parse-list'
+export * from './list';
+export * from './parse-list';

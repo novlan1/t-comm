@@ -1,4 +1,4 @@
-import { instance } from './helper'
+import { instance } from './helper';
 
 /**
  * 获取仓库详情
@@ -14,13 +14,13 @@ export function getOneProjectDetail({ projectName, privateToken }) {
         'PRIVATE-TOKEN': privateToken,
       },
     })
-      .then(res => {
-        resolve(res.data)
+      .then((res) => {
+        resolve(res.data);
       })
-      .catch(err => {
-        reject(err)
-      })
-  })
+      .catch((err) => {
+        reject(err);
+      });
+  });
 }
 
 /**
@@ -44,33 +44,34 @@ export function getOneProjectBySearch({
         'PRIVATE-TOKEN': privateToken,
       },
     })
-      .then(res => {
-        resolve(res.data)
+      .then((res) => {
+        resolve(res.data);
       })
-      .catch(err => {
-        reject(err)
-      })
-  })
+      .catch((err) => {
+        reject(err);
+      });
+  });
 }
 
 /**
  * 获取所有项目
  */
 export async function getAllProjects(privateToken) {
-  let res = []
-  let page = 1
+  let res = [];
+  let page = 1;
+  // eslint-disable-next-line no-constant-condition
   while (true) {
     // eslint-disable-next-line no-await-in-loop
     const temp = await getOneProjectBySearch({
       page,
       search: '',
       privateToken,
-    })
-    res = res.concat(temp)
-    page += 1
+    });
+    res = res.concat(temp);
+    page += 1;
     if (!temp || !temp.length) {
-      break
+      break;
     }
   }
-  return res
+  return res;
 }

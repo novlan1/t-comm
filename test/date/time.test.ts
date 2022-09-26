@@ -1,4 +1,4 @@
-import { getCountDownObj } from '../../src'
+import { getCountDownObj } from '../../src';
 
 // describe('timeStampFormat', () => {
 //   it('', () => {
@@ -9,7 +9,7 @@ import { getCountDownObj } from '../../src'
 // })
 
 describe('getCountDownObj', () => {
-  it('', () => {
+  it('getCountDownObj', () => {
     expect(getCountDownObj(100)).toEqual({
       fDay: '00',
       fHour: '00',
@@ -19,7 +19,7 @@ describe('getCountDownObj', () => {
       hour: 0,
       minute: 1,
       second: 40,
-    })
+    });
 
     expect(getCountDownObj(1 * 24 * 60 * 60 + 200)).toEqual({
       fDay: '01',
@@ -30,11 +30,9 @@ describe('getCountDownObj', () => {
       hour: 0,
       minute: 3,
       second: 20,
-    })
+    });
 
-    expect(
-      getCountDownObj(1 * 24 * 60 * 60 + 2 * 60 * 60 + 1 * 60 + 11),
-    ).toEqual({
+    expect(getCountDownObj(1 * 24 * 60 * 60 + 2 * 60 * 60 + 1 * 60 + 11)).toEqual({
       fDay: '01',
       fHour: '02',
       fMinute: '01',
@@ -43,8 +41,8 @@ describe('getCountDownObj', () => {
       hour: 2,
       minute: 1,
       second: 11,
-    })
-  })
+    });
+  });
 
   it('test maxUnit', () => {
     expect(getCountDownObj(2 * 60 * 60 + 6 * 60 + 12, 'MINUTE')).toEqual({
@@ -52,7 +50,7 @@ describe('getCountDownObj', () => {
       fSecond: '12',
       minute: 126,
       second: 12,
-    })
+    });
 
     expect(getCountDownObj(2 * 60 * 60 + 6 * 60 + 12, 'HOUR')).toEqual({
       fHour: '02',
@@ -61,17 +59,15 @@ describe('getCountDownObj', () => {
       hour: 2,
       minute: 6,
       second: 12,
-    })
+    });
 
-    expect(
-      getCountDownObj(1 * 24 * 60 * 60 + 2 * 60 * 60 + 1 * 60 + 11, 'HOUR'),
-    ).toEqual({
+    expect(getCountDownObj(1 * 24 * 60 * 60 + 2 * 60 * 60 + 1 * 60 + 11, 'HOUR')).toEqual({
       fHour: '26',
       fMinute: '01',
       fSecond: '11',
       hour: 26,
       minute: 1,
       second: 11,
-    })
-  })
-})
+    });
+  });
+});

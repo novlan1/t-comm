@@ -1,4 +1,4 @@
-process.env.TZ = 'GMT+0800'
+process.env.TZ = 'GMT+0800';
 
 module.exports = {
   preset: 'ts-jest',
@@ -11,4 +11,4 @@ module.exports = {
     ],
   },
   testEnvironment: 'jsdom',
-}
+};

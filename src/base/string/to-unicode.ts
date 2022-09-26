@@ -11,12 +11,13 @@
  * ```
  *
  */
-export function toUnicodeAt(str: string, index: number = 0) {
-  let code = str.charCodeAt(index).toString(16).toUpperCase()
+export function toUnicodeAt(str: string, index = 0) {
+  let code = str.charCodeAt(index).toString(16)
+    .toUpperCase();
   while (code.length < 4) {
-    code = `0${code}`
+    code = `0${code}`;
   }
-  return `\\u${code}`
+  return `\\u${code}`;
 }
 
 /**
@@ -35,12 +36,12 @@ export function toUnicodeAt(str: string, index: number = 0) {
  */
 export function toUnicode(str: string) {
   if (!str) {
-    return ''
+    return '';
   }
 
   return Array.prototype.reduce.call(
     str,
     (pre, cur, index) => `${pre}${toUnicodeAt(str, index)}`,
     '',
-  )
+  );
 }
