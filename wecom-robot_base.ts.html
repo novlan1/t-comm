@@ -48,6 +48,7 @@
 
 /**
  * 给机器人发送普通消息
+ * @param {Object} config 配置内容
  * @param {string} config.webhookUrl - 钩子链接
  * @param {string }config.chatId - 会话id
  * @param {string} config.alias - 别名
@@ -78,7 +79,11 @@ export function sendWxRobotMsg({ webhookUrl, chatId, alias, content }) {
 
 /**
  * 给机器人发送Markdown消息
- * @param {{ webhookUrl: string, chatId: string, content: string, attachments: any }} config
+ * @param {Object} config 配置内容
+ * @param {string} config.webhookUrl - 钩子链接
+ * @param {string }config.chatId - 会话id
+ * @param {string} config.content - 内容
+ * @param {any} config.attachments - 附加内容
  * @returns 请求Promise
  */
 export function sendWxRobotMarkdown({
@@ -111,7 +116,11 @@ export function sendWxRobotMarkdown({
 
 /**
  * 给机器人发送图片
- * @param {{ webhookUrl: string, chatId: string, content: string, md5Val: string }} config 配置参数
+ * @param {Object} config 配置参数
+ * @param {string} config.webhookUrl 钩子链接
+ * @param {string} config.chatId 会话id
+ * @param {string} config.content 内容
+ * @param {string} config.md5Val md5内容
  * @returns 请求Promise
  */
 export async function sendWxRobotImg({ webhookUrl, chatId, content, md5Val }) {
