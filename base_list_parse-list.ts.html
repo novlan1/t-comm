@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>base/list/parse-list.ts - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/novlan1/t-comm" target="_blank" class="menu-item" id="repository" >Github repo</a></h2><h3>Modules</h3><ul><li><a href="module-base.html">base</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-base.html#.parseFunction">parseFunction</a></li><li data-type='method' style='display: none;'><a href="module-base.html#.flatten">flatten</a></li><li data-type='method' style='display: none;'><a href="module-base.html#.shuffle">shuffle</a></li></ul></li><li></li><li><a href="module-getAreaCode.html">getAreaCode</a></li><li><a href="module-getProvName.html">getProvName</a></li><li><a href="module-getCityName.html">getCityName</a></li><li><a href="module-getAreaName.html">getAreaName</a></li><li><a href="module-getCookie.html">getCookie</a></li><li><a href="module-setCookie.html">setCookie</a></li><li><a href="module-clearCookie.html">clearCookie</a></li><li><a href="module-clearAll.html">clearAll</a></li><li><a href="module-timeStampFormat.html">timeStampFormat</a></li><li><a href="module-dateFormat.html">dateFormat</a></li><li><a href="module-parseTime.html">parseTime</a></li><li><a href="module-getTimeAgo.html">getTimeAgo</a></li><li><a href="module-getTimeAgoOrDate.html">getTimeAgoOrDate</a></li><li><a href="module-countDownTimeStr.html">countDownTimeStr</a></li><li><a href="module-validate.html">validate</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-validate.html#.isExternal">isExternal</a></li><li data-type='method' style='display: none;'><a href="module-validate.html#.validURL">validURL</a></li><li data-type='method' style='display: none;'><a href="module-validate.html#.validLowerCase">validLowerCase</a></li><li data-type='method' style='display: none;'><a href="module-validate.html#.validUpperCase">validUpperCase</a></li><li data-type='method' style='display: none;'><a href="module-validate.html#.validAlphabets">validAlphabets</a></li><li data-type='method' style='display: none;'><a href="module-validate.html#.validEmail">validEmail</a></li><li data-type='method' style='display: none;'><a href="module-validate.html#.isString">isString</a></li><li data-type='method' style='display: none;'><a href="module-validate.html#.isArray">isArray</a></li><li data-type='method' style='display: none;'><a href="module-validate.html#.isQQNumber">isQQNumber</a></li><li data-type='method' style='display: none;'><a href="module-validate.html#.isEmail">isEmail</a></li><li data-type='method' style='display: none;'><a href="module-validate.html#.isMobile">isMobile</a></li><li data-type='method' style='display: none;'><a href="module-validate.html#.isTel">isTel</a></li><li data-type='method' style='display: none;'><a href="module-validate.html#.isIdCard">isIdCard</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#base">base</a></li><li><a href="global.html#isListAllEqual">isListAllEqual</a></li><li><a href="global.html#getKeyValuesMap">getKeyValuesMap</a></li><li><a href="global.html#markMaxAndMinOfObj">markMaxAndMinOfObj</a></li><li><a href="global.html#getPreviousRatio">getPreviousRatio</a></li><li><a href="global.html#getMaxAndMinIdx">getMaxAndMinIdx</a></li><li><a href="global.html#flattenPreData">flattenPreData</a></li><li><a href="global.html#getUnitPreviousRatio">getUnitPreviousRatio</a></li><li><a href="global.html#toHumpObj">toHumpObj</a></li><li><a href="global.html#toUnicodeAt">toUnicodeAt</a></li><li><a href="global.html#toUnicode">toUnicode</a></li><li><a href="global.html#getAccCellWidth">getAccCellWidth</a></li><li><a href="global.html#mergeMultiCanvasPic">mergeMultiCanvasPic</a></li><li><a href="global.html#createCanvasTable">createCanvasTable</a></li><li><a href="global.html#getAreaData">getAreaData</a></li><li><a href="global.html#getAllAreaData">getAllAreaData</a></li><li><a href="global.html#uploadCOSFile">uploadCOSFile</a></li><li><a href="global.html#removeCss">removeCss</a></li><li><a href="global.html#getMonthDay">getMonthDay</a></li><li><a href="global.html#getMonthDay2">getMonthDay2</a></li><li><a href="global.html#isSameWeek">isSameWeek</a></li><li><a href="global.html#getRealUA">getRealUA</a></li><li><a href="global.html#checkUAIsIOS">checkUAIsIOS</a></li><li><a href="global.html#getEnvUAType">getEnvUAType</a></li><li><a href="global.html#loadJS">loadJS</a></li><li><a href="global.html#loadCSS">loadCSS</a></li><li><a href="global.html#saveBase64ImgToFile">saveBase64ImgToFile</a></li><li><a href="global.html#turnLocalImg2Base64">turnLocalImg2Base64</a></li><li><a href="global.html#saveRemoteImgToLocal">saveRemoteImgToLocal</a></li><li><a href="global.html#getImgMd5">getImgMd5</a></li><li><a href="global.html#startPipeline">startPipeline</a></li><li><a href="global.html#baseRequestRainbow">baseRequestRainbow</a></li><li><a href="global.html#randomNum">randomNum</a></li><li><a href="global.html#signatureGenerator">signatureGenerator</a></li><li><a href="global.html#genRainbowHeaderSignature">genRainbowHeaderSignature</a></li><li><a href="global.html#addOrUpdateRainbowKV">addOrUpdateRainbowKV</a></li><li><a href="global.html#addRainbowKV">addRainbowKV</a></li><li><a href="global.html#updateRainbowKV">updateRainbowKV</a></li><li><a href="global.html#createRainbowPublishJob">createRainbowPublishJob</a></li><li><a href="global.html#publishRainbowTask">publishRainbowTask</a></li><li><a href="global.html#closeRainbowTask">closeRainbowTask</a></li><li><a href="global.html#updateRainbowKVAndPublish">updateRainbowKVAndPublish</a></li><li><a href="global.html#fetchRainbowConfig">fetchRainbowConfig</a></li><li><a href="global.html#getBranchLifeCycle">getBranchLifeCycle</a></li><li><a href="global.html#getProjectDefaultBranch">getProjectDefaultBranch</a></li><li><a href="global.html#getBranchesByProjectName">getBranchesByProjectName</a></li><li><a href="global.html#getOneBranchDetail">getOneBranchDetail</a></li><li><a href="global.html#getOneCommitDetail">getOneCommitDetail</a></li><li><a href="global.html#createMR">createMR</a></li><li><a href="global.html#getMrList">getMrList</a></li><li><a href="global.html#getOneMrComments">getOneMrComments</a></li><li><a href="global.html#getOneProjectDetail">getOneProjectDetail</a></li><li><a href="global.html#getOneProjectBySearch">getOneProjectBySearch</a></li><li><a href="global.html#getAllProjects">getAllProjects</a></li><li><a href="global.html#getQueryObj">getQueryObj</a></li><li><a href="global.html#composeUrlQuery">composeUrlQuery</a></li><li><a href="global.html#isRegExp">isRegExp</a></li><li><a href="global.html#isDate">isDate</a></li><li><a href="global.html#isFunction">isFunction</a></li><li><a href="global.html#cached">cached</a></li><li><a href="global.html#camelize">camelize</a></li><li><a href="global.html#hyphenate">hyphenate</a></li><li><a href="global.html#capitalize">capitalize</a></li><li><a href="global.html#titleize">titleize</a></li><li><a href="global.html#extend">extend</a></li><li><a href="global.html#getThousandSeparator">getThousandSeparator</a></li><li><a href="global.html#getThousandSeparator2">getThousandSeparator2</a></li><li><a href="global.html#validate">validate</a></li><li><a href="global.html#genVersion">genVersion</a></li><li><a href="global.html#sendWxRobotMsg">sendWxRobotMsg</a></li><li><a href="global.html#sendWxRobotMarkdown">sendWxRobotMarkdown</a></li><li><a href="global.html#sendWxRobotImg">sendWxRobotImg</a></li><li><a href="global.html#sendToRobot">sendToRobot</a></li><li><a href="global.html#sendWxRobotBase64Img">sendWxRobotBase64Img</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">base/list/parse-list.ts</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { getUnitPreviousRatio } from '../number'
+
+/**
+ * 判断数组是否全部相等
+ * @param list - 数组
+ * @returns 是否全部相等
+ *
+ * @example
+ * ```ts
+ * isListAllEqual([0, 0, 0]) // true
+ * isListAllEqual([0, 0, 2]) // false
+ * ```
+ */
+export function isListAllEqual(list = []) {
+  if (!list.length) return true
+  const value = list[0]
+  // eslint-disable-next-line no-restricted-syntax
+  for (const item of list.slice(1)) {
+    if (item !== value) return false
+  }
+
+  return true
+}
+
+/**
+ * 获取对象的value列表，并输出大对象形式
+ * @param {*} data
+ * @returns
+ *
+ * @example
+ *
+ * ```ts
+ * const data = [
+ * {
+ *   Project: 'xx',
+ *   Request: 111,
+ *   Score: 111
+ * },
+ * {
+ *   Project: 'yy',
+ *   Request: 333,
+ *   Score: 555
+ * }]
+ *
+ * getKeyValuesMap(data)
+ *
+ * // 结果为
+ * {
+ *   Project: ['xx', 'yy'],
+     Request: [111, 333],
+     Score: [111, 555],
+   }
+    ```
+ */
+export function getKeyValuesMap(data: Array&lt;any> = []) {
+  if (!data.length) return {}
+  const keys = Object.keys(data[0])
+  const keyValueMap = {}
+
+  data.forEach(item => {
+    keys.forEach(key => {
+      // 如果有value，就取value，否则直接取item[key]
+      const value = item[key]?.value || item[key]
+
+      if (keyValueMap[key]) {
+        keyValueMap[key].push(value)
+      } else {
+        keyValueMap[key] = [value]
+      }
+    })
+  })
+  return keyValueMap
+}
+
+/**
+ * 标记最大最小值
+ * @param {object} obj
+ * @returns
+ */
+function markMaxAndMinOfObj({ values, value, obj }) {
+  const idx = values.indexOf(value)
+  const lastIdx = values.indexOf(value)
+
+  let newObj = {
+    ...obj,
+    idx,
+    lastIdx,
+  }
+
+  if (!isListAllEqual(values)) {
+    const len = values.length
+    const isMax = idx === 0
+    const isSecondMax = idx === 1
+    const isMin = idx === len - 1
+    const isSecondMin = idx === len - 2
+
+    newObj = {
+      ...newObj,
+      isMax,
+      isMin,
+      isSecondMax,
+      isSecondMin,
+    }
+  }
+  return newObj
+}
+
+/**
+ * 获取相对上次的比例
+ * @param data - 输入数据
+ *
+ * [{
+ *   Project: { value: 'mj-match', name: 'Project' },
+ *   Request: {
+        value: 854,
+        name: 'Request',
+        idx: 19,
+        lastIdx: 19,
+        isMax: false,
+        isMin: false,
+        isSecondMax: false,
+        isSecondMin: true
+      },
+    }
+   }]
+ * @param preDataMap - 上次数据的map
+ *
+ * {
+     'mj-match': {
+      Project: 'mj-match',
+      Request: 4,
+      Score: 91.81,
+      FirstLoadTime: 178,
+      WholePageTime: 1035,
+      ParseDomTime: 484,
+      DNSLinkTime: 0,
+      DOMTime: 414,
+      TCP: 0,
+      HTTP: 275,
+      BackEnd: 60,
+      CGIFailNum: 0,
+      ErrorLogNum: 0,
+      CGIRequestNum: 83
+    },
+  }
+ */
+export function getPreviousRatio(
+  data = [],
+  preDataMap = {},
+  uniqKey = 'Project',
+) {
+  data.forEach(item => {
+    Object.keys(item).forEach(key => {
+      const obj = item[key] as any
+
+      if (typeof obj.value === 'number') {
+        const uniqVal = (item[uniqKey] as any).value
+        const preValue = preDataMap?.[uniqVal]?.[key]
+
+        if (preValue === undefined) {
+          obj.ratio = ''
+        } else {
+          obj.ratio = getUnitPreviousRatio(obj.value, preValue)
+          obj.previousValue = preValue
+        }
+      }
+    })
+  })
+}
+
+/**
+ * 添加isMax、isMin、、isSecondMax、isSecondMin、idx、lastIdx等属性
+ * @param {*} data 原始数据
+ * @param {*} reverseScoreKeys - 逆序的key
+ * @returns 处理后的数据
+ *
+ * @example
+ * ```ts
+ * // 将
+ * [{
+      ProjectName: { name: 'ProjectName', value: '麻将赛事' },
+      PagePv: { name: 'PagePv', value: 2877 },
+      PageUv: { name: 'PageUv', value: 544 },
+      Score: { name: 'Score', value: 99.83 },
+      PageDuration: { name: 'PageDuration', value: 527.21 },
+      PageError: { name: 'PageError', value: 0 },
+      ApiNum: { name: 'ApiNum', value: 11146 },
+      ApiFail: { name: 'ApiFail', value: 25 },
+      ApiDuration: { name: 'ApiDuration', value: 200.17 },
+      StaticNum: { name: 'StaticNum', value: 70249 },
+      StaticFail: { name: 'StaticFail', value: 0 },
+      StaticDuration: { name: 'StaticDuration', value: 42.13 }
+  }]
+  // 转化为：
+ * [{
+      ProjectName: { name: 'ProjectName', value: '麻将赛事' },
+      PagePv: {
+        name: 'PagePv',
+        value: 2877,
+        idx: 6,
+        lastIdx: 6,
+        isMax: false,
+        isMin: false,
+        isSecondMax: false,
+        isSecondMin: false
+      },
+    }]
+    ```
+    // 可见数据结构没有变化，只是添加了isMax、isMin、、isSecondMax、isSecondMin、idx、lastIdx等属性
+ */
+export function getMaxAndMinIdx(
+  data: Array&lt;object> = [],
+  reverseScoreKeys: Array&lt;string> = [],
+) {
+  if (!data.length) return []
+  const keys = Object.keys(data[0])
+
+  const keyValueMap = getKeyValuesMap(data)
+
+  const parsedData = data.map(item => {
+    const temp = { ...(item as any) }
+
+    keys.forEach(key => {
+      const values = keyValueMap[key]
+      const itemInfo = item[key] || {}
+
+      if (values &amp;&amp; typeof itemInfo.value === 'number') {
+        if (reverseScoreKeys.includes(key)) {
+          values.sort((a, b) => a - b)
+        } else {
+          values.sort((a, b) => b - a)
+        }
+
+        temp[key] = markMaxAndMinOfObj({
+          values,
+          value: itemInfo.value,
+          obj: temp[key],
+        })
+      }
+    })
+    return temp
+  })
+
+  return parsedData
+}
+
+/**
+ * 拉平之前数据
+ * @param {Array} preDataList 之前的数据，作为对照
+ * @param {String} key 主键
+ * @returns preDataMap
+ *
+ * @example
+ * flattenPreData(preDataList, 'ProjectName')
+ * ```ts
+ * // 将
+ * [{
+      ProjectName: { name: 'ProjectName', value: '研发平台' },
+      PagePv: { name: 'PagePv', value: 152 },
+      PageUv: { name: 'PageUv', value: 7 },
+      Score: { name: 'Score', value: 93.92 },
+      PageDuration: { name: 'PageDuration', value: 1281.58 },
+      PageError: { name: 'PageError', value: 2 },
+      ApiNum: { name: 'ApiNum', value: 316 },
+      ApiFail: { name: 'ApiFail', value: 10 },
+      ApiDuration: { name: 'ApiDuration', value: 324.83 },
+      StaticNum: { name: 'StaticNum', value: 878 },
+      StaticFail: { name: 'StaticFail', value: 0 },
+      StaticDuration: { name: 'StaticDuration', value: 38.5 }
+   }]
+   // 转化为：
+ * {
+ *   '研发平台': {
+        ProjectName: '研发平台',
+        PagePv: 152,
+        PageUv: 7,
+        Score: 93.92,
+        PageDuration: 1281.58,
+        PageError: 2,
+      }
+    }
+    ```
+ */
+export function flattenPreData(preDataList: Array&lt;any>, key: string) {
+  const preDataMap = preDataList.reduce((acc, item) => {
+    acc[item[key].value] = Object.values(item).reduce((ac: any, it: any) => {
+      ac[it.name] = it.value
+      return ac
+    }, {})
+    return acc
+  }, {})
+  return preDataMap
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> on Mon Sep 26 2022 01:40:16 GMT+0000 (Coordinated Universal Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
+</body>
+</html>
