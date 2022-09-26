@@ -69,18 +69,24 @@ function getSourceMap() {
   return sourceMap
 }
 
-function insertAllSeparator() {
+function getNavList() {
   const navSelector = 'nav ul li a'
 
   const navs = document.querySelectorAll(navSelector)
 
-  const sourceMap = getSourceMap()
   const navList = []
 
   for (const nav of navs) {
     const name = nav.innerHTML.trim()
     navList.push(name)
   }
+  return navList
+}
+
+function insertAllSeparator() {
+  const sourceMap = getSourceMap()
+  const navList = getNavList()
+
   // console.log('navList: ', navList)
   // console.log('sourceMap: ', sourceMap)
 
