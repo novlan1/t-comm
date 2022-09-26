@@ -1,5 +1,32 @@
 # 工具库更新日志
 
+# [0.1.0](https://github.com/novlan1/t-comm/compare/v0.0.53...v0.1.0) (2022-09-26)
+
+
+### Features
+
+* 处理非首页情况 ([da23291](https://github.com/novlan1/t-comm/commit/da232912640b597c071a18af61ca3a2d0dc9125a))
+* 格式化json ([31928b6](https://github.com/novlan1/t-comm/commit/31928b6913f920e3fb276eeb7314190731d14496))
+* 忽略jsdoc的错误 ([96c12bf](https://github.com/novlan1/t-comm/commit/96c12bf298c0d482cec3f1f994741de8ddeaff5b))
+* 去掉footer ([2a4a8d9](https://github.com/novlan1/t-comm/commit/2a4a8d96c3d9ccecef2d3bae1b6ba0f470282746))
+* 去掉travis的test ([f9cc8be](https://github.com/novlan1/t-comm/commit/f9cc8befc84896405da738dcbc9080e1a19ca1d8))
+* 删除time测试用例 ([07f8736](https://github.com/novlan1/t-comm/commit/07f873664444bcb394b44642cfbd54e80d1bff0b))
+* 优化文档 ([40664ef](https://github.com/novlan1/t-comm/commit/40664efc03b9c759c1f78fa897319c90e9c7e0bc))
+* 优化文档 ([fe4c7ce](https://github.com/novlan1/t-comm/commit/fe4c7ce3b0d6535873dd12aba079ad087871b1f6))
+* 优化文档脚本 ([ba34c0d](https://github.com/novlan1/t-comm/commit/ba34c0d139f84392728f2d3d8a6864e2f0246a19))
+* 优化文档生成的bash ([d00e52e](https://github.com/novlan1/t-comm/commit/d00e52ea2ed1344ff0b177e5f41bf668e473c12c))
+* 优化一些jsdoc ([4700315](https://github.com/novlan1/t-comm/commit/47003155c4f761b32109c4ef4a2a62352a8d4d12))
+* 优化docs ([3b6a170](https://github.com/novlan1/t-comm/commit/3b6a170fa585255346c949a395a72b7f362e5f49))
+* 优化jest配置 ([9e60cdc](https://github.com/novlan1/t-comm/commit/9e60cdc68a491a4d5eba9e6f0f64a0871861fa11))
+* 优化travis ([c02a50c](https://github.com/novlan1/t-comm/commit/c02a50cee845487371b75ef209ee8fe14cc9ac46))
+* 优化travis ([0896c84](https://github.com/novlan1/t-comm/commit/0896c8469ee1d018457aec04cfeace05d61326da))
+* 增加测试用例徽章 ([cfd4aae](https://github.com/novlan1/t-comm/commit/cfd4aae75e4d731d37ce8e85fdb2ad449bd10f9f))
+* 增加codecov ([2224be8](https://github.com/novlan1/t-comm/commit/2224be827e9225516185b0162326f6962a68678b))
+* 增加travis ([6787d70](https://github.com/novlan1/t-comm/commit/6787d70b4a9c32b5fe1851ac8c3e056706e17736))
+* 制作badge ([7541206](https://github.com/novlan1/t-comm/commit/7541206e8263148359e7b0d50147de28d570ffee))
+
+
+
 ## [0.0.53](https://github.com/novlan1/t-comm/compare/v0.0.52...v0.0.53) (2022-09-19)
 
 
