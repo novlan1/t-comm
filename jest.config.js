@@ -1,3 +1,5 @@
+process.env.TZ = 'GMT+0800'
+
 module.exports = {
   preset: 'ts-jest',
   transform: {
