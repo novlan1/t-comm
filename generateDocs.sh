@@ -41,7 +41,7 @@ echo "" > .nojekyll
 echo 'Copying generated JSDoc code documentation...'
 cp -R ../docs/* ./ ;
 
-echo "" > index.html
+# echo "" > index.html
 
 ################################################################################
 ##### Upload the documentation to the gh-pages branch of the repository.   #####
