@@ -1,22 +1,25 @@
 {
   "tags": {
-      "allowUnknownTags": false
+    "allowUnknownTags": false
   },
   "source": {
-      "include": ["src", "README.md"],
-      "includePattern": "\\.(t|j)s$",
-      "excludePattern": "(node_modules/|docs)"
+    "include": [
+      "src",
+      "README.md"
+    ],
+    "includePattern": "\\.(t|j)s$",
+    "excludePattern": "(node_modules/|docs)"
   },
   "plugins": [
-      "plugins/markdown",
-      "node_modules/better-docs/typescript"
-    ],
+    "plugins/markdown",
+    "node_modules/better-docs/typescript"
+  ],
   "opts": {
-      "template": "node_modules/docdash/",
-      "encoding": "utf8",
-      "destination": "docs/",
-      "recurse": true,
-      "verbose": true
+    "template": "node_modules/docdash/",
+    "encoding": "utf8",
+    "destination": "docs/",
+    "recurse": true,
+    "verbose": true
   },
   "markdown": {
     "parser": "gfm",
@@ -44,13 +47,13 @@
     "scripts": [
       "./jsdoc.js"
     ],
-    "menu":{
-        "Github repo":{
-            "href":"https://github.com/novlan1/t-comm",
-            "target":"_blank",
-            "class":"menu-item",
-            "id":"repository"
-        }
+    "menu": {
+      "Github repo": {
+        "href": "https://github.com/novlan1/t-comm",
+        "target": "_blank",
+        "class": "menu-item",
+        "id": "repository"
+      }
     }
   }
 }
