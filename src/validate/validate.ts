@@ -141,7 +141,6 @@ export function isMobile(phone) {
 
 /**
  * 判断是否合法的电话号码
- * @category String
  * @param {String} tel 待检测的电话号码
  */
 export function isTel(tel) {

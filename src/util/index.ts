@@ -30,7 +30,7 @@ export function isFunction(value) {
 /**
  * 记忆函数：缓存函数的运算结果
  * @param fn
- * @returns
+ * @returns 函数计算结果
  */
 export function cached(fn) {
   const cache = Object.create(null)
@@ -44,8 +44,13 @@ export function cached(fn) {
 
 /**
  * 横线转驼峰命名
+ * @param str  输入字符串
+ * @example
+ * ```ts
  *
- * ab-cd-ef ==> abCdEf
+ * camelize('ab-cd-ef')  // abCdEf
+ *
+ * ```
  */
 export function camelize(str) {
   const camelizeRE = /-(\w)/g
@@ -66,7 +71,7 @@ export function hyphenate(str) {
 /**
  * 字符串首位大写
  * @param str
- * @returns
+ * @returns 处理后的字符串
  */
 export function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1)
@@ -96,7 +101,7 @@ export function titleize(str) {
  * 将属性混合到目标对象中
  * @param to
  * @param _from
- * @returns
+ * @returns 处理后的对象
  */
 export function extend(to, _from) {
   // eslint-disable-next-line no-restricted-syntax, guard-for-in

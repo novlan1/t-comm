@@ -6,7 +6,7 @@
  * 获取相对于过去数据的比例
  * @param value 当前数据
  * @param preValue 之前数据
- * @returns
+ * @returns 比例
  *
  * @example
  * ```ts
@@ -28,6 +28,15 @@ export function getUnitPreviousRatio(value, preValue) {
   return `${symbol}${intervalRatio}%`
 }
 
+/**
+ * 阿拉伯数字和中文数字映射表
+ * @example
+ * ```ts
+ * import { NUMBER_CHI_MAP } from 't-comm'
+ *
+ * console.log(NUMBER_CHI_MAP[1]); // '一'
+ * ```
+ */
 export const NUMBER_CHI_MAP = {
   1: '一',
   2: '二',

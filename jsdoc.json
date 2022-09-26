@@ -3,7 +3,7 @@
       "allowUnknownTags": false
   },
   "source": {
-      "include": "src",
+      "include": ["src", "README.md"],
       "includePattern": "\\.(t|j)s$",
       "excludePattern": "(node_modules/|docs)"
   },
@@ -18,9 +18,19 @@
       "recurse": true,
       "verbose": true
   },
+  "markdown": {
+    "parser": "gfm",
+    "hardwrap": true,
+    "idInHeadings": true
+  },
   "templates": {
-      "cleverLinks": false,
-      "monospaceLinks": false
+    "cleverLinks": false,
+    "monospaceLinks": false,
+    "default": {
+      "outputSourceFiles": true,
+      "includeDate": false,
+      "useLongnameInNav": true
+    }
   },
   "docdash": {
     "static": true,

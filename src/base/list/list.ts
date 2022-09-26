@@ -1,10 +1,7 @@
-/**
- * @module base/list
- */
+/** @module base/list */
 
 /**
  * 拉平数组
- *
  * @param list - 对象数组
  * @param key - 对象的key
  * @returns map

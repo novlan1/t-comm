@@ -14,7 +14,6 @@
  * unicodeAt('ABC', 1) // -> '\\u0042'
  * ```
  *
- * @beta
  */
 export function toUnicodeAt(str: string, index: number = 0) {
   let code = str.charCodeAt(index).toString(16).toUpperCase()
@@ -32,10 +31,11 @@ export function toUnicodeAt(str: string, index: number = 0) {
  *
  * @example
  * ```ts
+ *
  * toUnicode('ABC') // -> '\\u0041\\u0042\\u0043'
+ *
  * ```
  *
- * @beta
  */
 export function toUnicode(str: string) {
   if (!str) {

@@ -6,7 +6,10 @@ import { sendToRobot } from './helper'
 
 /**
  * 给机器人发送普通消息
- * @param config - { webhookUrl, chatId, alias, content }
+ * @param {string} config.webhookUrl - 钩子链接
+ * @param {string }config.chatId - 会话id
+ * @param {string} config.alias - 别名
+ * @param {string} config.content - 内容
  * @returns Promise
  */
 export function sendWxRobotMsg({ webhookUrl, chatId, alias, content }) {
@@ -33,8 +36,8 @@ export function sendWxRobotMsg({ webhookUrl, chatId, alias, content }) {
 
 /**
  * 给机器人发送Markdown消息
- * @param config - { webhookUrl, chatId, content, attachments }
- * @returns
+ * @param {{ webhookUrl: string, chatId: string, content: string, attachments: any }} config
+ * @returns 请求Promise
  */
 export function sendWxRobotMarkdown({
   webhookUrl,
@@ -66,8 +69,8 @@ export function sendWxRobotMarkdown({
 
 /**
  * 给机器人发送图片
- * @param config - { webhookUrl, chatId, content, md5Val }
- * @returns
+ * @param {{ webhookUrl: string, chatId: string, content: string, md5Val: string }} config 配置参数
+ * @returns 请求Promise
  */
 export async function sendWxRobotImg({ webhookUrl, chatId, content, md5Val }) {
   return new Promise((resolve, reject) => {

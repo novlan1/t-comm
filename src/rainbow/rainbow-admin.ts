@@ -6,7 +6,7 @@ import { SecretInfo, ValueType, ModifyConfigParam } from './index.type'
  * 添加或更新配置
  *
  * @param config valueType: 1:NUMBER, 2:STRING,3:TEXT,4:JSON,5:XML,18:日期,20:yaml
- * @returns
+ * @returns 请求Promise
  */
 export function addOrUpdateRainbowKV({
   keyValue,
@@ -36,7 +36,7 @@ export function addOrUpdateRainbowKV({
  * 增加配置
  *
  * @param config 配置信息
- * @returns
+ * @returns 请求Promise
  */
 export function addRainbowKV({
   keyValue,
@@ -66,7 +66,7 @@ export function addRainbowKV({
  * 修改配置
  *
  * @param config - 配置信息
- * @returns
+ * @returns 请求Promise
  */
 export function updateRainbowKV({
   keyValue,
@@ -96,7 +96,7 @@ export function updateRainbowKV({
  * 创建发布任务
  *
  * @param obj - 配置信息
- * @returns
+ * @returns 请求Promise
  */
 export function createRainbowPublishJob({ versionName, secretInfo, crypto }) {
   return baseRequestRainbow({
@@ -116,7 +116,7 @@ export function createRainbowPublishJob({ versionName, secretInfo, crypto }) {
  * 发布任务
  *
  * @param obj - 配置信息
- * @returns
+ * @returns 请求Promise
  */
 export function publishRainbowTask({ taskId, secretInfo, crypto }) {
   return baseRequestRainbow({
@@ -133,7 +133,7 @@ export function publishRainbowTask({ taskId, secretInfo, crypto }) {
  * 关闭任务
  *
  * @param obj - 配置信息
- * @returns
+ * @returns 请求Promise
  */
 export function closeRainbowTask({ taskId, secretInfo, crypto }) {
   return baseRequestRainbow({

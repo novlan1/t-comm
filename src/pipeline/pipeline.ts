@@ -4,10 +4,17 @@ const axios = require('axios')
  * 启动流水线
  *
  * @param config - buildId: 流水线构建Id， data：携带的数据
- * @returns
+ * @returns Promise
  *
  * @example
  * ```ts
+ *
+ * startPipeline({
+ *  buildId,
+ *  data: {}
+ * }).then(() => {
+ *
+ * })
  * ```
  */
 export function startPipeline({ buildId, data = {} }) {

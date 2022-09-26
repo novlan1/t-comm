@@ -7,7 +7,7 @@ import { saveBase64ImgToFile } from '../node-img'
 /**
  * 绘制多张图
  * @param param0 imgs 多张图片，sizeOf require('image-size')，canvasLibrary require('canvas'), require('fs'), require('path')
- * @returns
+ * @returns 图片url
  * @example
  * ```ts
  * mergeMultiCanvasPic({

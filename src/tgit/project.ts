@@ -3,7 +3,7 @@ import { instance } from './helper'
 /**
  * 获取仓库详情
  * @param object - 包含 projectName、privateToken 的对象
- * @returns
+ * @returns 请求Promise
  */
 export function getOneProjectDetail({ projectName, privateToken }) {
   return new Promise((resolve, reject) => {

@@ -1,3 +1,5 @@
+/** @module base/parse-list */
+
 import { getUnitPreviousRatio } from '../number'
 
 /**
@@ -25,7 +27,7 @@ export function isListAllEqual(list = []) {
 /**
  * 获取对象的value列表，并输出大对象形式
  * @param {*} data
- * @returns
+ * @returns 处理后的对象
  *
  * @example
  *
@@ -75,7 +77,7 @@ export function getKeyValuesMap(data: Array<any> = []) {
 /**
  * 标记最大最小值
  * @param {object} obj
- * @returns
+ * @returns 处理后的对象
  */
 function markMaxAndMinOfObj({ values, value, obj }) {
   const idx = values.indexOf(value)
@@ -108,25 +110,25 @@ function markMaxAndMinOfObj({ values, value, obj }) {
 /**
  * 获取相对上次的比例
  * @param data - 输入数据
- *
- * [{
- *   Project: { value: 'mj-match', name: 'Project' },
- *   Request: {
-        value: 854,
-        name: 'Request',
-        idx: 19,
-        lastIdx: 19,
-        isMax: false,
-        isMin: false,
-        isSecondMax: false,
-        isSecondMin: true
-      },
-    }
-   }]
  * @param preDataMap - 上次数据的map
- *
- * {
-     'mj-match': {
+ * @example
+ * ```ts
+  const data = [{
+    Project: { value: 'mj-match', name: 'Project' },
+    Request: {
+      value: 854,
+      name: 'Request',
+      idx: 19,
+      lastIdx: 19,
+      isMax: false,
+      isMin: false,
+      isSecondMax: false,
+      isSecondMin: true
+    },
+  }];
+
+  const preDataMap = {
+    'mj-match': {
       Project: 'mj-match',
       Request: 4,
       Score: 91.81,
@@ -142,7 +144,11 @@ function markMaxAndMinOfObj({ values, value, obj }) {
       ErrorLogNum: 0,
       CGIRequestNum: 83
     },
-  }
+  };
+
+  getPreviousRatio(data, preDataMap)
+
+ * ```
  */
 export function getPreviousRatio(
   data = [],

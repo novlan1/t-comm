@@ -43,7 +43,7 @@ function parseCellValue(val) {
       }
     }]
  *
- * @returns
+ * @returns 图片url
  */
 export function createCanvasTable({
   data,
