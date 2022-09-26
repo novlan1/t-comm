@@ -10,3 +10,26 @@
 </p>
 
 
+## Usage
+
+First, install t-comm.
+
+```
+npm install t-comm -S
+```
+
+Then, use it in your project.
+
+```ts
+import { getMonthDay } from t-comm
+
+getMonthDay(2022, 2) // 28
+```
+
+
+## Doc
+
+
+Click [here](https://novlan1.github.io/t-comm/) to check docs.
+
+
