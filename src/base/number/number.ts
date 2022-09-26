@@ -1,8 +1,4 @@
 /**
- * @module base/number
- */
-
-/**
  * 获取相对于过去数据的比例
  * @param value 当前数据
  * @param preValue 之前数据

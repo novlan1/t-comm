@@ -1,9 +1,4 @@
 /**
- * 一些校验方法
- * @module validate
- */
-
-/**
  * 判断是否外部资源
  * @param {string} path
  * @returns {Boolean}

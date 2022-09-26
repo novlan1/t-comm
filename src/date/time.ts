@@ -1,7 +1,3 @@
-/**
- * @module date/time
- */
-
 // eslint-disable eqeqeq
 /**
  * 将时间戳格式化

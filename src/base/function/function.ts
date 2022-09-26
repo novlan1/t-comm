@@ -1,9 +1,4 @@
 /**
- * 函数方法
- * @module base/function
- */
-
-/**
  * 将字符串转为函数
  * @param func 字符串
  * @returns 字符串对应的函数

@@ -1,7 +1,3 @@
-/**
- * @module base/object
- */
-
 function isObjOrArray(obj) {
   return obj instanceof Object
 }

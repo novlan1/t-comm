@@ -1,5 +1,3 @@
-/** @module base/parse-list */
-
 import { getUnitPreviousRatio } from '../number'
 
 /**

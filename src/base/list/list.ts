@@ -1,5 +1,3 @@
-/** @module base/list */
-
 /**
  * 拉平数组
  * @param list - 对象数组

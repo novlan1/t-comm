@@ -1,7 +1,3 @@
-/**
- * @module toc
- */
-
 /* eslint-disable @typescript-eslint/no-shadow */
 export function drawToc({ fs, path, ignore, ignoreList }) {
   const curDir = path.resolve(process.cwd(), '.')

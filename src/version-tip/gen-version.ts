@@ -1,8 +1,4 @@
 /**
- * @module gen-version
- */
-
-/**
  * 生成Version
  * @param param - path/fs/standardVersion等
  * @example

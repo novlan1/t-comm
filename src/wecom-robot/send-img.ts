@@ -1,7 +1,3 @@
-/**
- * @module wecom-robot/send-img
- */
-
 import { sendWxRobotImg } from './base'
 import { saveBase64ImgToFile, getImgMd5 } from '../node-img'
 
