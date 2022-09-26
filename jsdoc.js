@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-syntax */
+
 function getSourceFolder(source) {
   const list = source.split('/')
   return list.slice(0, list.length - 1).join('/')
@@ -13,7 +15,6 @@ function getSeparatorStr(content) {
   return `${fill}   ${content}   ${fill}`
 }
 
-/* eslint-disable no-restricted-syntax */
 function insertSeparator(index, source) {
   const parent = document.querySelector(`nav ul`)
   const dom = document.querySelector(`nav ul li:nth-child(${index + 1})`)
@@ -24,40 +25,70 @@ function insertSeparator(index, source) {
   parent.insertBefore(ele, dom)
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const nameSelector = '#main section article h4.name'
-  const navSelector = 'nav ul li a'
+function hiddenSeparatorWhenSearch() {
+  document.querySelector('#nav-search').addEventListener('input', event => {
+    const { value } = event.target
+    if (value) {
+      document.querySelectorAll('.nav-separator').forEach(item => {
+        item.style.display = 'none'
+      })
+    } else {
+      document.querySelectorAll('.nav-separator').forEach(item => {
+        item.style.display = 'block'
+      })
+    }
+  })
+}
 
-  const names = document.querySelectorAll(nameSelector)
-  const navs = document.querySelectorAll(navSelector)
-
-  const sourceList = []
-  const sourceMap = {}
-  const navList = []
-
-  for (const item of names) {
-    const detail = item.nextElementSibling
-    const source = detail.querySelector('dd ul li a').innerHTML.trim()
-    sourceList.push({
-      name: item.id,
-      source,
-    })
-    sourceMap[item.id] = getSourceFolder(source)
-  }
-
-  for (const nav of navs) {
-    const name = nav.innerHTML.trim()
-    navList.push(name)
-  }
-  console.log('sourceList: ', sourceList)
-  console.log('navList: ', navList)
-  console.log('sourceMap: ', sourceMap)
-
+function hiddenFooter() {
   const footer = document.querySelector('footer')
 
   if (footer) {
     footer.style.display = 'none'
   }
+}
+
+function getSourceMap() {
+  const LOCAL_STORAGE_KEY = 'T_COMM_SOURCE_MAP'
+  if (localStorage.getItem(LOCAL_STORAGE_KEY)) {
+    return JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
+  }
+  const sourceMap = {}
+  const nameSelector = '#main section article h4.name'
+  const names = document.querySelectorAll(nameSelector)
+
+  for (const item of names) {
+    const detail = item.nextElementSibling
+    const source = detail.querySelector('dd ul li a').innerHTML.trim()
+
+    sourceMap[item.id] = getSourceFolder(source)
+  }
+  if (Object.keys(sourceMap).length) {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(sourceMap))
+  }
+  return sourceMap
+}
+
+function getNavList() {
+  const navSelector = 'nav ul li a'
+
+  const navs = document.querySelectorAll(navSelector)
+
+  const navList = []
+
+  for (const nav of navs) {
+    const name = nav.innerHTML.trim()
+    navList.push(name)
+  }
+  return navList
+}
+
+function insertAllSeparator() {
+  const sourceMap = getSourceMap()
+  const navList = getNavList()
+
+  // console.log('navList: ', navList)
+  // console.log('sourceMap: ', sourceMap)
 
   if (!Object.keys(sourceMap).length) {
     return
@@ -73,17 +104,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
   insertSeparator(0, sourceMap[navList[0]])
+}
 
-  document.querySelector('#nav-search').addEventListener('input', event => {
-    const { value } = event.target
-    if (value) {
-      document.querySelectorAll('.nav-separator').forEach(item => {
-        item.style.display = 'none'
-      })
-    } else {
-      document.querySelectorAll('.nav-separator').forEach(item => {
-        item.style.display = 'block'
-      })
-    }
-  })
+document.addEventListener('DOMContentLoaded', () => {
+  insertAllSeparator()
+  hiddenFooter()
+  hiddenSeparatorWhenSearch()
 })
