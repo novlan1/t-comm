@@ -20,7 +20,6 @@ function insertSeparator(index, source) {
   const ele = document.createElement('span')
   ele.innerHTML = getSeparatorStr(source)
   ele.style = 'color: hsl(207, 1%, 60%);font-size: 12px;'
-  console.log('dom', index, dom)
   parent.insertBefore(ele, dom)
 }
 
@@ -49,9 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const name = nav.innerHTML.trim()
     navList.push(name)
   }
-  console.log(sourceList)
-  console.log(navList)
-  console.log('sourceMap', sourceMap)
+  console.log('sourceList: ', sourceList)
+  console.log('navList: ', navList)
+  console.log('sourceMap: ', sourceMap)
 
   for (let i = navList.length - 1; i >= 1; i--) {
     const cur = navList[i]
@@ -60,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextSource = sourceMap[next]
     if (source !== nextSource) {
       insertSeparator(i, source)
-      console.log('aaaa', source)
     }
   }
   insertSeparator(0, sourceMap[navList[0]])
