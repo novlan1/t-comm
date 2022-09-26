@@ -1,5 +1,5 @@
 /**
- * @module base
+ * @module base/list
  */
 
 /**

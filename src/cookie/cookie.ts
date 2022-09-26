@@ -1,6 +1,5 @@
 /**
  * 获取cookie
- * @exports getCookie
  * @param {string} key
  * @param {string} [defaultval]
  * @return {string} cookie值
@@ -26,7 +25,6 @@ export function getCookie(key, defaultval) {
 
 /**
  * 设置cookie
- * @exports setCookie
  * @param {string} key
  * @param {string} value
  * @param {number} [hours]
@@ -40,7 +38,6 @@ export function setCookie(name, value, Hours = 1) {
 
 /**
  * 清除cookie
- * @exports clearCookie
  * @param {string} key
  *
  * @example
@@ -56,7 +53,6 @@ export function clearCookie(name) {
  * 清除全部cookie
  *
  * @param domain 域名
- * @exports clearAll
  *
  * @example
  * ```ts

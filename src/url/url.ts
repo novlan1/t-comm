@@ -1,4 +1,8 @@
 /**
+ * @module url
+ */
+
+/**
  * url参数变数组
  * @param {*} url
  * @returns {Object} search对象

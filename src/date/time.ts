@@ -1,7 +1,10 @@
+/**
+ * @module date/time
+ */
+
 // eslint-disable eqeqeq
 /**
  * 将时间戳格式化
- * @exports timeStampFormat
  * @param {number} timestamp
  * @param {string} fmt
  * @param {string} defaultval
@@ -56,7 +59,6 @@ function beautiTime(time: number): string {
 
 /**
  * 将日期格式化
- * @exports dateFormat
  * @param {Date} date
  * @param {string} format
  * @returns {string} 格式化后的日期字符串
@@ -74,7 +76,6 @@ export function dateFormat(date, fmt) {
 
 /**
  * 功能和上面的dateFormat/timeStampFormat类型，只是参数time可以接收多种类型，且参数cFormat用的是{y}形式
- * @exports parseTime
  * @param {(Object|string|number)} time
  * @param {string} cFormat
  * @returns {string | null} 格式化后的日期字符串
@@ -123,7 +124,6 @@ export function parseTime(time, cFormat) {
 
 /**
  * 获取某个时间戳距离今天的时间
- * @exports getTimeAgo
  * @param {number} timestamp
  * @returns {string} 距离今天的时间描述
  * @example
@@ -152,7 +152,6 @@ export function getTimeAgo(timestamp) {
 
 /**
  * 功能：获取多久之前，若间隔超过一天，返回时刻描述
- * @exports getTimeAgoOrDate
  * @param {number} timestamp
  * @param {string} format
  * @returns {string} 距离今天的时间描述或者时刻描述
@@ -160,7 +159,7 @@ export function getTimeAgo(timestamp) {
 
   const res = getTimeAgoOrDate(Date.now() - 60 * 60 * 24 * 1 * 1000); // 1天前
   const date = new Date('2018-07-13 17:54:01').getTime();
-  
+
   const res2 = getTimeAgoOrDate(date) // 7月13日17时54分
   */
 export function getTimeAgoOrDate(time, format) {
@@ -197,7 +196,6 @@ export function getTimeAgoOrDate(time, format) {
 
 /**
  * 倒计时（eg:距开赛1天）
- * @exports countDownTimeStr
  * @param time  剩余时间
  * @returns {object}} 剩余时间的描述对象
  * @example

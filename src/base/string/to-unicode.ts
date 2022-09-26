@@ -1,4 +1,8 @@
 /**
+ * @module base/string
+ */
+
+/**
  * 获取字符串指定下标的 unicode
  *
  * @param str - 字符串

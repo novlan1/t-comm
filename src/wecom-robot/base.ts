@@ -1,3 +1,7 @@
+/**
+ * @module wecom-robot/base
+ */
+
 import { sendToRobot } from './helper'
 
 /**

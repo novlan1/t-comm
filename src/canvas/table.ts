@@ -1,3 +1,7 @@
+/**
+ * @module canvas/table
+ */
+
 import { getAccCellWidth as oriGetAccCellWidth } from './helper'
 
 const cellHeight = 20

@@ -126,7 +126,6 @@ export function getAllAreaData() {
 
 /**
   * 根据省份城市转化为`id`数组
-  * @exports getAreaCode
   * @param {string} provinceStr
   * @param {string} cityStr
   * @return {Array} 包含省份、城市ID的数组
@@ -164,10 +163,9 @@ export function getAreaCode(provinceStr, cityStr) {
 
 /**
   * 根据`id`获取省份名字
-  * @exports getProvName
   * @param {string | number} provinceId
   * @returns {string} 省份名字
-  * 
+  *
   * @example
   * ```js
    getProvName(37) // 山东
@@ -181,11 +179,10 @@ export function getProvName(provinceId) {
 
 /**
   * 根据`id`获取城市名字
-  * @exports getCityName
   * @param {string | number} provinceId
   * @param {string | number} cityId
   * @returns {string} 城市名字
-  * 
+  *
   * @example
   *  ```js
     getCityName(37, 14) // 德州
@@ -207,11 +204,10 @@ export function getCityName(provinceId, cityId) {
 
 /**
   * 根据`id`将省份城市转化为字符串数组
-  * @exports getAreaName
   * @param {string | number} provinceId
   * @param {string | number} cityId
   * @return {Array} 包含省份、城市名字的数组
-  * 
+  *
   * @example
   * ```js
    getAreaName(37, 14) // ['山东', '德州']

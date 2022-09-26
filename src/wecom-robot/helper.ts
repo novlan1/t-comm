@@ -1,3 +1,7 @@
+/**
+ * @module wecom-robot/helper
+ */
+
 const axios = require('axios')
 
 /**

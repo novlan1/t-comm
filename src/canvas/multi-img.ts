@@ -1,3 +1,7 @@
+/**
+ * @module canvas/multi-img
+ */
+
 import { saveBase64ImgToFile } from '../node-img'
 
 /**

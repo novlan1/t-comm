@@ -1,3 +1,7 @@
+/**
+ * @module gen-version-tip
+ */
+
 async function generatePublishInfo({
   version: targetVersion,
   repoLink,

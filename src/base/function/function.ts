@@ -1,5 +1,6 @@
 /**
- * @module base
+ * 函数方法
+ * @module base/function
  */
 
 /**

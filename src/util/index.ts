@@ -1,4 +1,8 @@
 /**
+ * @module util
+ */
+
+/**
  * 判断数据是不是正则对象
  * @param value
  * @returns boolean
