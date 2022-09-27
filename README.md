@@ -27,7 +27,7 @@ getMonthDay(2022, 2) // 28
 ```
 
 
-## Doc
+## Docs
 
 
 Click [here](https://novlan1.github.io/t-comm/) to check docs.
