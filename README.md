@@ -23,7 +23,7 @@ Then, use it in your project.
 ```ts
 import { getMonthDay } from t-comm
 
-getMonthDay(2022, 2) // 28
+getMonthDay(2022, 2)  // 28
 ```
 
 
