@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>rainbow/rainbow-admin.ts - Documentation</title>
+    <title>morse-pwd/index.ts - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">rainbow/rainbow-admin.ts</h1>
+    <h1 class="page-title">morse-pwd/index.ts</h1>
     
 
     
@@ -44,221 +44,233 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { baseRequestRainbow } from './helper/rainbow-base-request';
-import { getVersion } from './helper/helper';
-import { SecretInfo, ValueType, ModifyConfigParam } from './index.type';
+            <pre class="prettyprint source linenums"><code>const DEFAULT_CODE_MAP = {
+  CLICK: 1,
+  LONG_PRESS: 2,
+};
 
-/**
- * 添加或更新配置
- *
- * @param config valueType: 1:NUMBER, 2:STRING,3:TEXT,4:JSON,5:XML,18:日期,20:yaml
- * @returns 请求Promise
- */
-export function addOrUpdateRainbowKV({
-  keyValue,
-  valueType = 2,
-  secretInfo,
-  crypto,
-}: ModifyConfigParam) {
-  return baseRequestRainbow({
-    url: '/adminapi.Config/ChangeKeyReq',
-    data: {
-      is_sync: false,
-      key_values: [
-        {
-          value_type: valueType,
-          config_op_type: 4,
-          description: '',
-          ...keyValue,
-        },
-      ],
-    },
-    secretInfo,
-    crypto,
-  });
-}
 
-/**
- * 增加配置
- *
- * @param config 配置信息
- * @returns 请求Promise
- */
-export function addRainbowKV({
-  keyValue,
-  valueType = 2,
-  secretInfo,
-  crypto,
-}: ModifyConfigParam) {
-  return baseRequestRainbow({
-    url: '/adminapi.Config/ChangeKeyReq',
-    data: {
-      is_sync: false,
-      key_values: [
-        {
-          value_type: valueType,
-          config_op_type: 2,
-          description: '',
-          ...keyValue,
-        },
-      ],
-    },
-    secretInfo,
-    crypto,
-  });
-}
+class MorsePwd {
+  /**
+   * 初始化
+   * @static
+   * @param {Object} options 选项
+   * @param {Array&lt;number>} options.pwd 密码
+   * @param {Function} options.cb 成功回调
+   * @param {Boolean} options.quiet 是否安静模式（不打印日志）
+   * @param {number} options.holdTime 等待多久后就恢复原位
+   * @param {'H5' | 'h5' | 'mp' | 'MP'} options.envType 环境类型
+   * @param {String} options.selector h5模式下的选择器
+   * @returns {Object} MorsePwd实例
+   */
+  static init(options) {
+    return new MorsePwd(options);
+  }
 
-/**
- * 修改配置
- *
- * @param config - 配置信息
- * @returns 请求Promise
- */
-export function updateRainbowKV({
-  keyValue,
-  valueType = 2,
-  secretInfo,
-  crypto,
-}: ModifyConfigParam) {
-  return baseRequestRainbow({
-    url: '/adminapi.Config/ChangeKeyReq',
-    data: {
-      is_sync: false,
-      key_values: [
-        {
-          value_type: valueType, // 1:NUMBER, 2:STRING,3:TEXT,4:JSON,5:XML,18:日期,20：yaml
-          config_op_type: 1,
-          description: '',
-          ...keyValue,
-        },
-      ],
-    },
-    secretInfo,
-    crypto,
-  });
-}
+  pwd: Array&lt;number>;
+  cb: Function;
+  holdTime: number;
+  quiet: Boolean;
+  selector?: keyof HTMLElementTagNameMap;
+  envType?: 'H5' | 'h5' | 'mp' | 'MP';
 
-/**
- * 创建发布任务
- *
- * @param obj - 配置信息
- * @returns 请求Promise
- */
-export function createRainbowPublishJob({ versionName, secretInfo, crypto }) {
-  return baseRequestRainbow({
-    url: '/adminapi.Config/CreateReleaseTaskReq',
-    data: {
-      creator: 'guowangyang',
-      approvers: 'guowangyang',
-      version_name: versionName,
-      type: 0,
-    },
-    secretInfo,
-    crypto,
-  });
-}
+  clickCode: number;
+  longPressCode: number;
 
-/**
- * 发布任务
- *
- * @param obj - 配置信息
- * @returns 请求Promise
- */
-export function publishRainbowTask({ taskId, secretInfo, crypto }) {
-  return baseRequestRainbow({
-    url: '/adminapi.Release/ReleaseMainTaskReq',
-    data: {
-      task_id: taskId,
-    },
-    secretInfo,
-    crypto,
-  });
-}
+  curIdx: number;
+  holdTimer: any;
+  h5Dom: any;
 
-/**
- * 关闭任务
- *
- * @param obj - 配置信息
- * @returns 请求Promise
- */
-export function closeRainbowTask({ taskId, secretInfo, crypto }) {
-  return baseRequestRainbow({
-    url: '/adminapi.Release/CloseReleaseTaskReq',
-    data: {
-      task_id: taskId,
-    },
-    secretInfo,
-    crypto,
-  });
-}
+  longPressTimer: any;
+  isLongTouch: Boolean;
 
-/**
- * 修改值并发布
- *
- * @param obj 配置信息
- */
-export async function updateRainbowKVAndPublish({
-  key,
-  value,
-  valueType,
-  secretInfo,
-  crypto,
-}: {
-  key: string
-  value: string
-  valueType: ValueType
-  secretInfo: SecretInfo
-  crypto: any
-}) {
-  try {
-    await addOrUpdateRainbowKV({
-      keyValue: {
-        key,
-        value,
-      },
-      valueType,
-      secretInfo,
-      crypto,
-    });
-    const taskRes: any = await createRainbowPublishJob({
-      versionName: getVersion(),
-      secretInfo,
-      crypto,
-    });
-    await publishRainbowTask({
-      taskId: taskRes.task_id,
-      secretInfo,
-      crypto,
-    });
-    await closeRainbowTask({
-      taskId: taskRes.task_id,
-      secretInfo,
-      crypto,
-    });
-    return taskRes;
-  } catch (err) {
-    return Promise.reject(err);
+  /**
+   * 摩斯密码初始化
+   * @constructor
+   * @param {Object} options 选项
+   * @param {Array&lt;number>} options.pwd 密码
+   * @param {Function} options.cb 成功回调
+   * @param {Boolean} options.quiet 是否安静模式（不打印日志）
+   * @param {number} options.holdTime 等待多久后就恢复原位
+   * @param {'H5' | 'h5' | 'mp' | 'MP'} options.envType 环境类型
+   * @param {String} options.selector h5模式下的选择器
+   *
+   * @example &lt;caption>小程序环境&lt;/caption>
+   * &lt;template>
+   *   &lt;div
+   *     class="tip-match-header"
+   *     /@longpress="onLongPressWrap"
+   *     /@click.stop="onClickWrap"
+   *   />
+   * &lt;/template>
+   *
+   * &lt;script>
+   * export default {
+   *  data() {
+   *     return {
+   *       morsePwd: null,
+   *     };
+   *  },
+   *  mounted() {
+   *    this.morsePwd = MorsePwd.init({
+   *      pwd: [1, 1, 1, 2, 2, 2, 1, 1, 1],
+   *      cb: () => {
+   *        this.showToast('xxx');
+   *      },
+   *      envType: 'MP',
+   *    });
+   *  },
+   *  beforeDestroy() {
+   *    this.morsePwd.clear();
+   *  },
+   *  methods: {
+   *    onLongPressWrap() {
+   *      this.morsePwd.longPress();
+   *    },
+   *    onClickWrap() {
+   *      this.morsePwd.click();
+   *    },
+   *   }
+   * }
+   * &lt;/script>
+   * @example &lt;caption>H5环境&lt;/caption>
+   * &lt;script>
+   * export default {
+   *  data() {
+   *     return {
+   *       morsePwd: null,
+   *     };
+   *  },
+   *  mounted() {
+   *    this.morsePwd = MorsePwd.init({
+   *      pwd: [1, 1, 1, 2, 2, 2, 1, 1, 1],
+   *      cb: () => {
+   *        this.showToast('xxx');
+   *      },
+   *      selector: '#app',
+   *      envType: 'H5',
+   *    });
+   *  },
+   *  beforeDestroy() {
+   *    this.morsePwd.clear();
+   *  },
+   * }
+   * &lt;/script>
+   */
+  constructor(options) {
+    const { pwd, cb, quiet = false, holdTime = 5000, envType = '', selector } = options;
+    this.pwd = pwd || [];
+    this.cb = cb;
+    this.holdTime = holdTime;
+    this.quiet = quiet;
+    this.selector = selector;
+    this.envType = envType;
+
+    this.clickCode = DEFAULT_CODE_MAP.CLICK;
+    this.longPressCode = DEFAULT_CODE_MAP.LONG_PRESS;
+
+    this.curIdx = 0;
+    this.holdTimer = null;
+    this.h5Dom = null;
+
+    this.longPressTimer = null;
+    this.isLongTouch = false;
+
+    if (this.envType === 'H5') {
+      this.bindEvent();
+    }
+  }
+
+  bindEvent() {
+    if (!this.selector) return;
+    this.h5Dom = document.querySelector(this.selector);
+    if (!this.h5Dom) return;
+
+    this.h5Dom.addEventListener('touchstart', this.onTouchStart.bind(this));
+    this.h5Dom.addEventListener('touchend', this.onTouchEnd.bind(this));
+    this.h5Dom.addEventListener('touchmove', this.onTouchMove.bind(this));
+  }
+
+  onTouchStart() {
+    clearTimeout(this.longPressTimer);
+    this.longPressTimer = setTimeout(() => {
+      // 处理长按事件
+      this.log('longPress');
+      this.isLongTouch = true;
+      this.longPress();
+    }, 350);
+  }
+
+  onTouchEnd() {
+    clearTimeout(this.longPressTimer);
+    if (this.isLongTouch) {
+      // 重置标志位
+      this.isLongTouch = false;
+    } else {
+      // 处理点击事件
+      this.log('click');
+      this.click();
+    }
+  }
+
+  onTouchMove() {
+    clearTimeout(this.longPressTimer);
+  }
+
+  /**
+   * 清除监听事件
+   */
+  clear() {
+    if (!this.h5Dom) return;
+    this.h5Dom.removeEventListener('touchstart', this.onTouchStart.bind(this));
+    this.h5Dom.removeEventListener('touchend', this.onTouchEnd.bind(this));
+    this.h5Dom.removeEventListener('touchmove', this.onTouchMove.bind(this));
+  }
+
+  operation(type) {
+    this.log(`type: ${type}, curIdx: ${this.curIdx}, pwd: ${this.pwd}`);
+
+    clearTimeout(this.holdTimer);
+    if (this.pwd[this.curIdx] === type) {
+      this.curIdx += 1;
+      if (this.curIdx === this.pwd.length) {
+        this.suc();
+      } else {
+        clearTimeout(this.holdTimer);
+        this.holdTimer = setTimeout(() => {
+          this.reset();
+        }, this.holdTime);
+      }
+    } else {
+      this.reset();
+    }
+  }
+
+  reset() {
+    this.curIdx = 0;
+  }
+
+  click() {
+    this.operation(this.clickCode);
+  }
+
+  suc() {
+    if (typeof this.cb === 'function') {
+      this.cb();
+      this.reset();
+    }
+  }
+  longPress() {
+    this.operation(this.longPressCode);
+  }
+
+  log(...args) {
+    if (this.quiet) return;
+    console.log(...args);
   }
 }
 
-// 查询分组配置
-export function queryGroupInfo({ secretInfo, crypto }) {
-  return new Promise((resolve, reject) => {
-    baseRequestRainbow({
-      url: '/adminapi.Config/QueryGroupInfoReq',
-      data: {},
-      secretInfo,
-      crypto,
-    })
-      .then((res: any) => {
-        const keyValues = res.config_infos?.[0]?.key_values || [];
-        resolve(keyValues);
-      })
-      .catch((err) => {
-        reject(err);
-      });
-  });
-}
+export { MorsePwd };
 </code></pre>
         </article>
     </section>

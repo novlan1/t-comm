@@ -14,8 +14,8 @@ function getSeparatorStr(content) {
 }
 
 function insertSeparator(index, source) {
-  const parent = document.querySelector('nav ul');
-  const dom = document.querySelector(`nav ul li:nth-child(${index + 1})`);
+  const parent = document.querySelector('nav > ul:nth-of-type(2)');
+  const dom = document.querySelector(`nav > ul:nth-of-type(2) li:nth-child(${index + 1})`);
   const ele = document.createElement('span');
   ele.innerHTML = getSeparatorStr(source);
   ele.style = 'color: hsl(207, 1%, 60%);font-size: 12px;display: block;';
@@ -51,6 +51,8 @@ function getSourceMap() {
   if (localStorage.getItem(LOCAL_STORAGE_KEY)) {
     return JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
   }
+  if (location.href.indexOf('global.html') < 0) return;
+
   const sourceMap = {};
   const nameSelector = '#main section article h4.name';
   const names = document.querySelectorAll(nameSelector);
@@ -68,7 +70,7 @@ function getSourceMap() {
 }
 
 function getNavList() {
-  const navSelector = 'nav ul li a';
+  const navSelector = 'nav > ul:nth-of-type(2) li a';
 
   const navs = document.querySelectorAll(navSelector);
 
