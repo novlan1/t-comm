@@ -7,6 +7,7 @@ export * from './css';
 export * from './date';
 export * from './env';
 export * from './loader';
+export * from './morse-pwd';
 export * from './node-img';
 export * from './pipeline';
 export * from './rainbow';

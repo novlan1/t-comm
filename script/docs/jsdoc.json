@@ -47,6 +47,16 @@
     "scripts": [
       "./jsdoc.js"
     ],
+    "sectionOrder": [
+      "Classes",
+      "Modules",
+      "Externals",
+      "Events",
+      "Namespaces",
+      "Mixins",
+      "Tutorials",
+      "Interfaces"
+    ],
     "menu": {
       "Github repo": {
         "href": "https://github.com/novlan1/t-comm",
