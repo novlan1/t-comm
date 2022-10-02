@@ -1,5 +1,21 @@
 # 工具库更新日志
 
+## [0.1.2](https://github.com/novlan1/t-comm/compare/v0.1.1...v0.1.2) (2022-10-02)
+
+
+### Features
+
+* 更新eslint ([460f24a](https://github.com/novlan1/t-comm/commit/460f24a046f91b492686b0552db5721a7e1c73d7))
+* 删除pnpm ([6a395c6](https://github.com/novlan1/t-comm/commit/6a395c6cd87207301e4829f45fe3e80913fcf862))
+* 删掉travis配置 ([c17f04e](https://github.com/novlan1/t-comm/commit/c17f04ee1e78883d28380990cc8f1913e35c0d93))
+* 优化一部分文档 ([0cb71f9](https://github.com/novlan1/t-comm/commit/0cb71f9e1b36783cb7a46215875baeb5b63edcec))
+* 增加摩斯密码 ([8de8107](https://github.com/novlan1/t-comm/commit/8de8107b67ea093847896967b55f9fc2f490a2ab))
+* **commit-info:** 提交信息 ([f0888a1](https://github.com/novlan1/t-comm/commit/f0888a1024b5ac33f4c139cf3565696a3f716aff))
+* github workflow ([d89507f](https://github.com/novlan1/t-comm/commit/d89507fbfa74ff992510f4b14ac5f19bb8e980e2))
+* test ([f2c356c](https://github.com/novlan1/t-comm/commit/f2c356cfe11edaab21fa0f5d9e375be3123f62fc))
+
+
+
 ## [0.1.1](https://github.com/novlan1/t-comm/compare/v0.1.0...v0.1.1) (2022-09-26)
 
 
