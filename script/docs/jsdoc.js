@@ -97,6 +97,9 @@ function insertAllSeparator() {
   for (let i = navList.length - 1; i >= 1; i--) {
     const cur = navList[i];
     const source = sourceMap[cur];
+    if (!source) {
+      continue
+    }
     const next = navList[i - 1];
     const nextSource = sourceMap[next];
     if (source !== nextSource) {
