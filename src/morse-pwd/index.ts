@@ -1,9 +1,3 @@
-const DEFAULT_CODE_MAP = {
-  CLICK: 1,
-  LONG_PRESS: 2,
-};
-
-
 class MorsePwd {
   /**
    * 初始化
@@ -15,6 +9,70 @@ class MorsePwd {
    * @param {number} options.holdTime 等待多久后就恢复原位
    * @param {'H5' | 'h5' | 'mp' | 'MP'} options.envType 环境类型
    * @param {String} options.selector h5模式下的选择器
+   *
+   * @example <caption>小程序环境</caption>
+   * <template>
+   *   <div
+   *     class="tip-match-header"
+   *     /@longpress="onLongPressWrap"
+   *     /@click.stop="onClickWrap"
+   *   >
+   * </template>
+   *
+   * <script>
+   * export default {
+   *   data() {
+   *     return {
+   *       morsePwd: null,
+   *     };
+   *   },
+   *   mounted() {
+   *     this.morsePwd = MorsePwd.init({
+   *       pwd: [1, 1, 1, 2, 2, 2, 1, 1, 1],
+   *       cb: () => {
+   *         console.log('===');
+   *         this.showToast('hhh');
+   *       },
+   *       envType: 'MP',
+   *     });
+   *   },
+   *   beforeDestroy() {
+   *     this.morsePwd.clear();
+   *   },
+   *   methods: {
+   *     onLongPressWrap() {
+   *       this.morsePwd.longPress();
+   *     },
+   *     onClickWrap() {
+   *       this.morsePwd.click();
+   *     },
+   *   }
+   * }
+   * </script>
+   * @example <caption>H5环境</caption>
+   * <script>
+   * export default {
+   *   data() {
+   *     return {
+   *       morsePwd: null,
+   *     };
+   *   },
+   *   mounted() {
+   *     this.morsePwd = MorsePwd.init({
+   *       pwd: [1, 1, 1, 2, 2, 2, 1, 1, 1],
+   *       cb: () => {
+   *         this.showToast('xxx');
+   *       },
+   *       selector: '#app',
+   *       envType: 'H5',
+   *     });
+   *   },
+   *   beforeDestroy() {
+   *     this.morsePwd.clear();
+   *   },
+   * }
+   * </script>
+   *
    * @returns {Object} MorsePwd实例
    */
   static init(options) {
@@ -48,70 +106,12 @@ class MorsePwd {
    * @param {number} options.holdTime 等待多久后就恢复原位
    * @param {'H5' | 'h5' | 'mp' | 'MP'} options.envType 环境类型
    * @param {String} options.selector h5模式下的选择器
-   *
-   * @example <caption>小程序环境</caption>
-   * <template>
-   *   <div
-   *     class="tip-match-header"
-   *     /@longpress="onLongPressWrap"
-   *     /@click.stop="onClickWrap"
-   *   />
-   * </template>
-   *
-   * <script>
-   * export default {
-   *  data() {
-   *     return {
-   *       morsePwd: null,
-   *     };
-   *  },
-   *  mounted() {
-   *    this.morsePwd = MorsePwd.init({
-   *      pwd: [1, 1, 1, 2, 2, 2, 1, 1, 1],
-   *      cb: () => {
-   *        this.showToast('xxx');
-   *      },
-   *      envType: 'MP',
-   *    });
-   *  },
-   *  beforeDestroy() {
-   *    this.morsePwd.clear();
-   *  },
-   *  methods: {
-   *    onLongPressWrap() {
-   *      this.morsePwd.longPress();
-   *    },
-   *    onClickWrap() {
-   *      this.morsePwd.click();
-   *    },
-   *   }
-   * }
-   * </script>
-   * @example <caption>H5环境</caption>
-   * <script>
-   * export default {
-   *  data() {
-   *     return {
-   *       morsePwd: null,
-   *     };
-   *  },
-   *  mounted() {
-   *    this.morsePwd = MorsePwd.init({
-   *      pwd: [1, 1, 1, 2, 2, 2, 1, 1, 1],
-   *      cb: () => {
-   *        this.showToast('xxx');
-   *      },
-   *      selector: '#app',
-   *      envType: 'H5',
-   *    });
-   *  },
-   *  beforeDestroy() {
-   *    this.morsePwd.clear();
-   *  },
-   * }
-   * </script>
    */
   constructor(options) {
+    const DEFAULT_CODE_MAP = {
+      CLICK: 1,
+      LONG_PRESS: 2,
+    };
     const { pwd, cb, quiet = false, holdTime = 5000, envType = '', selector } = options;
     this.pwd = pwd || [];
     this.cb = cb;
@@ -173,6 +173,10 @@ class MorsePwd {
 
   /**
    * 清除监听事件
+   * @example
+   * beforeDestroy() {
+   *   this.morsePwd.clear();
+   * }
    */
   clear() {
     if (!this.h5Dom) return;

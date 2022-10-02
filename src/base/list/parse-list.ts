@@ -2,14 +2,17 @@ import { getUnitPreviousRatio } from '../number';
 
 /**
  * 判断数组是否全部相等
- * @param list - 数组
- * @returns 是否全部相等
+ * @param {Array<number | string>} list - 数组
+ * @returns {Boolean} 是否全部相等
  *
  * @example
- * ```ts
- * isListAllEqual([0, 0, 0]) // true
- * isListAllEqual([0, 0, 2]) // false
- * ```
+ * isListAllEqual([0, 0, 0])
+ *
+ * // true
+ *
+ * isListAllEqual([0, 0, 2])
+ *
+ * // false
  */
 export function isListAllEqual(list = []) {
   if (!list.length) return true;
@@ -23,33 +26,49 @@ export function isListAllEqual(list = []) {
 
 /**
  * 获取对象的value列表，并输出大对象形式
- * @param {*} data
- * @returns 处理后的对象
+ * @param {Array<any>} data
+ * @returns {Object} 处理后的对象
  *
  * @example
  *
- * ```ts
  * const data = [
  * {
- *   Project: 'xx',
- *   Request: 111,
- *   Score: 111
+ *   Project: 'x',
+ *   Request: 1,
+ *   Score: 'a'
  * },
  * {
- *   Project: 'yy',
- *   Request: 333,
- *   Score: 555
+ *   Project: 'y',
+ *   Request: 2,
+ *   Score: 'b'
  * }]
  *
  * getKeyValuesMap(data)
  *
- * // 结果为
+ * // 结果为:
  * {
- *   Project: ['xx', 'yy'],
-     Request: [111, 333],
-     Score: [111, 555],
-   }
-    ```
+ *   Project: ['x', 'y'],
+ *   Request: [1, 2],
+ *   Score: ['a', 'b'],
+ * }
+ *
+ * // 也支持参数为带value属性的对象数组，如：
+ *
+ * const data = [
+ * {
+ *   Project: {
+ *     value: 'x'
+ *   }
+ * },{
+ *   Project: {
+ *     value: 'y'
+ *   }
+ * }]
+ *
+ * // 结果为：
+ * {
+ *   Project: ['x', 'y']
+ * }
  */
 export function getKeyValuesMap(data: Array<any> = []) {
   if (!data.length) return {};
@@ -73,8 +92,12 @@ export function getKeyValuesMap(data: Array<any> = []) {
 
 /**
  * 标记最大最小值
- * @param {object} obj
- * @returns 处理后的对象
+ * @private
+ * @param {object} params 参数对象
+ * @param {Array<number>} params.values 待处理的数组
+ * @param {number} params.value 当前值
+ * @param {Object} params.obj 迭代中的对象
+ * @returns {Object} 处理后的对象
  */
 function markMaxAndMinOfObj({ values, value, obj }) {
   const idx = values.indexOf(value);
@@ -105,47 +128,64 @@ function markMaxAndMinOfObj({ values, value, obj }) {
 }
 
 /**
- * 获取相对上次的比例
- * @param data - 输入数据
- * @param preDataMap - 上次数据的map
+ * 获取相对上次的比例，会给输入的对象数组的每一项增加 ratio、previousValue 属性
+ * @param {Array<Object>} data - 输入数据
+ * @param {Object} preDataMap - 上次数据的map
+ * @param {string} uniqKey - 唯一键
+ *
  * @example
- * ```ts
-  const data = [{
-    Project: { value: 'mj-match', name: 'Project' },
-    Request: {
-      value: 854,
-      name: 'Request',
-      idx: 19,
-      lastIdx: 19,
-      isMax: false,
-      isMin: false,
-      isSecondMax: false,
-      isSecondMin: true
-    },
-  }];
-
-  const preDataMap = {
-    'mj-match': {
-      Project: 'mj-match',
-      Request: 4,
-      Score: 91.81,
-      FirstLoadTime: 178,
-      WholePageTime: 1035,
-      ParseDomTime: 484,
-      DNSLinkTime: 0,
-      DOMTime: 414,
-      TCP: 0,
-      HTTP: 275,
-      BackEnd: 60,
-      CGIFailNum: 0,
-      ErrorLogNum: 0,
-      CGIRequestNum: 83
-    },
-  };
-
-  getPreviousRatio(data, preDataMap)
-
- * ```
+ * const data = [{
+ *   Project: { value: 'mj-match', name: 'Project' },
+ *   Request: {
+ *     value: 854,
+ *     name: 'Request',
+ *     idx: 19,
+ *     lastIdx: 19,
+ *     isMax: false,
+ *     isMin: false,
+ *     isSecondMax: false,
+ *     isSecondMin: true,
+ *   },
+ * }];
+ *
+ * const preDataMap = {
+ *   'mj-match': {
+ *     Project: 'mj-match',
+ *     Request: 4,
+ *     Score: 91.81,
+ *     FirstLoadTime: 178,
+ *     WholePageTime: 1035,
+ *     ParseDomTime: 484,
+ *     DNSLinkTime: 0,
+ *     DOMTime: 414,
+ *     TCP: 0,
+ *     HTTP: 275,
+ *     BackEnd: 60,
+ *     CGIFailNum: 0,
+ *     ErrorLogNum: 0,
+ *     CGIRequestNum: 83,
+ *   },
+ * };
+ *
+ * getPreviousRatio(data, preDataMap);
+ *
+ * // data会变成：
+ * [{
+ *   Project: { value: 'mj-match', name: 'Project' },
+ *   Request: {
+ *     value: 854,
+ *     name: 'Request',
+ *     idx: 19,
+ *     lastIdx: 19,
+ *     isMax: false,
+ *     isMin: false,
+ *     isSecondMax: false,
+ *     isSecondMin: true,
+ *
+ *     previousValue: 4, // 新增属性
+ *     ratio: "+999+%" // 新增属性
+ *   },
+ * }];
  */
 export function getPreviousRatio(
   data = [],
@@ -172,44 +212,39 @@ export function getPreviousRatio(
 }
 
 /**
- * 添加isMax、isMin、、isSecondMax、isSecondMin、idx、lastIdx等属性
- * @param {*} data 原始数据
- * @param {*} reverseScoreKeys - 逆序的key
- * @returns 处理后的数据
+ * 给对象数组的每一项，添加isMax、isMin、、isSecondMax、isSecondMin、idx、lastIdx等属性
+ * @param {Array<object>} data 原始数据
+ * @param {Array<string>} reverseScoreKeys - 逆序的key列表
+ * @returns {Object} 处理后的数据
  *
  * @example
- * ```ts
- * // 将
- * [{
-      ProjectName: { name: 'ProjectName', value: '麻将赛事' },
-      PagePv: { name: 'PagePv', value: 2877 },
-      PageUv: { name: 'PageUv', value: 544 },
-      Score: { name: 'Score', value: 99.83 },
-      PageDuration: { name: 'PageDuration', value: 527.21 },
-      PageError: { name: 'PageError', value: 0 },
-      ApiNum: { name: 'ApiNum', value: 11146 },
-      ApiFail: { name: 'ApiFail', value: 25 },
-      ApiDuration: { name: 'ApiDuration', value: 200.17 },
-      StaticNum: { name: 'StaticNum', value: 70249 },
-      StaticFail: { name: 'StaticFail', value: 0 },
-      StaticDuration: { name: 'StaticDuration', value: 42.13 }
-  }]
-  // 转化为：
- * [{
-      ProjectName: { name: 'ProjectName', value: '麻将赛事' },
-      PagePv: {
-        name: 'PagePv',
-        value: 2877,
-        idx: 6,
-        lastIdx: 6,
-        isMax: false,
-        isMin: false,
-        isSecondMax: false,
-        isSecondMin: false
-      },
-    }]
-    ```
-    // 可见数据结构没有变化，只是添加了isMax、isMin、、isSecondMax、isSecondMin、idx、lastIdx等属性
+ * const data = [{
+ *   ProjectName: { name: 'ProjectName', value: '麻将赛事' },
+ *   PagePv: { name: 'PagePv', value: 2877 },
+ * }, {
+ *   ProjectName: { name: 'ProjectName', value: '斗地主赛事' },
+ *   PagePv: { name: 'PagePv', value: 7 },
+ * },
+ * // ...
+ * ];
+ *
+ * getMaxAndMinIdx(data, [])
+ *
+ * // =>
+ *   [{
+ *     ProjectName: { name: 'ProjectName', value: '麻将赛事' },
+ *     PagePv: {
+ *       name: 'PagePv',
+ *       value: 2877,
+ *       idx: 6,
+ *       lastIdx: 6,
+ *       isMax: false,
+ *       isMin: false,
+ *       isSecondMax: false,
+ *       isSecondMin: false,
+ *     },
+ *   }];
+ *
  */
 export function getMaxAndMinIdx(
   data: Array<object> = [],
@@ -249,40 +284,33 @@ export function getMaxAndMinIdx(
 
 /**
  * 拉平之前数据
- * @param {Array} preDataList 之前的数据，作为对照
- * @param {String} key 主键
- * @returns preDataMap
+ * @param {Array<Object>} preDataList 之前的数据，作为对照
+ * @param {string} key 主键
+ * @returns {Object} preDataMap
  *
  * @example
- * flattenPreData(preDataList, 'ProjectName')
- * ```ts
- * // 将
- * [{
-      ProjectName: { name: 'ProjectName', value: '研发平台' },
-      PagePv: { name: 'PagePv', value: 152 },
-      PageUv: { name: 'PageUv', value: 7 },
-      Score: { name: 'Score', value: 93.92 },
-      PageDuration: { name: 'PageDuration', value: 1281.58 },
-      PageError: { name: 'PageError', value: 2 },
-      ApiNum: { name: 'ApiNum', value: 316 },
-      ApiFail: { name: 'ApiFail', value: 10 },
-      ApiDuration: { name: 'ApiDuration', value: 324.83 },
-      StaticNum: { name: 'StaticNum', value: 878 },
-      StaticFail: { name: 'StaticFail', value: 0 },
-      StaticDuration: { name: 'StaticDuration', value: 38.5 }
-   }]
-   // 转化为：
+ * const data = [{
+ *   ProjectName: { name: 'ProjectName', value: '研发平台' },
+ *   PagePv: { name: 'PagePv', value: 152 },
+ *   PageUv: { name: 'PageUv', value: 7 },
+ *   Score: { name: 'Score', value: 93.92 },
+ *   PageDuration: { name: 'PageDuration', value: 1281.58 },
+ *   PageError: { name: 'PageError', value: 2 },
+ * }];
+ *
+ * flattenPreData(data, 'ProjectName');
+ *
+ * // 输出
  * {
- *   '研发平台': {
-        ProjectName: '研发平台',
-        PagePv: 152,
-        PageUv: 7,
-        Score: 93.92,
-        PageDuration: 1281.58,
-        PageError: 2,
-      }
-    }
-    ```
+ *   研发平台: {
+ *     ProjectName: '研发平台',
+ *     PagePv: 152,
+ *     PageUv: 7,
+ *     Score: 93.92,
+ *     PageDuration: 1281.58,
+ *     PageError: 2,
+ *   },
+ * };
  */
 export function flattenPreData(preDataList: Array<any>, key: string) {
   const preDataMap = preDataList.reduce((acc, item) => {
