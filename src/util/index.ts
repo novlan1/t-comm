@@ -133,3 +133,44 @@ export function getThousandSeparator2(value) {
   const reg = /\B(?=(\d{3})+\b)/g;
   return `${value}`.replace(reg, ',');
 }
+
+/**
+ * 获取提交信息
+ * @returns {Object} 提交对象
+ *
+ * @example
+ * getCommitInfo()
+ * {
+ *   author: 'novlan1',
+ *   message: ' 优化一部分文档',
+ *   hash: '0cb71f9',
+ *   date: '2022-10-02 10:34:31 +0800',
+ *   timeStamp: '1664678071',
+ *   branch: 'master'
+ * }
+ */
+export function getCommitInfo() {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { execSync } = require('child_process');
+  const command = 'git log --no-merges -1 \
+  --date=iso --pretty=format:\'{"author": "%aN","message": "%s", "hash": "%h", "date": "%ad", "timeStamp": "%at"},\' \
+  $@ | \
+  perl -pe \'BEGIN{print "["}; END{print "]\n"}\' | \
+  perl -pe \'s/},]/}]/\'';
+  const stdout = execSync(command, {
+    encoding: 'utf-8',
+  });
+
+  const info = Object.assign({}, JSON.parse(stdout)[0], {
+    branch: execSync('git symbolic-ref --short -q HEAD', {
+      encoding: 'utf-8',
+    }).replace(/\n$/, ''),
+  });
+
+
+  const res = Object.assign({}, info, {
+    message:
+    info.message.split(':')[1] || info.message.split('：')[1] || '',
+  });
+  return res;
+}
