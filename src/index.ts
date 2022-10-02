@@ -14,6 +14,7 @@ export * from './rainbow';
 export * from './tgit';
 export * from './toc';
 export * from './url';
+export * from './util';
 export * from './validate';
 export * from './version-tip';
 export * from './wecom-robot';
