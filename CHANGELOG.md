@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.1.3](https://github.com/novlan1/t-comm/compare/v0.1.2...v0.1.3) (2022-10-02)
+
+
+### Features
+
+* 导出util ([93f75eb](https://github.com/novlan1/t-comm/commit/93f75eb86b79b671ea91ea531292a7c0d7104271))
+
+
+
 ## [0.1.2](https://github.com/novlan1/t-comm/compare/v0.1.1...v0.1.2) (2022-10-02)
 
 
