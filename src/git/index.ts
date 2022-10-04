@@ -84,6 +84,7 @@ export function getGitLastTag() {
  * @returns {string} tag至今的提交数目
  */
 export function getGitCommitsBeforeTag(tag) {
+  if (!tag) return '0';
   return execCommand(`git log ${tag}...HEAD --no-merges --oneline | wc -l`);
 }
 
