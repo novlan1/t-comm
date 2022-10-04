@@ -1,26 +1,24 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 import { saveBase64ImgToFile } from '../node-img';
 
 /**
  * 绘制多张图
- * @param param0 imgs 多张图片，sizeOf require('image-size')，canvasLibrary require('canvas'), require('fs'), require('path')
- * @returns 图片url
+ * @param {object} config 输入参数
+ * @param {Array<string>} config.imgs base64图片列表
+ * @returns {string} 图片url
+ *
  * @example
- * ```ts
+ *
  * mergeMultiCanvasPic({
  *   imgs: [img, img2, img3],
- *   sizeOf: require('image-size'),
- *   canvasLibrary: require('canvas'),
- *   path: require('path'),
- *   fs: require('fs'),
  * })
- * ```
  */
 export async function mergeMultiCanvasPic({
   imgs,
-  sizeOf,
-  canvasLibrary,
-  path,
 }) {
+  const path = require('path');
+  const sizeOf = require('image-size');
+  const canvasLibrary = require('canvas');
   const { createCanvas, loadImage } = canvasLibrary;
 
   const getSavePath = i => path.resolve(__dirname, `${i}.png`);

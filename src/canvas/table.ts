@@ -14,38 +14,60 @@ function parseCellValue(val) {
 
 /**
  * 创建canvas的table
- * @param param0
- * data格式如下
- * [{  Request: {
-        value: 854,
-        name: 'Request',
-        idx: 19,
-        lastIdx: 19,
-        isMax: false,
-        isMin: false,
-        isSecondMax: false,
-        isSecondMin: true
-      },
-     {
-       HTTP: {
-        value: 204,
-        name: 'HTTP',
-        idx: 1,
-        lastIdx: 1,
-        isMax: false,
-        isMin: false,
-        isSecondMax: true,
-        isSecondMin: false
-      }
-    }]
+ * @param {object} config 输入配置
+ * @param {Array<object>} config.data 输入数据
+ * @param {Array<string>} config.headers 表头列表
+ * @param {Array<number>} config.cellWidthList 每一格的宽度列表
+ * @param {string} config.title 标题
+ * @param {Function} config.createCanvas 创建canvas方法
+ * @returns {string} 图片url
+ * @example
  *
- * @returns 图片url
+ * const tableData = [
+ *   {
+ *     Request: {
+ *       value: 854,
+ *       name: 'Request',
+ *       idx: 19,
+ *       lastIdx: 19,
+ *       isMax: false,
+ *       isMin: false,
+ *       isSecondMax: false,
+ *       isSecondMin: true,
+ *     },
+ *   },
+ *   {
+ *     HTTP: {
+ *       value: 204,
+ *       name: 'HTTP',
+ *       idx: 1,
+ *       lastIdx: 1,
+ *       isMax: false,
+ *       isMin: false,
+ *       isSecondMax: true,
+ *       isSecondMin: false,
+ *     },
+ *   },
+ * ];
+ *
+ * createCanvasTable({
+ *   data: tableData,
+ *   headers: getHeaders(tableData),
+ *   title: `007日报 ${date}`,
+ *   createCanvas: require('canvas').createCanvas,
+ *   cellWidthList: [
+ *     95,
+ *     65,
+ *     65,
+ *     65,
+ *   ],
+ * });
  */
 export function createCanvasTable({
   data,
   headers,
-  title,
   cellWidthList,
+  title,
   createCanvas,
 }): {
     createCanvas: Function
