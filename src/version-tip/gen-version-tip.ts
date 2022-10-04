@@ -1,21 +1,23 @@
-async function generatePublishInfo({
-  version: targetVersion,
-  repoLink,
+/* eslint-disable @typescript-eslint/no-require-imports */
+
+
+function generatePublishInfo({
   appName,
+  version: targetVersion,
   homepage,
+  repoLink,
   issueLink,
-  readmeFilePath,
+  changeLogFilePath,
 }) {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
   const fs = require('fs');
-  if (!fs.existsSync(readmeFilePath)) {
+  if (!fs.existsSync(changeLogFilePath)) {
     console.log(
       '\x1b[33m%s\x1b[0m',
-      `未找到 ${readmeFilePath} ，请使用 npm run changelog 生成。`,
+      `未找到 ${changeLogFilePath} ，请先生成 changeLog。`,
     );
     return '';
   }
-  const changelogStr = fs.readFileSync(readmeFilePath, 'utf8');
+  const changelogStr = fs.readFileSync(changeLogFilePath, 'utf8');
   const currentVersion = changelogStr.match(new RegExp(
     `(?<=### \\[${targetVersion}\\].*\n).*?(?=\n##+ \\[?\\d+.\\d+.\\d+)`,
     's',
@@ -46,10 +48,38 @@ async function generatePublishInfo({
   return content;
 }
 
-export function genVersionTip({ readmeFilePath, appInfo }) {
+/**
+ * 生成版本信息，可以用来发送到群聊中
+ * @param {object} config 配置信息
+ * @param {string} config.changeLogFilePath changelog文件地址
+ * @param {object} config.appInfo package.json信息
+ * @return {string} 版本信息
+ * @example
+ *
+ * const appInfo = require(`${rootPath}/package.json`);
+ * const changeLogFilePath = `${rootPath}/CHANGELOG.md`;
+ *
+ * const content = genVersionTip({
+ *   changeLogFilePath,
+ *   appInfo,
+ * });
+ */
+export function genVersionTip({ changeLogFilePath, appInfo }: {
+  changeLogFilePath: string
+  appInfo: {
+    name: string
+    version?: string
+    homepage?: string
+    bugs?: {
+      url: string
+    }
+    repository?: {
+      url: string
+    }
+  }
+}): string {
   const { name: appName, version, homepage = '', bugs, repository } = appInfo;
 
-  // const repoName = '';
   let issueLink = '';
   let repoLink = '';
   if (bugs?.url) {
@@ -57,15 +87,14 @@ export function genVersionTip({ readmeFilePath, appInfo }) {
   }
   if (repository?.url) {
     repoLink = repository.url;
-    // repoName = repoLink.match(/(?<=com\/).+/);
   }
 
   return generatePublishInfo({
-    version,
-    repoLink,
     appName,
+    version,
     homepage,
+    repoLink,
     issueLink,
-    readmeFilePath,
+    changeLogFilePath,
   });
 }
