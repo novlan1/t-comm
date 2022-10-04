@@ -5136,7 +5136,7 @@ createCanvasTable({
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="css_css.ts.html">css/css.ts</a>, <a href="css_css.ts.html#line12">line 12</a>
+        <a href="css_css.ts.html">css/css.ts</a>, <a href="css_css.ts.html#line11">line 11</a>
     </li></ul></dd>
     
 
@@ -5189,9 +5189,7 @@ createCanvasTable({
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>```ts
-removeCss('https://xxx.css')
-```</code></pre>
+    <pre class="prettyprint"><code>removeCss('https://xxx.css')</code></pre>
 
 
 
@@ -5225,6 +5223,11 @@ removeCss('https://xxx.css')
             
 
             <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
             
             </td>
 
@@ -5262,7 +5265,7 @@ removeCss('https://xxx.css')
 
     
 
-    <h4 class="name" id="getMonthDay"><span class="type-signature"></span>getMonthDay<span class="signature">(year, month)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getMonthDay"><span class="type-signature"></span>getMonthDay<span class="signature">(year, month)</span><span class="type-signature"> &rarr; {number}</span></h4>
 
     
 
@@ -5314,8 +5317,9 @@ removeCss('https://xxx.css')
 
 
 <div class="description usertext">
-    <p>获取一个月有多少天</p>
-<p>new Date()第3个参数默认为1，就是每个月的1号，把它设置为0时， new Date()会返回上一个月的最后一天，然后通过getDate()方法得到天数</p>
+    <p>获取一个月有多少天<br>
+原理：new Date()第2个参数默认为1，就是每个月的1号，把它设置为0时，<br>
+new Date()会返回上一个月的最后一天，然后通过getDate()方法得到天数</p>
 </div>
 
 
@@ -5328,11 +5332,11 @@ removeCss('https://xxx.css')
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>```ts
-getMonthDay(2022, 2) // 28
+    <pre class="prettyprint"><code>getMonthDay(2022, 2) // 28
+
 getMonthDay(2022, 3) // 31
-getMonthDay(2022, 4) // 30
-```</code></pre>
+
+getMonthDay(2022, 4) // 30</code></pre>
 
 
 
@@ -5367,6 +5371,11 @@ getMonthDay(2022, 4) // 30
 
             <td class="type">
             
+                
+<span class="param-type">string</span>
+
+
+            
             </td>
 
             
@@ -5384,6 +5393,11 @@ getMonthDay(2022, 4) // 30
             
 
             <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
             
             </td>
 
@@ -5422,6 +5436,18 @@ getMonthDay(2022, 4) // 30
 
 
 
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+
+
+    </dd>
+</dl>
+
     
 
 
@@ -5431,7 +5457,7 @@ getMonthDay(2022, 4) // 30
 
     
 
-    <h4 class="name" id="getMonthDay2"><span class="type-signature"></span>getMonthDay2<span class="signature">(year, month)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getMonthDay2"><span class="type-signature"></span>getMonthDay2<span class="signature">(year, month)</span><span class="type-signature"> &rarr; {number}</span></h4>
 
     
 
@@ -5484,7 +5510,7 @@ getMonthDay(2022, 4) // 30
 
 <div class="description usertext">
     <p>获取一个月有多少天</p>
-<p>把每月的天数写在数组中，再判断时闰年还是平年确定2月分的天数</p>
+<p>原理：把每月的天数写在数组中，再判断时闰年还是平年确定2月分的天数</p>
 </div>
 
 
@@ -5497,11 +5523,11 @@ getMonthDay(2022, 4) // 30
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>```ts
-getMonthDay2(2022, 2) // 28
+    <pre class="prettyprint"><code>getMonthDay2(2022, 2) // 28
+
 getMonthDay2(2022, 3) // 31
-getMonthDay2(2022, 4) // 30
-```</code></pre>
+
+getMonthDay2(2022, 4) // 30</code></pre>
 
 
 
@@ -5536,6 +5562,11 @@ getMonthDay2(2022, 4) // 30
 
             <td class="type">
             
+                
+<span class="param-type">string</span>
+
+
+            
             </td>
 
             
@@ -5553,6 +5584,11 @@ getMonthDay2(2022, 4) // 30
             
 
             <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
             
             </td>
 
@@ -5591,6 +5627,18 @@ getMonthDay2(2022, 4) // 30
 
 
 
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+
+
+    </dd>
+</dl>
+
     
 
 
@@ -5600,7 +5648,7 @@ getMonthDay2(2022, 4) // 30
 
     
 
-    <h4 class="name" id="isSameWeek"><span class="type-signature"></span>isSameWeek<span class="signature">(date1, date2)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="isSameWeek"><span class="type-signature"></span>isSameWeek<span class="signature">(date1, date2)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
 
     
 
@@ -5612,7 +5660,7 @@ getMonthDay2(2022, 4) // 30
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="date_date.ts.html">date/date.ts</a>, <a href="date_date.ts.html#line67">line 67</a>
+        <a href="date_date.ts.html">date/date.ts</a>, <a href="date_date.ts.html#line71">line 71</a>
     </li></ul></dd>
     
 
@@ -5653,7 +5701,7 @@ getMonthDay2(2022, 4) // 30
 
 <div class="description usertext">
     <p>判断两个日期是否属于同一周</p>
-<p>把两个日期均转换到周一，比较转换后的两日期是否相同。</p>
+<p>原理：把两个日期均转换到周一，比较转换后的两日期是否相同。</p>
 </div>
 
 
@@ -5666,10 +5714,13 @@ getMonthDay2(2022, 4) // 30
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>```ts
-isSameWeek(1601308800000, 1601395200000) // true
-   isSameWeek(1601308800000, 1601913600000) // false
-```</code></pre>
+    <pre class="prettyprint"><code>isSameWeek(1601308800000, 1601395200000)
+
+// true
+
+isSameWeek(1601308800000, 1601913600000)
+
+// false</code></pre>
 
 
 
@@ -5704,6 +5755,11 @@ isSameWeek(1601308800000, 1601395200000) // true
 
             <td class="type">
             
+                
+<span class="param-type">number</span>
+
+
+            
             </td>
 
             
@@ -5721,6 +5777,11 @@ isSameWeek(1601308800000, 1601395200000) // true
             
 
             <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
             
             </td>
 
@@ -5759,6 +5820,18 @@ isSameWeek(1601308800000, 1601395200000) // true
 
 
 
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
     
 
 
@@ -5768,7 +5841,7 @@ isSameWeek(1601308800000, 1601395200000) // true
 
     
 
-    <h4 class="name" id="timeStampFormat"><span class="type-signature"></span>timeStampFormat<span class="signature">(timestamp, fmt, defaultval)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    <h4 class="name" id="timeStampFormat"><span class="type-signature"></span>timeStampFormat<span class="signature">(timestamp, fmt, defaultVal<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
 
@@ -5780,7 +5853,7 @@ isSameWeek(1601308800000, 1601395200000) // true
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="date_time.ts.html">date/time.ts</a>, <a href="date_time.ts.html#line13">line 13</a>
+        <a href="date_time.ts.html">date/time.ts</a>, <a href="date_time.ts.html#line16">line 16</a>
     </li></ul></dd>
     
 
@@ -5834,7 +5907,10 @@ isSameWeek(1601308800000, 1601395200000) // true
     <h5>Example</h5>
     
     <pre class="prettyprint"><code>const stamp = new Date('2020-11-27 8:23:24').getTime();
-  const res = timeStampFormat(stamp, 'yyyy-MM-dd hh:mm:ss') // 2020-11-27 08:23:24</code></pre>
+
+const res = timeStampFormat(stamp, 'yyyy-MM-dd hh:mm:ss')
+
+// 2020-11-27 08:23:24</code></pre>
 
 
 
@@ -5851,6 +5927,8 @@ isSameWeek(1601308800000, 1601395200000) // true
 
         <th>Type</th>
 
+        
+        <th>Attributes</th>
         
 
         
@@ -5877,6 +5955,14 @@ isSameWeek(1601308800000, 1601395200000) // true
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
@@ -5900,6 +5986,14 @@ isSameWeek(1601308800000, 1601395200000) // true
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
@@ -5910,7 +6004,7 @@ isSameWeek(1601308800000, 1601395200000) // true
 
         <tr>
             
-                <td class="name"><code>defaultval</code></td>
+                <td class="name"><code>defaultVal</code></td>
             
 
             <td class="type">
@@ -5922,6 +6016,16 @@ isSameWeek(1601308800000, 1601395200000) // true
             
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -5990,7 +6094,7 @@ isSameWeek(1601308800000, 1601395200000) // true
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="date_time.ts.html">date/time.ts</a>, <a href="date_time.ts.html#line57">line 57</a>
+        <a href="date_time.ts.html">date/time.ts</a>, <a href="date_time.ts.html#line61">line 61</a>
     </li></ul></dd>
     
 
@@ -6043,11 +6147,11 @@ isSameWeek(1601308800000, 1601395200000) // true
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>```ts
-  const date = new Date('2020-11-27 8:23:24');
+    <pre class="prettyprint"><code>const date = new Date('2020-11-27 8:23:24');
 
-  const res = dateFormat(date, 'yyyy-MM-dd hh:mm:ss') // 2020-11-27 08:23:24
-  ```</code></pre>
+const res = dateFormat(date, 'yyyy-MM-dd hh:mm:ss')
+
+// 2020-11-27 08:23:24</code></pre>
 
 
 
@@ -6180,7 +6284,7 @@ isSameWeek(1601308800000, 1601395200000) // true
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="date_time.ts.html">date/time.ts</a>, <a href="date_time.ts.html#line71">line 71</a>
+        <a href="date_time.ts.html">date/time.ts</a>, <a href="date_time.ts.html#line78">line 78</a>
     </li></ul></dd>
     
 
@@ -6234,7 +6338,10 @@ isSameWeek(1601308800000, 1601395200000) // true
     <h5>Example</h5>
     
     <pre class="prettyprint"><code>const date = new Date('2020-11-27 8:23:24');
-  const res = parseTime(date, 'yyyy-MM-dd hh:mm:ss') // 2020-11-27 08:23:24</code></pre>
+
+const res = parseTime(date, 'yyyy-MM-dd hh:mm:ss')
+
+// 2020-11-27 08:23:24</code></pre>
 
 
 
@@ -6286,7 +6393,7 @@ isSameWeek(1601308800000, 1601395200000) // true
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>输入日期</p></td>
         </tr>
 
     
@@ -6309,7 +6416,7 @@ isSameWeek(1601308800000, 1601395200000) // true
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>时间格式</p></td>
         </tr>
 
     
@@ -6376,7 +6483,7 @@ isSameWeek(1601308800000, 1601395200000) // true
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="date_time.ts.html">date/time.ts</a>, <a href="date_time.ts.html#line120">line 120</a>
+        <a href="date_time.ts.html">date/time.ts</a>, <a href="date_time.ts.html#line129">line 129</a>
     </li></ul></dd>
     
 
@@ -6430,10 +6537,12 @@ isSameWeek(1601308800000, 1601395200000) // true
     <h5>Example</h5>
     
     <pre class="prettyprint"><code>const date = new Date('2020-11-27 8:23:24').getTime();
-  const res = getTimeAgo(date) // 1个月前
+getTimeAgo(date);
+// 1个月前
 
-  const date = new Date('2021-11-27 8:23:24').getTime();
-  const res = getTimeAgo(date) // 10个月后</code></pre>
+const date2 = new Date('2021-11-27 8:23:24').getTime();
+getTimeAgo(date2);
+// 10个月后</code></pre>
 
 
 
@@ -6543,7 +6652,7 @@ isSameWeek(1601308800000, 1601395200000) // true
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="date_time.ts.html">date/time.ts</a>, <a href="date_time.ts.html#line146">line 146</a>
+        <a href="date_time.ts.html">date/time.ts</a>, <a href="date_time.ts.html#line157">line 157</a>
     </li></ul></dd>
     
 
@@ -6596,10 +6705,12 @@ isSameWeek(1601308800000, 1601395200000) // true
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const res = getTimeAgoOrDate(Date.now() - 60 * 60 * 24 * 1 * 1000); // 1天前
-  const date = new Date('2018-07-13 17:54:01').getTime();
+    <pre class="prettyprint"><code>getTimeAgoOrDate(Date.now() - 60 * 60 * 24 * 1 * 1000);
+// 1天前
 
-  const res2 = getTimeAgoOrDate(date) // 7月13日17时54分</code></pre>
+const date = new Date('2018-07-13 17:54:01').getTime();
+getTimeAgoOrDate(date);
+// 7月13日17时54分</code></pre>
 
 
 
@@ -6645,7 +6756,7 @@ isSameWeek(1601308800000, 1601395200000) // true
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>时间戳</p></td>
         </tr>
 
     
@@ -6668,7 +6779,7 @@ isSameWeek(1601308800000, 1601395200000) // true
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>时间格式</p></td>
         </tr>
 
     
@@ -6720,7 +6831,7 @@ isSameWeek(1601308800000, 1601395200000) // true
 
     
 
-    <h4 class="name" id="getCountDownObj"><span class="type-signature"></span>getCountDownObj<span class="signature">(time)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    <h4 class="name" id="getCountDownObj"><span class="type-signature"></span>getCountDownObj<span class="signature">(time, maxUnit<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {object}</span></h4>
 
     
 
@@ -6732,7 +6843,7 @@ isSameWeek(1601308800000, 1601395200000) // true
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="date_time.ts.html">date/time.ts</a>, <a href="date_time.ts.html#line184">line 184</a>
+        <a href="date_time.ts.html">date/time.ts</a>, <a href="date_time.ts.html#line199">line 199</a>
     </li></ul></dd>
     
 
@@ -6785,8 +6896,11 @@ isSameWeek(1601308800000, 1601395200000) // true
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>getCountDownObj(100) // {day: 0, hour: 0, minute: 1, second: 40}
-getCountDownObj(1*24*60*60+200) // {day: 1, hour: 0, minute: 3, second: 20}</code></pre>
+    <pre class="prettyprint"><code>getCountDownObj(100)
+// { day: 0, hour: 0, minute: 1, second: 40 }
+
+getCountDownObj(1*24*60*60+200)
+// { day: 1, hour: 0, minute: 3, second: 20 }</code></pre>
 
 
 
@@ -6803,6 +6917,8 @@ getCountDownObj(1*24*60*60+200) // {day: 1, hour: 0, minute: 3, second: 20}</cod
 
         <th>Type</th>
 
+        
+        <th>Attributes</th>
         
 
         
@@ -6821,13 +6937,68 @@ getCountDownObj(1*24*60*60+200) // {day: 1, hour: 0, minute: 3, second: 20}</cod
 
             <td class="type">
             
+                
+<span class="param-type">string</span>
+
+
+            
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
             
 
             
 
             <td class="description last"><p>剩余时间</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>maxUnit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">SECOND</span>
+|
+
+<span class="param-type">MINUTE</span>
+|
+
+<span class="param-type">HOUR</span>
+|
+
+<span class="param-type">DAY</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>最大单位</p></td>
         </tr>
 
     
@@ -6853,7 +7024,7 @@ getCountDownObj(1*24*60*60+200) // {day: 1, hour: 0, minute: 3, second: 20}</cod
 
         
 <div class="param-desc">
-    <p>} 剩余时间的描述对象</p>
+    <p>剩余时间的描述对象</p>
 </div>
 
 
