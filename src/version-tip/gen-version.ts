@@ -1,63 +1,11 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
+import {
+  getGitLastTag,
+  getGitCommitsBeforeTag,
+  getGitTagTime,
+} from '../git';
 
-
-function execCommand(command: string, root?: string): string {
-  if (!root) {
-    root = process.cwd();
-  }
-  const { execSync } = require('child_process');
-  return (
-    execSync(command, {
-      cwd: root,
-      encoding: 'utf-8',
-      stdio: 'pipe',
-    })
-      .split('\n')[0]
-      ?.trim() || ''
-  );
-}
-
-/**
- * 获取最新tag
- * @private
- * @returns {string} 最新tag
- */
-function getLastTag() {
-  const fakeFirstTag = execCommand('git tag -l');
-  console.log('\x1B[32m%s\x1B[0m', `fakeFirstTag 为 ${fakeFirstTag}`);
-  if (!fakeFirstTag) return '';
-
-  // 不能使用`git tag | head -1`，这个命令不准
-  const command = 'git describe --abbrev=0';
-
-  const tag = execCommand(command);
-  return tag;
-}
-
-
-/**
- * 获取tag到head的提交数目
- * @private
- * @param {string} tag git标签
- * @returns {string} tag至今的提交数目
- */
-function getCommitsBeforeTag(tag) {
-  const command = `git log ${tag}...HEAD --no-merges --oneline | wc -l`;
-  const commits = execCommand(command);
-  return commits;
-}
-
-/**
- * 获取打标签的时间
- * @private
- * @param {string} tag git标签
- * @returns {string} 标签时间
- */
-function getTagTime(tag) {
-  const command = `git log -1 --format=%ai ${tag} | cat`;
-  const tagTime = execCommand(command);
-  return tagTime;
-}
+import { execCommand } from '../util';
 
 
 function getTimeStampFromDate(date: string) {
@@ -106,7 +54,7 @@ export function genVersion({ root }) {
     return;
   }
 
-  const tag = getLastTag();
+  const tag = getGitLastTag();
   console.log('\x1B[32m%s\x1B[0m', `tag 为 ${tag}`);
 
   if (!tag) {
@@ -114,10 +62,10 @@ export function genVersion({ root }) {
     return true;
   }
 
-  const tagDate = getTagTime(tag);
+  const tagDate = getGitTagTime(tag);
   console.log('\x1B[32m%s\x1B[0m', `tagDate 为 ${tagDate}`);
 
-  const commits = getCommitsBeforeTag(tag);
+  const commits = getGitCommitsBeforeTag(tag);
   console.log('\x1B[32m%s\x1B[0m', `commits 为 ${commits}`);
 
   if (Number(commits) < 1) {

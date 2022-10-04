@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 /**
  * 判断数据是不是正则对象
  * @param {any} value - 输入数据
@@ -217,42 +218,23 @@ export function getThousandSeparator2(value) {
 
 
 /**
- * 获取提交信息
- * @returns {Object} 提交对象
- *
- * @example
- * getCommitInfo()
- * {
- *   author: 'novlan1',
- *   message: ' 优化一部分文档',
- *   hash: '0cb71f9',
- *   date: '2022-10-02 10:34:31 +0800',
- *   timeStamp: '1664678071',
- *   branch: 'master'
- * }
+ * nodejs中调用 child_process.execSync 执行命令
+ * @param {string} command 命令
+ * @param {string} root 执行命令的目录
+ * @returns {string} 命令执行结果
  */
-export function getCommitInfo() {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
+export function execCommand(command: string, root?: string): string {
+  if (!root) {
+    root = process.cwd();
+  }
   const { execSync } = require('child_process');
-  const command = 'git log --no-merges -1 \
-  --date=iso --pretty=format:\'{"author": "%aN","message": "%s", "hash": "%h", "date": "%ad", "timeStamp": "%at"},\' \
-  $@ | \
-  perl -pe \'BEGIN{print "["}; END{print "]\n"}\' | \
-  perl -pe \'s/},]/}]/\'';
-  const stdout = execSync(command, {
-    encoding: 'utf-8',
-  });
-
-  const info = Object.assign({}, JSON.parse(stdout)[0], {
-    branch: execSync('git symbolic-ref --short -q HEAD', {
+  return (
+    execSync(command, {
+      cwd: root,
       encoding: 'utf-8',
-    }).replace(/\n$/, ''),
-  });
-
-
-  const res = Object.assign({}, info, {
-    message:
-    info.message.split(':')[1] || info.message.split('：')[1] || '',
-  });
-  return res;
+      stdio: 'pipe',
+    })
+      .split('\n')[0]
+      ?.trim() || ''
+  );
 }

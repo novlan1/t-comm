@@ -6,6 +6,7 @@ export * from './cos';
 export * from './css';
 export * from './date';
 export * from './env';
+export * from './git';
 export * from './loader';
 export * from './morse-pwd';
 export * from './node-img';
