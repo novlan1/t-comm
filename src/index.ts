@@ -12,7 +12,6 @@ export * from './node-img';
 export * from './pipeline';
 export * from './rainbow';
 export * from './tgit';
-export * from './toc';
 export * from './url';
 export * from './util';
 export * from './validate';
