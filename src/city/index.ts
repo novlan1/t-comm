@@ -3,10 +3,10 @@ import { ProvType } from './type';
 
 /**
  * 获取城市列表
- * @param data - 原始数据[provData, cityData]
- * @param areaArray - 返回的数组
- * @param allProvFlag - 是否有不限的标识
- * @returns 城市列表
+ * @param {Object} data - 原始数据[provData, cityData]
+ * @param {Array} areaArray - 返回的数组
+ * @param {boolean} [allProvFlag] - 是否有不限的标识
+ * @returns {Array<object>} 城市列表
  */
 export function getAreaData(
   data = rawCityData,
@@ -60,55 +60,57 @@ export function getAreaData(
 }
 
 /**
-  * 获取如下格式的城市列表，包含`全国`、`全省`选项
-  * @returns {Array} 城市列表
-   @example
-   ```js
-   getAllAreaData();
-
-   [{
-      text: '全国',
-      code: '0',
-      children: [{
-        text: '不限',
-        code: '0',
-      }],
-    },
-     {
-       text: '北京',
-       code: '11',
-       children: [{
-         text: '北京',
-         code: '0',
-       }],
-     },
-     {
-       text: '天津',
-       code: '12',
-       children: [{
-         text: '天津',
-         code: '0',
-       }],
-     },
-     {
-       text: '河北',
-       code: '13',
-       children: [{
-         text: '全省',
-         code: '0'
-         },
-         {
-         text: '石家庄',
-         code: '1'
-       },
-       {
-         text: '唐山',
-         code: '2'
-       }]
-     }
-   ]
-   ```
-  */
+ * 获取如下格式的城市列表，包含`全国`、`全省`选项
+ * @returns {Array} 城市列表
+ * @example
+ *
+ * // 结果如下：
+ *
+ * getAllAreaData();
+ *
+ * [{
+ *   text: '全国',
+ *   code: '0',
+ *   children: [{
+ *     text: '不限',
+ *     code: '0',
+ *   }],
+ * },
+ * {
+ *   text: '北京',
+ *   code: '11',
+ *   children: [{
+ *     text: '北京',
+ *     code: '0',
+ *   }],
+ * },
+ * {
+ *   text: '天津',
+ *   code: '12',
+ *   children: [{
+ *     text: '天津',
+ *     code: '0',
+ *   }],
+ * },
+ * {
+ *   text: '河北',
+ *   code: '13',
+ *   children: [{
+ *     text: '全省',
+ *     code: '0',
+ *   },
+ *   {
+ *     text: '石家庄',
+ *     code: '1',
+ *   },
+ *   {
+ *     text: '唐山',
+ *     code: '2',
+ *   }],
+ * },
+ * ];
+ *
+ */
 export function getAllAreaData() {
   const areaArray: Array<ProvType> = [];
 
@@ -131,9 +133,9 @@ export function getAllAreaData() {
   * @return {Array} 包含省份、城市ID的数组
   *
   * @example
-  * ```js
-    getAreaCode('山东', '德州'); // ['37', '14']
-   ```
+  *
+  * getAreaCode('山东', '德州');
+  * // ['37', '14']
   */
 export function getAreaCode(provinceStr, cityStr) {
   if (typeof provinceStr === 'undefined') {
@@ -167,10 +169,12 @@ export function getAreaCode(provinceStr, cityStr) {
   * @returns {string} 省份名字
   *
   * @example
-  * ```js
-   getProvName(37) // 山东
-   getCityName(11) // 北京
-   ```
+  *
+  * getProvName(37)
+  * // 山东
+  *
+  * getCityName(11)
+  * // 北京
   */
 export function getProvName(provinceId) {
   const provName = rawCityData.provData[provinceId];
@@ -184,10 +188,12 @@ export function getProvName(provinceId) {
   * @returns {string} 城市名字
   *
   * @example
-  *  ```js
-    getCityName(37, 14) // 德州
-    getCityName(11) // 北京
-    ```
+  *
+  * getCityName(37, 14)
+  * // 德州
+  *
+  * getCityName(11)
+  * // 北京
   */
 export function getCityName(provinceId, cityId) {
   const provName = rawCityData.provData[provinceId];
@@ -209,14 +215,19 @@ export function getCityName(provinceId, cityId) {
   * @return {Array} 包含省份、城市名字的数组
   *
   * @example
-  * ```js
-   getAreaName(37, 14) // ['山东', '德州']
-   getAreaName(11) // ['北京', '北京']
-   getAreaName(11, 0) // ['北京', '北京']
-   ```
+  *
+  * getAreaName(37, 14)
+  * // ['山东', '德州']
+  *
+  * getAreaName(11)
+  * // ['北京', '北京']
+  *
+  * getAreaName(11, 0)
+  * // ['北京', '北京']
   */
 export function getAreaName(provinceId, cityId) {
   const provName = getProvName(provinceId) || '';
   const cityName = getCityName(provinceId, cityId) || '';
   return [provName, cityName];
 }
+
