@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+
 /**
  * 密码学随机数
+ * @private
  */
 const randomNum = (crypto) => {
   const buf = crypto.randomBytes(6);
@@ -15,6 +18,7 @@ const sha1 = (secret, content, crypto) => crypto.createHmac('sha1', secret).upda
 
 /**
  * 获取API算法签名，默认sha1
+ * @private
  * @param secret
  * @param content
  * @param signMethod
@@ -31,10 +35,19 @@ const signatureGenerator = (secret, content, signMethod, crypto) => {
 
 /**
  * 请求签名Header生成
- * @param signInfo
+ * @private
+ * @param {object} signInfo 密钥信息
  */
-export function genRainbowHeaderSignature(signInfo) {
-  const { appID, userID, signMethod = 'sha1', secretKey, crypto } = signInfo;
+export function genRainbowHeaderSignature(signInfo: {
+  appID?: string
+  appId?: string
+  userID?: string
+  userId?: string
+  secretKey: string
+  signMethod?: string
+}) {
+  const crypto = require('crypto');
+  const { appID, userID, appId, userId, signMethod = 'sha1', secretKey } = signInfo;
 
   if (!secretKey) {
     return {};
@@ -42,8 +55,8 @@ export function genRainbowHeaderSignature(signInfo) {
 
   const rainbowSgnType = 'apisign';
   const rainbowVersion = '2020';
-  const rainbowAppId = appID;
-  const rainbowUserId = userID;
+  const rainbowAppId = appId || appID;
+  const rainbowUserId = userId || userID;
   const rainbowTimestamp = `${Math.ceil(new Date().getTime() / 1000)}`; // ms => s
   const rainbowNonce = `${randomNum(crypto)}`;
   const rainbowSgnMethod = signMethod;

@@ -9,35 +9,35 @@ interface ReqParam {
   url: string
   data: object
   secretInfo: SecretInfo
-  crypto: any
 }
 
 /**
- *
- * @param config - 配置信息
- * @returns 接口信息
+ * 基本请求
  * @private
+ * @param {object} config - 配置信息
+ * @returns {Promise} 请求Promise
  */
 export function baseRequestRainbow({
   url,
   data: reqData,
   secretInfo,
-  crypto,
-}: ReqParam) {
-  const baseUrl = BASE_URL;
-  const { appID, userID, secretKey, envName, groupName } = secretInfo;
-  const realSig = genRainbowHeaderSignature({
-    appID,
-    userID,
-    secretKey,
-    crypto,
-  });
-
+}: ReqParam): Promise<object> {
   return new Promise((resolve, reject) => {
+    const baseUrl = BASE_URL;
+    const { appID, appId, userID, userId, secretKey, envName, groupName } = secretInfo;
+    const realSig = genRainbowHeaderSignature({
+      appID,
+      appId,
+      userID,
+      userId,
+      secretKey,
+    });
+
+
     axios({
       url: `${baseUrl}${url}`,
       data: {
-        app_id: appID,
+        app_id: appId || appID,
         env_name: envName,
         group_name: groupName,
         ...reqData,

@@ -1,7 +1,11 @@
 export interface SecretInfo {
   // 密钥相关
-  appID: string
-  userID: string
+  appID?: string
+  appId?: string
+
+  userID?: string
+  userId?: string
+
   secretKey: string
   // 方便管理
   envName: string
@@ -25,5 +29,4 @@ export interface ModifyConfigParam {
   }
   valueType: ValueType
   secretInfo: SecretInfo
-  crypto: any
 }
