@@ -8907,7 +8907,7 @@ checkUAIsIOS() // true
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">number</span>
 
 
             
@@ -8930,7 +8930,7 @@ checkUAIsIOS() // true
             <td class="type">
             
                 
-<span class="param-type">SecretInfo</span>
+<span class="param-type">object</span>
 
 
             
@@ -8982,7 +8982,7 @@ checkUAIsIOS() // true
 
             
 
-            <td class="description last"><p>项目ID</p></td>
+            <td class="description last"><p>项目Id</p></td>
         </tr>
 
     
@@ -9005,7 +9005,7 @@ checkUAIsIOS() // true
 
             
 
-            <td class="description last"><p>用户ID</p></td>
+            <td class="description last"><p>用户Id</p></td>
         </tr>
 
     
@@ -9140,7 +9140,7 @@ checkUAIsIOS() // true
 
     
 
-    <h4 class="name" id="addRainbowKV"><span class="type-signature"></span>addRainbowKV<span class="signature">(config)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="addRainbowKV"><span class="type-signature"></span>addRainbowKV<span class="signature">(config)</span><span class="type-signature"> &rarr; {Promise.&lt;object>}</span></h4>
 
     
 
@@ -9152,7 +9152,7 @@ checkUAIsIOS() // true
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rainbow_rainbow-admin.ts.html">rainbow/rainbow-admin.ts</a>, <a href="rainbow_rainbow-admin.ts.html#line61">line 61</a>
+        <a href="rainbow_rainbow-admin.ts.html">rainbow/rainbow-admin.ts</a>, <a href="rainbow_rainbow-admin.ts.html#line89">line 89</a>
     </li></ul></dd>
     
 
@@ -9203,6 +9203,26 @@ checkUAIsIOS() // true
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>addRainbowKV({
+  keyValue: {
+    key: 'theKey',
+    value: 'theValue',
+  },
+  valueType: 2,
+  secretInfo: {
+    appId: 'xxx',
+    userId: 'xxx',
+    secretKey: 'xxx',
+    envName: 'prod',
+    groupName: 'xxx',
+  }
+}).then(() => {
+
+})</code></pre>
+
+
 
 
     <h5>Parameters:</h5>
@@ -9235,13 +9255,326 @@ checkUAIsIOS() // true
 
             <td class="type">
             
+                
+<span class="param-type">object</span>
+
+
+            
             </td>
 
             
 
             
 
-            <td class="description last"><p>配置信息</p></td>
+            <td class="description last"><p>配置信息</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>keyValue</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>配置对象</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>配置的key</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>配置的value</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>valueType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>配置类型，1: NUMBER, 2: STRING, 3: TEXT, 4: JSON, 5: XML, 18: 日期, 20: yaml</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>secretInfo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>密钥信息</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>appId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>项目Id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>用户Id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>secretKey</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>密钥</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>envName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>配置环境</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>groupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>配置组</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -9272,6 +9605,18 @@ checkUAIsIOS() // true
 
 
 
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;object></span>
+
+
+    </dd>
+</dl>
+
     
 
 
@@ -9281,7 +9626,7 @@ checkUAIsIOS() // true
 
     
 
-    <h4 class="name" id="updateRainbowKV"><span class="type-signature"></span>updateRainbowKV<span class="signature">(config)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="updateRainbowKV"><span class="type-signature"></span>updateRainbowKV<span class="signature">(config)</span><span class="type-signature"> &rarr; {Promise.&lt;object>}</span></h4>
 
     
 
@@ -9293,7 +9638,7 @@ checkUAIsIOS() // true
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rainbow_rainbow-admin.ts.html">rainbow/rainbow-admin.ts</a>, <a href="rainbow_rainbow-admin.ts.html#line84">line 84</a>
+        <a href="rainbow_rainbow-admin.ts.html">rainbow/rainbow-admin.ts</a>, <a href="rainbow_rainbow-admin.ts.html#line139">line 139</a>
     </li></ul></dd>
     
 
@@ -9344,6 +9689,26 @@ checkUAIsIOS() // true
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>updateRainbowKV({
+  keyValue: {
+    key: 'theKey',
+    value: 'theValue',
+  },
+  valueType: 2,
+  secretInfo: {
+    appId: 'xxx',
+    userId: 'xxx',
+    secretKey: 'xxx',
+    envName: 'prod',
+    groupName: 'xxx',
+  }
+}).then(() => {
+
+})</code></pre>
+
+
 
 
     <h5>Parameters:</h5>
@@ -9376,13 +9741,326 @@ checkUAIsIOS() // true
 
             <td class="type">
             
+                
+<span class="param-type">object</span>
+
+
+            
             </td>
 
             
 
             
 
-            <td class="description last"><p>配置信息</p></td>
+            <td class="description last"><p>配置信息</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>keyValue</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>配置对象</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>配置的key</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>配置的value</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>valueType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>配置类型，1: NUMBER, 2: STRING, 3: TEXT, 4: JSON, 5: XML, 18: 日期, 20: yaml</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>secretInfo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>密钥信息</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>appId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>项目Id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>用户Id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>secretKey</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>密钥</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>envName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>配置环境</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>groupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>配置组</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -9413,6 +10091,18 @@ checkUAIsIOS() // true
 
 
 
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;object></span>
+
+
+    </dd>
+</dl>
+
     
 
 
@@ -9422,7 +10112,7 @@ checkUAIsIOS() // true
 
     
 
-    <h4 class="name" id="createRainbowPublishJob"><span class="type-signature"></span>createRainbowPublishJob<span class="signature">(obj)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="createRainbowPublishJob"><span class="type-signature"></span>createRainbowPublishJob<span class="signature">(config)</span><span class="type-signature"> &rarr; {Promise.&lt;object>}</span></h4>
 
     
 
@@ -9434,7 +10124,7 @@ checkUAIsIOS() // true
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rainbow_rainbow-admin.ts.html">rainbow/rainbow-admin.ts</a>, <a href="rainbow_rainbow-admin.ts.html#line107">line 107</a>
+        <a href="rainbow_rainbow-admin.ts.html">rainbow/rainbow-admin.ts</a>, <a href="rainbow_rainbow-admin.ts.html#line183">line 183</a>
     </li></ul></dd>
     
 
@@ -9485,6 +10175,22 @@ checkUAIsIOS() // true
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>createRainbowPublishJob({
+  versionName: 'version',
+  secretInfo: {
+    appId: 'xxx',
+    userId: 'xxx',
+    secretKey: 'xxx',
+    envName: 'prod',
+    groupName: 'xxx',
+  }
+}).then(() => {
+
+})</code></pre>
+
+
 
 
     <h5>Parameters:</h5>
@@ -9512,10 +10218,15 @@ checkUAIsIOS() // true
 
         <tr>
             
-                <td class="name"><code>obj</code></td>
+                <td class="name"><code>config</code></td>
             
 
             <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
             
             </td>
 
@@ -9523,7 +10234,220 @@ checkUAIsIOS() // true
 
             
 
-            <td class="description last"><p>配置信息</p></td>
+            <td class="description last"><p>配置信息</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>versionName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>版本信息</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>secretInfo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>密钥信息</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>appId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>项目Id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>用户Id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>secretKey</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>密钥</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>envName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>配置环境</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>groupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>配置组</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -9554,6 +10478,18 @@ checkUAIsIOS() // true
 
 
 
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;object></span>
+
+
+    </dd>
+</dl>
+
     
 
 
@@ -9563,7 +10499,7 @@ checkUAIsIOS() // true
 
     
 
-    <h4 class="name" id="publishRainbowTask"><span class="type-signature"></span>publishRainbowTask<span class="signature">(obj)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="publishRainbowTask"><span class="type-signature"></span>publishRainbowTask<span class="signature">(config)</span><span class="type-signature"> &rarr; {Promise.&lt;object>}</span></h4>
 
     
 
@@ -9575,7 +10511,7 @@ checkUAIsIOS() // true
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rainbow_rainbow-admin.ts.html">rainbow/rainbow-admin.ts</a>, <a href="rainbow_rainbow-admin.ts.html#line125">line 125</a>
+        <a href="rainbow_rainbow-admin.ts.html">rainbow/rainbow-admin.ts</a>, <a href="rainbow_rainbow-admin.ts.html#line222">line 222</a>
     </li></ul></dd>
     
 
@@ -9626,6 +10562,22 @@ checkUAIsIOS() // true
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>publishRainbowTask({
+  taskId: 'taskId',
+  secretInfo: {
+    appId: 'xxx',
+    userId: 'xxx',
+    secretKey: 'xxx',
+    envName: 'prod',
+    groupName: 'xxx',
+  }
+}).then(() => {
+
+})</code></pre>
+
+
 
 
     <h5>Parameters:</h5>
@@ -9653,10 +10605,15 @@ checkUAIsIOS() // true
 
         <tr>
             
-                <td class="name"><code>obj</code></td>
+                <td class="name"><code>config</code></td>
             
 
             <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
             
             </td>
 
@@ -9664,7 +10621,220 @@ checkUAIsIOS() // true
 
             
 
-            <td class="description last"><p>配置信息</p></td>
+            <td class="description last"><p>配置信息</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>taskId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>任务Id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>secretInfo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>密钥信息</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>appId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>项目Id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>用户Id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>secretKey</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>密钥</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>envName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>配置环境</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>groupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>配置组</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -9695,6 +10865,18 @@ checkUAIsIOS() // true
 
 
 
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;object></span>
+
+
+    </dd>
+</dl>
+
     
 
 
@@ -9704,7 +10886,7 @@ checkUAIsIOS() // true
 
     
 
-    <h4 class="name" id="closeRainbowTask"><span class="type-signature"></span>closeRainbowTask<span class="signature">(obj)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="closeRainbowTask"><span class="type-signature"></span>closeRainbowTask<span class="signature">(config)</span><span class="type-signature"> &rarr; {Promise.&lt;object>}</span></h4>
 
     
 
@@ -9716,7 +10898,7 @@ checkUAIsIOS() // true
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rainbow_rainbow-admin.ts.html">rainbow/rainbow-admin.ts</a>, <a href="rainbow_rainbow-admin.ts.html#line140">line 140</a>
+        <a href="rainbow_rainbow-admin.ts.html">rainbow/rainbow-admin.ts</a>, <a href="rainbow_rainbow-admin.ts.html#line258">line 258</a>
     </li></ul></dd>
     
 
@@ -9767,6 +10949,22 @@ checkUAIsIOS() // true
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>closeRainbowTask({
+  taskId: 'taskId',
+  secretInfo: {
+    appId: 'xxx',
+    userId: 'xxx',
+    secretKey: 'xxx',
+    envName: 'prod',
+    groupName: 'xxx',
+  }
+}).then(() => {
+
+})</code></pre>
+
+
 
 
     <h5>Parameters:</h5>
@@ -9794,10 +10992,15 @@ checkUAIsIOS() // true
 
         <tr>
             
-                <td class="name"><code>obj</code></td>
+                <td class="name"><code>config</code></td>
             
 
             <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
             
             </td>
 
@@ -9805,7 +11008,220 @@ checkUAIsIOS() // true
 
             
 
-            <td class="description last"><p>配置信息</p></td>
+            <td class="description last"><p>配置信息</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>taskId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>任务Id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>secretInfo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>密钥信息</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>appId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>项目Id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>用户Id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>secretKey</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>密钥</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>envName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>配置环境</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>groupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>配置组</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -9836,6 +11252,18 @@ checkUAIsIOS() // true
 
 
 
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;object></span>
+
+
+    </dd>
+</dl>
+
     
 
 
@@ -9845,7 +11273,7 @@ checkUAIsIOS() // true
 
     
 
-    <h4 class="name" id="updateRainbowKVAndPublish"><span class="type-signature"></span>updateRainbowKVAndPublish<span class="signature">(obj)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="updateRainbowKVAndPublish"><span class="type-signature"></span>updateRainbowKVAndPublish<span class="signature">(config)</span><span class="type-signature"> &rarr; {Promise.&lt;object>}</span></h4>
 
     
 
@@ -9857,7 +11285,7 @@ checkUAIsIOS() // true
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rainbow_rainbow-admin.ts.html">rainbow/rainbow-admin.ts</a>, <a href="rainbow_rainbow-admin.ts.html#line154">line 154</a>
+        <a href="rainbow_rainbow-admin.ts.html">rainbow/rainbow-admin.ts</a>, <a href="rainbow_rainbow-admin.ts.html#line297">line 297</a>
     </li></ul></dd>
     
 
@@ -9897,7 +11325,7 @@ checkUAIsIOS() // true
 
 
 <div class="description usertext">
-    <p>修改值并发布</p>
+    <p>更新或新增值并发布</p>
 </div>
 
 
@@ -9906,6 +11334,24 @@ checkUAIsIOS() // true
 
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>updateRainbowKVAndPublish({
+  key: 'key',
+  value: 'value',
+  valueType: 2,
+  secretInfo: {
+    appId: 'xxx',
+    userId: 'xxx',
+    secretKey: 'xxx',
+    envName: 'prod',
+    groupName: 'xxx',
+  }
+}).then(() => {
+
+})</code></pre>
 
 
 
@@ -9935,10 +11381,15 @@ checkUAIsIOS() // true
 
         <tr>
             
-                <td class="name"><code>obj</code></td>
+                <td class="name"><code>config</code></td>
             
 
             <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
             
             </td>
 
@@ -9946,7 +11397,266 @@ checkUAIsIOS() // true
 
             
 
-            <td class="description last"><p>配置信息</p></td>
+            <td class="description last"><p>配置信息</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>配置key</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>配置value</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>valueType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>配置类型，1: NUMBER, 2: STRING, 3: TEXT, 4: JSON, 5: XML, 18: 日期, 20: yaml</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>secretInfo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>密钥信息</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>appId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>项目Id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>用户Id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>secretKey</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>密钥</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>envName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>配置环境</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>groupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>配置组</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -9968,6 +11678,28 @@ checkUAIsIOS() // true
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>请求Promise</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;object></span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 
@@ -9988,7 +11720,7 @@ checkUAIsIOS() // true
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rainbow_rainbow-admin.ts.html">rainbow/rainbow-admin.ts</a>, <a href="rainbow_rainbow-admin.ts.html#line187">line 187</a>
+        <a href="rainbow_rainbow-admin.ts.html">rainbow/rainbow-admin.ts</a>, <a href="rainbow_rainbow-admin.ts.html#line349">line 349</a>
     </li></ul></dd>
     
 
@@ -10039,6 +11771,21 @@ checkUAIsIOS() // true
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>queryGroupInfo({
+  secretInfo: {
+    appId: 'xxx',
+    userId: 'xxx',
+    secretKey: 'xxx',
+    envName: 'prod',
+    groupName: 'xxx',
+  }
+}).then(() => {
+
+})</code></pre>
+
+
 
 
     <h5>Parameters:</h5>
@@ -10082,7 +11829,197 @@ checkUAIsIOS() // true
 
             
 
-            <td class="description last"><p>配置信息</p></td>
+            <td class="description last"><p>配置信息</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>secretInfo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>密钥信息</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>appId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>项目Id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>用户Id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>secretKey</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>密钥</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>envName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>配置环境</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>groupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>配置组</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -10146,7 +12083,7 @@ checkUAIsIOS() // true
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rainbow_rainbow-user.ts.html">rainbow/rainbow-user.ts</a>, <a href="rainbow_rainbow-user.ts.html#line19">line 19</a>
+        <a href="rainbow_rainbow-user.ts.html">rainbow/rainbow-user.ts</a>, <a href="rainbow_rainbow-user.ts.html#line26">line 26</a>
     </li></ul></dd>
     
 
@@ -10199,7 +12136,13 @@ checkUAIsIOS() // true
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>fetchRainbowConfig('test', { appId: 'xx', envName: 'prod', groupName: 'robot' })</code></pre>
+    <pre class="prettyprint"><code>fetchRainbowConfig('test', {
+  appId: 'xx',
+  envName: 'prod',
+  groupName: 'robot',
+}).then((resp) => {
+  console.log(resp)
+});</code></pre>
 
 
 
