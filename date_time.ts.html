@@ -259,6 +259,16 @@ export function getTimeAgoOrDate(time, format) {
  * getCountDownObj(1*24*60*60+200)
  * // { day: 1, hour: 0, minute: 3, second: 20 }
  *
+ * getCountDownObj(1 * 24 * 60 * 60 + 2 * 60 * 60 + 1 * 60 + 11, 'HOUR')
+ * // 结果 =>
+ * {
+ *   fHour: '26',
+ *   fMinute: '01',
+ *   fSecond: '11',
+ *   hour: 26,
+ *   minute: 1,
+ *   second: 11,
+ * }
  */
 export function getCountDownObj(
   time,
@@ -332,6 +342,7 @@ export function getCountDownObj(
   }
   return {};
 }
+
 </code></pre>
         </article>
     </section>

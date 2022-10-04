@@ -3034,7 +3034,7 @@ createCanvasTable({
 
     
 
-    <h4 class="name" id="getAreaData"><span class="type-signature"></span>getAreaData<span class="signature">(data, areaArray, allProvFlag)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getAreaData"><span class="type-signature"></span>getAreaData<span class="signature">(data, areaArray, allProvFlag<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Array.&lt;object>}</span></h4>
 
     
 
@@ -3112,6 +3112,8 @@ createCanvasTable({
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -3129,8 +3131,21 @@ createCanvasTable({
 
             <td class="type">
             
+                
+<span class="param-type">Object</span>
+
+
+            
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -3147,8 +3162,21 @@ createCanvasTable({
 
             <td class="type">
             
+                
+<span class="param-type">Array</span>
+
+
+            
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -3165,8 +3193,23 @@ createCanvasTable({
 
             <td class="type">
             
+                
+<span class="param-type">boolean</span>
+
+
+            
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -3202,6 +3245,18 @@ createCanvasTable({
 
 
 
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;object></span>
+
+
+    </dd>
+</dl>
+
     
 
 
@@ -3223,7 +3278,7 @@ createCanvasTable({
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="city_index.ts.html">city/index.ts</a>, <a href="city_index.ts.html#line101">line 101</a>
+        <a href="city_index.ts.html">city/index.ts</a>, <a href="city_index.ts.html#line103">line 103</a>
     </li></ul></dd>
     
 
@@ -3276,51 +3331,51 @@ createCanvasTable({
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>```js
-   getAllAreaData();
+    <pre class="prettyprint"><code>// 结果如下：
 
-   [{
-      text: '全国',
-      code: '0',
-      children: [{
-        text: '不限',
-        code: '0',
-      }],
-    },
-     {
-       text: '北京',
-       code: '11',
-       children: [{
-         text: '北京',
-         code: '0',
-       }],
-     },
-     {
-       text: '天津',
-       code: '12',
-       children: [{
-         text: '天津',
-         code: '0',
-       }],
-     },
-     {
-       text: '河北',
-       code: '13',
-       children: [{
-         text: '全省',
-         code: '0'
-         },
-         {
-         text: '石家庄',
-         code: '1'
-       },
-       {
-         text: '唐山',
-         code: '2'
-       }]
-     }
-   ]
-   ```</code></pre>
+getAllAreaData();
+
+[{
+  text: '全国',
+  code: '0',
+  children: [{
+    text: '不限',
+    code: '0',
+  }],
+},
+{
+  text: '北京',
+  code: '11',
+  children: [{
+    text: '北京',
+    code: '0',
+  }],
+},
+{
+  text: '天津',
+  code: '12',
+  children: [{
+    text: '天津',
+    code: '0',
+  }],
+},
+{
+  text: '河北',
+  code: '13',
+  children: [{
+    text: '全省',
+    code: '0',
+  },
+  {
+    text: '石家庄',
+    code: '1',
+  },
+  {
+    text: '唐山',
+    code: '2',
+  }],
+},
+];</code></pre>
 
 
 
@@ -3381,7 +3436,7 @@ createCanvasTable({
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="city_index.ts.html">city/index.ts</a>, <a href="city_index.ts.html#line124">line 124</a>
+        <a href="city_index.ts.html">city/index.ts</a>, <a href="city_index.ts.html#line126">line 126</a>
     </li></ul></dd>
     
 
@@ -3434,9 +3489,8 @@ createCanvasTable({
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>```js
-    getAreaCode('山东', '德州'); // ['37', '14']
-   ```</code></pre>
+    <pre class="prettyprint"><code>getAreaCode('山东', '德州');
+// ['37', '14']</code></pre>
 
 
 
@@ -3569,7 +3623,7 @@ createCanvasTable({
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="city_index.ts.html">city/index.ts</a>, <a href="city_index.ts.html#line157">line 157</a>
+        <a href="city_index.ts.html">city/index.ts</a>, <a href="city_index.ts.html#line161">line 161</a>
     </li></ul></dd>
     
 
@@ -3622,10 +3676,11 @@ createCanvasTable({
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>```js
-   getProvName(37) // 山东
-   getCityName(11) // 北京
-   ```</code></pre>
+    <pre class="prettyprint"><code>getProvName(37)
+// 山东
+
+getCityName(11)
+// 北京</code></pre>
 
 
 
@@ -3738,7 +3793,7 @@ createCanvasTable({
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="city_index.ts.html">city/index.ts</a>, <a href="city_index.ts.html#line173">line 173</a>
+        <a href="city_index.ts.html">city/index.ts</a>, <a href="city_index.ts.html#line179">line 179</a>
     </li></ul></dd>
     
 
@@ -3791,10 +3846,11 @@ createCanvasTable({
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>```js
-    getCityName(37, 14) // 德州
-    getCityName(11) // 北京
-    ```</code></pre>
+    <pre class="prettyprint"><code>getCityName(37, 14)
+// 德州
+
+getCityName(11)
+// 北京</code></pre>
 
 
 
@@ -3933,7 +3989,7 @@ createCanvasTable({
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="city_index.ts.html">city/index.ts</a>, <a href="city_index.ts.html#line198">line 198</a>
+        <a href="city_index.ts.html">city/index.ts</a>, <a href="city_index.ts.html#line208">line 208</a>
     </li></ul></dd>
     
 
@@ -3986,11 +4042,14 @@ createCanvasTable({
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>```js
-   getAreaName(37, 14) // ['山东', '德州']
-   getAreaName(11) // ['北京', '北京']
-   getAreaName(11, 0) // ['北京', '北京']
-   ```</code></pre>
+    <pre class="prettyprint"><code>getAreaName(37, 14)
+// ['山东', '德州']
+
+getAreaName(11)
+// ['北京', '北京']
+
+getAreaName(11, 0)
+// ['北京', '北京']</code></pre>
 
 
 
@@ -6929,7 +6988,7 @@ getTimeAgoOrDate(date);
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="date_time.ts.html">date/time.ts</a>, <a href="date_time.ts.html#line199">line 199</a>
+        <a href="date_time.ts.html">date/time.ts</a>, <a href="date_time.ts.html#line209">line 209</a>
     </li></ul></dd>
     
 
@@ -6986,7 +7045,18 @@ getTimeAgoOrDate(date);
 // { day: 0, hour: 0, minute: 1, second: 40 }
 
 getCountDownObj(1*24*60*60+200)
-// { day: 1, hour: 0, minute: 3, second: 20 }</code></pre>
+// { day: 1, hour: 0, minute: 3, second: 20 }
+
+getCountDownObj(1 * 24 * 60 * 60 + 2 * 60 * 60 + 1 * 60 + 11, 'HOUR')
+// 结果 =>
+{
+  fHour: '26',
+  fMinute: '01',
+  fSecond: '11',
+  hour: 26,
+  minute: 1,
+  second: 11,
+}</code></pre>
 
 
 
