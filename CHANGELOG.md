@@ -1,5 +1,16 @@
 # 工具库更新日志
 
+## [0.1.5](https://github.com/novlan1/t-comm/compare/v0.1.4...v0.1.5) (2022-10-04)
+
+
+### Features
+
+* 删除toc ([a19d3ba](https://github.com/novlan1/t-comm/commit/a19d3ba54c8277038b83c8f1ef6efcc9e9d2e71f))
+* 添加versionrc ([0a0a21a](https://github.com/novlan1/t-comm/commit/0a0a21a34c2460d4cf89ffea34eff4b55d729a37))
+* 优化gen-version ([da31660](https://github.com/novlan1/t-comm/commit/da31660dbcd74ab9358d8ac4f564fb75d925f29d))
+
+
+
 ## [0.1.4](https://github.com/novlan1/t-comm/compare/v0.1.3...v0.1.4) (2022-10-04)
 
 
