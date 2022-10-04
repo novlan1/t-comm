@@ -7,17 +7,17 @@ function generatePublishInfo({
   homepage,
   repoLink,
   issueLink,
-  changeLogFilePath,
+  readmeFilePath,
 }) {
   const fs = require('fs');
-  if (!fs.existsSync(changeLogFilePath)) {
+  if (!fs.existsSync(readmeFilePath)) {
     console.log(
       '\x1b[33m%s\x1b[0m',
-      `未找到 ${changeLogFilePath} ，请先生成 changeLog。`,
+      `未找到 ${readmeFilePath} ，请先生成 changeLog。`,
     );
     return '';
   }
-  const changelogStr = fs.readFileSync(changeLogFilePath, 'utf8');
+  const changelogStr = fs.readFileSync(readmeFilePath, 'utf8');
   const currentVersion = changelogStr.match(new RegExp(
     `(?<=### \\[${targetVersion}\\].*\n).*?(?=\n##+ \\[?\\d+.\\d+.\\d+)`,
     's',
@@ -51,21 +51,21 @@ function generatePublishInfo({
 /**
  * 生成版本信息，可以用来发送到群聊中
  * @param {object} config 配置信息
- * @param {string} config.changeLogFilePath changelog文件地址
+ * @param {string} config.readmeFilePath changelog文件地址
  * @param {object} config.appInfo package.json信息
  * @return {string} 版本信息
  * @example
  *
  * const appInfo = require(`${rootPath}/package.json`);
- * const changeLogFilePath = `${rootPath}/CHANGELOG.md`;
+ * const readmeFilePath = `${rootPath}/CHANGELOG.md`;
  *
  * const content = genVersionTip({
- *   changeLogFilePath,
+ *   readmeFilePath,
  *   appInfo,
  * });
  */
-export function genVersionTip({ changeLogFilePath, appInfo }: {
-  changeLogFilePath: string
+export function genVersionTip({ readmeFilePath, appInfo }: {
+  readmeFilePath: string
   appInfo: {
     name: string
     version?: string
@@ -95,6 +95,6 @@ export function genVersionTip({ changeLogFilePath, appInfo }: {
     homepage,
     repoLink,
     issueLink,
-    changeLogFilePath,
+    readmeFilePath,
   });
 }
