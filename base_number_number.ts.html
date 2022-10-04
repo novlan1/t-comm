@@ -46,16 +46,16 @@
         <article>
             <pre class="prettyprint source linenums"><code>/**
  * 获取相对于过去数据的比例
- * @param value 当前数据
- * @param preValue 之前数据
- * @returns 比例
+ * @param {number} value 当前数据
+ * @param {number} preValue 之前数据
+ * @returns {string} 比例
  *
  * @example
- * ```ts
- * getUnitPreviousRatio(1, 0) // +999+%
- * ```
+ *
+ * getUnitPreviousRatio(1, 0)
+ * // +999+%
  */
-export function getUnitPreviousRatio(value, preValue) {
+export function getUnitPreviousRatio(value: number, preValue: number) {
   const interval = value - preValue;
   const symbol = interval > 0 ? '+' : '';
 
@@ -71,13 +71,16 @@ export function getUnitPreviousRatio(value, preValue) {
 }
 
 /**
- * 阿拉伯数字和中文数字映射表
+ *
+ * @type {object} 阿拉伯数字和中文数字映射表
  * @example
- * ```ts
  * import { NUMBER_CHI_MAP } from 't-comm'
  *
- * console.log(NUMBER_CHI_MAP[1]); // '一'
- * ```
+ * console.log(NUMBER_CHI_MAP[1]);
+ * // '一'
+ *
+ * console.log(NUMBER_CHI_MAP[2]);
+ * // '二'
  */
 export const NUMBER_CHI_MAP = {
   1: '一',

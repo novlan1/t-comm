@@ -47,14 +47,15 @@
             <pre class="prettyprint source linenums"><code>/**
  * 获取字符串指定下标的 unicode
  *
- * @param str - 字符串
- * @param index - unicode 的下标
- * @returns data
+ * @param {string} str - 字符串
+ * @param {number} index - unicode 的下标
+ * @returns {string} data
  *
  * @example
- * ```ts
- * unicodeAt('ABC', 1) // -> '\\u0042'
- * ```
+ *
+ * unicodeAt('ABC', 1)
+ *
+ * // -> '\\u0042'
  *
  */
 export function toUnicodeAt(str: string, index = 0) {
@@ -69,15 +70,15 @@ export function toUnicodeAt(str: string, index = 0) {
 /**
  * 获取字符串的 unicode
  *
- * @param str - 字符串
- * @returns data
+ * @param {string} str - 字符串
+ * @returns {string} data
  *
  * @example
- * ```ts
  *
- * toUnicode('ABC') // -> '\\u0041\\u0042\\u0043'
+ * toUnicode('ABC')
  *
- * ```
+ * // -> '\\u0041\\u0042\\u0043'
+ *
  *
  */
 export function toUnicode(str: string) {

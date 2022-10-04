@@ -121,7 +121,7 @@
 
         
             
-<h4 class="name" id="NUMBER_CHI_MAP"><span class="type-signature">(constant) </span>NUMBER_CHI_MAP<span class="type-signature"></span></h4>
+<h4 class="name" id="NUMBER_CHI_MAP"><span class="type-signature">(constant) </span>NUMBER_CHI_MAP<span class="type-signature"> :object</span></h4>
 
 
 
@@ -132,7 +132,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="base_number_number.ts.html">base/number/number.ts</a>, <a href="base_number_number.ts.html#line34">line 34</a>
+        <a href="base_number_number.ts.html">base/number/number.ts</a>, <a href="base_number_number.ts.html#line37">line 37</a>
     </li></ul></dd>
     
 
@@ -177,17 +177,29 @@
 
 
 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">object</span>
+
+
+        </li>
+    </ul>
+
 
 
 
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>```ts
-import { NUMBER_CHI_MAP } from 't-comm'
+    <pre class="prettyprint"><code>import { NUMBER_CHI_MAP } from 't-comm'
 
-console.log(NUMBER_CHI_MAP[1]); // '一'
-```</code></pre>
+console.log(NUMBER_CHI_MAP[1]);
+// '一'
+
+console.log(NUMBER_CHI_MAP[2]);
+// '二'</code></pre>
 
 
 
@@ -1747,7 +1759,7 @@ flattenPreData(data, 'ProjectName');
 
     
 
-    <h4 class="name" id="getUnitPreviousRatio"><span class="type-signature"></span>getUnitPreviousRatio<span class="signature">(value, preValue)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getUnitPreviousRatio"><span class="type-signature"></span>getUnitPreviousRatio<span class="signature">(value, preValue)</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
 
@@ -1812,9 +1824,8 @@ flattenPreData(data, 'ProjectName');
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>```ts
-getUnitPreviousRatio(1, 0) // +999+%
-```</code></pre>
+    <pre class="prettyprint"><code>getUnitPreviousRatio(1, 0)
+// +999+%</code></pre>
 
 
 
@@ -1849,6 +1860,11 @@ getUnitPreviousRatio(1, 0) // +999+%
 
             <td class="type">
             
+                
+<span class="param-type">number</span>
+
+
+            
             </td>
 
             
@@ -1866,6 +1882,11 @@ getUnitPreviousRatio(1, 0) // +999+%
             
 
             <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
             
             </td>
 
@@ -1904,6 +1925,18 @@ getUnitPreviousRatio(1, 0) // +999+%
 
 
 
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
     
 
 
@@ -1913,7 +1946,7 @@ getUnitPreviousRatio(1, 0) // +999+%
 
     
 
-    <h4 class="name" id="toHumpObj"><span class="type-signature"></span>toHumpObj<span class="signature">(obj)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="toHumpObj"><span class="type-signature"></span>toHumpObj<span class="signature">(obj)</span><span class="type-signature"> &rarr; {object}</span></h4>
 
     
 
@@ -1925,7 +1958,7 @@ getUnitPreviousRatio(1, 0) // +999+%
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="base_object_object.ts.html">base/object/object.ts</a>, <a href="base_object_object.ts.html#line37">line 37</a>
+        <a href="base_object_object.ts.html">base/object/object.ts</a>, <a href="base_object_object.ts.html#line36">line 36</a>
     </li></ul></dd>
     
 
@@ -1978,24 +2011,23 @@ getUnitPreviousRatio(1, 0) // +999+%
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>```ts
-const obj = {
-    a_a: 'a',
-    b_b: [
-      {
-        bb_b: 'b',
-      },
-    ],
-    c: {
-      dd_d: 'd',
-      e: {
-        ee_e: 'e',
-      },
+    <pre class="prettyprint"><code>const obj = {
+  a_a: 'a',
+  b_b: [
+    {
+      bb_b: 'b',
     },
-  }
+  ],
+  c: {
+    dd_d: 'd',
+    e: {
+      ee_e: 'e',
+    },
+  },
+};
 
-  toHumpObj(obj) // { aA: 'a', bB: [ { bbB: 'b' } ], c: { ddD: 'd', e: { eeE: 'e' } } }
-```</code></pre>
+toHumpObj(obj);
+// { aA: 'a', bB: [ { bbB: 'b' } ], c: { ddD: 'd', e: { eeE: 'e' } } }</code></pre>
 
 
 
@@ -2029,6 +2061,11 @@ const obj = {
             
 
             <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
             
             </td>
 
@@ -2067,6 +2104,18 @@ const obj = {
 
 
 
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
+
+
+    </dd>
+</dl>
+
     
 
 
@@ -2076,7 +2125,7 @@ const obj = {
 
     
 
-    <h4 class="name" id="toUnicodeAt"><span class="type-signature"></span>toUnicodeAt<span class="signature">(str, index)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="toUnicodeAt"><span class="type-signature"></span>toUnicodeAt<span class="signature">(str, index)</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
 
@@ -2088,7 +2137,7 @@ const obj = {
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="base_string_to-unicode.ts.html">base/string/to-unicode.ts</a>, <a href="base_string_to-unicode.ts.html#line15">line 15</a>
+        <a href="base_string_to-unicode.ts.html">base/string/to-unicode.ts</a>, <a href="base_string_to-unicode.ts.html#line16">line 16</a>
     </li></ul></dd>
     
 
@@ -2141,9 +2190,9 @@ const obj = {
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>```ts
-unicodeAt('ABC', 1) // -> '\\u0042'
-```</code></pre>
+    <pre class="prettyprint"><code>unicodeAt('ABC', 1)
+
+// -> '\\u0042'</code></pre>
 
 
 
@@ -2178,6 +2227,11 @@ unicodeAt('ABC', 1) // -> '\\u0042'
 
             <td class="type">
             
+                
+<span class="param-type">string</span>
+
+
+            
             </td>
 
             
@@ -2195,6 +2249,11 @@ unicodeAt('ABC', 1) // -> '\\u0042'
             
 
             <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
             
             </td>
 
@@ -2233,6 +2292,18 @@ unicodeAt('ABC', 1) // -> '\\u0042'
 
 
 
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
     
 
 
@@ -2242,7 +2313,7 @@ unicodeAt('ABC', 1) // -> '\\u0042'
 
     
 
-    <h4 class="name" id="toUnicode"><span class="type-signature"></span>toUnicode<span class="signature">(str)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="toUnicode"><span class="type-signature"></span>toUnicode<span class="signature">(str)</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
 
@@ -2254,7 +2325,7 @@ unicodeAt('ABC', 1) // -> '\\u0042'
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="base_string_to-unicode.ts.html">base/string/to-unicode.ts</a>, <a href="base_string_to-unicode.ts.html#line37">line 37</a>
+        <a href="base_string_to-unicode.ts.html">base/string/to-unicode.ts</a>, <a href="base_string_to-unicode.ts.html#line38">line 38</a>
     </li></ul></dd>
     
 
@@ -2307,11 +2378,9 @@ unicodeAt('ABC', 1) // -> '\\u0042'
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>```ts
+    <pre class="prettyprint"><code>toUnicode('ABC')
 
-toUnicode('ABC') // -> '\\u0041\\u0042\\u0043'
-
-```</code></pre>
+// -> '\\u0041\\u0042\\u0043'</code></pre>
 
 
 
@@ -2345,6 +2414,11 @@ toUnicode('ABC') // -> '\\u0041\\u0042\\u0043'
             
 
             <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
             
             </td>
 
@@ -2382,6 +2456,18 @@ toUnicode('ABC') // -> '\\u0041\\u0042\\u0043'
 </div>
 
 
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
 
     
 
