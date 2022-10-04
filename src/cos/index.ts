@@ -16,7 +16,7 @@ const pushFiles = ({ files, bucket, region }) => files.map(file => ({
  * @param {string} config.secretKey COS secretKey
  * @param {string} config.bucket COS bucket
  * @param {string} config.region COS region
- * @return {Promise<object>} 请求Promise
+ * @returns {Promise<object>} 请求Promise
  *
  * @example
  *

@@ -53,7 +53,7 @@ function generatePublishInfo({
  * @param {object} config 配置信息
  * @param {string} config.readmeFilePath changelog文件地址
  * @param {object} config.appInfo package.json信息
- * @return {string} 版本信息
+ * @returns {string} 版本信息
  * @example
  *
  * const appInfo = require(`${rootPath}/package.json`);

@@ -4,7 +4,7 @@
  * @param {object} config 输入配置
  * @param {string} config.imgUrl base64图片Url
  * @param {string} config.savePath 保存路径，最好是绝对路径
- * @return {Promise<string>} 去掉前缀的base64图片地址
+ * @returns {Promise<string>} 去掉前缀的base64图片地址
  *
  * @example
  *
@@ -38,7 +38,7 @@ export function saveBase64ImgToFile({ imgUrl, savePath }: {
 /**
  * node环境下，本地图片转为base64
  * @param {string} savePath 本地图片保存路径
- * @return {string} base64图片地址
+ * @returns {string} base64图片地址
  *
  * @example
  *
@@ -60,7 +60,7 @@ export function turnLocalImg2Base64(imgPath) {
  * @param {object} config 输入配置
  * @param {string} config.imgUrl 网络图片地址
  * @param {string} config.savePath 本地图片保存路径，建议绝对路径
- * @return {Promise<object>} 请求Promise
+ * @returns {Promise<object>} 请求Promise
  *
  * @example
  *
@@ -84,7 +84,7 @@ export async function saveRemoteImgToLocal({ imgUrl, savePath }: {
  * 获取图片md5
  * @param {object} options 配置信息
  * @param {string} options.savePath 本地图片地址，建议绝对路径
- * @return {Promise<string>} 图片md5值
+ * @returns {Promise<string>} 图片md5值
  *
  * @example
  * getImgMd5({

@@ -6,7 +6,7 @@ import { instance } from './helper';
  * @param {string} options.projectName 项目名称
  * @param {string} options.commitId 提交hash
  * @param {string} options.privateToken 密钥
- * @return {Promise<object>} 请求Promise
+ * @returns {Promise<object>} 请求Promise
  * @example
  *
  * getOneCommitDetail({

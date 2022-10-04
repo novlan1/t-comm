@@ -8,7 +8,7 @@ import { saveBase64ImgToFile, getImgMd5 } from '../node-img';
  * @param {string} config.img base64图片
  * @param {string} config.chatId 会话Id
  * @param {string} config.webhookUrl webhook地址
- * @return {Promise<object>} 请求Promise
+ * @returns {Promise<object>} 请求Promise
  * @example
  *
  * sendWxRobotBase64Img({

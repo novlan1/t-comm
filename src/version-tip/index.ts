@@ -1,2 +1,2 @@
 export { genVersionTip } from './gen-version-tip';
-export { genVersion } from './gen-version';
+export { genVersion, shouldGenVersion } from './gen-version';

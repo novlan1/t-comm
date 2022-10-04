@@ -5,7 +5,7 @@ import { instance } from './helper';
  * @param {object} options 输入配置
  * @param {string} options.projectName 项目名称
  * @param {string} options.privateToken 密钥
- * @return {Promise<object>} 请求Promise
+ * @returns {Promise<object>} 请求Promise
  * @example
  * getOneProjectDetail({
  *   projectName: 't-comm',
@@ -38,7 +38,7 @@ export function getOneProjectDetail({ projectName, privateToken }) {
  * @param {string} options.search 搜索内容
  * @param {string} options.page 起始页码
  * @param {string} options.privateToken 密钥
- * @return {Promise<Array<object>>} 请求Promise
+ * @returns {Promise<Array<object>>} 请求Promise
  * @example
  *
  * getOneProjectBySearch({
@@ -79,7 +79,7 @@ export function getOneProjectBySearch({
 /**
  * 获取某个token名下所有项目
  * @param {string} privateToken 密钥
- * @return {Array<object>} 项目列表
+ * @returns {Array<object>} 项目列表
  * @example
  *
  * const projects = await getAllProjects('xxxxx');

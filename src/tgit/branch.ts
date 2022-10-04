@@ -7,7 +7,7 @@ import { getOneProjectDetail } from './project';
  * @param {string} options.projectName 项目名称
  * @param {string} options.branchName 分支名称
  * @param {string} options.privateToken 密钥
- * @return {Promise<object>} 请求Promise
+ * @returns {Promise<object>} 请求Promise
  * @example
  *
  * getBranchLifeCycle({
@@ -51,7 +51,7 @@ export function getBranchLifeCycle({ projectName, branchName, privateToken }: {
  * @param {object} options 输入配置
  * @param {string} options.projectName 项目名称
  * @param {string} options.privateToken 密钥
- * @return {Promise<string>} 请求Promise
+ * @returns {Promise<string>} 请求Promise
  * @example
  *
  * getProjectDefaultBranch({
@@ -81,7 +81,7 @@ export async function getProjectDefaultBranch({ projectName, privateToken }: {
  * @param {object} options 输入配置
  * @param {string} options.projectName 项目名称
  * @param {string} options.privateToken 密钥
- * @return {Promise<Array<object>>} 请求Promise
+ * @returns {Promise<Array<object>>} 请求Promise
  * @example
  *
  * getBranchesByProjectName({
@@ -126,7 +126,7 @@ export function getBranchesByProjectName({ projectName, privateToken }: {
  * @param {string} options.projectName 项目名称
  * @param {string} options.branchName 分支名称
  * @param {string} options.privateToken 密钥
- * @return {Promise<object>} 请求Promise
+ * @returns {Promise<object>} 请求Promise
  * @example
  *
  * getOneBranchDetail({

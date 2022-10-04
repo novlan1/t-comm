@@ -130,7 +130,7 @@ export function getAllAreaData() {
   * 根据省份城市转化为`id`数组
   * @param {string} provinceStr
   * @param {string} cityStr
-  * @return {Array} 包含省份、城市ID的数组
+  * @returns {Array} 包含省份、城市ID的数组
   *
   * @example
   *
@@ -212,7 +212,7 @@ export function getCityName(provinceId, cityId) {
   * 根据`id`将省份城市转化为字符串数组
   * @param {string | number} provinceId
   * @param {string | number} cityId
-  * @return {Array} 包含省份、城市名字的数组
+  * @returns {Array} 包含省份、城市名字的数组
   *
   * @example
   *

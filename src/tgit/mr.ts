@@ -7,7 +7,7 @@ import { instance } from './helper';
  * @param {string} options.privateToken 密钥
  * @param {string} options.sourceBranch 源分支
  * @param {string} options.targetBranch 目标分支
- * @return {Promise<object>} 请求Promise
+ * @returns {Promise<object>} 请求Promise
  * @example
  *
  * createMR({
@@ -59,7 +59,7 @@ export async function createMR({
  * @param {object} options 输入配置
  * @param {string} options.projectName 项目名称
  * @param {string} options.privateToken 密钥
- * @return {Promise<object>} 请求Promise
+ * @returns {Promise<object>} 请求Promise
  * @example
  *
  * getMrList({
@@ -96,7 +96,7 @@ export function getMrList({ projectName, privateToken }: {
  * @param {string} options.projectName 项目名称
  * @param {string} options.privateToken 密钥
  * @param {string} options.mrId 某次MR的Id
- * @return {Promise<object>} 请求Promise
+ * @returns {Promise<object>} 请求Promise
  * @example
  *
  * getOneMrComments({
