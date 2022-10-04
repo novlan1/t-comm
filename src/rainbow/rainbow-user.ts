@@ -15,7 +15,14 @@ const axios = require('axios');
  *
  * @example
  *
- * fetchRainbowConfig('test', { appId: 'xx', envName: 'prod', groupName: 'robot' })
+ * fetchRainbowConfig('test', {
+ *   appId: 'xx',
+ *   envName: 'prod',
+ *   groupName: 'robot',
+ * }).then((resp) => {
+ *   console.log(resp)
+ * });
+ *
  */
 export function fetchRainbowConfig(key: string, secretInfo: {
   appID?: string
