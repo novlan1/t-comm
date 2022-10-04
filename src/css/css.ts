@@ -1,12 +1,11 @@
 /**
  * 移除CSS
  *
- * @param href - CSS链接
+ * @param {string} href - CSS链接
  *
  * @example
- * ```ts
+ *
  * removeCss('https://xxx.css')
- * ```
  */
 export function removeCss(href) {
   const links = document.getElementsByTagName('link');
