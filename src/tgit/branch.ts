@@ -2,9 +2,27 @@ import { instance } from './helper';
 import { getOneProjectDetail } from './project';
 
 /**
- * 获取分支生命周期
+ * 获取tGit上某分支生命周期
+ * @param {object} options 输入配置
+ * @param {string} options.projectName 项目名称
+ * @param {string} options.branchName 分支名称
+ * @param {string} options.privateToken 密钥
+ * @return {Promise<object>} 请求Promise
+ * @example
+ *
+ * getBranchLifeCycle({
+ *   projectName: 't-comm',
+ *   branchName: 'master',
+ *   privateToken: 'xxxxx',
+ * }).then((resp) => {
+ *
+ * })
  */
-export function getBranchLifeCycle({ projectName, branchName, privateToken }) {
+export function getBranchLifeCycle({ projectName, branchName, privateToken }: {
+  projectName: string
+  branchName: string
+  privateToken: string
+}): Promise<object> {
   return new Promise((resolve, reject) => {
     if (!projectName || !branchName) {
       return;
@@ -30,8 +48,23 @@ export function getBranchLifeCycle({ projectName, branchName, privateToken }) {
 
 /**
  * 获取默认分支
+ * @param {object} options 输入配置
+ * @param {string} options.projectName 项目名称
+ * @param {string} options.privateToken 密钥
+ * @return {Promise<string>} 请求Promise
+ * @example
+ *
+ * getProjectDefaultBranch({
+ *   projectName: 't-comm',
+ *   privateToken: 'xxxxx',
+ * }).then((branch) => {
+ *  console.log('branch: ', branch)
+ * })
  */
-export async function getProjectDefaultBranch({ projectName, privateToken }) {
+export async function getProjectDefaultBranch({ projectName, privateToken }: {
+  projectName: string
+  privateToken: string
+}): Promise<string> {
   const detail: any = await getOneProjectDetail({
     projectName,
     privateToken,
@@ -44,11 +77,27 @@ export async function getProjectDefaultBranch({ projectName, privateToken }) {
 }
 
 /**
- * 获取分支列表
+ * 获取仓库的分支列表
+ * @param {object} options 输入配置
+ * @param {string} options.projectName 项目名称
+ * @param {string} options.privateToken 密钥
+ * @return {Promise<Array<object>>} 请求Promise
+ * @example
+ *
+ * getBranchesByProjectName({
+ *   projectName: 't-comm',
+ *   privateToken: 'xxxxx',
+ * }).then((resp) => {
+ *
+ * })
  */
-export function getBranchesByProjectName({ projectName, privateToken }) {
+export function getBranchesByProjectName({ projectName, privateToken }: {
+  projectName: string
+  privateToken: string
+}): Promise<Array<object>> {
   return new Promise((resolve, reject) => {
     if (!projectName) {
+      reject('No ProjectName');
       return;
     }
 
@@ -73,8 +122,26 @@ export function getBranchesByProjectName({ projectName, privateToken }) {
 
 /**
  * 获取分支详情
+ * @param {object} options 输入配置
+ * @param {string} options.projectName 项目名称
+ * @param {string} options.branchName 分支名称
+ * @param {string} options.privateToken 密钥
+ * @return {Promise<object>} 请求Promise
+ * @example
+ *
+ * getOneBranchDetail({
+ *   projectName: 't-comm',
+ *   branchName: 'master',
+ *   privateToken: 'xxxxx',
+ * }).then((resp) => {
+ *
+ * })
  */
-export function getOneBranchDetail({ projectName, branchName, privateToken }) {
+export function getOneBranchDetail({ projectName, branchName, privateToken }: {
+  projectName: string
+  branchName: string
+  privateToken: string
+}): Promise<object> {
   return new Promise((resolve, reject) => {
     if (!projectName || !branchName) {
       return;

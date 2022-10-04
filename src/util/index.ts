@@ -1,7 +1,17 @@
 /**
  * 判断数据是不是正则对象
- * @param value
- * @returns boolean
+ * @param {any} value - 输入数据
+ * @returns {boolean} - 是否是正则对象
+ *
+ * @example
+ *
+ * isRegExp(1)
+ *
+ * // => false
+ *
+ * isRegExp(/\d/)
+ *
+ * // => true
  */
 export function isRegExp(value) {
   return Object.prototype.toString.call(value) === '[object RegExp]';
@@ -9,8 +19,18 @@ export function isRegExp(value) {
 
 /**
  * 判断数据是不是时间对象
- * @param value
- * @returns boolean
+ * @param {any} value - 输入数据
+ * @returns {boolean} 是否是时间对象
+ *
+ * @example
+ *
+ * isDate(1)
+ *
+ * // => false
+ *
+ * isDate(new Date())
+ *
+ * // => true
  */
 export function isDate(value) {
   return Object.prototype.toString.call(value) === '[object Date]';
@@ -18,6 +38,18 @@ export function isDate(value) {
 
 /**
  * 判断数据是不是函数
+ * @param {any} value - 输入数据
+ * @returns {boolean} 是否是函数
+ *
+ * @example
+ *
+ * isFunction(1)
+ *
+ * // => false
+ *
+ * isFunction(()=>{})
+ *
+ * // => true
  */
 export function isFunction(value) {
   return Object.prototype.toString.call(value) === '[object Function]';
@@ -25,8 +57,23 @@ export function isFunction(value) {
 
 /**
  * 记忆函数：缓存函数的运算结果
- * @param fn
- * @returns 函数计算结果
+ * @param {Function} fn 输入函数
+ * @returns {any} 函数计算结果
+ *
+ * @example
+ * function test(a) {
+ *   return a + 2
+ * }
+ *
+ * const cachedTest = cached(test)
+ *
+ * cachedTest(1)
+ *
+ * // => 3
+ *
+ * cachedTest(1)
+ *
+ * // => 3
  */
 export function cached(fn) {
   const cache = Object.create(null);
@@ -34,19 +81,20 @@ export function cached(fn) {
     const hit = cache[str];
     if (hit) return hit;
     cache[str] = fn(str);
-    return cache(str);
+    return cache[str];
   };
 }
 
 /**
  * 横线转驼峰命名
- * @param str  输入字符串
+ * @param {string} str  输入字符串
+ * @returns {string} 处理后的字符串
  * @example
- * ```ts
  *
- * camelize('ab-cd-ef')  // abCdEf
+ * camelize('ab-cd-ef')
  *
- * ```
+ * // => abCdEf
+ *
  */
 export function camelize(str) {
   const camelizeRE = /-(\w)/g;
@@ -55,8 +103,14 @@ export function camelize(str) {
 
 /**
  * 驼峰命名转横线命名：拆分字符串，使用 - 相连，并且转换为小写
- * @param str
- * @returns abCd ==> ab-cd
+ * @param {string} str 输入字符串
+ * @returns {string} 处理后的字符串
+ *
+ * @example
+ *
+ * hyphenate('abCd')
+ *
+ * // => ab-cd
  *
  */
 export function hyphenate(str) {
@@ -66,24 +120,33 @@ export function hyphenate(str) {
 
 /**
  * 字符串首位大写
- * @param str
- * @returns 处理后的字符串
+ * @param {string} str 输入字符串
+ * @returns {string} 处理后的字符串
+ *
+ * @example
+ *
+ * capitalize('abc')
+ *
+ * // => Abc
  */
-export function capitalize(str) {
+export function capitalize(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 /**
  * 将每个单词的首字母转换为大写
- * @param str 字符串
- * @returns 字符串
+ * @param {string} str 输入字符串
+ * @returns {string} 处理后的字符串
  *
  * @example
  *
- * ```ts
- * titleize('my name is yang') // My name is Yang
- * titleize('foo-bar') // Foo-Bar
- * ```
+ * titleize('my name is yang')
+ *
+ * // My name is Yang
+ *
+ * titleize('foo-bar')
+ *
+ * // Foo-Bar
  */
 export function titleize(str) {
   if (typeof str !== 'string') {
@@ -95,26 +158,41 @@ export function titleize(str) {
 
 /**
  * 将属性混合到目标对象中
- * @param to
- * @param _from
+ * @param {object} to 目标对象
+ * @param {object} from 原始对象
  * @returns 处理后的对象
+ *
+ * @example
+ * const a = { name: 'lee' }
+ * const b = { age: 3 }
+ * extend(a, b)
+ *
+ * console.log(a)
+ *
+ * // => { name: 'lee', age: 3 }
  */
-export function extend(to, _from) {
+export function extend(to: Object, from: object): object {
   // eslint-disable-next-line no-restricted-syntax, guard-for-in
-  for (const key in _from) {
-    to[key] = _from[key];
+  for (const key in from) {
+    to[key] = from[key];
   }
   return to;
 }
 
 /**
  * 获取千分位分隔符
+ * @param {string | number} value 输入数字
+ * @return {string} 处理后的数字
  *
  * @example
- * ```ts
- * getThousandSeparator('123123123') // 123,123,123
- * getThousandSeparator('12312312') // 12,312,312
- * ```
+ *
+ * getThousandSeparator('123123123')
+ *
+ * // => 123,123,123
+ *
+ * getThousandSeparator('12312312')
+ *
+ * // => 12,312,312
  */
 export function getThousandSeparator(value) {
   const reg = /(?!^)(?=(\d{3})+$)/g;
@@ -122,17 +200,21 @@ export function getThousandSeparator(value) {
 }
 
 /**
- * 获取千分位分隔符，数字之间有空格
+ * 获取千分位分隔符，处理数字之间有空格的情况
+ * @param {string | number} value 输入数字
+ * @return {string} 处理后的数字
+ *
  * @example
- * ```ts
- * getThousandSeparator2('12345678 123456789') // 12,345,678 123,456,789
- * ```
+ * getThousandSeparator2('12345678 123456789')
+ *
+ * // => 12,345,678 123,456,789
+ *
  */
 export function getThousandSeparator2(value) {
-  // const reg = /(?!\b)(?=(\d{3})+\b)/g
   const reg = /\B(?=(\d{3})+\b)/g;
   return `${value}`.replace(reg, ',');
 }
+
 
 /**
  * 获取提交信息
