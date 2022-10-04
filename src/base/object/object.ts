@@ -13,30 +13,29 @@ function toHump(str) {
 /**
  * 将对象中的key由下划线专为驼峰
  *
- * @param obj - 对象
- * @returns 转化后的对象
+ * @param {object} obj - 对象
+ * @returns {object} 转化后的对象
  *
  * @example
- * ```ts
  * const obj = {
-    a_a: 'a',
-    b_b: [
-      {
-        bb_b: 'b',
-      },
-    ],
-    c: {
-      dd_d: 'd',
-      e: {
-        ee_e: 'e',
-      },
-    },
-  }
-
-  toHumpObj(obj) // { aA: 'a', bB: [ { bbB: 'b' } ], c: { ddD: 'd', e: { eeE: 'e' } } }
- * ```
+ *   a_a: 'a',
+ *   b_b: [
+ *     {
+ *       bb_b: 'b',
+ *     },
+ *   ],
+ *   c: {
+ *     dd_d: 'd',
+ *     e: {
+ *       ee_e: 'e',
+ *     },
+ *   },
+ * };
+ *
+ * toHumpObj(obj);
+ * // { aA: 'a', bB: [ { bbB: 'b' } ], c: { ddD: 'd', e: { eeE: 'e' } } }
  */
-export function toHumpObj(obj, cache = new WeakMap()) {
+export function toHumpObj(obj: object, cache = new WeakMap()): object {
   // 函数首次调用判断
   if (!isObjOrArray(obj)) return obj;
 
@@ -59,3 +58,5 @@ export function toHumpObj(obj, cache = new WeakMap()) {
 
   return result;
 }
+
+
