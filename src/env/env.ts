@@ -1,6 +1,7 @@
 /**
  * 获取UA
- * @returns ua
+ * @private
+ * @returns {string} ua
  */
 function getRealUA() {
   return navigator.userAgent || '';
@@ -8,13 +9,14 @@ function getRealUA() {
 
 /**
  * 检查是否是ios环境
- * @param ua - useragent
- * @returns 是否是ios环境
+ * @returns {boolean} 是否是ios环境
  *
  * @example
- * ```ts
- * checkUAIsIOS() // true
- * ```
+ *
+ * checkUAIsIOS()
+ *
+ * // => true
+ *
  */
 export function checkUAIsIOS() {
   const realUA = getRealUA();
@@ -26,12 +28,57 @@ export function checkUAIsIOS() {
 
 /**
  * 获取useragent类型
-
- * @param u - useragent
- * @returns map
+ * @returns {object} useragent的map
+ * @example
+ *
+ * getEnvUAType()
+ *
+ * // =>
+ * {
+ *   isWeixin: false,
+ *   isWorkWeixin: false,
+ *   isQQ: false,
+ *   isPvpApp: false,
+ *   isTipApp: false,
+ *   isAndroid: false,
+ *   isIos: true,
+ *   isIOS: true,
+ *   isMsdk: false,
+ *   isMsdkV5: false,
+ *   isSlugSdk: false,
+ *   isInGame: false,
+ *   isGHelper: false,
+ *   isGHelper20004: false,
+ *   isMiniProgram: false,
+ *   isLolApp: false,
+ *   isWindowsPhone: false,
+ *   isSymbian: false,
+ *   isPc: true,
+ * };
+ *
  */
 
-export function getEnvUAType() {
+export function getEnvUAType(): {
+  isWeixin: boolean,
+  isWorkWeixin: boolean,
+  isQQ: boolean,
+  isPvpApp: boolean,
+  isTipApp: boolean,
+  isAndroid: boolean,
+  isIos: boolean,
+  isIOS: boolean,
+  isMsdk: boolean,
+  isMsdkV5: boolean,
+  isSlugSdk: boolean,
+  isInGame: boolean,
+  isGHelper: boolean,
+  isGHelper20004: boolean,
+  isMiniProgram: boolean,
+  isLolApp: boolean,
+  isWindowsPhone: boolean,
+  isSymbian: boolean,
+  isPc: boolean,
+} {
   const ua = getRealUA();
   const isWeixin = ua.indexOf('micromessenger') !== -1;
   const isWorkWeixin = ua.indexOf('wxwork') !== -1;
@@ -39,8 +86,9 @@ export function getEnvUAType() {
   const isPvpApp = ua.indexOf(' igameapp/') !== -1;
   const isTipApp = ua.indexOf(' gamelife/') !== -1;
   const isAndroid = ua.indexOf('android') !== -1;
-  // env.isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') !== -1);
+
   const isIos = checkUAIsIOS();
+
   const isIOS = isIos;
   const isMsdk = ua.indexOf(' msdk/') !== -1; // msdk
   const isMsdkV5 = ua.indexOf(' msdk/5') !== -1; // msdk V5
@@ -48,7 +96,7 @@ export function getEnvUAType() {
   const isInGame = isMsdk || isSlugSdk; // 是否游戏内
   const isGHelper = ua.indexOf('gamehelper') !== -1;
   const isGHelper20004 = ua.indexOf('gamehelper_20004') !== -1;
-  const isMiniProgram =    ua.indexOf('miniprogram') !== -1
+  const isMiniProgram = ua.indexOf('miniprogram') !== -1
     || (typeof window !== 'undefined'
       // eslint-disable-next-line no-underscore-dangle
       && (window as any).__wxjs_environment === 'miniprogram');
@@ -79,3 +127,5 @@ export function getEnvUAType() {
     isPc,
   };
 }
+
+
