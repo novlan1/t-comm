@@ -3,11 +3,32 @@ const axios = require('axios');
 
 /**
  * 给机器人发消息的基本方法
- *
- * @param config - 包含webhookUrl, params
+ * @private
+ * @param {object} config 输入信息
+ * @param {string} config.webhookUrl webhook地址
+ * @param {object} config.params 详细参数
  * @returns Promise
  */
-export function sendToRobot({ webhookUrl, params }): any {
+export function sendToRobot({ webhookUrl, params }: {
+  webhookUrl: string
+  params: {
+    msgtype: string
+    chatid?: string
+    markdown?: {
+      content: string,
+      attachments?: Array<object>,
+      at_short_name?: boolean
+    }
+    image?: {
+      base64: string
+      md5: string
+    }
+    text?: {
+      content: string
+      mentioned_list?: Array<string | undefined>
+    }
+  }
+}): Promise<object> {
   return new Promise((resolve, reject) => {
     if (!webhookUrl) {
       reject(new Error('缺少webhookUrl！'));
@@ -18,11 +39,6 @@ export function sendToRobot({ webhookUrl, params }): any {
       reject();
       return;
     }
-
-    // if (!params.chatid) {
-    //   reject(new Error('缺少chatId，不允许群发！'))
-    //   return
-    // }
 
     axios
       .post(webhookUrl, params)

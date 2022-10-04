@@ -20,7 +20,6 @@ export async function mergeMultiCanvasPic({
   sizeOf,
   canvasLibrary,
   path,
-  fs,
 }) {
   const { createCanvas, loadImage } = canvasLibrary;
 
@@ -35,7 +34,6 @@ export async function mergeMultiCanvasPic({
     const savePath = getSavePath(i);
 
     await saveBase64ImgToFile({
-      fs,
       imgUrl: img,
       savePath,
     });

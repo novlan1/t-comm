@@ -1,43 +1,52 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 import { sendWxRobotImg } from './base';
 import { saveBase64ImgToFile, getImgMd5 } from '../node-img';
 
 /**
  * 发送企业微信机器人base64图片，其实就是先保存到本地，然后生成md5，最后发送
- * @param param0
+ * @param {object} config 配置信息
+ * @param {string} config.img base64图片
+ * @param {string} config.chatId 会话Id
+ * @param {string} config.webhookUrl webhook地址
+ * @return {Promise<object>} 请求Promise
+ * @example
+ *
+ * sendWxRobotBase64Img({
+ *   img: 'xxx',
+ *   chatId: 'xxx',
+ *   webhookUrl: 'xxx',
+ * }).then(() => {
+ *
+ * })
+ *
  */
 export async function sendWxRobotBase64Img({
   img,
   chatId,
   webhookUrl,
-
-  path,
-  fs,
-  crypto,
-}) {
-  if (!chatId || !img || !path || !webhookUrl || !fs) return;
+}: {
+  img: string
+  chatId: string
+  webhookUrl: string
+}): Promise<object> {
+  const path = require('path');
+  if (!chatId || !img || !webhookUrl) return Promise.reject('参数不全');
 
   const saveFilePath = path.resolve(__dirname, '.temp.png');
 
   const pureSrc = await saveBase64ImgToFile({
     imgUrl: img,
-    fs,
     savePath: saveFilePath,
   });
 
   const md5Val = await getImgMd5({
-    fs,
-    crypto,
     savePath: saveFilePath,
   });
 
-  sendWxRobotImg({
+  return await sendWxRobotImg({
     webhookUrl,
     chatId,
     content: pureSrc,
     md5Val,
-  })
-    .then(() => {})
-    .catch((e) => {
-      console.log('e', e);
-    });
+  });
 }

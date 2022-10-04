@@ -4,12 +4,28 @@ import { sendToRobot } from './helper';
  * 给机器人发送普通消息
  * @param {Object} config 配置内容
  * @param {string} config.webhookUrl - 钩子链接
- * @param {string }config.chatId - 会话id
+ * @param {string} config.chatId - 会话id
  * @param {string} config.alias - 别名
  * @param {string} config.content - 内容
- * @returns Promise
+ * @returns {Promise<object>} Promise
+ *
+ * @example
+ *
+ * sendWxRobotMsg({
+ *   webhookUrl: 'xxx',
+ *   chatId: 'xxx',
+ *   content: 'xxx',
+ *   alias: 'xxx',
+ * }).then(() => {
+ *
+ * })
  */
-export function sendWxRobotMsg({ webhookUrl, chatId, alias, content }) {
+export function sendWxRobotMsg({ webhookUrl, chatId, alias, content }: {
+  webhookUrl: string
+  content: string
+  chatId?: string
+  alias?: string
+}): Promise<object> {
   return new Promise((resolve, reject) => {
     sendToRobot({
       webhookUrl,
@@ -35,17 +51,32 @@ export function sendWxRobotMsg({ webhookUrl, chatId, alias, content }) {
  * 给机器人发送Markdown消息
  * @param {Object} config 配置内容
  * @param {string} config.webhookUrl - 钩子链接
- * @param {string }config.chatId - 会话id
+ * @param {string} config.chatId - 会话id
  * @param {string} config.content - 内容
- * @param {any} config.attachments - 附加内容
- * @returns 请求Promise
+ * @param {Array<object>} config.attachments - 附加内容
+ * @returns {Promise<object>} 请求Promise
+ * @example
+ *
+ * sendWxRobotMarkdown({
+ *   webhookUrl: 'xxx',
+ *   chatId: 'xxx',
+ *   content: 'xxx',
+ *   attachments: []
+ * }).then(() => {
+ *
+ * })
  */
 export function sendWxRobotMarkdown({
   webhookUrl,
   chatId,
   content,
   attachments,
-}) {
+}: {
+  webhookUrl: string
+  content: string
+  chatId?: string
+  attachments?: Array<object>
+}): Promise<object> {
   return new Promise((resolve, reject) => {
     sendToRobot({
       webhookUrl,
@@ -75,9 +106,25 @@ export function sendWxRobotMarkdown({
  * @param {string} config.chatId 会话id
  * @param {string} config.content 内容
  * @param {string} config.md5Val md5内容
- * @returns 请求Promise
+ * @returns {Promise<object>} 请求Promise
+ *
+ * @example
+ *
+ * sendWxRobotImg({
+ *   webhookUrl: 'xxx',
+ *   chatId: 'xxx',
+ *   content: 'xxx',
+ *   md5Val: 'xxx'
+ * }).then(() => {
+ *
+ * })
  */
-export async function sendWxRobotImg({ webhookUrl, chatId, content, md5Val }) {
+export async function sendWxRobotImg({ webhookUrl, chatId, content, md5Val }: {
+  webhookUrl: string
+  content: string
+  md5Val: string
+  chatId?: string
+}): Promise<object> {
   return new Promise((resolve, reject) => {
     sendToRobot({
       webhookUrl,
