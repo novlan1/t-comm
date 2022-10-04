@@ -79,7 +79,7 @@ const signatureGenerator = (secret, content, signMethod, crypto) => {
  * 请求签名Header生成
  * @param signInfo
  */
-export const genRainbowHeaderSignature = (signInfo) => {
+export function genRainbowHeaderSignature(signInfo) {
   const { appID, userID, signMethod = 'sha1', secretKey, crypto } = signInfo;
 
   if (!secretKey) {
@@ -114,7 +114,7 @@ export const genRainbowHeaderSignature = (signInfo) => {
     rainbow_sgn_body: rainbowSgnBody, // 包体签名字符串	如UodgxU3P77iThrEJtsiHi2kjYJmNA2jGEgYNnMD%2FX0s%3D，默认不传
     rainbow_signature: rainbowSignature, // 签名串	如%2BysXvBSshSbHOsCX2zWBE1tapVs68hi5GLdcQtwBUNk%3D
   };
-};
+}
 </code></pre>
         </article>
     </section>
