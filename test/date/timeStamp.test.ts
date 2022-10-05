@@ -28,6 +28,16 @@ describe('getDayEndTimeStamp', () => {
     expect(getDayEndTimeStamp(0)).toBe(parseInt(`${date.getTime() / 1000}`, 10));
     expect(getDayEndTimeStamp(0, 'ms')).toBe(date.getTime());
     expect(getDayEndTimeStamp(0, 'MS')).toBe(date.getTime());
+    expect(getDayEndTimeStamp(0, 'MS', 'm')).toBe(date.getTime());
+
+    date.setHours(23, 59, 59, 0);
+    expect(getDayEndTimeStamp(0, 'MS', 's')).toBe(date.getTime());
+
+    date.setHours(23, 59, 59, 999);
+    expect(getDayEndTimeStamp(0, 'MS', 'ms')).toBe(date.getTime());
+
+    date.setHours(23, 0, 0, 0);
+    expect(getDayEndTimeStamp(0, 'MS', 'h')).toBe(date.getTime());
   });
 });
 
