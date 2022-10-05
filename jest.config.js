@@ -1,6 +1,7 @@
 process.env.TZ = 'GMT+0800';
 
 module.exports = {
+  globalSetup: './jest-global-setup.js',
   preset: 'ts-jest',
   transform: {
     '^.+\\.[t|j]sx?$': [
