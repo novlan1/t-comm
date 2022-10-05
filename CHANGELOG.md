@@ -1,5 +1,21 @@
 # 工具库更新日志
 
+## [0.1.6](https://github.com/novlan1/t-comm/compare/v0.1.5...v0.1.6) (2022-10-05)
+
+
+### Features
+
+* 补充一些单测 ([cf28d0e](https://github.com/novlan1/t-comm/commit/cf28d0ee8887c1b4d060964ba67775050bbbafb3))
+* 尝试terser ([6ce4289](https://github.com/novlan1/t-comm/commit/6ce4289a9a1e7cc2afe7ab8c4d1374914ae421de))
+* 导出shouldGenVersion ([e7cf0fd](https://github.com/novlan1/t-comm/commit/e7cf0fd9ca847012d7750549ed76be4badb15f4e))
+* 删除index.html ([8fcad30](https://github.com/novlan1/t-comm/commit/8fcad307e74a7e21807a3b2677adcdc3b019d34e))
+* 删除tam ([1778f18](https://github.com/novlan1/t-comm/commit/1778f18bd38d8892a22539183e1e72dcc70c4918))
+* 优化某天结束时间 ([04d78f6](https://github.com/novlan1/t-comm/commit/04d78f624c1ce1a6877d3e957c71a843fc45b1c6))
+* 优化rainbow ([7bf22d6](https://github.com/novlan1/t-comm/commit/7bf22d65818d837f34ebdd08380e321b97c5666b))
+* 增加一些时间函数 ([33e0a29](https://github.com/novlan1/t-comm/commit/33e0a29b261abb7a01ee2425f46d0ffb9e65e867))
+
+
+
 ## [0.1.5](https://github.com/novlan1/t-comm/compare/v0.1.4...v0.1.5) (2022-10-04)
 
 
