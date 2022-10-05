@@ -7366,7 +7366,7 @@ getCountDownObj(1 * 24 * 60 * 60 + 2 * 60 * 60 + 1 * 60 + 11, 'HOUR')
 
     
 
-    <h4 class="name" id="getDayEndTimeStamp"><span class="type-signature"></span>getDayEndTimeStamp<span class="signature">(n)</span><span class="type-signature"> &rarr; {number}</span></h4>
+    <h4 class="name" id="getDayEndTimeStamp"><span class="type-signature"></span>getDayEndTimeStamp<span class="signature">(n, unit, endFlag)</span><span class="type-signature"> &rarr; {number}</span></h4>
 
     
 
@@ -7378,7 +7378,7 @@ getCountDownObj(1 * 24 * 60 * 60 + 2 * 60 * 60 + 1 * 60 + 11, 'HOUR')
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="date_timeStamp.ts.html">date/timeStamp.ts</a>, <a href="date_timeStamp.ts.html#line31">line 31</a>
+        <a href="date_timeStamp.ts.html">date/timeStamp.ts</a>, <a href="date_timeStamp.ts.html#line33">line 33</a>
     </li></ul></dd>
     
 
@@ -7473,6 +7473,52 @@ getCountDownObj(1 * 24 * 60 * 60 + 2 * 60 * 60 + 1 * 60 + 11, 'HOUR')
             
 
             <td class="description last"><p>几天前</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>unit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>返回时间戳的单位，默认是s(秒)</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>endFlag</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>以什么单位作为结束时间，默认分钟，即23时59分0秒0毫秒</p></td>
         </tr>
 
     
