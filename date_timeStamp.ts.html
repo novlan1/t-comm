@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>version-tip/gen-version.ts - Documentation</title>
+    <title>date/timeStamp.ts - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">version-tip/gen-version.ts</h1>
+    <h1 class="page-title">date/timeStamp.ts</h1>
     
 
     
@@ -44,112 +44,70 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/* eslint-disable @typescript-eslint/no-require-imports */
-import {
-  getGitLastTag,
-  getGitCommitsBeforeTag,
-  getGitTagTime,
-} from '../git';
-
-import { execCommand } from '../util';
-
-
-function getTimeStampFromDate(date: string) {
-  return new Date(date).getTime();
-}
-
-function doRelease({ isFirstRelease }: {
-  isFirstRelease: boolean
-}) {
-  if (isFirstRelease) {
-    execCommand('npx standard-version --first-release');
-  } else {
-    execCommand('npx standard-version --release-as patch');
-  }
-}
-
-/**
- * 是否应该执行 standard-version
- * 返回0，不执行
- * 返回1，执行--first-release
- * 返回2，执行--release-as patch
+            <pre class="prettyprint source linenums"><code>/**
+ * 获取几天前的时间戳
  * @private
- * @param {string} [] 命令执行目录
- * @returns {number} 是否应该执行 standard-version
+ * @param {boolean} n 几天前
+ * @returns {number} 时间戳
  */
-export function shouldGenVersion(root?: string): number {
-  const path = require('path');
-  const fs = require('fs');
-
-  if (!root) {
-    console.log('\x1b[33m%s\x1b[0m', '请输入 root, 可为 process.cwd()');
-    return 0;
-  }
-
-  const INTERVAL_TIME = 24 * 60 * 60 * 1000;
-
-  const gitPath = path.resolve(root, '.git');
-  console.log('gitPath', gitPath);
-  if (!fs.existsSync(gitPath)) {
-    console.log('\x1b[33m%s\x1b[0m', `未找到 ${gitPath} ，不是 Git 目录。`);
-    return 0;
-  }
-
-  const tag = getGitLastTag();
-  console.log('\x1B[32m%s\x1B[0m', `tag 为 ${tag}`);
-
-  if (!tag) {
-    return 1;
-  }
-
-  const tagDate = getGitTagTime(tag);
-  console.log('\x1B[32m%s\x1B[0m', `tagDate 为 ${tagDate}`);
-
-  const commits = getGitCommitsBeforeTag(tag);
-  console.log('\x1B[32m%s\x1B[0m', `commits 为 ${commits}`);
-
-  if (Number(commits) &lt; 1) {
-    console.log('\x1b[33m%s\x1b[0m', `commits 为 ${commits}，小于 1`);
-    return 0;
-  }
-
-  const tagTimeStamp = getTimeStampFromDate(tagDate);
-  console.log('\x1B[32m%s\x1B[0m', `tagTimeStamp 为 ${tagTimeStamp}`);
-
-  if (Date.now() - tagTimeStamp &lt; INTERVAL_TIME) {
-    console.log('\x1b[33m%s\x1b[0m', `间隔小于${INTERVAL_TIME}`);
-    return 0;
-  }
-
-  return 2;
+function getTimeStamp(n = 0) {
+  return Date.now() - n * 24 * 60 * 60 * 1000;
 }
 
+/**
+ * 获取几天前的起始时间戳
+ * @param {boolean} n 几天前
+ * @returns {number} 时间戳
+ */
+export function getDayStartTimestamp(n = 0, unit = 's'): number {
+  const time = getTimeStamp(n);
+  const date = new Date(time);
+  date.setHours(0, 0, 0, 0);
+  if (unit === 'ms' || unit === 'MS') {
+    return date.getTime();
+  }
+  const startTime =  parseInt(`${date.getTime() / 1000}`, 10);
+  return startTime;
+}
 
 /**
- * 自动生成version，核心是利用 standard-version 命令
- * @param {object} config 配置信息
- * @param {string} config.root 项目根路径
- * @returns {boolean} 是否执行了 standard-version
- * @example
- *
- * genVersion({
- *   root: process.cwd()
- * })
- *
+ * 获取几天前的终止时间戳
+ * @param {boolean} n 几天前
+ * @returns {number} 时间戳
  */
+export function getDayEndTimeStamp(n = 0, unit = 's') {
+  const time = getTimeStamp(n);
+  const date = new Date(time);
+  date.setHours(23, 59, 0, 0);
+  if (unit === 'ms' || unit === 'MS') {
+    return date.getTime();
+  }
+  const endTime =  parseInt(`${date.getTime() / 1000}`, 10);
+  return endTime;
+}
 
-export function genVersion({ root }): boolean {
-  const genType = shouldGenVersion(root);
-  if (!genType) return false;
-  if (genType === 1) {
-    doRelease({ isFirstRelease: true });
-    return true;
-  }
-  if (genType === 2) {
-    doRelease({ isFirstRelease: false });
-    return true;
-  }
-  return false;
+export function getTodayStartTimestamp(unit = 's') {
+  return getDayStartTimestamp(0, unit);
+}
+
+export function getTodayEndTimeStamp(unit = 's') {
+  return getDayEndTimeStamp(0, unit);
+}
+
+export function getYesterdayStartTimeStamp(unit = 's') {
+  return getDayStartTimestamp(1, unit);
+}
+
+export function getYesterdayEndTimeStamp(unit = 's') {
+  return getDayEndTimeStamp(1, unit);
+}
+
+export function getDBYStartTimeStamp(unit = 's') {
+  return getDayStartTimestamp(2, unit);
+}
+
+export function getDBYEndTimeStamp(unit = 's') {
+  return getDayEndTimeStamp(2, unit);
 }
 </code></pre>
         </article>
