@@ -14,7 +14,7 @@ import { getUnitPreviousRatio } from '../number';
  *
  * // false
  */
-export function isListAllEqual(list = []) {
+export function isListAllEqual(list: Array<number|string> = []) {
   if (!list.length) return true;
   const value = list[0];
   for (const item of list.slice(1)) {

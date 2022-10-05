@@ -1,26 +1,12 @@
-import { toHumpObj } from '../../src';
+import { parseFunction } from '../../src';
 
-describe('toHumpObj', () => {
-  it('toHumpObj', () => {
-    const obj = {
-      a_a: 'a',
-      b_b: [
-        {
-          bb_b: 'b',
-        },
-      ],
-      c: {
-        dd_d: 'd',
-        e: {
-          ee_e: 'e',
-        },
-      },
-    };
-    const expectRes = {
-      aA: 'a',
-      bB: [{ bbB: 'b' }],
-      c: { ddD: 'd', e: { eeE: 'e' } },
-    };
-    expect(JSON.stringify(toHumpObj(obj))).toBe(JSON.stringify(expectRes));
+describe('parseFunction', () => {
+  it('parseFunction', () => {
+    const func = parseFunction('()=>console.log(1)');
+    expect(typeof func).toBe('function');
+  });
+
+  it('not string', () => {
+    expect(parseFunction(1)).toBe(1);
   });
 });
