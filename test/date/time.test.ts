@@ -1,12 +1,10 @@
-import { getCountDownObj } from '../../src';
+import { getCountDownObj, timeStampFormat } from '../../src';
 
-// describe('timeStampFormat', () => {
-//   it('', () => {
-//     expect(timeStampFormat(1647503559488, 'yyyy-MM-dd hh:mm:ss')).toBe(
-//       '2022-03-17 15:52:39',
-//     )
-//   })
-// })
+describe('timeStampFormat', () => {
+  it('timeStampFormat', () => {
+    expect(timeStampFormat(1647503559488, 'yyyy-MM-dd hh:mm:ss')).toBe('2022-03-17 15:52:39');
+  });
+});
 
 describe('getCountDownObj', () => {
   it('getCountDownObj', () => {
