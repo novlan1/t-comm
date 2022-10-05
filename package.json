@@ -37,7 +37,7 @@
     "api": "api-extractor run",
     "docs:gen": "jsdoc -c script/docs/jsdoc.json && cp script/docs/jsdoc.js docs",
     "docs:build": "bash generateDocs.sh",
-    "test": "TZ=Asia/Shanghai jest --coverage --verbose -u",
+    "test": "jest --coverage --verbose -u",
     "lint": "eslint --ext .js,.ts,.tsx,.jsx,.vue .",
     "lint:fix": "eslint --fix --ext .js,.ts,.tsx,.jsx,.vue .",
     "changelog": "gulp changelog",

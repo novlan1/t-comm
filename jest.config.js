@@ -1,4 +1,4 @@
-process.env.TZ = 'GMT+0800';
+// process.env.TZ = 'GMT+0800';
 
 module.exports = {
   globalSetup: './jest-global-setup.js',
