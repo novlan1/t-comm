@@ -86,7 +86,7 @@
   },
   "lint-staged": {
     "*.{ts,js}": [
-      "eslint --fix --format=pretty"
+      "eslint --fix"
     ]
   }
 }
