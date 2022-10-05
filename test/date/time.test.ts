@@ -3,6 +3,10 @@ import { getCountDownObj, timeStampFormat } from '../../src';
 describe('timeStampFormat', () => {
   it('timeStampFormat', () => {
     expect(timeStampFormat(1647503559488, 'yyyy-MM-dd hh:mm:ss')).toBe('2022-03-17 15:52:39');
+    expect(timeStampFormat(1647503559488, 'yy-M-d h:m:s')).toBe('22-3-17 15:52:39');
+
+    expect(timeStampFormat(1662336488000, 'yy-M-d h:m:s')).toBe('22-9-5 8:8:8');
+    expect(timeStampFormat(1662336488000, 'yyyy-MM-dd hh:mm:ss')).toBe('2022-09-05 08:08:08');
   });
 });
 
