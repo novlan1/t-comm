@@ -7,7 +7,7 @@
  * @param {Array<object>} usefulData 处理后的数据
  * @returns {string} 发送给机器人的markdown消息
  */
-function composeRobotContent(usefulData: Array<any> = []): string {
+export function composeRobotContent(usefulData: Array<any> = []): string {
   if (!usefulData.length) {
     return '当前深圳预警已全部解除';
   }
@@ -43,7 +43,7 @@ function composeRobotContent(usefulData: Array<any> = []): string {
  * @param {Array<object>} usefulData 处理后的数据
  * @returns {boolean} 是否和以前数据一样
  */
-function compareData(usefulData: Array<object|undefined> = []): boolean {
+export function compareData(usefulData: Array<object|undefined> = []): boolean {
   const fs = require('fs');
   const path = require('path');
   const savePath = path.resolve(__dirname, './ignore-tmp-data/alarm.json');

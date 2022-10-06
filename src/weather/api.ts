@@ -16,7 +16,6 @@ export function fetchWeatherData(): Promise<Array<object>> {
 
     axios.get(QUERY_URL).then((res) => {
       const { subAlarm } = res.data || {};
-      console.log('subAlarm', subAlarm);
       resolve(subAlarm);
     });
   });
