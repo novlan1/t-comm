@@ -1,4 +1,4 @@
-import { flatten, shuffle, isListAllEqual, getKeyValuesMap } from '../../src';
+import { flatten, shuffle  } from '../../src';
 
 describe('flatten', () => {
   it('flatten', () => {
@@ -18,45 +18,3 @@ describe('shuffle', () => {
 });
 
 
-describe('isListAllEqual', () => {
-  it('isListAllEqual', () => {
-    expect(isListAllEqual([1, 1, 1, 1, 1, 1])).toBe(true);
-    expect(isListAllEqual([1, 1, 1, 1, 1, 2])).toBe(false);
-  });
-});
-
-
-describe('getKeyValuesMap', () => {
-  it('getKeyValuesMap', () => {
-    expect(typeof getKeyValuesMap([])).toBe('object');
-    expect(Object.keys(getKeyValuesMap([])).length).toBe(0);
-  });
-
-  it('not empty', () => {
-    const data = [
-      {
-        Project: {
-          value: 'x',
-        },
-      }, {
-        Project: {
-          value: 'y',
-        },
-      }];
-    expect(getKeyValuesMap(data)).toMatchObject({
-      Project: ['x', 'y'],
-    });
-  });
-
-  it('do not have value property', () => {
-    const data = [
-      {
-        Project: 'x',
-      }, {
-        Project: 'y',
-      }];
-    expect(getKeyValuesMap(data)).toMatchObject({
-      Project: ['x', 'y'],
-    });
-  });
-});

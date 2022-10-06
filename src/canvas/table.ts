@@ -1,4 +1,4 @@
-import { getAccCellWidth as oriGetAccCellWidth } from './helper';
+import { getAccCellWidth as oriGetAccCellWidth } from '../util';
 
 const cellHeight = 20;
 const extraHeight = 15;
