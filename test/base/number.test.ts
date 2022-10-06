@@ -1,4 +1,8 @@
-import { getUnitPreviousRatio } from '../../src';
+import {
+  getUnitPreviousRatio,
+  getThousandSeparator,
+  getThousandSeparator2,
+} from '../../src';
 
 describe('getUnitPreviousRatio', () => {
   it('getUnitPreviousRatio', () => {
@@ -18,5 +22,19 @@ describe('getUnitPreviousRatio', () => {
     expect(getUnitPreviousRatio(0, 2)).toBe('-100.0%');
     expect(getUnitPreviousRatio(0, 3)).toBe('-100.0%');
     expect(getUnitPreviousRatio(0, 4)).toBe('-100.0%');
+  });
+});
+
+
+describe('getThousandSeparator', () => {
+  it('getThousandSeparator', () => {
+    expect(getThousandSeparator('123123123')).toBe('123,123,123');
+  });
+});
+
+
+describe('getThousandSeparator2', () => {
+  it('getThousandSeparator2', () => {
+    expect(getThousandSeparator2('12345678 123456789')).toBe('12,345,678 123,456,789');
   });
 });

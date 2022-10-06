@@ -1,4 +1,7 @@
-import { getAccCellWidth } from '../../src';
+import {
+  getAccCellWidth,
+} from '../../src';
+
 
 describe('getAccCellWidth', () => {
   it('getAccCellWidth', () => {

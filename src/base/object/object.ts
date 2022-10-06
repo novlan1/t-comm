@@ -60,3 +60,25 @@ export function toHumpObj(obj: object, cache = new WeakMap()): object {
 }
 
 
+/**
+ * 将属性混合到目标对象中
+ * @param {object} to 目标对象
+ * @param {object} from 原始对象
+ * @returns 处理后的对象
+ *
+ * @example
+ * const a = { name: 'lee' }
+ * const b = { age: 3 }
+ * extend(a, b)
+ *
+ * console.log(a)
+ *
+ * // => { name: 'lee', age: 3 }
+ */
+export function extend(to: Object, from: object): object {
+  // eslint-disable-next-line no-restricted-syntax, guard-for-in
+  for (const key in from) {
+    to[key] = from[key];
+  }
+  return to;
+}

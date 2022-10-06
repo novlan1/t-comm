@@ -59,3 +59,40 @@ export const NUMBER_CHI_MAP = {
   19: '十九',
   20: '二十',
 };
+
+
+/**
+ * 获取千分位分隔符
+ * @param {string | number} value 输入数字
+ * @returns {string} 处理后的数字
+ *
+ * @example
+ *
+ * getThousandSeparator('123123123')
+ *
+ * // => 123,123,123
+ *
+ * getThousandSeparator('12312312')
+ *
+ * // => 12,312,312
+ */
+export function getThousandSeparator(value) {
+  const reg = /(?!^)(?=(\d{3})+$)/g;
+  return `${value}`.replace(reg, ',');
+}
+
+/**
+ * 获取千分位分隔符，处理数字之间有空格的情况
+ * @param {string | number} value 输入数字
+ * @returns {string} 处理后的数字
+ *
+ * @example
+ * getThousandSeparator2('12345678 123456789')
+ *
+ * // => 12,345,678 123,456,789
+ *
+ */
+export function getThousandSeparator2(value) {
+  const reg = /\B(?=(\d{3})+\b)/g;
+  return `${value}`.replace(reg, ',');
+}

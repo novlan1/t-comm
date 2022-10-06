@@ -43,3 +43,18 @@ export function shuffle(array) {
   }
   return arr;
 }
+
+
+/**
+ * 获取累积宽度
+ * @param {Array<number>} cellWidthList - 宽度列表
+ * @param {number} idx - 当前idx
+ * @returns {number} 累计宽度
+ */
+export function getAccCellWidth(cellWidthList: Array<number>, idx: number): number {
+  let res = 0;
+  for (let i = 0; i <= Math.min(idx, cellWidthList.length - 1); i++) {
+    res += cellWidthList[i];
+  }
+  return res;
+}

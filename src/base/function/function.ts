@@ -20,3 +20,34 @@ export function parseFunction(func) {
   }
   return data;
 }
+
+
+/**
+ * 记忆函数：缓存函数的运算结果
+ * @param {Function} fn 输入函数
+ * @returns {any} 函数计算结果
+ *
+ * @example
+ * function test(a) {
+ *   return a + 2
+ * }
+ *
+ * const cachedTest = cached(test)
+ *
+ * cachedTest(1)
+ *
+ * // => 3
+ *
+ * cachedTest(1)
+ *
+ * // => 3
+ */
+export function cached(fn) {
+  const cache = Object.create(null);
+  return function cachedFn(str) {
+    const hit = cache[str];
+    if (hit) return hit;
+    cache[str] = fn(str);
+    return cache[str];
+  };
+}

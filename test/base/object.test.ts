@@ -1,4 +1,4 @@
-import { toHumpObj } from '../../src';
+import { toHumpObj, extend } from '../../src';
 
 describe('toHumpObj', () => {
   it('toHumpObj', () => {
@@ -25,3 +25,11 @@ describe('toHumpObj', () => {
   });
 });
 
+describe('extend', () => {
+  it('extend', () => {
+    expect(extend({ name: 'lee' }, { age: 3 })).toEqual({
+      name: 'lee',
+      age: 3,
+    });
+  });
+});
