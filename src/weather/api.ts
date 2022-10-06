@@ -3,6 +3,11 @@
 /**
  * 获取天气信息
  * @returns {Promise<Array>} 天气数据
+ * @example
+ *
+ * fetchWeatherData().then(content => {
+ *   console.log(content)
+ * })
  */
 export function fetchWeatherData(): Promise<Array<object>> {
   return new Promise((resolve) => {
