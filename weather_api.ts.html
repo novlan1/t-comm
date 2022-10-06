@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>canvas/table.ts - Documentation</title>
+    <title>weather/api.ts - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">canvas/table.ts</h1>
+    <h1 class="page-title">weather/api.ts</h1>
     
 
     
@@ -44,206 +44,23 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { getAccCellWidth as oriGetAccCellWidth } from './helper';
-
-const cellHeight = 20;
-const extraHeight = 15;
-const extraBottom = 10;
-const extraWidth = 3;
-const maxColor = '#fc5531';
-const minColor = 'green';
-
-function parseCellValue(val) {
-  if (val === undefined || val === null) return '';
-  return val;
-}
+            <pre class="prettyprint source linenums"><code>/* eslint-disable @typescript-eslint/no-require-imports */
 
 /**
- * 创建canvas的table
- * @param {object} config 输入配置
- * @param {Array&lt;object>} config.data 输入数据
- * @param {Array&lt;string>} config.headers 表头列表
- * @param {Array&lt;number>} config.cellWidthList 每一格的宽度列表
- * @param {string} config.title 标题
- * @param {Function} config.createCanvas 创建canvas方法
- * @returns {string} 图片url
- * @example
- *
- * const tableData = [
- *   {
- *     Request: {
- *       value: 854,
- *       name: 'Request',
- *       idx: 19,
- *       lastIdx: 19,
- *       isMax: false,
- *       isMin: false,
- *       isSecondMax: false,
- *       isSecondMin: true,
- *     },
- *   },
- *   {
- *     HTTP: {
- *       value: 204,
- *       name: 'HTTP',
- *       idx: 1,
- *       lastIdx: 1,
- *       isMax: false,
- *       isMin: false,
- *       isSecondMax: true,
- *       isSecondMin: false,
- *     },
- *   },
- * ];
- *
- * createCanvasTable({
- *   data: tableData,
- *   headers: getHeaders(tableData),
- *   title: `007日报 ${date}`,
- *   createCanvas: require('canvas').createCanvas,
- *   cellWidthList: [
- *     95,
- *     65,
- *     65,
- *     65,
- *   ],
- * });
+ * 获取天气信息
+ * @returns {Promise&lt;Array>} 天气数据
  */
-export function createCanvasTable({
-  data,
-  headers,
-  cellWidthList,
-  title,
-  createCanvas,
-}): {
-    createCanvas: Function
-  } {
-  const getAccCellWidth = oriGetAccCellWidth.bind(null, cellWidthList);
+export function fetchWeatherData(): Promise&lt;Array&lt;object>> {
+  return new Promise((resolve) => {
+    const axios = require('axios');
+    const QUERY_URL = 'https://weather.121.com.cn/data_cache/szWeather/alarm/szAlarm.json';
 
-  const width = getAccCellWidth(headers.length - 1) * 2 + extraWidth * 4;
-  const height =    (data.length + 1) * cellHeight * 2 + extraHeight * 2 + extraBottom;
-
-  const canvas = createCanvas(width, height);
-  const ctx = canvas.getContext('2d');
-
-  function fillBackground() {
-    ctx.font = '7px Arial';
-    ctx.scale(2, 2);
-    ctx.fillStyle = '#fff';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-  }
-
-  function fillTitle() {
-    ctx.lineWidth = 1;
-    ctx.strokeStyle = '#ccc';
-    ctx.textAlign = 'start';
-    ctx.font = '9px Arial';
-    ctx.fillStyle = '#000';
-    ctx.fillText(parseCellValue(title), 5, 10);
-  }
-
-  // 表头绘制
-  function fillTableHeader() {
-    ctx.font = '7px Arial';
-    ctx.textAlign = 'center';
-    const colors = [
-      '#000000',
-      '#000000',
-      '#ff0000',
-      '#006fff',
-      '#07c160',
-      '#ff0000',
-      '#006fff',
-    ];
-
-    for (let i = 0; i &lt; headers.length; i++) {
-      const cellWidth = cellWidthList[i];
-
-      ctx.fillStyle = colors[0];
-      ctx.moveTo(
-        Math.round(cellWidth / 2) + getAccCellWidth(i - 1) + extraWidth,
-        0,
-      );
-      ctx.fillText(
-        parseCellValue(headers[i]),
-        Math.round(cellWidth / 2) + getAccCellWidth(i - 1) + extraWidth,
-        13.5 + extraHeight,
-      );
-    }
-  }
-
-  // 文字
-  function fillCellText() {
-    for (let i = 0; i &lt; data.length; i++) {
-      Object.keys(data[i]).forEach((item, idx) => {
-        let color;
-        const obj = data[i][item];
-
-        if (obj.isMax || obj.isSecondMax) {
-          color = maxColor;
-        } else if (obj.isMin || obj.isSecondMin) {
-          color = minColor;
-        } else {
-          color = '#000000';
-        }
-
-        const cellWidth = cellWidthList[idx];
-        const textWidth =          Math.round(cellWidth / 2) + getAccCellWidth(idx - 1) + extraWidth;
-        const textHeight = cellHeight * i + 33.5 + extraHeight;
-
-        // 少了序号，颜色值后移
-        ctx.fillStyle = color;
-
-        if (obj.ratio) {
-          ctx.fillText(
-            `${parseCellValue(obj.value)}       `,
-            textWidth,
-            textHeight,
-          );
-
-          ctx.font = '5px Arial';
-          ctx.textAlign = 'right';
-          ctx.fillStyle = 'rgba(0,0,0,0.8)';
-
-          // 绘制趋势
-          ctx.fillText(parseCellValue(obj.ratio), textWidth + 30, textHeight);
-
-          ctx.font = '7px Arial';
-          ctx.textAlign = 'center';
-        } else {
-          ctx.fillText(`${parseCellValue(obj.value)}`, textWidth, textHeight);
-        }
-      });
-    }
-  }
-
-  // 画线
-  function drawLine() {
-    // 竖线
-    for (let i = 0; i &lt; headers.length + 1; i++) {
-      ctx.moveTo(getAccCellWidth(i - 1) + extraWidth, 0 + extraHeight);
-      ctx.lineTo(
-        getAccCellWidth(i - 1) + extraWidth,
-        canvas.height / 2 - extraBottom / 2,
-      );
-    }
-
-    // 横线
-    for (let i = 0; i &lt; data.length + 2; i++) {
-      ctx.moveTo(0 + extraWidth, cellHeight * i + extraHeight);
-      ctx.lineTo(canvas.width / 2 - extraWidth, cellHeight * i + extraHeight);
-    }
-    ctx.stroke();
-  }
-
-  fillBackground();
-  fillTitle();
-  fillTableHeader();
-  fillCellText();
-  drawLine();
-
-  const imgUrl = canvas.toDataURL();
-  return imgUrl;
+    axios.get(QUERY_URL).then((res) => {
+      const { subAlarm } = res.data || {};
+      console.log('subAlarm', subAlarm);
+      resolve(subAlarm);
+    });
+  });
 }
 </code></pre>
         </article>
