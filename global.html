@@ -132,7 +132,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="base_number_number.ts.html">base/number/number.ts</a>, <a href="base_number_number.ts.html#line37">line 37</a>
+        <a href="base_number_number.ts.html">base/number/number.ts</a>, <a href="base_number_number.ts.html#line38">line 38</a>
     </li></ul></dd>
     
 
@@ -21445,7 +21445,7 @@ const content = genVersionTip({
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="weather_api.ts.html">weather/api.ts</a>, <a href="weather_api.ts.html#line7">line 7</a>
+        <a href="weather_api.ts.html">weather/api.ts</a>, <a href="weather_api.ts.html#line12">line 12</a>
     </li></ul></dd>
     
 
@@ -21494,6 +21494,13 @@ const content = genVersionTip({
 
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>fetchWeatherData().then(content => {
+  console.log(content)
+})</code></pre>
 
 
 
@@ -21554,7 +21561,7 @@ const content = genVersionTip({
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="weather_weather.ts.html">weather/weather.ts</a>, <a href="weather_weather.ts.html#line8">line 8</a>
+        <a href="weather_weather.ts.html">weather/weather.ts</a>, <a href="weather_weather.ts.html#line20">line 20</a>
     </li></ul></dd>
     
 
@@ -21603,6 +21610,20 @@ const content = genVersionTip({
 
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>getWeatherRobotContent().then(resp => {
+  const { content, isSame } = resp
+
+  console.log(content)
+  // ## 深圳当前正在生效的预警如下
+  // ...
+
+  console.log(isSame)
+  // false
+})</code></pre>
 
 
 
