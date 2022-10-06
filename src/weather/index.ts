@@ -1,0 +1,1 @@
+export { getWeatherRobotContent } from './weather';

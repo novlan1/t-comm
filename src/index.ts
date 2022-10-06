@@ -17,4 +17,5 @@ export * from './url';
 export * from './util';
 export * from './validate';
 export * from './version-tip';
+export * from './weather';
 export * from './wecom-robot';

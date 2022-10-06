@@ -111,3 +111,6 @@ package-lock.json
 /test.js
 repo/
 /docs/
+
+
+ignore-tmp-data/
