@@ -1,7 +1,6 @@
 /**
  * 获取cookie
  * @param {string} key cookie键值
- * @param {string} [defaultVal] 默认值
  * @returns {string} cookie值
  *
  * @example
@@ -11,16 +10,13 @@
  * // => mike
  *
  */
-export function getCookie(key: string, defaultVal?: string): string {
+export function getCookie(key: string): string {
   let cookie = '';
 
   if (typeof window !== 'undefined' && window.document) {
     cookie = window.document.cookie;
   }
   let result = '';
-  if (typeof defaultVal !== 'undefined') {
-    result = defaultVal;
-  }
 
   const re = new RegExp(`${key}=(.*?)(;|$)`); // 浏览器端，两个母子域名同名cookie会只取第一个值
   const ma = cookie.match(re);
