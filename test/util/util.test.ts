@@ -17,7 +17,6 @@ describe('execCommand', () => {
 
 describe('t', () => {
   it('ttt', () => {
-    console.log(execCommand('ll'));
     expect(1 + 1).toBe(2);
   });
 });
