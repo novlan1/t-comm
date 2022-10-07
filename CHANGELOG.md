@@ -1,5 +1,20 @@
 # 工具库更新日志
 
+## [0.1.8](https://github.com/novlan1/t-comm/compare/v0.1.7...v0.1.8) (2022-10-07)
+
+
+### Bug Fixes
+
+* 修复getAccCellWidth导出位置 ([3f36b67](https://github.com/novlan1/t-comm/commit/3f36b67d1647ed928e163fed96b7f226bcbf4498))
+
+
+### Features
+
+* 补充部分单测 ([07a421c](https://github.com/novlan1/t-comm/commit/07a421cc2cc48104977bd0a1e9819d0bb098e0a1))
+* 优化wecom robot，允许传入key ([09d4c30](https://github.com/novlan1/t-comm/commit/09d4c3083c39689a36de3bad0e8e408e13df617e))
+
+
+
 ## [0.1.7](https://github.com/novlan1/t-comm/compare/v0.1.6...v0.1.7) (2022-10-06)
 
 
