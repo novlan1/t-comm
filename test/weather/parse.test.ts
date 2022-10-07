@@ -14,7 +14,7 @@ describe('composeRobotContent', () => {
       alarmType: 3,
       alarmColor: 4,
     }]))
-      .toMatch(/## 深圳当前正在生效的预警如下/);
+      .toMatch(/>【深圳当前生效的预警】/);
   });
 });
 

@@ -12,7 +12,7 @@ export function composeRobotContent(usefulData: Array<any> = []): string {
     return '当前深圳预警已全部解除';
   }
 
-  const content = ['## 深圳当前正在生效的预警如下\n\n'];
+  const content = ['>【深圳当前生效的预警】'];
   const WEB_LINK = 'http://weather.sz.gov.cn/qixiangfuwu/yujingfuwu/tufashijianyujing/';
 
   const tempList = usefulData.map((item, index) => {
@@ -24,15 +24,13 @@ export function composeRobotContent(usefulData: Array<any> = []): string {
       // str,
     } = item;
     const list = [
-      `### ${index + 1}.【${alarmArea}】【${alarmColor || '-'}】【${alarmType}预警】`,
+      `${index + 1}. ${alarmArea}·${alarmColor || '-'}·${alarmType}预警，发布时间：${date}`,
       // `${str}`,
-      `【发布时间】${date}`,
     ];
     return list.join('\n');
   });
-  content.push(tempList.join('\n\n\n'));
-  content.push('\n');
-  content.push(`原文链接：[深圳市气象局](${WEB_LINK})`);
+  content.push(tempList.join('\n'));
+  content.push(`[深圳市气象局](${WEB_LINK})`);
   return content.join('\n');
 }
 
