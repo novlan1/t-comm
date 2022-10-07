@@ -1,5 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const axios = require('axios');
+const WECOM_ROBOT_PREFIX = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=';
 
 /**
  * 给机器人发消息的基本方法
@@ -35,9 +36,8 @@ export function sendToRobot({ webhookUrl, params }: {
       return;
     }
 
-    if (!webhookUrl.startsWith('http') && !webhookUrl.startsWith('https')) {
-      reject();
-      return;
+    if (!webhookUrl.startsWith('http')) {
+      webhookUrl = `${WECOM_ROBOT_PREFIX}${webhookUrl}`;
     }
 
     axios
