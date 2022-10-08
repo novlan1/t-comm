@@ -31,7 +31,7 @@
     "monospaceLinks": false,
     "default": {
       "outputSourceFiles": true,
-      "includeDate": false,
+      "includeDate": true,
       "useLongnameInNav": true
     }
   },

@@ -1,7 +1,7 @@
 /**
  * 判断数据是不是正则对象
  * @param {any} value - 输入数据
- * @returns {boolean} - 是否是正则对象
+ * @returns {boolean} 是否是正则对象
  *
  * @example
  *

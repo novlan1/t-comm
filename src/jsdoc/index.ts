@@ -1,0 +1,1 @@
+export { handleJsDoc } from './jsdoc';
