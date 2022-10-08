@@ -20,8 +20,8 @@ function getNpmToken() {
 
 export function writeEnvTokenToNpmRC() {
   const NPM_RC_TPL = `registry=https://registry.npmjs.org/
-  //registry.npmjs.org/:always-auth=true
-  //registry.npmjs.org/:_authToken={{TOKEN}}`;
+//registry.npmjs.org/:always-auth=true
+//registry.npmjs.org/:_authToken={{TOKEN}}`;
 
   const fs = require('fs');
   const path = require('path');
