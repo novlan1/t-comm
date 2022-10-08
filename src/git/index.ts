@@ -98,3 +98,27 @@ export function getGitTagTime(tag) {
   if (!tag) return '';
   return execCommand(`git log -1 --format=%ai ${tag} | cat`);
 }
+
+
+/**
+ * 获取当前用户
+ * @param isPriorGit - 是否优先使用git用户信息
+ * @returns user
+ */
+export function getGitAuthor(isPriorGit = false) {
+  const { execSync } = require('child_process');
+  const envAuthor = process.env.VUE_APP_AUTHOR;
+  let gitAuthor = '';
+  try {
+    gitAuthor = execSync('git config user.name', {
+      encoding: 'utf-8',
+      stdio: 'pipe',
+    }).replace(/\n/g, '');
+  } catch (err) {
+    console.log('getAuthor.err', err);
+  }
+  if (isPriorGit) {
+    return gitAuthor || envAuthor || '';
+  }
+  return envAuthor || gitAuthor || '';
+}
