@@ -762,4 +762,10 @@ html[data-search-mode] .level-hide {
     font-weight: 300;
     font-style: normal;
 
+} 
+
+.nav-separator {
+  color: hsl(207, 1%, 60%);
+  font-size: 12px;
+  display: block;
 }
