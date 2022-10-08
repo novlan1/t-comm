@@ -7,7 +7,7 @@ import { sendWxRobotMarkdown } from '../wecom-robot/base';
  * @param {string} options.webhookUrl 机器人hook地址
  * @param {string} [options.chatId] 会话Id
  * @param {string} [options.force] 是否在和之前获取数据相同时，也发送
- * @returns
+ * @returns {Promise<Object>} 请求Promise
  */
 export async function sendWeatherRobotMsg({
   webhookUrl,
