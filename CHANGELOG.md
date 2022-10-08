@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.1.10](https://github.com/novlan1/t-comm/compare/v0.1.9...v0.1.10) (2022-10-08)
+
+
+### Features
+
+* 获取gitAuthor ([c550595](https://github.com/novlan1/t-comm/commit/c550595e54dd57aec1d80d5c630b53697ee72429))
+
+
+
 ## [0.1.9](https://github.com/novlan1/t-comm/compare/v0.1.8...v0.1.9) (2022-10-08)
 
 
