@@ -263,7 +263,7 @@ export function getMaxAndMinIdx(
       const itemInfo = item[key] || {};
 
       if (values && typeof itemInfo.value === 'number') {
-        if (reverseScoreKeys.includes(key)) {
+        if (reverseScoreKeys.indexOf(key) > -1) {
           values.sort((a, b) => a - b);
         } else {
           values.sort((a, b) => b - a);

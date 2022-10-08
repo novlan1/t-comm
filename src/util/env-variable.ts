@@ -17,7 +17,14 @@ function getKeyValue(key, sourceLine) {
   return result;
 }
 
-// 获取模块名称
+/**
+ * 读取文件中环境变量的值，支持：
+ * - NPM_TOKEN=xxx
+ * - NPM_TOKEN = xxx
+ * @param {string} key 环境变量的key
+ * @param {string} filepath 保存环境变量的文件路径
+ * @returns {string} 环境变量的值
+ */
 export function readEnvVariable(key, filepath) {
   const fs = require('fs');
   if (!fs.lstatSync(filepath)) {

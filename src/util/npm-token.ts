@@ -18,6 +18,10 @@ function getNpmToken() {
   return token;
 }
 
+
+/**
+ * 将 .env.local 中 NPM_TOKEN 的值写入到 .npmrc 中
+ */
 export function writeEnvTokenToNpmRC() {
   const NPM_RC_TPL = `registry=https://registry.npmjs.org/
 //registry.npmjs.org/:always-auth=true
