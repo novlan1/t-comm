@@ -114,3 +114,4 @@ repo/
 
 
 ignore-tmp-data/
+.npmrc

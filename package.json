@@ -42,7 +42,8 @@
     "lint:fix": "eslint --fix --ext .js,.ts,.tsx,.jsx,.vue .",
     "changelog": "gulp changelog",
     "version": "yarn changelog && git add CHANGELOG.md",
-    "release": "yarn test && yarn build && np --no-cleanup --yolo --any-branch",
+    "release": "yarn npm:token && yarn test && yarn build && np --no-cleanup --yolo --any-branch",
+    "npm:token": "node script/npm-token.js",
     "prepare": "husky install"
   },
   "devDependencies": {
