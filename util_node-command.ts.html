@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>base/string/string.ts - Documentation</title>
+    <title>util/node-command.ts - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">base/string/string.ts</h1>
+    <h1 class="page-title">util/node-command.ts</h1>
     
 
     
@@ -44,76 +44,32 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * 横线转驼峰命名
- * @param {string} str  输入字符串
- * @returns {string} 处理后的字符串
- * @example
- *
- * camelize('ab-cd-ef')
- *
- * // => abCdEf
- *
- */
-export function camelize(str) {
-  const camelizeRE = /-(\w)/g;
-  return str.replace(camelizeRE, (_, c) => (c ? c.toUpperCase() : ''));
-}
+            <pre class="prettyprint source linenums"><code>/* eslint-disable @typescript-eslint/no-require-imports */
+
 
 /**
- * 驼峰命名转横线命名：拆分字符串，使用 - 相连，并且转换为小写
- * @param {string} str 输入字符串
- * @returns {string} 处理后的字符串
- *
- * @example
- *
- * hyphenate('abCd')
- *
- * // => ab-cd
- *
+ * nodejs中调用 child_process.execSync 执行命令
+ * @param {string} command 命令
+ * @param {string} root 执行命令的目录
+ * @returns {string} 命令执行结果
  */
-export function hyphenate(str) {
-  const hyphenateRE = /\B([A-Z])/g;
-  return str.replace(hyphenateRE, '-$1').toLowerCase();
-}
-
-/**
- * 字符串首位大写
- * @param {string} str 输入字符串
- * @returns {string} 处理后的字符串
- *
- * @example
- *
- * capitalize('abc')
- *
- * // => Abc
- */
-export function capitalize(str: string): string {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
-/**
- * 将每个单词的首字母转换为大写
- * @param {string} str 输入字符串
- * @returns {string} 处理后的字符串
- *
- * @example
- *
- * titleize('my name is yang')
- *
- * // My name is Yang
- *
- * titleize('foo-bar')
- *
- * // Foo-Bar
- */
-export function titleize(str) {
-  if (typeof str !== 'string') {
-    throw new TypeError('Expected a string');
+export function execCommand(command: string, root?: string): string {
+  if (!root) {
+    root = process.cwd();
   }
-
-  return str.toLowerCase().replace(/(?:^|\s|-)\S/g, x => x.toUpperCase());
+  const { execSync } = require('child_process');
+  return (
+    execSync(command, {
+      cwd: root,
+      encoding: 'utf-8',
+      stdio: 'pipe',
+    })
+      .split('\n')[0]
+      ?.trim() || ''
+  );
 }
+
+
 </code></pre>
         </article>
     </section>
