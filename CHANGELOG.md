@@ -1,5 +1,18 @@
 # 工具库更新日志
 
+## [0.1.9](https://github.com/novlan1/t-comm/compare/v0.1.8...v0.1.9) (2022-10-08)
+
+
+### Features
+
+* 删除npm:token ([e5d4800](https://github.com/novlan1/t-comm/commit/e5d4800a6682c21a8f44c2c0d80ae17d2f9101ce))
+* 写入npmrc ([67d43a0](https://github.com/novlan1/t-comm/commit/67d43a06115f901a41c0ecb9bb9c4a8dbe194250))
+* 优化机器人发送 ([511a6a7](https://github.com/novlan1/t-comm/commit/511a6a7d325187a611477aed10d15a65c177657b))
+* 优化npm token ([23bafd6](https://github.com/novlan1/t-comm/commit/23bafd660e8b8d9969f636bc84d6a628a082e855))
+* 增加npmtoken的写入 ([812b1c6](https://github.com/novlan1/t-comm/commit/812b1c67e46d98bb77f610a3765d872a24fd0eba))
+
+
+
 ## [0.1.8](https://github.com/novlan1/t-comm/compare/v0.1.7...v0.1.8) (2022-10-07)
 
 
