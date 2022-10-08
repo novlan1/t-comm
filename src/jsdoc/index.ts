@@ -1,1 +1,1 @@
-export { handleJsDoc } from './jsdoc';
+export { JsDocHandler } from './jsdoc';
