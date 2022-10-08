@@ -26,7 +26,7 @@ export function getGitCurBranch() {
  * @returns {Object} 提交对象
  *
  * @example
- * getCommitInfo()
+ * getGitCommitInfo()
  * {
  *   author: 'novlan1',
  *   message: ' 优化一部分文档',
