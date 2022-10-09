@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.1.14](https://github.com/novlan1/t-comm/compare/v0.1.13...v0.1.14) (2022-10-09)
+
+
+### Features
+
+* 优化jsdoc文档，删除完全重复的section ([0738988](https://github.com/novlan1/t-comm/commit/0738988a555f0cbe64e105d2d660fffbfd235e53))
+
+
+
 ## [0.1.13](https://github.com/novlan1/t-comm/compare/v0.1.12...v0.1.13) (2022-10-09)
 
 
