@@ -1,5 +1,20 @@
 # 工具库更新日志
 
+## [0.1.11](https://github.com/novlan1/t-comm/compare/v0.1.10...v0.1.11) (2022-10-09)
+
+
+### Features
+
+* 处理时区 ([8351644](https://github.com/novlan1/t-comm/commit/835164463648678dea00600b354237d8e42d23d2))
+* 恢复之前的babel配置 ([5ec8d50](https://github.com/novlan1/t-comm/commit/5ec8d5079a1a7965931d00aa83f6a5bdfd2d4ffb))
+* 生成文档之前先build ([240a448](https://github.com/novlan1/t-comm/commit/240a44800e4803914c960ae716194942937733b9))
+* 优化文档 ([d0193ec](https://github.com/novlan1/t-comm/commit/d0193ecabd020ba7f95c8bc7271b4664009eddaf))
+* 优化jsdoc ([0c4f313](https://github.com/novlan1/t-comm/commit/0c4f313d07c895f32765487e90d3fed3f616c8c5))
+* 优化jsdoc handler ([525180f](https://github.com/novlan1/t-comm/commit/525180f531f30c56e967097d1060c36511c42e8d))
+* 增加jsdoc的处理 ([2fa4b03](https://github.com/novlan1/t-comm/commit/2fa4b03217536a287872239bb03053cbaefa5870))
+
+
+
 ## [0.1.10](https://github.com/novlan1/t-comm/compare/v0.1.9...v0.1.10) (2022-10-08)
 
 
