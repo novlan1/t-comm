@@ -45,6 +45,7 @@ class JsDocHandler {
    * @param {string} [options.author] 作者，默认为空
    * @param {string} [options.extraCss] 额外插入的css，默认为`.nav-separator`的一些样式
    * @param {string} [options.navHandler] 处理API所在文件的方法
+   * @param {boolean} [options.isHandleNav] 是否处理导航栏，即插入文件名进行分隔，默认为false
    * @returns {object} JsDocHandler实例
    * @example
    *
