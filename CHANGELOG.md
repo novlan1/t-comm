@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.1.13](https://github.com/novlan1/t-comm/compare/v0.1.12...v0.1.13) (2022-10-09)
+
+
+### Features
+
+* 优化jsdoc ([1666a1c](https://github.com/novlan1/t-comm/commit/1666a1cf326437d3a5e8c653e525a74b15c3af86))
+
+
+
 ## [0.1.12](https://github.com/novlan1/t-comm/compare/v0.1.11...v0.1.12) (2022-10-09)
 
 
