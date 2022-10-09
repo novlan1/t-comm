@@ -10,6 +10,16 @@ const DEFAULT_EXTRA_CSS = `
 }
 `;
 
+function getSeparatorStr(content) {
+  const maxLen = 14;
+  const lastLen = parseInt(`${maxLen - (content.length) / 2}`, 10);
+  const fill = Array.from({ length: lastLen })
+    .map(() => '-')
+    .join('');
+
+  return `${fill}   ${content}   ${fill}`;
+}
+
 
 /**
  * 处理jsdoc的脚本
@@ -128,7 +138,7 @@ export class JsDocHandler {
   parseSourceMap(sourceMap) {
     return Object.keys(sourceMap).reduce((acc, key) => {
       const value = sourceMap[key];
-      acc[key] = this.getSeparatorStr(value);
+      acc[key] = getSeparatorStr(value);
       return acc;
     }, {});
   }
@@ -151,20 +161,12 @@ export class JsDocHandler {
     });
 
     // 处理footer
-    const footerContent = `Documentation generated on ${timeStampFormat(Date.now(), 'yyyy-MM-dd hh:mm:ss')} GMT+0800 (中国标准时间)${author && ` by ${author}`}.`;
+    const timezone = new Date().getTimezoneOffset() / -60;
+    const footerContent = `Documentation generated on ${timeStampFormat(Date.now(), 'yyyy-MM-dd hh:mm:ss')} GMT+0${timezone}00 ${author && ` by ${author}`}.`;
     $('footer').html(footerContent);
     return $.html();
   }
 
-  getSeparatorStr(content) {
-    const maxLen = 14;
-    const lastLen = parseInt(`${maxLen - (content.length) / 2}`, 10);
-    const fill = Array.from({ length: lastLen })
-      .map(() => '-')
-      .join('');
-
-    return `${fill}   ${content}   ${fill}`;
-  }
 
   appendCSS(extra) {
     console.log('Appending extra css ...');
