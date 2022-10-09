@@ -71,7 +71,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="jsdoc_jsdoc.ts.html">jsdoc/jsdoc.ts</a>, <a href="jsdoc_jsdoc.ts.html#line56">line 56</a>
+        <a href="jsdoc_jsdoc.ts.html">jsdoc/jsdoc.ts</a>, <a href="jsdoc_jsdoc.ts.html#line74">line 74</a>
     </li></ul></dd>
     
 
@@ -294,6 +294,39 @@
         </tr>
 
     
+
+        <tr>
+            
+                <td class="name"><code>navHandler</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional&gt;<br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>处理API所在文件的方法</p></td>
+        </tr>
+
+    
     </tbody>
 </table>
 
@@ -360,7 +393,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="jsdoc_jsdoc.ts.html">jsdoc/jsdoc.ts</a>, <a href="jsdoc_jsdoc.ts.html#line35">line 35</a>
+        <a href="jsdoc_jsdoc.ts.html">jsdoc/jsdoc.ts</a>, <a href="jsdoc_jsdoc.ts.html#line51">line 51</a>
     </li></ul></dd>
     
 
@@ -414,7 +447,12 @@
     <h5>Example</h5>
     
     <pre class="prettyprint"><code>JsDocHandler.init({
-  author: 'novlan1'
+  author: 'novlan1',
+  docsPath: './docs',
+  extraCss: '.some-class{}',
+  navHandler(nav) {
+
+  }
 })</code></pre>
 
 
@@ -585,6 +623,39 @@
         </tr>
 
     
+
+        <tr>
+            
+                <td class="name"><code>navHandler</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional&gt;<br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>处理API所在文件的方法</p></td>
+        </tr>
+
+    
     </tbody>
 </table>
 
@@ -654,7 +725,7 @@
 
 <br class="clear">
 
-<footer>Documentation generated on 2022-10-09 03:08:11 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2022-10-09 03:33:27 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>
