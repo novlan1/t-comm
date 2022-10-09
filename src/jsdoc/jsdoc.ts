@@ -8,6 +8,10 @@ const DEFAULT_EXTRA_CSS = `
   font-size: 12px;
   display: block;
 }
+
+nav ul a, nav ul a:active {
+  font-size: 14px;
+}
 `;
 
 function getSeparatorStr(content) {
@@ -64,6 +68,7 @@ class JsDocHandler {
   author: string;
   docsPath: string;
   navHandler: Function;
+  isHandleNav: boolean;
   fs;
   path;
 
@@ -77,30 +82,38 @@ class JsDocHandler {
    * @param {string} [options.docsPath] 文档所在目录位置，默认为`./docs`
    * @param {string} [options.author] 作者，默认为空
    * @param {string} [options.extraCss] 额外插入的css，默认为`.nav-separator`的一些样式
-   * @param {string} [options.navHandler] 处理API所在文件的方法
+   * @param {Function} [options.navHandler] 处理API所在文件的方法
+   * @param {boolean} [options.isHandleNav] 是否处理导航栏，即插入文件名进行分隔，默认为false
    */
   constructor(options: {
     docsPath?: string
     author?: string
     extraCss?: string
     navHandler?: Function
+    isHandleNav?: boolean;
   } = {}) {
     const {
       docsPath = './docs',
       author =  '',
       extraCss = DEFAULT_EXTRA_CSS,
       navHandler = defaultNavHandler,
+      isHandleNav = false,
     } = options;
+
     this.docsPath = docsPath;
     this.author = author;
     this.extraCss = extraCss;
     this.navHandler = navHandler;
+    this.isHandleNav = isHandleNav;
     this.fs = this.getFs();
     this.path = this.getPath();
   }
 
   run() {
-    const sourceMap = this.getGlobalSourceMap();
+    let sourceMap = {};
+    if (this.isHandleNav) {
+      sourceMap = this.getGlobalSourceMap();
+    }
     this.handleEveryHtml(sourceMap, this.author);
     this.appendCSS(this.extraCss);
     this.finished();
