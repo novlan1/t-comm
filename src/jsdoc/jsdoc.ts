@@ -21,26 +21,26 @@ function getSeparatorStr(content) {
 }
 
 
-/**
- * 处理jsdoc的脚本
- * 1. 增加导航栏的分隔符
- * 2. 增加css
- * 3. 处理footer
- * @param {object} options 配置
- * @param {string} [options.docsPath] 文档所在目录位置，默认为`./docs`
- * @param {string} [options.author] 作者，默认为空
- * @param {string} [options.extraCss] 额外插入的css，默认为`.nav-separator`的一些样式
- * @example
- *
- * JsDocHandler.init({
- *   author: 'novlan1'
- * })
- *
- */
-export class JsDocHandler {
+class JsDocHandler {
+  /**
+   * 初始化并运行
+   * @static
+   * @param {object} options 配置
+   * @param {string} [options.docsPath] 文档所在目录位置，默认为`./docs`
+   * @param {string} [options.author] 作者，默认为空
+   * @param {string} [options.extraCss] 额外插入的css，默认为`.nav-separator`的一些样式
+   * @returns {object} JsDocHandler实例
+   * @example
+   *
+   * JsDocHandler.init({
+   *   author: 'novlan1'
+   * })
+   *
+   */
   static init(options) {
     const handler = new JsDocHandler(options);
     handler.run();
+    return handler;
   }
 
   extraCss: string;
@@ -49,6 +49,17 @@ export class JsDocHandler {
   fs;
   path;
 
+  /**
+   * 处理jsdoc的脚本
+   * 1. 增加导航栏的分隔符
+   * 2. 增加css
+   * 3. 处理footer
+   * @constructor
+   * @param {object} options 配置
+   * @param {string} [options.docsPath] 文档所在目录位置，默认为`./docs`
+   * @param {string} [options.author] 作者，默认为空
+   * @param {string} [options.extraCss] 额外插入的css，默认为`.nav-separator`的一些样式
+   */
   constructor(options: {
     docsPath?: string
     author?: string
@@ -196,3 +207,7 @@ export class JsDocHandler {
     console.log('Finished jsdoc local script.');
   }
 }
+
+export {
+  JsDocHandler,
+};
