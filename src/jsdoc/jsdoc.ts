@@ -25,8 +25,56 @@ function getSeparatorStr(content) {
 }
 
 /**
+ * 删除重复的部分
+ * @ignore
+ */
+function deleteRepeatedSections($) {
+  const sections = $('section');
+  let last = '';
+  sections.map((_, section) => {
+    const html = $(section).html()
+      .trim();
+    if (html === last) {
+      $(section).remove();
+    } else {
+      last = html;
+    }
+  });
+  return $;
+}
+
+/**
+ * 替换footer
+ * @ignore
+ * @param $ cheerio
+ * @param author 作者
+ */
+function replaceFooter($, author) {
+  const timezone = new Date().getTimezoneOffset() / -60;
+  const footerContent = `Documentation generated on ${timeStampFormat(Date.now(), 'yyyy-MM-dd hh:mm:ss')} GMT+0${timezone}00 ${author && ` by ${author}`}.`;
+  $('footer').html(footerContent);
+}
+
+
+function insertNavSeparator($, sourceMap) {
+  const naves = $('nav > ul li');
+  let cur = '';
+
+  // 插入分隔符
+  naves.map((_, dom) => {
+    const nav = $(dom).find('a')
+      .attr('href')
+      ?.trim();
+    if (nav && sourceMap[nav] && cur !==  sourceMap[nav]) {
+      $(dom).before(`<li class="nav-separator">${sourceMap[nav]}</li>`);
+      cur =  sourceMap[nav];
+    }
+  });
+}
+
+/**
  * 默认处理source的方法，默认仅去掉的文件名
- * @private
+ * @ignore
  * @param source 文件路径
  * @returns 处理后的数据
  */
@@ -199,27 +247,19 @@ class JsDocHandler {
     }, {});
   }
 
+
   getParsedHtml(content, sourceMap, author) {
     const cheerio = require('cheerio');
     const $ = cheerio.load(content);
-    const naves = $('nav > ul li');
-    let cur = '';
+
+    // 删除重复selection
+    deleteRepeatedSections($);
 
     // 插入分隔符
-    naves.map((_, dom) => {
-      const nav = $(dom).find('a')
-        .attr('href')
-        ?.trim();
-      if (nav && sourceMap[nav] && cur !==  sourceMap[nav]) {
-        $(dom).before(`<li class="nav-separator">${sourceMap[nav]}</li>`);
-        cur =  sourceMap[nav];
-      }
-    });
+    insertNavSeparator($, sourceMap);
 
     // 处理footer
-    const timezone = new Date().getTimezoneOffset() / -60;
-    const footerContent = `Documentation generated on ${timeStampFormat(Date.now(), 'yyyy-MM-dd hh:mm:ss')} GMT+0${timezone}00 ${author && ` by ${author}`}.`;
-    $('footer').html(footerContent);
+    replaceFooter($, author);
     return $.html();
   }
 
@@ -246,3 +286,4 @@ class JsDocHandler {
 export {
   JsDocHandler,
 };
+
