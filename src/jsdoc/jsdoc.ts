@@ -26,8 +26,23 @@ function getSeparatorStr(content) {
  * 1. 增加导航栏的分隔符
  * 2. 增加css
  * 3. 处理footer
+ * @param {object} options 配置
+ * @param {string} [options.docsPath] 文档所在目录位置，默认为`./docs`
+ * @param {string} [options.author] 作者，默认为空
+ * @param {string} [options.extraCss] 额外插入的css，默认为`.nav-separator`的一些样式
+ * @example
+ *
+ * JsDocHandler.init({
+ *   author: 'novlan1'
+ * })
+ *
  */
 export class JsDocHandler {
+  static init(options) {
+    const handler = new JsDocHandler(options);
+    handler.run();
+  }
+
   extraCss: string;
   author: string;
   docsPath: string;
@@ -49,11 +64,6 @@ export class JsDocHandler {
     this.extraCss = extraCss;
     this.fs = this.getFs();
     this.path = this.getPath();
-  }
-
-  init(options) {
-    const handler = new JsDocHandler(options);
-    handler.run();
   }
 
   run() {
