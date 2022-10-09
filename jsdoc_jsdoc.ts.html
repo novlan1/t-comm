@@ -69,8 +69,56 @@ function getSeparatorStr(content) {
 }
 
 /**
+ * 删除重复的部分
+ * @ignore
+ */
+function deleteRepeatedSections($) {
+  const sections = $('section');
+  let last = '';
+  sections.map((_, section) =&gt; {
+    const html = $(section).html()
+      .trim();
+    if (html === last) {
+      $(section).remove();
+    } else {
+      last = html;
+    }
+  });
+  return $;
+}
+
+/**
+ * 替换footer
+ * @ignore
+ * @param $ cheerio
+ * @param author 作者
+ */
+function replaceFooter($, author) {
+  const timezone = new Date().getTimezoneOffset() / -60;
+  const footerContent = `Documentation generated on ${timeStampFormat(Date.now(), 'yyyy-MM-dd hh:mm:ss')} GMT+0${timezone}00 ${author &amp;&amp; ` by ${author}`}.`;
+  $('footer').html(footerContent);
+}
+
+
+function insertNavSeparator($, sourceMap) {
+  const naves = $('nav &gt; ul li');
+  let cur = '';
+
+  // 插入分隔符
+  naves.map((_, dom) =&gt; {
+    const nav = $(dom).find('a')
+      .attr('href')
+      ?.trim();
+    if (nav &amp;&amp; sourceMap[nav] &amp;&amp; cur !==  sourceMap[nav]) {
+      $(dom).before(`&lt;li class="nav-separator"&gt;${sourceMap[nav]}&lt;/li&gt;`);
+      cur =  sourceMap[nav];
+    }
+  });
+}
+
+/**
  * 默认处理source的方法，默认仅去掉的文件名
- * @private
+ * @ignore
  * @param source 文件路径
  * @returns 处理后的数据
  */
@@ -243,27 +291,19 @@ class JsDocHandler {
     }, {});
   }
 
+
   getParsedHtml(content, sourceMap, author) {
     const cheerio = require('cheerio');
     const $ = cheerio.load(content);
-    const naves = $('nav &gt; ul li');
-    let cur = '';
+
+    // 删除重复selection
+    deleteRepeatedSections($);
 
     // 插入分隔符
-    naves.map((_, dom) =&gt; {
-      const nav = $(dom).find('a')
-        .attr('href')
-        ?.trim();
-      if (nav &amp;&amp; sourceMap[nav] &amp;&amp; cur !==  sourceMap[nav]) {
-        $(dom).before(`&lt;li class="nav-separator"&gt;${sourceMap[nav]}&lt;/li&gt;`);
-        cur =  sourceMap[nav];
-      }
-    });
+    insertNavSeparator($, sourceMap);
 
     // 处理footer
-    const timezone = new Date().getTimezoneOffset() / -60;
-    const footerContent = `Documentation generated on ${timeStampFormat(Date.now(), 'yyyy-MM-dd hh:mm:ss')} GMT+0${timezone}00 ${author &amp;&amp; ` by ${author}`}.`;
-    $('footer').html(footerContent);
+    replaceFooter($, author);
     return $.html();
   }
 
@@ -290,6 +330,7 @@ class JsDocHandler {
 export {
   JsDocHandler,
 };
+
 </code></pre>
         </article>
     </section>
@@ -303,7 +344,7 @@ export {
 
 <br class="clear">
 
-<footer>Documentation generated on 2022-10-09 09:01:04 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2022-10-09 11:33:44 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>
