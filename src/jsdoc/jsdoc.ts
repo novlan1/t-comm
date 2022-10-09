@@ -20,6 +20,17 @@ function getSeparatorStr(content) {
   return `${fill}   ${content}   ${fill}`;
 }
 
+/**
+ * 默认处理source的方法，默认仅去掉的文件名
+ * @private
+ * @param source 文件路径
+ * @returns 处理后的数据
+ */
+function defaultNavHandler(source) {
+  const list = source.split('/');
+  return list.slice(0, list.length - 1).join('/');
+}
+
 
 class JsDocHandler {
   /**
@@ -29,11 +40,17 @@ class JsDocHandler {
    * @param {string} [options.docsPath] 文档所在目录位置，默认为`./docs`
    * @param {string} [options.author] 作者，默认为空
    * @param {string} [options.extraCss] 额外插入的css，默认为`.nav-separator`的一些样式
+   * @param {string} [options.navHandler] 处理API所在文件的方法
    * @returns {object} JsDocHandler实例
    * @example
    *
    * JsDocHandler.init({
-   *   author: 'novlan1'
+   *   author: 'novlan1',
+   *   docsPath: './docs',
+   *   extraCss: '.some-class{}',
+   *   navHandler(nav) {
+   *
+   *   }
    * })
    *
    */
@@ -46,6 +63,7 @@ class JsDocHandler {
   extraCss: string;
   author: string;
   docsPath: string;
+  navHandler: Function;
   fs;
   path;
 
@@ -59,20 +77,24 @@ class JsDocHandler {
    * @param {string} [options.docsPath] 文档所在目录位置，默认为`./docs`
    * @param {string} [options.author] 作者，默认为空
    * @param {string} [options.extraCss] 额外插入的css，默认为`.nav-separator`的一些样式
+   * @param {string} [options.navHandler] 处理API所在文件的方法
    */
   constructor(options: {
     docsPath?: string
     author?: string
     extraCss?: string
+    navHandler?: Function
   } = {}) {
     const {
       docsPath = './docs',
       author =  '',
       extraCss = DEFAULT_EXTRA_CSS,
+      navHandler = defaultNavHandler,
     } = options;
     this.docsPath = docsPath;
     this.author = author;
     this.extraCss = extraCss;
+    this.navHandler = navHandler;
     this.fs = this.getFs();
     this.path = this.getPath();
   }
@@ -130,8 +152,7 @@ class JsDocHandler {
         .html()
         .trim();
 
-      const list = source.split('/');
-      source = list.slice(0, list.length - 1).join('/');
+      source = this.navHandler(source);
 
       sourceMap[`${file}#${id}`] = source;
     });

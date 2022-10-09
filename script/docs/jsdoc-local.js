@@ -1,5 +1,5 @@
-const { JsDocHandler } = require('../../lib/index')
+const { JsDocHandler } = require('../../lib/index');
 
 JsDocHandler.init({
-  author: 'novlan1'
-})
+  author: 'novlan1',
+});

@@ -15,14 +15,6 @@ function hiddenSeparatorWhenSearch() {
   });
 }
 
-function hiddenFooter() {
-  const footer = document.querySelector('footer');
-
-  if (footer) {
-    footer.style.display = 'none';
-  }
-}
-
 
 document.addEventListener('DOMContentLoaded', () => {
   hiddenSeparatorWhenSearch();
