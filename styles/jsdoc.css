@@ -769,3 +769,7 @@ html[data-search-mode] .level-hide {
   font-size: 12px;
   display: block;
 }
+
+nav ul a, nav ul a:active {
+  font-size: 14px;
+}
