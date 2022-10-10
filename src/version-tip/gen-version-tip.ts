@@ -11,10 +11,7 @@ function generatePublishInfo({
 }) {
   const fs = require('fs');
   if (!fs.existsSync(readmeFilePath)) {
-    console.log(
-      '\x1b[33m%s\x1b[0m',
-      `未找到 ${readmeFilePath} ，请先生成 changeLog。`,
-    );
+    console.log(`ERROR: 未找到 ${readmeFilePath}，请先生成 changeLog。`);
     return '';
   }
   const changelogStr = fs.readFileSync(readmeFilePath, 'utf8');
@@ -24,10 +21,7 @@ function generatePublishInfo({
   ));
 
   if (!currentVersion || !currentVersion[0]) {
-    console.log(
-      '\x1b[33m%s\x1b[0m',
-      `未找到${targetVersion}对应的 changelog 发布信息`,
-    );
+    console.log(`ERROR: 未找到 ${targetVersion} 对应的 changelog 发布信息`);
     return '';
   }
 
