@@ -18,7 +18,7 @@ export function execCommand(command: string, root?: string, stdio?: string): str
       encoding: 'utf-8',
       stdio: stdio || 'pipe',
     })
-      .split('\n')[0]
+      ?.split('\n')[0]
       ?.trim() || ''
   );
 }
