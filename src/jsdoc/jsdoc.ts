@@ -94,9 +94,9 @@ function insertModuleNavSeparator($) {
   if (!module) return;
 
   let last = '';
-  $(module).find('li')
+  $(module).children('li')
     .map((_, li) => {
-      const nav = $(li).find('a')
+      const nav = $(li).children('a')
         ?.html()
         ?.trim();
       const prefix = getNavPrefix(nav);
@@ -109,7 +109,7 @@ function insertModuleNavSeparator($) {
         last = prefix;
 
         const navList = nav.split('/');
-        $(li).find('a')
+        $(li).children('a')
           .html(navList.slice(1).join('/'));
       }
     });
