@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.1.16](https://github.com/novlan1/t-comm/compare/v0.1.15...v0.1.16) (2022-10-10)
+
+
+### Bug Fixes
+
+* 仅处理jsdoc导航栏子节点 ([aad3bac](https://github.com/novlan1/t-comm/commit/aad3bac29aefed515acbc1ba2fabdab74f41eedd))
+
+
+
 ## [0.1.15](https://github.com/novlan1/t-comm/compare/v0.1.14...v0.1.15) (2022-10-10)
 
 
