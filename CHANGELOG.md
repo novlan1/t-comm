@@ -1,5 +1,20 @@
 # 工具库更新日志
 
+## [0.1.19](https://github.com/novlan1/t-comm/compare/v0.1.18...v0.1.19) (2022-10-10)
+
+
+### Bug Fixes
+
+* 增加execCommand容错 ([2984496](https://github.com/novlan1/t-comm/commit/298449627a68e5e0f64a2a8befd9ee04669e6cce))
+
+
+### Features
+
+* 规范打印 ([6580303](https://github.com/novlan1/t-comm/commit/65803034ef8d4ce56dce9ebf2b6398accdaded32))
+* genVersionAndSendChangeLog ([9d6520b](https://github.com/novlan1/t-comm/commit/9d6520b3e02e67df09bc2a55f49c4b70b4c4c0b8))
+
+
+
 ## [0.1.18](https://github.com/novlan1/t-comm/compare/v0.1.17...v0.1.18) (2022-10-10)
 
 
