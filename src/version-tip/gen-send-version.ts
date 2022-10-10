@@ -41,7 +41,11 @@ export function genVersionAndSendChangeLog({
     }
 
     try {
+      console.log('Doing git push --follow-tags origin ...');
+
       execCommand('git push --follow-tags origin', root, 'inherit');
+
+      console.log('Done git push --follow-tags origin.');
     } catch (err) {
       reject(err);
       return;
@@ -78,6 +82,8 @@ function sendVersionTip({
       return;
     }
 
+    console.log('Doing send wecom robot markdown ...');
+
     sendWxRobotMarkdown({
       chatId,
       content,
@@ -87,6 +93,8 @@ function sendVersionTip({
         hasGenVersion: true,
         hasSendChangeLog: true,
       });
+
+      console.log('Done send wecom robot markdown.');
     })
       .catch((err) => {
         reject(err);

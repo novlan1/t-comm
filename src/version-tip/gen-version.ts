@@ -16,11 +16,15 @@ function doRelease({ isFirstRelease, root }: {
   isFirstRelease: boolean
   root?: string
 }) {
+  console.log('Doing standard-version ...');
+
   if (isFirstRelease) {
     execCommand('npx standard-version --first-release', root);
   } else {
     execCommand('npx standard-version --release-as patch', root);
   }
+
+  console.log('Done standard-version.');
 }
 
 /**
