@@ -14,7 +14,7 @@ export function execCommand(command: string, root?: string): string {
   const { execSync } = require('child_process');
   return (
     execSync(command, {
-      cwd: root,
+      cwd: root || process.cwd(),
       encoding: 'utf-8',
       stdio: 'pipe',
     })

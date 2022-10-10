@@ -11,12 +11,8 @@ import { execCommand } from '../util';
  *
  * // => master
  */
-export function getGitCurBranch() {
-  const { execSync } = require('child_process');
-  const res = execSync('git symbolic-ref --short -q HEAD', {
-    encoding: 'utf-8',
-    stdio: 'pipe',
-  }).replace(/\n/g, '');
+export function getGitCurBranch(root?: string) {
+  const res = execCommand('git symbolic-ref --short -q HEAD', root);
   return res;
 }
 
@@ -36,21 +32,16 @@ export function getGitCurBranch() {
  *   branch: 'master'
  * }
  */
-export function getGitCommitInfo() {
-  const { execSync } = require('child_process');
+export function getGitCommitInfo(root?: string) {
   const command = 'git log --no-merges -1 \
   --date=iso --pretty=format:\'{"author": "%aN","message": "%s", "hash": "%h", "date": "%ad", "timeStamp": "%at"},\' \
   $@ | \
   perl -pe \'BEGIN{print "["}; END{print "]\n"}\' | \
   perl -pe \'s/},]/}]/\'';
-  const stdout = execSync(command, {
-    encoding: 'utf-8',
-  });
+  const stdout = execCommand(command, root);
 
   const info = Object.assign({}, JSON.parse(stdout)[0], {
-    branch: execSync('git symbolic-ref --short -q HEAD', {
-      encoding: 'utf-8',
-    }).replace(/\n$/, ''),
+    branch: execCommand('git symbolic-ref --short -q HEAD', root),
   });
 
 
@@ -66,14 +57,14 @@ export function getGitCommitInfo() {
  * 获取最新tag
  * @returns {string} 最新tag
  */
-export function getGitLastTag() {
-  const fakeFirstTag = execCommand('git tag -l');
+export function getGitLastTag(root?: string) {
+  const fakeFirstTag = execCommand('git tag -l', root);
   if (!fakeFirstTag) return '';
 
   // 不能使用`git tag | head -1`，这个命令不准
   const command = 'git describe --abbrev=0';
 
-  const tag = execCommand(command);
+  const tag = execCommand(command, root);
   return tag;
 }
 
@@ -83,9 +74,9 @@ export function getGitLastTag() {
  * @param {string} tag git标签
  * @returns {string} tag至今的提交数目
  */
-export function getGitCommitsBeforeTag(tag) {
+export function getGitCommitsBeforeTag(tag, root?: string) {
   if (!tag) return '0';
-  return execCommand(`git log ${tag}...HEAD --no-merges --oneline | wc -l`);
+  return execCommand(`git log ${tag}...HEAD --no-merges --oneline | wc -l`, root);
 }
 
 /**
@@ -94,9 +85,9 @@ export function getGitCommitsBeforeTag(tag) {
  * @param {string} tag git标签
  * @returns {string} 标签时间
  */
-export function getGitTagTime(tag) {
+export function getGitTagTime(tag, root?: string) {
   if (!tag) return '';
-  return execCommand(`git log -1 --format=%ai ${tag} | cat`);
+  return execCommand(`git log -1 --format=%ai ${tag} | cat`, root);
 }
 
 
@@ -105,15 +96,11 @@ export function getGitTagTime(tag) {
  * @param isPriorGit - 是否优先使用git用户信息
  * @returns user
  */
-export function getGitAuthor(isPriorGit = false) {
-  const { execSync } = require('child_process');
+export function getGitAuthor(isPriorGit = false, root?: string) {
   const envAuthor = process.env.VUE_APP_AUTHOR;
   let gitAuthor = '';
   try {
-    gitAuthor = execSync('git config user.name', {
-      encoding: 'utf-8',
-      stdio: 'pipe',
-    }).replace(/\n/g, '');
+    gitAuthor = execCommand('git config user.name', root);
   } catch (err) {
     console.log('getAuthor.err', err);
   }

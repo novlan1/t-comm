@@ -12,13 +12,14 @@ function getTimeStampFromDate(date: string) {
   return new Date(date).getTime();
 }
 
-function doRelease({ isFirstRelease }: {
+function doRelease({ isFirstRelease, root }: {
   isFirstRelease: boolean
+  root?: string
 }) {
   if (isFirstRelease) {
-    execCommand('npx standard-version --first-release');
+    execCommand('npx standard-version --first-release', root);
   } else {
-    execCommand('npx standard-version --release-as patch');
+    execCommand('npx standard-version --release-as patch', root);
   }
 }
 
@@ -49,17 +50,17 @@ export function shouldGenVersion(root?: string): number {
     return 0;
   }
 
-  const tag = getGitLastTag();
+  const tag = getGitLastTag(root);
   console.log('\x1B[32m%s\x1B[0m', `tag 为 ${tag}`);
 
   if (!tag) {
     return 1;
   }
 
-  const tagDate = getGitTagTime(tag);
+  const tagDate = getGitTagTime(tag, root);
   console.log('\x1B[32m%s\x1B[0m', `tagDate 为 ${tagDate}`);
 
-  const commits = getGitCommitsBeforeTag(tag);
+  const commits = getGitCommitsBeforeTag(tag, root);
   console.log('\x1B[32m%s\x1B[0m', `commits 为 ${commits}`);
 
   if (Number(commits) < 1) {
@@ -96,11 +97,11 @@ export function genVersion({ root }): boolean {
   const genType = shouldGenVersion(root);
   if (!genType) return false;
   if (genType === 1) {
-    doRelease({ isFirstRelease: true });
+    doRelease({ isFirstRelease: true, root });
     return true;
   }
   if (genType === 2) {
-    doRelease({ isFirstRelease: false });
+    doRelease({ isFirstRelease: false, root });
     return true;
   }
   return false;
