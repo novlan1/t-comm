@@ -56,6 +56,65 @@ function replaceFooter($, author) {
 }
 
 
+/**
+ * 找到 Modules 下的导航列表
+ * @ignore
+ * @param $ cheerio
+ */
+function findModuleNav($) {
+  const titles = $('body nav h3');
+  let res;
+  titles.map((_, title) => {
+    if ($(title).html()
+      .trim() === 'Modules') {
+      res = $(title).next();
+    }
+  });
+  return res;
+}
+
+
+/**
+ * 获取nav头部，比如 tools/url => tools
+ * @ignore
+ */
+function getNavPrefix(nav = '') {
+  if (nav.indexOf('/') < 0) {
+    return '';
+  }
+  return nav.split('/')[0];
+}
+
+/**
+ * 给 Modules 下的导航列表插入分隔符
+ * @param $ cheerio
+ */
+function insertModuleNavSeparator($) {
+  const module = findModuleNav($);
+  if (!module) return;
+
+  let last = '';
+  $(module).find('li')
+    .map((_, li) => {
+      const nav = $(li).find('a')
+        ?.html()
+        ?.trim();
+      const prefix = getNavPrefix(nav);
+
+      if (prefix && last !== prefix) {
+        $(li).before(`<li class="nav-separator">${getSeparatorStr(prefix)}</li>`);
+      }
+
+      if (prefix) {
+        last = prefix;
+
+        const navList = nav.split('/');
+        $(li).find('a')
+          .html(navList.slice(1).join('/'));
+      }
+    });
+}
+
 function insertNavSeparator($, sourceMap) {
   const naves = $('nav > ul li');
   let cur = '';
@@ -257,6 +316,9 @@ class JsDocHandler {
 
     // 插入分隔符
     insertNavSeparator($, sourceMap);
+
+    // Modules下的导航栏插入分隔符
+    insertModuleNavSeparator($);
 
     // 处理footer
     replaceFooter($, author);
