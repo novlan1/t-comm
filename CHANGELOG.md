@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.1.15](https://github.com/novlan1/t-comm/compare/v0.1.14...v0.1.15) (2022-10-10)
+
+
+### Features
+
+* **jsdoc:** 插入modules分隔符 ([e7ba134](https://github.com/novlan1/t-comm/commit/e7ba134467629cd0fde627a3557fa241899e5b98))
+
+
+
 ## [0.1.14](https://github.com/novlan1/t-comm/compare/v0.1.13...v0.1.14) (2022-10-09)
 
 
