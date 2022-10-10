@@ -7,7 +7,7 @@
  * @param {string} root 执行命令的目录
  * @returns {string} 命令执行结果
  */
-export function execCommand(command: string, root?: string): string {
+export function execCommand(command: string, root?: string, stdio?: string): string {
   if (!root) {
     root = process.cwd();
   }
@@ -16,7 +16,7 @@ export function execCommand(command: string, root?: string): string {
     execSync(command, {
       cwd: root || process.cwd(),
       encoding: 'utf-8',
-      stdio: 'pipe',
+      stdio: stdio || 'pipe',
     })
       .split('\n')[0]
       ?.trim() || ''
