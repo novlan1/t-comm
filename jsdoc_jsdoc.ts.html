@@ -138,9 +138,9 @@ function insertModuleNavSeparator($) {
   if (!module) return;
 
   let last = '';
-  $(module).find('li')
+  $(module).children('li')
     .map((_, li) =&gt; {
-      const nav = $(li).find('a')
+      const nav = $(li).children('a')
         ?.html()
         ?.trim();
       const prefix = getNavPrefix(nav);
@@ -153,7 +153,7 @@ function insertModuleNavSeparator($) {
         last = prefix;
 
         const navList = nav.split('/');
-        $(li).find('a')
+        $(li).children('a')
           .html(navList.slice(1).join('/'));
       }
     });
@@ -406,7 +406,7 @@ export {
 
 <br class="clear">
 
-<footer>Documentation generated on 2022-10-10 03:05:59 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2022-10-10 03:18:45 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>
