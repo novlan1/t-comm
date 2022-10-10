@@ -115,11 +115,15 @@ function insertModuleNavSeparator($) {
     });
 }
 
+
+/**
+ * 插入分隔符
+ * @ignore
+ */
 function insertNavSeparator($, sourceMap) {
   const naves = $('nav > ul li');
   let cur = '';
 
-  // 插入分隔符
   naves.map((_, dom) => {
     const nav = $(dom).find('a')
       .attr('href')
@@ -130,6 +134,18 @@ function insertNavSeparator($, sourceMap) {
     }
   });
 }
+
+/**
+ * 插入script
+ * @ignore
+ */
+function insertScript($, script = '') {
+  if (!script) return;
+  $('head').children()
+    .last()
+    .after(script);
+}
+
 
 /**
  * 默认处理source的方法，默认仅去掉的文件名
@@ -173,6 +189,7 @@ class JsDocHandler {
   }
 
   extraCss: string;
+  extraScript: string;
   author: string;
   docsPath: string;
   navHandler: Function;
@@ -190,6 +207,7 @@ class JsDocHandler {
    * @param {string} [options.docsPath] 文档所在目录位置，默认为`./docs`
    * @param {string} [options.author] 作者，默认为空
    * @param {string} [options.extraCss] 额外插入的css，默认为`.nav-separator`的一些样式
+   * @param {string} [options.extraScript] 额外插入的script
    * @param {Function} [options.navHandler] 处理API所在文件的方法
    * @param {boolean} [options.isHandleNav] 是否处理导航栏，即插入文件名进行分隔，默认为false
    */
@@ -197,6 +215,7 @@ class JsDocHandler {
     docsPath?: string
     author?: string
     extraCss?: string
+    extraScript?: string
     navHandler?: Function
     isHandleNav?: boolean;
   } = {}) {
@@ -204,6 +223,7 @@ class JsDocHandler {
       docsPath = './docs',
       author =  '',
       extraCss = DEFAULT_EXTRA_CSS,
+      extraScript = '',
       navHandler = defaultNavHandler,
       isHandleNav = false,
     } = options;
@@ -211,6 +231,7 @@ class JsDocHandler {
     this.docsPath = docsPath;
     this.author = author;
     this.extraCss = extraCss;
+    this.extraScript = extraScript;
     this.navHandler = navHandler;
     this.isHandleNav = isHandleNav;
     this.fs = this.getFs();
@@ -310,6 +331,7 @@ class JsDocHandler {
   getParsedHtml(content, sourceMap, author) {
     const cheerio = require('cheerio');
     const $ = cheerio.load(content);
+    const { extraScript } = this;
 
     // 删除重复selection
     deleteRepeatedSections($);
@@ -319,6 +341,9 @@ class JsDocHandler {
 
     // Modules下的导航栏插入分隔符
     insertModuleNavSeparator($);
+
+    // 插入script
+    insertScript($, extraScript);
 
     // 处理footer
     replaceFooter($, author);
