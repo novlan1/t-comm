@@ -1,5 +1,15 @@
 # 工具库更新日志
 
+## [0.1.18](https://github.com/novlan1/t-comm/compare/v0.1.17...v0.1.18) (2022-10-10)
+
+
+### Features
+
+* 优化功能 ([a3bb6ce](https://github.com/novlan1/t-comm/commit/a3bb6ce3b2fca54d02af66534ff51392d375fe90))
+* 优化execcommand ([1da22df](https://github.com/novlan1/t-comm/commit/1da22df8a6e84f22189740da3bc04ec258a607fe))
+
+
+
 ## [0.1.17](https://github.com/novlan1/t-comm/compare/v0.1.16...v0.1.17) (2022-10-10)
 
 
