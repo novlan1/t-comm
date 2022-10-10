@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.1.17](https://github.com/novlan1/t-comm/compare/v0.1.16...v0.1.17) (2022-10-10)
+
+
+### Features
+
+* **jsdoc:** 插入脚本 ([685b15c](https://github.com/novlan1/t-comm/commit/685b15c61b6d54a85bbf637955bbbe3980717868))
+
+
+
 ## [0.1.16](https://github.com/novlan1/t-comm/compare/v0.1.15...v0.1.16) (2022-10-10)
 
 
