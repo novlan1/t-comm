@@ -68,3 +68,18 @@ export function titleize(str) {
 
   return str.toLowerCase().replace(/(?:^|\s|-)\S/g, x => x.toUpperCase());
 }
+
+
+/**
+ * 首字母小写
+ * @param {string} str 输入字符串
+ * @returns {string} 输出字符串
+ * @example
+ *
+ * lowerInitial('GroupId')
+ *
+ * // groupId
+ */
+export function lowerInitial(str) {
+  return str.replace(/^(\w)/, (a, b) =>  b?.toLowerCase());
+}

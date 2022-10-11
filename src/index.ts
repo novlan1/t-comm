@@ -13,6 +13,7 @@ export * from './morse-pwd';
 export * from './node-img';
 export * from './pipeline';
 export * from './rainbow';
+export * from './tam';
 export * from './tgit';
 export * from './url';
 export * from './util';
