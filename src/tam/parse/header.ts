@@ -10,5 +10,5 @@ export function getTableHeaders(tableData: Array<object> = [], tableHeaderMap: o
   }
 
   const list = Object.keys(tableData[0] || {});
-  return list.map(item => tableHeaderMap[item] || item);
+  return list.map(item => tableHeaderMap[item]?.name || item);
 }

@@ -8,6 +8,24 @@ import { sendWxRobotBase64Img } from '../../wecom-robot/send-img';
 
 /**
  * 生成TAM汇总数据图
+ * @param {object} options 配置
+ * @param {string} options.date 日期，yyyyMMdd格式
+ * @param {Array<number>} options.groupIdList groupId列表
+ *
+ * @param {object} options.secretInfo 密钥信息
+ * @param {string} options.secretInfo.apiKey apiKey
+ * @param {string} options.secretInfo.loginName loginName
+ * @param {Function} options.secretInfo.getPwdCode getPwdCode
+ * @param {Function} options.secretInfo.encrypt encrypt
+ *
+ * @param {object} options.extraDataMap 额外数据Map
+ * @param {object} options.ignoreProjectIdList 忽略的projectIdList
+ *
+ * @param {object} options.tableHeaderMap 表格头部Map
+ * @returns {string} 图片base64
+ * @example
+ *
+ *
  */
 export async function genSummaryData({
   date,
@@ -16,7 +34,6 @@ export async function genSummaryData({
 
   extraDataMap = {},
   ignoreProjectIdList = [],
-  sortKeyList = [],
 
   tableHeaderMap = {},
 }) {
@@ -25,6 +42,11 @@ export async function genSummaryData({
   const parsedPreDate = timeStampFormat(new Date(date).getTime() - 1 * 24 * 60 * 60 * 1000, 'yyyyMMdd');
   console.log('parsedDate: ', parsedDate);
   console.log('parsedPreDate: ', parsedPreDate);
+
+  const sortKeyList = Object.keys(tableHeaderMap);
+  if (!sortKeyList.length) {
+    return;
+  }
 
   const data = await getSummaryScoreByGroupIdList({
     date: parsedDate,
@@ -62,24 +84,7 @@ export async function genSummaryData({
     data: tableData,
     headers: getTableHeaders(tableData, tableHeaderMap),
     title: `TAM日报 ${headerDate}`,
-    cellWidthList: [
-      95,
-      65,
-      65,
-      65,
-      65,
-      65,
-      65,
-      65,
-      65,
-      65,
-      65,
-      65,
-      65,
-      65,
-      65,
-      65,
-    ],
+    cellWidthList: Object.values(tableHeaderMap).map(item => (item as any).tableWidth || 65),
   });
 
   return img;
@@ -87,7 +92,23 @@ export async function genSummaryData({
 
 /**
  * 生成TAM汇总数据并发送到机器人
- * @param {object} options 配置信息
+ * @param {object} options 配置
+ * @param {string} options.date 日期，yyyyMMdd格式
+ * @param {Array<number>} options.groupIdList groupId列表
+ *
+ * @param {object} options.secretInfo 密钥信息
+ * @param {string} options.secretInfo.apiKey apiKey
+ * @param {string} options.secretInfo.loginName loginName
+ * @param {Function} options.secretInfo.getPwdCode getPwdCode
+ * @param {Function} options.secretInfo.encrypt encrypt
+ *
+ * @param {object} options.extraDataMap 额外数据Map
+ * @param {object} options.ignoreProjectIdList 忽略的projectIdList
+ * @param {object} options.sortKeyList 排序key列表
+ * @param {object} options.tableHeaderMap 表格头部Map
+ *
+ * @param {object} options.webhookUrl 机器人回调地址
+ * @param {object} options.chatId 会话Id
  */
 export async function genSummaryDataAndSendRobot({
   date,
@@ -95,7 +116,6 @@ export async function genSummaryDataAndSendRobot({
   secretInfo,
 
   extraDataMap = {},
-  sortKeyList = [],
   ignoreProjectIdList = [],
 
   tableHeaderMap = {},
@@ -109,11 +129,14 @@ export async function genSummaryDataAndSendRobot({
     secretInfo,
 
     extraDataMap,
-    sortKeyList,
     ignoreProjectIdList,
 
     tableHeaderMap,
   });
+
+  if (!img) {
+    return;
+  }
 
   await sendWxRobotBase64Img({
     img,
