@@ -312,13 +312,73 @@ export function getMaxAndMinIdx(
  *   },
  * };
  */
-export function flattenPreData(preDataList: Array<any>, key: string) {
+export function flattenPreData(preDataList: Array<{
+  [key: string]: {
+    name: string
+    value: number | string
+  }
+}>, key: string): {
+    [valueOfPrimaryKey: string]: {
+      [key: string]: string | number
+    }
+  } {
   const preDataMap = preDataList.reduce((acc, item) => {
-    acc[item[key].value] = Object.values(item).reduce((ac: any, it: any) => {
+    acc[item[key]?.value || 'DEFAULT_KEY'] = Object.values(item).reduce((ac: any, it: any) => {
       ac[it.name] = it.value;
       return ac;
     }, {});
     return acc;
   }, {});
   return preDataMap;
+}
+
+
+/**
+ * 对比两个对象列表
+ * @param {Array<object>} list 现在数据
+ * @param {Array<object>} preList 参照数据
+ * @param {string} key 唯一key名称
+ * @return {Array<object>} 对比结果，增加为list的每一项增加previousValue和ratio属性
+ * const list = [
+ *   {
+ *     ProjectName: { name: 'ProjectName', value: '脚手架' },
+ *     PagePv: { name: 'PagePv', value: 544343 },
+ *     PageUv: { name: 'PageUv', value: 225275 },
+ *   }
+ * ]
+ *
+ * const preList = [
+ *   {
+ *     ProjectName: { name: 'ProjectName', value: '脚手架' },
+ *     PagePv: { name: 'PagePv', value: 123123 },
+ *     PageUv: { name: 'PageUv', value: 33333 },
+ *   }
+ * ]
+ *
+ * compareTwoList(list, preList, 'ProjectName')
+ *
+ * console.log(list)
+ *
+ * [
+ *   {
+ *     ProjectName: { name: 'ProjectName', value: '脚手架' },
+ *     PagePv: {
+ *       name: 'PagePv',
+ *       value: 544343,
+ *       ratio: '+342.1%',
+ *       previousValue: 123123
+ *     },
+ *     PageUv: {
+ *       name: 'PageUv',
+ *       value: 225275,
+ *       ratio: '+575.8%',
+ *       previousValue: 33333
+ *     }
+ *   }
+ * ]
+ */
+export function compareTwoList(list, preList, key) {
+  const preDataMap = flattenPreData(preList, key);
+  getPreviousRatio(list, preDataMap, key);
+  return list;
 }

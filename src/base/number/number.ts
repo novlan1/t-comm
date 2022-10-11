@@ -24,6 +24,31 @@ export function getUnitPreviousRatio(value: number, preValue: number) {
   return `${symbol}${intervalRatio}%`;
 }
 
+
+/**
+ * 获取占比
+ * @param {number} summary 总数据
+ * @param {number} part 部分数据
+ * @returns {number} 比例
+ * @example
+ * getRatio(0, 1)
+ * // 0
+ *
+ * getRatio(1, 0)
+ * // 0
+ *
+ * getRatio(1, 1)
+ * // 100
+ *
+ * getRatio(1, .5)
+ * // 50
+ */
+export function getPartRatio(summary, part) {
+  if (!summary) return 0;
+  if (!part) return 0;
+  return +(part / summary * 100).toFixed(2);
+}
+
 /**
  *
  * 阿拉伯数字和中文数字映射表

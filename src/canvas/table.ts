@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 import { getAccCellWidth as oriGetAccCellWidth } from '../base/list';
 
 const cellHeight = 20;
@@ -19,7 +20,6 @@ function parseCellValue(val) {
  * @param {Array<string>} config.headers 表头列表
  * @param {Array<number>} config.cellWidthList 每一格的宽度列表
  * @param {string} config.title 标题
- * @param {Function} config.createCanvas 创建canvas方法
  * @returns {string} 图片url
  * @example
  *
@@ -54,7 +54,6 @@ function parseCellValue(val) {
  *   data: tableData,
  *   headers: getHeaders(tableData),
  *   title: `007日报 ${date}`,
- *   createCanvas: require('canvas').createCanvas,
  *   cellWidthList: [
  *     95,
  *     65,
@@ -68,10 +67,13 @@ export function createCanvasTable({
   headers,
   cellWidthList,
   title,
-  createCanvas,
-}): {
-    createCanvas: Function
-  } {
+}: {
+  data: Array<object>
+  headers: Array<string>
+  cellWidthList: Array<number>
+  title: string
+}): string {
+  const { createCanvas } = require('canvas');
   const getAccCellWidth = oriGetAccCellWidth.bind(null, cellWidthList);
 
   const width = getAccCellWidth(headers.length - 1) * 2 + extraWidth * 4;

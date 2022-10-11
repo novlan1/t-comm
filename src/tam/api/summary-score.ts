@@ -1,4 +1,4 @@
-import { SecretInfoType } from '../type';
+import { SecretInfoType, ScoreInfoType } from '../type';
 import { getCredential } from './credential';
 import { nodeGet } from '../../util/node-request';
 
@@ -360,7 +360,7 @@ export async function getSummaryScoreByGroupIdList({
   date: string
   groupIdList: Array<number>
   secretInfo: SecretInfoType
-}): Promise<({ data: object, projectIdList: Array<number> })> {
+}): Promise<({ data: Array<ScoreInfoType>, projectIdList: Array<number> })> {
   const projectList = await getAllProjectList({
     groupIdList,
     secretInfo,

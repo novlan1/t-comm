@@ -30,7 +30,7 @@ export async function sendWxRobotBase64Img({
   webhookUrl: string
 }): Promise<object> {
   const path = require('path');
-  if (!chatId || !img || !webhookUrl) return Promise.reject('参数不全');
+  if (!img || !webhookUrl) return Promise.reject('参数不全');
 
   const saveFilePath = path.resolve(__dirname, '.temp.png');
 
