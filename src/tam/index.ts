@@ -3,4 +3,5 @@ export {
   genSummaryDataAndSendRobot,
   genCustomEventImg,
   genCustomEventImgAndSendRobot,
+  genMultiImgAndSendRobot,
 } from './img';
