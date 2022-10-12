@@ -1,5 +1,19 @@
 # 工具库更新日志
 
+## [0.1.20](https://github.com/novlan1/t-comm/compare/v0.1.19...v0.1.20) (2022-10-12)
+
+
+### Features
+
+* 生成version的时候打印日志 ([bb49557](https://github.com/novlan1/t-comm/commit/bb4955788f0beb2b1c6e5467303c056b87502c3f))
+* 优化tam发送图片 ([36ec693](https://github.com/novlan1/t-comm/commit/36ec69375ab87ef2f5655d27776b56f402ba3275))
+* 自定义事件处理 ([b571a49](https://github.com/novlan1/t-comm/commit/b571a490d2b0d0cbd057792427c277463b8cba60))
+* 自定义事件图片发送 ([1beaaa6](https://github.com/novlan1/t-comm/commit/1beaaa608c985c0acd4920bde155dab0480798f7))
+* tam数据获取 ([2e51c3f](https://github.com/novlan1/t-comm/commit/2e51c3fd2a5377aaf7b01b489351b359d071083e))
+* **tam:** tam发送汇总数据图片 ([4e73ded](https://github.com/novlan1/t-comm/commit/4e73dedde77f89c157f81eaba3bfd658cce5206e))
+
+
+
 ## [0.1.19](https://github.com/novlan1/t-comm/compare/v0.1.18...v0.1.19) (2022-10-10)
 
 
