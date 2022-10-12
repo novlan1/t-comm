@@ -1,3 +1,3 @@
 export { parseSummaryScore } from './summary';
 export { getTableHeaders } from './header';
-export { getExtraEventData, parseEventData } from './custom-event';
+export { parseMultiCustomEvent } from './custom-event';

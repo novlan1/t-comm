@@ -75,3 +75,30 @@ export function getDBYStartTimeStamp(unit = 's') {
 export function getDBYEndTimeStamp(unit = 's', endFlag = 'm') {
   return getDayEndTimeStamp(2, unit, endFlag);
 }
+
+/**
+ * 查询距今有多少天
+ * @param date 时间
+ * @returns 距今多少天
+ * @ignore
+ */
+function getDaysFromToday(date) {
+  const zero = new Date(date);
+  zero.setHours(0, 0, 0, 0);
+
+  const now = new Date();
+  now.setHours(0, 0, 0);
+
+  const days = (now.getTime() - zero.getTime()) / (1 * 24 * 60 * 60 * 1000);
+  return parseInt(`${days}`, 10);
+}
+
+export function getSomeDayStartTimeStamp(date, unit = 's') {
+  const days = getDaysFromToday(date);
+  return getDayStartTimestamp(days, unit);
+}
+
+export function getSomeDayEndTimeStamp(date, unit = 's') {
+  const days = getDaysFromToday(date);
+  return getDayEndTimeStamp(days, unit);
+}

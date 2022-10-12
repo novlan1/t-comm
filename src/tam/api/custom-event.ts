@@ -97,7 +97,7 @@ export async function getCustomEventData({
       ...credential,
     },
   });
-  let res: any = {};
+  let res: any = [];
 
   try {
     /**
@@ -163,20 +163,40 @@ export async function getCustomEventData({
 export async function getMultiCustomEventData({
   startTime,
   endTime,
-  projectIdList,
   env = 'production',
   secretInfo,
+  projectIdMap,
 }) {
   const res = {};
+  const projectIdList = Object.keys(projectIdMap);
+  if (!projectIdList.length) return;
+
   for (const projectId of projectIdList) {
     const list = await getCustomEventData({
       startTime,
       endTime,
-      projectId,
+      projectId: +projectId,
       env,
       secretInfo,
     });
     res[projectId] = list;
+  }
+
+  // 额外数据
+  for (const projectId of projectIdList) {
+    const info = projectIdMap[projectId];
+
+    if (info.extraProjectId) {
+      const extraData = await getCustomEventData({
+        startTime,
+        endTime,
+        projectId: info.extraProjectId,
+        env,
+        secretInfo,
+      });
+
+      res[projectId].extraData = extraData;
+    }
   }
   return res;
 }
