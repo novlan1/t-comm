@@ -56,14 +56,14 @@ export async function genMultiImgAndSendRobot({
 
   if (!Array.isArray(chatId)) {
     chatId = [chatId];
+  }
 
-    for (const id of chatId) {
-      await sendWxRobotBase64Img({
-        img,
-        webhookUrl,
-        chatId: id,
-      });
-    }
+  for (const id of chatId) {
+    await sendWxRobotBase64Img({
+      img,
+      webhookUrl,
+      chatId: id === 'ALL' ? undefined : id,
+    });
   }
 }
 
