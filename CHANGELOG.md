@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.1.22](https://github.com/novlan1/t-comm/compare/v0.1.21...v0.1.22) (2022-10-13)
+
+
+### Features
+
+* 允许发送图片给多个chatid ([4ef8c89](https://github.com/novlan1/t-comm/commit/4ef8c89a0e5e98323abbe948f7a7e28e69fb9d2d))
+
+
+
 ## [0.1.21](https://github.com/novlan1/t-comm/compare/v0.1.20...v0.1.21) (2022-10-13)
 
 
