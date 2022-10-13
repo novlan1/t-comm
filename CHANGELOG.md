@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.1.23](https://github.com/novlan1/t-comm/compare/v0.1.22...v0.1.23) (2022-10-13)
+
+
+### Bug Fixes
+
+* 解决发送图片问题 ([40095c8](https://github.com/novlan1/t-comm/commit/40095c836b34d9a9dcfac0121d964c9a3533adc2))
+
+
+
 ## [0.1.22](https://github.com/novlan1/t-comm/compare/v0.1.21...v0.1.22) (2022-10-13)
 
 
