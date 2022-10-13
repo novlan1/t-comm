@@ -42,6 +42,7 @@ export async function genMultiImgAndSendRobot({
     eventMap,
     tableHeaderMap: eventTableHeaderMap,
   });
+
   const img = await mergeMultiCanvasPic({
     imgs: [
       summaryScoreImg,
@@ -49,10 +50,20 @@ export async function genMultiImgAndSendRobot({
     ],
   });
 
-  await sendWxRobotBase64Img({
-    img,
-    webhookUrl,
-    chatId,
-  });
+  if (!img || !chatId) {
+    return;
+  }
+
+  if (!Array.isArray(chatId)) {
+    chatId = [chatId];
+
+    for (const id of chatId) {
+      await sendWxRobotBase64Img({
+        img,
+        webhookUrl,
+        chatId: id,
+      });
+    }
+  }
 }
 

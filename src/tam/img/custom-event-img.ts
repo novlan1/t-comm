@@ -107,13 +107,19 @@ export async function genCustomEventImgAndSendRobot({
     tableHeaderMap,
   });
 
-  if (!img) {
+  if (!img || !chatId) {
     return;
   }
 
-  await sendWxRobotBase64Img({
-    img,
-    webhookUrl,
-    chatId,
-  });
+  if (!Array.isArray(chatId)) {
+    chatId = [chatId];
+
+    for (const id of chatId) {
+      await sendWxRobotBase64Img({
+        img,
+        webhookUrl,
+        chatId: id,
+      });
+    }
+  }
 }
