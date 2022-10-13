@@ -1,3 +1,4 @@
+export { buildAndUpload } from './build-upload';
 export { readEnvVariable } from './env-variable';
 export { execCommand } from './node-command';
 export { nodeGet, nodePost } from './node-request';
