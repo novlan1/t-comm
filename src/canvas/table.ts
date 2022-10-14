@@ -14,6 +14,17 @@ function parseCellValue(val) {
 }
 
 /**
+ * 判断是否有比例，只要一行有比例，即为有
+ * @ignore
+ */
+function judgeRatio(data) {
+  return !!(data || []).find((item) => {
+    const values = Object.values(item) || [];
+    return values.find(value => !!(value as any).ratio);
+  });
+}
+
+/**
  * 创建canvas的table
  * @param {object} config 输入配置
  * @param {Array<object>} config.data 输入数据
@@ -25,28 +36,26 @@ function parseCellValue(val) {
  *
  * const tableData = [
  *   {
- *     Request: {
- *       value: 854,
- *       name: 'Request',
- *       idx: 19,
- *       lastIdx: 19,
- *       isMax: false,
+ *     ProjectName: { name: 'ProjectName', value: 'ProjectA' },
+ *     ALL_SUMMARY: {
+ *       name: 'ALL_SUMMARY',
+ *       value: 4987,
+ *       ratio: '+26.2%',
+ *       previousValue: 3953,
+ *       idx: 0,
+ *       lastIdx: 0,
+ *       isMax: true,
  *       isMin: false,
  *       isSecondMax: false,
- *       isSecondMin: true,
+ *       isSecondMin: false,
+ *     },
+ *     ALL_FAIL: {
+ *       // ...
  *     },
  *   },
  *   {
- *     HTTP: {
- *       value: 204,
- *       name: 'HTTP',
- *       idx: 1,
- *       lastIdx: 1,
- *       isMax: false,
- *       isMin: false,
- *       isSecondMax: true,
- *       isSecondMin: false,
- *     },
+ *     ProjectName: { name: 'ProjectName', value: 'ProjectB' },
+ *     // ...
  *   },
  * ];
  *
@@ -77,8 +86,9 @@ export function createCanvasTable({
   const getAccCellWidth = oriGetAccCellWidth.bind(null, cellWidthList);
 
   const width = getAccCellWidth(headers.length - 1) * 2 + extraWidth * 4;
-  const height =    (data.length + 1) * cellHeight * 2 + extraHeight * 2 + extraBottom;
-
+  const height = (data.length + 1) * cellHeight * 2 + extraHeight * 2 + extraBottom;
+  const hasRatio = judgeRatio(data);
+  console.log('hasRatio', hasRatio);
   const canvas = createCanvas(width, height);
   const ctx = canvas.getContext('2d');
 
@@ -144,18 +154,16 @@ export function createCanvasTable({
         }
 
         const cellWidth = cellWidthList[idx];
-        const textWidth =          Math.round(cellWidth / 2) + getAccCellWidth(idx - 1) + extraWidth;
+        const textWidth = Math.round(cellWidth / 2) + getAccCellWidth(idx - 1) + extraWidth;
         const textHeight = cellHeight * i + 33.5 + extraHeight;
 
         // 少了序号，颜色值后移
         ctx.fillStyle = color;
 
-        if (obj.ratio) {
-          ctx.fillText(
-            `${parseCellValue(obj.value)}       `,
-            textWidth,
-            textHeight,
-          );
+        if (!hasRatio) {
+          ctx.fillText(`${parseCellValue(obj.value)}`, textWidth, textHeight);
+        } else if (obj.ratio) {
+          ctx.fillText(`${parseCellValue(obj.value)}       `, textWidth, textHeight);
 
           ctx.font = '5px Arial';
           ctx.textAlign = 'right';
@@ -167,7 +175,7 @@ export function createCanvasTable({
           ctx.font = '7px Arial';
           ctx.textAlign = 'center';
         } else {
-          ctx.fillText(`${parseCellValue(obj.value)}`, textWidth, textHeight);
+          ctx.fillText(`${parseCellValue(obj.value)}       `, textWidth, textHeight);
         }
       });
     }
@@ -201,3 +209,4 @@ export function createCanvasTable({
   const imgUrl = canvas.toDataURL();
   return imgUrl;
 }
+

@@ -140,8 +140,8 @@ export async function sendWxRobotImg({ webhookUrl, chatId, content, md5Val }: {
       .then((res) => {
         resolve(res);
       })
-      .catch((err) => {
-        console.log('sendWxRobotImg.err:\n ', err);
+      .catch((err: any) => {
+        console.log('sendWxRobotImg.err:\n ', err?.data);
         reject(err);
       });
   });
