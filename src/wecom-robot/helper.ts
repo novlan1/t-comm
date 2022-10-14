@@ -50,6 +50,7 @@ export function sendToRobot({ webhookUrl, params }: {
         }
       })
       .catch((err) => {
+        console.log('sendToRobot.err: \n', err);
         reject(err);
       });
   });

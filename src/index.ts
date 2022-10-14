@@ -11,6 +11,7 @@ export * from './jsdoc';
 export * from './loader';
 export * from './morse-pwd';
 export * from './node-img';
+export * from './open-source-report';
 export * from './pipeline';
 export * from './rainbow';
 export * from './tam';
