@@ -3,7 +3,7 @@ import { parseMultiCustomEvent, getTableHeaders } from '../parse';
 import { createCanvasTable } from '../../canvas/table';
 import { compareTwoList, getMaxAndMinIdx } from '../../base/list';
 import { getSomeDayStartTimeStamp, getSomeDayEndTimeStamp, timeStampFormat } from '../../date';
-import { sendWxRobotBase64Img } from '../../wecom-robot/send-img';
+import { batchSendWxRobotBase64Img } from '../../wecom-robot/batch-send';
 
 
 /**
@@ -111,15 +111,9 @@ export async function genCustomEventImgAndSendRobot({
     return;
   }
 
-  if (!Array.isArray(chatId)) {
-    chatId = [chatId];
-  }
-
-  for (const id of chatId) {
-    await sendWxRobotBase64Img({
-      img,
-      webhookUrl,
-      chatId: id === 'ALL' ? undefined : id,
-    });
-  }
+  await batchSendWxRobotBase64Img({
+    img,
+    webhookUrl,
+    chatId,
+  });
 }

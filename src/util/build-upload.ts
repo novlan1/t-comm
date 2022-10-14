@@ -47,7 +47,7 @@ function upload({
   const targetDir = '/root/ft_local';
   const publishBash = require('path').resolve(__dirname, '../script/publish.sh');
 
-  execCommand(`sh ${publishBash} ./dist/${bundleName}.tar.gz ${targetDir} ${hostName} ${hostPwd}`, root);
+  execCommand(`sh ${publishBash} ./dist/${bundleName}.tar.gz ${targetDir} ${hostName} ${hostPwd}`, root, 'inherit');
 
   console.log('上传完成');
 }

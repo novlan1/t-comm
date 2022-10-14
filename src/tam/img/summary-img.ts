@@ -3,7 +3,7 @@ import { parseSummaryScore, getTableHeaders } from '../parse';
 import { compareTwoList, getMaxAndMinIdx } from '../../base/list';
 import { createCanvasTable } from '../../canvas/table';
 import { timeStampFormat } from '../../date/time';
-import { sendWxRobotBase64Img } from '../../wecom-robot/send-img';
+import { batchSendWxRobotBase64Img } from '../../wecom-robot/batch-send';
 
 
 /**
@@ -138,15 +138,9 @@ export async function genSummaryDataAndSendRobot({
     return;
   }
 
-  if (!Array.isArray(chatId)) {
-    chatId = [chatId];
-  }
-
-  for (const id of chatId) {
-    await sendWxRobotBase64Img({
-      img,
-      webhookUrl,
-      chatId: id === 'ALL' ? undefined : id,
-    });
-  }
+  await batchSendWxRobotBase64Img({
+    img,
+    webhookUrl,
+    chatId,
+  });
 }

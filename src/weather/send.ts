@@ -1,5 +1,5 @@
 import { getWeatherRobotContent } from './weather';
-import { sendWxRobotMarkdown } from '../wecom-robot/base';
+import { batchSendWxRobotMarkdown } from '../wecom-robot/batch-send';
 
 /**
  * 获取天气信息并发送
@@ -15,8 +15,11 @@ export async function sendWeatherRobotMsg({
   force = false,
 }) {
   const { content, isSame } = await getWeatherRobotContent();
+
+  console.log('天气是否有变化: ', !isSame);
+
   if (!isSame || force) {
-    return sendWxRobotMarkdown({
+    return batchSendWxRobotMarkdown({
       webhookUrl,
       chatId,
       content,

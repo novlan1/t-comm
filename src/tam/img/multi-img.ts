@@ -1,7 +1,7 @@
 import { genCustomEventImg } from './custom-event-img';
 import { genSummaryData } from './summary-img';
 import { mergeMultiCanvasPic } from '../../canvas/multi-img';
-import { sendWxRobotBase64Img } from '../../wecom-robot/send-img';
+import { batchSendWxRobotBase64Img } from '../../wecom-robot/batch-send';
 
 
 export async function genMultiImgAndSendRobot({
@@ -54,16 +54,10 @@ export async function genMultiImgAndSendRobot({
     return;
   }
 
-  if (!Array.isArray(chatId)) {
-    chatId = [chatId];
-  }
-
-  for (const id of chatId) {
-    await sendWxRobotBase64Img({
-      img,
-      webhookUrl,
-      chatId: id === 'ALL' ? undefined : id,
-    });
-  }
+  await batchSendWxRobotBase64Img({
+    img,
+    webhookUrl,
+    chatId,
+  });
 }
 
