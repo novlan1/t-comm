@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.1.26](https://github.com/novlan1/t-comm/compare/v0.1.25...v0.1.26) (2022-10-14)
+
+
+### Features
+
+* 优化开源治理日报 ([8aa43ae](https://github.com/novlan1/t-comm/commit/8aa43ae215a67537494b35be0a7bf696edb01f01))
+
+
+
 ## [0.1.25](https://github.com/novlan1/t-comm/compare/v0.1.24...v0.1.25) (2022-10-14)
 
 
