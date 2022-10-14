@@ -4,6 +4,7 @@ const MAX_SHOW_LINK_NAME = 12;
 export function parseOpenSourceReport({
   reportArr,
   date,
+  formattedDate,
   searchInfo,
 }) {
   const problemArr = reportArr
@@ -20,6 +21,10 @@ export function parseOpenSourceReport({
       return getScore(aSpec) + getScore(aSecurity) - (getScore(bSpec) + getScore(bSecurity));
     });
 
+  if (!problemArr.length) {
+    console.log('Error: 没有开源治理问题数据');
+    return;
+  }
   const list =  problemArr.reduce((acc, item, index) => {
     const temp: any = [];
 
@@ -43,7 +48,7 @@ export function parseOpenSourceReport({
   }, []);
 
   const chatContent = [
-    `>## 【${date}】${searchInfo.group_name || ''}[开源治理报表](${getTechMapWebsiteUrl(date, searchInfo)})问题汇总(满分100分)`,
+    `>【${searchInfo.group_name || ''}开源治理问题】[${formattedDate}](${getTechMapWebsiteUrl(date, searchInfo)})`,
     ...list,
   ];
 

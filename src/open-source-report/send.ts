@@ -17,6 +17,7 @@ export async function sendOpenSourceReport({
   searchInfo,
 }) {
   const time = timeStampFormat(new Date(date).getTime(), 'yyyyMMdd');
+  const formattedDate = timeStampFormat(new Date(date).getTime(), 'yyyy-MM-dd');
 
   const reportArr = await getOpenSourceReport({
     time,
@@ -26,8 +27,11 @@ export async function sendOpenSourceReport({
   const chatContent = parseOpenSourceReport({
     reportArr,
     date: time,
+    formattedDate,
     searchInfo,
   });
+
+  if (!chatContent) return;
 
   try {
     await batchSendWxRobotMarkdown({
