@@ -10,6 +10,7 @@ function formatNum(num) {
 
 /**
  * 解析汇总数据
+ * @ignore
  * @param {object} options 配置
  * @param {Array<object>} options.data 汇总数据
  * @param {object} options.extraDataMap 额外数据Map，键为 ProjectId

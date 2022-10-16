@@ -8,6 +8,7 @@ import { batchSendWxRobotBase64Img } from '../../wecom-robot/batch-send';
 
 /**
  * 生成TAM汇总数据图
+ * @ignore
  * @param {object} options 配置
  * @param {string} options.date 日期，yyyyMMdd格式
  * @param {Array<number>} options.groupIdList groupId列表

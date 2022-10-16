@@ -2,6 +2,7 @@ import { getPartRatio } from '../../base/number';
 
 /**
  * 处理事件数据
+ * @ignore
  * @param {object} options 配置
  * @example
  *
@@ -96,6 +97,7 @@ function getEventSummary(keyList, dataMap, extraDataMap) {
 
 /**
  * 解析额外数据
+ * @ignore
  * @param eventDataMap 数据map
  * @returns 解析后的数据
  * @example
@@ -146,70 +148,11 @@ function parseExtraData(eventDataMap) {
 
 
 /**
-     * 解析自定义事件数据
-     * @param options 配置
-     * @returns 解析后的数据
-     * @example
-     *
-     * const eventDataMap = {
-     * {
-      '57706': {
-        AI_PLAYER_EVENT_0: 10063,
-        AI_PLAYER_EVENT_14: 16,
-        AI_PLAYER_EVENT_300001: 9325,
-        AI_PLAYER_EVENT_4: 25,
-        LAUNCH_GAME_FAIL_GP_HELPER: 2,
-        LAUNCH_GAME_FAIL_QQ: 228,
-        LAUNCH_GAME_FAIL_WX: 3,
-       },
-        '62653': {
-          // ...
-        }
-      }
-     * }
-
-      const eventMap = {
-        WX_SUC: {
-        type: 'SUMMARY',
-        target: [ 'ENTER_GAME_WX_SUC', 'LAUNCH_GAME_SUC_WX' ]
-      },
-      WX_FAIL: {
-        type: 'SUMMARY',
-        target: [ 'ENTER_GAME_WX_FAIL', 'LAUNCH_GAME_FAIL_WX' ]
-      },
-      WX_SUMMARY: {
-        type: 'SUMMARY',
-        target: [
-          'WX_SUC',
-          'WX_FAIL',
-          'ENTER_GAME_WX_NO_PERMISSION',
-          'LAUNCH_GAME_WX_NO_PERMISSION',
-          'ENTER_GAME_WX_ACCESS_DENIED',
-          'LAUNCH_GAME_WX_ACCESS_DENIED'
-        ]
-      },
-      // ...
-      }
-      const res = parseMultiCustomEvent({
-        eventDataMap,
-        eventMap,
-      })
-     * console.log(res)
-     *[
-      {
-        projectId: { name: 'projectId', value: '57706' },
-        WX_SUC: { name: 'WX_SUC', value: 1184 },
-        WX_FAIL: { name: 'WX_FAIL', value: 3 },
-        WX_SUMMARY: { name: 'WX_SUMMARY', value: 1262 },
-        WX_FAIL_RATIO: { name: 'WX_FAIL_RATIO', value: 0.24 },
-        QQ_SUC: { name: 'QQ_SUC', value: 1807 },
-      },
-      {
-        projectId: { name: 'projectId', value: '62653' },
-        // ...
-      }
-      ]
-     */
+ * 解析自定义事件数据
+ * @ignore
+ * @param options 配置
+ * @returns 解析后的数据
+ */
 export function parseMultiCustomEvent({
   eventDataMap,
   eventMap,

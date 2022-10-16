@@ -1,5 +1,6 @@
 /**
  * 获取表格数据的表头
+ * @ignore
  * @param {Array<object>} tableData 表格数据
  * @param {object} tableHeaderMap 表格表头Map
  * @returns {Array<string>} 表头列表

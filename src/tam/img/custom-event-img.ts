@@ -8,8 +8,9 @@ import { batchSendWxRobotBase64Img } from '../../wecom-robot/batch-send';
 
 /**
  * 获取自定义事件图片
- * @param options 配置信息
- * @returns 图片url
+ * @ignore
+ * @param {object} options 配置信息
+ * @returns {string} 图片url
  * @example
  *
  * const requestMultiImgDate = Date.now() - 1 * 24 * 60 * 60 * 1000;
@@ -135,8 +136,8 @@ export async function genCustomEventImg({
 
 /**
  * 获取自定义事件图片并发送
- * @param options 配置信息
- * @returns 图片url
+ * @param {object} options 配置信息
+ * @returns {string} 图片url
  * @example
  *
  * const requestMultiImgDate = Date.now() - 1 * 24 * 60 * 60 * 1000;

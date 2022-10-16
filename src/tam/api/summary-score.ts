@@ -296,6 +296,7 @@ async function getSummaryScoreByProjectIdList({
 
 /**
  * 根据 groupIdList 获取汇总数据
+ * @ignore
  * @param {object} options 配置
  * @param {string} options.date 日期，yyyyMMdd格式
  * @param {Array<number>} options.groupIdList groupId列表

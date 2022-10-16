@@ -31,6 +31,7 @@ function parseEventData(data) {
 
 /**
  * 获取自定义事件数据
+ * @ignore
  * @param {object} options 配置
  * @param {number} options.startTime 开始时间，格式如 1655282977
  * @param {number} options.endTime 结束时间，格式如 1655282977
@@ -158,6 +159,7 @@ export async function getCustomEventData({
 
 /**
  * 获取多个项目的自定义事件数据
+ * @ignore
  * @param options 配置
  */
 export async function getMultiCustomEventData({
