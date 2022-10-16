@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.1.29](https://github.com/novlan1/t-comm/compare/v0.1.28...v0.1.29) (2022-10-16)
+
+
+### Features
+
+* 天气信息优化 ([e8f4eea](https://github.com/novlan1/t-comm/commit/e8f4eea6798189fef99ace0ca3a5a3e5ea412155))
+
+
+
 ## [0.1.28](https://github.com/novlan1/t-comm/compare/v0.1.27...v0.1.28) (2022-10-16)
 
 
