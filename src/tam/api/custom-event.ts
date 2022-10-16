@@ -17,7 +17,7 @@ function getCustomEventQuery({
 }
 
 
-function parseEventData(data) {
+function flattenEventData(data) {
   return data.reduce((acc, item) => {
     const key = item.tags?.name;
     if (!key) {
@@ -68,7 +68,7 @@ function parseEventData(data) {
  *   LAUNCH_GAME_SUC_QQ: 1179,
  * }
  */
-export async function getCustomEventData({
+async function getCustomEventData({
   startTime,
   endTime,
   projectId,
@@ -153,7 +153,7 @@ export async function getCustomEventData({
     res = res?.results?.[0]?.series || [];
   } catch (e) {}
 
-  return parseEventData(res);
+  return flattenEventData(res);
 }
 
 

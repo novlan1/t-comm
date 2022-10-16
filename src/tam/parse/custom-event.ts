@@ -6,7 +6,7 @@ import { getPartRatio } from '../../base/number';
  * @param {object} options 配置
  * @example
  *
- * const res = getExtraEventData({
+ * const res = parseEventData({
  *   data: {
  *     LAUNCH_GAME_WX_SUC: 2,
  *     LAUNCH_GAME_WX_FAIL: 1,
@@ -54,7 +54,7 @@ import { getPartRatio } from '../../base/number';
  *
  *
  */
-export function getExtraEventData({
+function parseEventData({
   data,
   eventMap,
 }) {
@@ -164,7 +164,7 @@ export function parseMultiCustomEvent({
   const res: any = [];
   Object.keys(parsedEventData).forEach((projectId) => {
     const eventData = eventDataMap[projectId];
-    const parsedData = getExtraEventData({
+    const parsedData = parseEventData({
       data: eventData,
       eventMap,
     });
