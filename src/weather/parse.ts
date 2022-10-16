@@ -24,7 +24,7 @@ export function composeRobotContent(usefulData: Array<any> = []): string {
       // str,
     } = item;
     const list = [
-      `${index + 1}. ${alarmType}·${alarmColor || '-'}·${alarmArea}预警，发布时间：${date}`,
+      `${index + 1}. ${alarmType}${alarmColor || ''}预警·${alarmArea}，发布时间：${date}`,
       // `${str}`,
     ];
     return list.join('\n');
