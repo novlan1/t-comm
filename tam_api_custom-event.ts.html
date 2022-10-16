@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head>
     
     <meta charset="utf-8">
-    <title>env/env.ts - Documentation</title>
+    <title>tam/api/custom-event.ts - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -34,7 +34,7 @@ console.log('Hello!')
 
 <div id="main">
     
-    <h1 class="page-title">env/env.ts</h1>
+    <h1 class="page-title">tam/api/custom-event.ts</h1>
     
 
     
@@ -44,137 +44,208 @@ console.log('Hello!')
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * 获取UA
- * @private
- * @returns {string} ua
- */
-function getRealUA() {
-  return navigator.userAgent || '';
+            <pre class="prettyprint source linenums"><code>import { SecretInfoType } from '../type';
+import { getCredential } from './credential';
+import { nodePost } from '../../util/node-request';
+
+
+function getCustomEventQuery({
+  startTime,
+  endTime,
+  projectId,
+  env = 'production',
+}) {
+  let envStr = '';
+  if (env === 'production') {
+    envStr = ' and "env"=\'production\' ';
+  }
+  return `select delta(count) as allCount from event_url_statistics where time &gt;= ${startTime}s and time &lt;= ${endTime}s and id='${projectId}' ${envStr} group by "name" slimit 1000`;
+}
+
+
+function parseEventData(data) {
+  return data.reduce((acc, item) =&gt; {
+    const key = item.tags?.name;
+    if (!key) {
+      return acc;
+    }
+
+    acc[key] = item.values?.[0]?.[1] || 0;
+    return acc;
+  }, {});
 }
 
 /**
- * 检查是否是ios环境
- * @returns {boolean} 是否是ios环境
- *
+ * 获取自定义事件数据
+ * @param {object} options 配置
+ * @param {number} options.startTime 开始时间，格式如 1655282977
+ * @param {number} options.endTime 结束时间，格式如 1655282977
+ * @param {number} options.projectId 项目Id
+ * @param {object} options.secretInfo 密钥信息
+ * @param {string} [options.env] 环境，默认为production
+ * @returns {Promise&lt;object&gt;} 自定义事件数据
  * @example
  *
- * checkUAIsIOS()
+ * getCustomEventData({
+ *   startTime: 1665383837,
+ *   endTime: 1665470227,
+ *   projectId: 57706,
+ *   secretInfo: {
+ *     getPwdCode,
+ *     encrypt,
+ *     apiKey: '',
+ *     loginName: '',
+ *   },
+ * }).then(resp =&gt; {
+ *   console.log(resp)
+ * })
  *
- * // =&gt; true
+ * // 结果如下：
  *
- */
-export function checkUAIsIOS() {
-  const realUA = getRealUA();
-  return (
-    /iphone|ipod|ipad|Mac OS X/i.test(realUA)
-    || !!realUA.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)
-  );
-}
-
-/**
- * 获取useragent类型
- * @returns {object} useragent的map
- * @example
- *
- * getEnvUAType()
- *
- * // =&gt;
  * {
- *   isWeixin: false,
- *   isWorkWeixin: false,
- *   isQQ: false,
- *   isPvpApp: false,
- *   isTipApp: false,
- *   isAndroid: false,
- *   isIos: true,
- *   isIOS: true,
- *   isMsdk: false,
- *   isMsdkV5: false,
- *   isSlugSdk: false,
- *   isInGame: false,
- *   isGHelper: false,
- *   isGHelper20004: false,
- *   isMiniProgram: false,
- *   isLolApp: false,
- *   isWindowsPhone: false,
- *   isSymbian: false,
- *   isPc: true,
- * };
- *
+ *   AI_PLAYER_EVENT_0: 7319,
+ *   AI_PLAYER_EVENT_14: 14,
+ *   AI_PLAYER_EVENT_300001: 6600,
+ *   AI_PLAYER_EVENT_4: 10,
+ *   LAUNCH_GAME_FAIL_QQ: 170,
+ *   LAUNCH_GAME_FAIL_WX: 25,
+ *   LAUNCH_GAME_SUC_GP_HELPER: 31,
+ *   LAUNCH_GAME_SUC_QQ: 1179,
+ * }
  */
+export async function getCustomEventData({
+  startTime,
+  endTime,
+  projectId,
+  env = 'production',
+  secretInfo,
+}: {
+  startTime: number
+  endTime: number
+  projectId: number
+  env?: string
+  secretInfo: SecretInfoType
+}): Promise&lt;{[key: string]: number}&gt; {
+  const credential = await getCredential(secretInfo);
 
-export function getEnvUAType(): {
-  isWeixin: boolean,
-  isWorkWeixin: boolean,
-  isQQ: boolean,
-  isPvpApp: boolean,
-  isTipApp: boolean,
-  isAndroid: boolean,
-  isIos: boolean,
-  isIOS: boolean,
-  isMsdk: boolean,
-  isMsdkV5: boolean,
-  isSlugSdk: boolean,
-  isInGame: boolean,
-  isGHelper: boolean,
-  isGHelper20004: boolean,
-  isMiniProgram: boolean,
-  isLolApp: boolean,
-  isWindowsPhone: boolean,
-  isSymbian: boolean,
-  isPc: boolean,
-} {
-  const ua = getRealUA();
-  const isWeixin = ua.indexOf('micromessenger') !== -1;
-  const isWorkWeixin = ua.indexOf('wxwork') !== -1;
-  const isQQ = ua.indexOf(' qq/') !== -1;
-  const isPvpApp = ua.indexOf(' igameapp/') !== -1;
-  const isTipApp = ua.indexOf(' gamelife/') !== -1;
-  const isAndroid = ua.indexOf('android') !== -1;
+  const result = await nodePost()({
+    url: 'http://tamapi.woa.com/api/interface/monitor/queryData',
+    json: {
+      Namespace: 'TAM-v1',
+      Query: getCustomEventQuery({
+        startTime,
+        endTime,
+        projectId,
+        env,
+      }),
+    },
+    headers: {
+      ...credential,
+    },
+  });
+  let res: any = [];
 
-  const isIos = checkUAIsIOS();
+  try {
+    /**
+     * res格式为：
+     * body: {
+     *     Response: {
+     *       RequestId: '22561d33ea8254619d56c05a-183c5c8b617',
+     *       Result: '{"request_id":"22561d33ea8254619d56c05a-183c5c8b617","results":[]}'
+     *     }
+     *   },
+     */
+    res = JSON.parse(result.body.Response.Result) || {};
 
-  const isIOS = isIos;
-  const isMsdk = ua.indexOf(' msdk/') !== -1; // msdk
-  const isMsdkV5 = ua.indexOf(' msdk/5') !== -1; // msdk V5
-  const isSlugSdk = ua.indexOf('ingame') !== -1; // 微社区sdk
-  const isInGame = isMsdk || isSlugSdk; // 是否游戏内
-  const isGHelper = ua.indexOf('gamehelper') !== -1;
-  const isGHelper20004 = ua.indexOf('gamehelper_20004') !== -1;
-  const isMiniProgram = ua.indexOf('miniprogram') !== -1
-    || (typeof window !== 'undefined'
-      // eslint-disable-next-line no-underscore-dangle
-      &amp;&amp; (window as any).__wxjs_environment === 'miniprogram');
-  const isLolApp = ua.indexOf('lolapp') !== -1; // 掌上英雄联盟app
+    /**
+      * res：
+      * {
+      * 	"request_id": "22561d33ea8254619d56c05a-183c5c8b617",
+      * 	"results": [{
+      * 		"statement_id": 0,
+      * 		"series": [{
+      * 			"name": "event_url_statistics",
+      * 			"tags": {
+      * 				"name": "PAGE_INDEX"
+      * 			},
+      * 			"columns": ["time", "allCount"],
+      * 			"values": [
+      * 				[0, 13907]
+      * 			]
+      * 		}, {
+      * 			"name": "event_url_statistics",
+      * 			"tags": {
+      * 				"name": "LAUNCH_GAME_SUC_WX"
+      * 			},
+      * 			"columns": ["time", "allCount"],
+      * 			"values": [
+      * 				[0, 94]
+      * 			]
+      * 		}, {
+      * 			"name": "event_url_statistics",
+      * 			"tags": {
+      * 				"name": "PAGE_AI_ROOM"
+      * 			},
+      * 			"columns": ["time", "allCount"],
+      * 			"values": [
+      * 				[0, 1502]
+      * 			]
+      * 		}],
+      * 		"total": 3
+      * 	}]
+      * }
+      */
+    res = res?.results?.[0]?.series || [];
+  } catch (e) {}
 
-  const isWindowsPhone = /(?:Windows Phone)/.test(ua);
-  const isSymbian = /(?:SymbianOS)/.test(ua) || isWindowsPhone;
-  const isPc = !ua.match(/(phone|pad|pod|iphone|ipod|ios|ipad|android|mobile|blackberry|iemobile|mqqbrowser|juc|fennec|wosbrowser|browserng|webos|symbian|windows phone)/i);
-  return {
-    isWeixin,
-    isWorkWeixin,
-    isQQ,
-    isPvpApp,
-    isTipApp,
-    isAndroid,
-    isIos,
-    isIOS,
-    isMsdk,
-    isMsdkV5,
-    isSlugSdk,
-    isInGame,
-    isGHelper,
-    isGHelper20004,
-    isMiniProgram,
-    isLolApp,
-    isWindowsPhone,
-    isSymbian,
-    isPc,
-  };
+  return parseEventData(res);
 }
 
 
+/**
+ * 获取多个项目的自定义事件数据
+ * @param options 配置
+ */
+export async function getMultiCustomEventData({
+  startTime,
+  endTime,
+  env = 'production',
+  secretInfo,
+  projectIdMap,
+}) {
+  const res = {};
+  const projectIdList = Object.keys(projectIdMap);
+  if (!projectIdList.length) return;
+
+  for (const projectId of projectIdList) {
+    const list = await getCustomEventData({
+      startTime,
+      endTime,
+      projectId: +projectId,
+      env,
+      secretInfo,
+    });
+    res[projectId] = list;
+  }
+
+  // 额外数据
+  for (const projectId of projectIdList) {
+    const info = projectIdMap[projectId];
+
+    if (info.extraProjectId) {
+      const extraData = await getCustomEventData({
+        startTime,
+        endTime,
+        projectId: info.extraProjectId,
+        env,
+        secretInfo,
+      });
+
+      res[projectId].extraData = extraData;
+    }
+  }
+  return res;
+}
 </code></pre>
         </article>
     </section>

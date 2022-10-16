@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head>
     
     <meta charset="utf-8">
-    <title>env/env.ts - Documentation</title>
+    <title>validate/id-card.ts - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -34,7 +34,7 @@ console.log('Hello!')
 
 <div id="main">
     
-    <h1 class="page-title">env/env.ts</h1>
+    <h1 class="page-title">validate/id-card.ts</h1>
     
 
     
@@ -45,136 +45,41 @@ console.log('Hello!')
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * 获取UA
- * @private
- * @returns {string} ua
- */
-function getRealUA() {
-  return navigator.userAgent || '';
-}
-
-/**
- * 检查是否是ios环境
- * @returns {boolean} 是否是ios环境
+ * 判断是否合法的身份证号
+ * 除了基本的格式校验外，还检查了第18位是否合法，方法如下：
+ * - 逆序排列，放到数组 list 中
+ * - x/X 代表数字10
+ * - 遍历 list，累加 `item * ((2 ** index) % 11)`，item 为list的每一位，index为下标值
+ * - 将上一步的累加和余11，判断是否等于1
  *
+ * @param {string} idCard 输入字符串
  * @example
+ * isIdCard('123')
+ * // false
  *
- * checkUAIsIOS()
- *
- * // =&gt; true
- *
+ * isIdCard('34052419800101001X')
+ * // true
  */
-export function checkUAIsIOS() {
-  const realUA = getRealUA();
-  return (
-    /iphone|ipod|ipad|Mac OS X/i.test(realUA)
-    || !!realUA.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)
-  );
+export function isIdCard(idCard) {
+  const regExp = /^[1-9]\d{5}(18|19|20)\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/;
+  return regExp.test(`${idCard}`) &amp;&amp; validateMoreIdCard(`${idCard}`);
 }
 
-/**
- * 获取useragent类型
- * @returns {object} useragent的map
- * @example
- *
- * getEnvUAType()
- *
- * // =&gt;
- * {
- *   isWeixin: false,
- *   isWorkWeixin: false,
- *   isQQ: false,
- *   isPvpApp: false,
- *   isTipApp: false,
- *   isAndroid: false,
- *   isIos: true,
- *   isIOS: true,
- *   isMsdk: false,
- *   isMsdkV5: false,
- *   isSlugSdk: false,
- *   isInGame: false,
- *   isGHelper: false,
- *   isGHelper20004: false,
- *   isMiniProgram: false,
- *   isLolApp: false,
- *   isWindowsPhone: false,
- *   isSymbian: false,
- *   isPc: true,
- * };
- *
- */
+export function validateMoreIdCard(str: string): boolean {
+  const list = str
+    .split('')
+    .reverse()
+    .map((val, index) =&gt; {
+      if (index === 0 &amp;&amp; val.toUpperCase() === 'X') {
+        return '10';
+      }
+      return val;
+    });
 
-export function getEnvUAType(): {
-  isWeixin: boolean,
-  isWorkWeixin: boolean,
-  isQQ: boolean,
-  isPvpApp: boolean,
-  isTipApp: boolean,
-  isAndroid: boolean,
-  isIos: boolean,
-  isIOS: boolean,
-  isMsdk: boolean,
-  isMsdkV5: boolean,
-  isSlugSdk: boolean,
-  isInGame: boolean,
-  isGHelper: boolean,
-  isGHelper20004: boolean,
-  isMiniProgram: boolean,
-  isLolApp: boolean,
-  isWindowsPhone: boolean,
-  isSymbian: boolean,
-  isPc: boolean,
-} {
-  const ua = getRealUA();
-  const isWeixin = ua.indexOf('micromessenger') !== -1;
-  const isWorkWeixin = ua.indexOf('wxwork') !== -1;
-  const isQQ = ua.indexOf(' qq/') !== -1;
-  const isPvpApp = ua.indexOf(' igameapp/') !== -1;
-  const isTipApp = ua.indexOf(' gamelife/') !== -1;
-  const isAndroid = ua.indexOf('android') !== -1;
-
-  const isIos = checkUAIsIOS();
-
-  const isIOS = isIos;
-  const isMsdk = ua.indexOf(' msdk/') !== -1; // msdk
-  const isMsdkV5 = ua.indexOf(' msdk/5') !== -1; // msdk V5
-  const isSlugSdk = ua.indexOf('ingame') !== -1; // 微社区sdk
-  const isInGame = isMsdk || isSlugSdk; // 是否游戏内
-  const isGHelper = ua.indexOf('gamehelper') !== -1;
-  const isGHelper20004 = ua.indexOf('gamehelper_20004') !== -1;
-  const isMiniProgram = ua.indexOf('miniprogram') !== -1
-    || (typeof window !== 'undefined'
-      // eslint-disable-next-line no-underscore-dangle
-      &amp;&amp; (window as any).__wxjs_environment === 'miniprogram');
-  const isLolApp = ua.indexOf('lolapp') !== -1; // 掌上英雄联盟app
-
-  const isWindowsPhone = /(?:Windows Phone)/.test(ua);
-  const isSymbian = /(?:SymbianOS)/.test(ua) || isWindowsPhone;
-  const isPc = !ua.match(/(phone|pad|pod|iphone|ipod|ios|ipad|android|mobile|blackberry|iemobile|mqqbrowser|juc|fennec|wosbrowser|browserng|webos|symbian|windows phone)/i);
-  return {
-    isWeixin,
-    isWorkWeixin,
-    isQQ,
-    isPvpApp,
-    isTipApp,
-    isAndroid,
-    isIos,
-    isIOS,
-    isMsdk,
-    isMsdkV5,
-    isSlugSdk,
-    isInGame,
-    isGHelper,
-    isGHelper20004,
-    isMiniProgram,
-    isLolApp,
-    isWindowsPhone,
-    isSymbian,
-    isPc,
-  };
+  let res = 0;
+  list.forEach((item, index) =&gt; res += +item * ((2 ** index) % 11));
+  return res % 11 === 1;
 }
-
-
 </code></pre>
         </article>
     </section>
