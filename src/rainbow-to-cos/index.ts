@@ -1,0 +1,1 @@
+export { watchRainbowToCosAndSendRobot } from './send';

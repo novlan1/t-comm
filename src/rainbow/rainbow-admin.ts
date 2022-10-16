@@ -375,7 +375,7 @@ export async function updateRainbowKVAndPublish({
  *
  * })
  */
-export function queryGroupInfo({ secretInfo }) {
+export function queryGroupInfo({ secretInfo }): Promise<Array<{key: string, value: string, value_type: number}>>  {
   return new Promise((resolve, reject) => {
     baseRequestRainbow({
       url: '/adminapi.Config/QueryGroupInfoReq',

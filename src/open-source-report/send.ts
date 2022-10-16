@@ -7,7 +7,6 @@ import { batchSendWxRobotMarkdown } from '../wecom-robot/batch-send';
 /**
  * 请求开源治理数据并发送
  * @param options 配置信息
- * @returns
  */
 export async function sendOpenSourceReport({
   date,

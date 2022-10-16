@@ -49,6 +49,11 @@ export function uploadCOSFile({
 }) {
   return new Promise((resolve, reject) => {
     const COS = require('cos-nodejs-sdk-v5');
+    if (!secretId || !secretKey || !bucket || !region || !files) {
+      reject('参数不全');
+      return;
+    }
+
     const cos = new COS({
       SecretId: secretId,
       SecretKey: secretKey,
@@ -70,7 +75,7 @@ export function uploadCOSFile({
         },
         onFileFinish(err, data, options) {
           resolve(data);
-          console.log(`${options.Key}上传${err ? '失败' : '完成'}`);
+          console.log(`上传${err ? '失败' : '完成'}: ${options.Key}`);
         },
       },
       (err, data) => {

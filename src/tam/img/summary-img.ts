@@ -23,7 +23,6 @@ import { batchSendWxRobotBase64Img } from '../../wecom-robot/batch-send';
  *
  * @param {object} options.tableHeaderMap 表格头部Map
  * @returns {string} 图片base64
- * @example
  *
  *
  */

@@ -14,6 +14,7 @@ export * from './node-img';
 export * from './open-source-report';
 export * from './pipeline';
 export * from './rainbow';
+export * from './rainbow-to-cos';
 export * from './tam';
 export * from './tgit';
 export * from './url';
