@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.1.28](https://github.com/novlan1/t-comm/compare/v0.1.27...v0.1.28) (2022-10-16)
+
+
+### Features
+
+* 增加rainbow-to-cos ([235bbae](https://github.com/novlan1/t-comm/commit/235bbaefabe34d8b166d995291818477a202a0ca))
+
+
+
 ## [0.1.27](https://github.com/novlan1/t-comm/compare/v0.1.26...v0.1.27) (2022-10-14)
 
 
