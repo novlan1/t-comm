@@ -158,7 +158,7 @@ export async function sendRainbowInfoToRobot({
   });
 
   if (!chatContent) {
-    console.log('Error: chatContent 为空');
+    console.log('Error: sendRainbowInfoToRobot.chatContent 为空');
     return;
   }
 

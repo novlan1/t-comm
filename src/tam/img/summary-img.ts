@@ -23,8 +23,33 @@ import { batchSendWxRobotBase64Img } from '../../wecom-robot/batch-send';
  *
  * @param {object} options.tableHeaderMap 表格头部Map
  * @returns {string} 图片base64
+ * @example
+ * const requestSummaryScoreDate = Date.now() - 1 * 24 * 60 * 60 * 1000;
  *
+ * const tamGroupIdList = [1, 2, 3];
  *
+ * const summaryScoreTableHeaderMap = {
+ *   ProjectName: {
+ *     name: '项目名称',
+ *     tableWidth: 95,
+ *   },
+ *   PagePv: {
+ *     name: 'PV',
+ *     tableWidth: 65,
+ *   },
+ * };
+ *
+ * await genSummaryData({
+ *   date: requestSummaryScoreDate,
+ *   groupIdList: tamGroupIdList,
+ *   secretInfo: {
+ *     getPwdCode,
+ *     encrypt,
+ *     apiKey: process.env.AEGIS_APP_KEY,
+ *     loginName: 'lee',
+ *   },
+ *   tableHeaderMap: summaryScoreTableHeaderMap,
+ * });
  */
 export async function genSummaryData({
   date,
@@ -103,11 +128,40 @@ export async function genSummaryData({
  *
  * @param {object} options.extraDataMap 额外数据Map
  * @param {object} options.ignoreProjectIdList 忽略的projectIdList
- * @param {object} options.sortKeyList 排序key列表
  * @param {object} options.tableHeaderMap 表格头部Map
  *
  * @param {object} options.webhookUrl 机器人回调地址
  * @param {object} options.chatId 会话Id
+ *
+ * @example
+ * const requestSummaryScoreDate = Date.now() - 1 * 24 * 60 * 60 * 1000;
+ *
+ * const tamGroupIdList = [1, 2, 3];
+ *
+ * const summaryScoreTableHeaderMap = {
+ *   ProjectName: {
+ *     name: '项目名称',
+ *     tableWidth: 95,
+ *   },
+ *   PagePv: {
+ *     name: 'PV',
+ *     tableWidth: 65,
+ *   },
+ * };
+ *
+ * await genSummaryDataAndSendRobot({
+ *   date: requestSummaryScoreDate,
+ *   groupIdList: tamGroupIdList,
+ *   secretInfo: {
+ *     getPwdCode,
+ *     encrypt,
+ *     apiKey: process.env.AEGIS_APP_KEY,
+ *     loginName: 'lee',
+ *   },
+ *   webhookUrl: tamRobotWebhook,
+ *   chatId: tamRobotChatId,
+ *   tableHeaderMap: summaryScoreTableHeaderMap,
+ * });
  */
 export async function genSummaryDataAndSendRobot({
   date,

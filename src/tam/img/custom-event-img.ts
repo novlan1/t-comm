@@ -10,6 +10,59 @@ import { batchSendWxRobotBase64Img } from '../../wecom-robot/batch-send';
  * 获取自定义事件图片
  * @param options 配置信息
  * @returns 图片url
+ * @example
+ *
+ * const requestMultiImgDate = Date.now() - 1 * 24 * 60 * 60 * 1000;
+ *
+ * const tamGroupIdList = [1, 2, 3];
+ *
+ * const eventProjectMap = {
+ *   62659: {
+ *     name: 'aaaaa',
+ *   },
+ *   57706: {
+ *     name: 'bbbbb',
+ *     extraProjectId: 66379,
+ *   },
+ * };
+ *
+ * const eventMap = {
+ *   WX_SUC: {
+ *     // 总和
+ *     type: 'SUMMARY',
+ *     target: ['ENTER_GAME_WX_SUC', 'LAUNCH_GAME_SUC_WX'],
+ *   },
+ *   WX_FAIL: {
+ *     // 总和
+ *     type: 'SUMMARY',
+ *     target: ['ENTER_GAME_WX_FAIL', 'LAUNCH_GAME_FAIL_WX'],
+ *   },
+ * };
+ *
+ * const eventTableHeaderMap = {
+ *   ProjectName: {
+ *     name: '项目名称',
+ *     tableWidth: 95,
+ *   },
+ *   ALL_SUMMARY: {
+ *     name: '拉起总数',
+ *     tableWidth: 65,
+ *   },
+ * };
+ *
+ * genCustomEventImg({
+ *   date: requestLaunchGameDate,
+ *   secretInfo: {
+ *     getPwdCode,
+ *     encrypt,
+ *     apiKey: process.env.AEGIS_APP_KEY,
+ *     loginName: 'lee',
+ *   },
+ *   projectIdMap: eventProjectMap,
+ *   eventMap,
+ *   tableHeaderMap: eventTableHeaderMap,
+ * });
+ *
  */
 export async function genCustomEventImg({
   // 获取数据参数
@@ -84,6 +137,61 @@ export async function genCustomEventImg({
  * 获取自定义事件图片并发送
  * @param options 配置信息
  * @returns 图片url
+ * @example
+ *
+ * const requestMultiImgDate = Date.now() - 1 * 24 * 60 * 60 * 1000;
+ *
+ * const tamGroupIdList = [1, 2, 3];
+ *
+ * const eventProjectMap = {
+ *   62659: {
+ *     name: 'aaaaa',
+ *   },
+ *   57706: {
+ *     name: 'bbbbb',
+ *     extraProjectId: 66379,
+ *   },
+ * };
+ *
+ * const eventMap = {
+ *   WX_SUC: {
+ *     // 总和
+ *     type: 'SUMMARY',
+ *     target: ['ENTER_GAME_WX_SUC', 'LAUNCH_GAME_SUC_WX'],
+ *   },
+ *   WX_FAIL: {
+ *     // 总和
+ *     type: 'SUMMARY',
+ *     target: ['ENTER_GAME_WX_FAIL', 'LAUNCH_GAME_FAIL_WX'],
+ *   },
+ * };
+ *
+ * const eventTableHeaderMap = {
+ *   ProjectName: {
+ *     name: '项目名称',
+ *     tableWidth: 95,
+ *   },
+ *   ALL_SUMMARY: {
+ *     name: '拉起总数',
+ *     tableWidth: 65,
+ *   },
+ * };
+ *
+ * genCustomEventImgAndSendRobot({
+ *   date: requestLaunchGameDate,
+ *   secretInfo: {
+ *     getPwdCode,
+ *     encrypt,
+ *     apiKey: process.env.AEGIS_APP_KEY,
+ *     loginName: 'lee',
+ *   },
+ *   projectIdMap: eventProjectMap,
+ *   eventMap,
+ *   tableHeaderMap: eventTableHeaderMap,
+ *   webhookUrl: tamRobotWebhook,
+ *   chatId: tamRobotChatId,
+ * });
+ *
  */
 export async function genCustomEventImgAndSendRobot({
   date,
