@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.1.32](https://github.com/novlan1/t-comm/compare/v0.1.31...v0.1.32) (2022-10-16)
+
+
+### Features
+
+* 优化内置方法名 ([9bb6b8d](https://github.com/novlan1/t-comm/commit/9bb6b8d80692c465bb447fe214cd5a362b25f0cc))
+
+
+
 ## [0.1.31](https://github.com/novlan1/t-comm/compare/v0.1.30...v0.1.31) (2022-10-16)
 
 
