@@ -2,6 +2,8 @@
 import { execCommand } from './node-command';
 
 
+const DEFAULT_HOST_TARGET_DIR = '/root/ft_local';
+
 function build({ files, bundleName }) {
   return new Promise((resolve, reject) => {
     console.log('开始打包...');
@@ -39,15 +41,16 @@ function upload({
   bundleName,
   hostName,
   hostPwd,
+  hostTargetDir = DEFAULT_HOST_TARGET_DIR,
 }) {
   if (!hostName || !hostName || !bundleName) {
     throw new Error('参数不全');
   }
   console.log('开始上传...');
-  const targetDir = '/root/ft_local';
+
   const publishBash = require('path').resolve(__dirname, '../script/publish.sh');
 
-  execCommand(`sh ${publishBash} ./dist/${bundleName}.tar.gz ${targetDir} ${hostName} ${hostPwd}`, root, 'inherit');
+  execCommand(`sh ${publishBash} ./dist/${bundleName}.tar.gz ${hostTargetDir} ${hostName} ${hostPwd}`, root, 'inherit');
 
   console.log('上传完成');
 }
@@ -74,6 +77,7 @@ export async function buildAndUpload({
   bundleName = 'bundle',
   hostName,
   hostPwd,
+  hostTargetDir,
 }) {
   if (!root) {
     root = process.cwd();
@@ -102,6 +106,7 @@ export async function buildAndUpload({
     bundleName,
     hostName,
     hostPwd,
+    hostTargetDir,
   });
 }
 
