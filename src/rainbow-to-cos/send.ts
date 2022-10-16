@@ -15,17 +15,20 @@ export async function watchRainbowToCosAndSendRobot({
   const {
     config,
     originConfig,
+    equal,
   } = await fetchLatestRainbowData({
     secretInfo,
     appName,
   });
 
-  await syncRainbowToCOS({
-    configList: config,
-    secretInfo,
-    appName,
-    cosInfo,
-  });
+  if (!equal) {
+    await syncRainbowToCOS({
+      configList: config,
+      secretInfo,
+      appName,
+      cosInfo,
+    });
+  }
 
   if (!sendToRobotType) {
     return;
