@@ -339,6 +339,7 @@ export function flattenPreData(preDataList: Array<{
  * @param {Array<object>} preList 参照数据
  * @param {string} key 唯一key名称
  * @return {Array<object>} 对比结果，增加为list的每一项增加previousValue和ratio属性
+ * @example
  * const list = [
  *   {
  *     ProjectName: { name: 'ProjectName', value: '脚手架' },

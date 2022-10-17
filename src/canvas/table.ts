@@ -17,11 +17,11 @@ function parseCellValue(val) {
  * 判断是否有比例，只要一行有比例，即为有
  * @ignore
  */
-function judgeRatio(data) {
+function judgeRatio(data, value) {
   return !!(data || []).find((item) => {
     const values = Object.values(item) || [];
     return values.find(value => !!(value as any).ratio);
-  });
+  }) && !isNaN(value);
 }
 
 /**
@@ -87,8 +87,7 @@ export function createCanvasTable({
 
   const width = getAccCellWidth(headers.length - 1) * 2 + extraWidth * 4;
   const height = (data.length + 1) * cellHeight * 2 + extraHeight * 2 + extraBottom;
-  const hasRatio = judgeRatio(data);
-  console.log('hasRatio', hasRatio);
+
   const canvas = createCanvas(width, height);
   const ctx = canvas.getContext('2d');
 
@@ -159,6 +158,9 @@ export function createCanvasTable({
 
         // 少了序号，颜色值后移
         ctx.fillStyle = color;
+
+        const hasRatio = judgeRatio(data, obj.value);
+        console.log('hasRatio', hasRatio, obj);
 
         if (!hasRatio) {
           ctx.fillText(`${parseCellValue(obj.value)}`, textWidth, textHeight);

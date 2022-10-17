@@ -87,6 +87,7 @@ function getNavPrefix(nav = '') {
 
 /**
  * 给 Modules 下的导航列表插入分隔符
+ * @ignore
  * @param $ cheerio
  */
 function insertModuleNavSeparator($) {
