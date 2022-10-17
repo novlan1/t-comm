@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head>
     
     <meta charset="utf-8">
-    <title>version-tip/gen-send-version.ts - Documentation</title>
+    <title>git/git.ts - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -34,7 +34,7 @@ console.log('Hello!')
 
 <div id="main">
     
-    <h1 class="page-title">version-tip/gen-send-version.ts</h1>
+    <h1 class="page-title">git/git.ts</h1>
     
 
     
@@ -44,108 +44,116 @@ console.log('Hello!')
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { genVersion } from './gen-version';
-import { genVersionTip } from './gen-version-tip';
-import { execCommand } from '../util/node-command';
-import { sendWxRobotMarkdown } from '../wecom-robot/base';
+            <pre class="prettyprint source linenums"><code>/* eslint-disable @typescript-eslint/no-require-imports */
+import { execCommand } from '../util';
 
 /**
- * 运行standard-version，并且发送changelog到机器人
- * @param {object} options 配置
- * @param {object} config.appInfo package.json信息
- * @param {string} config.root 项目根路径
- * @param {string} config.changeLogFilePath changelog文件地址
- * @param {string} config.webhookUrl 机器人hook地址
- * @param {string} config.chatId 会话id
+ * 获取当前分支
+ * @returns {string} 分支名称
+ *
+ * @example
+ *
+ * getBranch()
+ *
+ * // =&gt; master
  */
-export function genVersionAndSendChangeLog({
-  appInfo,
-  root,
-  changeLogFilePath,
-  webhookUrl,
-  chatId,
-}) {
-  return new Promise((resolve, reject) =&gt; {
-    if (!root) {
-      reject('ERROR: root不可以为空');
-      return;
-    }
-
-    if (!changeLogFilePath) {
-      changeLogFilePath = `${root}/CHANGELOG.md`;
-    }
-
-    const hasGenVersion = genVersion({
-      root,
-    });
-
-    if (!hasGenVersion) {
-      resolve({
-        hasGenVersion: false,
-      });
-      return;
-    }
-
-    try {
-      console.log('Doing git push --follow-tags origin ...');
-
-      execCommand('git push --follow-tags origin', root, 'inherit');
-
-      console.log('Done git push --follow-tags origin.');
-    } catch (err) {
-      reject(err);
-      return;
-    }
-
-    sendVersionTip({
-      appInfo,
-      changeLogFilePath,
-      webhookUrl,
-      chatId,
-    }).then(resolve)
-      .catch(reject);
-  });
+export function getGitCurBranch(root?: string) {
+  const res = execCommand('git symbolic-ref --short -q HEAD', root);
+  return res;
 }
 
-function sendVersionTip({
-  appInfo,
-  changeLogFilePath,
-  webhookUrl,
-  chatId,
-}) {
-  return new Promise((resolve, reject) =&gt; {
-    const content = genVersionTip({
-      readmeFilePath: changeLogFilePath,
-      appInfo,
-    });
 
-    if (!content) {
-      resolve({
-        hasGenVersion: true,
-        hasSendChangeLog: false,
-        sendChangeLogError: 'empty changelog content',
-      });
-      return;
-    }
+/**
+ * 获取提交信息
+ * @returns {Object} 提交对象
+ *
+ * @example
+ * getGitCommitInfo()
+ * {
+ *   author: 'novlan1',
+ *   message: ' 优化一部分文档',
+ *   hash: '0cb71f9',
+ *   date: '2022-10-02 10:34:31 +0800',
+ *   timeStamp: '1664678071',
+ *   branch: 'master'
+ * }
+ */
+export function getGitCommitInfo(root?: string) {
+  const command = 'git log --no-merges -1 \
+  --date=iso --pretty=format:\'{"author": "%aN","message": "%s", "hash": "%h", "date": "%ad", "timeStamp": "%at"},\' \
+  $@ | \
+  perl -pe \'BEGIN{print "["}; END{print "]\n"}\' | \
+  perl -pe \'s/},]/}]/\'';
+  const stdout = execCommand(command, root);
 
-    console.log('Doing send wecom robot markdown ...');
-
-    sendWxRobotMarkdown({
-      chatId,
-      content,
-      webhookUrl,
-    }).then(() =&gt; {
-      resolve({
-        hasGenVersion: true,
-        hasSendChangeLog: true,
-      });
-
-      console.log('Done send wecom robot markdown.');
-    })
-      .catch((err) =&gt; {
-        reject(err);
-      });
+  const info = Object.assign({}, JSON.parse(stdout)[0], {
+    branch: execCommand('git symbolic-ref --short -q HEAD', root),
   });
+
+
+  const res = Object.assign({}, info, {
+    message:
+    info.message.split(':')[1] || info.message.split('：')[1] || '',
+  });
+  return res;
+}
+
+
+/**
+ * 获取最新tag
+ * @returns {string} 最新tag
+ */
+export function getGitLastTag(root?: string) {
+  const fakeFirstTag = execCommand('git tag -l', root);
+  if (!fakeFirstTag) return '';
+
+  // 不能使用`git tag | head -1`，这个命令不准
+  const command = 'git describe --abbrev=0';
+
+  const tag = execCommand(command, root);
+  return tag;
+}
+
+
+/**
+ * 获取tag到head的提交数目
+ * @param {string} tag git标签
+ * @returns {string} tag至今的提交数目
+ */
+export function getGitCommitsBeforeTag(tag, root?: string) {
+  if (!tag) return '0';
+  return execCommand(`git log ${tag}...HEAD --no-merges --oneline | wc -l`, root);
+}
+
+/**
+ * 获取打标签的时间
+ * @private
+ * @param {string} tag git标签
+ * @returns {string} 标签时间
+ */
+export function getGitTagTime(tag, root?: string) {
+  if (!tag) return '';
+  return execCommand(`git log -1 --format=%ai ${tag} | cat`, root);
+}
+
+
+/**
+ * 获取当前用户
+ * @param isPriorGit - 是否优先使用git用户信息
+ * @returns user
+ */
+export function getGitAuthor(isPriorGit = false, root?: string) {
+  const envAuthor = process.env.VUE_APP_AUTHOR;
+  let gitAuthor = '';
+  try {
+    gitAuthor = execCommand('git config user.name', root);
+  } catch (err) {
+    console.log('getAuthor.err', err);
+  }
+  if (isPriorGit) {
+    return gitAuthor || envAuthor || '';
+  }
+  return envAuthor || gitAuthor || '';
 }
 </code></pre>
         </article>

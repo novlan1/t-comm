@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head>
     
     <meta charset="utf-8">
-    <title>version-tip/gen-send-version.ts - Documentation</title>
+    <title>morse-pwd/morse-pwd.ts - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -34,7 +34,7 @@ console.log('Hello!')
 
 <div id="main">
     
-    <h1 class="page-title">version-tip/gen-send-version.ts</h1>
+    <h1 class="page-title">morse-pwd/morse-pwd.ts</h1>
     
 
     
@@ -44,109 +44,237 @@ console.log('Hello!')
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { genVersion } from './gen-version';
-import { genVersionTip } from './gen-version-tip';
-import { execCommand } from '../util/node-command';
-import { sendWxRobotMarkdown } from '../wecom-robot/base';
+            <pre class="prettyprint source linenums"><code>class MorsePwd {
+  /**
+   * 初始化
+   * @static
+   * @param {Object} options 选项
+   * @param {Array&lt;number&gt;} options.pwd 密码
+   * @param {Function} options.cb 成功回调
+   * @param {Boolean} options.quiet 是否安静模式（不打印日志）
+   * @param {number} options.holdTime 等待多久后就恢复原位
+   * @param {'H5' | 'h5' | 'mp' | 'MP'} options.envType 环境类型
+   * @param {String} options.selector h5模式下的选择器
+   *
+   * @example &lt;caption&gt;小程序环境&lt;/caption&gt;
+   * &lt;template&gt;
+   *   &lt;div
+   *     class="tip-match-header"
+   *     /@longpress="onLongPressWrap"
+   *     /@click.stop="onClickWrap"
+   *   &gt;
+   * &lt;/template&gt;
+   *
+   * &lt;script&gt;
+   * export default {
+   *   data() {
+   *     return {
+   *       morsePwd: null,
+   *     };
+   *   },
+   *   mounted() {
+   *     this.morsePwd = MorsePwd.init({
+   *       pwd: [1, 1, 1, 2, 2, 2, 1, 1, 1],
+   *       cb: () =&gt; {
+   *         console.log('===');
+   *         this.showToast('hhh');
+   *       },
+   *       envType: 'MP',
+   *     });
+   *   },
+   *   beforeDestroy() {
+   *     this.morsePwd.clear();
+   *   },
+   *   methods: {
+   *     onLongPressWrap() {
+   *       this.morsePwd.longPress();
+   *     },
+   *     onClickWrap() {
+   *       this.morsePwd.click();
+   *     },
+   *   }
+   * }
+   * &lt;/script&gt;
+   * @example &lt;caption&gt;H5环境&lt;/caption&gt;
+   * &lt;script&gt;
+   * export default {
+   *   data() {
+   *     return {
+   *       morsePwd: null,
+   *     };
+   *   },
+   *   mounted() {
+   *     this.morsePwd = MorsePwd.init({
+   *       pwd: [1, 1, 1, 2, 2, 2, 1, 1, 1],
+   *       cb: () =&gt; {
+   *         this.showToast('xxx');
+   *       },
+   *       selector: '#app',
+   *       envType: 'H5',
+   *     });
+   *   },
+   *   beforeDestroy() {
+   *     this.morsePwd.clear();
+   *   },
+   * }
+   * &lt;/script&gt;
+   *
+   * @returns {Object} MorsePwd实例
+   */
+  static init(options) {
+    return new MorsePwd(options);
+  }
 
-/**
- * 运行standard-version，并且发送changelog到机器人
- * @param {object} options 配置
- * @param {object} config.appInfo package.json信息
- * @param {string} config.root 项目根路径
- * @param {string} config.changeLogFilePath changelog文件地址
- * @param {string} config.webhookUrl 机器人hook地址
- * @param {string} config.chatId 会话id
- */
-export function genVersionAndSendChangeLog({
-  appInfo,
-  root,
-  changeLogFilePath,
-  webhookUrl,
-  chatId,
-}) {
-  return new Promise((resolve, reject) =&gt; {
-    if (!root) {
-      reject('ERROR: root不可以为空');
-      return;
+  pwd: Array&lt;number&gt;;
+  cb: Function;
+  holdTime: number;
+  quiet: Boolean;
+  selector?: keyof HTMLElementTagNameMap;
+  envType?: 'H5' | 'h5' | 'mp' | 'MP';
+
+  clickCode: number;
+  longPressCode: number;
+
+  curIdx: number;
+  holdTimer: any;
+  h5Dom: any;
+
+  longPressTimer: any;
+  isLongTouch: Boolean;
+
+  /**
+   * 摩斯密码初始化
+   * @constructor
+   * @param {Object} options 选项
+   * @param {Array&lt;number&gt;} options.pwd 密码
+   * @param {Function} options.cb 成功回调
+   * @param {Boolean} options.quiet 是否安静模式（不打印日志）
+   * @param {number} options.holdTime 等待多久后就恢复原位
+   * @param {'H5' | 'h5' | 'mp' | 'MP'} options.envType 环境类型
+   * @param {String} options.selector h5模式下的选择器
+   */
+  constructor(options) {
+    const DEFAULT_CODE_MAP = {
+      CLICK: 1,
+      LONG_PRESS: 2,
+    };
+    const { pwd, cb, quiet = false, holdTime = 5000, envType = '', selector } = options;
+    this.pwd = pwd || [];
+    this.cb = cb;
+    this.holdTime = holdTime;
+    this.quiet = quiet;
+    this.selector = selector;
+    this.envType = envType;
+
+    this.clickCode = DEFAULT_CODE_MAP.CLICK;
+    this.longPressCode = DEFAULT_CODE_MAP.LONG_PRESS;
+
+    this.curIdx = 0;
+    this.holdTimer = null;
+    this.h5Dom = null;
+
+    this.longPressTimer = null;
+    this.isLongTouch = false;
+
+    if (this.envType === 'H5') {
+      this.bindEvent();
     }
+  }
 
-    if (!changeLogFilePath) {
-      changeLogFilePath = `${root}/CHANGELOG.md`;
+  bindEvent() {
+    if (!this.selector) return;
+    this.h5Dom = document.querySelector(this.selector);
+    if (!this.h5Dom) return;
+
+    this.h5Dom.addEventListener('touchstart', this.onTouchStart.bind(this));
+    this.h5Dom.addEventListener('touchend', this.onTouchEnd.bind(this));
+    this.h5Dom.addEventListener('touchmove', this.onTouchMove.bind(this));
+  }
+
+  onTouchStart() {
+    clearTimeout(this.longPressTimer);
+    this.longPressTimer = setTimeout(() =&gt; {
+      // 处理长按事件
+      this.log('longPress');
+      this.isLongTouch = true;
+      this.longPress();
+    }, 350);
+  }
+
+  onTouchEnd() {
+    clearTimeout(this.longPressTimer);
+    if (this.isLongTouch) {
+      // 重置标志位
+      this.isLongTouch = false;
+    } else {
+      // 处理点击事件
+      this.log('click');
+      this.click();
     }
+  }
 
-    const hasGenVersion = genVersion({
-      root,
-    });
+  onTouchMove() {
+    clearTimeout(this.longPressTimer);
+  }
 
-    if (!hasGenVersion) {
-      resolve({
-        hasGenVersion: false,
-      });
-      return;
+  /**
+   * 清除监听事件
+   * @example
+   * beforeDestroy() {
+   *   this.morsePwd.clear();
+   * }
+   */
+  clear() {
+    if (!this.h5Dom) return;
+    this.h5Dom.removeEventListener('touchstart', this.onTouchStart.bind(this));
+    this.h5Dom.removeEventListener('touchend', this.onTouchEnd.bind(this));
+    this.h5Dom.removeEventListener('touchmove', this.onTouchMove.bind(this));
+  }
+
+  operation(type) {
+    this.log(`type: ${type}, curIdx: ${this.curIdx}, pwd: ${this.pwd}`);
+
+    clearTimeout(this.holdTimer);
+    if (this.pwd[this.curIdx] === type) {
+      this.curIdx += 1;
+      if (this.curIdx === this.pwd.length) {
+        this.suc();
+      } else {
+        clearTimeout(this.holdTimer);
+        this.holdTimer = setTimeout(() =&gt; {
+          this.reset();
+        }, this.holdTime);
+      }
+    } else {
+      this.reset();
     }
+  }
 
-    try {
-      console.log('Doing git push --follow-tags origin ...');
+  reset() {
+    this.curIdx = 0;
+  }
 
-      execCommand('git push --follow-tags origin', root, 'inherit');
+  click() {
+    this.operation(this.clickCode);
+  }
 
-      console.log('Done git push --follow-tags origin.');
-    } catch (err) {
-      reject(err);
-      return;
+  suc() {
+    if (typeof this.cb === 'function') {
+      this.cb();
+      this.reset();
     }
+  }
+  longPress() {
+    this.operation(this.longPressCode);
+  }
 
-    sendVersionTip({
-      appInfo,
-      changeLogFilePath,
-      webhookUrl,
-      chatId,
-    }).then(resolve)
-      .catch(reject);
-  });
+  log(...args) {
+    if (this.quiet) return;
+    console.log(...args);
+  }
 }
 
-function sendVersionTip({
-  appInfo,
-  changeLogFilePath,
-  webhookUrl,
-  chatId,
-}) {
-  return new Promise((resolve, reject) =&gt; {
-    const content = genVersionTip({
-      readmeFilePath: changeLogFilePath,
-      appInfo,
-    });
-
-    if (!content) {
-      resolve({
-        hasGenVersion: true,
-        hasSendChangeLog: false,
-        sendChangeLogError: 'empty changelog content',
-      });
-      return;
-    }
-
-    console.log('Doing send wecom robot markdown ...');
-
-    sendWxRobotMarkdown({
-      chatId,
-      content,
-      webhookUrl,
-    }).then(() =&gt; {
-      resolve({
-        hasGenVersion: true,
-        hasSendChangeLog: true,
-      });
-
-      console.log('Done send wecom robot markdown.');
-    })
-      .catch((err) =&gt; {
-        reject(err);
-      });
-  });
-}
+export { MorsePwd };
 </code></pre>
         </article>
     </section>
