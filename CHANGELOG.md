@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.1.33](https://github.com/novlan1/t-comm/compare/v0.1.32...v0.1.33) (2022-10-17)
+
+
+### Features
+
+* 优化canvas ([9b30612](https://github.com/novlan1/t-comm/commit/9b3061242deb50352011c4284b440d43eec72140))
+
+
+
 ## [0.1.32](https://github.com/novlan1/t-comm/compare/v0.1.31...v0.1.32) (2022-10-16)
 
 
