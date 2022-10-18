@@ -41,7 +41,7 @@ export function getGitCommitInfo(root?: string) {
   const stdout = execCommand(command, root);
 
   const info = Object.assign({}, JSON.parse(stdout)[0], {
-    branch: execCommand('git symbolic-ref --short -q HEAD', root),
+    branch: getGitCurBranch(root),
   });
 
 
