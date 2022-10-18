@@ -198,7 +198,7 @@ export class MpCI {
 
   getBuildDesc() {
     const { env, commitInfo } = this;
-    const buildDesc = `环境：${env || ''}，分支：${commitInfo.branch}，提交：${commitInfo.author} - ${commitInfo.message}`;
+    const buildDesc = `环境: ${env || ''}, 分支: ${commitInfo.branch}，最后提交: ${commitInfo.author} - ${commitInfo.message}`;
     return buildDesc;
   }
 
@@ -248,8 +248,8 @@ export class MpCI {
       `【${appName}自动构建】`,
       `版本: ${version}, 提交者: CI机器人${robotNumber}, 环境: ${env}`,
       `分支: ${commitInfo.branch}`,
-      `提交时间: ${buildTime}`,
-      `提交信息: ${commitInfo.author} - ${commitInfo.message}`,
+      `构建时间: ${buildTime}`,
+      `最后提交: ${commitInfo.author} - ${commitInfo.message}`,
     ].map((item) => {
       if (item.length > 35) return `${item.slice(0, 35)}...`;
       return item;
