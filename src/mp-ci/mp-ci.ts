@@ -128,7 +128,7 @@ export class MpCI {
   }
 
   getBuildTime() {
-    return timeStampFormat(Date.now(), 'yyyy-MM-dd hh:mm:ss');
+    this.buildTime = timeStampFormat(Date.now(), 'yyyy-MM-dd hh:mm:ss');
   }
 
   getPkgInfo() {
