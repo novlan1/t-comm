@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.1.39](https://github.com/novlan1/t-comm/compare/v0.1.38...v0.1.39) (2022-10-18)
+
+
+### Features
+
+* 增加dpr ([117f759](https://github.com/novlan1/t-comm/commit/117f759c2d54fef06d4b136fa31a5208f3aa476e))
+
+
+
 ## [0.1.38](https://github.com/novlan1/t-comm/compare/v0.1.37...v0.1.38) (2022-10-18)
 
 
