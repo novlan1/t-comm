@@ -245,7 +245,7 @@ export class MpCI {
       `提交者：CI机器人${robotNumber}`,
       buildDesc,
       `提交时间：${buildTime || ''}`,
-      `[COS链接](${this.getCOSFilePath()})`,
+      `[预览图片](${this.getCOSFilePath()})`,
     ];
 
     const template = `>【构建成功】${descList.join('，')}`;
