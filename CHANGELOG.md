@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.1.41](https://github.com/novlan1/t-comm/compare/v0.1.40...v0.1.41) (2022-10-18)
+
+
+### Features
+
+* mp-ci信息 ([1f20e8f](https://github.com/novlan1/t-comm/commit/1f20e8f0160dd09d95d4e8be7981808c0c3eb055))
+
+
+
 ## [0.1.40](https://github.com/novlan1/t-comm/compare/v0.1.39...v0.1.40) (2022-10-18)
 
 
