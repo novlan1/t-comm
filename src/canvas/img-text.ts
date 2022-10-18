@@ -14,6 +14,7 @@ export async function addTextForImg({
 
   const image = await loadImage(imgPath);
   const lineHeight = 15;
+  const dpr = 2;
   const topHeight = textList.length * lineHeight + 15;
 
   const dimensions = sizeOf(imgPath);
@@ -26,12 +27,12 @@ export async function addTextForImg({
   }
 
   const canvas = createCanvas(
-    width,
-    height + topHeight,
+    width * dpr,
+    (height + topHeight) * dpr,
   );
 
   const ctx = canvas.getContext('2d');
-
+  ctx.scale(dpr, dpr);
 
   function drawBackground() {
     ctx.fillStyle = '#fff';
