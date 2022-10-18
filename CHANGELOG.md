@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.1.34](https://github.com/novlan1/t-comm/compare/v0.1.33...v0.1.34) (2022-10-18)
+
+
+### Features
+
+* 增加add-text-img ([c0669c5](https://github.com/novlan1/t-comm/commit/c0669c5d78e3fb9b5b93ce1da3e0c333b3106303))
+
+
+
 ## [0.1.33](https://github.com/novlan1/t-comm/compare/v0.1.32...v0.1.33) (2022-10-17)
 
 
