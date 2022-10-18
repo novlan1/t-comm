@@ -37,9 +37,66 @@ export class MpCI {
   version: string;
 
   /**
-   * 小程序自动化构建工具
-   * @param {object} options 选项
-   */
+  * 小程序自动化构建工具
+  * @param {object} options 选项
+  *
+  * @example
+  *
+  * const { MpCI, fetchRainbowConfig } = require('t-comm');
+  *
+  * const env = \"${env}\"
+  * const branch = \"${branch}\"
+  *
+  * const root = \"${WORKSPACE}\";
+  *
+  * async function getCIConfig() {
+  *   let res = {};
+  *   const str = await fetchRainbowConfig('mp_ci', {
+  *     appId: '',
+  *     envName: 'x',
+  *     groupName: 'x',
+  *   });
+  *   try {
+  *     res = JSON.parse(str);
+  *   } catch (err) {}
+  *   return res;
+  * }
+  *
+  * function getRobot(config = {}) {
+  *   return config?.robotMap?.[branch]?.[env] || 1;
+  * }
+  *
+  * async function main() {
+  *   const config = await getCIConfig();
+  *   console.log('config: \n', config, typeof config);
+  *   const {
+  *     appName,
+  *     appId,
+  *     webhookUrl,
+  *     chatId,
+  *     cosInfo,
+  *   } = config;
+  *
+  *   const ci = new MpCI({
+  *     appName,
+  *     appId,
+  *     root,
+  *     env,
+  *     robotNumber: getRobot(config),
+  *
+  *     webhookUrl,
+  *     chatId,
+  *
+  *     cosInfo,
+  *   });
+  *
+  *   await ci.upload();
+  *   await ci.preview();
+  *   await ci.sendRobotMsg();
+  * }
+  *
+  * main();
+  */
   constructor(options: OptionsType) {
     const path = require('path');
     const fs = require('fs');
