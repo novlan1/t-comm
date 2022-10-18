@@ -47,7 +47,7 @@ export function getGitCommitInfo(root?: string) {
 
   const res = Object.assign({}, info, {
     message:
-    info.message.split(':')[1] || info.message.split('：')[1] || '',
+    (info.message.split(':')[1] || info.message.split('：')[1] || '').trim(),
   });
   return res;
 }
