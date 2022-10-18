@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.1.40](https://github.com/novlan1/t-comm/compare/v0.1.39...v0.1.40) (2022-10-18)
+
+
+### Features
+
+* 预览机器人 ([2878ad6](https://github.com/novlan1/t-comm/commit/2878ad6ffe9d5cfb1e0ce151ab0df7069d6b8176))
+
+
+
 ## [0.1.39](https://github.com/novlan1/t-comm/compare/v0.1.38...v0.1.39) (2022-10-18)
 
 
