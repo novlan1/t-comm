@@ -73,7 +73,7 @@ console.log('Hello!')
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="mp-ci_mp-ci.ts.html">mp-ci/mp-ci.ts</a>, <a href="mp-ci_mp-ci.ts.html#line37">line 37</a>
+        <a href="mp-ci_mp-ci.ts.html">mp-ci/mp-ci.ts</a>, <a href="mp-ci_mp-ci.ts.html#line94">line 94</a>
     </li></ul></dd>
     
 
@@ -122,6 +122,64 @@ console.log('Hello!')
 
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>const { MpCI, fetchRainbowConfig } = require('t-comm');
+
+const env = \"${env}\"
+const branch = \"${branch}\"
+
+const root = \"${WORKSPACE}\";
+
+async function getCIConfig() {
+  let res = {};
+  const str = await fetchRainbowConfig('mp_ci', {
+    appId: '',
+    envName: 'x',
+    groupName: 'x',
+  });
+  try {
+    res = JSON.parse(str);
+  } catch (err) {}
+  return res;
+}
+
+function getRobot(config = {}) {
+  return config?.robotMap?.[branch]?.[env] || 1;
+}
+
+async function main() {
+  const config = await getCIConfig();
+  console.log('config: \n', config, typeof config);
+  const {
+    appName,
+    appId,
+    webhookUrl,
+    chatId,
+    cosInfo,
+  } = config;
+
+  const ci = new MpCI({
+    appName,
+    appId,
+    root,
+    env,
+    robotNumber: getRobot(config),
+
+    webhookUrl,
+    chatId,
+
+    cosInfo,
+  });
+
+  await ci.upload();
+  await ci.preview();
+  await ci.sendRobotMsg();
+}
+
+main();</code></pre>
 
 
 
@@ -228,7 +286,7 @@ console.log('Hello!')
 
 <br class="clear">
 
-<footer>Documentation generated on 2022-10-18 08:22:10 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2022-10-18 08:42:45 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>
