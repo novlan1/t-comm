@@ -10,7 +10,7 @@ export * from './git';
 export * from './jsdoc';
 export * from './loader';
 export * from './morse-pwd';
-export * from './mp-cli';
+export * from './mp-ci';
 export * from './node-img';
 export * from './open-source-report';
 export * from './pipeline';

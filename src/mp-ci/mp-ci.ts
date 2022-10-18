@@ -9,7 +9,7 @@ import { saveBase64ImgToFile } from '../node-img/img';
 import { OptionsType } from './type';
 import { DEFAULT_BUILD_SETTING } from './config';
 
-export class MpCLI {
+export class MpCI {
   ciLib: any;
   options: OptionsType;
 
@@ -36,7 +36,10 @@ export class MpCLI {
   buildTime: string;
   version: string;
 
-
+  /**
+   * 小程序自动化构建工具
+   * @param {object} options 选项
+   */
   constructor(options: OptionsType) {
     const path = require('path');
     const fs = require('fs');
@@ -137,6 +140,9 @@ export class MpCLI {
     return buildDesc;
   }
 
+  /**
+   * 上传
+   */
   async upload() {
     const { robotNumber, version, buildDesc } = this;
 
@@ -150,6 +156,9 @@ export class MpCLI {
     console.log('UploadResult:\n', uploadResult);
   }
 
+  /**
+   * 预览
+   */
   async preview() {
     const previewResult = await this.ciLib.preview({
       project: this.projectCI,
@@ -165,6 +174,9 @@ export class MpCLI {
     await this.uploadPreviewImg();
   }
 
+  /**
+   * 上传预览图片到COS
+   */
   async uploadPreviewImg() {
     const { appName, robotNumber, env, buildTime, commitInfo, version } = this;
 
@@ -198,11 +210,9 @@ export class MpCLI {
     ]);
   }
 
-  async uploadAndPreview() {
-    await this.upload();
-    await this.preview();
-  }
-
+  /**
+   * 发送机器人消息
+   */
   async sendRobotMsg() {
     const { robotNumber, webhookUrl, version, buildDesc, buildTime } = this;
     let { chatId } = this;
