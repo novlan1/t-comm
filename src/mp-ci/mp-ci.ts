@@ -33,7 +33,7 @@ export class MpCI {
   cosInfo: any;
   commitInfo: any;
   buildDesc: string;
-  buildTime: string;
+  buildTime?: string;
   version: string;
 
   /**
@@ -48,7 +48,7 @@ export class MpCI {
 
     this.options = options;
     this.projectCI = null;
-    this.savePreviewPath = path.resolve(process.cwd(), 'preview_destination.png');
+    this.savePreviewPath = path.resolve(process.cwd(), 'mp_ci_preview_destination.png');
     const {
       appId,
       appName,
@@ -108,9 +108,10 @@ export class MpCI {
     }
 
     this.init();
+    this.getBuildTime();
+
     this.commitInfo = getGitCommitInfo(this.root);
     this.buildDesc = this.getBuildDesc() || '';
-    this.buildTime = timeStampFormat(Date.now(), 'yyyy-MM-dd hh:mm:ss');
     this.version = this.getVersion();
   }
 
@@ -126,6 +127,10 @@ export class MpCI {
     });
   }
 
+  getBuildTime() {
+    return timeStampFormat(Date.now(), 'yyyy-MM-dd hh:mm:ss');
+  }
+
   getPkgInfo() {
     return require(this.pkgFile) || {};
   }
@@ -136,7 +141,7 @@ export class MpCI {
 
   getBuildDesc() {
     const { env, commitInfo } = this;
-    const buildDesc = `环境：${env || ''}，分支：${commitInfo.branch}，Last Commit：${commitInfo.author} - ${commitInfo.message}`;
+    const buildDesc = `环境：${env || ''}，分支：${commitInfo.branch}，提交：${commitInfo.author} - ${commitInfo.message}`;
     return buildDesc;
   }
 
@@ -153,6 +158,7 @@ export class MpCI {
       robot: robotNumber,
       setting: this.buildSetting,
     });
+    this.getBuildTime();
     console.log('UploadResult:\n', uploadResult);
   }
 
@@ -185,7 +191,7 @@ export class MpCI {
       `版本: ${version}, 提交者: CI机器人${robotNumber}, 环境: ${env}`,
       `分支: ${commitInfo.branch}`,
       `提交时间: ${buildTime}`,
-      `Commit: ${commitInfo.author} - ${commitInfo.message}`,
+      `提交信息: ${commitInfo.author} - ${commitInfo.message}`,
     ].map((item) => {
       if (item.length > 35) return `${item.slice(0, 35)}...`;
       return item;
@@ -204,10 +210,21 @@ export class MpCI {
     });
     this.uploadFiles([
       {
-        key: `${this.cosInfo.dir}/${commitInfo.branch.replace(/\//g, '-')}_${env}.png`,
+        key: this.getCosKey(),
         path: this.savePreviewPath,
       },
     ]);
+  }
+
+  getCosKey() {
+    const { cosInfo, env, commitInfo } = this;
+    return `${cosInfo.dir}/${commitInfo.branch.replace(/\//g, '-')}_${env}.png`;
+  }
+
+  getCOSFilePath() {
+    const { bucket, region } = this.cosInfo;
+    const cosKey = this.getCosKey();
+    return `https://${bucket}.cos.${region}.myqcloud.com/${cosKey}`;
   }
 
   /**
@@ -228,6 +245,7 @@ export class MpCI {
       `提交者：CI机器人${robotNumber}`,
       buildDesc,
       `提交时间：${buildTime || ''}`,
+      `[COS链接](${this.getCOSFilePath()})`,
     ];
 
     const template = `>【构建成功】${descList.join('，')}`;
