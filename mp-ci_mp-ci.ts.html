@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head>
     
     <meta charset="utf-8">
-    <title>validate/type.ts - Documentation</title>
+    <title>mp-ci/mp-ci.ts - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -34,7 +34,7 @@ console.log('Hello!')
 
 <div id="main">
     
-    <h1 class="page-title">validate/type.ts</h1>
+    <h1 class="page-title">mp-ci/mp-ci.ts</h1>
     
 
     
@@ -44,62 +44,260 @@ console.log('Hello!')
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * 判断数据是不是正则对象
- * @param {any} value - 输入数据
- * @returns {boolean} 是否是正则对象
- *
- * @example
- *
- * isRegExp(1)
- *
- * // =&gt; false
- *
- * isRegExp(/\d/)
- *
- * // =&gt; true
- */
-export function isRegExp(value) {
-  return Object.prototype.toString.call(value) === '[object RegExp]';
+            <pre class="prettyprint source linenums"><code>/* eslint-disable @typescript-eslint/no-require-imports */
+import { sendWxRobotMarkdown } from '../wecom-robot/base';
+import { getGitCommitInfo } from '../git/git';
+import { timeStampFormat } from '../date/time';
+import { addTextForImg } from '../canvas/img-text';
+import { uploadCOSFile } from '../cos/cos';
+import { saveBase64ImgToFile } from '../node-img/img';
+
+import { OptionsType } from './type';
+import { DEFAULT_BUILD_SETTING } from './config';
+
+export class MpCI {
+  ciLib: any;
+  options: OptionsType;
+
+  projectCI: any;
+  savePreviewPath: any;
+
+  appId: string;
+  appName: string;
+  type: string;
+  root: string;
+  ignores: Array&lt;string&gt;;
+  pkgFile: string;
+  env: string;
+  robotNumber: number;
+  webhookUrl?: string = '';
+  chatId?: string = '';
+
+  buildSetting: any;
+  projectPath: string;
+  privateKeyPath: string;
+  cosInfo: any;
+  commitInfo: any;
+  buildDesc: string;
+  buildTime: string;
+  version: string;
+
+  /**
+   * 小程序自动化构建工具
+   * @param {object} options 选项
+   */
+  constructor(options: OptionsType) {
+    const path = require('path');
+    const fs = require('fs');
+    const ci = require('miniprogram-ci');
+    this.ciLib = ci;
+
+    this.options = options;
+    this.projectCI = null;
+    this.savePreviewPath = path.resolve(process.cwd(), 'preview_destination.png');
+    const {
+      appId,
+      appName,
+      projectPath,
+      privateKeyPath,
+      ignores,
+      type,
+      root,
+      env,
+      robotNumber,
+      buildSetting,
+
+      webhookUrl,
+      chatId,
+      cosInfo,
+    } = options;
+
+    this.appId = appId;
+    this.appName = appName || '';
+    this.type = type || 'miniProgram';
+
+    this.root = root || process.cwd();
+    this.ignores = ignores || ['node_modules/**/*'];
+    this.pkgFile = path.resolve(this.root, './package.json');
+
+    this.env = env || 'test';
+    this.robotNumber = robotNumber || 30;
+
+    this.webhookUrl = webhookUrl;
+    this.chatId = chatId;
+
+    this.buildSetting = {
+      ...DEFAULT_BUILD_SETTING,
+      ...(buildSetting || {}),
+
+    };
+    this.projectPath = projectPath || '';
+    this.privateKeyPath = privateKeyPath || '';
+    this.cosInfo = cosInfo || {};
+
+    if (!this.projectPath) {
+      this.projectPath = path.resolve(root, 'dist/build/mp-weixin');
+    }
+    if (!this.privateKeyPath) {
+      this.privateKeyPath = path.resolve(root, 'private.key');
+    }
+
+    if (!fs.existsSync(this.privateKeyPath)) {
+      throw new Error('ERROR: privateKeyPath 位置不存在');
+    }
+    if (!fs.existsSync(this.projectPath)) {
+      throw new Error('ERROR: projectPath 位置不存在');
+    }
+
+    if (!fs.existsSync(this.pkgFile)) {
+      throw new Error('ERROR: package.json 不存在');
+    }
+
+    this.init();
+    this.commitInfo = getGitCommitInfo(this.root);
+    this.buildDesc = this.getBuildDesc() || '';
+    this.buildTime = timeStampFormat(Date.now(), 'yyyy-MM-dd hh:mm:ss');
+    this.version = this.getVersion();
+  }
+
+  init() {
+    const { appId, projectPath, privateKeyPath, ignores, type } = this;
+
+    this.projectCI = new this.ciLib.Project({
+      appid: appId,
+      type,
+      projectPath,
+      privateKeyPath,
+      ignores,
+    });
+  }
+
+  getPkgInfo() {
+    return require(this.pkgFile) || {};
+  }
+
+  getVersion() {
+    return this.getPkgInfo().version;
+  }
+
+  getBuildDesc() {
+    const { env, commitInfo } = this;
+    const buildDesc = `环境：${env || ''}，分支：${commitInfo.branch}，Last Commit：${commitInfo.author} - ${commitInfo.message}`;
+    return buildDesc;
+  }
+
+  /**
+   * 上传
+   */
+  async upload() {
+    const { robotNumber, version, buildDesc } = this;
+
+    const uploadResult = await this.ciLib.upload({
+      project: this.projectCI,
+      version,
+      desc: buildDesc,
+      robot: robotNumber,
+      setting: this.buildSetting,
+    });
+    console.log('UploadResult:\n', uploadResult);
+  }
+
+  /**
+   * 预览
+   */
+  async preview() {
+    const previewResult = await this.ciLib.preview({
+      project: this.projectCI,
+      desc: this.buildDesc,
+      setting: this.buildSetting,
+      qrcodeFormat: 'image',
+      qrcodeOutputDest: this.savePreviewPath,
+      // pagePath: 'pages/index/index', // 预览页面
+      // searchQuery: 'a=1&amp;b=2',  // 预览参数 [注意!]这里的`&amp;`字符在命令行中应写成转义字符`&amp;`
+    });
+    console.log('PreviewResult:\n', previewResult);
+
+    await this.uploadPreviewImg();
+  }
+
+  /**
+   * 上传预览图片到COS
+   */
+  async uploadPreviewImg() {
+    const { appName, robotNumber, env, buildTime, commitInfo, version } = this;
+
+    const textList = [
+      `【${appName}自动构建】`,
+      `版本: ${version}, 提交者: CI机器人${robotNumber}, 环境: ${env}`,
+      `分支: ${commitInfo.branch}`,
+      `提交时间: ${buildTime}`,
+      `Commit: ${commitInfo.author} - ${commitInfo.message}`,
+    ].map((item) =&gt; {
+      if (item.length &gt; 35) return `${item.slice(0, 35)}...`;
+      return item;
+    });
+
+    const newPreviewImg = await addTextForImg({
+      width: 300,
+      height: 300,
+      imgPath: this.savePreviewPath,
+      textList,
+    });
+
+    await saveBase64ImgToFile({
+      imgUrl: newPreviewImg,
+      savePath: this.savePreviewPath,
+    });
+    this.uploadFiles([
+      {
+        key: `${this.cosInfo.dir}/${commitInfo.branch.replace(/\//g, '-')}_${env}.png`,
+        path: this.savePreviewPath,
+      },
+    ]);
+  }
+
+  /**
+   * 发送机器人消息
+   */
+  async sendRobotMsg() {
+    const { robotNumber, webhookUrl, version, buildDesc, buildTime } = this;
+    let { chatId } = this;
+    if (!webhookUrl) {
+      return;
+    }
+    if (!chatId) {
+      chatId = undefined;
+    }
+
+    const descList = [
+      `版本：${version || ''}`,
+      `提交者：CI机器人${robotNumber}`,
+      buildDesc,
+      `提交时间：${buildTime || ''}`,
+    ];
+
+    const template = `&gt;【构建成功】${descList.join('，')}`;
+
+    sendWxRobotMarkdown({
+      webhookUrl,
+      content: template,
+      chatId,
+    });
+  }
+
+  async uploadFiles(files) {
+    const { secretId, secretKey, bucket, region } = this.cosInfo || {};
+    await uploadCOSFile({
+      files,
+      secretId,
+      secretKey,
+      bucket,
+      region,
+    });
+  }
 }
 
-/**
- * 判断数据是不是时间对象
- * @param {any} value - 输入数据
- * @returns {boolean} 是否是时间对象
- *
- * @example
- *
- * isDate(1)
- *
- * // =&gt; false
- *
- * isDate(new Date())
- *
- * // =&gt; true
- */
-export function isDate(value) {
-  return Object.prototype.toString.call(value) === '[object Date]';
-}
 
-/**
- * 判断数据是不是函数
- * @param {any} value - 输入数据
- * @returns {boolean} 是否是函数
- *
- * @example
- *
- * isFunction(1)
- *
- * // =&gt; false
- *
- * isFunction(()=&gt;{})
- *
- * // =&gt; true
- */
-export function isFunction(value) {
-  return Object.prototype.toString.call(value) === '[object Function]';
-}
 </code></pre>
         </article>
     </section>
@@ -113,7 +311,7 @@ export function isFunction(value) {
 
 <br class="clear">
 
-<footer>Documentation generated on 2022-10-18 03:57:56 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2022-10-18 03:57:55 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>
