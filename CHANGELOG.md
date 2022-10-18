@@ -1,5 +1,15 @@
 # 工具库更新日志
 
+## [0.1.38](https://github.com/novlan1/t-comm/compare/v0.1.37...v0.1.38) (2022-10-18)
+
+
+### Features
+
+* 优化root ([7ad1156](https://github.com/novlan1/t-comm/commit/7ad11567506de708f781c8a47e1b27d4b41225a1))
+* **mp-ci:** 图片预览提示优化 ([40d3443](https://github.com/novlan1/t-comm/commit/40d3443b4d5cb59988fdc64d03431c9dea8f278c))
+
+
+
 ## [0.1.37](https://github.com/novlan1/t-comm/compare/v0.1.36...v0.1.37) (2022-10-18)
 
 
