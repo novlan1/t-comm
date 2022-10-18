@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.1.37](https://github.com/novlan1/t-comm/compare/v0.1.36...v0.1.37) (2022-10-18)
+
+
+### Bug Fixes
+
+* **mp-ci:** 修复build time ([cedd681](https://github.com/novlan1/t-comm/commit/cedd68134ebd05cdb0cde3a87c52377253655231))
+
+
+
 ## [0.1.36](https://github.com/novlan1/t-comm/compare/v0.1.35...v0.1.36) (2022-10-18)
 
 
