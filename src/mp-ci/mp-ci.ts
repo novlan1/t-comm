@@ -90,10 +90,10 @@ export class MpCI {
     this.cosInfo = cosInfo || {};
 
     if (!this.projectPath) {
-      this.projectPath = path.resolve(root, 'dist/build/mp-weixin');
+      this.projectPath = path.resolve(this.root, 'dist/build/mp-weixin');
     }
     if (!this.privateKeyPath) {
-      this.privateKeyPath = path.resolve(root, 'private.key');
+      this.privateKeyPath = path.resolve(this.root, 'private.key');
     }
 
     if (!fs.existsSync(this.privateKeyPath)) {
@@ -231,7 +231,7 @@ export class MpCI {
    * 发送机器人消息
    */
   async sendRobotMsg() {
-    const { robotNumber, webhookUrl, version, buildDesc, buildTime } = this;
+    const { robotNumber, webhookUrl, env, commitInfo } = this;
     let { chatId } = this;
     if (!webhookUrl) {
       return;
@@ -241,10 +241,12 @@ export class MpCI {
     }
 
     const descList = [
-      `版本：${version || ''}`,
-      `提交者：CI机器人${robotNumber}`,
-      buildDesc,
-      `提交时间：${buildTime || ''}`,
+      `分支：${commitInfo.branch}`,
+      `环境：${env}`,
+      // `版本：${version || ''}`,
+      `机器人：${robotNumber}`,
+      // buildDesc,
+      // `${buildTime || ''}`,
       `[预览图片](${this.getCOSFilePath()})`,
     ];
 
