@@ -7,7 +7,7 @@ import { uploadCOSFile } from '../cos/cos';
 import { saveBase64ImgToFile } from '../node-img/img';
 
 import { OptionsType } from './type';
-import { DEFAULT_BUILD_SETTING } from './config';
+import { DEFAULT_BUILD_SETTING, MAX_TRY_TIMES_MAP } from './config';
 
 export class MpCI {
   ciLib: any;
@@ -35,6 +35,11 @@ export class MpCI {
   buildDesc: string;
   buildTime?: string;
   version: string;
+
+  tryTimesMap = {
+    UPLOAD: 1,
+    PREVIEW: 1,
+  };
 
   /**
   * 小程序自动化构建工具
@@ -206,6 +211,18 @@ export class MpCI {
    * 上传
    */
   async upload() {
+    try {
+      await this.tryUpload();
+    } catch (err) {
+      if (this.tryTimesMap.UPLOAD < MAX_TRY_TIMES_MAP.UPLOAD) {
+        this.tryTimesMap.UPLOAD += 1;
+
+        await this.tryUpload();
+      }
+    }
+  }
+
+  async tryUpload() {
     const { robotNumber, version, buildDesc } = this;
 
     const uploadResult = await this.ciLib.upload({
@@ -219,10 +236,22 @@ export class MpCI {
     console.log('UploadResult:\n', uploadResult);
   }
 
+  async preview() {
+    try {
+      await this.tryPreview();
+    } catch (err) {
+      if (this.tryTimesMap.UPLOAD < MAX_TRY_TIMES_MAP.UPLOAD) {
+        this.tryTimesMap.UPLOAD += 1;
+
+        await this.tryPreview();
+      }
+    }
+  }
+
   /**
    * 预览
    */
-  async preview() {
+  async tryPreview() {
     const previewResult = await this.ciLib.preview({
       project: this.projectCI,
       desc: this.buildDesc,
@@ -315,6 +344,10 @@ export class MpCI {
       content: template,
       chatId,
     });
+  }
+
+  async uploadAndPreview() {
+    await Promise.all([this.upload(), this.preview()]);
   }
 
   async uploadFiles(files) {

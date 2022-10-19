@@ -9,3 +9,7 @@ export const DEFAULT_BUILD_SETTING = {
 };
 
 
+export const MAX_TRY_TIMES_MAP = {
+  UPLOAD: 3,
+  PREVIEW: 3,
+};
