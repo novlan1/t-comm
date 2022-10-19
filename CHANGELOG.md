@@ -1,5 +1,19 @@
 # 工具库更新日志
 
+## [0.1.42](https://github.com/novlan1/t-comm/compare/v0.1.41...v0.1.42) (2022-10-19)
+
+
+### Bug Fixes
+
+* 修复rainbow错误 ([e29bd7e](https://github.com/novlan1/t-comm/commit/e29bd7e42768ba12304986d83b62af8ba52a4197))
+
+
+### Features
+
+* **mp-ci:** 增加重试次数和并行执行 ([306cb51](https://github.com/novlan1/t-comm/commit/306cb51c9c8e1a0198e72d4a86bae35d969cbe7c))
+
+
+
 ## [0.1.41](https://github.com/novlan1/t-comm/compare/v0.1.40...v0.1.41) (2022-10-18)
 
 
