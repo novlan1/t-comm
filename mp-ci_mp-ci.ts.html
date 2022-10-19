@@ -53,7 +53,7 @@ import { uploadCOSFile } from '../cos/cos';
 import { saveBase64ImgToFile } from '../node-img/img';
 
 import { OptionsType } from './type';
-import { DEFAULT_BUILD_SETTING } from './config';
+import { DEFAULT_BUILD_SETTING, MAX_TRY_TIMES_MAP } from './config';
 
 export class MpCI {
   ciLib: any;
@@ -81,6 +81,11 @@ export class MpCI {
   buildDesc: string;
   buildTime?: string;
   version: string;
+
+  tryTimesMap = {
+    UPLOAD: 1,
+    PREVIEW: 1,
+  };
 
   /**
   * 小程序自动化构建工具
@@ -244,7 +249,7 @@ export class MpCI {
 
   getBuildDesc() {
     const { env, commitInfo } = this;
-    const buildDesc = `环境：${env || ''}，分支：${commitInfo.branch}，提交：${commitInfo.author} - ${commitInfo.message}`;
+    const buildDesc = `环境: ${env || ''}, 分支: ${commitInfo.branch}，最后提交: ${commitInfo.author} - ${commitInfo.message}`;
     return buildDesc;
   }
 
@@ -252,6 +257,18 @@ export class MpCI {
    * 上传
    */
   async upload() {
+    try {
+      await this.tryUpload();
+    } catch (err) {
+      if (this.tryTimesMap.UPLOAD &lt; MAX_TRY_TIMES_MAP.UPLOAD) {
+        this.tryTimesMap.UPLOAD += 1;
+
+        await this.tryUpload();
+      }
+    }
+  }
+
+  async tryUpload() {
     const { robotNumber, version, buildDesc } = this;
 
     const uploadResult = await this.ciLib.upload({
@@ -265,10 +282,22 @@ export class MpCI {
     console.log('UploadResult:\n', uploadResult);
   }
 
+  async preview() {
+    try {
+      await this.tryPreview();
+    } catch (err) {
+      if (this.tryTimesMap.UPLOAD &lt; MAX_TRY_TIMES_MAP.UPLOAD) {
+        this.tryTimesMap.UPLOAD += 1;
+
+        await this.tryPreview();
+      }
+    }
+  }
+
   /**
    * 预览
    */
-  async preview() {
+  async tryPreview() {
     const previewResult = await this.ciLib.preview({
       project: this.projectCI,
       desc: this.buildDesc,
@@ -294,8 +323,8 @@ export class MpCI {
       `【${appName}自动构建】`,
       `版本: ${version}, 提交者: CI机器人${robotNumber}, 环境: ${env}`,
       `分支: ${commitInfo.branch}`,
-      `提交时间: ${buildTime}`,
-      `提交信息: ${commitInfo.author} - ${commitInfo.message}`,
+      `构建时间: ${buildTime}`,
+      `最后提交: ${commitInfo.author} - ${commitInfo.message}`,
     ].map((item) =&gt; {
       if (item.length &gt; 35) return `${item.slice(0, 35)}...`;
       return item;
@@ -363,6 +392,10 @@ export class MpCI {
     });
   }
 
+  async uploadAndPreview() {
+    await Promise.all([this.upload(), this.preview()]);
+  }
+
   async uploadFiles(files) {
     const { secretId, secretKey, bucket, region } = this.cosInfo || {};
     await uploadCOSFile({
@@ -389,7 +422,7 @@ export class MpCI {
 
 <br class="clear">
 
-<footer>Documentation generated on 2022-10-18 15:57:50 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2022-10-19 06:49:11 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>
