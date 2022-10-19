@@ -69,7 +69,7 @@ function getOnlyChangedCOSFiles({
   });
 
   Object.keys(flatOrigin).forEach((key) => {
-    if (!flatOrigin[key]) {
+    if (!flatNow[key]) {
       const params = {
         appName,
         groupName,
