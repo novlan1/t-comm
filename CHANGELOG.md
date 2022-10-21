@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.2.2](https://github.com/novlan1/t-comm/compare/v0.2.1...v0.2.2) (2022-10-21)
+
+
+### Features
+
+* 允许传入mrUrl ([85a5b92](https://github.com/novlan1/t-comm/commit/85a5b9201e0379954e3a919e1cc0f1ad82b2c444))
+
+
+
 ## [0.2.1](https://github.com/novlan1/t-comm/compare/v0.2.0...v0.2.1) (2022-10-21)
 
 
