@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.2.1](https://github.com/novlan1/t-comm/compare/v0.2.0...v0.2.1) (2022-10-21)
+
+
+### Features
+
+* 优化eslint-parser ([1d5dc89](https://github.com/novlan1/t-comm/commit/1d5dc89c8d9700ce9e7405e231c4e4bb84d37c10))
+
+
+
 # [0.2.0](https://github.com/novlan1/t-comm/compare/v0.1.42...v0.2.0) (2022-10-21)
 
 
