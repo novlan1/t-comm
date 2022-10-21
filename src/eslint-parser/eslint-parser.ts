@@ -7,11 +7,13 @@ import { RepoConfigType } from './type';
 
 export function parseEslintAndSendRobot({
   mrId,
+  mrUrl,
   lintReportFile,
   repoConfig,
   robotInfo,
 }: {
-  mrId: string | number
+  mrId?: string | number
+  mrUrl?: string
   lintReportFile: string
   repoConfig: RepoConfigType
   robotInfo: {
@@ -35,6 +37,7 @@ export function parseEslintAndSendRobot({
 
   const robotMsg = genRobotMsg({
     mrId,
+    mrUrl,
 
     errorMap,
     total,

@@ -3,6 +3,7 @@ import { getGitCodeLink, getGitMRLink, rmFirstAndLastSlash  } from '../util/git-
 export function genRobotMsg({
   errorMap,
   mrId,
+  mrUrl,
   repoConfig,
   total,
 }) {
@@ -32,11 +33,15 @@ export function genRobotMsg({
     detail += '...';
   }
 
-  const mrLink = getGitMRLink({
+  let mrLink = getGitMRLink({
     domain,
     repo,
     id: mrId,
   });
+
+  if (mrUrl) {
+    mrLink = mrUrl;
+  }
 
   const getRepoName = (repo = '') => {
     const list = rmFirstAndLastSlash(repo).split('/');
