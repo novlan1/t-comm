@@ -31,6 +31,8 @@ export function parseEslintAndSendRobot({
     lintReportFile,
   });
 
+  if (!total) return;
+
   const robotMsg = genRobotMsg({
     mrId,
 

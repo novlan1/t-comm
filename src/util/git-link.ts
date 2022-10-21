@@ -29,7 +29,7 @@ export function getGitCodeLink({
 export function getGitMRLink({
   domain,
   repo,
-  id,
+  id = '',
 }) {
   const pDomain = rmFirstAndLastSlash(domain);
   const pRepo = rmFirstAndLastSlash(repo);

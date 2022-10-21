@@ -45,7 +45,9 @@ export function genRobotMsg({
 
   const repoName = getRepoName(repo);
 
-  const content = `>【Eslint错误】[${repoName}#${mrId}](${mrLink})MR存在${total}条ESlint错误：${detail}`;
+  const linkPostfix = mrId ? `#${mrId}` : '';
+
+  const content = `>【Eslint错误】[${repoName}${linkPostfix}](${mrLink}) ${mrId ? 'MR' : ''}存在${total}条ESlint错误：${detail}`;
 
   return content;
 }
