@@ -6,6 +6,7 @@ export * from './cos';
 export * from './css';
 export * from './date';
 export * from './env';
+export * from './eslint-parser';
 export * from './git';
 export * from './jsdoc';
 export * from './loader';

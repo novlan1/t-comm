@@ -41,6 +41,7 @@
     "test": "jest --coverage --verbose -u",
     "lint": "eslint --ext .js,.ts,.tsx,.jsx,.vue .",
     "lint:fix": "eslint --fix --ext .js,.ts,.tsx,.jsx,.vue .",
+    "lint:json": "eslint --ext .js,.ts,.tsx,.jsx,.vue . -f json-with-metadata -o ./coverage/lint-results-meta.json",
     "changelog": "gulp changelog",
     "version": "yarn changelog && git add CHANGELOG.md",
     "release": "yarn test && yarn build && np --no-cleanup --yolo --any-branch",
