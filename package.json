@@ -45,7 +45,7 @@
     "changelog": "gulp changelog",
     "version": "yarn changelog && git add CHANGELOG.md",
     "version:tip": "node script/version-tip",
-    "release": "yarn test && yarn build && np --no-cleanup --yolo --any-branch",
+    "release": "yarn test && yarn build && np --no-cleanup --yolo --any-branch && npm run version:tip",
     "npm:token": "node script/npm-token.js",
     "prepare": "husky install"
   },
