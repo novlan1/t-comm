@@ -30,7 +30,7 @@ export function genRobotMsg({
 
   let detail = detailList.join('，');
   if (detailList.length > 10) {
-    detail += '...';
+    detail += ' ...';
   }
 
   let mrLink = getGitMRLink({

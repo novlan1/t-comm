@@ -10,11 +10,13 @@ export function parseEslintError({
 
   const errorMap = errors
     .reduce((acc, item) => {
-      acc.push(...item.messages.map(msg => ({
-        ...msg,
-        filePath: item.filePath,
-        errorCount: item.errorCount,
-      })));
+      acc.push(...item.messages
+        .filter(item => item.severity == 2)
+        .map(msg => ({
+          ...msg,
+          filePath: item.filePath,
+          errorCount: item.errorCount,
+        })));
       return acc;
     }, [])
     .reduce((acc, item) => {

@@ -33,6 +33,8 @@ export function parseEslintAndSendRobot({
     lintReportFile,
   });
 
+  console.log('ESLINT_ERROR_TOTAL: ', total);
+
   if (!total) return;
 
   const robotMsg = genRobotMsg({
