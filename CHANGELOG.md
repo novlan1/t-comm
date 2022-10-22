@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.2.4](https://github.com/novlan1/t-comm/compare/v0.2.3...v0.2.4) (2022-10-22)
+
+
+### Features
+
+* **eslint-parser:** 优化error ([978e75a](https://github.com/novlan1/t-comm/commit/978e75a73485b353c9b33c8e53ba5b5a320e8ca1))
+
+
+
 ## [0.2.3](https://github.com/novlan1/t-comm/compare/v0.2.2...v0.2.3) (2022-10-22)
 
 
