@@ -31,7 +31,7 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "homepage": "https://github.com/novlan1/t-comm#readme",
+  "homepage": "https://novlan1.github.io/t-comm/",
   "scripts": {
     "build": "gulp build",
     "api": "api-extractor run",
@@ -44,6 +44,7 @@
     "lint:json": "eslint --ext .js,.ts,.tsx,.jsx,.vue . -f json-with-metadata -o ./coverage/lint-results-meta.json",
     "changelog": "gulp changelog",
     "version": "yarn changelog && git add CHANGELOG.md",
+    "version:tip": "node script/version-tip",
     "release": "yarn test && yarn build && np --no-cleanup --yolo --any-branch",
     "npm:token": "node script/npm-token.js",
     "prepare": "husky install"

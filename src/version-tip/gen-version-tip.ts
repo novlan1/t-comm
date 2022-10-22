@@ -8,33 +8,44 @@ function generatePublishInfo({
   repoLink,
   issueLink,
   readmeFilePath,
+  showNpmLink = false,
 }) {
   const fs = require('fs');
   if (!fs.existsSync(readmeFilePath)) {
     console.log(`ERROR: 未找到 ${readmeFilePath}，请先生成 changeLog。`);
     return '';
   }
+
   const changelogStr = fs.readFileSync(readmeFilePath, 'utf8');
-  const currentVersion = changelogStr.match(new RegExp(
+  let currentVersion = changelogStr.match(new RegExp(
     `(?<=### \\[${targetVersion}\\].*\n).*?(?=\n##+ \\[?\\d+.\\d+.\\d+)`,
     's',
   ));
+
+  if (!currentVersion || !currentVersion[0]) {
+    currentVersion = changelogStr.match(new RegExp(
+      `(?<=## \\[${targetVersion}\\].*\n).*?(?=\n##+ \\[?\\d+.\\d+.\\d+)`,
+      's',
+    ));
+  }
 
   if (!currentVersion || !currentVersion[0]) {
     console.log(`ERROR: 未找到 ${targetVersion} 对应的 changelog 发布信息`);
     return '';
   }
 
-  const npmStr = ''; // '- npm：[${appName}](https://npmjs.com/package/${appName})\n'
-  const issueStr = `${issueLink && `- issue: [issue](${issueLink})\n`}`;
+  const npmStr = showNpmLink ? `- npm：[${appName}](https://npmjs.com/package/${appName})\n` : '';
+  const issueStr = `${issueLink && `- issue: [${issueLink}](${issueLink})\n`}`;
 
   const changelog = currentVersion[0].replace(
     /\n\*(\s.*)/g,
     (a, b) => `\n-${b}`,
   );
 
+  const pRepoLink = repoLink.replace(/^git\+/, '').replace(/\.git$/, '');
+
   const template = `### ${appName} 更新\n\n\n\n- 版本：<font color="comment">${targetVersion}</font>\n${npmStr}${
-    repoLink && `- Git：[${repoLink}](${repoLink})\n`
+    repoLink && `- Git：[${pRepoLink}](${pRepoLink})\n`
   }${issueStr}${homepage && `- 文档：[${homepage}](${homepage})\n`}\n\n`;
 
   const content = template.concat(changelog).replaceAll('###', '\n\n###');
@@ -58,7 +69,8 @@ function generatePublishInfo({
  *   appInfo,
  * });
  */
-export function genVersionTip({ readmeFilePath, appInfo }: {
+export function genVersionTip({ readmeFilePath, appInfo, showNpmLink = false }: {
+  showNpmLink?: boolean
   readmeFilePath: string
   appInfo: {
     name: string
@@ -84,6 +96,7 @@ export function genVersionTip({ readmeFilePath, appInfo }: {
   }
 
   return generatePublishInfo({
+    showNpmLink,
     appName,
     version,
     homepage,
