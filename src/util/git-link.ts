@@ -33,5 +33,9 @@ export function getGitMRLink({
 }) {
   const pDomain = rmFirstAndLastSlash(domain);
   const pRepo = rmFirstAndLastSlash(repo);
-  return [pDomain, pRepo, 'merge_requests', id].join('/');
+  const list = [pDomain, pRepo, 'merge_requests'];
+  if (id) {
+    list.push(id);
+  }
+  return list.join('/');
 }
