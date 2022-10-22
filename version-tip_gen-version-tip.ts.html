@@ -54,33 +54,44 @@ function generatePublishInfo({
   repoLink,
   issueLink,
   readmeFilePath,
+  showNpmLink = false,
 }) {
   const fs = require('fs');
   if (!fs.existsSync(readmeFilePath)) {
     console.log(`ERROR: 未找到 ${readmeFilePath}，请先生成 changeLog。`);
     return '';
   }
+
   const changelogStr = fs.readFileSync(readmeFilePath, 'utf8');
-  const currentVersion = changelogStr.match(new RegExp(
+  let currentVersion = changelogStr.match(new RegExp(
     `(?&lt;=### \\[${targetVersion}\\].*\n).*?(?=\n##+ \\[?\\d+.\\d+.\\d+)`,
     's',
   ));
+
+  if (!currentVersion || !currentVersion[0]) {
+    currentVersion = changelogStr.match(new RegExp(
+      `(?&lt;=## \\[${targetVersion}\\].*\n).*?(?=\n##+ \\[?\\d+.\\d+.\\d+)`,
+      's',
+    ));
+  }
 
   if (!currentVersion || !currentVersion[0]) {
     console.log(`ERROR: 未找到 ${targetVersion} 对应的 changelog 发布信息`);
     return '';
   }
 
-  const npmStr = ''; // '- npm：[${appName}](https://npmjs.com/package/${appName})\n'
-  const issueStr = `${issueLink &amp;&amp; `- issue: [issue](${issueLink})\n`}`;
+  const npmStr = showNpmLink ? `- npm：[${appName}](https://npmjs.com/package/${appName})\n` : '';
+  const issueStr = `${issueLink &amp;&amp; `- issue: [${issueLink}](${issueLink})\n`}`;
 
   const changelog = currentVersion[0].replace(
     /\n\*(\s.*)/g,
     (a, b) =&gt; `\n-${b}`,
   );
 
+  const pRepoLink = repoLink.replace(/^git\+/, '').replace(/\.git$/, '');
+
   const template = `### ${appName} 更新\n\n\n\n- 版本：&lt;font color="comment"&gt;${targetVersion}&lt;/font&gt;\n${npmStr}${
-    repoLink &amp;&amp; `- Git：[${repoLink}](${repoLink})\n`
+    repoLink &amp;&amp; `- Git：[${pRepoLink}](${pRepoLink})\n`
   }${issueStr}${homepage &amp;&amp; `- 文档：[${homepage}](${homepage})\n`}\n\n`;
 
   const content = template.concat(changelog).replaceAll('###', '\n\n###');
@@ -104,7 +115,8 @@ function generatePublishInfo({
  *   appInfo,
  * });
  */
-export function genVersionTip({ readmeFilePath, appInfo }: {
+export function genVersionTip({ readmeFilePath, appInfo, showNpmLink = false }: {
+  showNpmLink?: boolean
   readmeFilePath: string
   appInfo: {
     name: string
@@ -130,6 +142,7 @@ export function genVersionTip({ readmeFilePath, appInfo }: {
   }
 
   return generatePublishInfo({
+    showNpmLink,
     appName,
     version,
     homepage,
@@ -151,7 +164,7 @@ export function genVersionTip({ readmeFilePath, appInfo }: {
 
 <br class="clear">
 
-<footer>Documentation generated on 2022-10-22 03:18:09 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2022-10-22 04:01:47 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>
