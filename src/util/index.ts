@@ -5,3 +5,4 @@ export { execCommand } from './node-command';
 export { nodeGet, nodePost } from './node-request';
 export { writeEnvTokenToNpmRC } from './npm-token';
 export { getRtxInfo } from './rtx';
+export { sleep } from './sleep';
