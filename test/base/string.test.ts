@@ -40,6 +40,8 @@ describe('camelize', () => {
 describe('hyphenate', () => {
   it('hyphenate', () => {
     expect(hyphenate('abCd')).toBe('ab-cd');
+    expect(hyphenate('AbCd')).toBe('ab-cd');
+    expect(hyphenate('MatchCommDialog')).toBe('match-comm-dialog');
   });
 });
 
