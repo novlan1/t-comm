@@ -8,7 +8,7 @@ import { saveBase64ImgToFile } from '../node-img/img';
 import { formatBite } from '../util/format-bite';
 
 import { OptionsType } from './type';
-import { DEFAULT_BUILD_SETTING, MAX_TRY_TIMES_MAP, PREVIEW_IMG_MAX_WORD_LENGTH } from './config';
+import { DEFAULT_BUILD_SETTING, BUNDLE_NAME_MAP, MAX_TRY_TIMES_MAP, PREVIEW_IMG_MAX_WORD_LENGTH } from './config';
 
 
 /**
@@ -19,8 +19,14 @@ function parseUploadResult(result) {
     subPackageInfo,
   } = result;
   subPackageInfo.reverse();
-  const list = subPackageInfo
-    .map(pkg => `- ${pkg.name}: ${formatBite(pkg.size)}`);
+  const list = subPackageInfo.sort((a, b) => {
+    const keys = Object.keys(BUNDLE_NAME_MAP);
+    if (keys.indexOf(a) > -1 || keys.indexOf(b) > -1) {
+      return keys.indexOf(b) - keys.indexOf(a);
+    }
+    return b.size - a.size;
+  })
+    .map(pkg => `- ${BUNDLE_NAME_MAP[pkg.name] || pkg.name}: ${formatBite(pkg.size)}`);
   list.unshift('包体积大小：');
   return list;
 }

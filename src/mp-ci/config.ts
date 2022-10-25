@@ -15,3 +15,8 @@ export const MAX_TRY_TIMES_MAP = {
 };
 
 export const PREVIEW_IMG_MAX_WORD_LENGTH = 43;
+
+export const BUNDLE_NAME_MAP = {
+  __APP__: '主包',
+  __FULL__: '总包',
+};
