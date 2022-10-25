@@ -5,9 +5,26 @@ import { timeStampFormat } from '../date/time';
 import { addTextForImg } from '../canvas/img-text';
 import { uploadCOSFile } from '../cos/cos';
 import { saveBase64ImgToFile } from '../node-img/img';
+import { formatBite } from '../util/format-bite';
 
 import { OptionsType } from './type';
 import { DEFAULT_BUILD_SETTING, MAX_TRY_TIMES_MAP } from './config';
+
+
+/**
+ * 解析上传结果
+ */
+function parseUploadResult(result) {
+  const {
+    subPackageInfo,
+  } = result;
+  subPackageInfo.reverse();
+  const list = subPackageInfo
+    .map(pkg => `- ${pkg.name}: ${formatBite(pkg.size)}`);
+  list.unshift('包体积大小：');
+  return list;
+}
+
 
 export class MpCI {
   ciLib: any;
@@ -264,13 +281,13 @@ export class MpCI {
     });
     console.log('PreviewResult:\n', previewResult);
 
-    await this.uploadPreviewImg();
+    await this.uploadPreviewImg(previewResult);
   }
 
   /**
    * 上传预览图片到COS
    */
-  async uploadPreviewImg() {
+  async uploadPreviewImg(previewResult) {
     const { appName, robotNumber, env, buildTime, commitInfo, version } = this;
 
     const textList = [
@@ -279,6 +296,7 @@ export class MpCI {
       `分支: ${commitInfo.branch}`,
       `构建时间: ${buildTime}`,
       `最后提交: ${commitInfo.author} - ${commitInfo.message}`,
+      ...parseUploadResult(previewResult),
     ].map((item) => {
       if (item.length > 35) return `${item.slice(0, 35)}...`;
       return item;
