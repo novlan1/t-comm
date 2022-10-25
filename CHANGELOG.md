@@ -1,5 +1,15 @@
 # 工具库更新日志
 
+## [0.2.8](https://github.com/novlan1/t-comm/compare/v0.2.7...v0.2.8) (2022-10-25)
+
+
+### Features
+
+* 优化包体积大小排序 ([6f76e02](https://github.com/novlan1/t-comm/commit/6f76e02237ba005b009bf6268202b44489656acc))
+* 预览图片优化 ([a3b5f54](https://github.com/novlan1/t-comm/commit/a3b5f54e74332f68841a641ac554827f06c76be1))
+
+
+
 ## [0.2.7](https://github.com/novlan1/t-comm/compare/v0.2.6...v0.2.7) (2022-10-25)
 
 
