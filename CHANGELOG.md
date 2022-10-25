@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.2.7](https://github.com/novlan1/t-comm/compare/v0.2.6...v0.2.7) (2022-10-25)
+
+
+### Features
+
+* 增加replace-all ([c6ca865](https://github.com/novlan1/t-comm/commit/c6ca865967a86395713f9f0656f4874647047a11))
+
+
+
 ## [0.2.6](https://github.com/novlan1/t-comm/compare/v0.2.5...v0.2.6) (2022-10-25)
 
 
