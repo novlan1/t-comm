@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-
+import { replaceAllPolyfill } from '../util/replace-all';
 
 function generatePublishInfo({
   appName,
@@ -10,6 +10,8 @@ function generatePublishInfo({
   readmeFilePath,
   showNpmLink = false,
 }) {
+  replaceAllPolyfill();
+
   const fs = require('fs');
   if (!fs.existsSync(readmeFilePath)) {
     console.log(`ERROR: 未找到 ${readmeFilePath}，请先生成 changeLog。`);
