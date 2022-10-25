@@ -1,5 +1,17 @@
 # 工具库更新日志
 
+## [0.2.6](https://github.com/novlan1/t-comm/compare/v0.2.5...v0.2.6) (2022-10-25)
+
+
+### Features
+
+* 打印信息优化 ([31eb66c](https://github.com/novlan1/t-comm/commit/31eb66c8dcfcc966f3125641b857ead87d93082b))
+* 删除uni-plugin ([c48948b](https://github.com/novlan1/t-comm/commit/c48948bc8218c0c65c1fe14f45ad52c74ea4014c))
+* 增加uni-plugin ([2373758](https://github.com/novlan1/t-comm/commit/237375808bcb0daeb39fbdfabd1c2c54b261b1b6))
+* **sleep:** 新增sleep方法 ([7bb2701](https://github.com/novlan1/t-comm/commit/7bb270108140501f96ad442dcd604f0b50dfc85a))
+
+
+
 ## [0.2.5](https://github.com/novlan1/t-comm/compare/v0.2.4...v0.2.5) (2022-10-22)
 
 
