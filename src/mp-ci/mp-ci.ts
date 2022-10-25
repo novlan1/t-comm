@@ -8,7 +8,7 @@ import { saveBase64ImgToFile } from '../node-img/img';
 import { formatBite } from '../util/format-bite';
 
 import { OptionsType } from './type';
-import { DEFAULT_BUILD_SETTING, MAX_TRY_TIMES_MAP } from './config';
+import { DEFAULT_BUILD_SETTING, MAX_TRY_TIMES_MAP, PREVIEW_IMG_MAX_WORD_LENGTH } from './config';
 
 
 /**
@@ -298,7 +298,7 @@ export class MpCI {
       `最后提交: ${commitInfo.author} - ${commitInfo.message}`,
       ...parseUploadResult(previewResult),
     ].map((item) => {
-      if (item.length > 35) return `${item.slice(0, 35)}...`;
+      if (item.length > PREVIEW_IMG_MAX_WORD_LENGTH) return `${item.slice(0, PREVIEW_IMG_MAX_WORD_LENGTH)}...`;
       return item;
     });
 

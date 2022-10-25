@@ -13,3 +13,5 @@ export const MAX_TRY_TIMES_MAP = {
   UPLOAD: 3,
   PREVIEW: 3,
 };
+
+export const PREVIEW_IMG_MAX_WORD_LENGTH = 43;
