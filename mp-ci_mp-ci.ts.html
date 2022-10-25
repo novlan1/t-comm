@@ -54,7 +54,7 @@ import { saveBase64ImgToFile } from '../node-img/img';
 import { formatBite } from '../util/format-bite';
 
 import { OptionsType } from './type';
-import { DEFAULT_BUILD_SETTING, MAX_TRY_TIMES_MAP } from './config';
+import { DEFAULT_BUILD_SETTING, BUNDLE_NAME_MAP, MAX_TRY_TIMES_MAP, PREVIEW_IMG_MAX_WORD_LENGTH } from './config';
 
 
 /**
@@ -65,8 +65,14 @@ function parseUploadResult(result) {
     subPackageInfo,
   } = result;
   subPackageInfo.reverse();
-  const list = subPackageInfo
-    .map(pkg =&gt; `- ${pkg.name}: ${formatBite(pkg.size)}`);
+  const list = subPackageInfo.sort((a, b) =&gt; {
+    const keys = Object.keys(BUNDLE_NAME_MAP);
+    if (keys.indexOf(a) &gt; -1 || keys.indexOf(b) &gt; -1) {
+      return keys.indexOf(b) - keys.indexOf(a);
+    }
+    return b.size - a.size;
+  })
+    .map(pkg =&gt; `- ${BUNDLE_NAME_MAP[pkg.name] || pkg.name}: ${formatBite(pkg.size)}`);
   list.unshift('包体积大小：');
   return list;
 }
@@ -344,7 +350,7 @@ export class MpCI {
       `最后提交: ${commitInfo.author} - ${commitInfo.message}`,
       ...parseUploadResult(previewResult),
     ].map((item) =&gt; {
-      if (item.length &gt; 35) return `${item.slice(0, 35)}...`;
+      if (item.length &gt; PREVIEW_IMG_MAX_WORD_LENGTH) return `${item.slice(0, PREVIEW_IMG_MAX_WORD_LENGTH)}...`;
       return item;
     });
 
@@ -440,7 +446,7 @@ export class MpCI {
 
 <br class="clear">
 
-<footer>Documentation generated on 2022-10-25 10:15:33 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2022-10-25 10:35:13 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>

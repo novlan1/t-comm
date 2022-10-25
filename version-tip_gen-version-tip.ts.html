@@ -45,7 +45,7 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/* eslint-disable @typescript-eslint/no-require-imports */
-
+import { replaceAllPolyfill } from '../util/replace-all';
 
 function generatePublishInfo({
   appName,
@@ -56,6 +56,8 @@ function generatePublishInfo({
   readmeFilePath,
   showNpmLink = false,
 }) {
+  replaceAllPolyfill();
+
   const fs = require('fs');
   if (!fs.existsSync(readmeFilePath)) {
     console.log(`ERROR: 未找到 ${readmeFilePath}，请先生成 changeLog。`);
@@ -164,7 +166,7 @@ export function genVersionTip({ readmeFilePath, appInfo, showNpmLink = false }: 
 
 <br class="clear">
 
-<footer>Documentation generated on 2022-10-25 10:15:33 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2022-10-25 10:35:13 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>
