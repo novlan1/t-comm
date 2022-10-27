@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 import { genVersion } from './gen-version';
 import { genVersionTip } from './gen-version-tip';
 import { execCommand } from '../util/node-command';
@@ -13,7 +14,6 @@ import { sendWxRobotMarkdown } from '../wecom-robot/base';
  * @param {string} config.chatId 会话id
  */
 export function genVersionAndSendChangeLog({
-  appInfo,
   root,
   changeLogFilePath,
   webhookUrl,
@@ -51,6 +51,8 @@ export function genVersionAndSendChangeLog({
       return;
     }
 
+    // appInfo 不要用传入的参数，因此传入是旧的，新的还未生成
+    const appInfo = require(`${root}/package.json`);
     sendVersionTip({
       appInfo,
       changeLogFilePath,
