@@ -1,5 +1,19 @@
 # 工具库更新日志
 
+## [0.2.9](https://github.com/novlan1/t-comm/compare/v0.2.8...v0.2.9) (2022-10-27)
+
+
+### Bug Fixes
+
+* 修复生成版本问题 ([0fb7161](https://github.com/novlan1/t-comm/commit/0fb71611e97e0c24232b2475ace915191e043a60))
+
+
+### Features
+
+* 增加fs-utils ([0879c7a](https://github.com/novlan1/t-comm/commit/0879c7a44ded2f06f949d88974c9718f9cb9dcc5))
+
+
+
 ## [0.2.8](https://github.com/novlan1/t-comm/compare/v0.2.7...v0.2.8) (2022-10-25)
 
 
