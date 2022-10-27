@@ -22,5 +22,3 @@ export function execCommand(command: string, root?: string, stdio?: string): str
       ?.trim() || ''
   );
 }
-
-

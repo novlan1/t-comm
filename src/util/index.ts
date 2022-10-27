@@ -1,6 +1,7 @@
 export { buildAndUpload } from './build-upload';
 export { readEnvVariable } from './env-variable';
 export { formatBite } from './format-bite';
+export { mkDirsSync, copyDir, copyFile, deleteFolder } from './fs-util';
 export { rmFirstAndLastSlash, getGitCodeLink, getGitMRLink } from './git-link';
 export { execCommand } from './node-command';
 export { nodeGet, nodePost } from './node-request';
