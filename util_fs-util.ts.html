@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head>
     
     <meta charset="utf-8">
-    <title>base/object/object.ts - Documentation</title>
+    <title>util/fs-util.ts - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">base/object/object.ts</h1>
+    <h1 class="page-title">util/fs-util.ts</h1>
     
 
     
@@ -44,90 +44,100 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>function isObjOrArray(obj) {
-  return obj instanceof Object;
-}
+            <pre class="prettyprint source linenums"><code>/* eslint-disable @typescript-eslint/no-require-imports */
 
-function isArray(obj) {
-  return Array.isArray(obj);
-}
-
-function toHump(str) {
-  return str.replace(/_(\w)/g, (a, b) =&gt; b.toUpperCase());
-}
-
-/**
- * 将对象中的key由下划线专为驼峰
- *
- * @param {object} obj - 对象
- * @returns {object} 转化后的对象
- *
- * @example
- * const obj = {
- *   a_a: 'a',
- *   b_b: [
- *     {
- *       bb_b: 'b',
- *     },
- *   ],
- *   c: {
- *     dd_d: 'd',
- *     e: {
- *       ee_e: 'e',
- *     },
- *   },
- * };
- *
- * toHumpObj(obj);
- * // { aA: 'a', bB: [ { bbB: 'b' } ], c: { ddD: 'd', e: { eeE: 'e' } } }
- */
-export function toHumpObj(obj: object, cache = new WeakMap()): object {
-  // 函数首次调用判断
-  if (!isObjOrArray(obj)) return obj;
-
-  if (cache.get(obj)) {
-    return cache.get(obj);
+function innerCopy(src, dist) {
+  const fs = require('fs');
+  if (fs.statSync(src).isFile()) {
+    return;
   }
-
-  const result = isArray(obj) ? [] : {};
-  cache.set(obj, result);
-
-  const keys = Object.keys(obj);
-
-  keys.forEach((key) =&gt; {
-    const value = obj[key];
-
-    const nKey = toHump(key);
-
-    result[nKey] = isObjOrArray(value) ? toHumpObj(value, cache) : value;
+  const paths = fs.readdirSync(src);
+  paths.forEach((p) =&gt; {
+    const tSrc = `${src}/${p}`;
+    const tDist = `${dist}/${p}`;
+    const stat = fs.statSync(tSrc);
+    if (stat.isFile()) { // 判断是文件还是目录
+      fs.writeFileSync(tDist, fs.readFileSync(tSrc));
+    } else if (stat.isDirectory()) {
+      innerCopyDir(tSrc, tDist); // 当是目录是，递归复制
+    }
   });
-
-  return result;
 }
 
 
 /**
- * 将属性混合到目标对象中
- * @param {object} to 目标对象
- * @param {object} from 原始对象
- * @returns 处理后的对象
- *
- * @example
- * const a = { name: 'lee' }
- * const b = { age: 3 }
- * extend(a, b)
- *
- * console.log(a)
- *
- * // =&gt; { name: 'lee', age: 3 }
+ * 复制目录、子目录，及其中的文件
+ * @param src {String} 要复制的目录
+ * @param dist {String} 复制到目标目录
  */
-export function extend(to: Object, from: object): object {
-  // eslint-disable-next-line no-restricted-syntax, guard-for-in
-  for (const key in from) {
-    to[key] = from[key];
+function innerCopyDir(src, dist) {
+  const fs = require('fs');
+  const b = fs.existsSync(dist);
+  if (!b) {
+    mkDirsSync(dist); // 创建目录
   }
-  return to;
+  innerCopy(src, dist);
 }
+
+// 递归创建目录 同步方法
+export function mkDirsSync(dirname) {
+  const fs = require('fs');
+  const path = require('path');
+  if (fs.existsSync(dirname)) {
+    return true;
+  }
+  if (mkDirsSync(path.dirname(dirname))) {
+    fs.mkdirSync(dirname);
+    return true;
+  }
+}
+
+
+/**
+ * 拷贝目录以及子文件
+ * @param {Object} src
+ * @param {Object} dist
+ * @param {Object} callback
+ */
+export function copyDir(src, dist, callback) {
+  innerCopyDir(src, dist);
+  if (callback) {
+    callback();
+  }
+}
+
+/**
+ * 删除目录
+ * @param {Object} path
+ */
+export function deleteFolder(path) {
+  const fs = require('fs');
+  let files = [];
+  if (fs.existsSync(path)) {
+    files = fs.readdirSync(path);
+    files.forEach((file) =&gt; {
+      const curPath = `${path}/${file}`;
+      if (fs.statSync(curPath).isDirectory()) {
+        deleteFolder(curPath);
+      } else {
+        fs.unlinkSync(curPath);
+      }
+    });
+    fs.rmdirSync(path);
+  }
+}
+
+
+/**
+ * 拷贝文件
+ * @param {Object} from 文件来自那里
+ * @param {Object} to		拷贝到那里
+ */
+export function copyFile(from, to) {
+  const fs = require('fs');
+  return fs.writeFileSync(to, fs.readFileSync(from));
+}
+
 </code></pre>
         </article>
     </section>
