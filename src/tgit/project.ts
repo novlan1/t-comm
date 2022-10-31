@@ -104,3 +104,45 @@ export async function getAllProjects(privateToken: string): Promise<Array<object
   }
   return res;
 }
+
+/**
+ * 删除一个项目
+ * @param {object} options 输入配置
+ * @param {string} options.id 项目id
+ * @param {string} options.privateToken 密钥
+ * @returns {Promise<Array<object>>} 请求Promise
+ * @example
+ *
+ * deleteTGitProject({
+ *   id: '123'
+ *   privateToken: 'xxxxx',
+ * }).then((resp) => {
+ *
+ * })
+ */
+export function deleteTGitProject({
+  id,
+  privateToken,
+}: {
+  id: number | string
+  privateToken: string
+}): Promise<Array<object>> {
+  return new Promise((resolve, reject) => {
+    instance({
+      url: '/projects/:id',
+      method: 'GET',
+      params: {
+        id,
+      },
+      headers: {
+        'PRIVATE-TOKEN': privateToken,
+      },
+    })
+      .then((res) => {
+        resolve(res.data);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+}
