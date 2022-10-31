@@ -87,6 +87,7 @@ export function genVersionTip({ readmeFilePath, appInfo, showNpmLink = false }: 
   }
 }): string {
   const { name: appName, version, homepage = '', bugs, repository } = appInfo;
+  console.log('app info version:', version);
 
   let issueLink = '';
   let repoLink = '';
