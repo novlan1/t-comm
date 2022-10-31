@@ -12,4 +12,5 @@ module.exports = {
     ],
   },
   testEnvironment: 'jsdom',
+  coverageDirectory: '<rootDir>/test/unit/coverage',
 };

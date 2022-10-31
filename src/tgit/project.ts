@@ -79,6 +79,7 @@ export function getOneProjectBySearch({
 /**
  * 获取某个token名下所有项目
  * @param {string} privateToken 密钥
+ * @param {string} search 搜索内容
  * @returns {Array<object>} 项目列表
  * @example
  *
@@ -86,14 +87,14 @@ export function getOneProjectBySearch({
  *
  * console.log(projects)
  */
-export async function getAllProjects(privateToken: string): Promise<Array<object>> {
+export async function getAllProjects(privateToken: string, search = ''): Promise<Array<object>> {
   let res: Array<object> = [];
   let page = 1;
   // eslint-disable-next-line no-constant-condition
   while (true) {
     const temp = await getOneProjectBySearch({
       page,
-      search: '',
+      search,
       privateToken,
     });
     res = res.concat(temp);
@@ -129,11 +130,8 @@ export function deleteTGitProject({
 }): Promise<Array<object>> {
   return new Promise((resolve, reject) => {
     instance({
-      url: '/projects/:id',
-      method: 'GET',
-      params: {
-        id,
-      },
+      url: `/projects/${encodeURIComponent(id)}`,
+      method: 'DELETE',
       headers: {
         'PRIVATE-TOKEN': privateToken,
       },
