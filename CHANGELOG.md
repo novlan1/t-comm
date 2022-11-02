@@ -1,5 +1,16 @@
 # 工具库更新日志
 
+## [0.2.11](https://github.com/novlan1/t-comm/compare/v0.2.10...v0.2.11) (2022-11-02)
+
+
+### Features
+
+* 打印日志 ([1e6b7f4](https://github.com/novlan1/t-comm/commit/1e6b7f46aac7cc5492807c9700fec71566ffaf61))
+* 优化open-source ([ce72cf4](https://github.com/novlan1/t-comm/commit/ce72cf4374be8fe3afcc43f0c3b043bb21756153))
+* 优化tgit ([e2d3914](https://github.com/novlan1/t-comm/commit/e2d3914955bc7f4edbef3bed2bb37296d153f0e9))
+
+
+
 ## [0.2.10](https://github.com/novlan1/t-comm/compare/v0.2.9...v0.2.10) (2022-10-31)
 
 
