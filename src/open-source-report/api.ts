@@ -8,6 +8,20 @@ export function getOpenSourceReport({
 }) {
   return new Promise((resolve, reject) => {
     const axios  = require('axios');
+    const params = {
+      page:	1,
+      page_size:	1000,
+      method:	'getProjectDetailV2',
+      sort_direction:	'asc',
+      sort_column:	'code_specification_score',
+
+      bg_name: bgName,
+      center_name: centerName,
+      data_date:	`${time}`,
+    };
+    if (groupName) {
+      (params as any).group_name = groupName;
+    }
     axios({
       method: 'POST',
       Headers: {},
@@ -15,19 +29,7 @@ export function getOpenSourceReport({
       data: {
         jsonrpc:	'2.0',
         method:	'noop',
-        params: {
-          page:	1,
-          page_size:	1000,
-          method:	'getProjectDetailV2',
-          sort_direction:	'asc',
-          sort_column:	'code_specification_score',
-
-          bg_name: bgName,
-          center_name: centerName,
-          data_date:	`${time}`,
-          group_name:	groupName,
-        },
-
+        params,
       },
     }).then((res) => {
       const arr = res.data.result.data.data || [];

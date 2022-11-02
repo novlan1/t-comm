@@ -6,6 +6,7 @@ export function parseOpenSourceReport({
   date,
   formattedDate,
   searchInfo,
+  requestInfo,
 }) {
   const problemArr = reportArr
     .filter(item => !DISABLE_STATUS.includes(item.code_specification_score)
@@ -48,7 +49,7 @@ export function parseOpenSourceReport({
   }, []);
 
   const chatContent = [
-    `>【${searchInfo.group_name || ''}开源治理问题】[${formattedDate}](${getTechMapWebsiteUrl(date, searchInfo)})`,
+    `>【${requestInfo?.groupName || requestInfo?.centerName || ''}开源治理问题】[${formattedDate}](${getTechMapWebsiteUrl(date, searchInfo)})`,
     ...list,
   ];
 

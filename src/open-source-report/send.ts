@@ -27,6 +27,7 @@ export async function sendOpenSourceReport({
     reportArr,
     date: time,
     formattedDate,
+    requestInfo,
     searchInfo,
   });
 
