@@ -306,7 +306,9 @@ export class MpCI {
 
     const textList = [
       `【${appName}自动构建】`,
-      `版本: ${version}, 提交者: CI机器人${robotNumber}, 环境: ${env}`,
+      `版本: ${version}`,
+      `提交者: CI机器人${robotNumber}`,
+      `环境: ${env}`,
       `分支: ${commitInfo.branch}`,
       `构建时间: ${buildTime}`,
       `最后提交: ${commitInfo.author} - ${commitInfo.message}`,
@@ -349,8 +351,8 @@ export class MpCI {
   /**
    * 发送机器人消息
    */
-  async sendRobotMsg() {
-    const { robotNumber, webhookUrl, env, commitInfo } = this;
+  async sendRobotMsg(hasImg = true) {
+    const { robotNumber, webhookUrl, env, commitInfo, version } = this;
     let { chatId } = this;
     if (!webhookUrl) {
       return;
@@ -362,12 +364,15 @@ export class MpCI {
     const descList = [
       `分支：${commitInfo.branch}`,
       `环境：${env}`,
-      // `版本：${version || ''}`,
+      `版本：${version || ''}`,
       `机器人：${robotNumber}`,
-      // buildDesc,
+      `最后提交: ${commitInfo.author} - ${commitInfo.message}`,
       // `${buildTime || ''}`,
-      `[预览图片](${this.getCOSFilePath()})`,
     ];
+
+    if (hasImg) {
+      descList.push(`[预览图片](${this.getCOSFilePath()})`);
+    }
 
     const template = `>【构建成功】${descList.join('，')}`;
 
