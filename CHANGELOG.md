@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.2.12](https://github.com/novlan1/t-comm/compare/v0.2.11...v0.2.12) (2022-11-02)
+
+
+### Features
+
+* 优化open-source，允许传入maxShowNum ([cd389e7](https://github.com/novlan1/t-comm/commit/cd389e76f0aa1f9b4f1906a3e5ddb40e8a6f3c0a))
+
+
+
 ## [0.2.11](https://github.com/novlan1/t-comm/compare/v0.2.10...v0.2.11) (2022-11-02)
 
 
