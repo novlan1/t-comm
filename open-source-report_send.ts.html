@@ -48,6 +48,7 @@
 import { parseOpenSourceReport } from './parse';
 import { timeStampFormat } from '../date/time';
 import { batchSendWxRobotMarkdown } from '../wecom-robot/batch-send';
+const MAX_SHOW_LINK_NAME = 12;
 
 
 /**
@@ -60,6 +61,7 @@ export async function sendOpenSourceReport({
   webhookUrl,
   requestInfo,
   searchInfo,
+  maxShowLinkNum = MAX_SHOW_LINK_NAME,
 }) {
   const time = timeStampFormat(new Date(date).getTime(), 'yyyyMMdd');
   const formattedDate = timeStampFormat(new Date(date).getTime(), 'yyyy-MM-dd');
@@ -73,7 +75,9 @@ export async function sendOpenSourceReport({
     reportArr,
     date: time,
     formattedDate,
+    requestInfo,
     searchInfo,
+    maxShowLinkNum,
   });
 
   if (!chatContent) return;
@@ -102,7 +106,7 @@ export async function sendOpenSourceReport({
 
 <br class="clear">
 
-<footer>Documentation generated on 2022-10-31 03:43:49 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2022-11-02 07:19:27 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>

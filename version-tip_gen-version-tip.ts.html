@@ -133,6 +133,7 @@ export function genVersionTip({ readmeFilePath, appInfo, showNpmLink = false }: 
   }
 }): string {
   const { name: appName, version, homepage = '', bugs, repository } = appInfo;
+  console.log('app info version:', version);
 
   let issueLink = '';
   let repoLink = '';
@@ -166,7 +167,7 @@ export function genVersionTip({ readmeFilePath, appInfo, showNpmLink = false }: 
 
 <br class="clear">
 
-<footer>Documentation generated on 2022-10-31 03:43:50 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2022-11-02 07:19:27 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>

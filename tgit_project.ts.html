@@ -125,6 +125,7 @@ export function getOneProjectBySearch({
 /**
  * 获取某个token名下所有项目
  * @param {string} privateToken 密钥
+ * @param {string} search 搜索内容
  * @returns {Array&lt;object&gt;} 项目列表
  * @example
  *
@@ -132,14 +133,14 @@ export function getOneProjectBySearch({
  *
  * console.log(projects)
  */
-export async function getAllProjects(privateToken: string): Promise&lt;Array&lt;object&gt;&gt; {
+export async function getAllProjects(privateToken: string, search = ''): Promise&lt;Array&lt;object&gt;&gt; {
   let res: Array&lt;object&gt; = [];
   let page = 1;
   // eslint-disable-next-line no-constant-condition
   while (true) {
     const temp = await getOneProjectBySearch({
       page,
-      search: '',
+      search,
       privateToken,
     });
     res = res.concat(temp);
@@ -175,11 +176,8 @@ export function deleteTGitProject({
 }): Promise&lt;Array&lt;object&gt;&gt; {
   return new Promise((resolve, reject) =&gt; {
     instance({
-      url: '/projects/:id',
-      method: 'GET',
-      params: {
-        id,
-      },
+      url: `/projects/${encodeURIComponent(id)}`,
+      method: 'DELETE',
       headers: {
         'PRIVATE-TOKEN': privateToken,
       },
@@ -205,7 +203,7 @@ export function deleteTGitProject({
 
 <br class="clear">
 
-<footer>Documentation generated on 2022-10-31 03:43:50 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2022-11-02 07:19:27 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>
