@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.2.13](https://github.com/novlan1/t-comm/compare/v0.2.12...v0.2.13) (2022-11-02)
+
+
+### Bug Fixes
+
+* 机器人error打印 ([030f73d](https://github.com/novlan1/t-comm/commit/030f73dd708c5d1c4a346b4c1b6f862832610347))
+
+
+
 ## [0.2.12](https://github.com/novlan1/t-comm/compare/v0.2.11...v0.2.12) (2022-11-02)
 
 
