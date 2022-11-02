@@ -128,7 +128,12 @@ export class MpCI {
   constructor(options: OptionsType) {
     const path = require('path');
     const fs = require('fs');
-    const ci = require('miniprogram-ci');
+    let ci;
+    try {
+      ci = require('miniprogram-ci');
+    } catch (err) {
+      console.log('err', err);
+    }
     this.ciLib = ci;
 
     this.options = options;
@@ -192,7 +197,10 @@ export class MpCI {
       throw new Error('ERROR: package.json 不存在');
     }
 
-    this.init();
+    if (this.ciLib) {
+      this.init();
+    }
+
     this.getBuildTime();
 
     this.commitInfo = getGitCommitInfo(this.root);
