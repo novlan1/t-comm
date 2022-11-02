@@ -2,6 +2,7 @@ import { getOpenSourceReport } from './api';
 import { parseOpenSourceReport } from './parse';
 import { timeStampFormat } from '../date/time';
 import { batchSendWxRobotMarkdown } from '../wecom-robot/batch-send';
+const MAX_SHOW_LINK_NAME = 12;
 
 
 /**
@@ -14,6 +15,7 @@ export async function sendOpenSourceReport({
   webhookUrl,
   requestInfo,
   searchInfo,
+  maxShowLinkNum = MAX_SHOW_LINK_NAME,
 }) {
   const time = timeStampFormat(new Date(date).getTime(), 'yyyyMMdd');
   const formattedDate = timeStampFormat(new Date(date).getTime(), 'yyyy-MM-dd');
@@ -29,6 +31,7 @@ export async function sendOpenSourceReport({
     formattedDate,
     requestInfo,
     searchInfo,
+    maxShowLinkNum,
   });
 
   if (!chatContent) return;

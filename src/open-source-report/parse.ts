@@ -1,5 +1,4 @@
 const DISABLE_STATUS = [100, -1];
-const MAX_SHOW_LINK_NAME = 12;
 
 export function parseOpenSourceReport({
   reportArr,
@@ -7,6 +6,7 @@ export function parseOpenSourceReport({
   formattedDate,
   searchInfo,
   requestInfo,
+  maxShowLinkNum,
 }) {
   const problemArr = reportArr
     .filter(item => !DISABLE_STATUS.includes(item.code_specification_score)
@@ -38,10 +38,10 @@ export function parseOpenSourceReport({
 
     const showProject = `[${item.project_name}](${item.codecc_url})`;
 
-    if (index < MAX_SHOW_LINK_NAME) {
+    if (index < maxShowLinkNum) {
       acc.push(`${index + 1}. ${showProject}: ${temp.join(', ')}`);
-    } else if (index === MAX_SHOW_LINK_NAME) {
-      acc.push(`... 已省略${problemArr.length - MAX_SHOW_LINK_NAME}条 ...`);
+    } else if (index === maxShowLinkNum) {
+      acc.push(`... 已省略${problemArr.length - maxShowLinkNum}条 ...`);
     } else {
     }
 

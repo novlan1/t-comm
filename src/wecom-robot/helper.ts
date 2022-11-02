@@ -46,6 +46,7 @@ export function sendToRobot({ webhookUrl, params }: {
         if (res?.data?.errcode !== 0) {
           reject(res);
         } else {
+          console.log('sendToRobot.err: \n', res?.data);
           resolve(res);
         }
       })
