@@ -186,7 +186,7 @@ export class MpCI {
       this.privateKeyPath = path.resolve(this.root, 'private.key');
     }
 
-    if (!fs.existsSync(this.privateKeyPath)) {
+    if (this.ciLib && !fs.existsSync(this.privateKeyPath)) {
       throw new Error('ERROR: privateKeyPath 位置不存在');
     }
     if (!fs.existsSync(this.projectPath)) {
