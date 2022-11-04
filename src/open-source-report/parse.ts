@@ -35,7 +35,10 @@ export function parseOpenSourceReport({
     if (!DISABLE_STATUS.includes(item.code_security_score)) {
       temp.push(`安全: ${parseInt(`${item.code_security_score}`, 10)}分`);
     }
-
+    const { owners = '' } = item;
+    temp.push(owners.split(';')
+      .map(item => `<@${item}>`)
+      .concat('<@guowangyang>'));
     const showProject = `[${item.project_name}](${item.codecc_url})`;
 
     if (index < maxShowLinkNum) {
