@@ -24,8 +24,10 @@ export function parseOpenSourceReport({
 
   if (!problemArr.length) {
     console.log('Error: 没有开源治理问题数据');
-    return;
+    // 没问题时也返回数据
+    // return;
   }
+
   const list =  problemArr.reduce((acc, item, index) => {
     const temp: any = [];
 
@@ -49,6 +51,10 @@ export function parseOpenSourceReport({
 
     return acc;
   }, []);
+
+  if (!list.length) {
+    list.push('恭喜，暂未发现问题，请继续保持 🚀');
+  }
 
   const chatContent = [
     `>【${requestInfo?.groupName || requestInfo?.centerName || ''}开源治理问题】[${formattedDate}](${getTechMapWebsiteUrl(date, searchInfo)})`,
