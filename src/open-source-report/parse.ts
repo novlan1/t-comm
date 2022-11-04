@@ -52,7 +52,9 @@ export function parseOpenSourceReport({
     return acc;
   }, []);
 
-  if (!list.length) {
+  if (!reportArr.length && !list.length) {
+    list.push('抱歉，未拉取到数据～');
+  } else if (!list.length) {
     list.push('恭喜，暂未发现问题，请继续保持 🚀');
   }
 
