@@ -37,8 +37,7 @@ export function parseOpenSourceReport({
     }
     const { owners = '' } = item;
     temp.push(owners.split(';')
-      .map(item => `<@${item}>`)
-      .concat('<@guowangyang>'));
+      .map(item => `<@${item}>`));
     const showProject = `[${item.project_name}](${item.codecc_url})`;
 
     if (index < maxShowLinkNum) {
