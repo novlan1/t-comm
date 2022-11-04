@@ -1,5 +1,15 @@
 # 工具库更新日志
 
+## [0.2.17](https://github.com/novlan1/t-comm/compare/v0.2.16...v0.2.17) (2022-11-04)
+
+
+### Features
+
+* 去掉调试 ([ad5452c](https://github.com/novlan1/t-comm/commit/ad5452c1c9da1d1b25eb6a72ca0b35624abfd05b))
+* 增加艾特人功能 ([12cfe06](https://github.com/novlan1/t-comm/commit/12cfe0642e595980607a1b1410e01a6886b9873c))
+
+
+
 ## [0.2.16](https://github.com/novlan1/t-comm/compare/v0.2.15...v0.2.16) (2022-11-02)
 
 
