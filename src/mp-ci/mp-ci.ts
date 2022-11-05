@@ -264,6 +264,11 @@ export class MpCI {
       setting: this.buildSetting,
     });
     this.getBuildTime();
+    await this.ciLib.getDevSourceMap({
+      project: this.projectCI,
+      robot: robotNumber,
+      sourceMapSavePath: './sm.zip',
+    });
     console.log('UploadResult:\n', uploadResult);
   }
 
