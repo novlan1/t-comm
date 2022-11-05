@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.2.20](https://github.com/novlan1/t-comm/compare/v0.2.19...v0.2.20) (2022-11-05)
+
+
+### Features
+
+* 生成sourcemap ([0579363](https://github.com/novlan1/t-comm/commit/05793636cdabb6970dea63b4706482be85cf7c8b))
+
+
+
 ## [0.2.19](https://github.com/novlan1/t-comm/compare/v0.2.18...v0.2.19) (2022-11-04)
 
 
