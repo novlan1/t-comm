@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.2.21](https://github.com/novlan1/t-comm/compare/v0.2.20...v0.2.21) (2022-11-12)
+
+
+### Features
+
+* **mp-ci:** 移除version逻辑 ([8a20f68](https://github.com/novlan1/t-comm/commit/8a20f6853173c8486fae54e0dd808ebe7e7de7cd))
+
+
+
 ## [0.2.20](https://github.com/novlan1/t-comm/compare/v0.2.19...v0.2.20) (2022-11-05)
 
 
