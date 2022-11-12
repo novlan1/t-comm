@@ -7,6 +7,7 @@ import { uploadCOSFile } from '../cos/cos';
 import { saveBase64ImgToFile } from '../node-img/img';
 import { formatBite } from '../util/format-bite';
 
+import { getBundleBuildDesc, getBundleVersion } from './helper';
 import { OptionsType } from './type';
 import { DEFAULT_BUILD_SETTING, BUNDLE_NAME_MAP, MAX_TRY_TIMES_MAP, PREVIEW_IMG_MAX_WORD_LENGTH } from './config';
 
@@ -204,8 +205,11 @@ export class MpCI {
     this.getBuildTime();
 
     this.commitInfo = getGitCommitInfo(this.root);
-    this.buildDesc = this.getBuildDesc() || '';
-    this.version = this.getVersion();
+    this.buildDesc = getBundleBuildDesc({
+      root: this.root,
+      env: this.env,
+    }) || '';
+    this.version = getBundleVersion(this.root);
   }
 
   init() {
@@ -222,20 +226,6 @@ export class MpCI {
 
   getBuildTime() {
     this.buildTime = timeStampFormat(Date.now(), 'yyyy-MM-dd hh:mm:ss');
-  }
-
-  getPkgInfo() {
-    return require(this.pkgFile) || {};
-  }
-
-  getVersion() {
-    return this.getPkgInfo().version;
-  }
-
-  getBuildDesc() {
-    const { env, commitInfo } = this;
-    const buildDesc = `环境: ${env || ''}, 分支: ${commitInfo.branch}，最后提交: ${commitInfo.author} - ${commitInfo.message}`;
-    return buildDesc;
   }
 
   /**
