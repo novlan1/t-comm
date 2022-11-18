@@ -18,6 +18,13 @@ export function genVersionAndSendChangeLog({
   changeLogFilePath,
   webhookUrl,
   chatId,
+  forceGenVersion,
+}: {
+  root?: string
+  changeLogFilePath?: string
+  webhookUrl?: string
+  chatId?: string
+  forceGenVersion?: boolean
 }) {
   return new Promise((resolve, reject) => {
     if (!root) {
@@ -31,6 +38,7 @@ export function genVersionAndSendChangeLog({
 
     const hasGenVersion = genVersion({
       root,
+      forceGenVersion,
     });
 
     if (!hasGenVersion) {
