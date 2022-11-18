@@ -1,5 +1,14 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { replaceAllPolyfill } from '../util/replace-all';
+import { MAX_CONTENT_LENGTH } from './config';
+import { optimizeRobotContent } from '../util/optimize-robot-content';
+
+function optimizeContent(content = '') {
+  return optimizeRobotContent({
+    content,
+    maxLen: MAX_CONTENT_LENGTH,
+  });
+}
 
 function generatePublishInfo({
   appName,
@@ -14,7 +23,7 @@ function generatePublishInfo({
 
   const fs = require('fs');
   if (!fs.existsSync(readmeFilePath)) {
-    console.log(`ERROR: 未找到 ${readmeFilePath}，请先生成 changeLog。`);
+    console.log(`[GEN VERSION TIP] ERROR: NOT FOUND ${readmeFilePath}. PLEASE GENERATE CHANGELOG. `);
     return '';
   }
 
@@ -32,7 +41,7 @@ function generatePublishInfo({
   }
 
   if (!currentVersion || !currentVersion[0]) {
-    console.log(`ERROR: 未找到 ${targetVersion} 对应的 changelog 发布信息`);
+    console.log(`[GEN VERSION TIP] ERROR: NOT FOUND CHANGELOG INFO OF ${targetVersion} `);
     return '';
   }
 
@@ -47,12 +56,12 @@ function generatePublishInfo({
   const pRepoLink = repoLink.replace(/^git\+/, '').replace(/\.git$/, '');
 
   const template = `### ${appName} 更新\n\n\n\n- 版本：<font color="comment">${targetVersion}</font>\n${npmStr}${
-    repoLink && `- Git：[${pRepoLink}](${pRepoLink})\n`
+    repoLink && `- Git: [${pRepoLink}](${pRepoLink})\n`
   }${issueStr}${homepage && `- 文档：[${homepage}](${homepage})\n`}\n\n`;
 
   const content = template.concat(changelog).replaceAll('###', '\n\n###');
 
-  return content;
+  return optimizeContent(content);
 }
 
 /**
@@ -87,7 +96,7 @@ export function genVersionTip({ readmeFilePath, appInfo, showNpmLink = false }: 
   }
 }): string {
   const { name: appName, version, homepage = '', bugs, repository } = appInfo;
-  console.log('app info version:', version);
+  console.log('[GEN VERSION TIP] APP INFO VERSION:', version);
 
   let issueLink = '';
   let repoLink = '';

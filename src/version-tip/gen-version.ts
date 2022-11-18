@@ -16,7 +16,7 @@ function doRelease({ isFirstRelease, root }: {
   isFirstRelease: boolean
   root?: string
 }) {
-  console.log('Doing standard-version ...');
+  console.log('[GEN VERSION] Doing standard-version ...');
 
   if (isFirstRelease) {
     execCommand('npx standard-version --first-release', root);
@@ -24,7 +24,7 @@ function doRelease({ isFirstRelease, root }: {
     execCommand('npx standard-version --release-as patch', root);
   }
 
-  console.log('Done standard-version.');
+  console.log('[GEN VERSION] Done standard-version.');
 }
 
 /**
@@ -41,21 +41,21 @@ export function shouldGenVersion(root?: string, forceGenVersion?: boolean): numb
   const fs = require('fs');
 
   if (!root) {
-    console.log('ERROR: 请输入 root, 可为 process.cwd()');
+    console.log('[GEN VERSION] ERROR: Please input root. Such as process.cwd()');
     return TAG_MAP.NO_TAG;
   }
 
   const INTERVAL_TIME = 24 * 60 * 60 * 1000;
 
   const gitPath = path.resolve(root, '.git');
-  console.log('GitPath: ', gitPath);
+  console.log('[GEN VERSION] GitPath: ', gitPath);
   if (!fs.existsSync(gitPath)) {
-    console.log(`ERROR: 未找到 ${gitPath} ，不是 Git 目录。`);
+    console.log(`[GEN VERSION] ERROR: NOT FOUND .git of ${gitPath}`);
     return TAG_MAP.NO_TAG;
   }
 
   const tag = getGitLastTag(root);
-  console.log(`Tag: ${tag}`);
+  console.log(`[GEN VERSION] Tag: ${tag}`);
 
   if (!tag) {
     return TAG_MAP.FIRST_TAG;
@@ -65,21 +65,21 @@ export function shouldGenVersion(root?: string, forceGenVersion?: boolean): numb
   }
 
   const tagDate = getGitTagTime(tag, root);
-  console.log(`Tag Date: ${tagDate}`);
+  console.log(`[GEN VERSION] Tag Date: ${tagDate}`);
 
   const commits = getGitCommitsBeforeTag(tag, root);
-  console.log(`Commit number: ${commits}`);
+  console.log(`[GEN VERSION] Commit number: ${commits}`);
 
   if (Number(commits) < 1) {
-    console.log('ERROR: commit number 小于 1');
+    console.log('[GEN VERSION] ERROR: commit number less than 1');
     return TAG_MAP.NO_TAG;
   }
 
   const tagTimeStamp = getTimeStampFromDate(tagDate);
-  console.log(`Tag TimeStamp: ${tagTimeStamp}`);
+  console.log(`[GEN VERSION] Tag TimeStamp: ${tagTimeStamp}`);
 
   if (Date.now() - tagTimeStamp < INTERVAL_TIME) {
-    console.log(`ERROR: 间隔小于${INTERVAL_TIME}`);
+    console.log(`[GEN VERSION] ERROR: 间隔小于${INTERVAL_TIME}`);
     return TAG_MAP.NO_TAG;
   }
 
