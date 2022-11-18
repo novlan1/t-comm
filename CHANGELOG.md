@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.2.22](https://github.com/novlan1/t-comm/compare/v0.2.21...v0.2.22) (2022-11-18)
+
+
+### Features
+
+* **version-tip:** 优化version-tip ([7cf7c17](https://github.com/novlan1/t-comm/commit/7cf7c17bbaf600e26aa7c199c65b227f2d9ae1ef))
+
+
+
 ## [0.2.21](https://github.com/novlan1/t-comm/compare/v0.2.20...v0.2.21) (2022-11-12)
 
 
