@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.2.25](https://github.com/novlan1/t-comm/compare/v0.2.24...v0.2.25) (2022-11-19)
+
+
+### Features
+
+* **robot:** 允许传入带自定义前缀的chatid和webhookurl ([e179c54](https://github.com/novlan1/t-comm/commit/e179c54d6c4e332dc9986a65dd64b34f604000ff))
+
+
+
 ## [0.2.24](https://github.com/novlan1/t-comm/compare/v0.2.23...v0.2.24) (2022-11-19)
 
 
