@@ -10,24 +10,10 @@ function optimizeContent(content = '') {
   });
 }
 
-function generatePublishInfo({
-  appName,
-  version: targetVersion,
-  homepage,
-  repoLink,
-  issueLink,
-  readmeFilePath,
-  showNpmLink = false,
+export function parseChangeLog({
+  changelogStr,
+  targetVersion,
 }) {
-  replaceAllPolyfill();
-
-  const fs = require('fs');
-  if (!fs.existsSync(readmeFilePath)) {
-    console.log(`[GEN VERSION TIP] ERROR: NOT FOUND ${readmeFilePath}. PLEASE GENERATE CHANGELOG. `);
-    return '';
-  }
-
-  const changelogStr = fs.readFileSync(readmeFilePath, 'utf8');
   let currentVersion = changelogStr.match(new RegExp(
     `(?<=### \\[${targetVersion}\\].*\n).*?(?=\n##+ \\[?\\d+.\\d+.\\d+)`,
     's',
@@ -45,20 +31,61 @@ function generatePublishInfo({
     return '';
   }
 
-  const npmStr = showNpmLink ? `- npm：[${appName}](https://npmjs.com/package/${appName})\n` : '';
-  const issueStr = `${issueLink && `- issue: [${issueLink}](${issueLink})\n`}`;
-
   const changelog = currentVersion[0].replace(
     /\n\*(\s.*)/g,
     (a, b) => `\n-${b}`,
   );
 
+  return changelog;
+}
+
+
+function getChangeLog({
+  targetVersion,
+  changeLogFilePath,
+}) {
+  const fs = require('fs');
+  if (!fs.existsSync(changeLogFilePath)) {
+    console.log(`[GEN VERSION TIP] ERROR: NOT FOUND ${changeLogFilePath}. PLEASE GENERATE CHANGELOG. `);
+    return '';
+  }
+
+  const changelogStr = fs.readFileSync(changeLogFilePath, 'utf8');
+
+  return parseChangeLog({
+    changelogStr,
+    targetVersion,
+  });
+}
+
+
+function generatePublishInfo({
+  appName,
+  version: targetVersion,
+  homepage,
+  repoLink,
+  issueLink,
+  readmeFilePath: changeLogFilePath,
+  showNpmLink = false,
+}) {
+  replaceAllPolyfill();
+
+  const versionStr = `- 版本：<font color="comment">${targetVersion}</font>\n`;
+  const npmStr = showNpmLink ? `- npm: [${appName}](https://npmjs.com/package/${appName})\n` : '';
+  const issueStr = issueLink ? `- issue: [${issueLink}](${issueLink})\n` : '';
+
   const pRepoLink = repoLink.replace(/^git\+/, '').replace(/\.git$/, '');
+  const repoStr = repoLink ? `- Git: [${pRepoLink}](${pRepoLink})\n` : '';
 
-  const template = `### ${appName} 更新\n\n\n\n- 版本：<font color="comment">${targetVersion}</font>\n${npmStr}${
-    repoLink && `- Git: [${pRepoLink}](${pRepoLink})\n`
-  }${issueStr}${homepage && `- 文档：[${homepage}](${homepage})\n`}\n\n`;
+  const homepageStr = homepage ? `- 文档：[${homepage}](${homepage})\n` : '';
 
+
+  const template = `### ${appName} 更新\n\n\n\n${versionStr}${npmStr}${repoStr}${issueStr}${homepageStr}\n\n`;
+
+  const changelog = getChangeLog({
+    targetVersion,
+    changeLogFilePath,
+  });
   const content = template.concat(changelog).replaceAll('###', '\n\n###');
 
   return optimizeContent(content);
