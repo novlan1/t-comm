@@ -46,25 +46,20 @@
         <article>
             <pre class="prettyprint source linenums"><code>/* eslint-disable @typescript-eslint/no-require-imports */
 import { replaceAllPolyfill } from '../util/replace-all';
+import { MAX_CONTENT_LENGTH } from './config';
+import { optimizeRobotContent } from '../util/optimize-robot-content';
 
-function generatePublishInfo({
-  appName,
-  version: targetVersion,
-  homepage,
-  repoLink,
-  issueLink,
-  readmeFilePath,
-  showNpmLink = false,
+function optimizeContent(content = '') {
+  return optimizeRobotContent({
+    content,
+    maxLen: MAX_CONTENT_LENGTH,
+  });
+}
+
+export function parseChangeLog({
+  changelogStr,
+  targetVersion,
 }) {
-  replaceAllPolyfill();
-
-  const fs = require('fs');
-  if (!fs.existsSync(readmeFilePath)) {
-    console.log(`ERROR: 未找到 ${readmeFilePath}，请先生成 changeLog。`);
-    return '';
-  }
-
-  const changelogStr = fs.readFileSync(readmeFilePath, 'utf8');
   let currentVersion = changelogStr.match(new RegExp(
     `(?&lt;=### \\[${targetVersion}\\].*\n).*?(?=\n##+ \\[?\\d+.\\d+.\\d+)`,
     's',
@@ -78,27 +73,68 @@ function generatePublishInfo({
   }
 
   if (!currentVersion || !currentVersion[0]) {
-    console.log(`ERROR: 未找到 ${targetVersion} 对应的 changelog 发布信息`);
+    console.log(`[GEN VERSION TIP] ERROR: NOT FOUND CHANGELOG INFO OF ${targetVersion} `);
     return '';
   }
-
-  const npmStr = showNpmLink ? `- npm：[${appName}](https://npmjs.com/package/${appName})\n` : '';
-  const issueStr = `${issueLink &amp;&amp; `- issue: [${issueLink}](${issueLink})\n`}`;
 
   const changelog = currentVersion[0].replace(
     /\n\*(\s.*)/g,
     (a, b) =&gt; `\n-${b}`,
   );
 
+  return changelog;
+}
+
+
+function getChangeLog({
+  targetVersion,
+  changeLogFilePath,
+}) {
+  const fs = require('fs');
+  if (!fs.existsSync(changeLogFilePath)) {
+    console.log(`[GEN VERSION TIP] ERROR: NOT FOUND ${changeLogFilePath}. PLEASE GENERATE CHANGELOG. `);
+    return '';
+  }
+
+  const changelogStr = fs.readFileSync(changeLogFilePath, 'utf8');
+
+  return parseChangeLog({
+    changelogStr,
+    targetVersion,
+  });
+}
+
+
+function generatePublishInfo({
+  appName,
+  version: targetVersion,
+  homepage,
+  repoLink,
+  issueLink,
+  readmeFilePath: changeLogFilePath,
+  showNpmLink = false,
+}) {
+  replaceAllPolyfill();
+
+  const versionStr = `- 版本：&lt;font color="comment"&gt;${targetVersion}&lt;/font&gt;\n`;
+  const npmStr = showNpmLink ? `- npm: [${appName}](https://npmjs.com/package/${appName})\n` : '';
+  const issueStr = issueLink ? `- issue: [${issueLink}](${issueLink})\n` : '';
+
   const pRepoLink = repoLink.replace(/^git\+/, '').replace(/\.git$/, '');
+  const repoStr = repoLink ? `- Git: [${pRepoLink}](${pRepoLink})\n` : '';
 
-  const template = `### ${appName} 更新\n\n\n\n- 版本：&lt;font color="comment"&gt;${targetVersion}&lt;/font&gt;\n${npmStr}${
-    repoLink &amp;&amp; `- Git：[${pRepoLink}](${pRepoLink})\n`
-  }${issueStr}${homepage &amp;&amp; `- 文档：[${homepage}](${homepage})\n`}\n\n`;
+  const homepageStr = homepage ? `- 文档：[${homepage}](${homepage})\n` : '';
 
+
+  const template = `### ${appName} 更新\n\n\n\n${versionStr}${npmStr}${repoStr}${issueStr}${homepageStr}\n\n`;
+
+  const changelog = getChangeLog({
+    targetVersion,
+    changeLogFilePath,
+  });
   const content = template.concat(changelog).replaceAll('###', '\n\n###');
 
-  return content;
+  return optimizeContent(content);
 }
 
 /**
@@ -133,7 +169,7 @@ export function genVersionTip({ readmeFilePath, appInfo, showNpmLink = false }: 
   }
 }): string {
   const { name: appName, version, homepage = '', bugs, repository } = appInfo;
-  console.log('app info version:', version);
+  console.log('[GEN VERSION TIP] APP INFO VERSION:', version);
 
   let issueLink = '';
   let repoLink = '';
@@ -167,7 +203,7 @@ export function genVersionTip({ readmeFilePath, appInfo, showNpmLink = false }: 
 
 <br class="clear">
 
-<footer>Documentation generated on 2022-11-18 07:57:04 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2022-11-19 03:16:40 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>
