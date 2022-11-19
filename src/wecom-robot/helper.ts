@@ -36,10 +36,11 @@ export function sendToRobot({ webhookUrl, params }: {
       return;
     }
 
+    webhookUrl = parsePrefixChatId(webhookUrl);
+
     if (!webhookUrl.startsWith('http')) {
       webhookUrl = `${WECOM_ROBOT_PREFIX}${webhookUrl}`;
     }
-    webhookUrl = `${WECOM_ROBOT_PREFIX}${parsePrefixChatId(webhookUrl)}`;
 
     if (params.chatid) {
       params.chatid = parsePrefixChatId(params.chatid);
