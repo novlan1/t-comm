@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.2.26](https://github.com/novlan1/t-comm/compare/v0.2.25...v0.2.26) (2022-11-19)
+
+
+### Bug Fixes
+
+* **robot:** 修复普通webhookurl消息 ([3a2b801](https://github.com/novlan1/t-comm/commit/3a2b801c0de840c480200aba6b31d7448ef009f5))
+
+
+
 ## [0.2.25](https://github.com/novlan1/t-comm/compare/v0.2.24...v0.2.25) (2022-11-19)
 
 
