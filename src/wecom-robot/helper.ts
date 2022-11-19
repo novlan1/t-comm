@@ -39,6 +39,11 @@ export function sendToRobot({ webhookUrl, params }: {
     if (!webhookUrl.startsWith('http')) {
       webhookUrl = `${WECOM_ROBOT_PREFIX}${webhookUrl}`;
     }
+    webhookUrl = `${WECOM_ROBOT_PREFIX}${parsePrefixChatId(webhookUrl)}`;
+
+    if (params.chatid) {
+      params.chatid = parsePrefixChatId(params.chatid);
+    }
 
     axios
       .post(webhookUrl, params)
@@ -55,4 +60,19 @@ export function sendToRobot({ webhookUrl, params }: {
         reject(err);
       });
   });
+}
+
+
+/**
+ * 解析chatId，允许chatId头部带有其他前缀
+ * 比如T_COMM_UPDATE___xxx，前缀可以用来表明chatId来自哪里
+ * @ignore
+ *
+ */
+function parsePrefixChatId(chatId) {
+  const SEPARATOR = '___';
+  if (chatId.indexOf(SEPARATOR) < 0) {
+    return chatId;
+  }
+  return chatId.split(SEPARATOR)[1];
 }
