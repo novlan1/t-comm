@@ -213,7 +213,7 @@ export function collectNestedDeps({
 
 function cursiveFlattenDeps(depList, list) {
   for (const item of depList) {
-    list.push(...item.name);
+    list.push(item.name);
     cursiveFlattenDeps(item.children, list);
   }
 }
@@ -226,7 +226,7 @@ export function getFlattenedDeps(deps) {
   for (const item of depList) {
     const list = [];
     cursiveFlattenDeps(item.children, list);
-    obj[item.name] = list;
+    obj[item.name] = Array.from(new Set(list));
   }
 
   return obj;

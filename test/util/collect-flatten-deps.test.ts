@@ -48,15 +48,29 @@ describe('getFlattenedDeps', () => {
 
   it('getFlattenedDeps.d', () => {
     const deps = {
-      a: ['b', 'c'],
-      b: ['e', 'f', 'g', 'b'],
+      a: ['bb', 'c'],
+      bb: ['e', 'f', 'g', 'bb'],
       g: ['p', 'q', 'a'],
     };
 
     expect(getFlattenedDeps(deps)).toEqual({
-      a: ['b', 'e', 'f', 'g', 'p', 'q', 'c'],
-      b: ['e', 'f', 'g', 'p', 'q'],
+      a: ['bb', 'e', 'f', 'g', 'p', 'q', 'c'],
+      bb: ['e', 'f', 'g', 'p', 'q'],
       g: ['p', 'q'],
+    });
+  });
+
+  it('getFlattenedDeps.repeat', () => {
+    const deps = {
+      a: ['bb', 'c', 't'],
+      bb: ['e', 'f', 'g', 'bb', 't'],
+      g: ['p', 'q', 'a', 't'],
+    };
+
+    expect(getFlattenedDeps(deps)).toEqual({
+      a: ['bb', 'e', 'f', 'g', 'p', 'q', 't', 'c'],
+      bb: ['e', 'f', 'g', 'p', 'q', 't'],
+      g: ['p', 'q', 't'],
     });
   });
 });

@@ -9,8 +9,8 @@ describe('collectNestedDeps', () => {
 
   it('collectNestedDeps.a', () => {
     const deps = {
-      a: ['b'],
-      b: ['g', 'a'],
+      a: ['bb'],
+      bb: ['g', 'a'],
     };
 
     expect(collectNestedDeps({ deps })).toEqual([
@@ -18,7 +18,7 @@ describe('collectNestedDeps', () => {
         name: 'a',
         children: [
           {
-            name: 'b',
+            name: 'bb',
             children: [
               {
                 name: 'g',
@@ -31,7 +31,7 @@ describe('collectNestedDeps', () => {
         ],
       },
       {
-        name: 'b',
+        name: 'bb',
         children: [
           {
             name: 'g',
