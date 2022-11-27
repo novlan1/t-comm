@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.2.28](https://github.com/novlan1/t-comm/compare/v0.2.27...v0.2.28) (2022-11-27)
+
+
+### Features
+
+* **collect-deps:** 收集依赖去重 ([3cba801](https://github.com/novlan1/t-comm/commit/3cba801f22b509d25bc246a9ade67c33a782f487))
+
+
+
 ## [0.2.27](https://github.com/novlan1/t-comm/compare/v0.2.26...v0.2.27) (2022-11-27)
 
 
