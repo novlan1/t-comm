@@ -62,10 +62,10 @@ function cursiveGetDeps({
       });
     }
 
-    // const obj = {
-    //   name: child,
-    //   children: [],
-    // };
+    const obj = {
+      name: child,
+      children: [],
+    };
 
     if (!parentList) {
       parentList = [child];
@@ -211,3 +211,23 @@ export function collectNestedDeps({
 }
 
 
+function cursiveFlattenDeps(depList, list) {
+  for (const item of depList) {
+    list.push(...item.name);
+    cursiveFlattenDeps(item.children, list);
+  }
+}
+
+
+export function getFlattenedDeps(deps) {
+  const depList = collectNestedDeps({ deps });
+  const obj = {};
+
+  for (const item of depList) {
+    const list = [];
+    cursiveFlattenDeps(item.children, list);
+    obj[item.name] = list;
+  }
+
+  return obj;
+}
