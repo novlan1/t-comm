@@ -54,3 +54,8 @@ export function isDate(value) {
 export function isFunction(value) {
   return Object.prototype.toString.call(value) === '[object Function]';
 }
+
+
+export function isPlainObject(val) {
+  return val !== null && typeof val === 'object' && !Array.isArray(val);
+}
