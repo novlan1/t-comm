@@ -43,20 +43,20 @@ function cursiveGetDeps({
       //   children: [],
       // };
     }
-    console.log();
-    console.log(`[DEP] 处理${child}`);
+    // console.log();
+    // console.log(`[DEP] 处理${child}`);
 
     let rawChild = storeMap[child] || [];
 
     if (rawChild.indexOf(child) > -1) {
-      console.log(`[DEP] 存在循环引用 ${child} 子元素包含自己`);
+      // console.log(`[DEP] 存在循环引用 ${child} 子元素包含自己`);
       rawChild = rawChild.filter(item => item !== child);
     }
 
     if (parentList) {
       rawChild = rawChild.filter((item) => {
         if (parentList && parentList.indexOf(item) > -1) {
-          console.log(`[DEP] 存在循环引用 ${child} 子元素引用了祖先元素 ${item}`);
+          // console.log(`[DEP] 存在循环引用 ${child} 子元素引用了祖先元素 ${item}`);
         }
         return parentList.indexOf(item) <= -1;
       });
@@ -81,8 +81,6 @@ function cursiveGetDeps({
       parseExistFn,
       filterFn,
     });
-
-    console.log('res', res);
 
     obj.children = res;
 
