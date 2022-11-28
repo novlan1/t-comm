@@ -48,7 +48,7 @@ function parseUploadResult(result) {
     return b.size - a.size;
   })
     .map(pkg => `- ${BUNDLE_NAME_MAP[pkg.name] || pkg.name}: ${formatBite(pkg.size)}`);
-  list.unshift('包体积大小：');
+  list.unshift('PACKAGE SIZE INFO: ');
   return list;
 }
 
@@ -323,9 +323,9 @@ export class MpCI {
     const { robotNumber, env, buildTime, commitInfo, version } = this;
 
     const textList = [
-      '[CI RESULT]】',
+      '[CI RESULT]',
       `VERSION: ${version}`,
-      `UPLOADER: CI机器人${robotNumber}`,
+      `UPLOADER: CI ROBOT ${robotNumber}`,
       `ENV: ${env}`,
       `BRANCH: ${commitInfo.branch}`,
       `BUILD TIME: ${buildTime}`,
