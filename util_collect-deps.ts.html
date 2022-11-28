@@ -89,20 +89,20 @@ function cursiveGetDeps({
       //   children: [],
       // };
     }
-    console.log();
-    console.log(`[DEP] 处理${child}`);
+    // console.log();
+    // console.log(`[DEP] 处理${child}`);
 
     let rawChild = storeMap[child] || [];
 
     if (rawChild.indexOf(child) &gt; -1) {
-      console.log(`[DEP] 存在循环引用 ${child} 子元素包含自己`);
+      // console.log(`[DEP] 存在循环引用 ${child} 子元素包含自己`);
       rawChild = rawChild.filter(item =&gt; item !== child);
     }
 
     if (parentList) {
       rawChild = rawChild.filter((item) =&gt; {
         if (parentList &amp;&amp; parentList.indexOf(item) &gt; -1) {
-          console.log(`[DEP] 存在循环引用 ${child} 子元素引用了祖先元素 ${item}`);
+          // console.log(`[DEP] 存在循环引用 ${child} 子元素引用了祖先元素 ${item}`);
         }
         return parentList.indexOf(item) &lt;= -1;
       });
@@ -128,8 +128,6 @@ function cursiveGetDeps({
       filterFn,
     });
 
-    console.log('res', res);
-
     obj.children = res;
 
     parsedMap[child] = obj;
@@ -151,7 +149,7 @@ function cursiveGetDeps({
  *   p: ['d', 'a', 'p', 'b'],
  * };
  *
- * const res = collectNestedDeps(deps);
+ * const res = collectNestedDeps({ deps });
  * console.log(res);
  *
  * // 结果如下：
@@ -265,8 +263,16 @@ function cursiveFlattenDeps(depList, list) {
 }
 
 
-export function getFlattenedDeps(deps) {
-  const depList = collectNestedDeps({ deps });
+export function getFlattenedDeps({
+  deps,
+  filterFn,
+  parseExistFn,
+}: {
+  deps: Object
+  parseExistFn?: Function
+  filterFn?: Function
+}) {
+  const depList = collectNestedDeps({ deps, filterFn, parseExistFn });
   const obj = {};
 
   for (const item of depList) {
@@ -290,7 +296,7 @@ export function getFlattenedDeps(deps) {
 
 <br class="clear">
 
-<footer>Documentation generated on 2022-11-27 14:37:34 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2022-11-28 05:12:54 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>
