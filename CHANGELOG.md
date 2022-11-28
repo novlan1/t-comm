@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.2.31](https://github.com/novlan1/t-comm/compare/v0.2.30...v0.2.31) (2022-11-28)
+
+
+### Features
+
+* mp-ci增加包大小信息 ([1c1419a](https://github.com/novlan1/t-comm/commit/1c1419a9c7bd977d61c8434db7e81b5ed31001a3))
+
+
+
 ## [0.2.30](https://github.com/novlan1/t-comm/compare/v0.2.29...v0.2.30) (2022-11-28)
 
 
