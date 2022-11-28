@@ -11,6 +11,26 @@ import { getBundleBuildDesc, getBundleVersion } from './helper';
 import { OptionsType } from './type';
 import { DEFAULT_BUILD_SETTING, BUNDLE_NAME_MAP, MAX_TRY_TIMES_MAP, PREVIEW_IMG_MAX_WORD_LENGTH } from './config';
 
+function flattenSubPackages(result) {
+  const {
+    subPackageInfo,
+  } = result;
+  return subPackageInfo.reduce((acc, item) => {
+    acc[item.name] = item;
+    return acc;
+  }, {});
+}
+
+function getFullPackageSize(result) {
+  const obj = flattenSubPackages(result);
+  return formatBite(obj.__FULL__.size);
+}
+
+function getMainPackageSize(result) {
+  const obj = flattenSubPackages(result);
+  return formatBite(obj.__APP__.size);
+}
+
 
 /**
  * 解析上传结果
@@ -59,6 +79,7 @@ export class MpCI {
   buildDesc: string;
   buildTime?: string;
   version: string;
+  previewResult: Object;
 
   tryTimesMap = {
     UPLOAD: 1,
@@ -139,6 +160,7 @@ export class MpCI {
 
     this.options = options;
     this.projectCI = null;
+    this.previewResult = {};
     this.savePreviewPath = path.resolve(process.cwd(), 'mp_ci_preview_destination.png');
     const {
       appId,
@@ -290,6 +312,7 @@ export class MpCI {
     });
     console.log('PreviewResult:\n', previewResult);
 
+    this.previewResult = previewResult;
     await this.uploadPreviewImg(previewResult);
   }
 
@@ -297,16 +320,16 @@ export class MpCI {
    * 上传预览图片到COS
    */
   async uploadPreviewImg(previewResult) {
-    const { appName, robotNumber, env, buildTime, commitInfo, version } = this;
+    const { robotNumber, env, buildTime, commitInfo, version } = this;
 
     const textList = [
-      `【${appName}自动构建】`,
-      `版本: ${version}`,
-      `提交者: CI机器人${robotNumber}`,
-      `环境: ${env}`,
-      `分支: ${commitInfo.branch}`,
-      `构建时间: ${buildTime}`,
-      `最后提交: ${commitInfo.author} - ${commitInfo.message}`,
+      '[CI RESULT]】',
+      `VERSION: ${version}`,
+      `UPLOADER: CI机器人${robotNumber}`,
+      `ENV: ${env}`,
+      `BRANCH: ${commitInfo.branch}`,
+      `BUILD TIME: ${buildTime}`,
+      `LAST COMMIT: ${commitInfo.author} - ${commitInfo.message} - ${commitInfo.hash}`,
       ...parseUploadResult(previewResult),
     ].map((item) => {
       if (item.length > PREVIEW_IMG_MAX_WORD_LENGTH) return `${item.slice(0, PREVIEW_IMG_MAX_WORD_LENGTH)}...`;
@@ -347,7 +370,7 @@ export class MpCI {
    * 发送机器人消息
    */
   async sendRobotMsg(hasImg = true) {
-    const { robotNumber, webhookUrl, env, commitInfo, version } = this;
+    const { robotNumber, webhookUrl, env, commitInfo, version, previewResult } = this;
     let { chatId } = this;
     if (!webhookUrl) {
       return;
@@ -361,7 +384,9 @@ export class MpCI {
       `环境：${env}`,
       `版本：${version || ''}`,
       `机器人：${robotNumber}`,
-      `最后提交: ${commitInfo.author} - ${commitInfo.message}`,
+      `最后提交: ${commitInfo.author} - ${commitInfo.message} - ${commitInfo.hash}`,
+      `总包：${getFullPackageSize(previewResult)}`,
+      `主包：${getMainPackageSize(previewResult)}`,
       // `${buildTime || ''}`,
     ];
 
