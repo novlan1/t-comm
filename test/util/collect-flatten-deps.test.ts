@@ -8,7 +8,7 @@ describe('getFlattenedDeps', () => {
       b: ['g', 'a'],
     };
 
-    expect(getFlattenedDeps(deps)).toEqual({
+    expect(getFlattenedDeps({ deps })).toEqual({
       a: ['b', 'g'],
       b: ['g'],
     });
@@ -22,7 +22,7 @@ describe('getFlattenedDeps', () => {
     };
 
 
-    expect(getFlattenedDeps(deps)).toEqual({
+    expect(getFlattenedDeps({ deps })).toEqual({
       a: ['b', 'g', 'p'],
       b: ['g', 'p'],
       g: ['p'],
@@ -38,7 +38,7 @@ describe('getFlattenedDeps', () => {
       p: ['d', 'a', 'p', 'b'],
     };
 
-    expect(getFlattenedDeps(deps)).toEqual({
+    expect(getFlattenedDeps({ deps })).toEqual({
       a: ['b', 'g', 'p', 'd'],
       b: ['g', 'p', 'd'],
       g: ['p', 'd'],
@@ -53,7 +53,7 @@ describe('getFlattenedDeps', () => {
       g: ['p', 'q', 'a'],
     };
 
-    expect(getFlattenedDeps(deps)).toEqual({
+    expect(getFlattenedDeps({ deps })).toEqual({
       a: ['bb', 'e', 'f', 'g', 'p', 'q', 'c'],
       bb: ['e', 'f', 'g', 'p', 'q'],
       g: ['p', 'q'],
@@ -67,7 +67,7 @@ describe('getFlattenedDeps', () => {
       g: ['p', 'q', 'a', 't'],
     };
 
-    expect(getFlattenedDeps(deps)).toEqual({
+    expect(getFlattenedDeps({ deps })).toEqual({
       a: ['bb', 'e', 'f', 'g', 'p', 'q', 't', 'c'],
       bb: ['e', 'f', 'g', 'p', 'q', 't'],
       g: ['p', 'q', 't'],

@@ -103,7 +103,7 @@ function cursiveGetDeps({
  *   p: ['d', 'a', 'p', 'b'],
  * };
  *
- * const res = collectNestedDeps(deps);
+ * const res = collectNestedDeps({ deps });
  * console.log(res);
  *
  * // 结果如下：
@@ -217,8 +217,16 @@ function cursiveFlattenDeps(depList, list) {
 }
 
 
-export function getFlattenedDeps(deps) {
-  const depList = collectNestedDeps({ deps });
+export function getFlattenedDeps({
+  deps,
+  filterFn,
+  parseExistFn,
+}: {
+  deps: Object
+  parseExistFn?: Function
+  filterFn?: Function
+}) {
+  const depList = collectNestedDeps({ deps, filterFn, parseExistFn });
   const obj = {};
 
   for (const item of depList) {
