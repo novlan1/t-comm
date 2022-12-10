@@ -5,7 +5,7 @@ export { formatBite } from './format-bite';
 export { mkDirsSync, copyDir, copyFile, deleteFolder } from './fs-util';
 export { rmFirstAndLastSlash, getGitCodeLink, getGitMRLink } from './git-link';
 export { execCommand } from './node-command';
-export { nodeGet, nodePost } from './node-request';
+export { nodeGet, nodePost, nodePut } from './node-request';
 export { writeEnvTokenToNpmRC } from './npm-token';
 export { getRtxInfo } from './rtx';
 export { sleep } from './sleep';

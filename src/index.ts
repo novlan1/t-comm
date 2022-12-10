@@ -18,6 +18,7 @@ export * from './pipeline';
 export * from './rainbow';
 export * from './rainbow-to-cos';
 export * from './tam';
+export * from './tencent-doc';
 export * from './tgit';
 export * from './url';
 export * from './util';

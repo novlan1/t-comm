@@ -16,3 +16,12 @@ export function nodeGet() {
   const get = util.promisify(request.get);
   return get;
 }
+
+
+export function nodePut() {
+  const util = require('util');
+  const request = require('request');
+
+  const get = util.promisify(request.put);
+  return get;
+}
