@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.2.33](https://github.com/novlan1/t-comm/compare/v0.2.32...v0.2.33) (2022-12-10)
+
+
+### Features
+
+* 增加tencent-doc ([45951a8](https://github.com/novlan1/t-comm/commit/45951a8d5103aff2b52a79e7de48636d353c27dd))
+
+
+
 ## [0.2.32](https://github.com/novlan1/t-comm/compare/v0.2.31...v0.2.32) (2022-11-28)
 
 
