@@ -37,7 +37,7 @@ export async function updateTencentSheet({
   range,
   values,
 }) {
-  return await nodePut()({
+  const result = await nodePut()({
     url: `https://docs.qq.com/openapi/sheetbook/v2/${bookId}/values/${range}`,
     headers: {
       'Access-Token': accessToken,
@@ -47,6 +47,7 @@ export async function updateTencentSheet({
     },
     json: { values },
   });
+  return await result?.body;
 }
 
 
