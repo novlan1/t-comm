@@ -196,14 +196,20 @@ export function updateRainbowKV({
  *
  * })
  */
-export function createRainbowPublishJob({ versionName, secretInfo }) {
+export function createRainbowPublishJob({
+  versionName,
+  secretInfo,
+  creator,
+  approvers,
+  type = 0,
+}) {
   return baseRequestRainbow({
     url: '/adminapi.Config/CreateReleaseTaskReq',
     data: {
-      creator: 'guowangyang',
-      approvers: 'guowangyang',
+      creator,
+      approvers,
       version_name: versionName,
-      type: 0,
+      type,
     },
     secretInfo,
   });
@@ -318,11 +324,15 @@ export async function updateRainbowKVAndPublish({
   value,
   valueType,
   secretInfo,
+  creator,
+  approvers,
 }: {
   key: string
   value: string
   valueType: ValueType
   secretInfo: SecretInfo
+  creator: string
+  approvers: string
 }) {
   try {
     await addOrUpdateRainbowKV({
@@ -333,16 +343,25 @@ export async function updateRainbowKVAndPublish({
       valueType,
       secretInfo,
     });
+    const versionName =  getVersion();
     const taskRes: any = await createRainbowPublishJob({
-      versionName: getVersion(),
+      creator,
+      approvers,
+      versionName,
       secretInfo,
     });
+    const taskId = taskRes.task_id;
+    await ApprovalRainbowReleaseTask({
+      secretInfo,
+      taskId,
+      versionName,
+    });
     await publishRainbowTask({
-      taskId: taskRes.task_id,
+      taskId,
       secretInfo,
     });
     await closeRainbowTask({
-      taskId: taskRes.task_id,
+      taskId,
       secretInfo,
     });
     return taskRes;
@@ -389,5 +408,49 @@ export function queryGroupInfo({ secretInfo }): Promise<Array<{key: string, valu
       .catch((err) => {
         reject(err);
       });
+  });
+}
+
+
+export function OneClickReleaseRainbowTask({
+  secretInfo,
+  versionName,
+  creator,
+  updators,
+  approvers,
+  type = 0,
+  description = '',
+}) {
+  return baseRequestRainbow({
+    url: '/adminapi.Config/OneClickReleaseTaskReq',
+    data: {
+      version_name: versionName,
+      creator,
+      updators,
+      approvers,
+      type,
+      description,
+    },
+    secretInfo,
+  });
+}
+
+
+export function ApprovalRainbowReleaseTask({
+  secretInfo,
+  taskId,
+  versionName,
+  status = 3,
+  rejectReason = '',
+}) {
+  return baseRequestRainbow({
+    url: '/adminapi.Release/ApprovalReleaseTaskReq',
+    data: {
+      task_id: taskId,
+      status,
+      reject_reason: rejectReason,
+      version_name: versionName,
+    },
+    secretInfo,
   });
 }
