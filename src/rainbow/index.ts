@@ -1,4 +1,17 @@
-export * from './helper/rainbow-signature';
+export { genRainbowHeaderSignature } from './helper/rainbow-signature';
 export { baseRequestRainbow } from './helper/rainbow-base-request';
-export * from './rainbow-admin';
-export * from './rainbow-user';
+export {
+  addOrUpdateRainbowKV,
+  addRainbowKV,
+  updateRainbowKV,
+
+  createRainbowPublishJob,
+  ApprovalRainbowReleaseTask,
+  publishRainbowTask,
+  closeRainbowTask,
+
+  updateRainbowKVAndPublish,
+  OneClickReleaseRainbowTask,
+  queryGroupInfo,
+} from './rainbow-admin';
+export { fetchRainbowConfig } from './rainbow-user';
