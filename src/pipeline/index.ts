@@ -1,1 +1,1 @@
-export * from './pipeline';
+export { startPipeline } from './pipeline';

@@ -1,1 +1,4 @@
-export * from './loader';
+export {
+  loadJS,
+  loadCSS,
+} from './loader';
