@@ -1,5 +1,16 @@
 # 工具库更新日志
 
+## [0.2.36](https://github.com/novlan1/t-comm/compare/v0.2.35...v0.2.36) (2023-01-04)
+
+
+### Features
+
+* 补充文档 ([7c008ae](https://github.com/novlan1/t-comm/commit/7c008ae6796758058b84b22f61e05bbc621cb9bf))
+* 优化接口 ([9fcd378](https://github.com/novlan1/t-comm/commit/9fcd37861e822f9d65acf9adfcbdd62ad934ba4d))
+* 优化接口导出 ([17a41d6](https://github.com/novlan1/t-comm/commit/17a41d6fbfeffc0a6c17b168864f167656e3f620))
+
+
+
 ## [0.2.35](https://github.com/novlan1/t-comm/compare/v0.2.34...v0.2.35) (2022-12-26)
 
 
