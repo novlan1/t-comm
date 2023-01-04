@@ -4,4 +4,6 @@ export {
   convertTencentFileId,
   uploadTencentDocImage,
   updateTencentSheetImage,
+  exportTencentDoc,
+  checkExportTencentDocProgress,
 } from './tencent-doc';

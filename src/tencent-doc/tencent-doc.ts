@@ -117,6 +117,49 @@ export async function updateTencentSheetImage({
   return await result?.body;
 }
 
+export async function exportTencentDoc({
+  accessToken,
+  clientId,
+  openId,
+
+  fileId,
+  exportType,
+}) {
+  const result = await nodePost()({
+    url: `https://docs.qq.com/openapi/drive/v2/files/${fileId}/async-export`,
+    headers: {
+      'Access-Token': accessToken,
+      'Client-Id': clientId,
+      'Open-Id': openId,
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    form: {
+      exportType,
+    },
+  });
+  return parseResponse(result);
+}
+
+export async function checkExportTencentDocProgress({
+  accessToken,
+  clientId,
+  openId,
+
+  fileId,
+  operationId,
+}) {
+  const result = await nodeGet()({
+    url: `https://docs.qq.com/openapi/drive/v2/files/${fileId}/export-progress?operationID=${operationId}`,
+    headers: {
+      'Access-Token': accessToken,
+      'Client-Id': clientId,
+      'Open-Id': openId,
+      'Content-Type': 'application/json',
+    },
+  });
+  return parseResponse(result);
+}
+
 async function parseResponse(result) {
   let res = {};
   try {

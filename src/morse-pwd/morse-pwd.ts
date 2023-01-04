@@ -30,7 +30,6 @@ class MorsePwd {
    *     this.morsePwd = MorsePwd.init({
    *       pwd: [1, 1, 1, 2, 2, 2, 1, 1, 1],
    *       cb: () => {
-   *         console.log('===');
    *         this.showToast('hhh');
    *       },
    *       envType: 'MP',
