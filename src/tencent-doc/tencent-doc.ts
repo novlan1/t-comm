@@ -59,7 +59,7 @@ export async function convertTencentFileId({
   type,
   value,
 }) {
-  return await nodeGet()({
+  const result = await nodeGet()({
     url: `https://docs.qq.com/openapi/drive/v2/util/converter?type=${type}&value=${value}`,
     headers: {
       'Access-Token': accessToken,
@@ -67,6 +67,7 @@ export async function convertTencentFileId({
       'Open-Id': openId,
     },
   });
+  return parseResponse(result);
 }
 
 
