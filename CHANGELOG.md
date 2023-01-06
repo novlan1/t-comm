@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.2.37](https://github.com/novlan1/t-comm/compare/v0.2.36...v0.2.37) (2023-01-06)
+
+
+### Features
+
+* 增加i18n ([8c403a4](https://github.com/novlan1/t-comm/commit/8c403a4ff76a301b989d39b49adad1cae49a4209))
+
+
+
 ## [0.2.36](https://github.com/novlan1/t-comm/compare/v0.2.35...v0.2.36) (2023-01-04)
 
 
