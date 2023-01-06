@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.2.38](https://github.com/novlan1/t-comm/compare/v0.2.37...v0.2.38) (2023-01-06)
+
+
+### Features
+
+* **sheet:** 增加xlsx工具方法 ([2fb617f](https://github.com/novlan1/t-comm/commit/2fb617fa5165399b4793695e5cb55bd7dc5f903d))
+
+
+
 ## [0.2.37](https://github.com/novlan1/t-comm/compare/v0.2.36...v0.2.37) (2023-01-06)
 
 
