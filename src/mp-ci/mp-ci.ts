@@ -261,6 +261,8 @@ export class MpCI {
         this.tryTimesMap.UPLOAD += 1;
 
         await this.tryUpload();
+      } else {
+        throw new Error(err);
       }
     }
   }
@@ -404,7 +406,26 @@ export class MpCI {
   }
 
   async uploadAndPreview() {
-    await Promise.all([this.upload(), this.preview()]);
+    try {
+      await Promise.all([this.upload(), this.preview()]);
+    } catch (err) {
+      console.log('[CI] err');
+
+      const { webhookUrl } = this;
+      let { chatId } = this;
+      if (!webhookUrl) {
+        return;
+      }
+      if (!chatId) {
+        chatId = undefined;
+      }
+
+      sendWxRobotMarkdown({
+        webhookUrl,
+        content: (err as any).toString(),
+        chatId,
+      });
+    }
   }
 
   async uploadFiles(files) {
