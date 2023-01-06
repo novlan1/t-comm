@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.2.39](https://github.com/novlan1/t-comm/compare/v0.2.38...v0.2.39) (2023-01-06)
+
+
+### Features
+
+* 抛出上传mp错误 ([9ee5ea6](https://github.com/novlan1/t-comm/commit/9ee5ea6385bd1bca70e3577cb4ceb02726922a40))
+
+
+
 ## [0.2.38](https://github.com/novlan1/t-comm/compare/v0.2.37...v0.2.38) (2023-01-06)
 
 
