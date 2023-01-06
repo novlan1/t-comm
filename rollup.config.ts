@@ -35,6 +35,7 @@ const rollupConfig: RollupOptions = {
   external: [
     // ...Object.keys(pkg.dependencies),
     /@babel\/runtime/,
+    'axios',
   ], // 指出应将哪些模块视为外部模块，如 Peer dependencies 中的依赖
   // plugins 需要注意引用顺序
   plugins: [

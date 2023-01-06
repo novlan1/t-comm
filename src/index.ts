@@ -8,6 +8,7 @@ export * from './date';
 export * from './env';
 export * from './eslint-parser';
 export * from './git';
+export * from './i18n';
 export * from './jsdoc';
 export * from './loader';
 export * from './morse-pwd';
