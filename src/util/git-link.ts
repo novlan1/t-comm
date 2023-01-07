@@ -3,7 +3,7 @@ export function rmFirstAndLastSlash(str = '') {
 }
 
 export function getGitCodeLink({
-  domain = 'https://git.woa.com/',
+  domain,
   repo,
   branch,
   localFile,

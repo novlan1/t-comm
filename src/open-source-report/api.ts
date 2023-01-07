@@ -25,7 +25,7 @@ export function getOpenSourceReport({
     axios({
       method: 'POST',
       Headers: {},
-      url: 'http://eplus.woa.com/eplus-data-report/api/query',
+      url: '/eplus-data-report/api/query',
       data: {
         jsonrpc:	'2.0',
         method:	'noop',

@@ -67,9 +67,7 @@ export function parseOpenSourceReport({
 }
 
 
-function getTechMapWebsiteUrl(date, searchInfo = {}) {
-  const prefix = 'https://techmap.woa.com/report?report=segment-project&record=';
-
+function getTechMapWebsiteUrl(date, searchInfo = { prefix: '' }) {
   const data = {
     org: 0,
     step: 'days',
@@ -81,5 +79,5 @@ function getTechMapWebsiteUrl(date, searchInfo = {}) {
     sort_direction: 'asc',
     ...(searchInfo || {}),
   };
-  return `${prefix}${encodeURIComponent(JSON.stringify(data))}`;
+  return `${searchInfo.prefix}${encodeURIComponent(JSON.stringify(data))}`;
 }
