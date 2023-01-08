@@ -22,7 +22,7 @@ export async function getCredential({
   try {
     const res = await axios({
       method: 'POST',
-      url: 'http://tamapi.woa.com/api/interface/getApiToken',
+      url: '/api/interface/getApiToken',
       data: {
         isFresh: 0,
         loginName,

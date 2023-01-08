@@ -85,7 +85,7 @@ async function getCustomEventData({
 
   const result = await axios({
     method: 'POST',
-    url: 'http://tamapi.woa.com/api/interface/monitor/queryData',
+    url: '/api/interface/monitor/queryData',
     data: {
       Namespace: 'TAM-v1',
       Query: getCustomEventQuery({

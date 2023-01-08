@@ -64,7 +64,7 @@ async function getScoreInfoByProjectId({
 
   const result = await axios({
     method: 'GET',
-    url: `http://tamapi.woa.com/api/interface/pro/scoreInfo?projectID=${projectId}&startDate=${startDate}`,
+    url: `/api/interface/pro/scoreInfo?projectID=${projectId}&startDate=${startDate}`,
     headers: {
       ...credential,
     },
@@ -139,7 +139,7 @@ async function getProjectByGroupId({
 
   const result = await axios({
     method: 'GET',
-    url: ` http://tamapi.woa.com/api/interface/pro/list?groupID=${groupId}`,
+    url: `/api/interface/pro/list?groupID=${groupId}`,
     headers: {
       ...credential,
     },
