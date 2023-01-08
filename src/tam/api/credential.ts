@@ -1,5 +1,5 @@
+import axios from 'axios';
 import { SecretInfoType } from '../type';
-import { nodePost } from '../../util/node-request';
 
 /**
  * 获取凭据的通用代码
@@ -20,19 +20,19 @@ export async function getCredential({
   encrypt,
 }: SecretInfoType) {
   try {
-    const res = await nodePost()({
+    const res = await axios({
+      method: 'POST',
       url: 'http://tamapi.woa.com/api/interface/getApiToken',
-      json: {
+      data: {
         isFresh: 0,
         loginName,
         apiKey: encrypt(apiKey, loginName),
       },
     });
-
     const {
       api_time: apiTime,
       api_token: apiToken,
-    } = res.body.data;
+    } = res?.data?.data || {};
 
     return {
       auth: getPwdCode(apiKey, apiToken, +apiTime), // 生成授权码

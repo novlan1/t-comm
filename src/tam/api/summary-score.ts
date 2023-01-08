@@ -1,6 +1,6 @@
+import axios from 'axios';
 import { SecretInfoType, ScoreInfoType } from '../type';
 import { getCredential } from './credential';
-import { nodeGet } from '../../util/node-request';
 
 
 /**
@@ -59,21 +59,18 @@ async function getScoreInfoByProjectId({
   projectId: number
   startDate: string
   secretInfo: SecretInfoType
-}) {
+}): Promise<Array<any>> {
   const credential = await getCredential(secretInfo);
 
-  const result = await nodeGet()({
+  const result = await axios({
+    method: 'GET',
     url: `http://tamapi.woa.com/api/interface/pro/scoreInfo?projectID=${projectId}&startDate=${startDate}`,
     headers: {
       ...credential,
     },
   });
 
-  let res = [];
-  try {
-    res = JSON.parse(result.body).message || [];
-  } catch (e) {}
-  return res;
+  return result?.data?.message || [];
 }
 
 /**
@@ -140,17 +137,14 @@ async function getProjectByGroupId({
 }) {
   const credential = await getCredential(secretInfo);
 
-  const result = await nodeGet()({
+  const result = await axios({
+    method: 'GET',
     url: ` http://tamapi.woa.com/api/interface/pro/list?groupID=${groupId}`,
     headers: {
       ...credential,
     },
   });
-  let res = [];
-  try {
-    res = JSON.parse(result.body).result || [];
-  } catch (e) {}
-  return res;
+  return result?.data?.result || [];
 }
 
 /**
@@ -286,7 +280,7 @@ async function getSummaryScoreByProjectIdList({
   date: string
   secretInfo: SecretInfoType
 }) {
-  const res = [];
+  const res: Array<any> = [];
   for (const projectId of projectIdList) {
     const temp = await getScoreInfoByProjectId({ projectId, startDate: date, secretInfo });
     res.push(...(temp || []));

@@ -1,6 +1,6 @@
+import axios from 'axios';
 import { SecretInfoType } from '../type';
 import { getCredential } from './credential';
-import { nodePost } from '../../util/node-request';
 
 
 function getCustomEventQuery({
@@ -83,9 +83,10 @@ async function getCustomEventData({
 }): Promise<{[key: string]: number}> {
   const credential = await getCredential(secretInfo);
 
-  const result = await nodePost()({
+  const result = await axios({
+    method: 'POST',
     url: 'http://tamapi.woa.com/api/interface/monitor/queryData',
-    json: {
+    data: {
       Namespace: 'TAM-v1',
       Query: getCustomEventQuery({
         startTime,
@@ -110,7 +111,7 @@ async function getCustomEventData({
      *     }
      *   },
      */
-    res = JSON.parse(result.body.Response.Result) || {};
+    res = JSON.parse(result.data.Response.Result) || {};
 
     /**
       * res：
