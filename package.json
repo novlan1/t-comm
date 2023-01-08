@@ -71,6 +71,7 @@
     "cheerio": "^1.0.0-rc.12",
     "conventional-changelog": "^3.1.25",
     "docdash": "^1.2.0",
+    "dotenv": "^16.0.3",
     "eslint": "^8.25.0",
     "eslint-config-light": "^1.0.4",
     "eslint-plugin-jest": "^27.1.1",
@@ -95,6 +96,7 @@
   "dependencies": {
     "@babel/runtime": "^7.17.2",
     "@babel/runtime-corejs3": "^7.18.0",
+    "qs": "^6.11.0",
     "request": "^2.88.2"
   },
   "lint-staged": {

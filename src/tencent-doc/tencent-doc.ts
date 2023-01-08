@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-import { nodePost, nodePut, nodeGet } from '../util/node-request';
+import axios from 'axios';
 
 
 export async function createTencentDoc({
@@ -11,7 +11,9 @@ export async function createTencentDoc({
   title,
   folderId = '/',
 }) {
-  return await nodePost()({
+  const qs = require('qs');
+  const res = await axios({
+    method: 'POST',
     url: 'https://docs.qq.com/openapi/drive/v2/files',
     headers: {
       'Access-Token': accessToken,
@@ -19,12 +21,13 @@ export async function createTencentDoc({
       'Open-Id': openId,
       'Content-Type': 'application/x-www-form-urlencoded',
     },
-    form: {
+    data: qs.stringify({
       type,
       title,
       folderId,
-    },
+    }),
   });
+  return res.data;
 }
 
 
@@ -37,7 +40,8 @@ export async function updateTencentSheet({
   range,
   values,
 }) {
-  const result = await nodePut()({
+  const result = await axios({
+    method: 'PUT',
     url: `https://docs.qq.com/openapi/sheetbook/v2/${bookId}/values/${range}`,
     headers: {
       'Access-Token': accessToken,
@@ -45,9 +49,9 @@ export async function updateTencentSheet({
       'Open-Id': openId,
       'Content-Type': 'application/json',
     },
-    json: { values },
+    data: { values },
   });
-  return await result?.body;
+  return result.data;
 }
 
 
@@ -59,7 +63,8 @@ export async function convertTencentFileId({
   type,
   value,
 }) {
-  const result = await nodeGet()({
+  const result = await axios({
+    method: 'GET',
     url: `https://docs.qq.com/openapi/drive/v2/util/converter?type=${type}&value=${value}`,
     headers: {
       'Access-Token': accessToken,
@@ -67,7 +72,7 @@ export async function convertTencentFileId({
       'Open-Id': openId,
     },
   });
-  return parseResponse(result);
+  return result.data;
 }
 
 
@@ -78,20 +83,29 @@ export async function uploadTencentDocImage({
 
   image,
 }) {
-  const result = await nodePost()({
+  const FormData = require('form-data');
+  const formData = new FormData();
+  formData.append('image', require('fs').createReadStream(image));
+
+  // eslint-disable-next-line max-len
+  const len = await new Promise((resolve, reject) => formData.getLength((err, length) => (err ? reject(err) : resolve(length))));
+
+  const result = await axios({
+    method: 'POST',
     url: 'https://docs.qq.com/openapi/resources/v2/images',
+
     headers: {
       'Access-Token': accessToken,
       'Client-Id': clientId,
       'Open-Id': openId,
       'Content-Type': 'application/json',
+      'Content-Length': len as any,
+      ...formData.getHeaders(),
     },
-    formData: {
-      image: require('fs').createReadStream(image),
-    },
+    data: formData,
   });
 
-  return parseResponse(result);
+  return result.data;
 }
 
 export async function updateTencentSheetImage({
@@ -102,7 +116,8 @@ export async function updateTencentSheetImage({
   bookId,
   insertImages,
 }) {
-  const result = await nodePost()({
+  const result = await axios({
+    method: 'POST',
     url: `https://docs.qq.com/openapi/sheetbook/v2/${bookId}:batchUpdate`,
     headers: {
       'Access-Token': accessToken,
@@ -110,12 +125,12 @@ export async function updateTencentSheetImage({
       'Open-Id': openId,
       'Content-Type': 'application/json',
     },
-    json: {
+    data: {
       bookID: bookId,
       insertImages,
     },
   });
-  return await result?.body;
+  return result.data;
 }
 
 export async function exportTencentDoc({
@@ -126,7 +141,9 @@ export async function exportTencentDoc({
   fileId,
   exportType,
 }) {
-  const result = await nodePost()({
+  const qs = require('qs');
+  const result = await axios({
+    method: 'POST',
     url: `https://docs.qq.com/openapi/drive/v2/files/${fileId}/async-export`,
     headers: {
       'Access-Token': accessToken,
@@ -134,11 +151,11 @@ export async function exportTencentDoc({
       'Open-Id': openId,
       'Content-Type': 'application/x-www-form-urlencoded',
     },
-    form: {
+    data: qs.stringify({
       exportType,
-    },
+    }),
   });
-  return parseResponse(result);
+  return result.data;
 }
 
 export async function checkExportTencentDocProgress({
@@ -149,7 +166,8 @@ export async function checkExportTencentDocProgress({
   fileId,
   operationId,
 }) {
-  const result = await nodeGet()({
+  const result = await axios({
+    method: 'GET',
     url: `https://docs.qq.com/openapi/drive/v2/files/${fileId}/export-progress?operationID=${operationId}`,
     headers: {
       'Access-Token': accessToken,
@@ -158,13 +176,6 @@ export async function checkExportTencentDocProgress({
       'Content-Type': 'application/json',
     },
   });
-  return parseResponse(result);
+  return result.data;
 }
 
-async function parseResponse(result) {
-  let res = {};
-  try {
-    res = JSON.parse(result?.body);
-  } catch (err) {}
-  return await res;
-}
