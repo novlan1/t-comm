@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.2.43](https://github.com/novlan1/t-comm/compare/v0.2.42...v0.2.43) (2023-01-08)
+
+
+### Features
+
+* 优化脚本 ([6aa9963](https://github.com/novlan1/t-comm/commit/6aa9963f07a63fcd52cdb78d10f8fd1ed508d7a0))
+
+
+
 ## [0.2.42](https://github.com/novlan1/t-comm/compare/v0.2.41...v0.2.42) (2023-01-08)
 
 
