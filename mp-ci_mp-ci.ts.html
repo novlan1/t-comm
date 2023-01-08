@@ -307,6 +307,8 @@ export class MpCI {
         this.tryTimesMap.UPLOAD += 1;
 
         await this.tryUpload();
+      } else {
+        throw new Error(err);
       }
     }
   }
@@ -450,7 +452,26 @@ export class MpCI {
   }
 
   async uploadAndPreview() {
-    await Promise.all([this.upload(), this.preview()]);
+    try {
+      await Promise.all([this.upload(), this.preview()]);
+    } catch (err) {
+      console.log('[CI] err');
+
+      const { webhookUrl } = this;
+      let { chatId } = this;
+      if (!webhookUrl) {
+        return;
+      }
+      if (!chatId) {
+        chatId = undefined;
+      }
+
+      sendWxRobotMarkdown({
+        webhookUrl,
+        content: (err as any).toString(),
+        chatId,
+      });
+    }
   }
 
   async uploadFiles(files) {
@@ -479,7 +500,7 @@ export class MpCI {
 
 <br class="clear">
 
-<footer>Documentation generated on 2022-12-26 07:39:19 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2023-01-08 09:48:58 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>
