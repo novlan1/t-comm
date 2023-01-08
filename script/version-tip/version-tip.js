@@ -15,7 +15,6 @@ function main() {
   batchSendWxRobotMarkdown({
     content,
     chatId: 'ALL',
-    // webhookUrl: 'a07e58be-696b-482a-a3c7-e2e0ff41c56c', // t-comm更新robot
     webhookUrl: 'T_COMM_ROBOT___a07e58be-696b-482a-a3c7-e2e0ff41c56c', // t-comm更新robot
   });
 }

@@ -44,9 +44,9 @@
     "lint:json": "eslint --ext .js,.ts,.tsx,.jsx,.vue . -f json-with-metadata -o ./coverage/lint-results-meta.json",
     "changelog": "gulp changelog",
     "version": "yarn changelog && git add CHANGELOG.md",
-    "version:tip": "node script/version-tip",
+    "version:tip": "node script/version-tip/version-tip",
     "release": "yarn test && yarn build && np --no-cleanup --yolo --any-branch && npm run version:tip",
-    "npm:token": "node script/npm-token.js",
+    "npm:token": "node script/npm-token/npm-token",
     "prepare": "husky install"
   },
   "devDependencies": {
