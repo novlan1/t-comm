@@ -133,7 +133,7 @@ export async function updateTencentSheetImage({
   return result.data;
 }
 
-export async function exportTencentDoc({
+export async function asyncExportTencentDoc({
   accessToken,
   clientId,
   openId,

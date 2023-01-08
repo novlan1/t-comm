@@ -9,8 +9,8 @@ const {
   OPEN_ID,
 } = require('./config');
 
-const FILE_ID = 'DSE1rUXlHSkxRQk9y';
-const TYPE = 2;
+const FILE_ID = '300000000$HNFkydcIfNCF';
+const TYPE = 1;
 
 function main() {
   convertTencentFileId({
