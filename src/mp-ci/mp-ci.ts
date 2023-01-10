@@ -262,7 +262,7 @@ export class MpCI {
 
         await this.tryUpload();
       } else {
-        throw new Error(err);
+        throw new Error(err as any);
       }
     }
   }
