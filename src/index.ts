@@ -5,6 +5,7 @@ export * from './cookie';
 export * from './cos';
 export * from './css';
 export * from './date';
+export * from './e2e-test';
 export * from './env';
 export * from './eslint-parser';
 export * from './git';
