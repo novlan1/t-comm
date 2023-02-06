@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.2.45](https://github.com/novlan1/t-comm/compare/v0.2.44...v0.2.45) (2023-02-06)
+
+
+### Features
+
+* 增加e2e一些工具方法 ([9fcd77d](https://github.com/novlan1/t-comm/commit/9fcd77db16dfe49e699c3588bbbbf139c71d4e59))
+
+
+
 ## [0.2.44](https://github.com/novlan1/t-comm/compare/v0.2.43...v0.2.44) (2023-02-06)
 
 
