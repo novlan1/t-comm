@@ -1,4 +1,10 @@
-export { initBrowser, getNewPage, DEVICE_TYPE } from './page';
+export {
+  initBrowser,
+  getNewPage,
+  openOrFindPage,
+  DEVICE_TYPE,
+} from './page';
+
 export {
   waitEle,
   clickBtn,
@@ -6,4 +12,5 @@ export {
   justWait,
   closeBlankPage,
   getRect,
+  findListItemAndClick,
 } from './element';

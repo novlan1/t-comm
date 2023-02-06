@@ -54,3 +54,28 @@ export async function getNewPage(browser, device: DEVICE_TYPE) {
 
   return page;
 }
+
+
+const openedPageList = new Set();
+
+export async function openOrFindPage(browser, href, device) {
+  let page;
+
+  if (openedPageList.has(href)) {
+    try {
+      const target = await browser.waitForTarget(t => t.url().includes(href), {
+        timeout: 2000,
+      });
+      page = await target.page();
+
+      return page;
+    } catch (err) {}
+  }
+
+  page = await getNewPage(browser, device);
+  await page.goto(href);
+  openedPageList.add(href);
+
+  return page;
+}
+

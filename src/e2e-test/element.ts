@@ -49,3 +49,30 @@ export async function getRect(page, element) {
   return await page.evaluate(ele => ele.getBoundingClientRect(), element);
 }
 
+async function findListItem({
+  page,
+  ele,
+  innerText,
+  cb,
+}) {
+  await page.$$eval(ele, async (buttons) => {
+    const btn = Array.from(buttons).find((item: any) => item.innerText === innerText);
+    if (btn && typeof cb === 'function') {
+      await cb(btn);
+    }
+    return btn;
+  });
+}
+
+export async function findListItemAndClick({
+  page,
+  ele,
+  innerText,
+}) {
+  await findListItem({
+    page,
+    ele,
+    innerText,
+    cb: btn => btn.click(),
+  });
+}
