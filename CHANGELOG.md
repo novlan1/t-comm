@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.3.2](https://github.com/novlan1/t-comm/compare/v0.3.1...v0.3.2) (2023-02-06)
+
+
+### Features
+
+* **auto-test:** 优化getRect ([c12e3d6](https://github.com/novlan1/t-comm/commit/c12e3d60211eeee11cbb3132143c2aa53c1d6340))
+
+
+
 ## [0.3.1](https://github.com/novlan1/t-comm/compare/v0.3.0...v0.3.1) (2023-02-06)
 
 
