@@ -1,5 +1,15 @@
 # 工具库更新日志
 
+## [0.2.44](https://github.com/novlan1/t-comm/compare/v0.2.43...v0.2.44) (2023-02-06)
+
+
+### Features
+
+* 优化script ([638d03e](https://github.com/novlan1/t-comm/commit/638d03e668415ec97c2e57e9e0e96362ccf0b473))
+* 增加e2e-test ([002fc45](https://github.com/novlan1/t-comm/commit/002fc45c83687ae8606d91eed0316f75fdbe756e))
+
+
+
 ## [0.2.43](https://github.com/novlan1/t-comm/compare/v0.2.42...v0.2.43) (2023-01-08)
 
 
