@@ -46,7 +46,10 @@ export async function getRect(page, element) {
   if (typeof element === 'string') {
     element = await waitEle(element, page);
   }
-  return await page.evaluate(ele => ele.getBoundingClientRect(), element);
+  return await page.evaluate((ele) => {
+    const { top, left, bottom, right, x, y, width, height } = ele.getBoundingClientRect();
+    return { top, left, bottom, right, x, y, width, height };
+  }, element);
 }
 
 async function findListItem({
