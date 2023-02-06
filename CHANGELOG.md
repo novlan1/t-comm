@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+# [0.3.0](https://github.com/novlan1/t-comm/compare/v0.2.45...v0.3.0) (2023-02-06)
+
+
+### Bug Fixes
+
+* 修复getQueryObj ([5b5cca1](https://github.com/novlan1/t-comm/commit/5b5cca1fa1974d8282424ed7fd70401f2235454e))
+
+
+
 ## [0.2.45](https://github.com/novlan1/t-comm/compare/v0.2.44...v0.2.45) (2023-02-06)
 
 
