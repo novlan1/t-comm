@@ -19,7 +19,7 @@
 export function getQueryObj(url: string) {
   const query = {};
 
-  const qs = url.slice(url.indexOf('?') > -1 ? url.indexOf('?') + 1 : url.length);
+  const qs = url.slice(url.indexOf('?') > -1 ? url.indexOf('?') + 1 : 0);
   let kvs;
 
   const qsList = qs.split('&');

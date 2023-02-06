@@ -8,6 +8,13 @@ describe('getQueryObj', () => {
       feel: 'cold',
       from: 'china',
     });
+
+    expect(getQueryObj('name=mike&age=18&feel=cold&from=china')).toEqual({
+      name: 'mike',
+      age: '18',
+      feel: 'cold',
+      from: 'china',
+    });
   });
 });
 
