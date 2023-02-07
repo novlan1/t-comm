@@ -14,3 +14,8 @@ export {
   getRect,
   findListItemAndClick,
 } from './element';
+
+export {
+  dragElement,
+  DRAG_TYPE,
+} from './drag';

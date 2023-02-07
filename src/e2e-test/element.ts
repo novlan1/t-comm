@@ -1,4 +1,6 @@
-export async function waitEle(ele, page, timeout = 2000) {
+const DEFAULT_TIMEOUT = 6000;
+
+export async function waitEle(ele, page, timeout = DEFAULT_TIMEOUT) {
   let dom;
   try {
     dom = await page.waitForSelector(ele, {
@@ -17,9 +19,10 @@ export async function clickBtn(btn) {
   return false;
 }
 
-export async function findAndClick(ele, page, timeout = 2000) {
+export async function findAndClick(ele, page, timeout = DEFAULT_TIMEOUT) {
   const btn = await waitEle(ele, page, timeout);
   await clickBtn(btn);
+  return btn;
 }
 
 
@@ -32,7 +35,7 @@ export async function closeBlankPage(browser) {
   const BLANK_PAGE_HREF = 'about:blank';
 
   const target = await browser.waitForTarget(t => t.url() === BLANK_PAGE_HREF, {
-    timeout: 2000,
+    timeout: DEFAULT_TIMEOUT,
   });
   if (!target) return;
 
@@ -52,30 +55,17 @@ export async function getRect(page, element) {
   }, element);
 }
 
-async function findListItem({
-  page,
-  ele,
-  innerText,
-  cb,
-}) {
-  await page.$$eval(ele, async (buttons) => {
-    const btn = Array.from(buttons).find((item: any) => item.innerText === innerText);
-    if (btn && typeof cb === 'function') {
-      await cb(btn);
-    }
-    return btn;
-  });
-}
 
 export async function findListItemAndClick({
   page,
   ele,
   innerText,
 }) {
-  await findListItem({
-    page,
-    ele,
-    innerText,
-    cb: btn => btn.click(),
-  });
+  await page.evaluate(async ({ ele, innerText }) => {
+    const buttons = document.querySelectorAll(ele);
+    const btn = Array.from(buttons).find(item => item.innerText === innerText);
+    if (btn) {
+      await btn.click();
+    }
+  }, { ele, innerText });
 }
