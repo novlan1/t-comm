@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.3.3](https://github.com/novlan1/t-comm/compare/v0.3.2...v0.3.3) (2023-02-07)
+
+
+### Features
+
+* **e2e:** 增加拖动元素 ([3dacff6](https://github.com/novlan1/t-comm/commit/3dacff60b9485281f846660a8015a28c1a101847))
+
+
+
 ## [0.3.2](https://github.com/novlan1/t-comm/compare/v0.3.1...v0.3.2) (2023-02-06)
 
 
