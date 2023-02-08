@@ -1,6 +1,8 @@
 import { sendWxRobotBase64Img } from './send-img';
 import { sendWxRobotMsg, sendWxRobotMarkdown } from './base';
 
+const SEND_TO_ALL = 'ALL';
+
 /**
  * 根据chatId批量发送机器人消息
  * - 如果传入的chatId不是数组，会转为数组
@@ -19,12 +21,18 @@ function batchSendRobotByChatId(sendFn, chatId, args = {}) {
     chatId = [chatId];
   }
 
-  for (const id of chatId) {
-    const chatId = id === 'ALL' ? undefined : id;
+  if (chatId.indexOf(SEND_TO_ALL) > -1) {
     sendFn({
       ...(args || {}),
-      chatId,
+      chatId: undefined,
     });
+  } else {
+    for (const id of chatId) {
+      sendFn({
+        ...(args || {}),
+        chatId: id,
+      });
+    }
   }
 }
 

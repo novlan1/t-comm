@@ -61,11 +61,11 @@ export async function findListItemAndClick({
   ele,
   innerText,
 }) {
-  await page.evaluate(async ({ ele, innerText }) => {
+  await page.evaluate(({ ele, innerText }) => {
     const buttons = document.querySelectorAll(ele);
     const btn = Array.from(buttons).find(item => item.innerText === innerText);
     if (btn) {
-      await btn.click();
+      btn.click();
     }
   }, { ele, innerText });
 }
