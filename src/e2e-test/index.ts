@@ -12,6 +12,7 @@ export {
   justWait,
   closeBlankPage,
   getRect,
+  getInnerText,
   findListItemAndClick,
 } from './element';
 

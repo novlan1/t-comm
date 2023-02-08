@@ -55,6 +55,14 @@ export async function getRect(page, element) {
   }, element);
 }
 
+export async function getInnerText(element, page) {
+  const ele = await waitEle(element, page);
+  if (!ele) return null;
+
+  const text = await page.evaluate(ele => ele.innerText, ele);
+  return text;
+}
+
 
 export async function findListItemAndClick({
   page,
