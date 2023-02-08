@@ -65,7 +65,7 @@
 export function getQueryObj(url: string) {
   const query = {};
 
-  const qs = url.slice(url.indexOf('?') &gt; -1 ? url.indexOf('?') + 1 : url.length);
+  const qs = url.slice(url.indexOf('?') &gt; -1 ? url.indexOf('?') + 1 : 0);
   let kvs;
 
   const qsList = qs.split('&amp;');
@@ -174,7 +174,7 @@ export function decodeUrlParam(str: string): object {
 
 <br class="clear">
 
-<footer>Documentation generated on 2023-02-06 11:25:56 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2023-02-08 03:19:38 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>

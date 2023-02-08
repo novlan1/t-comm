@@ -47,6 +47,8 @@
             <pre class="prettyprint source linenums"><code>import { sendWxRobotBase64Img } from './send-img';
 import { sendWxRobotMsg, sendWxRobotMarkdown } from './base';
 
+const SEND_TO_ALL = 'ALL';
+
 /**
  * 根据chatId批量发送机器人消息
  * - 如果传入的chatId不是数组，会转为数组
@@ -65,12 +67,18 @@ function batchSendRobotByChatId(sendFn, chatId, args = {}) {
     chatId = [chatId];
   }
 
-  for (const id of chatId) {
-    const chatId = id === 'ALL' ? undefined : id;
+  if (chatId.indexOf(SEND_TO_ALL) &gt; -1) {
     sendFn({
       ...(args || {}),
-      chatId,
+      chatId: undefined,
     });
+  } else {
+    for (const id of chatId) {
+      sendFn({
+        ...(args || {}),
+        chatId: id,
+      });
+    }
   }
 }
 
@@ -149,7 +157,7 @@ export function batchSendWxRobotMarkdown({
 
 <br class="clear">
 
-<footer>Documentation generated on 2023-02-06 11:25:56 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2023-02-08 03:19:38 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>
