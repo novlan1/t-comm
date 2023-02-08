@@ -1,9 +1,9 @@
 const DEFAULT_TIMEOUT = 6000;
 
-export async function waitEle(ele, page, timeout = DEFAULT_TIMEOUT) {
+export async function waitEle(element, page, timeout = DEFAULT_TIMEOUT) {
   let dom;
   try {
-    dom = await page.waitForSelector(ele, {
+    dom = await page.waitForSelector(element, {
       timeout,
     });
   } catch (e) {
@@ -19,8 +19,8 @@ export async function clickBtn(btn) {
   return false;
 }
 
-export async function findAndClick(ele, page, timeout = DEFAULT_TIMEOUT) {
-  const btn = await waitEle(ele, page, timeout);
+export async function findAndClick(element, page, timeout = DEFAULT_TIMEOUT) {
+  const btn = await waitEle(element, page, timeout);
   await clickBtn(btn);
   return btn;
 }
@@ -45,7 +45,7 @@ export async function closeBlankPage(browser) {
   page.close();
 }
 
-export async function getRect(page, element) {
+export async function getRect(element, page) {
   if (typeof element === 'string') {
     element = await waitEle(element, page);
   }
@@ -66,14 +66,14 @@ export async function getInnerText(element, page) {
 
 export async function findListItemAndClick({
   page,
-  ele,
+  element,
   innerText,
 }) {
-  await page.evaluate(({ ele, innerText }) => {
-    const buttons = document.querySelectorAll(ele);
+  await page.evaluate(({ element, innerText }) => {
+    const buttons = document.querySelectorAll(element);
     const btn = Array.from(buttons).find(item => item.innerText === innerText);
     if (btn) {
       btn.click();
     }
-  }, { ele, innerText });
+  }, { element, innerText });
 }
