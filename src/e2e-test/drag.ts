@@ -23,8 +23,8 @@ export async function dragElement({
   reverse?: boolean,
   stepUnit?: number
 }) {
-  const sourceRect = await getRect(page, source);
-  const targetRect = await getRect(page, target);
+  const sourceRect = await getRect(source, page);
+  const targetRect = await getRect(target, page);
 
   const start = (sourceRect.top + sourceRect.bottom) / 2;
   let end = (targetRect.top + targetRect.bottom) / 2;
