@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.3.4](https://github.com/novlan1/t-comm/compare/v0.3.3...v0.3.4) (2023-02-08)
+
+
+### Features
+
+* 优化批量发送机器人消息 ([4f65e35](https://github.com/novlan1/t-comm/commit/4f65e35581d9605b7435c7b2aad7fb54ee2e1641))
+
+
+
 ## [0.3.3](https://github.com/novlan1/t-comm/compare/v0.3.2...v0.3.3) (2023-02-07)
 
 
