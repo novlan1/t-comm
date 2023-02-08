@@ -1,5 +1,20 @@
 # 工具库更新日志
 
+## [0.3.5](https://github.com/novlan1/t-comm/compare/v0.3.4...v0.3.5) (2023-02-08)
+
+
+### Bug Fixes
+
+* **e2e:** 修复自动化测试getRect ([b220fe7](https://github.com/novlan1/t-comm/commit/b220fe71a9adc0d32bf1cf1d51e4a333b073b255))
+
+
+### Features
+
+* **e2e:** 优化一些语法 ([547f657](https://github.com/novlan1/t-comm/commit/547f65724c3bd24bf40110b06fabe384e7d408d6))
+* **e2e:** 增加getInnerText ([150ad8e](https://github.com/novlan1/t-comm/commit/150ad8e6bad79cc23b661830dc485f6a3b2327ed))
+
+
+
 ## [0.3.4](https://github.com/novlan1/t-comm/compare/v0.3.3...v0.3.4) (2023-02-08)
 
 
