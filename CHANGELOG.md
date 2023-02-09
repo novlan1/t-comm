@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.3.6](https://github.com/novlan1/t-comm/compare/v0.3.5...v0.3.6) (2023-02-09)
+
+
+### Features
+
+* 优化e2e导出 ([169ec0c](https://github.com/novlan1/t-comm/commit/169ec0ccb339e4ccffc96b6fdd4ba23d970a99cb))
+
+
+
 ## [0.3.5](https://github.com/novlan1/t-comm/compare/v0.3.4...v0.3.5) (2023-02-08)
 
 
