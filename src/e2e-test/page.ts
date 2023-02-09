@@ -79,3 +79,16 @@ export async function openOrFindPage(browser, href, device) {
   return page;
 }
 
+export async function setUserAgent(useragent, page) {
+  await page.setUserAgent(useragent);
+  await page.evaluate(() => location.reload());
+  await page.waitForNavigation();
+}
+
+
+export async function setSessionStorage(key, value, page) {
+  await page.evaluate(({ key, value }) => {
+    sessionStorage.setItem(key, value);
+  }, { key, value });
+}
+

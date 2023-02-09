@@ -78,3 +78,7 @@ export async function findListItemAndClick({
   }, { element, innerText });
 }
 
+export async function getHref(page) {
+  return page.evaluate(() => location.href);
+}
+
