@@ -57,3 +57,4 @@ export async function dragElement({
   }
   await page.mouse.up();
 }
+

@@ -1,22 +1,13 @@
-export {
-  initBrowser,
-  getNewPage,
-  openOrFindPage,
-  DEVICE_TYPE,
-} from './page';
+import * as page from './page';
+import * as element from './element';
+import * as drag from './drag';
+import * as scroll from './scroll';
 
-export {
-  waitEle,
-  clickBtn,
-  findAndClick,
-  justWait,
-  closeBlankPage,
-  getRect,
-  getInnerText,
-  findListItemAndClick,
-} from './element';
 
-export {
-  dragElement,
-  DRAG_TYPE,
-} from './drag';
+export const e2e = {
+  ...page,
+  ...element,
+  ...drag,
+  ...scroll,
+};
+
