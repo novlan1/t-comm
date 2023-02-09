@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.3.7](https://github.com/novlan1/t-comm/compare/v0.3.6...v0.3.7) (2023-02-09)
+
+
+### Features
+
+* 优化e2e ([6f99f1f](https://github.com/novlan1/t-comm/commit/6f99f1f481a45b06608a1e924c8fc88e7e13d244))
+
+
+
 ## [0.3.6](https://github.com/novlan1/t-comm/compare/v0.3.5...v0.3.6) (2023-02-09)
 
 
