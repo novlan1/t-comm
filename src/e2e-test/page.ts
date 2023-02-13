@@ -92,3 +92,8 @@ export async function setSessionStorage(key, value, page) {
   }, { key, value });
 }
 
+export async function setRoute(page, route = '/') {
+  if (!page) return;
+  // @ts-ignore
+  await page.evaluate(route => window.app.$router.push(route), route);
+}

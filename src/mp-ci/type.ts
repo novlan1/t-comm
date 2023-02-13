@@ -1,4 +1,5 @@
 export type OptionsType = {
+  ci: any;
   appId: string
   appName?: string
   robotNumber: number,

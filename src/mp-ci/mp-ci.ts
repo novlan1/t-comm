@@ -150,14 +150,7 @@ export class MpCI {
   constructor(options: OptionsType) {
     const path = require('path');
     const fs = require('fs');
-    let ci;
-    try {
-      ci = require('miniprogram-ci');
-    } catch (err) {
-      console.log('err', err);
-    }
-    this.ciLib = ci;
-
+    this.ciLib = options.ci;
     this.options = options;
     this.projectCI = null;
     this.previewResult = {};

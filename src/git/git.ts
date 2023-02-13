@@ -44,10 +44,9 @@ export function getGitCommitInfo(root?: string) {
     branch: getGitCurBranch(root),
   });
 
-
+  const message = (info.message.split(':')[1] || info.message.split('：')[1] || '').trim();
   const res = Object.assign({}, info, {
-    message:
-    (info.message.split(':')[1] || info.message.split('：')[1] || '').trim(),
+    message: message || info.message,
   });
   return res;
 }
