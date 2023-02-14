@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head>
     
     <meta charset="utf-8">
-    <title>mp-ci/helper.ts - Documentation</title>
+    <title>util/pages-statistics.ts - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">mp-ci/helper.ts</h1>
+    <h1 class="page-title">util/pages-statistics.ts</h1>
     
 
     
@@ -45,46 +45,58 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/* eslint-disable @typescript-eslint/no-require-imports */
-import { getGitCommitInfo } from '../git/git';
-import { BUNDLE_NAME_MAP } from './config';
-import { formatBite } from '../util/format-bite';
 
-
-export function getBundleBuildDesc({
-  root,
-  env = 'test',
-}) {
-  const commitInfo = getGitCommitInfo(root);
-  const buildDesc = `环境: ${env || ''}, 分支: ${commitInfo.branch}，最后提交: ${commitInfo.author} - ${commitInfo.message}`;
-  return buildDesc;
+/**
+ * 统计页面个数
+ * @example
+ * statisticsPages('dist/build/mp-weixin/app.json')
+ */
+export function statisticsPages(pagesJsonPath) {
+  const path = require('path');
+  const pagesJson = require(path.resolve(process.cwd(), pagesJsonPath));
+  const { pages = [], subPackages = [] } = pagesJson;
+  const res = pages.length + subPackages.reduce((acc, item) =&gt; acc + item.pages.length, 0);
+  console.log('[statisticsPages]', res);
+  return res;
 }
 
-export function getBundleVersion(root) {
-  const path = require('path');
-  const pkgFile = path.resolve(root, './package.json');
-  const pkg = require(pkgFile) || {};
-  return pkg.version;
+
+function traverse(cb, path) {
+  const fs = require('fs');
+  let files = [];
+  files = fs.readdirSync(path);
+
+  files.forEach((file) =&gt; {
+    const curPath = `${path}/${file}`;
+    if (fs.statSync(curPath).isDirectory()) {
+      traverse(cb, curPath);
+    } else {
+      cb(curPath);
+    }
+  });
 }
 
 /**
- * 解析上传结果
+ * 统计组件个数
+ * @example
+ * statisticsComponent('dist/build/mp-weixin');
  */
-export function parseUploadResult(result) {
-  const {
-    subPackageInfo,
-  } = result;
-  subPackageInfo.reverse();
-  const list = subPackageInfo.sort((a, b) =&gt; {
-    const keys = Object.keys(BUNDLE_NAME_MAP);
-    if (keys.indexOf(a) &gt; -1 || keys.indexOf(b) &gt; -1) {
-      return keys.indexOf(b) - keys.indexOf(a);
-    }
-    return b.size - a.size;
-  })
-    .map(pkg =&gt; `- ${BUNDLE_NAME_MAP[pkg.name] || pkg.name}: ${formatBite(pkg.size)}`);
-  list.unshift('PACKAGE SIZE INFO: ');
-  return list;
+export function statisticsComponent(dir) {
+  const fs = require('fs');
+  const array: Array&lt;any&gt; = [];
+
+  if (fs.existsSync(dir)) {
+    traverse((file) =&gt; {
+      if (file.endsWith('.wxml')) {
+        array.push(file);
+      }
+    }, dir);
+  }
+  console.log('[statisticsComponent]', array.length);
+  return array.length;
 }
+
+
 </code></pre>
         </article>
     </section>
