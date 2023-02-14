@@ -7,5 +7,6 @@ export { rmFirstAndLastSlash, getGitCodeLink, getGitMRLink } from './git-link';
 export { execCommand } from './node-command';
 export { nodeGet, nodePost, nodePut } from './node-request';
 export { writeEnvTokenToNpmRC } from './npm-token';
+export { statisticsComponent, statisticsPages } from './pages-statistics';
 export { getRtxInfo } from './rtx';
 export { sleep } from './sleep';
