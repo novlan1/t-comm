@@ -365,7 +365,7 @@ export class MpCI {
    * 发送机器人消息
    */
   async sendRobotMsg(hasImg = true) {
-    const { robotNumber, webhookUrl, env, commitInfo, version, previewResult } = this;
+    const { robotNumber, webhookUrl, env, commitInfo, version, previewResult, appName } = this;
     let { chatId } = this;
     if (!webhookUrl) {
       return;
@@ -389,7 +389,7 @@ export class MpCI {
       descList.push(`[预览图片](${this.getCOSFilePath()})`);
     }
 
-    const template = `>【构建成功】${descList.join('，')}`;
+    const template = `>【${appName || ''}微信小程序构建成功】${descList.join('，')}`;
 
     sendWxRobotMarkdown({
       webhookUrl,
