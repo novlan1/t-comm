@@ -1,5 +1,15 @@
 # 工具库更新日志
 
+## [0.3.12](https://github.com/novlan1/t-comm/compare/v0.3.11...v0.3.12) (2023-02-14)
+
+
+### Features
+
+* **mp-ci:** 删除无用的部分 ([e378709](https://github.com/novlan1/t-comm/commit/e378709a74f4e5da2f895d7388690b501922a9f1))
+* **page-statistics:** 增加统计 ([d77a9dd](https://github.com/novlan1/t-comm/commit/d77a9dd86341d428dbf7186203e6f35a0e8e326a))
+
+
+
 ## [0.3.11](https://github.com/novlan1/t-comm/compare/v0.3.10...v0.3.11) (2023-02-14)
 
 
