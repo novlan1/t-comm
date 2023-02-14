@@ -150,7 +150,14 @@ export class MpCI {
   constructor(options: OptionsType) {
     const path = require('path');
     const fs = require('fs');
-    this.ciLib = options.ci;
+    let ci;
+    try {
+      ci = require('miniprogram-ci');
+    } catch (err) {
+      console.log('err', err);
+    }
+    this.ciLib = ci;
+
     this.options = options;
     this.projectCI = null;
     this.previewResult = {};
@@ -402,7 +409,7 @@ export class MpCI {
     try {
       await Promise.all([this.upload(), this.preview()]);
     } catch (err) {
-      console.log('[CI] err');
+      console.log('[CI] err', err);
 
       const { webhookUrl } = this;
       let { chatId } = this;
