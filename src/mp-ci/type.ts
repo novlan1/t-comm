@@ -16,4 +16,6 @@ export type OptionsType = {
   webhookUrl?: string,
   chatId?: string,
   cosInfo?: object,
+
+  errorLink?: string
 };

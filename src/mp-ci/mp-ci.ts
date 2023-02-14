@@ -80,6 +80,7 @@ export class MpCI {
   buildTime?: string;
   version: string;
   previewResult: Object;
+  errorLink?: string;
 
   tryTimesMap = {
     UPLOAD: 1,
@@ -177,6 +178,7 @@ export class MpCI {
       webhookUrl,
       chatId,
       cosInfo,
+      errorLink,
     } = options;
 
     this.appId = appId;
@@ -201,6 +203,7 @@ export class MpCI {
     this.projectPath = projectPath || '';
     this.privateKeyPath = privateKeyPath || '';
     this.cosInfo = cosInfo || {};
+    this.errorLink = errorLink || '';
 
     if (!this.projectPath) {
       this.projectPath = path.resolve(this.root, 'dist/build/mp-weixin');
@@ -411,7 +414,7 @@ export class MpCI {
     } catch (err) {
       console.log('[CI] err', err);
 
-      const { webhookUrl } = this;
+      const { webhookUrl, errorLink } = this;
       let { chatId } = this;
       if (!webhookUrl) {
         return;
@@ -420,9 +423,11 @@ export class MpCI {
         chatId = undefined;
       }
 
+      const errorContent = `${errorLink ? `[构建失败](${errorLink})` : ''}(err as any).toString()`;
+
       sendWxRobotMarkdown({
         webhookUrl,
-        content: (err as any).toString(),
+        content: errorContent,
         chatId,
       });
     }
