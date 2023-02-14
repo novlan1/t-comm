@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head>
     
     <meta charset="utf-8">
-    <title>base/string/to-unicode.ts - Documentation</title>
+    <title>mp-ci/helper.ts - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">base/string/to-unicode.ts</h1>
+    <h1 class="page-title">mp-ci/helper.ts</h1>
     
 
     
@@ -44,53 +44,46 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * 获取字符串指定下标的 unicode
- *
- * @param {string} str - 字符串
- * @param {number} index - unicode 的下标
- * @returns {string} data
- *
- * @example
- *
- * unicodeAt('ABC', 1)
- *
- * // -&gt; '\\u0042'
- *
- */
-export function toUnicodeAt(str: string, index = 0) {
-  let code = str.charCodeAt(index).toString(16)
-    .toUpperCase();
-  while (code.length &lt; 4) {
-    code = `0${code}`;
-  }
-  return `\\u${code}`;
+            <pre class="prettyprint source linenums"><code>/* eslint-disable @typescript-eslint/no-require-imports */
+import { getGitCommitInfo } from '../git/git';
+import { BUNDLE_NAME_MAP } from './config';
+import { formatBite } from '../util/format-bite';
+
+
+export function getBundleBuildDesc({
+  root,
+  env = 'test',
+}) {
+  const commitInfo = getGitCommitInfo(root);
+  const buildDesc = `环境: ${env || ''}, 分支: ${commitInfo.branch}，最后提交: ${commitInfo.author} - ${commitInfo.message}`;
+  return buildDesc;
+}
+
+export function getBundleVersion(root) {
+  const path = require('path');
+  const pkgFile = path.resolve(root, './package.json');
+  const pkg = require(pkgFile) || {};
+  return pkg.version;
 }
 
 /**
- * 获取字符串的 unicode
- *
- * @param {string} str - 字符串
- * @returns {string} data
- *
- * @example
- *
- * toUnicode('ABC')
- *
- * // -&gt; '\\u0041\\u0042\\u0043'
- *
- *
+ * 解析上传结果
  */
-export function toUnicode(str: string) {
-  if (!str) {
-    return '';
-  }
-
-  return Array.prototype.reduce.call(
-    str,
-    (pre, cur, index) =&gt; `${pre}${toUnicodeAt(str, index)}`,
-    '',
-  );
+export function parseUploadResult(result) {
+  const {
+    subPackageInfo,
+  } = result;
+  subPackageInfo.reverse();
+  const list = subPackageInfo.sort((a, b) =&gt; {
+    const keys = Object.keys(BUNDLE_NAME_MAP);
+    if (keys.indexOf(a) &gt; -1 || keys.indexOf(b) &gt; -1) {
+      return keys.indexOf(b) - keys.indexOf(a);
+    }
+    return b.size - a.size;
+  })
+    .map(pkg =&gt; `- ${BUNDLE_NAME_MAP[pkg.name] || pkg.name}: ${formatBite(pkg.size)}`);
+  list.unshift('PACKAGE SIZE INFO: ');
+  return list;
 }
 </code></pre>
         </article>
@@ -105,7 +98,7 @@ export function toUnicode(str: string) {
 
 <br class="clear">
 
-<footer>Documentation generated on 2023-02-14 06:39:30 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2023-02-14 06:39:31 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>
