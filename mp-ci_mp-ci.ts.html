@@ -196,7 +196,14 @@ export class MpCI {
   constructor(options: OptionsType) {
     const path = require('path');
     const fs = require('fs');
-    this.ciLib = options.ci;
+    let ci;
+    try {
+      ci = require('miniprogram-ci');
+    } catch (err) {
+      console.log('err', err);
+    }
+    this.ciLib = ci;
+
     this.options = options;
     this.projectCI = null;
     this.previewResult = {};
@@ -411,7 +418,7 @@ export class MpCI {
    * 发送机器人消息
    */
   async sendRobotMsg(hasImg = true) {
-    const { robotNumber, webhookUrl, env, commitInfo, version, previewResult } = this;
+    const { robotNumber, webhookUrl, env, commitInfo, version, previewResult, appName } = this;
     let { chatId } = this;
     if (!webhookUrl) {
       return;
@@ -435,7 +442,7 @@ export class MpCI {
       descList.push(`[预览图片](${this.getCOSFilePath()})`);
     }
 
-    const template = `&gt;【构建成功】${descList.join('，')}`;
+    const template = `&gt;【${appName || ''}微信小程序构建成功】${descList.join('，')}`;
 
     sendWxRobotMarkdown({
       webhookUrl,
@@ -448,7 +455,7 @@ export class MpCI {
     try {
       await Promise.all([this.upload(), this.preview()]);
     } catch (err) {
-      console.log('[CI] err');
+      console.log('[CI] err', err);
 
       const { webhookUrl } = this;
       let { chatId } = this;
@@ -493,7 +500,7 @@ export class MpCI {
 
 <br class="clear">
 
-<footer>Documentation generated on 2023-02-14 06:39:31 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2023-02-14 07:58:51 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>
