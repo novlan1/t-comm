@@ -7,9 +7,9 @@ import { uploadCOSFile } from '../cos/cos';
 import { saveBase64ImgToFile } from '../node-img/img';
 import { formatBite } from '../util/format-bite';
 
-import { getBundleBuildDesc, getBundleVersion } from './helper';
+import { getBundleBuildDesc, getBundleVersion, parseUploadResult } from './helper';
 import { OptionsType } from './type';
-import { DEFAULT_BUILD_SETTING, BUNDLE_NAME_MAP, MAX_TRY_TIMES_MAP, PREVIEW_IMG_MAX_WORD_LENGTH } from './config';
+import { DEFAULT_BUILD_SETTING, MAX_TRY_TIMES_MAP, PREVIEW_IMG_MAX_WORD_LENGTH } from './config';
 
 function flattenSubPackages(result) {
   const {
@@ -29,27 +29,6 @@ function getFullPackageSize(result) {
 function getMainPackageSize(result) {
   const obj = flattenSubPackages(result);
   return formatBite(obj.__APP__.size);
-}
-
-
-/**
- * 解析上传结果
- */
-function parseUploadResult(result) {
-  const {
-    subPackageInfo,
-  } = result;
-  subPackageInfo.reverse();
-  const list = subPackageInfo.sort((a, b) => {
-    const keys = Object.keys(BUNDLE_NAME_MAP);
-    if (keys.indexOf(a) > -1 || keys.indexOf(b) > -1) {
-      return keys.indexOf(b) - keys.indexOf(a);
-    }
-    return b.size - a.size;
-  })
-    .map(pkg => `- ${BUNDLE_NAME_MAP[pkg.name] || pkg.name}: ${formatBite(pkg.size)}`);
-  list.unshift('PACKAGE SIZE INFO: ');
-  return list;
 }
 
 
