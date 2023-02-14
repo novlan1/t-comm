@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.3.9](https://github.com/novlan1/t-comm/compare/v0.3.8...v0.3.9) (2023-02-14)
+
+
+### Features
+
+* 优化mp-ci ([010c272](https://github.com/novlan1/t-comm/commit/010c27220a5f1aca4adcd2028427d1a5a8fa7db9))
+
+
+
 ## [0.3.8](https://github.com/novlan1/t-comm/compare/v0.3.7...v0.3.8) (2023-02-13)
 
 
