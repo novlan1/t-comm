@@ -402,7 +402,7 @@ export class MpCI {
         chatId = undefined;
       }
 
-      const errorContent = `${errorLink ? `[构建失败](${errorLink})` : ''}(err as any).toString()`;
+      const errorContent = `${errorLink ? `[构建失败](${errorLink})` : ''}${(err as any).toString()}`;
 
       sendWxRobotMarkdown({
         webhookUrl,
