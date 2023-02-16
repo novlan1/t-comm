@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.3.13](https://github.com/novlan1/t-comm/compare/v0.3.12...v0.3.13) (2023-02-16)
+
+
+### Bug Fixes
+
+* **mp-ci:** 优化mp-ci错误提示 ([e51c598](https://github.com/novlan1/t-comm/commit/e51c598d50dbdbb5f9ee8b0222aaa0326393f07e))
+
+
+
 ## [0.3.12](https://github.com/novlan1/t-comm/compare/v0.3.11...v0.3.12) (2023-02-14)
 
 
