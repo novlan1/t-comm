@@ -1,5 +1,5 @@
 export { buildAndUpload } from './build-upload';
-export { collectNestedDeps, getFlattenedDeps } from './collect-deps';
+export { getFlattenedDeps } from './collect-deps';
 export { readEnvVariable } from './env-variable';
 export { formatBite } from './format-bite';
 export { mkDirsSync, copyDir, copyFile, deleteFolder } from './fs-util';
