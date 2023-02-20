@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.3.14](https://github.com/novlan1/t-comm/compare/v0.3.13...v0.3.14) (2023-02-20)
+
+
+### Features
+
+* 优化收集依赖 ([f71d32a](https://github.com/novlan1/t-comm/commit/f71d32acf28325099012876025136688bde4b3b9))
+
+
+
 ## [0.3.13](https://github.com/novlan1/t-comm/compare/v0.3.12...v0.3.13) (2023-02-16)
 
 
