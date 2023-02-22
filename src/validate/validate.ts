@@ -143,3 +143,6 @@ export function isTel(tel) {
   return true;
 }
 
+export function isWindows() {
+  return /^win/.test(process.platform);
+}
