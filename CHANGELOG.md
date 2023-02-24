@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.3.16](https://github.com/novlan1/t-comm/compare/v0.3.15...v0.3.16) (2023-02-24)
+
+
+### Features
+
+* 增加traverse-folder ([47bf921](https://github.com/novlan1/t-comm/commit/47bf92189b616bd256b72293728068a8cbbe8b49))
+
+
+
 ## [0.3.15](https://github.com/novlan1/t-comm/compare/v0.3.14...v0.3.15) (2023-02-22)
 
 
