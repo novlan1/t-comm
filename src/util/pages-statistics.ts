@@ -1,3 +1,4 @@
+import { traverseFolder } from './fs-util';
 /* eslint-disable @typescript-eslint/no-require-imports */
 
 /**
@@ -15,21 +16,6 @@ export function statisticsPages(pagesJsonPath) {
 }
 
 
-function traverse(cb, path) {
-  const fs = require('fs');
-  let files = [];
-  files = fs.readdirSync(path);
-
-  files.forEach((file) => {
-    const curPath = `${path}/${file}`;
-    if (fs.statSync(curPath).isDirectory()) {
-      traverse(cb, curPath);
-    } else {
-      cb(curPath);
-    }
-  });
-}
-
 /**
  * 统计组件个数
  * @example
@@ -40,7 +26,7 @@ export function statisticsComponent(dir) {
   const array: Array<any> = [];
 
   if (fs.existsSync(dir)) {
-    traverse((file) => {
+    traverseFolder((file) => {
       if (file.endsWith('.wxml')) {
         array.push(file);
       }

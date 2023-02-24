@@ -2,7 +2,7 @@ export { buildAndUpload } from './build-upload';
 export { getFlattenedDeps } from './collect-deps';
 export { readEnvVariable } from './env-variable';
 export { formatBite } from './format-bite';
-export { mkDirsSync, copyDir, copyFile, deleteFolder } from './fs-util';
+export { mkDirsSync, copyDir, copyFile, deleteFolder, traverseFolder } from './fs-util';
 export { rmFirstAndLastSlash, getGitCodeLink, getGitMRLink } from './git-link';
 export { execCommand } from './node-command';
 export { nodeGet, nodePost, nodePut } from './node-request';

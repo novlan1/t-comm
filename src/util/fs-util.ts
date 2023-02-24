@@ -92,3 +92,22 @@ export function copyFile(from, to) {
   return fs.writeFileSync(to, fs.readFileSync(from));
 }
 
+
+/**
+ * 递归遍历文件夹，并执行某操作
+ * @param {Function} cb 回调参数
+ * @param {String} path 文件夹或文件路径
+ */
+export function traverseFolder(cb, path) {
+  const fs = require('fs');
+  if (fs.statSync(path).isDirectory()) {
+    const files = fs.readdirSync(path);
+
+    files.forEach((file) => {
+      const curPath = `${path}/${file}`;
+      traverseFolder(cb, curPath);
+    });
+  } else {
+    cb(path);
+  }
+}
