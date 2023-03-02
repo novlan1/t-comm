@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [0.3.17](https://github.com/novlan1/t-comm/compare/v0.3.16...v0.3.17) (2023-03-02)
+
+
+### Features
+
+* 增加cos方法 ([2b7ea5c](https://github.com/novlan1/t-comm/commit/2b7ea5c50a1d017f4283e2ffb79aa9b5a15acce8))
+
+
+
 ## [0.3.16](https://github.com/novlan1/t-comm/compare/v0.3.15...v0.3.16) (2023-02-24)
 
 
