@@ -6,6 +6,15 @@ const pushFiles = ({ files, bucket, region }) => files.map(file => ({
   FilePath: file.path,
 }));
 
+function getCOSInstance(secretId, secretKey) {
+  const COS = require('cos-nodejs-sdk-v5');
+  const cos = new COS({
+    SecretId: secretId,
+    SecretKey: secretKey,
+  });
+  return cos;
+}
+
 /**
  * COS上传
  * @param {object} config 配置信息
@@ -48,16 +57,18 @@ export function uploadCOSFile({
   region: string
 }) {
   return new Promise((resolve, reject) => {
-    const COS = require('cos-nodejs-sdk-v5');
     if (!secretId || !secretKey || !bucket || !region || !files) {
-      reject('参数不全');
+      reject('[Upload COS Error] 参数不全');
       return;
     }
 
-    const cos = new COS({
-      SecretId: secretId,
-      SecretKey: secretKey,
-    });
+    if (!files.length) {
+      reject('[Upload COS Error] 上传文件不能为空');
+      return;
+    }
+
+    const cos = getCOSInstance(secretId, secretKey);
+
     const fileList = pushFiles({
       files,
       bucket,
@@ -84,3 +95,68 @@ export function uploadCOSFile({
     );
   });
 }
+
+
+export function getCOSBucketList({
+  secretId,
+  secretKey,
+  bucket,
+  region,
+  prefix,
+}): Promise<Array<any>> {
+  return new Promise((resolve, reject) => {
+    if (!secretId || !secretKey || !bucket || !region) {
+      reject('[Get COS List Error] 参数不全');
+      return;
+    }
+    const cos = getCOSInstance(secretId, secretKey);
+
+    cos.getBucket({
+      Bucket: bucket,
+      Region: region,
+      Prefix: prefix, /* 非必须 */
+    }, (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(data.Contents);
+      }
+    });
+  });
+}
+
+export function deleteCOSMultipleObject({
+  secretId,
+  secretKey,
+  keys,
+  bucket,
+  region,
+}) {
+  return new Promise((resolve, reject) => {
+    if (!secretId || !secretKey || !bucket || !keys) {
+      reject('[Delete COS Object Error] 参数不全');
+      return;
+    }
+    if (!keys.length) {
+      reject('[Delete COS Object Error] 删除keys不能为空');
+      return;
+    }
+
+    const cos = getCOSInstance(secretId, secretKey);
+
+    cos.deleteMultipleObject({
+      Bucket: bucket,
+      Region: region,
+      /* 存储在桶里的对象键（例如1.jpg，a/b/test.txt），必须字段 */
+      Objects: keys.map(item => ({ Key: item })),
+    }, (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(data);
+      }
+    });
+  });
+}
+
+

@@ -1,1 +1,8 @@
-export { uploadCOSFile } from './cos';
+export {
+  uploadCOSFile,
+  getCOSBucketList,
+  deleteCOSMultipleObject,
+} from './cos';
+export {
+  deleteCOSLongAgoObject,
+} from './object-handler';
