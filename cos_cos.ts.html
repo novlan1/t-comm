@@ -52,6 +52,15 @@ const pushFiles = ({ files, bucket, region }) =&gt; files.map(file =&gt; ({
   FilePath: file.path,
 }));
 
+function getCOSInstance(secretId, secretKey) {
+  const COS = require('cos-nodejs-sdk-v5');
+  const cos = new COS({
+    SecretId: secretId,
+    SecretKey: secretKey,
+  });
+  return cos;
+}
+
 /**
  * COS上传
  * @param {object} config 配置信息
@@ -94,16 +103,18 @@ export function uploadCOSFile({
   region: string
 }) {
   return new Promise((resolve, reject) =&gt; {
-    const COS = require('cos-nodejs-sdk-v5');
     if (!secretId || !secretKey || !bucket || !region || !files) {
-      reject('参数不全');
+      reject('[Upload COS Error] 参数不全');
       return;
     }
 
-    const cos = new COS({
-      SecretId: secretId,
-      SecretKey: secretKey,
-    });
+    if (!files.length) {
+      reject('[Upload COS Error] 上传文件不能为空');
+      return;
+    }
+
+    const cos = getCOSInstance(secretId, secretKey);
+
     const fileList = pushFiles({
       files,
       bucket,
@@ -117,11 +128,11 @@ export function uploadCOSFile({
         onProgress(info) {
           const percent = parseInt(`${info.percent * 10000}`, 10) / 100;
           const speed = parseInt(`${(info.speed / 1024 / 1024) * 100}`, 10) / 100;
-          console.log(`进度：${percent}%; 速度：${speed}Mb/s;`);
+          console.log(`[uploadCOSFile] 进度：${percent}%; 速度：${speed}Mb/s;`);
         },
         onFileFinish(err, data, options) {
           resolve(data);
-          console.log(`上传${err ? '失败' : '完成'}: ${options.Key}`);
+          console.log(`[uploadCOSFile] 上传${err ? '失败' : '完成'}: ${options.Key}`);
         },
       },
       (err, data) =&gt; {
@@ -130,6 +141,71 @@ export function uploadCOSFile({
     );
   });
 }
+
+
+export function getCOSBucketList({
+  secretId,
+  secretKey,
+  bucket,
+  region,
+  prefix,
+}): Promise&lt;Array&lt;any&gt;&gt; {
+  return new Promise((resolve, reject) =&gt; {
+    if (!secretId || !secretKey || !bucket || !region) {
+      reject('[Get COS List Error] 参数不全');
+      return;
+    }
+    const cos = getCOSInstance(secretId, secretKey);
+
+    cos.getBucket({
+      Bucket: bucket,
+      Region: region,
+      Prefix: prefix, /* 非必须 */
+    }, (err, data) =&gt; {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(data.Contents);
+      }
+    });
+  });
+}
+
+export function deleteCOSMultipleObject({
+  secretId,
+  secretKey,
+  keys,
+  bucket,
+  region,
+}) {
+  return new Promise((resolve, reject) =&gt; {
+    if (!secretId || !secretKey || !bucket || !keys) {
+      reject('[Delete COS Object Error] 参数不全');
+      return;
+    }
+    if (!keys.length) {
+      reject('[Delete COS Object Error] 删除keys不能为空');
+      return;
+    }
+
+    const cos = getCOSInstance(secretId, secretKey);
+
+    cos.deleteMultipleObject({
+      Bucket: bucket,
+      Region: region,
+      /* 存储在桶里的对象键（例如1.jpg，a/b/test.txt），必须字段 */
+      Objects: keys.map(item =&gt; ({ Key: item })),
+    }, (err, data) =&gt; {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(data);
+      }
+    });
+  });
+}
+
+
 </code></pre>
         </article>
     </section>
@@ -143,7 +219,7 @@ export function uploadCOSFile({
 
 <br class="clear">
 
-<footer>Documentation generated on 2023-02-24 04:36:20 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2023-03-04 02:43:24 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>
