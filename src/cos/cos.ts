@@ -82,11 +82,11 @@ export function uploadCOSFile({
         onProgress(info) {
           const percent = parseInt(`${info.percent * 10000}`, 10) / 100;
           const speed = parseInt(`${(info.speed / 1024 / 1024) * 100}`, 10) / 100;
-          console.log(`进度：${percent}%; 速度：${speed}Mb/s;`);
+          console.log(`[uploadCOSFile] 进度：${percent}%; 速度：${speed}Mb/s;`);
         },
         onFileFinish(err, data, options) {
           resolve(data);
-          console.log(`上传${err ? '失败' : '完成'}: ${options.Key}`);
+          console.log(`[uploadCOSFile] 上传${err ? '失败' : '完成'}: ${options.Key}`);
         },
       },
       (err, data) => {

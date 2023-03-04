@@ -5,4 +5,5 @@ export {
 } from './cos';
 export {
   deleteCOSLongAgoObject,
+  deleteCOSEmptyFolder,
 } from './object-handler';

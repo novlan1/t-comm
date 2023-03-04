@@ -40,3 +40,33 @@ export async function deleteCOSLongAgoObject({
     keys: toDeleteKeys,
   });
 }
+
+
+export async function deleteCOSEmptyFolder({
+  secretId,
+  secretKey,
+  bucket,
+  region,
+  prefix,
+}) {
+  const list = await getCOSBucketList({
+    secretId,
+    secretKey,
+    bucket,
+    region,
+    prefix,
+  });
+
+  const keys = list.map(item => item.Key);
+  const emptyKeys = keys.filter(item => item.endsWith('/') && !keys.find(key => new RegExp(`^${item}.+`).test(key)));
+
+  console.log('[deleteCOSEmptyFolder] emptyKeys: ', emptyKeys);
+
+  return await deleteCOSMultipleObject({
+    secretId,
+    secretKey,
+    bucket,
+    region,
+    keys: emptyKeys,
+  });
+}
