@@ -157,6 +157,25 @@ export function traverseFolder(cb, path) {
     cb(path);
   }
 }
+
+
+export function saveJsonToLog(content, file, needLog = true) {
+  const fs = require('fs');
+  if (!needLog) return;
+  createLogDir();
+  fs.writeFile(`./log/${file}`, JSON.stringify(content, null, 2), {
+    encoding: 'utf-8',
+  }, () =&gt; {
+
+  });
+}
+
+function createLogDir() {
+  const fs = require('fs');
+  if (!fs.existsSync('./log')) {
+    fs.mkdirSync('./log');
+  }
+}
 </code></pre>
         </article>
     </section>
@@ -170,7 +189,7 @@ export function traverseFolder(cb, path) {
 
 <br class="clear">
 
-<footer>Documentation generated on 2023-03-04 02:43:25 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2023-03-08 07:47:09 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>
