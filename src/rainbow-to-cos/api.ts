@@ -15,7 +15,7 @@ const readCOSConfig = (savePath) => {
     }
     content = JSON.parse(str);
   } catch (err) {
-    console.log('readCOSConfig.err: \n', err);
+    console.log('[readCOSConfig] err: \n', err);
   }
   return content;
 };

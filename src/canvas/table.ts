@@ -160,7 +160,6 @@ export function createCanvasTable({
         ctx.fillStyle = color;
 
         const hasRatio = judgeRatio(data, obj.value);
-        console.log('hasRatio', hasRatio, obj);
 
         if (!hasRatio) {
           ctx.fillText(`${parseCellValue(obj.value)}`, textWidth, textHeight);

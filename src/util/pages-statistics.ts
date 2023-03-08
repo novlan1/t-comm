@@ -11,7 +11,7 @@ export function statisticsPages(pagesJsonPath) {
   const pagesJson = require(path.resolve(process.cwd(), pagesJsonPath));
   const { pages = [], subPackages = [] } = pagesJson;
   const res = pages.length + subPackages.reduce((acc, item) => acc + item.pages.length, 0);
-  console.log('[statisticsPages]', res);
+  console.log('[statisticsPages] res: ', res);
   return res;
 }
 
@@ -32,7 +32,7 @@ export function statisticsComponent(dir) {
       }
     }, dir);
   }
-  console.log('[statisticsComponent]', array.length);
+  console.log('[statisticsComponent] array.length: ', array.length);
   return array.length;
 }
 

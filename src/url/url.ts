@@ -111,7 +111,7 @@ export function decodeUrlParam(str: string): object {
   try {
     res = JSON.parse(decodeURIComponent(str));
   } catch (err) {
-    console.log('decodeUrlParam.error', err);
+    console.log('[decodeUrlParam] error: ', err);
   }
   return res;
 }

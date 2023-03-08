@@ -6,8 +6,8 @@ const DEFAULT_HOST_TARGET_DIR = '/root/ft_local';
 
 function build({ files, bundleName }) {
   return new Promise((resolve, reject) => {
-    console.log('开始打包...');
-    console.log('Files: ', files);
+    console.log('[build] 开始打包...');
+    console.log('[build] Files: ', files);
 
     // 创建dist目录
     const fse = require('fs-extra');
@@ -25,11 +25,11 @@ function build({ files, bundleName }) {
       },
       [...files],
     ).then(() => {
-      console.log('打包完成');
+      console.log('[build] 打包完成');
       resolve(true);
     })
       .catch((err) => {
-        console.log('打包失败');
+        console.log('[build] 打包失败');
         reject(err);
       });
   });
@@ -46,13 +46,13 @@ function upload({
   if (!hostName || !hostName || !bundleName) {
     throw new Error('参数不全');
   }
-  console.log('开始上传...');
+  console.log('[upload] 开始上传...');
 
   const publishBash = require('path').resolve(__dirname, '../script/publish.sh');
 
   execCommand(`sh ${publishBash} ./dist/${bundleName}.tar.gz ${hostTargetDir} ${hostName} ${hostPwd}`, root, 'inherit');
 
-  console.log('上传完成');
+  console.log('[upload] 上传完成');
 }
 
 

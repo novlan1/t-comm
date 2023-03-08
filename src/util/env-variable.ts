@@ -28,7 +28,7 @@ function getKeyValue(key, sourceLine) {
 export function readEnvVariable(key, filepath) {
   const fs = require('fs');
   if (!fs.lstatSync(filepath)) {
-    console.log('文件不存在:', filepath, '，请先创建文件');
+    console.log('[readEnvVariable] 文件不存在:', filepath, '，请先创建文件');
     process.exit(1);
   }
   try {
@@ -36,7 +36,7 @@ export function readEnvVariable(key, filepath) {
     const sourceLine = sourceStr.split('\n');
     return getKeyValue(key, sourceLine);
   } catch (e) {
-    console.log('打开文件失败:', filepath);
+    console.log('[readEnvVariable] 打开文件失败:', filepath);
     process.exit(1);
   }
 }

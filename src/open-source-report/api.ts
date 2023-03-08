@@ -36,7 +36,7 @@ export function getOpenSourceReport({
       resolve(arr);
     })
       .catch((err) => {
-        console.log('getOpenSourceReport.err: ', err);
+        console.log('[getOpenSourceReport] err: ', err);
         reject(err);
       });
   });

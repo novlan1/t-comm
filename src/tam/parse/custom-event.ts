@@ -1,4 +1,5 @@
 import { getPartRatio } from '../../base/number';
+import { saveJsonToLog } from '../../util/fs-util';
 
 /**
  * 处理事件数据
@@ -131,7 +132,8 @@ function getEventSummary(keyList, dataMap, extraDataMap) {
  */
 function parseExtraData(eventDataMap) {
   const res = {};
-  console.log('parseExtraData.eventDataMap', eventDataMap);
+  saveJsonToLog(eventDataMap, 'tam.custom-event.parsed-extra-data.json');
+
   Object.keys(eventDataMap).forEach((projectId) => {
     const eventData = eventDataMap[projectId];
     if (eventData.extraData) {
@@ -142,7 +144,8 @@ function parseExtraData(eventDataMap) {
     }
     res[projectId] = eventData;
   });
-  console.log('parseExtraData.res', res);
+
+  saveJsonToLog(res, 'tam.custom-event.parsed-extra-data.json');
   return res;
 }
 
@@ -184,6 +187,7 @@ export function parseMultiCustomEvent({
 
     res.push(initial);
   });
-  console.log('parseMultiCustomEvent.res', res, eventDataMap, eventMap);
+
+  saveJsonToLog(res, 'tam.custom-event.parsed-multi-custom-event.json');
   return res;
 }

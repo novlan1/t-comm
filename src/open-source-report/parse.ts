@@ -23,7 +23,7 @@ export function parseOpenSourceReport({
     });
 
   if (!problemArr.length) {
-    console.log('Error: 没有开源治理问题数据');
+    console.log('[parseOpenSourceReport] Error: 没有开源治理问题数据');
     // 没问题时也返回数据
     // return;
   }

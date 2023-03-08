@@ -134,7 +134,7 @@ export class MpCI {
     try {
       ci = require('miniprogram-ci');
     } catch (err) {
-      console.log('err', err);
+      console.log('[MpCI] err', err);
     }
     this.ciLib = ci;
 
@@ -265,7 +265,7 @@ export class MpCI {
       robot: robotNumber,
       sourceMapSavePath: './sm.zip',
     });
-    console.log('UploadResult:\n', uploadResult);
+    console.log('[MpCI] UploadResult:\n', uploadResult);
   }
 
   async preview() {
@@ -294,7 +294,7 @@ export class MpCI {
       // pagePath: 'pages/index/index', // 预览页面
       // searchQuery: 'a=1&b=2',  // 预览参数 [注意!]这里的`&`字符在命令行中应写成转义字符`&`
     });
-    console.log('PreviewResult:\n', previewResult);
+    console.log('[MpCI] PreviewResult:\n', previewResult);
 
     this.previewResult = previewResult;
     await this.uploadPreviewImg(previewResult);
@@ -391,7 +391,7 @@ export class MpCI {
     try {
       await Promise.all([this.upload(), this.preview()]);
     } catch (err) {
-      console.log('[CI] err', err);
+      console.log('[MpCI] err', err);
 
       const { webhookUrl, errorLink } = this;
       let { chatId } = this;

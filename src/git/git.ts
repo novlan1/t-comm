@@ -101,7 +101,7 @@ export function getGitAuthor(isPriorGit = false, root?: string) {
   try {
     gitAuthor = execCommand('git config user.name', root);
   } catch (err) {
-    console.log('getAuthor.err', err);
+    console.log('[getAuthor] err: ', err);
   }
   if (isPriorGit) {
     return gitAuthor || envAuthor || '';

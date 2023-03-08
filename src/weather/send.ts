@@ -16,7 +16,7 @@ export async function sendWeatherRobotMsg({
 }) {
   const { content, isSame } = await getWeatherRobotContent();
 
-  console.log('天气是否有变化: ', !isSame);
+  console.log('[sendWeatherRobotMsg] 天气是否有变化: ', !isSame);
 
   if (!isSame || force) {
     return batchSendWxRobotMarkdown({

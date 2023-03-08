@@ -158,7 +158,7 @@ export async function sendRainbowInfoToRobot({
   });
 
   if (!chatContent) {
-    console.log('Error: sendRainbowInfoToRobot.chatContent 为空');
+    console.log('[sendRainbowInfoToRobot] Error: chatContent 为空');
     return;
   }
 
@@ -169,6 +169,6 @@ export async function sendRainbowInfoToRobot({
       webhookUrl,
     });
   } catch (err) {
-    console.log('sendRainbowInfoToRobot.err: \n', err);
+    console.log('[sendRainbowInfoToRobot] err: \n', err);
   }
 }

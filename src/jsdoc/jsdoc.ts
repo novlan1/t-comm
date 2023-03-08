@@ -258,7 +258,7 @@ class JsDocHandler {
   }
 
   getGlobalSourceMap() {
-    console.log('Parsing nav list of global.html ...');
+    console.log('[Jsdoc] Parsing nav list of global.html ...');
     const file = 'global.html';
     const sourceMap = this.getSourceMap(file);
     return this.parseSourceMap(sourceMap);
@@ -353,7 +353,7 @@ class JsDocHandler {
 
 
   appendCSS(extra) {
-    console.log('Appending extra css ...');
+    console.log('[Jsdoc] Appending extra css ...');
 
     const css = this.path.resolve(this.docsPath, 'styles/jsdoc.css');
 
@@ -367,7 +367,7 @@ class JsDocHandler {
   }
 
   finished() {
-    console.log('Finished jsdoc local script.');
+    console.log('[Jsdoc] Finished jsdoc local script.');
   }
 }
 

@@ -50,14 +50,14 @@ export function sendToRobot({ webhookUrl, params }: {
       .post(webhookUrl, params)
       .then((res) => {
         if (res?.data?.errcode !== 0) {
-          console.log('sendToRobot.err: \n', res?.data);
+          console.log('[sendToRobot] err: \n', res?.data);
           reject(res);
         } else {
           resolve(res);
         }
       })
       .catch((err) => {
-        console.log('sendToRobot.err: \n', err?.data);
+        console.log('[sendToRobot] err: \n', err?.data);
         reject(err);
       });
   });

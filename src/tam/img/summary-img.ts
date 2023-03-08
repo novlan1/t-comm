@@ -32,7 +32,8 @@ async function getRUMScoreList({
     startTime: `${parsedPrePreDate}00`,
     endTime: `${parsedPreDate}00`,
   });
-  console.log('parsedPrePreDate', parsedPrePreDate);
+
+  console.log('[getRUMScoreList] parsedPrePreDate: ', parsedPrePreDate);
 
   saveJsonToLog(rumScores, 'rum-score.json');
   saveJsonToLog(preRumScores, 'rum-score-pre.json');
@@ -102,8 +103,8 @@ export async function genSummaryData({
   const parsedDate = timeStampFormat(new Date(date).getTime(), 'yyyyMMdd');
   const headerDate = timeStampFormat(new Date(date).getTime(), 'yyyy-MM-dd');
   const parsedPreDate = timeStampFormat(new Date(date).getTime() - 1 * 24 * 60 * 60 * 1000, 'yyyyMMdd');
-  console.log('parsedDate: ', parsedDate);
-  console.log('parsedPreDate: ', parsedPreDate);
+  console.log('[genSummaryData] parsedDate: ', parsedDate);
+  console.log('[genSummaryData] parsedPreDate: ', parsedPreDate);
 
 
   const sortKeyList = Object.keys(tableHeaderMap);
@@ -121,8 +122,6 @@ export async function genSummaryData({
     groupIdList,
     secretInfo,
   });
-  console.log('data: ', data);
-
 
   const preData = await getSummaryScoreByGroupIdList({
     date: parsedPreDate,
@@ -136,8 +135,6 @@ export async function genSummaryData({
   if (preRumScores) {
     preData.data.push(...preRumScores);
   }
-
-  console.log('preData: ', preData);
 
   const parsedData = parseSummaryScore({
     data: data.data,

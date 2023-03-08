@@ -43,7 +43,7 @@ export async function sendOpenSourceReport({
       webhookUrl,
     });
   } catch (err) {
-    console.log('err', err);
+    console.log('[sendOpenSourceReport] err', err);
   }
 }
 

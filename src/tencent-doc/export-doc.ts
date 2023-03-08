@@ -41,7 +41,7 @@ async function pollCheckUrl({
     fileId,
     operationId,
   });
-  console.log('checkUrl.res', res);
+  console.log('[checkUrl] res: ', res);
 
   if (res.url) {
     return res.url;
@@ -74,10 +74,10 @@ export async function exportTencentDoc({
 
     exportType,
   });
-  console.log('asyncExportTencentDoc.data', data);
+  console.log('[asyncExportTencentDoc] data: ', data);
 
   const { operationID: operationId } = data.data || {};
-  console.log('operationId: ', operationId);
+  console.log('[exportTencentDoc] operationId: ', operationId);
 
   if (!operationId) return;
   return pollCheckUrl({

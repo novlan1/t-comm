@@ -62,7 +62,7 @@ export function compareData(usefulData: Array<object|undefined> = []): boolean {
       }) || '{}';
     }
   } catch (e) {
-    console.log('err', e);
+    console.log('[compareData] err: ', e);
   }
 
 
