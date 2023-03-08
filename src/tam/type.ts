@@ -8,18 +8,19 @@ export type SecretInfoType = {
 export type ScoreInfoType = {
   ProjectId: number
   ProjectName: string
-  PagePv: number
-  PageUv: number
-  PageDuration: number
-  PageError: number
-  ApiNum: number
-  ApiFail: number
-  ApiDuration: number
-  StaticNum: number
-  StaticFail: number
-  StaticDuration: number
-  Score: number
+  PagePv: string | number
+  PageUv: string | number
+  PageDuration: string | number
+  PageError: string | number
+  ApiNum: string | number
+  ApiFail: string | number
+  ApiDuration: string | number
+  StaticNum: string | number
+  StaticFail: string | number
+  StaticDuration: string | number
+  Score: string | number
   GroupName: string
   CreateUser: string
   CreateTime: string
+  [k: string]: string | number
 };

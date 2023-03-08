@@ -111,3 +111,22 @@ export function traverseFolder(cb, path) {
     cb(path);
   }
 }
+
+
+export function saveJsonToLog(content, file, needLog = true) {
+  const fs = require('fs');
+  if (!needLog) return;
+  createLogDir();
+  fs.writeFile(`./log/${file}`, JSON.stringify(content, null, 2), {
+    encoding: 'utf-8',
+  }, () => {
+
+  });
+}
+
+function createLogDir() {
+  const fs = require('fs');
+  if (!fs.existsSync('./log')) {
+    fs.mkdirSync('./log');
+  }
+}

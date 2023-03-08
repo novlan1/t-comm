@@ -1,10 +1,47 @@
 import { getSummaryScoreByGroupIdList } from '../api/summary-score';
+import { getRUMScores } from '../api/rum-score';
+
 import { parseSummaryScore, getTableHeaders } from '../parse';
 import { compareTwoList, getMaxAndMinIdx } from '../../base/list';
 import { createCanvasTable } from '../../canvas/table';
 import { timeStampFormat } from '../../date/time';
 import { batchSendWxRobotBase64Img } from '../../wecom-robot/batch-send';
+import { saveJsonToLog } from '../../util/fs-util';
 
+
+async function getRUMScoreList({
+  secretInfo,
+  parsedDate,
+  parsedPreDate,
+}) {
+  if (!secretInfo.rumSecretId || !secretInfo.rumSecretKey) {
+    return {};
+  }
+  const parsedPrePreDate = timeStampFormat(new Date(parsedPreDate).getTime() - 1 * 24 * 60 * 60 * 1000, 'yyyyMMdd');
+
+  const rumScores = await getRUMScores({
+    secretId: secretInfo.rumSecretId,
+    secretKey: secretInfo.rumSecretKey,
+    startTime: `${parsedPreDate}00`,
+    endTime: `${parsedDate}00`,
+  });
+
+  const preRumScores = await getRUMScores({
+    secretId: secretInfo.rumSecretId,
+    secretKey: secretInfo.rumSecretKey,
+    startTime: `${parsedPrePreDate}00`,
+    endTime: `${parsedPreDate}00`,
+  });
+  console.log('parsedPrePreDate', parsedPrePreDate);
+
+  saveJsonToLog(rumScores, 'rum-score.json');
+  saveJsonToLog(preRumScores, 'rum-score-pre.json');
+
+  return {
+    rumScores,
+    preRumScores,
+  };
+}
 
 /**
  * 生成TAM汇总数据图
@@ -68,10 +105,16 @@ export async function genSummaryData({
   console.log('parsedDate: ', parsedDate);
   console.log('parsedPreDate: ', parsedPreDate);
 
+
   const sortKeyList = Object.keys(tableHeaderMap);
   if (!sortKeyList.length) {
     return;
   }
+  const { rumScores, preRumScores } = await getRUMScoreList({
+    secretInfo,
+    parsedDate,
+    parsedPreDate,
+  });
 
   const data = await getSummaryScoreByGroupIdList({
     date: parsedDate,
@@ -80,11 +123,20 @@ export async function genSummaryData({
   });
   console.log('data: ', data);
 
+
   const preData = await getSummaryScoreByGroupIdList({
     date: parsedPreDate,
     groupIdList,
     secretInfo,
   });
+
+  if (rumScores) {
+    data.data.push(...rumScores);
+  }
+  if (preRumScores) {
+    preData.data.push(...preRumScores);
+  }
+
   console.log('preData: ', preData);
 
   const parsedData = parseSummaryScore({
