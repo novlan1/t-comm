@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
+const LOG_DIR = 'log';
 
 function innerCopy(src, dist) {
   const fs = require('fs');
@@ -114,9 +115,10 @@ export function traverseFolder(cb, path) {
 
 export function readJsonLog(file, defaultContent = '{}') {
   const fs = require('fs');
-  const filePath = `./log/${file}`;
+  const filePath = `./${LOG_DIR}/${file}`;
 
   if (!fs.existsSync(filePath)) {
+    createLogDir();
     return defaultContent;
   }
 
@@ -125,19 +127,23 @@ export function readJsonLog(file, defaultContent = '{}') {
   }) || defaultContent;
 }
 
+export function getJsonLogDir() {
+  const path = require('path');
+  return path.resolve(process.cwd(), './log');
+}
 
 export function saveJsonToLog(content, file, needLog = true) {
   const fs = require('fs');
   if (!needLog) return;
   createLogDir();
-  fs.writeFileSync(`./log/${file}`, JSON.stringify(content, null, 2), {
+  fs.writeFileSync(`./${LOG_DIR}/${file}`, JSON.stringify(content, null, 2), {
     encoding: 'utf-8',
   });
 }
 
 function createLogDir() {
   const fs = require('fs');
-  if (!fs.existsSync('./log')) {
-    fs.mkdirSync('./log');
+  if (!fs.existsSync(`./${LOG_DIR}`)) {
+    fs.mkdirSync(`./${LOG_DIR}`);
   }
 }

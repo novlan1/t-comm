@@ -1,12 +1,7 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { hyphenate } from '../../base/string';
 import { RAINBOW_VALUE_TYPE_MAP } from './value-type';
-
-
-export function getSaveDir() {
-  const path = require('path');
-  return  path.resolve(__dirname, './log');
-}
+import { getJsonLogDir } from '../../util/fs-util';
 
 export function getSaveFileName({
   appName,
@@ -17,7 +12,7 @@ export function getSaveFileName({
 }) {
   const ext = RAINBOW_VALUE_TYPE_MAP[valueType]?.ext || 'txt';
 
-  return  `${hyphenate(appName)}__${hyphenate(groupName)}__${hyphenate(envName)}__${key}.${ext}`;
+  return `${hyphenate(appName)}__${hyphenate(groupName)}__${hyphenate(envName)}__${key}.${ext}`;
 }
 
 export function getSavePath({
@@ -28,7 +23,7 @@ export function getSavePath({
   valueType,
 }) {
   const path = require('path');
-  return path.resolve(getSaveDir(), getSaveFileName({
+  return path.resolve(getJsonLogDir(), getSaveFileName({
     appName,
     groupName,
     envName,
@@ -45,7 +40,7 @@ export function getCOSFilePath({
   valueType,
   cosInfo,
 }) {
-  const saveFileName =  getSaveFileName({
+  const saveFileName = getSaveFileName({
     appName,
     groupName,
     envName,

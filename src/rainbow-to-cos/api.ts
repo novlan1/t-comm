@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { queryGroupInfo } from '../rainbow/rainbow-admin';
-import { getSaveFileName, getSaveDir } from './helper/helper';
+import { getSaveFileName } from './helper/helper';
 import { readJsonLog, saveJsonToLog } from '../util/fs-util';
 
 
@@ -24,7 +24,6 @@ export function fetchLatestRainbowData({
     equal: boolean
   }> {
   return new Promise((resolve) => {
-    const fs = require('fs');
     const { groupName, envName } = secretInfo || {};
     const saveFileName = getSaveFileName({
       appName,
@@ -33,11 +32,6 @@ export function fetchLatestRainbowData({
       key: 'all_data',
       valueType: 4,
     });
-
-    const dir = getSaveDir();
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir);
-    }
 
     const originConfig = readCOSConfig(saveFileName);
 
