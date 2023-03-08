@@ -132,7 +132,7 @@ function getEventSummary(keyList, dataMap, extraDataMap) {
  */
 function parseExtraData(eventDataMap) {
   const res = {};
-  saveJsonToLog(eventDataMap, 'tam.custom-event.parsed-extra-data.json');
+  saveJsonToLog(eventDataMap, 'tam.custom-event.event-data-map.json');
 
   Object.keys(eventDataMap).forEach((projectId) => {
     const eventData = eventDataMap[projectId];

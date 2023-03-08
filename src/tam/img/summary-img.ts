@@ -13,11 +13,12 @@ async function getRUMScoreList({
   secretInfo,
   parsedDate,
   parsedPreDate,
+  date,
 }) {
   if (!secretInfo.rumSecretId || !secretInfo.rumSecretKey) {
     return {};
   }
-  const parsedPrePreDate = timeStampFormat(new Date(parsedPreDate).getTime() - 1 * 24 * 60 * 60 * 1000, 'yyyyMMdd');
+  const parsedPrePreDate = timeStampFormat(new Date(date).getTime() - 2 * 24 * 60 * 60 * 1000, 'yyyyMMdd');
 
   const rumScores = await getRUMScores({
     secretId: secretInfo.rumSecretId,
@@ -115,6 +116,7 @@ export async function genSummaryData({
     secretInfo,
     parsedDate,
     parsedPreDate,
+    date,
   });
 
   const data = await getSummaryScoreByGroupIdList({

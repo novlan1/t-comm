@@ -117,10 +117,8 @@ export function saveJsonToLog(content, file, needLog = true) {
   const fs = require('fs');
   if (!needLog) return;
   createLogDir();
-  fs.writeFile(`./log/${file}`, JSON.stringify(content, null, 2), {
+  fs.writeFileSync(`./log/${file}`, JSON.stringify(content, null, 2), {
     encoding: 'utf-8',
-  }, () => {
-
   });
 }
 
