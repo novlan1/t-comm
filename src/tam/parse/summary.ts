@@ -60,7 +60,7 @@ export function parseSummaryScore({
 }) {
   const res = data
     .filter(item => !ignoreProjectIdList.includes(+item.ProjectId))
-    .sort((a, b) => b.PagePv - a.PagePv)
+    .sort((a, b) => +b.PagePv - +a.PagePv)
     .map((item) => {
       const temp = {};
       const projectId = item.ProjectId;

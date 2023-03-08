@@ -153,9 +153,14 @@ export async function genSummaryData({
     sortKeyList,
   });
 
+  saveJsonToLog(parsedData, 'summary.parsed-data.json');
+  saveJsonToLog(parsedPreData, 'summary.parsed-data-pre.json');
+
   compareTwoList(parsedData, parsedPreData, 'ProjectName');
 
   const tableData = getMaxAndMinIdx(parsedData);
+
+  saveJsonToLog(tableData, 'summary.table-data.json');
 
   const img = createCanvasTable({
     data: tableData,

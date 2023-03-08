@@ -79,6 +79,18 @@ export async function getRUMScores({
 
     return {
       ...item,
+      PagePv: +item.PagePv,
+      PageUv: +item.PageUv,
+      PageDuration: +item.PageDuration,
+      PageError: +item.PageError,
+      ApiNum: +item.ApiNum,
+      ApiFail: +item.ApiFail,
+      ApiDuration: +item.ApiDuration,
+      StaticNum: +item.StaticNum,
+      StaticFail: +item.StaticFail,
+      StaticDuration: +item.StaticDuration,
+      Score: +item.Score,
+
       ProjectName: projectInfo.Name,
       GroupName: projectInfo.InstanceName || '',
       CreateUser: projectInfo.Creator,
