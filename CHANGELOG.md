@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.0.1](https://github.com/novlan1/t-comm/compare/v1.0.0...v1.0.1) (2023-03-08)
+
+
+### Features
+
+* 增加rum上报 ([fdebec6](https://github.com/novlan1/t-comm/commit/fdebec6b62ec7dda8974299d79ff2492ebca0332))
+
+
+
 # [1.0.0](https://github.com/novlan1/t-comm/compare/v0.3.17...v1.0.0) (2023-03-04)
 
 
@@ -1539,16 +1548,8 @@
 
 * **EnumData:** 新增 EnumData 方法，来处理枚举数据 ([8eb3c77](https://github.com/novlan1/t-comm/commit/8eb3c77b0b5f6d3699c79815d58cff0b53142f0d))
 * **toUnicode:** add toUnicode methods ([e198e4e](https://github.com/novlan1/t-comm/commit/e198e4ea746c82fcada7faa31ab8ec9428f04a5e))
-* upgrade packages, remove lodash in dependencies ([8c59fd9](https://github.com/novlan1/t-comm/commit/8c59fd9febde20ec0de3af142ef1550b95b8c1da))
-
-
-
-## [1.0.1](https://github.com/novlan1/t-comm/compare/f0a4fefe507f7d6c8717c05d2f0c638407ca87a3...v1.0.1) (2020-02-05)
-
-
-### Features
-
 * **type:** 新增 isNumber 、 isString 类型判断方法 ([f0a4fef](https://github.com/novlan1/t-comm/commit/f0a4fefe507f7d6c8717c05d2f0c638407ca87a3))
+* upgrade packages, remove lodash in dependencies ([8c59fd9](https://github.com/novlan1/t-comm/commit/8c59fd9febde20ec0de3af142ef1550b95b8c1da))
 
 
 
