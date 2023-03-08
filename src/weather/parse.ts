@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-
+import { saveJsonToLog, readJsonLog } from '../util/fs-util';
 
 /**
  * 组装发送给机器人的消息
@@ -42,33 +42,18 @@ export function composeRobotContent(usefulData: Array<any> = []): string {
  * @returns {boolean} 是否和以前数据一样
  */
 export function compareData(usefulData: Array<object|undefined> = []): boolean {
-  const fs = require('fs');
-  const path = require('path');
-  const savePath = path.resolve(__dirname, './ignore-tmp-data/alarm.json');
-
-  function saveData(usefulData) {
-    fs.writeFileSync(savePath, JSON.stringify(usefulData, null, 2));
-  }
-
+  const FILE_NAME = 'alarm.json';
   let preData = '{}';
+
   try {
-    const dir = path.resolve(__dirname, './ignore-tmp-data');
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir);
-    }
-    if (fs.existsSync(savePath)) {
-      preData = fs.readFileSync(savePath, {
-        encoding: 'utf-8',
-      }) || '{}';
-    }
+    preData = readJsonLog(FILE_NAME);
   } catch (e) {
     console.log('[compareData] err: ', e);
   }
 
-
   const isSame = JSON.stringify(JSON.parse(preData)) === JSON.stringify(usefulData);
 
-  saveData(usefulData);
+  saveJsonToLog(usefulData, FILE_NAME);
 
   return isSame;
 }

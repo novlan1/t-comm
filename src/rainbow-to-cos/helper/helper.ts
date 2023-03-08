@@ -5,7 +5,7 @@ import { RAINBOW_VALUE_TYPE_MAP } from './value-type';
 
 export function getSaveDir() {
   const path = require('path');
-  return  path.resolve(__dirname, './ignore-tmp-data');
+  return  path.resolve(__dirname, './log');
 }
 
 export function getSaveFileName({

@@ -112,6 +112,19 @@ export function traverseFolder(cb, path) {
   }
 }
 
+export function readJsonLog(file, defaultContent = '{}') {
+  const fs = require('fs');
+  const filePath = `./log/${file}`;
+
+  if (!fs.existsSync(filePath)) {
+    return defaultContent;
+  }
+
+  return fs.readFileSync(filePath, {
+    encoding: 'utf-8',
+  }) || defaultContent;
+}
+
 
 export function saveJsonToLog(content, file, needLog = true) {
   const fs = require('fs');
