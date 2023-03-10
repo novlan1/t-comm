@@ -180,7 +180,7 @@ export class MpCI {
     try {
       ci = require('miniprogram-ci');
     } catch (err) {
-      console.log('err', err);
+      console.log('[MpCI] err', err);
     }
     this.ciLib = ci;
 
@@ -311,7 +311,7 @@ export class MpCI {
       robot: robotNumber,
       sourceMapSavePath: './sm.zip',
     });
-    console.log('UploadResult:\n', uploadResult);
+    console.log('[MpCI] UploadResult:\n', uploadResult);
   }
 
   async preview() {
@@ -340,7 +340,7 @@ export class MpCI {
       // pagePath: 'pages/index/index', // 预览页面
       // searchQuery: 'a=1&amp;b=2',  // 预览参数 [注意!]这里的`&amp;`字符在命令行中应写成转义字符`&amp;`
     });
-    console.log('PreviewResult:\n', previewResult);
+    console.log('[MpCI] PreviewResult:\n', previewResult);
 
     this.previewResult = previewResult;
     await this.uploadPreviewImg(previewResult);
@@ -437,7 +437,7 @@ export class MpCI {
     try {
       await Promise.all([this.upload(), this.preview()]);
     } catch (err) {
-      console.log('[CI] err', err);
+      console.log('[MpCI] err', err);
 
       const { webhookUrl, errorLink } = this;
       let { chatId } = this;
@@ -484,7 +484,7 @@ export class MpCI {
 
 <br class="clear">
 
-<footer>Documentation generated on 2023-03-08 08:19:12 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2023-03-10 04:15:59 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>

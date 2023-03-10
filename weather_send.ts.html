@@ -62,7 +62,7 @@ export async function sendWeatherRobotMsg({
 }) {
   const { content, isSame } = await getWeatherRobotContent();
 
-  console.log('天气是否有变化: ', !isSame);
+  console.log('[sendWeatherRobotMsg] 天气是否有变化: ', !isSame);
 
   if (!isSame || force) {
     return batchSendWxRobotMarkdown({
@@ -85,7 +85,7 @@ export async function sendWeatherRobotMsg({
 
 <br class="clear">
 
-<footer>Documentation generated on 2023-03-08 08:19:12 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2023-03-10 04:15:59 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>

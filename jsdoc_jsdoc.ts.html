@@ -304,7 +304,7 @@ class JsDocHandler {
   }
 
   getGlobalSourceMap() {
-    console.log('Parsing nav list of global.html ...');
+    console.log('[Jsdoc] Parsing nav list of global.html ...');
     const file = 'global.html';
     const sourceMap = this.getSourceMap(file);
     return this.parseSourceMap(sourceMap);
@@ -399,7 +399,7 @@ class JsDocHandler {
 
 
   appendCSS(extra) {
-    console.log('Appending extra css ...');
+    console.log('[Jsdoc] Appending extra css ...');
 
     const css = this.path.resolve(this.docsPath, 'styles/jsdoc.css');
 
@@ -413,7 +413,7 @@ class JsDocHandler {
   }
 
   finished() {
-    console.log('Finished jsdoc local script.');
+    console.log('[Jsdoc] Finished jsdoc local script.');
   }
 }
 
@@ -434,7 +434,7 @@ export {
 
 <br class="clear">
 
-<footer>Documentation generated on 2023-03-08 08:19:12 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2023-03-10 04:15:59 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>
