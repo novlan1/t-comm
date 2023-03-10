@@ -1,5 +1,6 @@
 export { buildAndUpload } from './build-upload';
 export { getFlattenedDeps } from './collect-deps';
+export { isInCronExpression } from './cron-parser';
 export { readEnvVariable } from './env-variable';
 export { formatBite } from './format-bite';
 export { mkDirsSync, copyDir, copyFile, deleteFolder, traverseFolder, saveJsonToLog } from './fs-util';
