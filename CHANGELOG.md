@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.1](https://github.com/novlan1/t-comm/compare/v1.1.0...v1.1.1) (2023-03-10)
+
+
+### Features
+
+* **cron-parser:** 判断当前时间是否处于cron表达式内 ([0a5c17d](https://github.com/novlan1/t-comm/commit/0a5c17da5ff847879f29fbab72c60c4add730a63))
+
+
+
 # [1.1.0](https://github.com/novlan1/t-comm/compare/v1.0.3...v1.1.0) (2023-03-08)
 
 
