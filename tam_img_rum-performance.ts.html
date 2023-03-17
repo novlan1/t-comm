@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head>
     
     <meta charset="utf-8">
-    <title>util/npm-token.ts - Documentation</title>
+    <title>tam/img/rum-performance.ts - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">util/npm-token.ts</h1>
+    <h1 class="page-title">tam/img/rum-performance.ts</h1>
     
 
     
@@ -44,48 +44,206 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/* eslint-disable @typescript-eslint/no-require-imports */
-import { readEnvVariable } from './env-variable';
+            <pre class="prettyprint source linenums"><code>import { getRUMPerformance } from '../api/rum-performance';
+import { createCanvasTable } from '../../canvas/table';
+import { batchSendWxRobotBase64Img } from '../../wecom-robot/batch-send';
+import { compareTwoList, getMaxAndMinIdx } from '../../base/list';
 
-const npmTokenRoot = process.cwd();
+
+const DEFAULT_REGION = '其他';
+const ONE_DAY_SECONDS = 24 * 60 * 60;
+const SORT_KEY = 'allCount';
+const TABLE_HEADER_MAP = {
+  region: '地区',
+  allCount: '请求数',
+  firstScreen: '首屏耗时',
+  dns: 'DNS查询',
+  tcp: 'TCP连接',
+  ssl: 'SSL建连',
+  ttfb: '请求响应',
+  contentDownload: '内容传输',
+  domParse: '内容解析',
+  resourceDownload: '资源加载',
+
+  // appLaunch: '',
+  // scriptEvaluate: '',
+  // pageRoute: '',
+  // firstPaint: '',
+  // engineInit: '',
+  // bundleLoad: '',
+  // firstScreenRequest: '',
+  // loadEnd: '',
+  // durationCount000Ratio: '',
+  // durationCount500Ratio: '',
+  // durationCount1000Ratio: '',
+  // durationCount3000Ratio: '',
+  // durationCount5000Ratio: '',
+  // bucketInf: '',
+};
+
+const RATIO_KEY_LIST = [
+  'durationCount000Ratio',
+  'durationCount500Ratio',
+  'durationCount1000Ratio',
+  'durationCount3000Ratio',
+  'durationCount5000Ratio',
+];
 
 
-function getNpmToken() {
-  const NPM_TOKEN = 'NPM_TOKEN';
-  const ENV_FILE = '.env.local';
-  const path = require('path');
-
-  const envFile = path.resolve(npmTokenRoot, ENV_FILE);
-  const token = readEnvVariable(NPM_TOKEN, envFile);
-  if (!token) {
-    console.log(`${NPM_TOKEN} 不存在`);
-    process.exit(1);
-  }
-  return token;
+function fixedNumber(num) {
+  return Math.floor(num * 100) / 100;
 }
 
+function formatValue(value) {
+  if (typeof value !== 'number') return value;
+  return fixedNumber(value);
+}
+
+function genTableData(data) {
+  const tableData = data.map((regionItem) =&gt; {
+    const temp = Object.keys(regionItem).reduce((ac, perfName) =&gt; {
+      let value = regionItem[perfName];
+      if (RATIO_KEY_LIST.includes(perfName)) {
+        value = value * 100;
+      }
+
+      ac[perfName] = { name: perfName, value: formatValue(value) };
+      return ac;
+    }, {});
+    return temp;
+  });
+  return tableData;
+}
+
+function sortObj(obj, sortKeyList) {
+  return sortKeyList.reduce((acc, key) =&gt; {
+    if (obj[key] !== undefined) {
+      acc[key] = obj[key];
+    }
+    return acc;
+  }, {});
+}
 
 /**
- * 将 .env.local 中 NPM_TOKEN 的值写入到 .npmrc 中
+ * [
+ *   {
+ *     region: '巴西',
+ *     allCount: 100,
+ *     firstScreen: 1000,
+ *     [key]: value
+ *   },
+ *   'xx': {
+ *      // ...
+ *   }
+ * ]
  */
-export function writeEnvTokenToNpmRC() {
-  const NPM_RC_TPL = `registry=https://registry.npmjs.org/
-//registry.npmjs.org/:always-auth=true
-//registry.npmjs.org/:_authToken={{TOKEN}}`;
+function parseResult(results) {
+  const obj = {};
+  for (const item of results) {
+    item.series.forEach((it) =&gt; {
+      const key = it.tags.region || DEFAULT_REGION;
+      if (!obj[key]) obj[key] = { region: key };
 
-  const fs = require('fs');
-  const path = require('path');
+      it.columns.reduce((acc, column, columnIndex) =&gt; {
+        if (TABLE_HEADER_MAP[column] !== undefined) {
+          acc[column] = it.values[0][columnIndex];
+        }
+        return acc;
+      }, obj[key]);
+    });
+  }
 
-  const token = getNpmToken();
-  const content = NPM_RC_TPL.replace('{{TOKEN}}', token);
-  const npmRCFile = path.resolve(npmTokenRoot, '.npmrc');
+  return Object.keys(obj).map((key) =&gt; {
+    const value = sortObj(obj[key], Object.keys(TABLE_HEADER_MAP));
+    return value;
+  })
+    .sort((a, b) =&gt; b[SORT_KEY] - a[SORT_KEY]);
+  // .reduce((acc,item) =&gt; {})
 
-  fs.writeFileSync(npmRCFile, content, {
-    encoding: 'utf-8',
+  // return  Object.keys(obj).reduce((acc, key) =&gt; {
+  //   acc[key] = sortObj(obj[key], Object.keys(TABLE_HEADER_MAP));
+  //   return acc;
+  // }, {});
+}
+
+function getTableHeaders(keyList) {
+  return keyList.map(key =&gt; TABLE_HEADER_MAP[key] || key);
+}
+
+export async function genRUMnPerfData({
+  secretId,
+  secretKey,
+  id,
+  startTime,
+  endTime,
+  type = 'region',
+}) {
+  const res = await getRUMPerformance({
+    secretId,
+    secretKey,
+    id,
+    startTime,
+    endTime,
+    type,
   });
+  const list = parseResult(res.data || []);
+  const tableData = genTableData(list);
+  return tableData;
 }
 
 
+export async function genRUMPerfImgAndSend({
+  secretId,
+  secretKey,
+  id,
+  startTime,
+  endTime,
+  type = 'region',
+
+  title = '',
+  chatId,
+  webhookUrl,
+}) {
+  const data = await genRUMnPerfData({
+    secretId,
+    secretKey,
+    id,
+    startTime,
+    endTime,
+    type,
+  });
+  const preData = await genRUMnPerfData({
+    secretId,
+    secretKey,
+    id,
+    startTime: startTime - ONE_DAY_SECONDS,
+    endTime: endTime - ONE_DAY_SECONDS,
+    type,
+  });
+
+  compareTwoList(data, preData, 'region');
+  const tableData = getMaxAndMinIdx(data);
+
+  if (!tableData.length) return;
+  const len = Object.keys(tableData[0]).length;
+
+  const img = createCanvasTable({
+    data: tableData,
+    headers: getTableHeaders(Object.keys(tableData[0])),
+    title,
+    cellWidthList: [95, ...Array.from({ length: len }).map(() =&gt; 65)],
+  });
+
+  if (!img || !chatId) {
+    return;
+  }
+
+  await batchSendWxRobotBase64Img({
+    img,
+    webhookUrl,
+    chatId,
+  });
+}
 </code></pre>
         </article>
     </section>
