@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.2](https://github.com/novlan1/t-comm/compare/v1.1.1...v1.1.2) (2023-03-17)
+
+
+### Features
+
+* 增加rum-performance ([6ca35ae](https://github.com/novlan1/t-comm/commit/6ca35ae9ece5521ccd5723ada6f1b5479cb90c37))
+
+
+
 ## [1.1.1](https://github.com/novlan1/t-comm/compare/v1.1.0...v1.1.1) (2023-03-10)
 
 
