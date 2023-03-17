@@ -90,8 +90,10 @@ function clusterChina(obj) {
   Object.keys(obj).forEach((region) => {
     if (isChina(region)) {
       Object.keys(obj[region]).forEach((key) => {
-        if (key !== 'region') {
-          obj[CHINA_REGION][key] = obj[region][key] + (obj[CHINA_REGION][key] || 0);
+        if (key === 'allCount') {
+          obj[CHINA_REGION][key] = obj[region][key]  + (obj[CHINA_REGION][key] || 0);
+        } else if (key !== 'region') {
+          obj[CHINA_REGION][key] = obj[region][key] *  obj[region].allCount  + (obj[CHINA_REGION][key] || 0);
         }
       });
       delete obj[region];
