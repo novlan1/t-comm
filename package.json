@@ -67,6 +67,7 @@
     "@typescript-eslint/eslint-plugin": "^5.39.0",
     "@typescript-eslint/parser": "^5.39.0",
     "better-docs": "^2.7.2",
+    "canvas": "^2.6.1",
     "chalk": "^4.1.2",
     "cheerio": "^1.0.0-rc.12",
     "conventional-changelog": "^3.1.25",
