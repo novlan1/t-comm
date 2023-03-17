@@ -4,7 +4,7 @@ import { batchSendWxRobotBase64Img } from '../../wecom-robot/batch-send';
 import { compareTwoList, getMaxAndMinIdx } from '../../base/list';
 import CountryMap from './country-map';
 
-const DEFAULT_REGION = '其他';
+// const DEFAULT_REGION = '其他';
 const CHINA_REGION = '中国';
 const ONE_DAY_SECONDS = 24 * 60 * 60;
 const SORT_KEY = 'allCount';
@@ -122,15 +122,18 @@ function parseResult(results) {
   const obj = {};
   for (const item of results) {
     item.series.forEach((it) => {
-      const key = it.tags.region || DEFAULT_REGION;
-      if (!obj[key]) obj[key] = { region: key };
+      const key = it.tags.region;
 
-      it.columns.reduce((acc, column, columnIndex) => {
-        if (TABLE_HEADER_MAP[column] !== undefined) {
-          acc[column] = it.values[0][columnIndex];
-        }
-        return acc;
-      }, obj[key]);
+      if (key) {
+        if (!obj[key]) obj[key] = { region: key };
+
+        it.columns.reduce((acc, column, columnIndex) => {
+          if (TABLE_HEADER_MAP[column] !== undefined) {
+            acc[column] = it.values[0][columnIndex];
+          }
+          return acc;
+        }, obj[key]);
+      }
     });
   }
 
