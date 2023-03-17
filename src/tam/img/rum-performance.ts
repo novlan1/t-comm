@@ -2,9 +2,10 @@ import { getRUMPerformance } from '../api/rum-performance';
 import { createCanvasTable } from '../../canvas/table';
 import { batchSendWxRobotBase64Img } from '../../wecom-robot/batch-send';
 import { compareTwoList, getMaxAndMinIdx } from '../../base/list';
-
+import CountryMap from './country-map';
 
 const DEFAULT_REGION = '其他';
+const CHINA_REGION = '中国';
 const ONE_DAY_SECONDS = 24 * 60 * 60;
 const SORT_KEY = 'allCount';
 const TABLE_HEADER_MAP = {
@@ -43,6 +44,9 @@ const RATIO_KEY_LIST = [
   'durationCount5000Ratio',
 ];
 
+function isChina(region) {
+  return !Object.values(CountryMap).includes(region);
+}
 
 function fixedNumber(num) {
   return Math.floor(num * 100) / 100;
@@ -78,6 +82,29 @@ function sortObj(obj, sortKeyList) {
   }, {});
 }
 
+function clusterChina(obj) {
+  obj[CHINA_REGION] = {
+    region: CHINA_REGION,
+  };
+
+  Object.keys(obj).forEach((region) => {
+    if (isChina(region)) {
+      Object.keys(obj[region]).forEach((key) => {
+        if (key !== 'region') {
+          obj[CHINA_REGION][key] = obj[region][key] + (obj[CHINA_REGION][key] || 0);
+        }
+      });
+      delete obj[region];
+    }
+  });
+
+  Object.keys(obj[CHINA_REGION]).map((key) => {
+    if (!['allCount', 'region'].includes(key)) {
+      obj[CHINA_REGION][key] = obj[CHINA_REGION][key] / obj[CHINA_REGION].allCount;
+    }
+  });
+}
+
 /**
  * [
  *   {
@@ -106,6 +133,8 @@ function parseResult(results) {
       }, obj[key]);
     });
   }
+
+  clusterChina(obj);
 
   return Object.keys(obj).map((key) => {
     const value = sortObj(obj[key], Object.keys(TABLE_HEADER_MAP));
