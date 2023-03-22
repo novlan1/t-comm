@@ -1,5 +1,15 @@
 # 工具库更新日志
 
+## [1.1.5](https://github.com/novlan1/t-comm/compare/v1.1.4...v1.1.5) (2023-03-22)
+
+
+### Features
+
+* 增加测试cdn ([f278cbb](https://github.com/novlan1/t-comm/commit/f278cbb4f810d31591405b18e1738d2b83d71c8b))
+* 增加cdn接口 ([4c4d696](https://github.com/novlan1/t-comm/commit/4c4d6962305051fabd9542522d5ae804d0bf54b3))
+
+
+
 ## [1.1.4](https://github.com/novlan1/t-comm/compare/v1.1.3...v1.1.4) (2023-03-17)
 
 
