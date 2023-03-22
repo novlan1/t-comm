@@ -7,5 +7,4 @@ export {
 export {
   getRUMAllProject,
   getRUMScores,
-  getRUMPerformance,
 } from './api/index';

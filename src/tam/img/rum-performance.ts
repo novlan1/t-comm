@@ -1,4 +1,4 @@
-import { getRUMPerformance } from '../api/rum-performance';
+import { getRUMPerformance } from '../../tencent-clound/rum/performance';
 import { createCanvasTable } from '../../canvas/table';
 import { batchSendWxRobotBase64Img } from '../../wecom-robot/batch-send';
 import { compareTwoList, getMaxAndMinIdx } from '../../base/list';

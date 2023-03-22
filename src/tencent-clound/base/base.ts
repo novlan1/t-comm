@@ -80,7 +80,7 @@ function getAuthorization({
   return authorization;
 }
 
-export function fetchRUMData({
+export function fetchCloudData({
   secretId,
   secretKey,
   payload,

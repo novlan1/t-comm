@@ -1,4 +1,4 @@
-import { fetchRUMData } from './rum-base';
+import { fetchCloudData } from '../base/base';
 
 
 export async function getRUMPerformance({
@@ -9,7 +9,7 @@ export async function getRUMPerformance({
   endTime,
   type,
 }) {
-  return fetchRUMData({
+  return fetchCloudData({
     secretId,
     secretKey,
     action: 'DescribeDataPerformancePage',

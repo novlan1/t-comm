@@ -21,6 +21,7 @@ export * from './rainbow';
 export * from './rainbow-to-cos';
 export * from './sheet';
 export * from './tam';
+export * from './tencent-clound';
 export * from './tencent-doc';
 export * from './tgit';
 export * from './url';
