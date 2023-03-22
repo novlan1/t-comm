@@ -44,7 +44,7 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { getRUMPerformance } from '../api/rum-performance';
+            <pre class="prettyprint source linenums"><code>import { getRUMPerformance } from '../../tencent-clound/rum/performance';
 import { createCanvasTable } from '../../canvas/table';
 import { batchSendWxRobotBase64Img } from '../../wecom-robot/batch-send';
 import { compareTwoList, getMaxAndMinIdx } from '../../base/list';
@@ -136,8 +136,10 @@ function clusterChina(obj) {
   Object.keys(obj).forEach((region) =&gt; {
     if (isChina(region)) {
       Object.keys(obj[region]).forEach((key) =&gt; {
-        if (key !== 'region') {
-          obj[CHINA_REGION][key] = obj[region][key] + (obj[CHINA_REGION][key] || 0);
+        if (key === 'allCount') {
+          obj[CHINA_REGION][key] = obj[region][key]  + (obj[CHINA_REGION][key] || 0);
+        } else if (key !== 'region') {
+          obj[CHINA_REGION][key] = obj[region][key] *  obj[region].allCount  + (obj[CHINA_REGION][key] || 0);
         }
       });
       delete obj[region];
@@ -289,7 +291,7 @@ export async function genRUMPerfImgAndSend({
 
 <br class="clear">
 
-<footer>Documentation generated on 2023-03-17 16:02:16 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2023-03-22 04:44:25 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>
