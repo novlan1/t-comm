@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.6](https://github.com/novlan1/t-comm/compare/v1.1.5...v1.1.6) (2023-03-27)
+
+
+### Bug Fixes
+
+* rum信息优化 ([164aaba](https://github.com/novlan1/t-comm/commit/164aaba7f95e37a9573676d42a91e78ef66637de))
+
+
+
 ## [1.1.5](https://github.com/novlan1/t-comm/compare/v1.1.4...v1.1.5) (2023-03-22)
 
 
