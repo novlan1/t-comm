@@ -64,23 +64,23 @@ async function getRUMScoreList({
   if (!secretInfo.rumSecretId || !secretInfo.rumSecretKey) {
     return {};
   }
-  const parsedPrePreDate = timeStampFormat(new Date(date).getTime() - 2 * 24 * 60 * 60 * 1000, 'yyyyMMdd');
+  const parsedPostDate = timeStampFormat(new Date(date).getTime() + 1 * 24 * 60 * 60 * 1000, 'yyyyMMdd');
 
   const rumScores = await getRUMScores({
+    secretId: secretInfo.rumSecretId,
+    secretKey: secretInfo.rumSecretKey,
+    startTime: `${parsedDate}00`,
+    endTime: `${parsedPostDate}00`,
+  });
+
+  const preRumScores = await getRUMScores({
     secretId: secretInfo.rumSecretId,
     secretKey: secretInfo.rumSecretKey,
     startTime: `${parsedPreDate}00`,
     endTime: `${parsedDate}00`,
   });
 
-  const preRumScores = await getRUMScores({
-    secretId: secretInfo.rumSecretId,
-    secretKey: secretInfo.rumSecretKey,
-    startTime: `${parsedPrePreDate}00`,
-    endTime: `${parsedPreDate}00`,
-  });
-
-  console.log('[getRUMScoreList] parsedPrePreDate: ', parsedPrePreDate);
+  console.log('[getRUMScoreList] parsedPostDate: ', parsedPostDate);
 
   saveJsonToLog(rumScores, 'rum-score.json');
   saveJsonToLog(preRumScores, 'rum-score-pre.json');
@@ -313,7 +313,7 @@ export async function genSummaryDataAndSendRobot({
 
 <br class="clear">
 
-<footer>Documentation generated on 2023-03-22 04:44:25 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2023-03-27 01:53:53 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>
