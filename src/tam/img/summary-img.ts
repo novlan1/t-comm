@@ -18,23 +18,23 @@ async function getRUMScoreList({
   if (!secretInfo.rumSecretId || !secretInfo.rumSecretKey) {
     return {};
   }
-  const parsedPrePreDate = timeStampFormat(new Date(date).getTime() - 2 * 24 * 60 * 60 * 1000, 'yyyyMMdd');
+  const parsedPostDate = timeStampFormat(new Date(date).getTime() + 1 * 24 * 60 * 60 * 1000, 'yyyyMMdd');
 
   const rumScores = await getRUMScores({
+    secretId: secretInfo.rumSecretId,
+    secretKey: secretInfo.rumSecretKey,
+    startTime: `${parsedDate}00`,
+    endTime: `${parsedPostDate}00`,
+  });
+
+  const preRumScores = await getRUMScores({
     secretId: secretInfo.rumSecretId,
     secretKey: secretInfo.rumSecretKey,
     startTime: `${parsedPreDate}00`,
     endTime: `${parsedDate}00`,
   });
 
-  const preRumScores = await getRUMScores({
-    secretId: secretInfo.rumSecretId,
-    secretKey: secretInfo.rumSecretKey,
-    startTime: `${parsedPrePreDate}00`,
-    endTime: `${parsedPreDate}00`,
-  });
-
-  console.log('[getRUMScoreList] parsedPrePreDate: ', parsedPrePreDate);
+  console.log('[getRUMScoreList] parsedPostDate: ', parsedPostDate);
 
   saveJsonToLog(rumScores, 'rum-score.json');
   saveJsonToLog(preRumScores, 'rum-score-pre.json');
