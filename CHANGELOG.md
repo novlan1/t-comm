@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.7](https://github.com/novlan1/t-comm/compare/v1.1.6...v1.1.7) (2023-03-31)
+
+
+### Features
+
+* **cc:** 增加白名单 ([7bf22ac](https://github.com/novlan1/t-comm/commit/7bf22ac39bab1be9941393bf5246f5977b29a5ca))
+
+
+
 ## [1.1.6](https://github.com/novlan1/t-comm/compare/v1.1.5...v1.1.6) (2023-03-27)
 
 
