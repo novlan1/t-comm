@@ -1,3 +1,4 @@
+import { IReportArr } from './types';
 /* eslint-disable @typescript-eslint/no-require-imports */
 
 export function getOpenSourceReport({
@@ -5,7 +6,7 @@ export function getOpenSourceReport({
   bgName,
   centerName,
   groupName,
-}) {
+}): Promise<IReportArr> {
   return new Promise((resolve, reject) => {
     const axios  = require('axios');
     const params = {

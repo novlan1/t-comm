@@ -1,3 +1,5 @@
+import { IReportArr } from './types';
+
 const DISABLE_STATUS = [100, -1];
 
 export function parseOpenSourceReport({
@@ -6,11 +8,26 @@ export function parseOpenSourceReport({
   formattedDate,
   searchInfo,
   requestInfo,
-  maxShowLinkNum,
+  maxShowLinkNum = 0,
+  whiteList = [],
+}: {
+  reportArr: IReportArr;
+  date?: string;
+  formattedDate?: string;
+  searchInfo?: {
+    prefix: string
+  };
+  requestInfo?: {
+    centerName: string;
+    groupName: string;
+  };
+  maxShowLinkNum?: number;
+  whiteList?: Array<string>;
 }) {
   const problemArr = reportArr
     .filter(item => !DISABLE_STATUS.includes(item.code_specification_score)
     || !DISABLE_STATUS.includes(item.code_security_score))
+    .filter((item: any) => whiteList.indexOf(item.project_name) === -1)
     .sort((a, b) => {
       const aSpec = a.code_specification_score;
       const aSecurity = a.code_security_score;
@@ -50,7 +67,7 @@ export function parseOpenSourceReport({
     }
 
     return acc;
-  }, []);
+  }, [] as Array<string>);
 
   if (!reportArr.length && !list.length) {
     list.push('抱歉，未拉取到数据～');
