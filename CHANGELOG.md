@@ -1,5 +1,15 @@
 # 工具库更新日志
 
+## [1.1.8](https://github.com/novlan1/t-comm/compare/v1.1.7...v1.1.8) (2023-04-12)
+
+
+### Features
+
+* **tam:** 性能日报返回数据 ([9c90eb2](https://github.com/novlan1/t-comm/commit/9c90eb2a07eca6c22a5ccd2ecfd78efd11509944))
+* **validate:** 增加一些validate方法 ([7bd2601](https://github.com/novlan1/t-comm/commit/7bd26010238a34e1ec33fe980597bf669ebe8368))
+
+
+
 ## [1.1.7](https://github.com/novlan1/t-comm/compare/v1.1.6...v1.1.7) (2023-03-31)
 
 
