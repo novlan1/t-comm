@@ -98,12 +98,44 @@ export function isDate(value) {
  * // =&gt; true
  */
 export function isFunction(value) {
+  // typeof val === 'function' // 也可以
   return Object.prototype.toString.call(value) === '[object Function]';
 }
 
-
 export function isPlainObject(val) {
   return val !== null &amp;&amp; typeof val === 'object' &amp;&amp; !Array.isArray(val);
+}
+
+export function isPromise(val) {
+  return isPlainObject(val) &amp;&amp; isFunction(val.then) &amp;&amp; isFunction(val.catch);
+}
+
+export function isDef(value) {
+  return value !== undefined &amp;&amp; value !== null;
+}
+
+export function isObj(x) {
+  const type = typeof x;
+  return x !== null &amp;&amp; (type === 'object' || type === 'function');
+}
+
+export function isObject(val) {
+  return val !== null &amp;&amp; typeof val === 'object';
+}
+
+const IMAGE_REGEXP = /\.(jpeg|jpg|gif|png|svg|webp|jfif|bmp|dpg)/i;
+const VIDEO_REGEXP = /\.(mp4|mpg|mpeg|dat|asf|avi|rm|rmvb|mov|wmv|flv|mkv)/i;
+
+export function isImageUrl(url) {
+  return IMAGE_REGEXP.test(url);
+}
+
+export function isVideoUrl(url) {
+  return VIDEO_REGEXP.test(url);
+}
+
+export function isNumber(value) {
+  return /^\d+(\.\d+)?$/.test(value);
 }
 </code></pre>
         </article>
@@ -118,7 +150,7 @@ export function isPlainObject(val) {
 
 <br class="clear">
 
-<footer>Documentation generated on 2023-03-27 01:53:54 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2023-04-12 01:38:40 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>
