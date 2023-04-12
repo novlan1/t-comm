@@ -234,8 +234,8 @@ async function getAllProjectList({
  * @returns {Promise<Array<object>>} 分数列表
  *
  * @example
- * getSummaryScoreByProjectIdList({
- *   projectIdList: [123123, 111],
+ * getSummaryScoreByProjectList({
+ *   projectList: [],
  *   date: 20210106
  *   secretInfo: {
  *     apiKey: '',
@@ -271,19 +271,27 @@ async function getAllProjectList({
  *   }
  * ]
  */
-async function getSummaryScoreByProjectIdList({
-  projectIdList,
+async function getSummaryScoreByProjectList({
+  projectList,
   date,
   secretInfo,
 }: {
-  projectIdList: Array<number>
+  projectList: Array<any>
   date: string
   secretInfo: SecretInfoType
 }) {
   const res: Array<any> = [];
-  for (const projectId of projectIdList) {
-    const temp = await getScoreInfoByProjectId({ projectId, startDate: date, secretInfo });
-    res.push(...(temp || []));
+  for (const project of projectList) {
+    const temp = await getScoreInfoByProjectId({ projectId: project.ID, startDate: date, secretInfo });
+    const projectInfo = {
+      ...project,
+      ...(temp[0] || {}),
+    };
+    // 过滤掉没有数据的项目
+    if (!(projectInfo as any).PagePv) {
+      continue;
+    }
+    res.push(projectInfo);
   }
   return res;
 }
@@ -361,9 +369,9 @@ export async function getSummaryScoreByGroupIdList({
     secretInfo,
   });
   const projectIdList = projectList.map(item => item.ID);
-  const res = await getSummaryScoreByProjectIdList({
+  const res = await getSummaryScoreByProjectList({
     date,
-    projectIdList,
+    projectList,
     secretInfo,
   });
 

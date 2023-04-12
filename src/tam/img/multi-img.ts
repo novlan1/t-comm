@@ -98,7 +98,7 @@ export async function genMultiImgAndSendRobot({
   eventProjectIdMap,
   eventTableHeaderMap,
 }) {
-  const summaryScoreImg = await genSummaryData({
+  const result = await genSummaryData({
     date,
     groupIdList,
     secretInfo,
@@ -108,6 +108,9 @@ export async function genMultiImgAndSendRobot({
 
     tableHeaderMap,
   });
+
+  if (!result) return;
+  const { img: summaryScoreImg, data } = result;
 
   const launchGameImg = await genCustomEventImg({
     date,
@@ -135,5 +138,7 @@ export async function genMultiImgAndSendRobot({
     webhookUrl,
     chatId,
   });
+
+  return data;
 }
 

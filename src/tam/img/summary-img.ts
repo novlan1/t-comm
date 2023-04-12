@@ -168,7 +168,10 @@ export async function genSummaryData({
     cellWidthList: Object.values(tableHeaderMap).map(item => (item as any).tableWidth || 65),
   });
 
-  return img;
+  return {
+    img,
+    data,
+  };
 }
 
 /**
@@ -233,7 +236,7 @@ export async function genSummaryDataAndSendRobot({
   webhookUrl,
   chatId,
 }) {
-  const img = await genSummaryData({
+  const result = await genSummaryData({
     date,
     groupIdList,
     secretInfo,
@@ -244,6 +247,9 @@ export async function genSummaryDataAndSendRobot({
     tableHeaderMap,
   });
 
+  if (!result) return;
+  const { img, data } = result;
+
   if (!img || !chatId) {
     return;
   }
@@ -253,4 +259,6 @@ export async function genSummaryDataAndSendRobot({
     webhookUrl,
     chatId,
   });
+
+  return data;
 }
