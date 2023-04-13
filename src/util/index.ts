@@ -1,4 +1,5 @@
 export { buildAndUpload } from './build-upload';
+export { analyzeIndexBundle } from './bundle-analyze';
 export { getFlattenedDeps } from './collect-deps';
 export { isInCronExpression } from './cron-parser';
 export { readEnvVariable } from './env-variable';
