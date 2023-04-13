@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.9](https://github.com/novlan1/t-comm/compare/v1.1.8...v1.1.9) (2023-04-13)
+
+
+### Features
+
+* 增加bundle-analyze ([cc8e3c5](https://github.com/novlan1/t-comm/commit/cc8e3c533a4f950eba516f0fd826263318b9966c))
+
+
+
 ## [1.1.8](https://github.com/novlan1/t-comm/compare/v1.1.7...v1.1.8) (2023-04-12)
 
 
