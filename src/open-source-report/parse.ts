@@ -2,6 +2,20 @@ import { IReportArr } from './types';
 
 const DISABLE_STATUS = [100, -1];
 
+function isWhiteProject(whiteList, codeUrl = '') {
+  const projectName = getWholeProjectName(codeUrl);
+  if (whiteList.includes(projectName)) return true;
+  return false;
+}
+
+
+function getWholeProjectName(codeUrl = '') {
+  const reg = /https?:\/\/[\w\-.]+\/([/\w-]+)(.git)?/;
+  const match = codeUrl.match(reg);
+  return match?.[1] || codeUrl;
+}
+
+
 export function parseOpenSourceReport({
   reportArr,
   date,
@@ -27,7 +41,7 @@ export function parseOpenSourceReport({
   const problemArr = reportArr
     .filter(item => !DISABLE_STATUS.includes(item.code_specification_score)
     || !DISABLE_STATUS.includes(item.code_security_score))
-    .filter((item: any) => whiteList.indexOf(item.project_name) === -1)
+    .filter((item: any) => !isWhiteProject(whiteList, item.code_url))
     .sort((a, b) => {
       const aSpec = a.code_specification_score;
       const aSecurity = a.code_security_score;
