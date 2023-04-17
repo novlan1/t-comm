@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.10](https://github.com/novlan1/t-comm/compare/v1.1.9...v1.1.10) (2023-04-17)
+
+
+### Features
+
+* **cc:** 白名单过滤完整项目名称 ([882651d](https://github.com/novlan1/t-comm/commit/882651d804bdb3be02fbd5eb4236299a9cc2eae1))
+
+
+
 ## [1.1.9](https://github.com/novlan1/t-comm/compare/v1.1.8...v1.1.9) (2023-04-13)
 
 
