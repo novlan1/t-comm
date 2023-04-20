@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.11](https://github.com/novlan1/t-comm/compare/v1.1.10...v1.1.11) (2023-04-20)
+
+
+### Features
+
+* **robot-msg:** 机器人消息抽取 ([409b196](https://github.com/novlan1/t-comm/commit/409b196cba7657df08c548250988ccc433b45831))
+
+
+
 ## [1.1.10](https://github.com/novlan1/t-comm/compare/v1.1.9...v1.1.10) (2023-04-17)
 
 
