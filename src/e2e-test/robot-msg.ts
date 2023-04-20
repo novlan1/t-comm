@@ -6,13 +6,13 @@ import { EMOJI_MAP } from './config';
 export function getE2ETestRobotMessage(data, notificationList = []) {
   const {
     start,
+    duration,
     passes,
     tests,
-    projectLink,
-    checkUrl,
-    duration,
-    name,
-    comment,
+    projectLink = '',
+    checkUrl = '',
+    name = '',
+    comment = '',
     fileList = [],
   } = data;
 
@@ -46,9 +46,14 @@ export function getE2ETestRobotMessage(data, notificationList = []) {
   }
 
   const fileMessageList = (fileList || []).map((fileInfo) => {
-    const { file, tests, passes } = fileInfo;
+    const { file, tests, passes, link } = fileInfo;
+    const fileName = parseRobotMessage({
+      content: file,
+      link,
+    });
+
     return [
-      `- ${file}`,
+      `- ${fileName}`,
       `${tests}/${passes}`,
     ];
   });
