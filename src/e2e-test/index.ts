@@ -11,3 +11,4 @@ export const e2e = {
   ...scroll,
 };
 
+export  { getE2ETestRobotMessage } from './robot-msg';
