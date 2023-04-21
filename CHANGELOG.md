@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.14](https://github.com/novlan1/t-comm/compare/v1.1.13...v1.1.14) (2023-04-21)
+
+
+### Features
+
+* **e2e:** 增加发送机器人chatid逻辑 ([54aad3c](https://github.com/novlan1/t-comm/commit/54aad3c29e5e46c28bf8b4d8f37a5275a82563fa))
+
+
+
 ## [1.1.13](https://github.com/novlan1/t-comm/compare/v1.1.12...v1.1.13) (2023-04-21)
 
 
