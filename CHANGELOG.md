@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.15](https://github.com/novlan1/t-comm/compare/v1.1.14...v1.1.15) (2023-04-21)
+
+
+### Features
+
+* 上报研发平台 ([4063856](https://github.com/novlan1/t-comm/commit/40638569eb2432c2fdbe88c596cfe3d539369a58))
+
+
+
 ## [1.1.14](https://github.com/novlan1/t-comm/compare/v1.1.13...v1.1.14) (2023-04-21)
 
 
