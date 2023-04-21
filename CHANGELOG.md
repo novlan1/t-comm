@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.13](https://github.com/novlan1/t-comm/compare/v1.1.12...v1.1.13) (2023-04-21)
+
+
+### Features
+
+* 增加mochawesome-report ([87b4c73](https://github.com/novlan1/t-comm/commit/87b4c73523ee07f965fbc7c5a78930b70fc7c315))
+
+
+
 ## [1.1.12](https://github.com/novlan1/t-comm/compare/v1.1.11...v1.1.12) (2023-04-20)
 
 
