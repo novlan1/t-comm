@@ -7,19 +7,10 @@ import { uploadCOSFile } from '../cos/cos';
 import { saveBase64ImgToFile } from '../node-img/img';
 import { formatBite } from '../util/format-bite';
 
-import { getBundleBuildDesc, getBundleVersion, parseUploadResult } from './helper';
+import { getBundleBuildDesc, getBundleVersion, parseUploadResult, flattenSubPackages } from './helper';
 import { OptionsType } from './type';
 import { DEFAULT_BUILD_SETTING, MAX_TRY_TIMES_MAP, PREVIEW_IMG_MAX_WORD_LENGTH } from './config';
 
-function flattenSubPackages(result) {
-  const {
-    subPackageInfo,
-  } = result;
-  return subPackageInfo.reduce((acc, item) => {
-    acc[item.name] = item;
-    return acc;
-  }, {});
-}
 
 function getFullPackageSize(result) {
   const obj = flattenSubPackages(result);

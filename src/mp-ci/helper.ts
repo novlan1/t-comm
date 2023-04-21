@@ -2,6 +2,7 @@
 import { getGitCommitInfo } from '../git/git';
 import { BUNDLE_NAME_MAP } from './config';
 import { formatBite } from '../util/format-bite';
+import { genRobotMessage } from '../wecom-robot/message';
 
 
 export function getBundleBuildDesc({
@@ -9,7 +10,22 @@ export function getBundleBuildDesc({
   env = 'test',
 }) {
   const commitInfo = getGitCommitInfo(root);
-  const buildDesc = `环境: ${env || ''}, 分支: ${commitInfo.branch}，最后提交: ${commitInfo.author} - ${commitInfo.message}`;
+  const buildDesc = genRobotMessage([
+    [
+      {
+        label: '环境',
+        content: env || '',
+      },
+      {
+        label: '分支',
+        content: commitInfo.branch,
+      },
+      {
+        label: '最后提交',
+        content: `${commitInfo.author} - ${commitInfo.message}`,
+      },
+    ],
+  ]);
   return buildDesc;
 }
 
@@ -38,4 +54,14 @@ export function parseUploadResult(result) {
     .map(pkg => `- ${BUNDLE_NAME_MAP[pkg.name] || pkg.name}: ${formatBite(pkg.size)}`);
   list.unshift('PACKAGE SIZE INFO: ');
   return list;
+}
+
+export function flattenSubPackages(result) {
+  const {
+    subPackageInfo = [],
+  } = result || {};
+  return subPackageInfo.reduce((acc, item) => {
+    acc[item.name] = item;
+    return acc;
+  }, {});
 }

@@ -1,3 +1,3 @@
 export { MpCI } from './mp-ci';
-export { getBundleBuildDesc, getBundleVersion } from './helper';
+export { getBundleBuildDesc, getBundleVersion, flattenSubPackages } from './helper';
 

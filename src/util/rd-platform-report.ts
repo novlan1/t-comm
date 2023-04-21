@@ -6,6 +6,7 @@ enum ReportType {
 }
 
 enum ReportPlatform {
+  NOT_KNOWN = 0,
   H5 = 1,
   MP = 2,
 }
