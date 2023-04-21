@@ -11,4 +11,5 @@ export const e2e = {
   ...scroll,
 };
 
+export { parseMochaAwesomeResult } from './mocha-awesome-result';
 export  { getE2ETestRobotMessage } from './robot-msg';
