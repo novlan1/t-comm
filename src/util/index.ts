@@ -11,6 +11,7 @@ export { nodeGet, nodePost, nodePut } from './node-request';
 export { writeEnvTokenToNpmRC } from './npm-token';
 export { statisticsComponent, statisticsPages } from './pages-statistics';
 export { traverseResp } from './parse-interface-data';
+export { reportToRdPlatform } from './rd-platform-report';
 export { replaceAllPolyfill } from './replace-all';
 export { getRtxInfo } from './rtx';
 export { sleep } from './sleep';
