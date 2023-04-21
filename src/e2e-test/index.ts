@@ -12,4 +12,5 @@ export const e2e = {
 };
 
 export { parseMochaAwesomeResult } from './mocha-awesome-result';
-export  { getE2ETestRobotMessage } from './robot-msg';
+export { getE2ERobotChatId } from './robot-chat-id';
+export { getE2ETestRobotMessage } from './robot-msg';
