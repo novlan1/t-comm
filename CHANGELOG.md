@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.16](https://github.com/novlan1/t-comm/compare/v1.1.15...v1.1.16) (2023-04-23)
+
+
+### Features
+
+* 抽离分包信息函数 ([4a11c34](https://github.com/novlan1/t-comm/commit/4a11c34f3b00dadbd1b2a19f7661f690b81e0587))
+
+
+
 ## [1.1.15](https://github.com/novlan1/t-comm/compare/v1.1.14...v1.1.15) (2023-04-21)
 
 
