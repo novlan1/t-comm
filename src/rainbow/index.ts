@@ -14,4 +14,5 @@ export {
   OneClickReleaseRainbowTask,
   queryGroupInfo,
 } from './rainbow-admin';
+export { writeEnvFromRainbow } from './rainbow-local-env';
 export { fetchRainbowConfig } from './rainbow-user';
