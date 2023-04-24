@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.17](https://github.com/novlan1/t-comm/compare/v1.1.16...v1.1.17) (2023-04-24)
+
+
+### Features
+
+* **env:** 从配置中心获取密钥 ([9213636](https://github.com/novlan1/t-comm/commit/92136369d368709ca87390f6a20d419c2c94fe83))
+
+
+
 ## [1.1.16](https://github.com/novlan1/t-comm/compare/v1.1.15...v1.1.16) (2023-04-23)
 
 
