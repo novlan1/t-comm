@@ -48,6 +48,7 @@
 import { getGitCommitInfo } from '../git/git';
 import { BUNDLE_NAME_MAP } from './config';
 import { formatBite } from '../util/format-bite';
+import { genRobotMessage } from '../wecom-robot/message';
 
 
 export function getBundleBuildDesc({
@@ -55,7 +56,22 @@ export function getBundleBuildDesc({
   env = 'test',
 }) {
   const commitInfo = getGitCommitInfo(root);
-  const buildDesc = `环境: ${env || ''}, 分支: ${commitInfo.branch}，最后提交: ${commitInfo.author} - ${commitInfo.message}`;
+  const buildDesc = genRobotMessage([
+    [
+      {
+        label: '环境',
+        content: env || '',
+      },
+      {
+        label: '分支',
+        content: commitInfo.branch,
+      },
+      {
+        label: '最后提交',
+        content: `${commitInfo.author} - ${commitInfo.message}`,
+      },
+    ],
+  ]);
   return buildDesc;
 }
 
@@ -85,6 +101,16 @@ export function parseUploadResult(result) {
   list.unshift('PACKAGE SIZE INFO: ');
   return list;
 }
+
+export function flattenSubPackages(result) {
+  const {
+    subPackageInfo = [],
+  } = result || {};
+  return subPackageInfo.reduce((acc, item) =&gt; {
+    acc[item.name] = item;
+    return acc;
+  }, {});
+}
 </code></pre>
         </article>
     </section>
@@ -98,7 +124,7 @@ export function parseUploadResult(result) {
 
 <br class="clear">
 
-<footer>Documentation generated on 2023-04-21 02:54:25 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2023-04-26 14:10:34 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>
