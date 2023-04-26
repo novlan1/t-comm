@@ -28,6 +28,21 @@ function getStartTypeDesc(data) {
   return [];
 }
 
+function getFailedTestUnits({
+  passes,
+  tests,
+  testList,
+}) {
+  if (passes == tests) return [];
+  if (!testList?.length) return [];
+
+  const failedTests = testList.filter(item => !!item.fail);
+
+  if (!failedTests?.length) return [];
+  return [`失败：${failedTests}.join('、')`];
+}
+
+
 export function getE2ETestRobotMessage(data, notificationList = []) {
   const {
     start,
@@ -72,7 +87,7 @@ export function getE2ETestRobotMessage(data, notificationList = []) {
   }
 
   const fileMessageList = (fileList || []).map((fileInfo) => {
-    const { file, tests, passes, link } = fileInfo;
+    const { file, tests, passes, link, testList } = fileInfo;
     const fileName = parseRobotMessage({
       content: file,
       link,
@@ -81,6 +96,11 @@ export function getE2ETestRobotMessage(data, notificationList = []) {
     return [
       `- ${fileName}`,
       `${tests}/${passes}`,
+      ...getFailedTestUnits({
+        testList,
+        passes,
+        tests,
+      }),
     ];
   });
 

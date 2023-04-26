@@ -35,6 +35,7 @@ export function parseMochaAwesomeResult(report) {
         passes: 0,
         failures: 0,
         pending: 0,
+        testList: [],
       };
     }
 
@@ -50,6 +51,7 @@ export function parseMochaAwesomeResult(report) {
         map[project].files[moduleName].passes += +test.pass;
         map[project].files[moduleName].failures += +test.fail;
         map[project].files[moduleName].pending += +test.pending;
+        map[project].files[moduleName].testList.push(test);
       }
     }
   }
