@@ -16,8 +16,7 @@ function getStartTypeDesc(data) {
   let content = '';
   if (bkStartType && TRIGGER_MAP[bkStartType]) {
     content = TRIGGER_MAP[bkStartType];
-  }
-  if (bkStartType) {
+  } else if (bkStartType) {
     content = bkStartType;
   }
   if (content) {
