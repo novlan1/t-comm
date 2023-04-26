@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.18](https://github.com/novlan1/t-comm/compare/v1.1.17...v1.1.18) (2023-04-26)
+
+
+### Features
+
+* **e2e:** 机器人消息优化 ([93ceab1](https://github.com/novlan1/t-comm/commit/93ceab105c7d23d77e8a8200c7cacd24e54a3acc))
+
+
+
 ## [1.1.17](https://github.com/novlan1/t-comm/compare/v1.1.16...v1.1.17) (2023-04-24)
 
 
