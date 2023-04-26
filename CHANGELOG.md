@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.20](https://github.com/novlan1/t-comm/compare/v1.1.19...v1.1.20) (2023-04-26)
+
+
+### Features
+
+* **e2e:** 输出失败用例 ([e37dfa3](https://github.com/novlan1/t-comm/commit/e37dfa3e2c9c727c7b2fd02c62ca69dba8cc6a97))
+
+
+
 ## [1.1.19](https://github.com/novlan1/t-comm/compare/v1.1.18...v1.1.19) (2023-04-26)
 
 
