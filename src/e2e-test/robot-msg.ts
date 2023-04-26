@@ -2,6 +2,32 @@ import { parseRobotMessage, genRobotMessage } from '../wecom-robot/message';
 import { timeStampFormat } from '../date/time';
 import { EMOJI_MAP } from './config';
 
+const TRIGGER_MAP = {
+  MANUAL: '手动',
+  TIME_TRIGGER: '定时',
+  WEB_HOOK: 'WebHook',
+  SERVICE: '内部服务',
+  PIPELINE: '子流水线',
+  REMOTE: '远程',
+};
+
+function getStartTypeDesc(data) {
+  const { bkStartType } = data;
+  let content = '';
+  if (bkStartType && TRIGGER_MAP[bkStartType]) {
+    content = TRIGGER_MAP[bkStartType];
+  }
+  if (bkStartType) {
+    content = bkStartType;
+  }
+  if (content) {
+    return [{
+      content,
+      label: '触发方式',
+    }];
+  }
+  return [];
+}
 
 export function getE2ETestRobotMessage(data, notificationList = []) {
   const {
@@ -34,6 +60,7 @@ export function getE2ETestRobotMessage(data, notificationList = []) {
         content: `${Math.ceil(duration / 1000)}s`,
         label: '耗时',
       },
+      ...getStartTypeDesc(data),
       {
         content: time,
         link: checkUrl,
