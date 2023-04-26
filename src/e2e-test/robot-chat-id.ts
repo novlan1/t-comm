@@ -23,7 +23,6 @@ export function getE2ERobotChatId({
 
   isFailed,
   isLocal,
-  isManualStart,
   isSendAll,
 
   shouldSendAll = defaultShouldSendAll,
@@ -48,7 +47,7 @@ export function getE2ERobotChatId({
     return chatIdMap.ALL;
   }
 
-  if (isLocal || isManualStart) {
+  if (isLocal) {
     return chatIdMap.ONLY_ME;
   }
 
