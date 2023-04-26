@@ -1,5 +1,19 @@
 # 工具库更新日志
 
+## [1.1.19](https://github.com/novlan1/t-comm/compare/v1.1.18...v1.1.19) (2023-04-26)
+
+
+### Bug Fixes
+
+* **e2e:** 消息发送 ([ddab392](https://github.com/novlan1/t-comm/commit/ddab392f44120b2eb35cc11ca5de8f405abb2ab6))
+
+
+### Features
+
+* **e2e:** 去掉手动触发的判断 ([700f508](https://github.com/novlan1/t-comm/commit/700f50844dbd144364693764296bf0ff87da4724))
+
+
+
 ## [1.1.18](https://github.com/novlan1/t-comm/compare/v1.1.17...v1.1.18) (2023-04-26)
 
 
