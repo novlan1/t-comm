@@ -19,6 +19,7 @@ export async function sendOpenSourceReport({
   searchInfo,
   maxShowLinkNum = MAX_SHOW_LINK_NAME,
   whiteList = [],
+  filterOrgPath = '',
 }) {
   const time = timeStampFormat(new Date(date).getTime(), 'yyyyMMdd');
   const formattedDate = timeStampFormat(new Date(date).getTime(), 'yyyy-MM-dd');
@@ -36,6 +37,7 @@ export async function sendOpenSourceReport({
     searchInfo,
     maxShowLinkNum,
     whiteList,
+    filterOrgPath,
   });
 
   if (!chatContent) return;

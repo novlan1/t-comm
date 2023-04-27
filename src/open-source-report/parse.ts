@@ -24,6 +24,7 @@ export function parseOpenSourceReport({
   requestInfo,
   maxShowLinkNum = 0,
   whiteList = [],
+  filterOrgPath = '',
 }: {
   reportArr: IReportArr;
   date?: string;
@@ -37,11 +38,13 @@ export function parseOpenSourceReport({
   };
   maxShowLinkNum?: number;
   whiteList?: Array<string>;
+  filterOrgPath?: string
 }) {
   const problemArr = reportArr
     .filter(item => !DISABLE_STATUS.includes(item.code_specification_score)
     || !DISABLE_STATUS.includes(item.code_security_score))
     .filter((item: any) => !isWhiteProject(whiteList, item.code_url))
+    .filter((item: any) => !filterOrgPath || filterOrgPath === item.org_path)
     .sort((a, b) => {
       const aSpec = a.code_specification_score;
       const aSecurity = a.code_security_score;
