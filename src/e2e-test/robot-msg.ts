@@ -36,7 +36,7 @@ function getFailedTestUnits({
   if (passes == tests) return [];
   if (!testList?.length) return [];
 
-  const failedTests = testList.filter(item => !!item.fail);
+  const failedTests = testList.filter(item => !!item.fail).map(item => item.title);
 
   if (!failedTests?.length) return [];
   return [`失败：${failedTests}.join('、')`];
