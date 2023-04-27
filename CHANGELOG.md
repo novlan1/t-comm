@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.21](https://github.com/novlan1/t-comm/compare/v1.1.20...v1.1.21) (2023-04-27)
+
+
+### Features
+
+* 优化e2e msg ([d1460d0](https://github.com/novlan1/t-comm/commit/d1460d07c9e5b5f4edf1ae6630a960e8f39e9efa))
+
+
+
 ## [1.1.20](https://github.com/novlan1/t-comm/compare/v1.1.19...v1.1.20) (2023-04-26)
 
 
