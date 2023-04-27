@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.23](https://github.com/novlan1/t-comm/compare/v1.1.22...v1.1.23) (2023-04-27)
+
+
+### Features
+
+* **open-source:** 支持过滤组织 ([cd9eada](https://github.com/novlan1/t-comm/commit/cd9eadabd4914922ac51966ebf2eea778102f9a0))
+
+
+
 ## [1.1.22](https://github.com/novlan1/t-comm/compare/v1.1.21...v1.1.22) (2023-04-27)
 
 
