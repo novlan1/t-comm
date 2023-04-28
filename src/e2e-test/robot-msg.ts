@@ -86,23 +86,28 @@ export function getE2ETestRobotMessage(data, notificationList = []) {
     messageList[0].push(...notificationList.map(item => `<@${item}>`));
   }
 
-  const fileMessageList = (fileList || []).map((fileInfo) => {
-    const { file, tests, passes, link, testList } = fileInfo;
-    const fileName = parseRobotMessage({
-      content: file,
-      link,
-    });
+  const fileMessageList = (fileList || [])
+    .filter((fileInfo) => {
+      const { tests, passes } = fileInfo;
+      return tests !== passes;
+    })
+    .map((fileInfo) => {
+      const { file, tests, passes, link, testList } = fileInfo;
+      const fileName = parseRobotMessage({
+        content: file,
+        link,
+      });
 
-    return [
-      `- ${fileName}`,
-      `${tests}/${passes}`,
-      ...getFailedTestUnits({
-        testList,
-        passes,
-        tests,
-      }),
-    ];
-  });
+      return [
+        `- ${fileName}`,
+        `${tests}/${passes}`,
+        ...getFailedTestUnits({
+          testList,
+          passes,
+          tests,
+        }),
+      ];
+    });
 
   messageList.push(...fileMessageList);
 
