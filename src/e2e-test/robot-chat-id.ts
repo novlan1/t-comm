@@ -1,12 +1,12 @@
-const defaultShouldSendAll = (time) => {
-  const date = new Date();
-  date.setHours(9, 10, 0, 0);
-  const end = date.getTime();
-  date.setHours(9, 0, 0, 0);
-  const start = date.getTime();
+// const defaultShouldSendAll = (time) => {
+//   const date = new Date();
+//   date.setHours(9, 10, 0, 0);
+//   const end = date.getTime();
+//   date.setHours(9, 0, 0, 0);
+//   const start = date.getTime();
 
-  return time > start && time < end;
-};
+//   return time > start && time < end;
+// };
 
 
 const defaultShouldSendSuccess = (time) => {
@@ -22,10 +22,10 @@ export function getE2ERobotChatId({
   start,
 
   isFailed,
-  isLocal,
   isSendAll,
+  isOnlyMe,
 
-  shouldSendAll = defaultShouldSendAll,
+  // shouldSendAll = defaultShouldSendAll,
   shouldSendSuccess = defaultShouldSendSuccess,
 }: {
   chatIdMap: {
@@ -35,25 +35,25 @@ export function getE2ERobotChatId({
     SUCCESS: Array<string>;
   };
   start: number;
-  isFailed?: boolean;
-  isLocal?: boolean;
-  isManualStart?: boolean;
-  isSendAll?: boolean;
 
-  shouldSendAll?: (number) => boolean;
+  isFailed?: boolean;
+  isSendAll?: boolean;
+  isOnlyMe?: boolean;
+
+  // shouldSendAll?: (number) => boolean;
   shouldSendSuccess?: (number) => boolean;
 }) {
   if (isSendAll) {
     return chatIdMap.ALL;
   }
 
-  if (isLocal) {
+  if (isOnlyMe) {
     return chatIdMap.ONLY_ME;
   }
 
-  if (shouldSendAll?.(start)) {
-    return chatIdMap.ALL;
-  }
+  // if (shouldSendAll?.(start)) {
+  //   return chatIdMap.ALL;
+  // }
 
   if (isFailed) {
     return chatIdMap.FAIL;
@@ -62,6 +62,8 @@ export function getE2ERobotChatId({
   if (shouldSendSuccess?.(start)) {
     return chatIdMap.SUCCESS;
   }
+
+  return [];
 }
 
 
