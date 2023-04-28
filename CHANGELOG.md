@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.24](https://github.com/novlan1/t-comm/compare/v1.1.23...v1.1.24) (2023-04-28)
+
+
+### Features
+
+* **e2e:** 优化chatid ([c2220e4](https://github.com/novlan1/t-comm/commit/c2220e4ae761b4019a3e87a625c4602de9b2bf61))
+
+
+
 ## [1.1.23](https://github.com/novlan1/t-comm/compare/v1.1.22...v1.1.23) (2023-04-27)
 
 
