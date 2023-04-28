@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.25](https://github.com/novlan1/t-comm/compare/v1.1.24...v1.1.25) (2023-04-28)
+
+
+### Features
+
+* **e2e:** 过滤消息，只发送失败消息 ([5092395](https://github.com/novlan1/t-comm/commit/509239560a346e66dd937d05772b3481f99850f6))
+
+
+
 ## [1.1.24](https://github.com/novlan1/t-comm/compare/v1.1.23...v1.1.24) (2023-04-28)
 
 
