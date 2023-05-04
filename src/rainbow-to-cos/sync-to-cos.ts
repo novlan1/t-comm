@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-import { uploadCOSFile } from '../cos';
+import { uploadCOSFile } from '../tencent-clound/cos';
 import { getSavePath, getSaveFileName } from './helper/helper';
 
 

@@ -3,7 +3,7 @@ import { sendWxRobotMarkdown } from '../wecom-robot/base';
 import { getGitCommitInfo } from '../git/git';
 import { timeStampFormat } from '../date/time';
 import { addTextForImg } from '../canvas/img-text';
-import { uploadCOSFile } from '../cos/cos';
+import { uploadCOSFile } from '../tencent-clound/cos/cos';
 import { saveBase64ImgToFile } from '../node-img/img';
 import { formatBite } from '../util/format-bite';
 
