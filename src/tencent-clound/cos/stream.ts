@@ -1,5 +1,6 @@
 import * as fs from 'fs';
-import { getCOSInstance } from './helper';
+import { getCOSInstance, onUploadCOSProgress } from './helper';
+
 
 export function uploadCOSStreamFile({
   file,
@@ -23,12 +24,7 @@ export function uploadCOSStreamFile({
       Headers: {
         'x-cos-traffic-limit': 819200, // 限速值设置范围为819200 - 838860800，即100KB/s - 100MB/s，如果超出该范围将返回400错误。
       },
-      onProgress(info) {
-        const percent = parseInt(`${info.percent * 10000}`, 10) / 100;
-        const speed = parseInt(`${(info.speed / 1024 / 1024) * 100}`, 10) / 100;
-
-        console.log(`[uploadCOSStreamFile] 进度：${percent}%; 速度：${speed}Mb/s;`);
-      },
+      onProgress: onUploadCOSProgress,
     }, (err, data) => {
       if (data) {
         resolve(data);

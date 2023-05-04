@@ -1,4 +1,4 @@
-import { getCOSInstance } from './helper';
+import { getCOSInstance, onUploadCOSProgress } from './helper';
 
 
 const pushFiles = ({ files, bucket, region }) => files.map(file => ({
@@ -73,11 +73,8 @@ export function uploadCOSFile({
       {
         files: fileList,
         SliceSize: 1024 * 1024,
-        onProgress(info) {
-          const percent = parseInt(`${info.percent * 10000}`, 10) / 100;
-          const speed = parseInt(`${(info.speed / 1024 / 1024) * 100}`, 10) / 100;
-          console.log(`[uploadCOSFile] 进度：${percent}%; 速度：${speed}Mb/s;`);
-        },
+
+        onProgress: onUploadCOSProgress,
         onFileFinish(err, data, options) {
           resolve(data);
           console.log(`[uploadCOSFile] 上传${err ? '失败' : '完成'}: ${options.Key}`);

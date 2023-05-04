@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-
+import { formatBite } from '../../util/format-bite';
 
 export function getCOSInstance(secretId, secretKey) {
   const COS = require('cos-nodejs-sdk-v5');
@@ -8,4 +8,13 @@ export function getCOSInstance(secretId, secretKey) {
     SecretKey: secretKey,
   });
   return cos;
+}
+
+export function onUploadCOSProgress(info) {
+  const percent = parseInt(`${info.percent * 10000}`, 10) / 100;
+  const speed = formatBite(info.speed || 0);
+  const total = formatBite(info.total || 0);
+  const loaded = formatBite(info.loaded || 0);
+
+  console.log(`[uploadCOSFile] 总共：${total}，已上传：${loaded}，进度：${percent}%，速度：${speed}/s;`);
 }
