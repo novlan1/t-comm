@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.27](https://github.com/novlan1/t-comm/compare/v1.1.26...v1.1.27) (2023-05-04)
+
+
+### Features
+
+* 优化cos上传时的打印信息 ([2c14a51](https://github.com/novlan1/t-comm/commit/2c14a5189f07699d74152a694e1053784d1b9c2f))
+
+
+
 ## [1.1.26](https://github.com/novlan1/t-comm/compare/v1.1.25...v1.1.26) (2023-05-04)
 
 
