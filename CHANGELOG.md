@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.26](https://github.com/novlan1/t-comm/compare/v1.1.25...v1.1.26) (2023-05-04)
+
+
+### Features
+
+* 增加cos上传stream接口 ([bb7ce7e](https://github.com/novlan1/t-comm/commit/bb7ce7e072c6b68848b0f6a28e38da5900d7601b))
+
+
+
 ## [1.1.25](https://github.com/novlan1/t-comm/compare/v1.1.24...v1.1.25) (2023-04-28)
 
 
