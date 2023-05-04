@@ -1,4 +1,6 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
+import { getCOSInstance } from './helper';
+
+
 const pushFiles = ({ files, bucket, region }) => files.map(file => ({
   Bucket: bucket,
   Region: region,
@@ -6,14 +8,6 @@ const pushFiles = ({ files, bucket, region }) => files.map(file => ({
   FilePath: file.path,
 }));
 
-function getCOSInstance(secretId, secretKey) {
-  const COS = require('cos-nodejs-sdk-v5');
-  const cos = new COS({
-    SecretId: secretId,
-    SecretKey: secretKey,
-  });
-  return cos;
-}
 
 /**
  * COS上传

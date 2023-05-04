@@ -6,5 +6,7 @@ export {
 
   deleteCOSLongAgoObject,
   deleteCOSEmptyFolder,
+
+  uploadCOSStreamFile,
 } from './cos/index';
 export { getRUMPerformance } from './rum/index';
