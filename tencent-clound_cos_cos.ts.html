@@ -44,7 +44,7 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { getCOSInstance } from './helper';
+            <pre class="prettyprint source linenums"><code>import { getCOSInstance, onUploadCOSProgress } from './helper';
 
 
 const pushFiles = ({ files, bucket, region }) =&gt; files.map(file =&gt; ({
@@ -119,11 +119,8 @@ export function uploadCOSFile({
       {
         files: fileList,
         SliceSize: 1024 * 1024,
-        onProgress(info) {
-          const percent = parseInt(`${info.percent * 10000}`, 10) / 100;
-          const speed = parseInt(`${(info.speed / 1024 / 1024) * 100}`, 10) / 100;
-          console.log(`[uploadCOSFile] 进度：${percent}%; 速度：${speed}Mb/s;`);
-        },
+
+        onProgress: onUploadCOSProgress,
         onFileFinish(err, data, options) {
           resolve(data);
           console.log(`[uploadCOSFile] 上传${err ? '失败' : '完成'}: ${options.Key}`);
@@ -213,7 +210,7 @@ export function deleteCOSMultipleObject({
 
 <br class="clear">
 
-<footer>Documentation generated on 2023-05-04 08:25:40 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2023-05-04 08:54:50 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>
