@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export enum DEVICE_TYPE {
   PC = 'PC',
   MOBILE_HOR = 'MOBILE_HORPC',

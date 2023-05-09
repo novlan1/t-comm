@@ -1,6 +1,5 @@
 # t-comm
 
-
 <p align="center">
   <img src="https://img.shields.io/travis/com/novlan1/t-comm">
   <img src="https://img.shields.io/npm/dw/t-comm">
@@ -14,7 +13,7 @@
 
 First, install t-comm.
 
-```
+```bash
 npm install t-comm -S
 ```
 
@@ -26,10 +25,6 @@ import { getMonthDay } from t-comm
 getMonthDay(2022, 2)  // 28
 ```
 
-
 ## Docs
 
-
 Click [here](https://novlan1.github.io/t-comm/) to check docs.
-
-

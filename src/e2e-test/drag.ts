@@ -1,5 +1,6 @@
 import { getRect, justWait } from './element';
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export enum DRAG_TYPE {
   DOT_TO_DOT = 'DOT_TO_DOT',
   STEPS = 'STEPS',

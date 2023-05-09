@@ -114,7 +114,6 @@ repo/
 
 
 ignore-tmp-data/
-.npmrc
 
 /mp_ci_preview_destination.png
 
