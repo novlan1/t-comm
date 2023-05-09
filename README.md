@@ -11,7 +11,8 @@
 
 ## Usage
 
-First, install t-comm.
+First, install it.
+
 
 ```bash
 npm install t-comm -S
@@ -20,7 +21,7 @@ npm install t-comm -S
 Then, use it in your project.
 
 ```ts
-import { getMonthDay } from t-comm
+import { getMonthDay } from 't-comm';
 
 getMonthDay(2022, 2)  // 28
 ```
