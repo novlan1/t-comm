@@ -430,7 +430,7 @@ export class MpCI {
     } catch (err) {
       console.log('[MpCI] err', err);
 
-      const { webhookUrl, errorLink } = this;
+      const { webhookUrl, errorLink, commitInfo, env } = this;
       let { chatId } = this;
       if (!webhookUrl) {
         return;
@@ -439,7 +439,13 @@ export class MpCI {
         chatId = undefined;
       }
 
-      const errorContent = `${errorLink ? `[构建失败](${errorLink})` : ''}${(err as any).toString()}`;
+      const descList = [
+        `分支：${commitInfo.branch}`,
+        `环境：${env}`,
+        (err as any).toString(),
+      ];
+
+      const errorContent = `${errorLink ? `[构建失败](${errorLink})` : ''}${descList.join('，')}`;
 
       sendWxRobotMarkdown({
         webhookUrl,
@@ -475,7 +481,7 @@ export class MpCI {
 
 <br class="clear">
 
-<footer>Documentation generated on 2023-05-04 09:06:48 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2023-05-10 09:06:41 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>
