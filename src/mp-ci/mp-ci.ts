@@ -384,7 +384,7 @@ export class MpCI {
     } catch (err) {
       console.log('[MpCI] err', err);
 
-      const { webhookUrl, errorLink } = this;
+      const { webhookUrl, errorLink, commitInfo, env } = this;
       let { chatId } = this;
       if (!webhookUrl) {
         return;
@@ -393,7 +393,13 @@ export class MpCI {
         chatId = undefined;
       }
 
-      const errorContent = `${errorLink ? `[构建失败](${errorLink})` : ''}${(err as any).toString()}`;
+      const descList = [
+        `分支：${commitInfo.branch}`,
+        `环境：${env}`,
+        (err as any).toString(),
+      ];
+
+      const errorContent = `${errorLink ? `[构建失败](${errorLink})` : ''}${descList.join('，')}`;
 
       sendWxRobotMarkdown({
         webhookUrl,
