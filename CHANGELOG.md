@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.30](https://github.com/novlan1/t-comm/compare/v1.1.29...v1.1.30) (2023-05-11)
+
+
+### Features
+
+* **mp-ci:** 优化ci名称 ([e2f7895](https://github.com/novlan1/t-comm/commit/e2f78950aa5b875c5b1ded05b5add79374dce161))
+
+
+
 ## [1.1.29](https://github.com/novlan1/t-comm/compare/v1.1.28...v1.1.29) (2023-05-11)
 
 
