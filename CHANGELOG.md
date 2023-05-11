@@ -1,5 +1,15 @@
 # 工具库更新日志
 
+## [1.1.29](https://github.com/novlan1/t-comm/compare/v1.1.28...v1.1.29) (2023-05-11)
+
+
+### Features
+
+* **mp-ci:** 构建失败增加名称 ([3c6fb4c](https://github.com/novlan1/t-comm/commit/3c6fb4c3f8e39173c49bf9cc8444a58934296512))
+* **mp-ci:** 优化mp-ci打印信息 ([4bcc6d5](https://github.com/novlan1/t-comm/commit/4bcc6d5ba6e58c12a6d6fd8b82bae2044f9268c0))
+
+
+
 ## [1.1.28](https://github.com/novlan1/t-comm/compare/v1.1.27...v1.1.28) (2023-05-10)
 
 
