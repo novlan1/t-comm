@@ -373,7 +373,7 @@ export class MpCI {
       descList.push(`[构建地址](${buildUrl})`);
     }
 
-    const template = `> ✅【${appName || ''}WX_MP】${descList.join('，')}`;
+    const template = `> ✅【${appName || ''} WX MP】${descList.join('，')}`;
 
     sendWxRobotMarkdown({
       webhookUrl,
