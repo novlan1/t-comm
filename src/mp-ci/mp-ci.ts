@@ -368,8 +368,12 @@ export class MpCI {
     if (hasImg) {
       descList.push(`[预览图片](${this.getCOSFilePath()})`);
     }
+    const { BK_CI_BUILD_URL: buildUrl } = process.env;
+    if (buildUrl) {
+      descList.push(`[构建地址](${buildUrl})`);
+    }
 
-    const template = `>【${appName || ''}微信小程序构建成功】${descList.join('，')}`;
+    const template = `> ✅【${appName || ''}WX_MP】${descList.join('，')}`;
 
     sendWxRobotMarkdown({
       webhookUrl,
