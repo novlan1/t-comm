@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.31](https://github.com/novlan1/t-comm/compare/v1.1.30...v1.1.31) (2023-05-12)
+
+
+### Features
+
+* 增加api ([ef2df18](https://github.com/novlan1/t-comm/commit/ef2df18081b150de313d5913d2dbcd7f4a24dd6e))
+
+
+
 ## [1.1.30](https://github.com/novlan1/t-comm/compare/v1.1.29...v1.1.30) (2023-05-11)
 
 
