@@ -1,1 +1,7 @@
-export { createDevopsTemplateInstances } from './template';
+export {
+  startDevopsPipeline,
+} from './pipeline';
+
+export {
+  createDevopsTemplateInstances,
+} from './template';
