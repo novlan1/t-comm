@@ -1,0 +1,1 @@
+export { createDevopsTemplateInstances } from './template';

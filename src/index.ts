@@ -4,6 +4,7 @@ export * from './city';
 export * from './cookie';
 export * from './css';
 export * from './date';
+export * from './devops';
 export * from './e2e-test';
 export * from './env';
 export * from './eslint-parser';
