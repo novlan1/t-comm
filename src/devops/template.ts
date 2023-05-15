@@ -103,11 +103,30 @@ export async function getDevopsTemplateInstances({
     url,
     method: 'GET',
   }).catch((err) => {
-    console.log('[createDevopsTemplateInstances] err: ', err);
+    console.log('[getDevopsTemplateInstances] err: ', err);
   });
   return resp.data;
 }
 
+
+export async function getAllDevopsTemplateInstances(reqParam) {
+  const list = [];
+  await innerGetInstances(list, reqParam);
+  return list;
+}
+
+
+async function innerGetInstances(allData: Array<any> = [], reqParam) {
+  const resp = await getDevopsTemplateInstances(reqParam);
+  const { page, instances = [] } = resp.data || {};
+  allData.push(...instances);
+  if (!instances.length) return;
+
+  await innerGetInstances(allData, {
+    ...reqParam,
+    page: page + 1,
+  });
+}
 
 export async function createDevopsTemplateInstances({
   projectId,
@@ -169,7 +188,7 @@ export async function updateDevopsTemplateInstances({
     secretInfo,
     host,
   });
-  console.log('[createDevopsTemplateInstances] version: ', version);
+  console.log('[updateDevopsTemplateInstances] version: ', version);
 
   const { headers, baseUrl } = await getHeaderAndBaseUrl({
     projectId,
@@ -192,7 +211,7 @@ export async function updateDevopsTemplateInstances({
       },
     ],
   }).catch((err) => {
-    console.log('[createDevopsTemplateInstances] err: ', err);
+    console.log('[updateDevopsTemplateInstances] err: ', err);
   });
   return resp.data;
 }

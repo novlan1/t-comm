@@ -4,6 +4,7 @@ export {
 
 export {
   getDevopsTemplateInstances,
+  getAllDevopsTemplateInstances,
   createDevopsTemplateInstances,
   updateDevopsTemplateInstances,
 } from './template';

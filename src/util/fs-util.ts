@@ -141,6 +141,25 @@ export function saveJsonToLog(content, file, needLog = true) {
   });
 }
 
+export function getJsonFromLog(file) {
+  const fs = require('fs');
+  const filePath = `./${LOG_DIR}/${file}`;
+  let data = {};
+
+  if (!fs.existsSync(filePath)) {
+    console.log('[getJsonFromLog] no exist');
+  } else {
+    const originFile = fs.readFileSync(filePath, {
+      encoding: 'utf-8',
+    });
+    try {
+      data = JSON.parse(originFile);
+    } catch (err) {}
+  }
+  return data;
+}
+
+
 function createLogDir() {
   const fs = require('fs');
   if (!fs.existsSync(`./${LOG_DIR}`)) {
