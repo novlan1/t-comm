@@ -4,8 +4,8 @@ import { getDevopsAccessToken } from './token';
 
 async function getDevopsTemplateList({
   projectId,
-  secretInfo,
   host,
+  secretInfo,
 }) {
   const axios = require('axios');
   const accessToken = await getDevopsAccessToken({
@@ -37,11 +37,11 @@ async function getDevopsTemplateList({
   return resp.data.data || {};
 }
 
-export async function getDevopsTemplateLatestVersion({
-  templateId,
+async function getDevopsTemplateLatestVersion({
   projectId,
-  secretInfo,
+  templateId,
   host,
+  secretInfo,
 }) {
   const templateList = await getDevopsTemplateList({
     projectId,
@@ -52,38 +52,21 @@ export async function getDevopsTemplateLatestVersion({
   return template.version;
 }
 
-
-export async function createDevopsTemplateInstances({
-  templateId,
+async function getHeaderAndBaseUrl({
   projectId,
+  templateId,
   secretInfo,
   host,
-  pipelineName,
-  pipelineParam,
-  useTemplateSettings = true,
 }) {
-  const axios = require('axios');
+  const { appCode, appSecret, devopsUid } = secretInfo;
   const accessToken = await getDevopsAccessToken({
     secretInfo,
     host,
   });
-  console.log('[createDevopsTemplateInstances] accessToken: ', accessToken);
-  const version = await getDevopsTemplateLatestVersion({
-    templateId,
-    projectId,
-    secretInfo,
-    host,
-  });
-  console.log('[createDevopsTemplateInstances] version: ', version);
 
-  const { appCode, appSecret, devopsUid } = secretInfo;
+  const url = `${host}/prod/v4/apigw-app/projects/${projectId}/templates/templateInstances?templateId=${templateId}`;
 
-  let url = `${host}/prod/v4/apigw-app/projects/${projectId}/templates/templateInstances?`;
-  url += `templateId=${templateId}`;
-  url += `&version=${version}`;
-  url += `&useTemplateSettings=${useTemplateSettings}`;
-
-  const resp = await axios({
+  return {
     headers: {
       'X-DEVOPS-UID': devopsUid,
       'Content-Type': 'application/json',
@@ -93,6 +76,67 @@ export async function createDevopsTemplateInstances({
         access_token: accessToken,
       }),
     },
+    baseUrl: url,
+  };
+}
+
+export async function getDevopsTemplateInstances({
+  projectId,
+  templateId,
+  host,
+  page = 1,
+  pageSize = 100,
+  secretInfo,
+}) {
+  const axios = require('axios');
+
+  const { headers, baseUrl } = await getHeaderAndBaseUrl({
+    projectId,
+    templateId,
+    secretInfo,
+    host,
+  });
+  const url = `${baseUrl}&page=${page}&pageSize=${pageSize}`;
+
+  const resp = await axios({
+    headers,
+    url,
+    method: 'GET',
+  }).catch((err) => {
+    console.log('[createDevopsTemplateInstances] err: ', err);
+  });
+  return resp.data;
+}
+
+
+export async function createDevopsTemplateInstances({
+  projectId,
+  templateId,
+  host,
+  pipelineName,
+  pipelineParam,
+  secretInfo,
+  useTemplateSettings = true,
+}) {
+  const axios = require('axios');
+  const version = await getDevopsTemplateLatestVersion({
+    templateId,
+    projectId,
+    secretInfo,
+    host,
+  });
+  console.log('[createDevopsTemplateInstances] version: ', version);
+  const { headers, baseUrl } = await getHeaderAndBaseUrl({
+    projectId,
+    templateId,
+    secretInfo,
+    host,
+  });
+
+  const url = `${baseUrl}&version=${version}&useTemplateSettings=${useTemplateSettings}`;
+
+  const resp = await axios({
+    headers,
     url,
     method: 'post',
     data: [
@@ -107,3 +151,48 @@ export async function createDevopsTemplateInstances({
   return resp.data;
 }
 
+
+export async function updateDevopsTemplateInstances({
+  projectId,
+  templateId,
+  pipelineId,
+  host,
+  pipelineName,
+  pipelineParam,
+  useTemplateSettings = true,
+  secretInfo,
+}) {
+  const axios = require('axios');
+  const version = await getDevopsTemplateLatestVersion({
+    templateId,
+    projectId,
+    secretInfo,
+    host,
+  });
+  console.log('[createDevopsTemplateInstances] version: ', version);
+
+  const { headers, baseUrl } = await getHeaderAndBaseUrl({
+    projectId,
+    templateId,
+    secretInfo,
+    host,
+  });
+
+  const url = `${baseUrl}&version=${version}&useTemplateSettings=${useTemplateSettings}`;
+
+  const resp = await axios({
+    headers,
+    url,
+    method: 'PUT',
+    data: [
+      {
+        pipelineName,
+        pipelineId,
+        param: pipelineParam,
+      },
+    ],
+  }).catch((err) => {
+    console.log('[createDevopsTemplateInstances] err: ', err);
+  });
+  return resp.data;
+}

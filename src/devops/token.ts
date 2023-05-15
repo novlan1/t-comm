@@ -28,5 +28,7 @@ export async function getDevopsAccessToken({
     });
 
   token = resp.data?.data?.access_token || '';
+  console.log('[getDevopsAccessToken] token', token);
+
   return token;
 }

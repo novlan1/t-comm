@@ -3,5 +3,7 @@ export {
 } from './pipeline';
 
 export {
+  getDevopsTemplateInstances,
   createDevopsTemplateInstances,
+  updateDevopsTemplateInstances,
 } from './template';
