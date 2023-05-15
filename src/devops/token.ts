@@ -7,9 +7,9 @@ export async function getDevopsAccessToken({
   host = '',
 }) {
   if (token) return token;
-  if (host.startsWith('https://devops.')) {
-    host = host.replace('https://devops.', 'https://');
-  }
+
+  host = host.replace(/^(http[s]?:\/\/)devops\./, '$1');
+
   const axios = require('axios');
   const { appCode, appSecret } = secretInfo;
 
