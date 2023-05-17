@@ -1,5 +1,17 @@
 # 工具库更新日志
 
+## [1.1.34](https://github.com/novlan1/t-comm/compare/v1.1.32...v1.1.34) (2023-05-17)
+
+
+### Features
+
+* 优化一些api ([e5560dd](https://github.com/novlan1/t-comm/commit/e5560dd2b16a905182da5669a0ea1cc51637722f))
+* 优化token逻辑 ([1dd3df2](https://github.com/novlan1/t-comm/commit/1dd3df265ebea612406254616a99d87283fb81ee))
+* 增加对象的一些方法 ([185c3ad](https://github.com/novlan1/t-comm/commit/185c3ad6edc7e040d56936453f81fef6d36f0df2))
+* 增加getJsonFromLog ([1b16cd1](https://github.com/novlan1/t-comm/commit/1b16cd11cf2912dfa9661ef11fd6cb898f0fea90))
+
+
+
 ## [1.1.32](https://github.com/novlan1/t-comm/compare/v1.1.31...v1.1.32) (2023-05-12)
 
 
