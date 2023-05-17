@@ -6,6 +6,7 @@ import { addTextForImg } from '../canvas/img-text';
 import { uploadCOSFile } from '../tencent-clound/cos/cos';
 import { saveBase64ImgToFile } from '../node-img/img';
 import { formatBite } from '../util/format-bite';
+import { getCosUrlLink } from '../tencent-clound/cos/link';
 
 import { getBundleBuildDesc, getBundleVersion, parseUploadResult, flattenSubPackages } from './helper';
 import { OptionsType } from './type';
@@ -338,7 +339,12 @@ export class MpCI {
   getCOSFilePath() {
     const { bucket, region } = this.cosInfo;
     const cosKey = this.getCosKey();
-    return `https://${bucket}.cos.${region}.myqcloud.com/${cosKey}`;
+    return getCosUrlLink({
+      bucket,
+      region,
+      dir: '',
+      fileName: cosKey,
+    });
   }
 
   /**

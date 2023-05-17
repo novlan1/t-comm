@@ -4,6 +4,8 @@ export {
   getCOSBucketList,
   deleteCOSMultipleObject,
 
+  getCosUrlLink,
+
   deleteCOSLongAgoObject,
   deleteCOSEmptyFolder,
 

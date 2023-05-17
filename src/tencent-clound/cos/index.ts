@@ -4,6 +4,9 @@ export {
   deleteCOSMultipleObject,
 } from './cos';
 export {
+  getCosUrlLink,
+} from './link';
+export {
   deleteCOSLongAgoObject,
   deleteCOSEmptyFolder,
 } from './object-handler';

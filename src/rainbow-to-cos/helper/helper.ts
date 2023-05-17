@@ -2,6 +2,7 @@
 import { hyphenate } from '../../base/string';
 import { RAINBOW_VALUE_TYPE_MAP } from './value-type';
 import { getJsonLogDir } from '../../util/fs-util';
+import { getCosUrlLink } from '../../tencent-clound/cos/link';
 
 export function getSaveFileName({
   appName,
@@ -50,6 +51,11 @@ export function getCOSFilePath({
 
   const { bucket, region, dir } = cosInfo;
 
-  return `https://${bucket}.cos.${region}.myqcloud.com/${dir}/${saveFileName}`;
+  return getCosUrlLink({
+    bucket,
+    region,
+    dir,
+    fileName: saveFileName,
+  });
 }
 
