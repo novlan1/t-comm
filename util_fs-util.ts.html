@@ -187,6 +187,25 @@ export function saveJsonToLog(content, file, needLog = true) {
   });
 }
 
+export function getJsonFromLog(file) {
+  const fs = require('fs');
+  const filePath = `./${LOG_DIR}/${file}`;
+  let data = {};
+
+  if (!fs.existsSync(filePath)) {
+    console.log('[getJsonFromLog] no exist');
+  } else {
+    const originFile = fs.readFileSync(filePath, {
+      encoding: 'utf-8',
+    });
+    try {
+      data = JSON.parse(originFile);
+    } catch (err) {}
+  }
+  return data;
+}
+
+
 function createLogDir() {
   const fs = require('fs');
   if (!fs.existsSync(`./${LOG_DIR}`)) {
@@ -206,7 +225,7 @@ function createLogDir() {
 
 <br class="clear">
 
-<footer>Documentation generated on 2023-05-10 09:06:41 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2023-05-17 02:35:54 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>
