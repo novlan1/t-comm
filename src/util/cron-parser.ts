@@ -18,14 +18,6 @@ export function isInCronExpression(cronExpression) {
 
     const nextMinute = getMinute(nextDate.getTime());
     const nowMinute = getMinute(Date.now());
-    console.log('[isInCronExpression] nowMinute', nowMinute);
-    console.log('[isInCronExpression] nextMinute', nextMinute);
-
-    console.log('[isInCronExpression] Now Date:  ', new Date().toString());
-    console.log('[isInCronExpression] Next Date: ', nextDate.toString());
-    console.log('[isInCronExpression] Next Date: ', interval.next().toString());
-    console.log('[isInCronExpression] Next Date: ', interval.next().toString());
-
 
     return nowMinute === nextMinute;
   } catch (err: any) {
