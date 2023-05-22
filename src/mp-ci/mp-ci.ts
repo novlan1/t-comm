@@ -153,11 +153,17 @@ export class MpCI {
       chatId,
       cosInfo,
       errorLink,
+
+      pagePath,
+      searchQuery,
     } = options;
 
     this.appId = appId;
     this.appName = appName || '';
     this.type = type || 'miniProgram';
+
+    this.pagePath = pagePath || '';
+    this.searchQuery = searchQuery || '';
 
     this.root = root || process.cwd();
     this.ignores = ignores || ['node_modules/**/*'];
