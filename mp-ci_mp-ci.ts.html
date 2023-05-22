@@ -52,6 +52,7 @@ import { addTextForImg } from '../canvas/img-text';
 import { uploadCOSFile } from '../tencent-clound/cos/cos';
 import { saveBase64ImgToFile } from '../node-img/img';
 import { formatBite } from '../util/format-bite';
+import { getCosUrlLink } from '../tencent-clound/cos/link';
 
 import { getBundleBuildDesc, getBundleVersion, parseUploadResult, flattenSubPackages } from './helper';
 import { OptionsType } from './type';
@@ -97,6 +98,9 @@ export class MpCI {
   version: string;
   previewResult: Object;
   errorLink?: string;
+
+  pagePath?: string = '';
+  searchQuery?: string = '';
 
   tryTimesMap = {
     UPLOAD: 1,
@@ -195,11 +199,17 @@ export class MpCI {
       chatId,
       cosInfo,
       errorLink,
+
+      pagePath,
+      searchQuery,
     } = options;
 
     this.appId = appId;
     this.appName = appName || '';
     this.type = type || 'miniProgram';
+
+    this.pagePath = pagePath || '';
+    this.searchQuery = searchQuery || '';
 
     this.root = root || process.cwd();
     this.ignores = ignores || ['node_modules/**/*'];
@@ -321,16 +331,20 @@ export class MpCI {
    * 预览
    */
   async tryPreview() {
-    const previewResult = await this.ciLib.preview({
+    const previewParam = {
       project: this.projectCI,
       desc: this.buildDesc,
       setting: this.buildSetting,
       qrcodeFormat: 'image',
       qrcodeOutputDest: this.savePreviewPath,
       robot: this.robotNumber,
+      pagePath: this.pagePath || undefined,
+      searchQuery: this.searchQuery || undefined,
       // pagePath: 'pages/index/index', // 预览页面
       // searchQuery: 'a=1&amp;b=2',  // 预览参数 [注意!]这里的`&amp;`字符在命令行中应写成转义字符`&amp;`
-    });
+    };
+
+    const previewResult = await this.ciLib.preview(previewParam);
     console.log('[MpCI] PreviewResult:\n', previewResult);
 
     this.previewResult = previewResult;
@@ -384,7 +398,12 @@ export class MpCI {
   getCOSFilePath() {
     const { bucket, region } = this.cosInfo;
     const cosKey = this.getCosKey();
-    return `https://${bucket}.cos.${region}.myqcloud.com/${cosKey}`;
+    return getCosUrlLink({
+      bucket,
+      region,
+      dir: '',
+      fileName: cosKey,
+    });
   }
 
   /**
@@ -485,7 +504,7 @@ export class MpCI {
 
 <br class="clear">
 
-<footer>Documentation generated on 2023-05-17 02:35:54 GMT+0000  by novlan1.</footer>
+<footer>Documentation generated on 2023-05-22 09:30:10 GMT+0000  by novlan1.</footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>
