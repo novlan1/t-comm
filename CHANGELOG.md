@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.36](https://github.com/novlan1/t-comm/compare/v1.1.35...v1.1.36) (2023-05-22)
+
+
+### Features
+
+* **mp-ci:** 增加pagePath ([c02a76a](https://github.com/novlan1/t-comm/commit/c02a76a1135b2833b23af87b08b822b402342437))
+
+
+
 ## [1.1.35](https://github.com/novlan1/t-comm/compare/v1.1.34...v1.1.35) (2023-05-22)
 
 
