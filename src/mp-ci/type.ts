@@ -18,4 +18,7 @@ export type OptionsType = {
   cosInfo?: object,
 
   errorLink?: string
+
+  pagePath?: string;
+  searchQuery?: string;
 };

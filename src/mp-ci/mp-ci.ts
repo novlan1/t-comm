@@ -53,6 +53,9 @@ export class MpCI {
   previewResult: Object;
   errorLink?: string;
 
+  pagePath?: string = '';
+  searchQuery?: string = '';
+
   tryTimesMap = {
     UPLOAD: 1,
     PREVIEW: 1,
@@ -276,16 +279,20 @@ export class MpCI {
    * 预览
    */
   async tryPreview() {
-    const previewResult = await this.ciLib.preview({
+    const previewParam = {
       project: this.projectCI,
       desc: this.buildDesc,
       setting: this.buildSetting,
       qrcodeFormat: 'image',
       qrcodeOutputDest: this.savePreviewPath,
       robot: this.robotNumber,
+      pagePath: this.pagePath || undefined,
+      searchQuery: this.searchQuery || undefined,
       // pagePath: 'pages/index/index', // 预览页面
       // searchQuery: 'a=1&b=2',  // 预览参数 [注意!]这里的`&`字符在命令行中应写成转义字符`&`
-    });
+    };
+
+    const previewResult = await this.ciLib.preview(previewParam);
     console.log('[MpCI] PreviewResult:\n', previewResult);
 
     this.previewResult = previewResult;
