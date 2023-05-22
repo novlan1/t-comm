@@ -1,5 +1,15 @@
 # 工具库更新日志
 
+## [1.1.35](https://github.com/novlan1/t-comm/compare/v1.1.34...v1.1.35) (2023-05-22)
+
+
+### Features
+
+* **cos:** 增加cos链接 ([8a99b94](https://github.com/novlan1/t-comm/commit/8a99b9415e45558520b9075a3d538713e1081b81))
+* **mp-ci:** 增加preview的几个参数 ([9326536](https://github.com/novlan1/t-comm/commit/9326536f938553134b619d74d5aa21e9a29950c2))
+
+
+
 ## [1.1.34](https://github.com/novlan1/t-comm/compare/v1.1.32...v1.1.34) (2023-05-17)
 
 
