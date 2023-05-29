@@ -2,9 +2,9 @@ import { flatten } from '../base/list';
 import { timeStampFormat } from '../date/time';
 import { getCOSFilePath } from './helper/helper';
 import { batchSendWxRobotMarkdown } from '../wecom-robot/batch-send';
+import type { ICosInfo, ISecretInfo, ILocalConfig } from './types';
 
-
-function isEqual(a, b) {
+function isEqual(a: any, b: any) {
   let wrapA = a;
   let wrapB = b;
   if (typeof a !== 'string') wrapA = JSON.stringify(a);
@@ -17,6 +17,11 @@ function getAllCOSFiles({
   appName,
   secretInfo,
   cosInfo,
+}: {
+  flatNow: Record<string, any>;
+  appName: string;
+  secretInfo: ISecretInfo;
+  cosInfo: ICosInfo;
 }) {
   const { groupName, envName } = secretInfo || {};
   const notifyList = [`>【当前七彩石配置】${appName}·${groupName}·${envName}`];
@@ -43,6 +48,12 @@ function getOnlyChangedCOSFiles({
   appName,
   secretInfo,
   cosInfo,
+}: {
+  flatNow: any;
+  flatOrigin: any;
+  appName: string;
+  secretInfo: ISecretInfo;
+  cosInfo: ICosInfo
 }) {
   const { groupName, envName } = secretInfo || {};
   let notifyList: Array<string> = [];
@@ -111,6 +122,13 @@ function genRobotMsg({
   appName,
   cosInfo,
   isGenAll = false,
+}: {
+  newConfig: ILocalConfig;
+  originConfig: ILocalConfig;
+  secretInfo: ISecretInfo;
+  appName: string;
+  cosInfo: ICosInfo;
+  isGenAll?: boolean;
 }) {
   const flatNow = flatten(newConfig, 'key');
   const flatOrigin = flatten(originConfig, 'key');
@@ -147,6 +165,17 @@ export async function sendRainbowInfoToRobot({
 
   chatId,
   webhookUrl,
+}: {
+  newConfig: ILocalConfig;
+  originConfig: ILocalConfig;
+  secretInfo: ISecretInfo;
+  cosInfo: ICosInfo;
+
+  appName: string;
+  isGenAll?: boolean;
+
+  chatId: string;
+  webhookUrl: string;
 }) {
   const chatContent = genRobotMsg({
     newConfig,

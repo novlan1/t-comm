@@ -7,7 +7,7 @@
  *
  * removeCss('https://xxx.css')
  */
-export function removeCss(href) {
+export function removeCss(href: string) {
   const links = document.getElementsByTagName('link');
   // eslint-disable-next-line @typescript-eslint/prefer-for-of
   for (let i = 0; i < links.length; i++) {

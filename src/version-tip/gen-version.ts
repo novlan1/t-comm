@@ -102,7 +102,10 @@ export function shouldGenVersion(root?: string, forceGenVersion?: boolean): numb
 
 export function genVersion({
   root,
-  forceGenVersion,
+  forceGenVersion = false,
+}: {
+  root: string;
+  forceGenVersion?: boolean;
 }): boolean {
   const genType = shouldGenVersion(root, forceGenVersion);
   if (!genType) return false;

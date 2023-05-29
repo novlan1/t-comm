@@ -1,10 +1,15 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
+import type { ISecretInfo } from './type';
+
 
 let token = '';
 
 export async function getDevopsAccessToken({
   secretInfo,
   host = '',
+}: {
+  secretInfo: ISecretInfo,
+  host?: string;
 }) {
   if (token) return token;
 
@@ -23,7 +28,7 @@ export async function getDevopsAccessToken({
       grant_type: 'client_credentials',
     },
   })
-    .catch((err) => {
+    .catch((err: unknown) => {
       console.log('[getDevopsAccessToken] err: ', err);
     });
 

@@ -1,4 +1,4 @@
-import { IReportArr } from './types';
+import type { IReportArr } from './types';
 /* eslint-disable @typescript-eslint/no-require-imports */
 
 export function getOpenSourceReport({
@@ -6,6 +6,11 @@ export function getOpenSourceReport({
   bgName,
   centerName,
   groupName,
+}: {
+  time: string;
+  bgName: string;
+  centerName: string;
+  groupName: string;
 }): Promise<IReportArr> {
   return new Promise((resolve, reject) => {
     const axios  = require('axios');
@@ -32,11 +37,19 @@ export function getOpenSourceReport({
         method:	'noop',
         params,
       },
-    }).then((res) => {
+    }).then((res: {
+      data: {
+        result: {
+          data: {
+            data: IReportArr
+          }
+        }
+      }
+    }) => {
       const arr = res.data.result.data.data || [];
       resolve(arr);
     })
-      .catch((err) => {
+      .catch((err: unknown) => {
         console.log('[getOpenSourceReport] err: ', err);
         reject(err);
       });

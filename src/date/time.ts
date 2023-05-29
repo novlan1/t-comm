@@ -46,9 +46,11 @@ export function timeStampFormat(
   for (const k in o) {
     match = fmt.match(new RegExp(`(${k})`));
     if (match?.[1]) {
+      const str = `${o[k as keyof typeof o]}`;
+
       fmt = fmt.replace(
         match[1],
-        match[1].length === 1 ? o[k] : `00${o[k]}`.slice(`${o[k]}`.length),
+        match[1].length === 1 ? str : `00${str}`.slice(`${str}`.length),
       );
     }
   }
@@ -73,7 +75,7 @@ function beautiTime(time: number): string {
  *
  * // 2020-11-27 08:23:24
  */
-export function dateFormat(date, fmt) {
+export function dateFormat(date: string | number | Date, fmt: string) {
   const timestamp = new Date(date).getTime();
   return timeStampFormat(timestamp, fmt);
 }
@@ -91,7 +93,7 @@ export function dateFormat(date, fmt) {
  *
  * // 2020-11-27 08:23:24
  */
-export function parseTime(time, cFormat) {
+export function parseTime(time: Date| number, cFormat: string) {
   if (arguments.length === 0) {
     return null;
   }
@@ -118,7 +120,7 @@ export function parseTime(time, cFormat) {
     s: date.getSeconds(),
     a: date.getDay(),
   };
-  const timeStr = format.replace(/{([ymdhisa])+}/g, (result, key) => {
+  const timeStr = format.replace(/{([ymdhisa])+}/g, (result, key: keyof typeof formatObj) => {
     const value = formatObj[key];
     // Note: getDay() returns 0 on Sunday
     if (key === 'a') {
@@ -144,7 +146,7 @@ export function parseTime(time, cFormat) {
  * getTimeAgo(date2);
  * // 10个月后
   */
-export function getTimeAgo(timestamp) {
+export function getTimeAgo(timestamp: number) {
   let mistiming = Math.round(Date.now() / 1000) - timestamp;
   const postfix = mistiming > 0 ? '前' : '后';
   mistiming = Math.abs(mistiming);
@@ -175,9 +177,9 @@ export function getTimeAgo(timestamp) {
  * getTimeAgoOrDate(date);
  * // 7月13日17时54分
  */
-export function getTimeAgoOrDate(time, format) {
+export function getTimeAgoOrDate(time: string | number, format: string) {
   if (`${time}`.length === 10) {
-    time = parseInt(time, 10) * 1000;
+    time = parseInt(`${time}`, 10) * 1000;
   } else {
     time = +time;
   }
@@ -232,7 +234,7 @@ export function getTimeAgoOrDate(time, format) {
  * }
  */
 export function getCountDownObj(
-  time,
+  time: number | string,
   maxUnit = 'DAY',
 ): {
     day?: Number
@@ -247,7 +249,7 @@ export function getCountDownObj(
   if (!time) {
     return {};
   }
-  time = parseInt(time, 10);
+  time = parseInt(`${time}`, 10);
 
   const second = Math.floor(time % 60);
   // 秒是最大单位

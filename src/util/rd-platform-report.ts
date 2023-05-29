@@ -33,7 +33,7 @@ export async function reportToRdPlatform({
       platform,
     },
   })
-    .catch((err) => {
+    .catch((err: unknown) => {
       console.log('[reportToRdPlatform] err', err);
     });
 

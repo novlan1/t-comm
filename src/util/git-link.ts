@@ -8,6 +8,12 @@ export function getGitCodeLink({
   branch,
   localFile,
   line,
+}: {
+  domain: string;
+  repo: string;
+  branch: string;
+  localFile: string;
+  line: string
 }) {
   const pwd = process.cwd();
 
@@ -30,6 +36,10 @@ export function getGitMRLink({
   domain,
   repo,
   id = '',
+}: {
+  domain: string;
+  repo: string;
+  id?: string;
 }) {
   const pDomain = rmFirstAndLastSlash(domain);
   const pRepo = rmFirstAndLastSlash(repo);

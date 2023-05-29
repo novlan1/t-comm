@@ -3,11 +3,15 @@ import { getGitCommitInfo } from '../git/git';
 import { BUNDLE_NAME_MAP } from './config';
 import { formatBite } from '../util/format-bite';
 import { genRobotMessage } from '../wecom-robot/message';
+import type { IUploadResult } from './type';
 
 
 export function getBundleBuildDesc({
   root,
   env = 'test',
+}: {
+  root: string;
+  env?: string;
 }) {
   const commitInfo = getGitCommitInfo(root);
   const buildDesc = genRobotMessage([
@@ -29,7 +33,7 @@ export function getBundleBuildDesc({
   return buildDesc;
 }
 
-export function getBundleVersion(root) {
+export function getBundleVersion(root: string) {
   const path = require('path');
   const pkgFile = path.resolve(root, './package.json');
   const pkg = require(pkgFile) || {};
@@ -39,28 +43,28 @@ export function getBundleVersion(root) {
 /**
  * 解析上传结果
  */
-export function parseUploadResult(result) {
+export function parseUploadResult(result: IUploadResult) {
   const {
     subPackageInfo,
   } = result;
   subPackageInfo.reverse();
   const list = subPackageInfo.sort((a, b) => {
     const keys = Object.keys(BUNDLE_NAME_MAP);
-    if (keys.indexOf(a) > -1 || keys.indexOf(b) > -1) {
-      return keys.indexOf(b) - keys.indexOf(a);
+    if (keys.indexOf(a.name) > -1 || keys.indexOf(b.name) > -1) {
+      return keys.indexOf(b.name) - keys.indexOf(a.name);
     }
     return b.size - a.size;
   })
-    .map(pkg => `- ${BUNDLE_NAME_MAP[pkg.name] || pkg.name}: ${formatBite(pkg.size)}`);
+    .map(pkg => `- ${(BUNDLE_NAME_MAP as Record<string, string>)[pkg.name] || pkg.name}: ${formatBite(pkg.size)}`);
   list.unshift('PACKAGE SIZE INFO: ');
   return list;
 }
 
-export function flattenSubPackages(result) {
+export function flattenSubPackages(result: IUploadResult) {
   const {
     subPackageInfo = [],
   } = result || {};
-  return subPackageInfo.reduce((acc, item) => {
+  return subPackageInfo.reduce((acc: Record<string, any>, item) => {
     acc[item.name] = item;
     return acc;
   }, {});

@@ -8,6 +8,13 @@ export async function getRUMPerformance({
   startTime,
   endTime,
   type,
+}: {
+  secretId: string;
+  secretKey: string;
+  id: string;
+  startTime: string | number;
+  endTime: string | number;
+  type: string;
 }) {
   return fetchCloudData({
     secretId,
@@ -19,19 +26,30 @@ export async function getRUMPerformance({
       EndTime: endTime,
       Type: type,
     }),
-  }).then((res) => {
+  }).then((res: {
+    data: {
+      Response: {
+        Result: string;
+      }
+    }
+  }) => {
     const resp  = res.data.Response || {};
-    let { Result: result = '' } = resp;
+    const { Result: result = '' } = resp;
+    let data: {
+      results: Array<unknown>
+    } = {
+      results: [],
+    };
 
     try {
-      result = JSON.parse(result);
+      data = JSON.parse(result);
     } catch (err) {}
 
     return {
-      data: result.results || [],
+      data: data || [],
     };
   })
-    .catch((err) => {
+    .catch((err: unknown) => {
       console.log('[getRUMPerformance] err: ', err);
     });
 }

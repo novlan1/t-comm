@@ -1,4 +1,6 @@
-const exportObj = {
+const exportObj: {
+  jsMap: Record<string, number>
+} = {
   jsMap: {},
 };
 

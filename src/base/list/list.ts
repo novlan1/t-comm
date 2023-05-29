@@ -13,8 +13,8 @@
  * // {1: {id: 1, name: 'a'}, 2: {id: 2, name: 'b'}}
  *
  */
-export function flatten(list: Array<object>, key: string) {
-  return list.reduce((acc, item) => {
+export function flatten(list: Array<Record<string, any>>, key: string): Record<string, any> {
+  return list.reduce((acc: Record<string, any>, item) => {
     acc[item[key]] = item;
     return acc;
   }, {});
@@ -33,7 +33,7 @@ export function flatten(list: Array<object>, key: string) {
  * // [3, 2, 1, 4, 5]
  *
  */
-export function shuffle(array) {
+export function shuffle<T>(array: Array<T>): Array<T> {
   const arr = [...array];
   let m = arr.length;
   while (m > 1) {

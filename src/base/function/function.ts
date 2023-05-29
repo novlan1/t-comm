@@ -9,9 +9,10 @@
  *
  * // ()=>console.log(1)
  */
-export function parseFunction(func) {
+export function parseFunction(func: string): string {
   if (typeof func !== 'string') return func;
   let data = '';
+
   try {
     // eslint-disable-next-line no-new-func
     data = new Function('', `return ${func}`)();
@@ -42,11 +43,12 @@ export function parseFunction(func) {
  *
  * // => 3
  */
-export function cached(fn) {
+export function cached(fn: Function): unknown {
   const cache = Object.create(null);
-  return function cachedFn(str) {
+  return function cachedFn(str: string) {
     const hit = cache[str];
     if (hit) return hit;
+
     cache[str] = fn(str);
     return cache[str];
   };

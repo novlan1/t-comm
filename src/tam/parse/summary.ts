@@ -1,7 +1,7 @@
 import { ScoreInfoType } from '../type';
 import { getPartRatio } from '../../base/number';
 
-function formatNum(num) {
+function formatNum(num: number | string) {
   if (typeof num !== 'number') {
     return num;
   }
@@ -54,15 +54,15 @@ export function parseSummaryScore({
   sortKeyList = [],
 }: {
   data: Array<ScoreInfoType>
-  extraDataMap?: object
-  ignoreProjectIdList?: Array<number>
+  extraDataMap?: Record<string | number, any>;
+  ignoreProjectIdList?: Array<number | string>
   sortKeyList?: Array<string>
 }) {
   const res = data
     .filter(item => !ignoreProjectIdList.includes(+item.ProjectId))
     .sort((a, b) => +b.PagePv - +a.PagePv)
     .map((item) => {
-      const temp = {};
+      const temp: Record<string, any> = {};
       const projectId = item.ProjectId;
 
       const list = Object.keys(item)

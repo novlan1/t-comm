@@ -2,6 +2,8 @@ import { fetchLatestRainbowData } from './api';
 import { syncRainbowToCOS } from './sync-to-cos';
 import { sendRainbowInfoToRobot } from './robot-msg';
 
+import type { ISecretInfo, ICosInfo } from './types';
+import { SendToRobotTypeMap } from './config';
 
 /**
  * 监听rainbow，同步到cos，并发送到机器人
@@ -46,7 +48,16 @@ export async function watchRainbowToCosAndSendRobot({
 
   webhookUrl,
   chatId,
-  sendToRobotType = 0,
+  sendToRobotType = SendToRobotTypeMap.NO_SEND,
+}: {
+  rainbowSecretInfo: ISecretInfo;
+  cosInfo: ICosInfo;
+
+  appName: string;
+
+  webhookUrl: string;
+  chatId: string;
+  sendToRobotType?: (typeof SendToRobotTypeMap)[keyof typeof SendToRobotTypeMap];
 }) {
   const {
     config,

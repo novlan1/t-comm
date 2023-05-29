@@ -1,5 +1,16 @@
 import { getUnitPreviousRatio } from '../number';
 
+
+type ValueType = string | number;
+
+interface IPreData {
+  [key: string]: {
+    name: string
+    value: ValueType
+  }
+}
+
+
 /**
  * 判断数组是否全部相等
  * @param {Array<number | string>} list - 数组
@@ -14,7 +25,7 @@ import { getUnitPreviousRatio } from '../number';
  *
  * // false
  */
-export function isListAllEqual(list: Array<number|string> = []) {
+export function isListAllEqual(list: Array<number | string> = []): boolean {
   if (!list.length) return true;
   const value = list[0];
   for (const item of list.slice(1)) {
@@ -70,15 +81,17 @@ export function isListAllEqual(list: Array<number|string> = []) {
  *   Project: ['x', 'y']
  * }
  */
-export function getKeyValuesMap(data: Array<any> = []) {
+export function getKeyValuesMap(data: Array<{
+  [k: string]: ValueType | { value: ValueType }
+}> = []): Record<string, Array<ValueType>> {
   if (!data.length) return {};
   const keys = Object.keys(data[0]);
-  const keyValueMap = {};
+  const keyValueMap: Record<string, Array<ValueType>> = {};
 
   data.forEach((item) => {
     keys.forEach((key) => {
       // 如果有value，就取value，否则直接取item[key]
-      const value = item[key]?.value || item[key];
+      const value = (item[key] as { value: any })?.value || item[key];
 
       if (keyValueMap[key]) {
         keyValueMap[key].push(value);
@@ -99,11 +112,22 @@ export function getKeyValuesMap(data: Array<any> = []) {
  * @param {Object} params.obj 迭代中的对象
  * @returns {Object} 处理后的对象
  */
-function markMaxAndMinOfObj({ values, value, obj }) {
+function markMaxAndMinOfObj({ values, value, obj }: {
+  values: Array<any>;
+  value: ValueType;
+  obj: Object;
+}) {
   const idx = values.indexOf(value);
   const lastIdx = values.indexOf(value);
 
-  let newObj = {
+  let newObj: typeof obj & {
+    idx: number;
+    lastIdx: number;
+    isMax?: boolean;
+    isMin?: boolean;
+    isSecondMax?: boolean;
+    isSecondMin?: boolean;
+  } = {
     ...obj,
     idx,
     lastIdx,
@@ -188,8 +212,8 @@ function markMaxAndMinOfObj({ values, value, obj }) {
  * }];
  */
 export function getPreviousRatio(
-  data = [],
-  preDataMap = {},
+  data: Array<any> = [],
+  preDataMap: Record<string, any> = {},
   uniqKey = 'Project',
 ) {
   data.forEach((item) => {
@@ -247,7 +271,7 @@ export function getPreviousRatio(
  *
  */
 export function getMaxAndMinIdx(
-  data: Array<object> = [],
+  data: Array<Record<string, any>> = [],
   reverseScoreKeys: Array<string> = [],
 ) {
   if (!data.length) return [];
@@ -264,9 +288,17 @@ export function getMaxAndMinIdx(
 
       if (values && typeof itemInfo.value === 'number') {
         if (reverseScoreKeys.indexOf(key) > -1) {
-          values.sort((a, b) => a - b);
+          values.sort((a: ValueType, b: ValueType) => {
+            if (a > b) return 1;
+            if (a < b) return -1;
+            return 0;
+          });
         } else {
-          values.sort((a, b) => b - a);
+          values.sort((a: ValueType, b: ValueType) => {
+            if (a > b) return -1;
+            if (a < b) return 1;
+            return 0;
+          });
         }
 
         temp[key] = markMaxAndMinOfObj({
@@ -312,16 +344,11 @@ export function getMaxAndMinIdx(
  *   },
  * };
  */
-export function flattenPreData(preDataList: Array<{
-  [key: string]: {
-    name: string
-    value: number | string
+export function flattenPreData(preDataList: Array<IPreData>, key: string): {
+  [valueOfPrimaryKey: string]: {
+    [key: string]: ValueType
   }
-}>, key: string): {
-    [valueOfPrimaryKey: string]: {
-      [key: string]: string | number
-    }
-  } {
+} {
   const preDataMap = preDataList.reduce((acc, item) => {
     acc[item[key]?.value || 'DEFAULT_KEY'] = Object.values(item).reduce((ac: any, it: any) => {
       ac[it.name] = it.value;
@@ -378,7 +405,7 @@ export function flattenPreData(preDataList: Array<{
  *   }
  * ]
  */
-export function compareTwoList(list, preList, key) {
+export function compareTwoList(list: Array<IPreData>, preList: Array<IPreData>, key: string) {
   const preDataMap = flattenPreData(preList, key);
   getPreviousRatio(list, preDataMap, key);
   return list;

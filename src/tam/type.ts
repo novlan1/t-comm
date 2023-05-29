@@ -1,6 +1,8 @@
 export type SecretInfoType = {
   apiKey: string
   loginName: string
+  rumSecretId: string;
+  rumSecretKey: string;
   getPwdCode: Function
   encrypt: Function
 };

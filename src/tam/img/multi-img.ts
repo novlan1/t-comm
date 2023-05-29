@@ -2,6 +2,7 @@ import { genCustomEventImg } from './custom-event-img';
 import { genSummaryData } from './summary-img';
 import { mergeMultiCanvasPic } from '../../canvas/multi-img';
 import { batchSendWxRobotBase64Img } from '../../wecom-robot/batch-send';
+import type { SecretInfoType } from '../type';
 
 
 /**
@@ -97,6 +98,22 @@ export async function genMultiImgAndSendRobot({
   eventMap,
   eventProjectIdMap,
   eventTableHeaderMap,
+}: {
+  date: number;
+  groupIdList: Array<number>;
+  secretInfo: SecretInfoType;
+
+  extraDataMap?: Record<string, any>;
+  ignoreProjectIdList?: Array<string | number>;
+  tableHeaderMap?: Record<string, any>;
+
+  webhookUrl: string;
+  chatId: string;
+
+  env: string,
+  eventMap: Record<string, any>;
+  eventProjectIdMap: Record<string, any>;
+  eventTableHeaderMap: Record<string, any>;
 }) {
   const result = await genSummaryData({
     date,
@@ -121,6 +138,7 @@ export async function genMultiImgAndSendRobot({
     eventMap,
     tableHeaderMap: eventTableHeaderMap,
   });
+  if (!launchGameImg) return;
 
   const img = await mergeMultiCanvasPic({
     imgs: [

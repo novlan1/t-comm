@@ -1,5 +1,5 @@
-function addZero(date) {
-  return date < 10 ? `0${date}` : date;
+function addZero(date: number) {
+  return date < 10 ? `0${date}` : `${date}`;
 }
 
 export function getVersion() {

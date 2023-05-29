@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-function getKeyValue(key, sourceLine) {
+function getKeyValue(key: string, sourceLine: Array<string>) {
   let result;
   let ma;
   const re = new RegExp(`${key}\\s*=\\s*(.*?)(\\s|$)`);
@@ -25,7 +25,7 @@ function getKeyValue(key, sourceLine) {
  * @param {string} filepath 保存环境变量的文件路径
  * @returns {string} 环境变量的值
  */
-export function readEnvVariable(key, filepath) {
+export function readEnvVariable(key: string, filepath: string) {
   const fs = require('fs');
   if (!fs.lstatSync(filepath)) {
     console.log('[readEnvVariable] 文件不存在:', filepath, '，请先创建文件');

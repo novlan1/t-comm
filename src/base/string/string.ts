@@ -9,7 +9,7 @@
  * // => abCdEf
  *
  */
-export function camelize(str) {
+export function camelize(str: string) {
   const camelizeRE = /-(\w)/g;
   return str.replace(camelizeRE, (_, c) => (c ? c.toUpperCase() : ''));
 }
@@ -26,7 +26,7 @@ export function camelize(str) {
  * // => ab-cd
  *
  */
-export function hyphenate(str) {
+export function hyphenate(str: string) {
   const hyphenateRE = /\B([A-Z])/g;
   return str.replace(hyphenateRE, '-$1').toLowerCase();
 }
@@ -61,7 +61,7 @@ export function capitalize(str: string): string {
  *
  * // Foo-Bar
  */
-export function titleize(str) {
+export function titleize(str: string) {
   if (typeof str !== 'string') {
     throw new TypeError('Expected a string');
   }
@@ -80,6 +80,6 @@ export function titleize(str) {
  *
  * // groupId
  */
-export function lowerInitial(str) {
+export function lowerInitial(str: string) {
   return str.replace(/^(\w)/, (a, b) =>  b?.toLowerCase());
 }

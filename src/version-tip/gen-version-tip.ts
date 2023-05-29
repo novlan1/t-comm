@@ -2,6 +2,7 @@
 import { replaceAllPolyfill } from '../util/replace-all';
 import { MAX_CONTENT_LENGTH } from './config';
 import { optimizeRobotContent } from '../util/optimize-robot-content';
+import type { IAppInfo } from './type';
 
 function optimizeContent(content = '') {
   return optimizeRobotContent({
@@ -13,6 +14,9 @@ function optimizeContent(content = '') {
 export function parseChangeLog({
   changelogStr,
   targetVersion,
+}: {
+  changelogStr: string,
+  targetVersion: string,
 }) {
   let currentVersion = changelogStr.match(new RegExp(
     `(?<=### \\[${targetVersion}\\].*\n).*?(?=\n##+ \\[?\\d+.\\d+.\\d+)`,
@@ -43,6 +47,9 @@ export function parseChangeLog({
 function getChangeLog({
   targetVersion,
   changeLogFilePath,
+}: {
+  targetVersion: string;
+  changeLogFilePath: string;
 }) {
   const fs = require('fs');
   if (!fs.existsSync(changeLogFilePath)) {
@@ -67,6 +74,14 @@ function generatePublishInfo({
   issueLink,
   readmeFilePath: changeLogFilePath,
   showNpmLink = false,
+}: {
+  appName: string;
+  version: string;
+  homepage: string;
+  repoLink: string;
+  issueLink: string;
+  readmeFilePath: string,
+  showNpmLink?: boolean,
 }) {
   replaceAllPolyfill();
 
@@ -110,17 +125,7 @@ function generatePublishInfo({
 export function genVersionTip({ readmeFilePath, appInfo, showNpmLink = false }: {
   showNpmLink?: boolean
   readmeFilePath: string
-  appInfo: {
-    name: string
-    version?: string
-    homepage?: string
-    bugs?: {
-      url: string
-    }
-    repository?: {
-      url: string
-    }
-  }
+  appInfo: IAppInfo
 }): string {
   const { name: appName, version, homepage = '', bugs, repository } = appInfo;
   console.log('[GEN VERSION TIP] APP INFO VERSION:', version);

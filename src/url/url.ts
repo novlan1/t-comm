@@ -17,7 +17,7 @@
  *
  */
 export function getQueryObj(url: string) {
-  const query = {};
+  const query: Record<string, string> = {};
 
   const qs = url.slice(url.indexOf('?') > -1 ? url.indexOf('?') + 1 : 0);
   let kvs;

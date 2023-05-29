@@ -15,13 +15,15 @@ import { saveBase64ImgToFile } from '../node-img';
  */
 export async function mergeMultiCanvasPic({
   imgs,
+}: {
+  imgs: Array<string>
 }) {
   const path = require('path');
   const sizeOf = require('image-size');
   const canvasLibrary = require('canvas');
   const { createCanvas, loadImage } = canvasLibrary;
 
-  const getSavePath = i => path.resolve(__dirname, `${i}.png`);
+  const getSavePath = (i: number) => path.resolve(__dirname, `${i}.png`);
   const dimensionMap: {
     width: Array<number>
     height: Array<number>
@@ -45,7 +47,7 @@ export async function mergeMultiCanvasPic({
 
   const getMaxWidth = () => Math.max(...dimensionMap.width);
   const getTotalHeight = () => dimensionMap.height.reduce((acc, item) => acc + item, 0);
-  const getPastHeight = (heights, index) => {
+  const getPastHeight = (heights: Array<number>, index: number) => {
     let res = 0;
     for (let i = 0; i < heights.length; i++) {
       if (i < index) {
@@ -55,7 +57,7 @@ export async function mergeMultiCanvasPic({
     return res;
   };
   const ONE_HEIGHT_GAP = 50;
-  const getPastGap = index => index * ONE_HEIGHT_GAP;
+  const getPastGap = (index: number) => index * ONE_HEIGHT_GAP;
 
   const CANVAS_MARGIN_TOP = 0;
   const canvas = createCanvas(

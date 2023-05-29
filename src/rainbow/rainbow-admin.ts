@@ -1,6 +1,7 @@
 import { baseRequestRainbow } from './helper/rainbow-base-request';
 import { getVersion } from './helper/helper';
-import { SecretInfo, ValueType, ModifyConfigParam } from './index.type';
+import { ISecretInfo, ModifyConfigParam } from './index.type';
+import type { RainbowKeyValueType } from '../rainbow-to-cos/helper/value-type';
 
 /**
  * 添加或更新配置
@@ -202,6 +203,12 @@ export function createRainbowPublishJob({
   creator,
   approvers,
   type = 0,
+}: {
+  versionName: string;
+  secretInfo: ISecretInfo;
+  creator: string;
+  approvers: string;
+  type?: number;
 }) {
   return baseRequestRainbow({
     url: '/adminapi.Config/CreateReleaseTaskReq',
@@ -242,7 +249,13 @@ export function createRainbowPublishJob({
  *
  * })
  */
-export function publishRainbowTask({ taskId, secretInfo }) {
+export function publishRainbowTask({
+  taskId,
+  secretInfo,
+}: {
+  taskId: string;
+  secretInfo: ISecretInfo;
+}) {
   return baseRequestRainbow({
     url: '/adminapi.Release/ReleaseMainTaskReq',
     data: {
@@ -279,7 +292,13 @@ export function publishRainbowTask({ taskId, secretInfo }) {
  *
  * })
  */
-export function closeRainbowTask({ taskId, secretInfo }) {
+export function closeRainbowTask({
+  taskId,
+  secretInfo,
+}: {
+  taskId: string;
+  secretInfo: ISecretInfo;
+}) {
   return baseRequestRainbow({
     url: '/adminapi.Release/CloseReleaseTaskReq',
     data: {
@@ -329,8 +348,8 @@ export async function updateRainbowKVAndPublish({
 }: {
   key: string
   value: string
-  valueType: ValueType
-  secretInfo: SecretInfo
+  valueType: RainbowKeyValueType
+  secretInfo: ISecretInfo
   creator: string
   approvers: string
 }) {
@@ -394,7 +413,13 @@ export async function updateRainbowKVAndPublish({
  *
  * })
  */
-export function queryGroupInfo({ secretInfo }): Promise<Array<{key: string, value: string, value_type: number}>>  {
+export function queryGroupInfo({ secretInfo }: {
+  secretInfo: ISecretInfo
+}): Promise<Array<{
+    key: string,
+    value: string,
+    value_type: RainbowKeyValueType
+  }>>  {
   return new Promise((resolve, reject) => {
     baseRequestRainbow({
       url: '/adminapi.Config/QueryGroupInfoReq',
@@ -420,6 +445,14 @@ export function OneClickReleaseRainbowTask({
   approvers,
   type = 0,
   description = '',
+}: {
+  secretInfo: ISecretInfo;
+  versionName: string;
+  creator: string
+  updators: string;
+  approvers: string;
+  type?: number;
+  description?: string;
 }) {
   return baseRequestRainbow({
     url: '/adminapi.Config/OneClickReleaseTaskReq',
@@ -442,6 +475,12 @@ export function ApprovalRainbowReleaseTask({
   versionName,
   status = 3,
   rejectReason = '',
+}: {
+  secretInfo: ISecretInfo;
+  taskId: string | number;
+  versionName: string;
+  status?: number,
+  rejectReason?: string,
 }) {
   return baseRequestRainbow({
     url: '/adminapi.Release/ApprovalReleaseTaskReq',

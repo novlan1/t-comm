@@ -9,16 +9,16 @@ import { formatBite } from '../util/format-bite';
 import { getCosUrlLink } from '../tencent-clound/cos/link';
 
 import { getBundleBuildDesc, getBundleVersion, parseUploadResult, flattenSubPackages } from './helper';
-import { OptionsType } from './type';
+import type { IUploadResult, OptionsType } from './type';
 import { DEFAULT_BUILD_SETTING, MAX_TRY_TIMES_MAP, PREVIEW_IMG_MAX_WORD_LENGTH } from './config';
 
 
-function getFullPackageSize(result) {
+function getFullPackageSize(result: IUploadResult) {
   const obj = flattenSubPackages(result);
   return formatBite(obj.__FULL__.size);
 }
 
-function getMainPackageSize(result) {
+function getMainPackageSize(result: IUploadResult) {
   const obj = flattenSubPackages(result);
   return formatBite(obj.__APP__.size);
 }
@@ -50,7 +50,7 @@ export class MpCI {
   buildDesc: string;
   buildTime?: string;
   version: string;
-  previewResult: Object;
+  previewResult: IUploadResult;
   errorLink?: string;
 
   pagePath?: string = '';
@@ -135,7 +135,7 @@ export class MpCI {
 
     this.options = options;
     this.projectCI = null;
-    this.previewResult = {};
+    this.previewResult = { subPackageInfo: [] };
     this.savePreviewPath = path.resolve(process.cwd(), 'mp_ci_preview_destination.png');
     const {
       appId,
@@ -308,7 +308,7 @@ export class MpCI {
   /**
    * 上传预览图片到COS
    */
-  async uploadPreviewImg(previewResult) {
+  async uploadPreviewImg(previewResult: IUploadResult) {
     const { robotNumber, env, buildTime, commitInfo, version } = this;
 
     const textList = [
@@ -432,7 +432,10 @@ export class MpCI {
     }
   }
 
-  async uploadFiles(files) {
+  async uploadFiles(files: Array<{
+    key: string;
+    path: string;
+  }>) {
     const { secretId, secretKey, bucket, region } = this.cosInfo || {};
     await uploadCOSFile({
       files,

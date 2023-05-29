@@ -5,3 +5,13 @@ export type IReportArr = Array<{
   project_name: string;
   owners: string;
 }>;
+
+export interface IRequestInfo {
+  bgName: string;
+  centerName: string;
+  groupName: string;
+}
+
+export interface ISearchInfo {
+  prefix: string
+}

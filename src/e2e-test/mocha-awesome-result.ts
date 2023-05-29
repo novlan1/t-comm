@@ -1,19 +1,53 @@
-function getProjectName(path) {
+function getProjectName(path: string) {
   const reg = /e2e\/([^/]+)/;
   const match = path.match(reg);
   return  match?.[1] || '';
 }
 
-function getModuleName(fileName) {
+function getModuleName(fileName: string) {
   const reg = /([^/]+)\.cy\.(js|ts)/;
   const match = fileName.match(reg);
   return  match?.[1] || '';
 }
 
 
-export function parseMochaAwesomeResult(report) {
+export function parseMochaAwesomeResult(report: {
+  results: Array<{
+    suites: Array<{
+      tests: Array<{
+        duration: number;
+        pass: number;
+        fail: number;
+        pending: number;
+      }>
+    }>
+    file: string;
+  }>
+}) {
   const { results } = report;
-  const map = {};
+
+  const map: {
+    [k: string]: {
+      duration: number;
+      passes: number;
+      failures: number;
+      pending: number;
+      tests: number;
+
+      files: {
+        [k: string]: {
+          duration: number;
+          passes: number;
+          failures: number;
+          pending: number;
+          tests: number;
+          testList: Array<{
+
+          }>
+        }
+      }
+    }
+  } = {};
 
   for (const result of results) {
     const { suites, file } = result;
@@ -25,6 +59,7 @@ export function parseMochaAwesomeResult(report) {
         passes: 0,
         failures: 0,
         pending: 0,
+        tests: 0,
         files: {},
       };
     }
@@ -35,6 +70,7 @@ export function parseMochaAwesomeResult(report) {
         passes: 0,
         failures: 0,
         pending: 0,
+        tests: 0,
         testList: [],
       };
     }

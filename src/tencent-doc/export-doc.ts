@@ -1,4 +1,5 @@
 import { asyncExportTencentDoc, checkExportTencentDocProgress } from './tencent-doc';
+import type { ISecretInfo } from './types';
 
 async function checkUrl({
   accessToken,
@@ -7,6 +8,9 @@ async function checkUrl({
 
   fileId,
   operationId,
+}: ISecretInfo & {
+  fileId: string
+  operationId: string;
 }) {
   const res = await checkExportTencentDocProgress({
     accessToken,
@@ -18,7 +22,7 @@ async function checkUrl({
   return res.data;
 }
 
-const holding = time => new Promise((resolve) => {
+const holding = (time: number) => new Promise((resolve) => {
   setTimeout(() => resolve(time), time);
 });
 
@@ -30,7 +34,11 @@ async function pollCheckUrl({
   fileId,
   operationId,
   waitTime,
-}) {
+}: ISecretInfo & {
+  fileId: string;
+  operationId: string;
+  waitTime: number;
+}): Promise<string> {
   await holding(waitTime);
 
   const res = await checkUrl({
@@ -65,6 +73,10 @@ export async function exportTencentDoc({
   fileId,
   exportType,
   waitTime = 0,
+}: ISecretInfo & {
+  fileId: string;
+  exportType: number;
+  waitTime?: number;
 }) {
   const data = await asyncExportTencentDoc({
     accessToken,

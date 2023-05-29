@@ -4,7 +4,10 @@ import { execCommand } from './node-command';
 
 const DEFAULT_HOST_TARGET_DIR = '/root/ft_local';
 
-function build({ files, bundleName }) {
+function build({ files, bundleName }: {
+  files: Array<string>;
+  bundleName: string;
+}) {
   return new Promise((resolve, reject) => {
     console.log('[build] 开始打包...');
     console.log('[build] Files: ', files);
@@ -28,7 +31,7 @@ function build({ files, bundleName }) {
       console.log('[build] 打包完成');
       resolve(true);
     })
-      .catch((err) => {
+      .catch((err: unknown) => {
         console.log('[build] 打包失败');
         reject(err);
       });
@@ -42,6 +45,12 @@ function upload({
   hostName,
   hostPwd,
   hostTargetDir = DEFAULT_HOST_TARGET_DIR,
+}: {
+  root: string;
+  bundleName: string;
+  hostName: string;
+  hostPwd: string;
+  hostTargetDir?: string;
 }) {
   if (!hostName || !hostName || !bundleName) {
     throw new Error('参数不全');
@@ -78,6 +87,12 @@ export async function buildAndUpload({
   hostName,
   hostPwd,
   hostTargetDir,
+}: {
+  root?: string;
+  bundleName?: string;
+  hostName: string;
+  hostPwd: string;
+  hostTargetDir: string;
 }) {
   if (!root) {
     root = process.cwd();

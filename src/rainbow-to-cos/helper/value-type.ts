@@ -28,3 +28,5 @@ export const RAINBOW_VALUE_TYPE_MAP = {
     ext: 'yml',
   },
 };
+
+export type RainbowKeyValueType = keyof typeof RAINBOW_VALUE_TYPE_MAP;

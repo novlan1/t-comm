@@ -6,11 +6,14 @@ import { traverseFolder } from './fs-util';
  * @example
  * statisticsPages('dist/build/mp-weixin/app.json')
  */
-export function statisticsPages(pagesJsonPath) {
+export function statisticsPages(pagesJsonPath: string) {
   const path = require('path');
   const pagesJson = require(path.resolve(process.cwd(), pagesJsonPath));
   const { pages = [], subPackages = [] } = pagesJson;
-  const res = pages.length + subPackages.reduce((acc, item) => acc + item.pages.length, 0);
+  const res = pages.length + subPackages.reduce((acc: number, item: {
+    pages: Array<any>
+  }) => acc + item.pages.length, 0);
+
   console.log('[statisticsPages] res: ', res);
   return res;
 }
@@ -21,12 +24,12 @@ export function statisticsPages(pagesJsonPath) {
  * @example
  * statisticsComponent('dist/build/mp-weixin');
  */
-export function statisticsComponent(dir) {
+export function statisticsComponent(dir: string) {
   const fs = require('fs');
   const array: Array<any> = [];
 
   if (fs.existsSync(dir)) {
-    traverseFolder((file) => {
+    traverseFolder((file: string) => {
       if (file.endsWith('.wxml')) {
         array.push(file);
       }

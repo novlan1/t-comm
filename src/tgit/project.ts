@@ -14,7 +14,13 @@ import { instance } from './helper';
  *
  * })
  */
-export function getOneProjectDetail({ projectName, privateToken }) {
+export function getOneProjectDetail({
+  projectName,
+  privateToken,
+}: {
+  projectName: string;
+  privateToken: string;
+}) {
   return new Promise((resolve, reject) => {
     instance({
       url: `/projects/${encodeURIComponent(projectName)}`,
@@ -51,8 +57,12 @@ export function getOneProjectDetail({ projectName, privateToken }) {
  */
 export function getOneProjectBySearch({
   search,
-  page = 1,
   privateToken,
+  page = 1,
+}: {
+  search: string
+  privateToken: string;
+  page?: number;
 }): Promise<Array<object>> {
   return new Promise((resolve, reject) => {
     instance({

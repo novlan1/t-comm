@@ -7,6 +7,11 @@ export async function addTextForImg({
   height,
   textList,
   imgPath,
+}: {
+  width: number;
+  height: number;
+  textList: Array<string>;
+  imgPath: string;
 }) {
   const canvasLibrary = require('canvas');
   const sizeOf = require('image-size');
@@ -39,7 +44,7 @@ export async function addTextForImg({
     ctx.fillRect(0, 0, canvas.width, canvas.height);
   }
 
-  function fillTitle(textList) {
+  function fillTitle(textList: Array<string>) {
     ctx.lineWidth = 1;
     ctx.strokeStyle = '#ccc';
     ctx.textAlign = 'start';

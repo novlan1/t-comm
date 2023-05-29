@@ -1,7 +1,14 @@
 import { sendWxRobotBase64Img } from './send-img';
 import { sendWxRobotMsg, sendWxRobotMarkdown } from './base';
+import type { Get } from '../types/common';
 
 const SEND_TO_ALL = 'ALL';
+
+interface ISendReq {
+  chatId: string | Array<string>;
+  webhookUrl: string;
+}
+
 
 /**
  * 根据chatId批量发送机器人消息
@@ -12,7 +19,7 @@ const SEND_TO_ALL = 'ALL';
  * @param {object} args 发送消息的其他参数
  * @ignore
  */
-function batchSendRobotByChatId(sendFn, chatId, args = {}) {
+function batchSendRobotByChatId(sendFn: Function, chatId?: Get<ISendReq, 'chatId'>, args = {}) {
   if (!chatId) {
     console.error('Error: chatId 不能为空');
     return;
@@ -59,7 +66,9 @@ export function batchSendWxRobotBase64Img({
   img,
   chatId,
   webhookUrl,
-}) {
+}: {
+  img: string;
+} & ISendReq) {
   return batchSendRobotByChatId(sendWxRobotBase64Img, chatId, {
     img,
     webhookUrl,
@@ -72,7 +81,10 @@ export function batchSendWxRobotMsg({
   alias,
   chatId,
   webhookUrl,
-}) {
+}: {
+  content: string;
+  alias: string;
+} & ISendReq) {
   return batchSendRobotByChatId(sendWxRobotMsg, chatId, {
     content,
     alias,
@@ -87,11 +99,9 @@ export function batchSendWxRobotMarkdown({
   chatId,
   webhookUrl,
 }: {
-  webhookUrl: string
-  content: string
-  chatId?: string
+  content: string;
   attachments?: Array<object>
-}) {
+} & ISendReq) {
   return batchSendRobotByChatId(sendWxRobotMarkdown, chatId, {
     content,
     attachments,

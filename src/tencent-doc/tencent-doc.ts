@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import axios from 'axios';
-
+import type { ISecretInfo } from './types';
 
 export async function createTencentDoc({
   accessToken,
@@ -10,6 +10,10 @@ export async function createTencentDoc({
   type,
   title,
   folderId = '/',
+}: ISecretInfo & {
+  type: number;
+  title: string;
+  folderId?: string;
 }) {
   const qs = require('qs');
   const res = await axios({
@@ -39,6 +43,10 @@ export async function updateTencentSheet({
   bookId,
   range,
   values,
+}: ISecretInfo & {
+  bookId: string;
+  range: string;
+  values: Array<{}>
 }) {
   const result = await axios({
     method: 'PUT',
@@ -62,6 +70,9 @@ export async function convertTencentFileId({
 
   type,
   value,
+}: ISecretInfo & {
+  type: number;
+  value: string;
 }) {
   const result = await axios({
     method: 'GET',
@@ -82,13 +93,15 @@ export async function uploadTencentDocImage({
   openId,
 
   image,
+}: ISecretInfo & {
+  image: string;
 }) {
   const FormData = require('form-data');
   const formData = new FormData();
   formData.append('image', require('fs').createReadStream(image));
 
   // eslint-disable-next-line max-len
-  const len = await new Promise((resolve, reject) => formData.getLength((err, length) => (err ? reject(err) : resolve(length))));
+  const len = await new Promise((resolve, reject) => formData.getLength((err: unknown, length: number) => (err ? reject(err) : resolve(length))));
 
   const result = await axios({
     method: 'POST',
@@ -115,6 +128,9 @@ export async function updateTencentSheetImage({
 
   bookId,
   insertImages,
+}: ISecretInfo & {
+  bookId: string;
+  insertImages: Array<string>
 }) {
   const result = await axios({
     method: 'POST',
@@ -140,6 +156,9 @@ export async function asyncExportTencentDoc({
 
   fileId,
   exportType,
+}: ISecretInfo & {
+  fileId: string;
+  exportType: number;
 }) {
   const qs = require('qs');
   const result = await axios({
@@ -165,6 +184,9 @@ export async function checkExportTencentDocProgress({
 
   fileId,
   operationId,
+}: ISecretInfo & {
+  fileId: string;
+  operationId: string;
 }) {
   const result = await axios({
     method: 'GET',

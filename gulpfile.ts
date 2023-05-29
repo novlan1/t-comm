@@ -43,7 +43,7 @@ const buildByRollup: TaskFunc = async (cb) => {
     plugins: rollupConfig.plugins,
   };
   const outOptions = rollupConfig.output;
-  let bundle;
+  let bundle: any;
 
   try {
     bundle = await rollup(inputOptions);

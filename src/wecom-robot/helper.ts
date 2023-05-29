@@ -48,7 +48,11 @@ export function sendToRobot({ webhookUrl, params }: {
 
     axios
       .post(webhookUrl, params)
-      .then((res) => {
+      .then((res: {
+        data: {
+          errcode: number
+        }
+      }) => {
         if (res?.data?.errcode !== 0) {
           console.log('[sendToRobot] err: \n', res?.data);
           reject(res);
@@ -56,7 +60,7 @@ export function sendToRobot({ webhookUrl, params }: {
           resolve(res);
         }
       })
-      .catch((err) => {
+      .catch((err: { data: unknown }) => {
         console.log('[sendToRobot] err: \n', err?.data);
         reject(err);
       });
@@ -70,7 +74,7 @@ export function sendToRobot({ webhookUrl, params }: {
  * @ignore
  *
  */
-function parsePrefixChatId(chatId) {
+function parsePrefixChatId(chatId: string) {
   const SEPARATOR = '___';
   if (chatId.indexOf(SEPARATOR) < 0) {
     return chatId;

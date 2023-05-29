@@ -2,7 +2,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 
 
-function getHtmlContent(buildPath) {
+function getHtmlContent(buildPath: string) {
   const htmlPath = path.resolve(buildPath, 'index.html');
   const content = fs.readFileSync(htmlPath, {
     encoding: 'utf-8',
@@ -10,7 +10,7 @@ function getHtmlContent(buildPath) {
   return content;
 }
 
-function getSourceFromReg(content, reg) {
+function getSourceFromReg(content: string, reg: RegExp) {
   let match = reg.exec(content);
   const result: Array<string> = [];
 
@@ -32,7 +32,7 @@ function getSourceFromReg(content, reg) {
  *   'static/index.b0707a6a.css'
  * ]
  */
-function getEntryFiles(content, domain) {
+function getEntryFiles(content: string, domain: string) {
   const scriptReg = new RegExp(`<script .*?src="${domain}/?(.+?)".*?/?>`, 'g');
   const cssReg = new RegExp(`<link .*?href="${domain}/?(.+?)".*?/?>`, 'g');
 
@@ -45,7 +45,7 @@ function getEntryFiles(content, domain) {
   return result;
 }
 
-function getBundleSize(list, buildPath) {
+function getBundleSize(list: Array<string>, buildPath: string) {
   return list.map((item) => {
     const filePath = path.resolve(buildPath, item);
     console.log('[getBundleSize] filePath', filePath);
@@ -62,7 +62,10 @@ function getBundleSize(list, buildPath) {
   }).filter(item => item);
 }
 
-export function analyzeIndexBundle({ domain, buildPath }) {
+export function analyzeIndexBundle({ domain, buildPath }: {
+  domain: string;
+  buildPath: string;
+}) {
   const content = getHtmlContent(buildPath);
   const fileList = getEntryFiles(content, domain);
   const bundleSizeList = getBundleSize(fileList, buildPath);

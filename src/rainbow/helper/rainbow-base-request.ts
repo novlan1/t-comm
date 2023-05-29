@@ -1,4 +1,4 @@
-import { SecretInfo } from '../index.type';
+import type { ISecretInfo } from '../index.type';
 import { genRainbowHeaderSignature } from './rainbow-signature';
 import { BASE_URL } from './helper';
 
@@ -8,7 +8,7 @@ const axios = require('axios');
 interface ReqParam {
   url: string
   data: object
-  secretInfo: SecretInfo
+  secretInfo: ISecretInfo
 }
 
 /**
@@ -48,14 +48,18 @@ export function baseRequestRainbow({
         ...realSig,
       },
     })
-      .then((res) => {
+      .then((res: {
+        data: {
+          ret_code?: number | string;
+        }
+      }) => {
         if (!res.data.ret_code) {
           resolve(res.data);
         } else {
           reject(res.data);
         }
       })
-      .catch((e) => {
+      .catch((e: unknown) => {
         reject(e);
       });
   });

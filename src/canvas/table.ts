@@ -8,16 +8,18 @@ const extraWidth = 3;
 const maxColor = '#fc5531';
 const minColor = 'green';
 
-function parseCellValue(val) {
+function parseCellValue(val?: number | string | null): string {
   if (val === undefined || val === null) return '';
-  return val;
+  return `${val}`;
 }
 
 /**
  * 判断是否有比例，只要一行有比例，即为有
  * @ignore
  */
-function judgeRatio(data, value) {
+function judgeRatio(data: Array<{ ratio?: string | number }>, value?: number | null) {
+  if (!value) return false;
+
   return !!(data || []).find((item) => {
     const values = Object.values(item) || [];
     return values.find(value => !!(value as any).ratio);
@@ -77,7 +79,16 @@ export function createCanvasTable({
   cellWidthList,
   title,
 }: {
-  data: Array<object>
+  data: Array<{
+    [k: string]: {
+      value?: number;
+      isMax?: boolean;
+      isMin?: boolean;
+      isSecondMax?: boolean;
+      isSecondMin?: boolean;
+      ratio?: string | number;
+    }
+  }>
   headers: Array<string>
   cellWidthList: Array<number>
   title: string

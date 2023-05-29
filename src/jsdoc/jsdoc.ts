@@ -1,6 +1,16 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { timeStampFormat } from '../date/time';
 
+type ICheerIO = any;
+type IJSDocOptions = {
+  docsPath?: string
+  author?: string
+  extraCss?: string
+  extraScript?: string
+  navHandler?: Function
+  isHandleNav?: boolean;
+};
+
 
 const DEFAULT_EXTRA_CSS = `
 .nav-separator {
@@ -14,7 +24,7 @@ nav ul a, nav ul a:active {
 }
 `;
 
-function getSeparatorStr(content) {
+function getSeparatorStr(content: string) {
   const maxLen = 14;
   const lastLen = parseInt(`${maxLen - (content.length) / 2}`, 10);
   const fill = Array.from({ length: lastLen })
@@ -28,10 +38,10 @@ function getSeparatorStr(content) {
  * 删除重复的部分
  * @ignore
  */
-function deleteRepeatedSections($) {
+function deleteRepeatedSections($: ICheerIO) {
   const sections = $('section');
   let last = '';
-  sections.map((_, section) => {
+  sections.map((_: any, section: any) => {
     const html = $(section).html()
       .trim();
     if (html === last) {
@@ -49,7 +59,7 @@ function deleteRepeatedSections($) {
  * @param $ cheerio
  * @param author 作者
  */
-function replaceFooter($, author) {
+function replaceFooter($: ICheerIO, author: string) {
   const timezone = new Date().getTimezoneOffset() / -60;
   const footerContent = `Documentation generated on ${timeStampFormat(Date.now(), 'yyyy-MM-dd hh:mm:ss')} GMT+0${timezone}00 ${author && ` by ${author}`}.`;
   $('footer').html(footerContent);
@@ -61,10 +71,10 @@ function replaceFooter($, author) {
  * @ignore
  * @param $ cheerio
  */
-function findModuleNav($) {
+function findModuleNav($: ICheerIO) {
   const titles = $('body nav h3');
   let res;
-  titles.map((_, title) => {
+  titles.map((_: any, title: any) => {
     if ($(title).html()
       .trim() === 'Modules') {
       res = $(title).next();
@@ -90,13 +100,13 @@ function getNavPrefix(nav = '') {
  * @ignore
  * @param $ cheerio
  */
-function insertModuleNavSeparator($) {
+function insertModuleNavSeparator($: ICheerIO) {
   const module = findModuleNav($);
   if (!module) return;
 
   let last = '';
   $(module).children('li')
-    .map((_, li) => {
+    .map((_: any, li: any) => {
       const nav = $(li).children('a')
         ?.html()
         ?.trim();
@@ -121,11 +131,11 @@ function insertModuleNavSeparator($) {
  * 插入分隔符
  * @ignore
  */
-function insertNavSeparator($, sourceMap) {
+function insertNavSeparator($: ICheerIO, sourceMap: Record<string, string>) {
   const naves = $('nav > ul li');
   let cur = '';
 
-  naves.map((_, dom) => {
+  naves.map((_: any, dom: any) => {
     const nav = $(dom).find('a')
       .attr('href')
       ?.trim();
@@ -140,7 +150,7 @@ function insertNavSeparator($, sourceMap) {
  * 插入script
  * @ignore
  */
-function insertScript($, script = '') {
+function insertScript($: any, script = '') {
   if (!script) return;
   $('head').children()
     .last()
@@ -154,7 +164,7 @@ function insertScript($, script = '') {
  * @param source 文件路径
  * @returns 处理后的数据
  */
-function defaultNavHandler(source) {
+function defaultNavHandler(source: string) {
   const list = source.split('/');
   return list.slice(0, list.length - 1).join('/');
 }
@@ -183,7 +193,7 @@ class JsDocHandler {
    * })
    *
    */
-  static init(options) {
+  static init(options: IJSDocOptions) {
     const handler = new JsDocHandler(options);
     handler.run();
     return handler;
@@ -212,14 +222,7 @@ class JsDocHandler {
    * @param {Function} [options.navHandler] 处理API所在文件的方法
    * @param {boolean} [options.isHandleNav] 是否处理导航栏，即插入文件名进行分隔，默认为false
    */
-  constructor(options: {
-    docsPath?: string
-    author?: string
-    extraCss?: string
-    extraScript?: string
-    navHandler?: Function
-    isHandleNav?: boolean;
-  } = {}) {
+  constructor(options: IJSDocOptions = {}) {
     const {
       docsPath = './docs',
       author =  '',
@@ -277,7 +280,7 @@ class JsDocHandler {
    * @param {string} content
    * @return {object} sourceMap
    */
-  getSourceMap(file) {
+  getSourceMap(file: string) {
     const html = this.path.resolve(this.docsPath, file);
     const content = this.fs.readFileSync(html, {
       encoding: 'utf-8',
@@ -285,10 +288,10 @@ class JsDocHandler {
 
     const cheerio = require('cheerio');
     const $ = cheerio.load(content);
-    const sourceMap = {};
+    const sourceMap: Record<string, string> = {};
     const names = $('#main section article h4.name');
 
-    names.map((_, dom) => {
+    names.map((_: any, dom: any) => {
       const id = $(dom).attr('id');
       let source = $(dom).next()
         .find('dd.tag-source ul.dummy li a')
@@ -303,9 +306,9 @@ class JsDocHandler {
     return sourceMap;
   }
 
-  handleEveryHtml(sourceMap, author) {
+  handleEveryHtml(sourceMap: Record<string, string>, author: string) {
     const files = this.fs.readdirSync(this.docsPath);
-    files.forEach((file) => {
+    files.forEach((file: string) => {
       if (file.endsWith('.html')) {
         const filePath =  this.path.resolve(this.docsPath, file);
         const content = this.fs.readFileSync(filePath, {
@@ -320,8 +323,8 @@ class JsDocHandler {
     });
   }
 
-  parseSourceMap(sourceMap) {
-    return Object.keys(sourceMap).reduce((acc, key) => {
+  parseSourceMap(sourceMap: Record<string, any>) {
+    return Object.keys(sourceMap).reduce((acc: Record<string, string>, key) => {
       const value = sourceMap[key];
       acc[key] = getSeparatorStr(value);
       return acc;
@@ -329,7 +332,7 @@ class JsDocHandler {
   }
 
 
-  getParsedHtml(content, sourceMap, author) {
+  getParsedHtml(content: string, sourceMap: Record<string, string>, author: string) {
     const cheerio = require('cheerio');
     const $ = cheerio.load(content);
     const { extraScript } = this;
@@ -352,7 +355,7 @@ class JsDocHandler {
   }
 
 
-  appendCSS(extra) {
+  appendCSS(extra: string) {
     console.log('[Jsdoc] Appending extra css ...');
 
     const css = this.path.resolve(this.docsPath, 'styles/jsdoc.css');

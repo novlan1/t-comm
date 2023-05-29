@@ -1,3 +1,12 @@
+interface IMorsePwd {
+  pwd: Array<number>;
+  cb: Function;
+  quiet: boolean;
+  holdTime: number;
+  envType: 'H5' | 'h5' | 'mp' | 'MP';
+  selector?: keyof HTMLElementTagNameMap;
+}
+
 class MorsePwd {
   /**
    * 初始化
@@ -74,7 +83,7 @@ class MorsePwd {
    *
    * @returns {Object} MorsePwd实例
    */
-  static init(options) {
+  static init(options: IMorsePwd) {
     return new MorsePwd(options);
   }
 
@@ -106,12 +115,12 @@ class MorsePwd {
    * @param {'H5' | 'h5' | 'mp' | 'MP'} options.envType 环境类型
    * @param {String} options.selector h5模式下的选择器
    */
-  constructor(options) {
+  constructor(options: IMorsePwd) {
     const DEFAULT_CODE_MAP = {
       CLICK: 1,
       LONG_PRESS: 2,
     };
-    const { pwd, cb, quiet = false, holdTime = 5000, envType = '', selector } = options;
+    const { pwd, cb, quiet = false, holdTime = 5000, envType = 'H5', selector } = options;
     this.pwd = pwd || [];
     this.cb = cb;
     this.holdTime = holdTime;
@@ -184,7 +193,7 @@ class MorsePwd {
     this.h5Dom.removeEventListener('touchmove', this.onTouchMove.bind(this));
   }
 
-  operation(type) {
+  operation(type: number) {
     this.log(`type: ${type}, curIdx: ${this.curIdx}, pwd: ${this.pwd}`);
 
     clearTimeout(this.holdTimer);
@@ -221,7 +230,7 @@ class MorsePwd {
     this.operation(this.longPressCode);
   }
 
-  log(...args) {
+  log(...args: Array<unknown>) {
     if (this.quiet) return;
     console.log(...args);
   }

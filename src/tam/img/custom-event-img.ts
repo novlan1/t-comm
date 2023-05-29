@@ -4,7 +4,7 @@ import { createCanvasTable } from '../../canvas/table';
 import { compareTwoList, getMaxAndMinIdx } from '../../base/list';
 import { getSomeDayStartTimeStamp, getSomeDayEndTimeStamp, timeStampFormat } from '../../date';
 import { batchSendWxRobotBase64Img } from '../../wecom-robot/batch-send';
-
+import type { SecretInfoType } from '../type';
 
 /**
  * 获取自定义事件图片
@@ -75,6 +75,15 @@ export async function genCustomEventImg({
   // 处理数据、画图参数
   eventMap,
   tableHeaderMap,
+}: {
+  date: string | number | Date;
+  projectIdMap: Record<string, any>;
+  env: string;
+  secretInfo: SecretInfoType;
+
+  // 处理数据、画图参数
+  eventMap: {};
+  tableHeaderMap: {};
 }) {
   const startTime = getSomeDayStartTimeStamp(date);
   const endTime = getSomeDayEndTimeStamp(date);
@@ -104,6 +113,9 @@ export async function genCustomEventImg({
     env,
     secretInfo,
   });
+
+  if (!data) return;
+  if (!preData) return;
 
   const parsedData = parseMultiCustomEvent({
     eventDataMap: data,
@@ -205,6 +217,17 @@ export async function genCustomEventImgAndSendRobot({
 
   webhookUrl,
   chatId,
+}: {
+  date: number;
+  projectIdMap: Array<string>;
+  env: string;
+  secretInfo: SecretInfoType;
+
+  eventMap: {};
+  tableHeaderMap: {};
+
+  webhookUrl: string;
+  chatId: string;
 }) {
   const img = await genCustomEventImg({
     date,

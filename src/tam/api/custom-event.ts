@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SecretInfoType } from '../type';
+import type { SecretInfoType } from '../type';
 import { getCredential } from './credential';
 
 
@@ -8,6 +8,11 @@ function getCustomEventQuery({
   endTime,
   projectId,
   env = 'production',
+}: {
+  startTime: number;
+  endTime: number;
+  projectId: string | number;
+  env?: string;
 }) {
   let envStr = '';
   if (env === 'production') {
@@ -17,8 +22,13 @@ function getCustomEventQuery({
 }
 
 
-function flattenEventData(data) {
-  return data.reduce((acc, item) => {
+function flattenEventData(data: Array<{
+  tags?: {
+    name: string
+  },
+  values: Array<Array<number>>
+}>) {
+  return data.reduce((acc: Record<string, number>, item) => {
     const key = item.tags?.name;
     if (!key) {
       return acc;
@@ -75,11 +85,11 @@ async function getCustomEventData({
   env = 'production',
   secretInfo,
 }: {
-  startTime: number
-  endTime: number
-  projectId: number
-  env?: string
-  secretInfo: SecretInfoType
+  startTime: number;
+  endTime: number;
+  projectId: number | string;
+  env?: string;
+  secretInfo: SecretInfoType;
 }): Promise<{[key: string]: number}> {
   const credential = await getCredential(secretInfo);
 
@@ -169,8 +179,24 @@ export async function getMultiCustomEventData({
   env = 'production',
   secretInfo,
   projectIdMap,
+}: {
+  startTime: number;
+  endTime: number;
+  env?: string;
+  secretInfo: SecretInfoType;
+  projectIdMap: {
+    extraProjectId?: string | number;
+  } & {
+    [k: string]: any;
+  };
 }) {
-  const res = {};
+  const res: Record<string, {
+    extraData?: {
+      [k: string]: number;
+    },
+  } & {
+    [k: string]: number;
+  }> = {};
   const projectIdList = Object.keys(projectIdMap);
   if (!projectIdList.length) return;
 

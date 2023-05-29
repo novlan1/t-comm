@@ -36,6 +36,8 @@ const TABLE_HEADER_MAP = {
   // bucketInf: '',
 };
 
+type TableHeaderType = keyof typeof TABLE_HEADER_MAP;
+
 const RATIO_KEY_LIST = [
   'durationCount000Ratio',
   'durationCount500Ratio',
@@ -44,22 +46,22 @@ const RATIO_KEY_LIST = [
   'durationCount5000Ratio',
 ];
 
-function isChina(region) {
+function isChina(region: string) {
   return !Object.values(CountryMap).includes(region);
 }
 
-function fixedNumber(num) {
+function fixedNumber(num: number) {
   return Math.floor(num * 100) / 100;
 }
 
-function formatValue(value) {
+function formatValue(value: number | string) {
   if (typeof value !== 'number') return value;
   return fixedNumber(value);
 }
 
-function genTableData(data) {
+function genTableData(data: Array<any>) {
   const tableData = data.map((regionItem) => {
-    const temp = Object.keys(regionItem).reduce((ac, perfName) => {
+    const temp = Object.keys(regionItem).reduce((ac: Record<string, any>, perfName) => {
       let value = regionItem[perfName];
       if (RATIO_KEY_LIST.includes(perfName)) {
         value = value * 100;
@@ -73,8 +75,8 @@ function genTableData(data) {
   return tableData;
 }
 
-function sortObj(obj, sortKeyList) {
-  return sortKeyList.reduce((acc, key) => {
+function sortObj(obj: Record<string, any>, sortKeyList: Array<string>) {
+  return sortKeyList.reduce((acc: Record<string, any>, key) => {
     if (obj[key] !== undefined) {
       acc[key] = obj[key];
     }
@@ -82,7 +84,7 @@ function sortObj(obj, sortKeyList) {
   }, {});
 }
 
-function clusterChina(obj) {
+function clusterChina(obj: Record<string, any>) {
   obj[CHINA_REGION] = {
     region: CHINA_REGION,
   };
@@ -120,16 +122,26 @@ function clusterChina(obj) {
  *   }
  * ]
  */
-function parseResult(results) {
-  const obj = {};
+function parseResult(results: Array<{
+  [k: string]: any;
+}>) {
+  const obj: Record<string, {
+    region: string;
+  }> = {};
   for (const item of results) {
-    item.series.forEach((it) => {
+    item.series.forEach((it: {
+      tags: {
+        region: string;
+      },
+      columns: Array<TableHeaderType>;
+      values: Array<any>
+    }) => {
       const key = it.tags.region;
 
       if (key) {
         if (!obj[key]) obj[key] = { region: key };
 
-        it.columns.reduce((acc, column, columnIndex) => {
+        it.columns.reduce((acc: Record<string, any>, column, columnIndex) => {
           if (TABLE_HEADER_MAP[column] !== undefined) {
             acc[column] = it.values[0][columnIndex];
           }
@@ -154,7 +166,7 @@ function parseResult(results) {
   // }, {});
 }
 
-function getTableHeaders(keyList) {
+function getTableHeaders(keyList: Array<TableHeaderType>) {
   return keyList.map(key => TABLE_HEADER_MAP[key] || key);
 }
 
@@ -165,6 +177,13 @@ export async function genRUMnPerfData({
   startTime,
   endTime,
   type = 'region',
+}: {
+  secretId: string;
+  secretKey: string;
+  id: string;
+  startTime: number;
+  endTime: number;
+  type?: string;
 }) {
   const res = await getRUMPerformance({
     secretId,
@@ -191,6 +210,16 @@ export async function genRUMPerfImgAndSend({
   title = '',
   chatId,
   webhookUrl,
+}: {
+  secretId: string;
+  secretKey: string;
+  id: string;
+  startTime: number;
+  endTime: number;
+  type?: string;
+  title?: string;
+  chatId: string;
+  webhookUrl: string;
 }) {
   const data = await genRUMnPerfData({
     secretId,
@@ -217,7 +246,7 @@ export async function genRUMPerfImgAndSend({
 
   const img = createCanvasTable({
     data: tableData,
-    headers: getTableHeaders(Object.keys(tableData[0])),
+    headers: getTableHeaders(Object.keys(tableData[0]) as any),
     title,
     cellWidthList: [95, ...Array.from({ length: len }).map(() => 65)],
   });

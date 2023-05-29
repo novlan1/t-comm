@@ -1,4 +1,4 @@
-export interface SecretInfo {
+export interface ISecretInfo {
   // 密钥相关
   appID?: string
   appId?: string
@@ -28,5 +28,5 @@ export interface ModifyConfigParam {
     value: string
   }
   valueType: ValueType
-  secretInfo: SecretInfo
+  secretInfo: ISecretInfo
 }

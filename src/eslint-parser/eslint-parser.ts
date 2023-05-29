@@ -18,7 +18,7 @@ export function parseEslintAndSendRobot({
   repoConfig: RepoConfigType
   robotInfo: {
     webhookUrl: string
-    chatId: string | undefined
+    chatId: string
   }
 }) {
   const {

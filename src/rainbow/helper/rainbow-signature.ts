@@ -1,19 +1,26 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
+interface ICrypto {
+  createHmac: Function;
+  randomBytes: Function;
+}
+
+
+type ISignMethod = 'sha256' | 'sha1';
 
 /**
  * 密码学随机数
  * @private
  */
-const randomNum = (crypto) => {
+const randomNum = (crypto: ICrypto) => {
   const buf = crypto.randomBytes(6);
   const hexToDec = parseInt(buf.toString('hex'), 16);
   return hexToDec;
 };
 
-const sha256 = (secret, content, crypto) => crypto.createHmac('sha256', secret).update(content)
+const sha256 = (secret: string, content: string, crypto: ICrypto) => crypto.createHmac('sha256', secret).update(content)
   .digest('base64');
 
-const sha1 = (secret, content, crypto) => crypto.createHmac('sha1', secret).update(content)
+const sha1 = (secret: string, content: string, crypto: ICrypto) => crypto.createHmac('sha1', secret).update(content)
   .digest('base64');
 
 /**
@@ -23,7 +30,7 @@ const sha1 = (secret, content, crypto) => crypto.createHmac('sha1', secret).upda
  * @param content
  * @param signMethod
  */
-const signatureGenerator = (secret, content, signMethod, crypto) => {
+const signatureGenerator = (secret: string, content: string, signMethod: ISignMethod, crypto: ICrypto) => {
   switch (signMethod) {
     case 'sha256':
       return sha256(secret, content, crypto);
@@ -44,7 +51,7 @@ export function genRainbowHeaderSignature(signInfo: {
   userID?: string
   userId?: string
   secretKey: string
-  signMethod?: string
+  signMethod?: ISignMethod
 }) {
   const crypto = require('crypto');
   const { appID, userID, appId, userId, signMethod = 'sha1', secretKey } = signInfo;
@@ -62,7 +69,7 @@ export function genRainbowHeaderSignature(signInfo: {
   const rainbowSgnMethod = signMethod;
   const rainbowSgnBody = '';
 
-  const content =    `${rainbowVersion}.${rainbowAppId}.${rainbowUserId}.${rainbowTimestamp}.${rainbowNonce}`
+  const content = `${rainbowVersion}.${rainbowAppId}.${rainbowUserId}.${rainbowTimestamp}.${rainbowNonce}`
     + `.${rainbowSgnMethod}.${rainbowSgnBody}`;
   const rainbowSignature = signatureGenerator(
     secretKey,

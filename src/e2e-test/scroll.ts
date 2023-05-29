@@ -1,13 +1,21 @@
-export async function autoScroll(element, page, bottomTimes = 0) {
-  await page.evaluate(({ element, bottomTimes }) => new Promise((resolve) => {
+import { IPage } from './types';
+
+export async function autoScroll(element: HTMLAnchorElement, page: IPage, bottomTimes = 0) {
+  await page.evaluate(({
+    element,
+    bottomTimes,
+  }: {
+    element: string,
+    bottomTimes: number
+  }) => new Promise((resolve) => {
     const UNIT_DISTANCE = 100;
-    const ele = document.querySelector(element);
+    const ele = document.querySelector(element) as HTMLAnchorElement;
 
     let totalHeight = 0;
     let curBottomTimes = 0;
-    let lastScrollHeight = ele.scrollHeight;
+    let lastScrollHeight = ele?.scrollHeight;
 
-    const doScroll = (ele) => {
+    const doScroll = (ele: HTMLElement) => {
       totalHeight = ele.scrollTop + UNIT_DISTANCE;
       ele.scrollTop = totalHeight;
     };

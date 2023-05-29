@@ -1,7 +1,21 @@
 import { getCOSInstance, onUploadCOSProgress } from './helper';
+import type { ICosMeta } from './types';
 
-
-const pushFiles = ({ files, bucket, region }) => files.map(file => ({
+const pushFiles = ({
+  files,
+  bucket,
+  region,
+}: {
+  files: Array<{
+    key: string;
+    path: string;
+  }>
+  bucket: string;
+  region: string;
+}) => files.map((file: {
+  key: string;
+  path: string;
+}) => ({
   Bucket: bucket,
   Region: region,
   Key: file.key,
@@ -75,12 +89,14 @@ export function uploadCOSFile({
         SliceSize: 1024 * 1024,
 
         onProgress: onUploadCOSProgress,
-        onFileFinish(err, data, options) {
+        onFileFinish(err: unknown, data: unknown, options: {
+          Key: string;
+        }) {
           resolve(data);
           console.log(`[uploadCOSFile] 上传${err ? '失败' : '完成'}: ${options.Key}`);
         },
       },
-      (err, data) => {
+      (err: unknown, data: unknown) => {
         reject(err || data);
       },
     );
@@ -94,7 +110,13 @@ export function getCOSBucketList({
   bucket,
   region,
   prefix,
-}): Promise<Array<any>> {
+}: {
+  secretId: string;
+  secretKey: string;
+  bucket: string;
+  region: string;
+  prefix: string;
+}): Promise<Array<ICosMeta>> {
   return new Promise((resolve, reject) => {
     if (!secretId || !secretKey || !bucket || !region) {
       reject('[Get COS List Error] 参数不全');
@@ -106,7 +128,9 @@ export function getCOSBucketList({
       Bucket: bucket,
       Region: region,
       Prefix: prefix, /* 非必须 */
-    }, (err, data) => {
+    }, (err: unknown, data: {
+      Contents: Array<ICosMeta>
+    }) => {
       if (err) {
         reject(err);
       } else {
@@ -122,6 +146,12 @@ export function deleteCOSMultipleObject({
   keys,
   bucket,
   region,
+}: {
+  secretId: string;
+  secretKey: string;
+  bucket: string;
+  region: string;
+  keys: Array<string>;
 }) {
   return new Promise((resolve, reject) => {
     if (!secretId || !secretKey || !bucket || !keys) {
@@ -140,7 +170,7 @@ export function deleteCOSMultipleObject({
       Region: region,
       /* 存储在桶里的对象键（例如1.jpg，a/b/test.txt），必须字段 */
       Objects: keys.map(item => ({ Key: item })),
-    }, (err, data) => {
+    }, (err: unknown, data: unknown) => {
       if (err) {
         reject(err);
       } else {

@@ -7,6 +7,7 @@ import { createCanvasTable } from '../../canvas/table';
 import { timeStampFormat } from '../../date/time';
 import { batchSendWxRobotBase64Img } from '../../wecom-robot/batch-send';
 import { saveJsonToLog } from '../../util/fs-util';
+import type { SecretInfoType } from '../type';
 
 
 async function getRUMScoreList({
@@ -14,6 +15,11 @@ async function getRUMScoreList({
   parsedDate,
   parsedPreDate,
   date,
+}: {
+  secretInfo: SecretInfoType;
+  parsedDate: string;
+  parsedPreDate: string;
+  date: string | number | Date;
 }) {
   if (!secretInfo.rumSecretId || !secretInfo.rumSecretKey) {
     return {};
@@ -100,6 +106,13 @@ export async function genSummaryData({
   ignoreProjectIdList = [],
 
   tableHeaderMap = {},
+}: {
+  date: number | string | Date;
+  groupIdList: Array<number>;
+  secretInfo: SecretInfoType;
+  extraDataMap: any;
+  ignoreProjectIdList: Array<string | number>;
+  tableHeaderMap: Record<string, any>;
 }) {
   const parsedDate = timeStampFormat(new Date(date).getTime(), 'yyyyMMdd');
   const headerDate = timeStampFormat(new Date(date).getTime(), 'yyyy-MM-dd');
@@ -235,6 +248,18 @@ export async function genSummaryDataAndSendRobot({
 
   webhookUrl,
   chatId,
+}: {
+  date: number;
+  groupIdList: Array<number>;
+  secretInfo: SecretInfoType;
+
+  extraDataMap: {};
+  ignoreProjectIdList: Array<string>;
+
+  tableHeaderMap: {}
+
+  webhookUrl: string;
+  chatId: string;
 }) {
   const result = await genSummaryData({
     date,

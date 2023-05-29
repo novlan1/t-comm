@@ -2,9 +2,9 @@
 import { queryGroupInfo } from '../rainbow/rainbow-admin';
 import { getSaveFileName } from './helper/helper';
 import { readJsonLog, saveJsonToLog } from '../util/fs-util';
+import type { ISecretInfo, ILocalConfig, IRemoteConfig } from './types';
 
-
-const readCOSConfig = (saveFileName) => {
+const readCOSConfig = (saveFileName: string): ILocalConfig => {
   let content = [];
   try {
     content = JSON.parse(readJsonLog(saveFileName, '[]'));
@@ -18,10 +18,13 @@ const readCOSConfig = (saveFileName) => {
 export function fetchLatestRainbowData({
   secretInfo,
   appName,
+}: {
+  secretInfo: ISecretInfo;
+  appName: string;
 }): Promise<{
-    config: Array<object>
-    originConfig: Array<object>
-    equal: boolean
+    config: Array<IRemoteConfig>;
+    originConfig: ILocalConfig;
+    equal: boolean;
   }> {
   return new Promise((resolve) => {
     const { groupName, envName } = secretInfo || {};
@@ -38,19 +41,19 @@ export function fetchLatestRainbowData({
     queryGroupInfo({
       secretInfo,
     }).then((res = []) => {
-      const config = res.map(config => ({
+      const configList = res.map(config => ({
         key: config.key,
         value: config.value,
         valueType: config.value_type,
       }));
 
-      const equal = JSON.stringify(config, null, 0) === JSON.stringify(originConfig, null, 0);
+      const equal = JSON.stringify(configList, null, 0) === JSON.stringify(originConfig, null, 0);
       console.log(`[fetchLatestRainbowData] 七彩石配置是否有更新 ${appName}·${groupName}·${envName}: ${!equal}`);
 
-      saveJsonToLog(config, saveFileName);
+      saveJsonToLog(configList, saveFileName);
 
       resolve({
-        config,
+        config: configList,
         originConfig,
         equal,
       });

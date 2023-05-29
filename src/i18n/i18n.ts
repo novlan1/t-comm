@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export function getI18nToken(appId, appKey) {
+export function getI18nToken(appId: string, appKey: string) {
   return new Promise((resolve, reject) => {
     axios({
       url: '/api/openapi/token',
@@ -25,6 +25,12 @@ export function importI18nDict({
   versionCode = 'v1.0',
   accessToken,
   data,
+}: {
+  projectId: string;
+  moduleCode?: string;
+  versionCode?: string;
+  accessToken: string;
+  data: object;
 }) {
   return new Promise((resolve, reject) => {
     axios({

@@ -82,7 +82,7 @@ export function getDBYEndTimeStamp(unit = 's', endFlag = 'm') {
  * @returns 距今多少天
  * @ignore
  */
-function getDaysFromToday(date) {
+function getDaysFromToday(date: string | number | Date) {
   const zero = new Date(date);
   zero.setHours(0, 0, 0, 0);
 
@@ -93,12 +93,12 @@ function getDaysFromToday(date) {
   return parseInt(`${days}`, 10);
 }
 
-export function getSomeDayStartTimeStamp(date, unit = 's') {
+export function getSomeDayStartTimeStamp(date: string | number | Date, unit = 's') {
   const days = getDaysFromToday(date);
   return getDayStartTimestamp(days, unit);
 }
 
-export function getSomeDayEndTimeStamp(date, unit = 's') {
+export function getSomeDayEndTimeStamp(date: string | number | Date, unit = 's') {
   const days = getDaysFromToday(date);
   return getDayEndTimeStamp(days, unit);
 }

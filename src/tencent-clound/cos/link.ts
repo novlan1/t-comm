@@ -3,6 +3,11 @@ export function getCosUrlLink({
   region,
   dir,
   fileName,
+}: {
+  bucket: string;
+  region: string;
+  dir: string;
+  fileName: string;
 }) {
   const dirDesc = dir ? `${dir}/` : '';
 

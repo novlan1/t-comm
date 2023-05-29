@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 
-function getMinute(time) {
+function getMinute(time: number) {
   return parseInt(`${time / 1000 / 60}`, 10);
 }
 
 
-export function isInCronExpression(cronExpression) {
+export function isInCronExpression(cronExpression: string) {
   const parser = require('cron-parser');
   const options = {
     // 当前时间提前1分钟，否则匹配不到

@@ -1,12 +1,25 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { getDevopsAccessToken } from './token';
+import type { ISecretInfo } from './type';
+
+interface ITemplateReq {
+  projectId: string;
+  templateId: string;
+  host: string;
+  secretInfo: ISecretInfo
+}
 
 
 async function getDevopsTemplateList({
   projectId,
   host,
   secretInfo,
-}) {
+}: Pick<ITemplateReq, 'projectId' | 'host' | 'secretInfo'>): Promise<{
+    models: Array<{
+      templateId: string;
+      version: string | number;
+    }>
+  }> {
   const axios = require('axios');
   const accessToken = await getDevopsAccessToken({
     secretInfo,
@@ -31,7 +44,7 @@ async function getDevopsTemplateList({
       pageSize: 90,
     },
   })
-    .catch((err) => {
+    .catch((err: unknown) => {
       console.log('[getDevopsTemplateList ] err: ', err);
     });
   return resp.data.data || {};
@@ -42,14 +55,14 @@ async function getDevopsTemplateLatestVersion({
   templateId,
   host,
   secretInfo,
-}) {
+}: ITemplateReq) {
   const templateList = await getDevopsTemplateList({
     projectId,
     secretInfo,
     host,
   });
   const template = templateList.models.find(item => item.templateId === templateId);
-  return template.version;
+  return template?.version;
 }
 
 async function getHeaderAndBaseUrl({
@@ -57,7 +70,7 @@ async function getHeaderAndBaseUrl({
   templateId,
   secretInfo,
   host,
-}) {
+}: ITemplateReq) {
   const { appCode, appSecret, devopsUid } = secretInfo;
   const accessToken = await getDevopsAccessToken({
     secretInfo,
@@ -84,9 +97,12 @@ export async function getDevopsTemplateInstances({
   projectId,
   templateId,
   host,
+  secretInfo,
   page = 1,
   pageSize = 100,
-  secretInfo,
+}: ITemplateReq & {
+  page?: number;
+  pageSize?: number;
 }) {
   const axios = require('axios');
 
@@ -102,21 +118,27 @@ export async function getDevopsTemplateInstances({
     headers,
     url,
     method: 'GET',
-  }).catch((err) => {
+  }).catch((err: unknown) => {
     console.log('[getDevopsTemplateInstances] err: ', err);
   });
   return resp.data;
 }
 
 
-export async function getAllDevopsTemplateInstances(reqParam) {
-  const list = [];
+export async function getAllDevopsTemplateInstances(reqParam: ITemplateReq & {
+  page?: number | undefined;
+  pageSize?: number | undefined;
+}) {
+  const list: Array<Object> = [];
   await innerGetInstances(list, reqParam);
   return list;
 }
 
 
-async function innerGetInstances(allData: Array<any> = [], reqParam) {
+async function innerGetInstances(allData: Array<any> = [], reqParam: ITemplateReq & {
+  page?: number | undefined;
+  pageSize?: number | undefined;
+}) {
   const resp = await getDevopsTemplateInstances(reqParam);
   const { page, instances = [] } = resp.data || {};
   allData.push(...instances);
@@ -136,6 +158,10 @@ export async function createDevopsTemplateInstances({
   pipelineParam,
   secretInfo,
   useTemplateSettings = true,
+}: ITemplateReq & {
+  pipelineName: string;
+  pipelineParam: Object;
+  useTemplateSettings?: boolean
 }) {
   const axios = require('axios');
   const version = await getDevopsTemplateLatestVersion({
@@ -164,7 +190,7 @@ export async function createDevopsTemplateInstances({
         param: pipelineParam,
       },
     ],
-  }).catch((err) => {
+  }).catch((err: unknown) => {
     console.log('[createDevopsTemplateInstances] err: ', err);
   });
   return resp.data;
@@ -180,6 +206,11 @@ export async function updateDevopsTemplateInstances({
   pipelineParam,
   useTemplateSettings = true,
   secretInfo,
+}: ITemplateReq & {
+  pipelineId: string;
+  pipelineName: string;
+  pipelineParam: Object;
+  useTemplateSettings?: boolean
 }) {
   const axios = require('axios');
   const version = await getDevopsTemplateLatestVersion({
@@ -210,7 +241,7 @@ export async function updateDevopsTemplateInstances({
         param: pipelineParam,
       },
     ],
-  }).catch((err) => {
+  }).catch((err: unknown) => {
     console.log('[updateDevopsTemplateInstances] err: ', err);
   });
   return resp.data;

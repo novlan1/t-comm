@@ -73,7 +73,7 @@ export function getGitLastTag(root?: string) {
  * @param {string} tag git标签
  * @returns {string} tag至今的提交数目
  */
-export function getGitCommitsBeforeTag(tag, root?: string) {
+export function getGitCommitsBeforeTag(tag: string, root?: string) {
   if (!tag) return '0';
   return execCommand(`git log ${tag}...HEAD --no-merges --oneline | wc -l`, root);
 }
@@ -84,7 +84,7 @@ export function getGitCommitsBeforeTag(tag, root?: string) {
  * @param {string} tag git标签
  * @returns {string} 标签时间
  */
-export function getGitTagTime(tag, root?: string) {
+export function getGitTagTime(tag: string, root?: string) {
   if (!tag) return '';
   return execCommand(`git log -1 --format=%ai ${tag} | cat`, root);
 }

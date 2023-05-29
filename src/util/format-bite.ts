@@ -26,7 +26,7 @@
  * formatBite(10000000)
  * // 9.54MB
  */
-export function formatBite(size) {
+export function formatBite(size: number) {
   const UNIT = 1024;
   const UNIT_LIST = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB', 'BB'];
 

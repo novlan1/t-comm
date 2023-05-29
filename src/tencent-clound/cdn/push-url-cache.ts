@@ -4,13 +4,18 @@ const AREA_MAP = {
   MAINLAND: 'mainland',
   OVERSEAS: 'overseas',
   GLOBAL: 'global',
-};
+} as const;
 
 export async function pushUrlCache({
   secretId,
   secretKey,
   area = AREA_MAP.GLOBAL,
   urls,
+}: {
+  secretId: string;
+  secretKey: string;
+  area?: (typeof AREA_MAP)[keyof typeof AREA_MAP];
+  urls: Array<string>;
 }) {
   return fetchCloudData({
     secretId,

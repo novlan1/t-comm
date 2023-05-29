@@ -58,6 +58,9 @@ import { saveJsonToLog } from '../../util/fs-util';
 function parseEventData({
   data,
   eventMap,
+}: {
+  data: Record<string, any>;
+  eventMap: Record<string, any>;
 }) {
   const res: any = {};
   Object.keys(eventMap).forEach((event) => {
@@ -91,7 +94,7 @@ function parseEventData({
  * @param extraDataMap extraDataMap
  * @returns 数据综合
  */
-function getEventSummary(keyList, dataMap, extraDataMap) {
+function getEventSummary(keyList: Array<string>, dataMap: Record<string, any>, extraDataMap: Record<string, any>) {
   return keyList.reduce((acc, item) => acc + (dataMap[item] || extraDataMap[item] || 0), 0);
 }
 
@@ -130,8 +133,8 @@ function getEventSummary(keyList, dataMap, extraDataMap) {
      }
  * }
  */
-function parseExtraData(eventDataMap) {
-  const res = {};
+function parseExtraData(eventDataMap: Record<string, any>) {
+  const res: Record<string, any> = {};
   saveJsonToLog(eventDataMap, 'tam.custom-event.event-data-map.json');
 
   Object.keys(eventDataMap).forEach((projectId) => {
@@ -161,6 +164,11 @@ export function parseMultiCustomEvent({
   eventMap,
   projectIdMap = {},
   sortKeyList,
+}: {
+  eventDataMap: Record<string, any>;
+  eventMap: Record<string, any>;
+  projectIdMap?: Record<string, any>;
+  sortKeyList: Array<string>;
 }) {
   const parsedEventData = parseExtraData(eventDataMap);
 
@@ -173,14 +181,17 @@ export function parseMultiCustomEvent({
     });
 
     // 统一格式，类似于：[ { ProjectName: { name: 'ProjectName', value: '脚手架' } } ]
-    let initial = {
+    let initial: Record<string, any> = {
       ProjectName: { name: 'ProjectName', value: projectIdMap[projectId]?.name },
     };
 
     initial = Object.keys(parsedData)
       .filter(item => sortKeyList.includes(item))
       .sort((a, b) => sortKeyList.indexOf(a) - sortKeyList.indexOf(b))
-      .reduce((acc, key) => {
+      .reduce((acc: Record<string, {
+        name: string;
+        value: any;
+      }>, key) => {
         acc[key] = { name: key, value: parsedData[key] };
         return acc;
       }, initial);

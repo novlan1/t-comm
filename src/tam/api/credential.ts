@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SecretInfoType } from '../type';
+import type { SecretInfoType } from '../type';
 
 /**
  * 获取凭据的通用代码

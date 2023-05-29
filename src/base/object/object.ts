@@ -1,12 +1,14 @@
-function isObjOrArray(obj) {
+type IHumpObject = Record<string, any> | Array<any>;
+
+function isObjOrArray(obj: unknown) {
   return obj instanceof Object;
 }
 
-function isArray(obj) {
+function isArray(obj: unknown) {
   return Array.isArray(obj);
 }
 
-function toHump(str) {
+function toHump(str: string) {
   return str.replace(/_(\w)/g, (a, b) => b.toUpperCase());
 }
 
@@ -35,7 +37,7 @@ function toHump(str) {
  * toHumpObj(obj);
  * // { aA: 'a', bB: [ { bbB: 'b' } ], c: { ddD: 'd', e: { eeE: 'e' } } }
  */
-export function toHumpObj(obj: object, cache = new WeakMap()): object {
+export function toHumpObj(obj: IHumpObject, cache = new WeakMap()): object {
   // 函数首次调用判断
   if (!isObjOrArray(obj)) return obj;
 
@@ -43,17 +45,29 @@ export function toHumpObj(obj: object, cache = new WeakMap()): object {
     return cache.get(obj);
   }
 
-  const result = isArray(obj) ? [] : {};
+  const result: IHumpObject = isArray(obj) ? [] : {};
   cache.set(obj, result);
 
   const keys = Object.keys(obj);
 
-  keys.forEach((key) => {
-    const value = obj[key];
+  keys.forEach((key: string | number) => {
+    let value;
+    if (Array.isArray(obj)) {
+      key = +key;
+      value = obj[key];
+    } else {
+      value = obj[key];
+    }
 
-    const nKey = toHump(key);
+    let nKey: string | number = toHump(`${key}`);
 
-    result[nKey] = isObjOrArray(value) ? toHumpObj(value, cache) : value;
+    const temp = isObjOrArray(value) ? toHumpObj(value, cache) : value;
+    if (Array.isArray(result)) {
+      nKey = +nKey;
+      result[nKey] = temp;
+    } else {
+      result[nKey] = temp;
+    }
   });
 
   return result;
@@ -75,7 +89,7 @@ export function toHumpObj(obj: object, cache = new WeakMap()): object {
  *
  * // => { name: 'lee', age: 3 }
  */
-export function extend(to: Object, from: object): object {
+export function extend(to: Record<string, any>, from: Record<string, any>): object {
   // eslint-disable-next-line no-restricted-syntax, guard-for-in
   for (const key in from) {
     to[key] = from[key];

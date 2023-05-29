@@ -1,7 +1,7 @@
 
 import { isObjectEqual } from './equal';
 
-export function compareTwoObj(originObj = {}, newObj = {}) {
+export function compareTwoObj(originObj: Record<string, any> = {}, newObj: Record<string, any> = {}) {
   const res: {
     ADDED: Array<string>;
     UPDATED: Array<string>;

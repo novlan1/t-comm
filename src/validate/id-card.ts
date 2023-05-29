@@ -14,7 +14,7 @@
  * isIdCard('34052419800101001X')
  * // true
  */
-export function isIdCard(idCard) {
+export function isIdCard(idCard: string | number) {
   const regExp = /^[1-9]\d{5}(18|19|20)\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/;
   return regExp.test(`${idCard}`) && validateMoreIdCard(`${idCard}`);
 }

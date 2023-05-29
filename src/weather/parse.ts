@@ -41,7 +41,7 @@ export function composeRobotContent(usefulData: Array<any> = []): string {
  * @param {Array<object>} usefulData 处理后的数据
  * @returns {boolean} 是否和以前数据一样
  */
-export function compareData(usefulData: Array<object|undefined> = []): boolean {
+export function compareData(usefulData: Array<object> = []): boolean {
   const FILE_NAME = 'alarm.json';
   let preData = '{}';
 

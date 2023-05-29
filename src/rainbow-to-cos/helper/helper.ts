@@ -3,6 +3,8 @@ import { hyphenate } from '../../base/string';
 import { RAINBOW_VALUE_TYPE_MAP } from './value-type';
 import { getJsonLogDir } from '../../util/fs-util';
 import { getCosUrlLink } from '../../tencent-clound/cos/link';
+import type { RainbowKeyValueType } from './value-type';
+import type { ICosInfo } from '../types';
 
 export function getSaveFileName({
   appName,
@@ -10,6 +12,12 @@ export function getSaveFileName({
   envName,
   key,
   valueType,
+}: {
+  appName: string;
+  groupName: string;
+  envName: string;
+  key: string;
+  valueType: RainbowKeyValueType;
 }) {
   const ext = RAINBOW_VALUE_TYPE_MAP[valueType]?.ext || 'txt';
 
@@ -22,6 +30,12 @@ export function getSavePath({
   envName,
   key,
   valueType,
+}: {
+  appName: string;
+  groupName: string;
+  envName: string;
+  key: string;
+  valueType: RainbowKeyValueType;
 }) {
   const path = require('path');
   return path.resolve(getJsonLogDir(), getSaveFileName({
@@ -40,6 +54,13 @@ export function getCOSFilePath({
   key,
   valueType,
   cosInfo,
+}: {
+  appName: string;
+  groupName: string;
+  envName: string;
+  key: string;
+  valueType: RainbowKeyValueType;
+  cosInfo: ICosInfo
 }) {
   const saveFileName = getSaveFileName({
     appName,

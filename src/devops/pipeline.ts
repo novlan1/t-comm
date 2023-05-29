@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { getDevopsAccessToken } from './token';
+import type { ISecretInfo } from './type';
 
 export async function startDevopsPipeline({
   projectId,
@@ -7,6 +8,12 @@ export async function startDevopsPipeline({
   secretInfo,
   host,
   data,
+}: {
+  projectId: string;
+  pipelineId: string;
+  secretInfo: ISecretInfo;
+  host: string;
+  data: Object
 }) {
   const axios = require('axios');
   const { appCode, appSecret, devopsUid } = secretInfo;
@@ -31,7 +38,7 @@ export async function startDevopsPipeline({
       ...(data || {}),
     },
   })
-    .catch((err) => {
+    .catch((err: unknown) => {
       console.log('[startDevopsPipeline] err: ', err);
     });
 

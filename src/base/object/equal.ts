@@ -1,4 +1,4 @@
-export const isObjectEqual = (obj1, obj2) => {
+export const isObjectEqual = (obj1: Record<string, any>, obj2: Record<string, any>): boolean => {
   const o1 = obj1 instanceof Object;
   const o2 = obj2 instanceof Object;
 

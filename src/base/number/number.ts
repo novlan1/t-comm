@@ -43,7 +43,7 @@ export function getUnitPreviousRatio(value: number, preValue: number) {
  * getRatio(1, .5)
  * // 50
  */
-export function getPartRatio(summary, part) {
+export function getPartRatio(summary: number, part: number) {
   if (!summary) return 0;
   if (!part) return 0;
   return +(part / summary * 100).toFixed(2);
@@ -101,7 +101,7 @@ export const NUMBER_CHI_MAP = {
  *
  * // => 12,312,312
  */
-export function getThousandSeparator(value) {
+export function getThousandSeparator(value: number | string) {
   const reg = /(?!^)(?=(\d{3})+$)/g;
   return `${value}`.replace(reg, ',');
 }
@@ -117,7 +117,7 @@ export function getThousandSeparator(value) {
  * // => 12,345,678 123,456,789
  *
  */
-export function getThousandSeparator2(value) {
+export function getThousandSeparator2(value: number | string) {
   const reg = /\B(?=(\d{3})+\b)/g;
   return `${value}`.replace(reg, ',');
 }

@@ -1,8 +1,8 @@
-import { IReportArr } from './types';
+import type { IReportArr, IRequestInfo, ISearchInfo } from './types';
 
 const DISABLE_STATUS = [100, -1];
 
-function isWhiteProject(whiteList, codeUrl = '') {
+function isWhiteProject(whiteList: Array<string>, codeUrl = '') {
   const projectName = getWholeProjectName(codeUrl);
   if (whiteList.includes(projectName)) return true;
   return false;
@@ -27,15 +27,11 @@ export function parseOpenSourceReport({
   filterOrgPath = '',
 }: {
   reportArr: IReportArr;
-  date?: string;
-  formattedDate?: string;
-  searchInfo?: {
-    prefix: string
-  };
-  requestInfo?: {
-    centerName: string;
-    groupName: string;
-  };
+  date: string;
+  formattedDate: string;
+
+  searchInfo: ISearchInfo;
+  requestInfo: IRequestInfo;
   maxShowLinkNum?: number;
   whiteList?: Array<string>;
   filterOrgPath?: string
@@ -52,7 +48,7 @@ export function parseOpenSourceReport({
       const bSpec = b.code_specification_score;
       const bSecurity = b.code_security_score;
 
-      const getScore = score => (DISABLE_STATUS.indexOf(score) > -1 ? 100 : score);
+      const getScore = (score: number) => (DISABLE_STATUS.indexOf(score) > -1 ? 100 : score);
       return getScore(aSpec) + getScore(aSecurity) - (getScore(bSpec) + getScore(bSecurity));
     });
 
@@ -101,7 +97,7 @@ export function parseOpenSourceReport({
 }
 
 
-function getTechMapWebsiteUrl(date, searchInfo = { prefix: '' }) {
+function getTechMapWebsiteUrl(date: string, searchInfo = { prefix: '' }) {
   const data = {
     org: 0,
     step: 'days',

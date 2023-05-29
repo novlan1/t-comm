@@ -8,19 +8,19 @@ const DEFAULT_RUM_INFO = {
 };
 
 
-function sha256(message, secret = '', encoding: undefined | string = undefined) {
+function sha256(message: string, secret = '', encoding: undefined | string = undefined) {
   const crypto = require('crypto');
   const hmac = crypto.createHmac('sha256', secret);
   return hmac.update(message).digest(encoding);
 }
 
-function getHash(message, encoding = 'hex') {
+function getHash(message: string, encoding = 'hex') {
   const crypto = require('crypto');
   const hash = crypto.createHash('sha256');
   return hash.update(message).digest(encoding);
 }
 
-function getDate(timestamp) {
+function getDate(timestamp: number) {
   const date = new Date(timestamp * 1000);
   const year = date.getUTCFullYear();
   const month = (`0${date.getUTCMonth() + 1}`).slice(-2);
@@ -31,11 +31,21 @@ function getDate(timestamp) {
 function getAuthorization({
   secretId,
   secretKey,
-  endpoint,
-  action,
   payload,
+  action,
+
+  endpoint,
   timestamp,
   service,
+}: {
+  secretId: string;
+  secretKey: string;
+  payload: string;
+  action: string;
+
+  endpoint: string;
+  timestamp: number;
+  service: string;
 }) {
   // 时间处理, 获取世界时间日期
   const date = getDate(timestamp);
@@ -90,6 +100,16 @@ export function fetchCloudData({
   region = DEFAULT_RUM_INFO.REGION,
   version = DEFAULT_RUM_INFO.VERSION,
   service = DEFAULT_RUM_INFO.SERVICE,
+}: {
+  secretId: string;
+  secretKey: string;
+  payload: string;
+  action: string;
+
+  version?: string;
+  endpoint?: string;
+  region?: string;
+  service?: string;
 }) {
   const timestamp = Math.round(Date.now() / 1000);
 

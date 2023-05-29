@@ -11,7 +11,9 @@ const TRIGGER_MAP = {
   REMOTE: '远程',
 };
 
-function getStartTypeDesc(data) {
+function getStartTypeDesc(data: {
+  bkStartType: keyof typeof TRIGGER_MAP
+}) {
   const { bkStartType } = data;
   let content = '';
   if (bkStartType && TRIGGER_MAP[bkStartType]) {
@@ -32,6 +34,13 @@ function getFailedTestUnits({
   passes,
   tests,
   testList,
+}: {
+  passes: number;
+  tests: number;
+  testList: Array<{
+    fail: number;
+    title: string;
+  }>
 }) {
   if (passes == tests) return [];
   if (!testList?.length) return [];
@@ -43,7 +52,30 @@ function getFailedTestUnits({
 }
 
 
-export function getE2ETestRobotMessage(data, notificationList = []) {
+export function getE2ETestRobotMessage(data: {
+  start: number | string | Date;
+  duration: number;
+  passes: number;
+  tests: number;
+
+  bkStartType: keyof typeof TRIGGER_MAP
+
+  projectLink?: string;
+  checkUrl?: string;
+  name?: string;
+  comment?: string;
+  fileList?: Array<{
+    file: string;
+    tests: number;
+    passes: number;
+    link: string;
+
+    testList: Array<{
+      fail: number;
+      title: string;
+    }>
+  }>
+}, notificationList = []) {
   const {
     start,
     duration,

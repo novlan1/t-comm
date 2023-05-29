@@ -5,7 +5,10 @@
  * @param {object} tableHeaderMap 表格表头Map
  * @returns {Array<string>} 表头列表
  */
-export function getTableHeaders(tableData: Array<object> = [], tableHeaderMap: object = {}): Array<string> {
+export function getTableHeaders(
+  tableData: Array<object> = [],
+  tableHeaderMap: Record<string, any> = {},
+): Array<string> {
   if (!tableData.length) {
     return [];
   }

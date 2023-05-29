@@ -10,6 +10,18 @@ export function uploadCOSStreamFile({
   secretKey,
   bucket,
   region,
+}: {
+  secretId: string;
+  secretKey: string;
+  bucket: string;
+  region: string;
+
+  file: {
+    path: string;
+    size: number;
+  };
+  key: string;
+
 }) {
   return new Promise((resolve, reject) => {
     const cos = getCOSInstance(secretId, secretKey);
@@ -25,7 +37,7 @@ export function uploadCOSStreamFile({
         'x-cos-traffic-limit': 819200, // 限速值设置范围为819200 - 838860800，即100KB/s - 100MB/s，如果超出该范围将返回400错误。
       },
       onProgress: onUploadCOSProgress,
-    }, (err, data) => {
+    }, (err: unknown, data: unknown) => {
       if (data) {
         resolve(data);
         return;

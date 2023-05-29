@@ -1,7 +1,7 @@
 export function optimizeRobotContent({
   content = '',
   maxLen = 3500,
-  concatFn = more => `\n\n\n...已省略${more}行...`,
+  concatFn = (more: number | string) => `\n\n\n...已省略${more}行...`,
 }) {
   if (content.length <= maxLen) {
     return content;

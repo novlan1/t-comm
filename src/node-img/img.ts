@@ -25,7 +25,7 @@ export function saveBase64ImgToFile({ imgUrl, savePath }: {
     const base64Data = imgUrl.replace(/^data:image\/\w+;base64,/, '');
     const dataBuffer = Buffer.from(base64Data, 'base64');
 
-    fs.writeFile(savePath, dataBuffer, (err) => {
+    fs.writeFile(savePath, dataBuffer, (err: unknown) => {
       if (err) {
         reject(err);
       } else {
@@ -45,7 +45,7 @@ export function saveBase64ImgToFile({ imgUrl, savePath }: {
  * const base64str = turnLocalImg2Base64('/temp.png')
  *
  */
-export function turnLocalImg2Base64(imgPath) {
+export function turnLocalImg2Base64(imgPath: string) {
   const fs = require('fs');
   const bitmap = fs.readFileSync(imgPath);
 
@@ -101,7 +101,7 @@ export function getImgMd5({ savePath }: {
   const crypto = require('crypto');
 
   return new Promise((resolve, reject) => {
-    fs.readFile(savePath, (err, data) => {
+    fs.readFile(savePath, (err: unknown, data: any) => {
       if (err) {
         reject();
       }

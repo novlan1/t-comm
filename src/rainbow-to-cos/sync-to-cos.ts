@@ -1,9 +1,13 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { uploadCOSFile } from '../tencent-clound/cos';
 import { getSavePath, getSaveFileName } from './helper/helper';
+import type {  ICosInfo, ISecretInfo, IRemoteConfig } from './types';
 
 
-function pushCOSFiles(list) {
+function pushCOSFiles(list: Array<{
+  cosKey: string;
+  savePath: string;
+}>) {
   const files = list.map(item => ({
     key: item.cosKey,
     path: item.savePath,
@@ -17,6 +21,11 @@ function getCOSKeyAndSavePath({
   secretInfo,
   appName,
   cosDir,
+}: {
+  configList: Array<IRemoteConfig>
+  secretInfo: ISecretInfo;
+  appName: string;
+  cosDir: string;
 }) {
   const { groupName, envName } = secretInfo || {};
 
@@ -46,7 +55,9 @@ function getCOSKeyAndSavePath({
   });
 }
 
-function removeTmpFiles(cosKeyList) {
+function removeTmpFiles(cosKeyList: Array<{
+  savePath: string;
+}>) {
   const fs = require('fs');
   cosKeyList.forEach((item) => {
     fs.unlinkSync(item.savePath);
@@ -58,6 +69,11 @@ export async function syncRainbowToCOS({
   secretInfo,
   appName,
   cosInfo,
+}: {
+  configList: Array<IRemoteConfig>
+  secretInfo: ISecretInfo;
+  appName: string;
+  cosInfo: ICosInfo;
 }) {
   const fs = require('fs');
   const cosKeyList = getCOSKeyAndSavePath({

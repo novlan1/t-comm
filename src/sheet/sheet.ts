@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 
 
-export function getJsonFromSheet(dataPath) {
+export function getJsonFromSheet(dataPath: string) {
   const xlsx = require('xlsx');
   const { readFileSync } = require('fs');
 

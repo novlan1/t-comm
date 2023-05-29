@@ -10,6 +10,13 @@ export async function deleteCOSLongAgoObject({
   region,
   prefix,
   keepNumber = 1,
+}: {
+  secretId: string;
+  secretKey: string;
+  bucket: string;
+  region: string;
+  prefix: string;
+  keepNumber?: number;
 }) {
   let list = await getCOSBucketList({
     secretId,
@@ -24,7 +31,7 @@ export async function deleteCOSLongAgoObject({
   list = list.filter(item => !item.Key.endsWith('/') && reg.test(item.Key));
   list.sort((a, b) => new Date(b.LastModified).getTime() - new Date(a.LastModified).getTime());
 
-  const toDeleteKeys = list.slice(keepNumber).reduce((acc, item) => {
+  const toDeleteKeys = list.slice(keepNumber).reduce((acc: Array<string>, item) => {
     acc.push(item.Key);
     return acc;
   }, []);
@@ -48,6 +55,12 @@ export async function deleteCOSEmptyFolder({
   bucket,
   region,
   prefix,
+}: {
+  secretId: string;
+  secretKey: string;
+  bucket: string;
+  region: string;
+  prefix: string;
 }) {
   const list = await getCOSBucketList({
     secretId,

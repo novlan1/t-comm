@@ -24,6 +24,11 @@ export async function createMR({
   privateToken,
   sourceBranch,
   targetBranch,
+}: {
+  projectName: string;
+  privateToken: string;
+  sourceBranch: string;
+  targetBranch: string;
 }) {
   return new Promise((resolve, reject) => {
     if (!sourceBranch || !targetBranch || !projectName) {

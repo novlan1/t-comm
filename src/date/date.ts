@@ -13,7 +13,7 @@
  *
  * getMonthDay(2022, 4) // 30
  */
-export function getMonthDay(year, month) {
+export function getMonthDay(year: number, month: number) {
   const days = new Date(year, month, 0).getDate();
   return days;
 }
@@ -36,7 +36,7 @@ export function getMonthDay(year, month) {
  * getMonthDay2(2022, 4)
  * // 30
  */
-export function getMonthDay2(year, month) {
+export function getMonthDay2(year: number, month: number) {
   const days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   if (year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0)) {
     days[1] = 29;
@@ -44,7 +44,7 @@ export function getMonthDay2(year, month) {
   return days[month - 1];
 }
 
-function toMonday(dtm) {
+function toMonday(dtm: string| number | Date) {
   const dte = new Date(dtm);
   let day = dte.getDay();
   const dty = dte.getDate();
@@ -73,7 +73,7 @@ function toMonday(dtm) {
  *
  * // false
  */
-export function isSameWeek(date1, date2) {
+export function isSameWeek(date1: number, date2: number) {
   const dt1 = new Date();
   dt1.setTime(date1);
   const dt2 = new Date();

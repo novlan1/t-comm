@@ -3,6 +3,7 @@ import { genVersion } from './gen-version';
 import { genVersionTip } from './gen-version-tip';
 import { execCommand } from '../util/node-command';
 import { sendWxRobotMarkdown } from '../wecom-robot/base';
+import type { IAppInfo } from './type';
 
 /**
  * 运行standard-version，并且发送changelog到机器人
@@ -23,7 +24,7 @@ export function genVersionAndSendChangeLog({
 }: {
   root?: string
   changeLogFilePath?: string
-  webhookUrl?: string
+  webhookUrl: string
   chatId?: string
   forceGenVersion?: boolean
   pushRemote?: boolean
@@ -81,6 +82,11 @@ function sendVersionTip({
   changeLogFilePath,
   webhookUrl,
   chatId,
+}: {
+  appInfo: IAppInfo,
+  changeLogFilePath: string,
+  webhookUrl: string,
+  chatId?: string,
 }) {
   return new Promise((resolve, reject) => {
     const content = genVersionTip({

@@ -18,7 +18,13 @@
  * })
  * ```
  */
-export function startPipeline({ buildId, data = {} }) {
+export function startPipeline({
+  buildId,
+  data = {},
+}: {
+  buildId: string;
+  data: Record<string, any>
+}) {
   return new Promise((resolve, reject) => {
     if (!buildId) {
       reject(new Error('缺少buildId'));
@@ -31,10 +37,12 @@ export function startPipeline({ buildId, data = {} }) {
       .post(pipelineUrl, {
         ...data,
       })
-      .then((res) => {
+      .then((res: {
+        data: unknown
+      }) => {
         resolve(res.data);
       })
-      .catch((err) => {
+      .catch((err: unknown) => {
         reject(err);
       });
   });

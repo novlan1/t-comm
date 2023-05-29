@@ -43,7 +43,18 @@ export function fetchRainbowConfig(key: string, secretInfo: {
         },
       },
     })
-      .then((res) => {
+      .then((res: {
+        data: {
+          ret_code: number | string;
+          config: {
+            items: Array<{
+              key_values: Array<{
+                key: any;
+              }>
+            }>
+          }
+        }
+      }) => {
         if (res.data.ret_code) {
           reject(res.data);
           return;
@@ -55,7 +66,7 @@ export function fetchRainbowConfig(key: string, secretInfo: {
         const resData = flattenValues[key]?.value;
         resolve(resData);
       })
-      .catch((err) => {
+      .catch((err: unknown) => {
         reject(err);
       });
   });

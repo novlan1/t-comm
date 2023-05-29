@@ -22,3 +22,11 @@ export type OptionsType = {
   pagePath?: string;
   searchQuery?: string;
 };
+
+
+export interface IUploadResult {
+  subPackageInfo: Array<{
+    name: string;
+    size: number;
+  }>
+}

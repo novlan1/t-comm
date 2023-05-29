@@ -13,6 +13,10 @@ export async function sendWeatherRobotMsg({
   webhookUrl,
   chatId,
   force = false,
+}: {
+  webhookUrl: string;
+  chatId: string;
+  force?: boolean;
 }) {
   const { content, isSame } = await getWeatherRobotContent();
 

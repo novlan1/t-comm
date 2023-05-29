@@ -5,6 +5,9 @@ import { ScoreInfoType } from '../type';
 export async function getRUMAllProject({
   secretId,
   secretKey,
+}: {
+  secretId: string;
+  secretKey: string;
 }) {
   return fetchRUMData({
     secretId,
@@ -14,14 +17,21 @@ export async function getRUMAllProject({
       Limit: 1000,
       Offset: 0,
     }),
-  }).then((res) => {
+  }).then((res: {
+    data: {
+      Response: {
+        ProjectSet: Array<any>,
+        TotalCount: number
+      }
+    }
+  }) => {
     const resp  = res.data.Response || {};
     return {
       data: resp.ProjectSet || [],
       total: resp.TotalCount || 0,
     };
   })
-    .catch((err) => {
+    .catch((err: unknown) => {
       console.log('[getRUMAllProject] err: ', err);
     });
 }
@@ -32,6 +42,11 @@ async function getRUMScoreInfo({
   secretKey,
   startTime,
   endTime,
+}: {
+  secretId: string;
+  secretKey: string;
+  startTime: string;
+  endTime: string;
 }) {
   return fetchRUMData({
     secretId,
@@ -41,11 +56,17 @@ async function getRUMScoreInfo({
       StartTime: startTime,
       EndTime: endTime,
     }),
-  }).then((res) => {
+  }).then((res: {
+    data: {
+      Response: {
+        ScoreSet: Array<any>
+      }
+    }
+  }) => {
     const resp = res.data.Response || {};
     return resp.ScoreSet || [];
   })
-    .catch((err) => {
+    .catch((err: unknown) => {
       console.log('[getRUMScores] err: ', err);
     });
 }
@@ -56,6 +77,11 @@ export async function getRUMScores({
   secretKey,
   startTime,
   endTime,
+}: {
+  secretId: string;
+  secretKey: string;
+  startTime: string;
+  endTime: string;
 }): Promise<Array<ScoreInfoType>> {
   const scoreList = await getRUMScoreInfo({
     secretId,
@@ -69,12 +95,12 @@ export async function getRUMScores({
     secretKey,
   });
 
-  const projectMap = project.data.reduce((acc, item) => {
+  const projectMap = project.data.reduce((acc: Record<string, any>, item: any) => {
     acc[item.ID] = item;
     return acc;
   }, {});
 
-  const score = scoreList.map((item) => {
+  const score = scoreList.map((item: any) => {
     const projectInfo = projectMap[item.ProjectID] || {};
 
     return {

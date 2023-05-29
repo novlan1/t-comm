@@ -8,12 +8,19 @@ export async function writeEnvFromRainbow({
 
   envName,
   groupName,
+}: {
+  envPath: string,
+  rainbowAppId: string,
+  rainbowKey: string,
+
+  envName: string,
+  groupName: string,
 }) {
   let appId = rainbowAppId;
 
   if (!appId) {
     readLocalEnv(envPath);
-    appId = process.env.RAINBOW_APP_ID;
+    appId = process.env.RAINBOW_APP_ID || '';
   }
 
   if (!appId) {
@@ -37,7 +44,7 @@ export async function writeEnvFromRainbow({
   return true;
 }
 
-function readLocalEnv(envPath) {
+function readLocalEnv(envPath: string) {
   require('dotenv').config({ path: envPath });
 }
 

@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 const LOG_DIR = 'log';
 
-function innerCopy(src, dist) {
+function innerCopy(src: string, dist: string) {
   const fs = require('fs');
   if (fs.statSync(src).isFile()) {
     return;
   }
   const paths = fs.readdirSync(src);
-  paths.forEach((p) => {
+  paths.forEach((p: string) => {
     const tSrc = `${src}/${p}`;
     const tDist = `${dist}/${p}`;
     const stat = fs.statSync(tSrc);
@@ -25,7 +25,7 @@ function innerCopy(src, dist) {
  * @param src {String} 要复制的目录
  * @param dist {String} 复制到目标目录
  */
-function innerCopyDir(src, dist) {
+function innerCopyDir(src: string, dist: string) {
   const fs = require('fs');
   const b = fs.existsSync(dist);
   if (!b) {
@@ -35,7 +35,7 @@ function innerCopyDir(src, dist) {
 }
 
 // 递归创建目录 同步方法
-export function mkDirsSync(dirname) {
+export function mkDirsSync(dirname: string) {
   const fs = require('fs');
   const path = require('path');
   if (fs.existsSync(dirname)) {
@@ -54,7 +54,7 @@ export function mkDirsSync(dirname) {
  * @param {Object} dist
  * @param {Object} callback
  */
-export function copyDir(src, dist, callback) {
+export function copyDir(src: string, dist: string, callback?: Function) {
   innerCopyDir(src, dist);
   if (callback) {
     callback();
@@ -65,12 +65,12 @@ export function copyDir(src, dist, callback) {
  * 删除目录
  * @param {Object} path
  */
-export function deleteFolder(path) {
+export function deleteFolder(path: string) {
   const fs = require('fs');
   let files = [];
   if (fs.existsSync(path)) {
     files = fs.readdirSync(path);
-    files.forEach((file) => {
+    files.forEach((file: string) => {
       const curPath = `${path}/${file}`;
       if (fs.statSync(curPath).isDirectory()) {
         deleteFolder(curPath);
@@ -88,7 +88,7 @@ export function deleteFolder(path) {
  * @param {Object} from 文件来自那里
  * @param {Object} to		拷贝到那里
  */
-export function copyFile(from, to) {
+export function copyFile(from: string, to: string) {
   const fs = require('fs');
   return fs.writeFileSync(to, fs.readFileSync(from));
 }
@@ -99,12 +99,12 @@ export function copyFile(from, to) {
  * @param {Function} cb 回调参数
  * @param {String} path 文件夹或文件路径
  */
-export function traverseFolder(cb, path) {
+export function traverseFolder(cb: Function, path: string) {
   const fs = require('fs');
   if (fs.statSync(path).isDirectory()) {
     const files = fs.readdirSync(path);
 
-    files.forEach((file) => {
+    files.forEach((file: string) => {
       const curPath = `${path}/${file}`;
       traverseFolder(cb, curPath);
     });
@@ -113,7 +113,7 @@ export function traverseFolder(cb, path) {
   }
 }
 
-export function readJsonLog(file, defaultContent = '{}') {
+export function readJsonLog(file: string, defaultContent = '{}') {
   const fs = require('fs');
   const filePath = `./${LOG_DIR}/${file}`;
 
@@ -132,7 +132,7 @@ export function getJsonLogDir() {
   return path.resolve(process.cwd(), './log');
 }
 
-export function saveJsonToLog(content, file, needLog = true) {
+export function saveJsonToLog(content: object, file: string, needLog = true) {
   const fs = require('fs');
   if (!needLog) return;
   createLogDir();
@@ -141,7 +141,7 @@ export function saveJsonToLog(content, file, needLog = true) {
   });
 }
 
-export function getJsonFromLog(file) {
+export function getJsonFromLog(file: string) {
   const fs = require('fs');
   const filePath = `./${LOG_DIR}/${file}`;
   let data = {};

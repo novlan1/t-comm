@@ -15,6 +15,6 @@
  *
  * main()
  */
-export const sleep = ms => new Promise(res => setTimeout(res, ms));
+export const sleep = (ms: number) => new Promise(res => setTimeout(res, ms));
 
 // const numList = Array.from({ length: 10 }, (_, i) => i);

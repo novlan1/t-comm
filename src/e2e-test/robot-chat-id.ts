@@ -9,7 +9,7 @@
 // };
 
 
-const defaultShouldSendSuccess = (time) => {
+const defaultShouldSendSuccess = (time: number) => {
   const hour = new Date(time).getHours();
   const minute = new Date(time).getMinutes();
 
@@ -41,7 +41,7 @@ export function getE2ERobotChatId({
   isOnlyMe?: boolean;
 
   // shouldSendAll?: (number) => boolean;
-  shouldSendSuccess?: (number) => boolean;
+  shouldSendSuccess?: (number: number) => boolean;
 }) {
   if (isSendAll) {
     return chatIdMap.ALL;
