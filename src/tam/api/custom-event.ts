@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { SecretInfoType } from '../type';
+import type { SecretInfoType } from '../types';
 import { getCredential } from './credential';
 
 

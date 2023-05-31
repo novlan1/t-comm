@@ -1,4 +1,4 @@
-import { ScoreInfoType } from '../type';
+import { ScoreInfoType } from '../types';
 import { getPartRatio } from '../../base/number';
 
 function formatNum(num: number | string) {

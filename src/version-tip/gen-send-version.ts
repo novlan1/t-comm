@@ -3,7 +3,7 @@ import { genVersion } from './gen-version';
 import { genVersionTip } from './gen-version-tip';
 import { execCommand } from '../util/node-command';
 import { sendWxRobotMarkdown } from '../wecom-robot/base';
-import type { IAppInfo } from './type';
+import type { IAppInfo } from './types';
 
 /**
  * 运行standard-version，并且发送changelog到机器人

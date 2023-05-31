@@ -1,4 +1,4 @@
-import { IPage } from './types';
+import type { IPage } from './types';
 
 export async function autoScroll(element: HTMLAnchorElement, page: IPage, bottomTimes = 0) {
   await page.evaluate(({

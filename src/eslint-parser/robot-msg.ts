@@ -6,6 +6,16 @@ export function genRobotMsg({
   mrUrl,
   repoConfig,
   total,
+}: {
+  errorMap: Record<string, {
+    filePath: string;
+    line: number;
+    number: number;
+  }>;
+  mrId: string | number;
+  mrUrl: string;
+  repoConfig: any;
+  total: any;
 }) {
   const {
     domain,
@@ -22,7 +32,7 @@ export function genRobotMsg({
         repo,
         branch,
         localFile: filePath,
-        line,
+        line: `${line}`,
       });
 
       return `[${key}*${number}](${link})`;
@@ -36,7 +46,7 @@ export function genRobotMsg({
   let mrLink = getGitMRLink({
     domain,
     repo,
-    id: mrId,
+    id: `${mrId}`,
   });
 
   if (mrUrl) {

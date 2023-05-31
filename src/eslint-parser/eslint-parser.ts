@@ -2,7 +2,7 @@ import { parseEslintError } from './parse';
 import { genRobotMsg } from './robot-msg';
 import { batchSendWxRobotMarkdown } from '../wecom-robot/batch-send';
 
-import { RepoConfigType } from './type';
+import type { RepoConfigType } from './types';
 
 
 export function parseEslintAndSendRobot({
@@ -12,8 +12,8 @@ export function parseEslintAndSendRobot({
   repoConfig,
   robotInfo,
 }: {
-  mrId?: string | number
-  mrUrl?: string
+  mrId: string | number
+  mrUrl: string
   lintReportFile: string
   repoConfig: RepoConfigType
   robotInfo: {

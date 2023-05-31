@@ -4,7 +4,7 @@ import { createCanvasTable } from '../../canvas/table';
 import { compareTwoList, getMaxAndMinIdx } from '../../base/list';
 import { getSomeDayStartTimeStamp, getSomeDayEndTimeStamp, timeStampFormat } from '../../date';
 import { batchSendWxRobotBase64Img } from '../../wecom-robot/batch-send';
-import type { SecretInfoType } from '../type';
+import type { SecretInfoType } from '../types';
 
 /**
  * 获取自定义事件图片

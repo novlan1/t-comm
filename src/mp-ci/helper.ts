@@ -3,7 +3,7 @@ import { getGitCommitInfo } from '../git/git';
 import { BUNDLE_NAME_MAP } from './config';
 import { formatBite } from '../util/format-bite';
 import { genRobotMessage } from '../wecom-robot/message';
-import type { IUploadResult } from './type';
+import type { IUploadResult } from './types';
 
 
 export function getBundleBuildDesc({

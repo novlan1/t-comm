@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { getDevopsAccessToken } from './token';
-import type { ISecretInfo } from './type';
+import type { ISecretInfo } from './types';
 
 export async function startDevopsPipeline({
   projectId,

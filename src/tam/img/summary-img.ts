@@ -7,7 +7,7 @@ import { createCanvasTable } from '../../canvas/table';
 import { timeStampFormat } from '../../date/time';
 import { batchSendWxRobotBase64Img } from '../../wecom-robot/batch-send';
 import { saveJsonToLog } from '../../util/fs-util';
-import type { SecretInfoType } from '../type';
+import type { SecretInfoType } from '../types';
 
 
 async function getRUMScoreList({

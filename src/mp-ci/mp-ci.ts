@@ -9,7 +9,7 @@ import { formatBite } from '../util/format-bite';
 import { getCosUrlLink } from '../tencent-clound/cos/link';
 
 import { getBundleBuildDesc, getBundleVersion, parseUploadResult, flattenSubPackages } from './helper';
-import type { IUploadResult, OptionsType } from './type';
+import type { IUploadResult, OptionsType } from './types';
 import { DEFAULT_BUILD_SETTING, MAX_TRY_TIMES_MAP, PREVIEW_IMG_MAX_WORD_LENGTH } from './config';
 
 

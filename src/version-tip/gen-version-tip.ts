@@ -2,7 +2,7 @@
 import { replaceAllPolyfill } from '../util/replace-all';
 import { MAX_CONTENT_LENGTH } from './config';
 import { optimizeRobotContent } from '../util/optimize-robot-content';
-import type { IAppInfo } from './type';
+import type { IAppInfo } from './types';
 
 function optimizeContent(content = '') {
   return optimizeRobotContent({

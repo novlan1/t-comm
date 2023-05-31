@@ -1,4 +1,4 @@
-import type { ISecretInfo } from '../index.type';
+import type { ISecretInfo } from '../types';
 import { genRainbowHeaderSignature } from './rainbow-signature';
 import { BASE_URL } from './helper';
 

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-import type { ISecretInfo } from './type';
+import type { ISecretInfo } from './types';
 
 
 let token = '';

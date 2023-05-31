@@ -1,5 +1,5 @@
 import { fetchRUMData } from './rum-base';
-import { ScoreInfoType } from '../type';
+import { ScoreInfoType } from '../types';
 
 
 export async function getRUMAllProject({
