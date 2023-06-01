@@ -1,4 +1,4 @@
-import { toHumpObj, extend } from '../../src';
+import { toHumpObj, extend, isObjectEqual } from '../../src';
 
 describe('toHumpObj', () => {
   it('toHumpObj', () => {
@@ -31,5 +31,34 @@ describe('extend', () => {
       name: 'lee',
       age: 3,
     });
+  });
+});
+
+
+describe('isObjectEqual', () => {
+  it('isObjectEqual', () => {
+    expect(isObjectEqual(true, false)).toBe(false);
+    expect(isObjectEqual(0, false)).toBe(false);
+    expect(isObjectEqual(1, '1')).toBe(false);
+
+    expect(isObjectEqual(null, null)).toBe(true);
+    expect(isObjectEqual(null, undefined)).toBe(false);
+    expect(isObjectEqual(null, false)).toBe(false);
+    expect(isObjectEqual(null, '')).toBe(false);
+    expect(isObjectEqual(null, [])).toBe(false);
+
+    expect(isObjectEqual(undefined, undefined)).toBe(true);
+    expect(isObjectEqual(undefined, false)).toBe(false);
+    expect(isObjectEqual(undefined, '')).toBe(false);
+    expect(isObjectEqual(undefined, [])).toBe(false);
+
+    expect(isObjectEqual([], [])).toBe(true);
+    expect(isObjectEqual([1], [1])).toBe(true);
+    expect(isObjectEqual([{ a: { b: 1 } }], [{ a: { b: 1 } }])).toBe(true);
+    expect(isObjectEqual([{ a: { b: 1 } }], [{ a: { b: 2 } }])).toBe(false);
+
+    expect(isObjectEqual({}, {})).toBe(true);
+    expect(isObjectEqual({ a: 1 }, { a: 1 })).toBe(true);
+    expect(isObjectEqual({ a: 1 }, { a: 2 })).toBe(false);
   });
 });

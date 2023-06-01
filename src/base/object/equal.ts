@@ -1,4 +1,4 @@
-export const isObjectEqual = (obj1: Record<string, any>, obj2: Record<string, any>): boolean => {
+export const isObjectEqual = (obj1: any, obj2: any): boolean => {
   const o1 = obj1 instanceof Object;
   const o2 = obj2 instanceof Object;
 
@@ -21,7 +21,8 @@ export const isObjectEqual = (obj1: Record<string, any>, obj2: Record<string, an
     if (type1 && type2) {
       // 如果是对象继续判断
       return isObjectEqual(obj1[attr], obj2[attr]);
-    } if (arr1) {
+    }
+    if (arr1) {
       // 如果是对象 判断
       if (obj1[attr].toString() != obj2[attr].toString()) {
         return false;
