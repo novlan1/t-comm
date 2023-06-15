@@ -47,7 +47,8 @@
     "version:tip": "node script/version-tip/version-tip",
     "release": "yarn test && yarn build && np --no-cleanup --yolo --any-branch && npm run version:tip",
     "npm:token": "node script/npm-token/npm-token",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "init:env": "node script/env/rainbow-env"
   },
   "devDependencies": {
     "@babel/core": "^7.17.2",
