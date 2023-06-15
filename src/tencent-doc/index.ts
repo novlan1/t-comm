@@ -1,12 +1,15 @@
 export {
   createTencentDoc,
-  updateTencentSheet,
   convertTencentFileId,
   uploadTencentDocImage,
-  updateTencentSheetImage,
   asyncExportTencentDoc,
   checkExportTencentDocProgress,
 } from './tencent-doc';
+export {
+  updateTencentSheet,
+  updateTencentSheetImage,
+  batchUpdateTencentSheetV3,
+} from './sheet';
 
 export {
   exportTencentDoc,

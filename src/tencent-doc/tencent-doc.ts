@@ -35,34 +35,6 @@ export async function createTencentDoc({
 }
 
 
-export async function updateTencentSheet({
-  accessToken,
-  clientId,
-  openId,
-
-  bookId,
-  range,
-  values,
-}: ISecretInfo & {
-  bookId: string;
-  range: string;
-  values: Array<{}>
-}) {
-  const result = await axios({
-    method: 'PUT',
-    url: `https://docs.qq.com/openapi/sheetbook/v2/${bookId}/values/${range}`,
-    headers: {
-      'Access-Token': accessToken,
-      'Client-Id': clientId,
-      'Open-Id': openId,
-      'Content-Type': 'application/json',
-    },
-    data: { values },
-  });
-  return result.data;
-}
-
-
 export async function convertTencentFileId({
   accessToken,
   clientId,
@@ -121,33 +93,6 @@ export async function uploadTencentDocImage({
   return result.data;
 }
 
-export async function updateTencentSheetImage({
-  accessToken,
-  clientId,
-  openId,
-
-  bookId,
-  insertImages,
-}: ISecretInfo & {
-  bookId: string;
-  insertImages: Array<string>
-}) {
-  const result = await axios({
-    method: 'POST',
-    url: `https://docs.qq.com/openapi/sheetbook/v2/${bookId}:batchUpdate`,
-    headers: {
-      'Access-Token': accessToken,
-      'Client-Id': clientId,
-      'Open-Id': openId,
-      'Content-Type': 'application/json',
-    },
-    data: {
-      bookID: bookId,
-      insertImages,
-    },
-  });
-  return result.data;
-}
 
 export async function asyncExportTencentDoc({
   accessToken,
@@ -200,4 +145,5 @@ export async function checkExportTencentDocProgress({
   });
   return result.data;
 }
+
 
