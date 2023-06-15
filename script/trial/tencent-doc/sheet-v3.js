@@ -1,6 +1,4 @@
-/**
- * 更新表格图片
- */
+
 const { batchUpdateTencentSheetV3 } = require('../../../lib');
 const {
   ACCESS_TOKEN,

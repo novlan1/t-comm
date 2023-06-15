@@ -1,4 +1,7 @@
 export {
+  exportTencentDoc,
+} from './export-doc';
+export {
   createTencentDoc,
   convertTencentFileId,
   uploadTencentDocImage,
@@ -10,7 +13,6 @@ export {
   updateTencentSheetImage,
   batchUpdateTencentSheetV3,
 } from './sheet';
-
 export {
-  exportTencentDoc,
-} from './export-doc';
+  getTencentDocUserInfo,
+} from './user';
