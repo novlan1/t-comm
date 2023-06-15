@@ -2,6 +2,9 @@ export {
   exportTencentDoc,
 } from './export-doc';
 export {
+  refreshTencentDocToken,
+} from './refresh-token';
+export {
   createTencentDoc,
   convertTencentFileId,
   uploadTencentDocImage,
