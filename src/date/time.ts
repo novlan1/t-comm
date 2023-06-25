@@ -16,6 +16,8 @@ export function timeStampFormat(
   timestamp: number,
   fmt: string,
   defaultVal?: string,
+
+  whitePrefix = '',
 ) {
   if (!timestamp) {
     return defaultVal || '';
@@ -35,7 +37,12 @@ export function timeStampFormat(
     S: date.getMilliseconds(), // 毫秒
   };
 
-  let match = fmt.match(/(y+)/);
+  let reg = /(y+)/;
+  if (whitePrefix) {
+    reg = new RegExp(`(?:^|(?:[^${whitePrefix}y]))(y+)`);
+  }
+
+  let match = fmt.match(reg);
   if (match?.[1]) {
     fmt = fmt.replace(
       match[1],
@@ -44,18 +51,35 @@ export function timeStampFormat(
   }
   // eslint-disable-next-line no-restricted-syntax
   for (const k in o) {
-    match = fmt.match(new RegExp(`(${k})`));
+    let reg = new RegExp(`(${k})`);
+    if (whitePrefix) {
+      reg = new RegExp(`(?:^|(?:[^${whitePrefix}${k[0]}]))(${k})`);
+    }
+
+    match = fmt.match(reg);
+
     if (match?.[1]) {
+      const { index = 0 } = match;
+      const realIndex = whitePrefix ? index + match[0].length - match[1].length : index;
       const str = `${o[k as keyof typeof o]}`;
 
-      fmt = fmt.replace(
-        match[1],
-        match[1].length === 1 ? str : `00${str}`.slice(`${str}`.length),
-      );
+      const len = match[1].length;
+      const replacePart = len === 1 ? str : `00${str}`.slice(`${str}`.length);
+      fmt = fmt.slice(0, realIndex) + replacePart + fmt.slice(realIndex + len);
+
+      // fmt = fmt.replace(
+      //   match[1],
+      //   match[1].length === 1 ? str : `00${str}`.slice(`${str}`.length),
+      // );
     }
+  }
+
+  if (whitePrefix) {
+    fmt = fmt.replace(new RegExp(whitePrefix, 'g'), '');
   }
   return fmt;
 }
+
 
 function beautiTime(time: number): string {
   if (time >= 10) return `${time}`;

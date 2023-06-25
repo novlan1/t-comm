@@ -8,6 +8,20 @@ describe('timeStampFormat', () => {
     expect(timeStampFormat(1662336488000, 'yy-M-d h:m:s')).toBe('22-9-5 8:8:8');
     expect(timeStampFormat(1662336488000, 'yyyy-MM-dd hh:mm:ss')).toBe('2022-09-05 08:08:08');
   });
+
+  it('whitePrefix', () => {
+    expect(timeStampFormat(1662336488000, 'Dea\\dline: M-d at hh:mm', '', '\\\\')).toBe('Deadline: 9-5 at 08:08');
+    expect(timeStampFormat(1662336488000, 'Dea$dline: M-d at hh:mm', '', '\\$')).toBe('Deadline: 9-5 at 08:08');
+    expect(timeStampFormat(1662336488000, 'Dea%dline: M-d at hh:mm', '', '%')).toBe('Deadline: 9-5 at 08:08');
+    expect(timeStampFormat(1662336488000, 'Dea%ddline: M-d at hh:mm', '', '%')).toBe('Deaddline: 9-5 at 08:08');
+
+    expect(timeStampFormat(1662336488000, 'xxx \\y \\d \\h \\m: M-d at hh:mm', '', '\\\\')).toBe('xxx y d h m: 9-5 at 08:08');
+    expect(timeStampFormat(1662336488000, 'xxx yy \\y \\d \\h \\m: M-d at hh:mm', '', '\\\\')).toBe('xxx 22 y d h m: 9-5 at 08:08');
+    expect(timeStampFormat(1662336488000, '\\y \\d \\h \\m: M-d at hh:mm', '', '\\\\')).toBe('y d h m: 9-5 at 08:08');
+    expect(timeStampFormat(1662336488000, '\\yy \\d \\h \\m: M-d at hh:mm', '', '\\\\')).toBe('yy d h m: 9-5 at 08:08');
+    expect(timeStampFormat(1662336488000, '\\yyyy \\d \\h \\m: M-d at hh:mm', '', '\\\\')).toBe('yyyy d h m: 9-5 at 08:08');
+    expect(timeStampFormat(1662336488000, 'yyyy \\d \\h \\m: M-d at hh:mm', '', '\\\\')).toBe('2022 d h m: 9-5 at 08:08');
+  });
 });
 
 describe('getCountDownObj', () => {
