@@ -1,5 +1,20 @@
 # 工具库更新日志
 
+## [1.1.38](https://github.com/novlan1/t-comm/compare/v1.1.37...v1.1.38) (2023-06-26)
+
+
+### Features
+
+* 增加sheet的v3版本 ([3e63593](https://github.com/novlan1/t-comm/commit/3e63593c4f36aaac3afd91fe7a7d36f504007482))
+* **mp-ci:** 增加修改配置核心逻辑 ([3a20ab2](https://github.com/novlan1/t-comm/commit/3a20ab267684f4d0425bf1dbf3c5abf00c8d5ce9))
+* **object:** 增加sortObjectByKey ([4dfb49c](https://github.com/novlan1/t-comm/commit/4dfb49cdf34395b9a0c73e4829bb25b8d50b8d24))
+* **objectEqual:** 优化判断相等函数并补充测试用例 ([5cf16fd](https://github.com/novlan1/t-comm/commit/5cf16fdd7f36e00e64e7728a1e4aeee6b1948a8d))
+* **tencent-doc:** 获取用户信息 ([7d1f482](https://github.com/novlan1/t-comm/commit/7d1f4827132079bb398166491928f998f2accd07))
+* **timestampFormat:** 支持占位符 ([fb2de70](https://github.com/novlan1/t-comm/commit/fb2de7046af6b09ee807e5691be02223b836be4c))
+* **token:** 刷新token ([310d040](https://github.com/novlan1/t-comm/commit/310d04054512fcc047b1497fc97f8183c05eabdd))
+
+
+
 ## [1.1.37](https://github.com/novlan1/t-comm/compare/v1.1.36...v1.1.37) (2023-05-22)
 
 
