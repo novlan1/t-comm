@@ -1,4 +1,24 @@
-import { toHumpObj, extend, isObjectEqual } from '../../src';
+import { toHumpObj, extend, isObjectEqual, sortObjectByKey } from '../../src';
+
+describe('sortObjectByKey', () => {
+  it('sortObjectByKey', () => {
+    const obj = {
+      b: 2,
+      a: 1,
+      c: {
+        d: 5,
+      },
+    };
+
+    expect(JSON.stringify(sortObjectByKey(obj))).toBe(JSON.stringify({
+      a: 1,
+      b: 2,
+      c: {
+        d: 5,
+      },
+    }));
+  });
+});
 
 describe('toHumpObj', () => {
   it('toHumpObj', () => {
