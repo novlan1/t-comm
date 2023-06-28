@@ -1,10 +1,23 @@
-import { flatten, shuffle, getAccCellWidth  } from '../../src';
+import { flatten, flat, shuffle, getAccCellWidth  } from '../../src';
 
 describe('flatten', () => {
   it('flatten', () => {
     expect(typeof flatten([{ id: 1, name: 'a' }], 'id')).toBe('object');
 
     expect(flatten([{ id: 1, name: 'a' }], 'id')[1].name).toBe('a');
+  });
+});
+
+
+describe('flat', () => {
+  it('flat', () => {
+    expect(flat([[1, 2, 3]])).toEqual([1, 2, 3]);
+    expect(flat([[1, 2, 3], [2, 2, 2]])).toEqual([1, 2, 3, 2, 2, 2]);
+    expect(flat([[1, 2, 3, [1, [1]]], [2, 2, 2]]))
+      .toEqual([1, 2, 3, 1, 1, 2, 2, 2]);
+
+    expect(flat([[1, 2, 3, [1, [{ a: 1 }]]], [{ b: 2 }, 2, 2]]))
+      .toEqual([1, 2, 3, 1, { a: 1 }, { b: 2 }, 2, 2]);
   });
 });
 
