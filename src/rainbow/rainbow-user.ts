@@ -29,7 +29,7 @@ export function fetchRainbowConfig(key: string, secretInfo: {
   appId?: string
   envName: string
   groupName: string
-}): Promise<object> {
+}): Promise<any> {
   const { appID, appId, envName, groupName } = secretInfo;
   return new Promise((resolve, reject) => {
     axios({
