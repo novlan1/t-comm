@@ -105,7 +105,8 @@ export function traverseFolder(cb: Function, path: string) {
     const files = fs.readdirSync(path);
 
     files.forEach((file: string) => {
-      const curPath = `${path}/${file}`;
+      const curPath = require('path').resolve(path, file);
+      // `${path}/${file}`;
       traverseFolder(cb, curPath);
     });
   } else {
