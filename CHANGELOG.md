@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.39](https://github.com/novlan1/t-comm/compare/v1.1.38...v1.1.39) (2023-07-11)
+
+
+### Features
+
+* **flat:** 增加flat方法 ([905b810](https://github.com/novlan1/t-comm/commit/905b810d9cffae6aa6c13d162015efb0bbb83862))
+
+
+
 ## [1.1.38](https://github.com/novlan1/t-comm/compare/v1.1.37...v1.1.38) (2023-06-26)
 
 
