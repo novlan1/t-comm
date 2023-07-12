@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.41](https://github.com/novlan1/t-comm/compare/v1.1.40...v1.1.41) (2023-07-12)
+
+
+### Features
+
+* **publish:** 发布脚本支持大写的Password ([0e6025d](https://github.com/novlan1/t-comm/commit/0e6025da56232b0d5ddadc4a1fbd061d5af1b2cf))
+
+
+
 ## [1.1.40](https://github.com/novlan1/t-comm/compare/v1.1.39...v1.1.40) (2023-07-11)
 
 
