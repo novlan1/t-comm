@@ -11,7 +11,7 @@ export async function getRUMPerformance({
 }: {
   secretId: string;
   secretKey: string;
-  id: string;
+  id: string | number;
   startTime: string | number;
   endTime: string | number;
   type: string;

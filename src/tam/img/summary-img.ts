@@ -253,10 +253,10 @@ export async function genSummaryDataAndSendRobot({
   groupIdList: Array<number>;
   secretInfo: SecretInfoType;
 
-  extraDataMap: {};
-  ignoreProjectIdList: Array<string>;
+  extraDataMap?: {};
+  ignoreProjectIdList?: Array<string>;
 
-  tableHeaderMap: {}
+  tableHeaderMap?: {}
 
   webhookUrl: string;
   chatId: string;

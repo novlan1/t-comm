@@ -5,3 +5,13 @@ export interface ISecretInfo {
 }
 
 
+export type IRemoteInstances = Array<{
+  templateId: string;
+  versionName: string;
+  version: number;
+  pipelineId: string;
+  pipelineName: string;
+  updateTime: number;
+  hasPermission: boolean;
+  status: string;
+}>;

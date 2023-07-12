@@ -110,7 +110,7 @@ export async function genMultiImgAndSendRobot({
   webhookUrl: string;
   chatId: string;
 
-  env: string,
+  env?: string,
   eventMap: Record<string, any>;
   eventProjectIdMap: Record<string, any>;
   eventTableHeaderMap: Record<string, any>;

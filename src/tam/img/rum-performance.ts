@@ -180,7 +180,7 @@ export async function genRUMnPerfData({
 }: {
   secretId: string;
   secretKey: string;
-  id: string;
+  id: string | number;
   startTime: number;
   endTime: number;
   type?: string;
@@ -213,7 +213,7 @@ export async function genRUMPerfImgAndSend({
 }: {
   secretId: string;
   secretKey: string;
-  id: string;
+  id: string | number;
   startTime: number;
   endTime: number;
   type?: string;

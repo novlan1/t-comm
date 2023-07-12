@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { getDevopsAccessToken } from './token';
-import type { ISecretInfo } from './types';
+import type { ISecretInfo, IRemoteInstances } from './types';
 
 interface ITemplateReq {
   projectId: string;
@@ -129,7 +129,7 @@ export async function getAllDevopsTemplateInstances(reqParam: ITemplateReq & {
   page?: number | undefined;
   pageSize?: number | undefined;
 }) {
-  const list: Array<Object> = [];
+  const list: IRemoteInstances = [];
   await innerGetInstances(list, reqParam);
   return list;
 }
