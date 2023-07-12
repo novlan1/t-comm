@@ -1,5 +1,9 @@
 # 工具库更新日志
 
+## [1.1.42](https://github.com/novlan1/t-comm/compare/v1.1.41...v1.1.42) (2023-07-12)
+
+
+
 ## [1.1.41](https://github.com/novlan1/t-comm/compare/v1.1.40...v1.1.41) (2023-07-12)
 
 
