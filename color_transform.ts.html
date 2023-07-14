@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head>
     
     <meta charset="utf-8">
-    <title>validate/type.ts - Documentation</title>
+    <title>color/transform.ts - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">validate/type.ts</h1>
+    <h1 class="page-title">color/transform.ts</h1>
     
 
     
@@ -44,99 +44,93 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * 判断数据是不是正则对象
- * @param {any} value - 输入数据
- * @returns {boolean} 是否是正则对象
- *
- * @example
- *
- * isRegExp(1)
- *
- * // =&gt; false
- *
- * isRegExp(/\d/)
- *
- * // =&gt; true
- */
-export function isRegExp(value: any) {
-  return Object.prototype.toString.call(value) === '[object RegExp]';
-}
+            <pre class="prettyprint source linenums"><code>import { bound01  } from './helper';
 
 /**
- * 判断数据是不是时间对象
- * @param {any} value - 输入数据
- * @returns {boolean} 是否是时间对象
- *
- * @example
- *
- * isDate(1)
- *
- * // =&gt; false
- *
- * isDate(new Date())
- *
- * // =&gt; true
+ * Converts an RGB color value to HSV
+ * *Assumes:* r, g, and b are contained in the set [0, 255] or [0, 1].
+ * *Returns:* { h, s, v } in [0,1]
  */
-export function isDate(value: any) {
-  return Object.prototype.toString.call(value) === '[object Date]';
+export function rgb2hsv(r: number, g: number, b: number) {
+  r = bound01(r, 255);
+  g = bound01(g, 255);
+  b = bound01(b, 255);
+
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  let h = 0;
+  const v = max;
+
+  const d = max - min;
+  const s = max === 0 ? 0 : d / max;
+
+  if (max === min) {
+    h = 0; // achromatic
+  } else {
+    switch (max) {
+      case r:
+        h = (g - b) / d + (g &lt; b ? 6 : 0);
+        break;
+      case g:
+        h = (b - r) / d + 2;
+        break;
+      case b:
+        h = (r - g) / d + 4;
+        break;
+    }
+    h /= 6;
+  }
+
+  return { h: h * 360, s: s * 100, v: v * 100 };
 }
+
 
 /**
- * 判断数据是不是函数
- * @param {any} value - 输入数据
- * @returns {boolean} 是否是函数
- *
- * @example
- *
- * isFunction(1)
- *
- * // =&gt; false
- *
- * isFunction(()=&gt;{})
- *
- * // =&gt; true
+ * Converts an HSV color value to RGB.
+ * *Assumes:* h is contained in [0, 1] or [0, 360] and s and v are contained in [0, 1] or [0, 100].
+ * *Returns:* { r, g, b } in the set [0, 255]
  */
-export function isFunction(value: any) {
-  // typeof val === 'function' // 也可以
-  return Object.prototype.toString.call(value) === '[object Function]';
+export function hsv2rgb(h: number, s: number, v: number) {
+  h = bound01(h, 360) * 6;
+  s = bound01(s, 100);
+  v = bound01(v, 100);
+
+  const i = Math.floor(h);
+  const f = h - i;
+  const p = v * (1 - s);
+  const q = v * (1 - f * s);
+  const t = v * (1 - (1 - f) * s);
+  const mod = i % 6;
+  const r = [v, q, p, p, t, v][mod];
+  const g = [t, v, v, q, p, p][mod];
+  const b = [p, p, t, v, v, q][mod];
+
+  return {
+    r: Math.round(r * 255),
+    g: Math.round(g * 255),
+    b: Math.round(b * 255),
+  };
 }
 
-export function isPlainObject(val: any) {
-  return val !== null &amp;&amp; typeof val === 'object' &amp;&amp; !Array.isArray(val);
-}
 
-export function isPromise(val: any) {
-  return isPlainObject(val) &amp;&amp; isFunction(val.then) &amp;&amp; isFunction(val.catch);
-}
+export const hsl2hsv = function (hue: number, sat: number, light: number) {
+  sat = sat / 100;
+  light = light / 100;
+  let smin = sat;
+  const lmin = Math.max(light, 0.01);
 
-export function isDef(value: any) {
-  return value !== undefined &amp;&amp; value !== null;
-}
+  light *= 2;
+  sat *= (light &lt;= 1) ? light : 2 - light;
+  smin *= lmin &lt;= 1 ? lmin : 2 - lmin;
+  const v = (light + sat) / 2;
+  const sv = light === 0 ? (2 * smin) / (lmin + smin) : (2 * sat) / (light + sat);
 
-export function isObj(x: any) {
-  const type = typeof x;
-  return x !== null &amp;&amp; (type === 'object' || type === 'function');
-}
-
-export function isObject(val: any) {
-  return val !== null &amp;&amp; typeof val === 'object';
-}
-
-const IMAGE_REGEXP = /\.(jpeg|jpg|gif|png|svg|webp|jfif|bmp|dpg)/i;
-const VIDEO_REGEXP = /\.(mp4|mpg|mpeg|dat|asf|avi|rm|rmvb|mov|wmv|flv|mkv)/i;
-
-export function isImageUrl(url: any) {
-  return IMAGE_REGEXP.test(url);
-}
-
-export function isVideoUrl(url: any) {
-  return VIDEO_REGEXP.test(url);
-}
-
-export function isNumber(value: any) {
-  return /^\d+(\.\d+)?$/.test(value);
-}
+  return {
+    h: hue,
+    s: sv * 100,
+    v: v * 100,
+  };
+};
 </code></pre>
         </article>
     </section>

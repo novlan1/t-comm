@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head>
     
     <meta charset="utf-8">
-    <title>validate/type.ts - Documentation</title>
+    <title>base/list/flat.ts - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">validate/type.ts</h1>
+    <h1 class="page-title">base/list/flat.ts</h1>
     
 
     
@@ -45,97 +45,35 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * 判断数据是不是正则对象
- * @param {any} value - 输入数据
- * @returns {boolean} 是否是正则对象
- *
- * @example
- *
- * isRegExp(1)
- *
- * // =&gt; false
- *
- * isRegExp(/\d/)
- *
- * // =&gt; true
+ * 递归拉平数组
+ * @param list 数组
+ * @returns 数组
  */
-export function isRegExp(value: any) {
-  return Object.prototype.toString.call(value) === '[object RegExp]';
+export function flat(list: Array&lt;any&gt;): Array&lt;any&gt; {
+  return list.reduce((acc, item) =&gt; acc.concat(Array.isArray(item) ? flat(item) : item), []);
 }
+
 
 /**
- * 判断数据是不是时间对象
- * @param {any} value - 输入数据
- * @returns {boolean} 是否是时间对象
+ * 拉平数组
+ * @param {Array&lt;Object&gt;} list - 对象数组
+ * @param {string} key - 对象的key
+ * @returns {object} 拉平后的对象
  *
  * @example
  *
- * isDate(1)
+ * const list = [{id: 1, name: 'a'}, {id: 2, name: 'b'}]
  *
- * // =&gt; false
+ * flatten(list, 'id')
  *
- * isDate(new Date())
+ * // {1: {id: 1, name: 'a'}, 2: {id: 2, name: 'b'}}
  *
- * // =&gt; true
  */
-export function isDate(value: any) {
-  return Object.prototype.toString.call(value) === '[object Date]';
-}
-
-/**
- * 判断数据是不是函数
- * @param {any} value - 输入数据
- * @returns {boolean} 是否是函数
- *
- * @example
- *
- * isFunction(1)
- *
- * // =&gt; false
- *
- * isFunction(()=&gt;{})
- *
- * // =&gt; true
- */
-export function isFunction(value: any) {
-  // typeof val === 'function' // 也可以
-  return Object.prototype.toString.call(value) === '[object Function]';
-}
-
-export function isPlainObject(val: any) {
-  return val !== null &amp;&amp; typeof val === 'object' &amp;&amp; !Array.isArray(val);
-}
-
-export function isPromise(val: any) {
-  return isPlainObject(val) &amp;&amp; isFunction(val.then) &amp;&amp; isFunction(val.catch);
-}
-
-export function isDef(value: any) {
-  return value !== undefined &amp;&amp; value !== null;
-}
-
-export function isObj(x: any) {
-  const type = typeof x;
-  return x !== null &amp;&amp; (type === 'object' || type === 'function');
-}
-
-export function isObject(val: any) {
-  return val !== null &amp;&amp; typeof val === 'object';
-}
-
-const IMAGE_REGEXP = /\.(jpeg|jpg|gif|png|svg|webp|jfif|bmp|dpg)/i;
-const VIDEO_REGEXP = /\.(mp4|mpg|mpeg|dat|asf|avi|rm|rmvb|mov|wmv|flv|mkv)/i;
-
-export function isImageUrl(url: any) {
-  return IMAGE_REGEXP.test(url);
-}
-
-export function isVideoUrl(url: any) {
-  return VIDEO_REGEXP.test(url);
-}
-
-export function isNumber(value: any) {
-  return /^\d+(\.\d+)?$/.test(value);
+export function flatten(list: Array&lt;Record&lt;string, any&gt;&gt;, key: string): Record&lt;string, any&gt; {
+  return list.reduce((acc: Record&lt;string, any&gt;, item) =&gt; {
+    acc[item[key]] = item;
+    return acc;
+  }, {});
 }
 </code></pre>
         </article>
