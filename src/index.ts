@@ -1,5 +1,6 @@
 export * from './base';
 export * from './canvas';
+export * from './color';
 export * from './cookie';
 export * from './css';
 export * from './date';
