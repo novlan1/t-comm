@@ -63,57 +63,6 @@ export function parseHSVString(value: string) {
 }
 
 
-export function parseColorToHSV(value: string) {
-  let alpha = 100;
-  let h = 0;
-  let s = 100;
-  let v = 100;
-
-  const fromHSV = (_h: number, _s: number, _v: number) => {
-    h = Math.max(0, Math.min(360, _h));
-    s = Math.max(0, Math.min(100, _s));
-    v = Math.max(0, Math.min(100, _v));
-  };
-
-  if (value.indexOf('hsl') !== -1) {
-    const res = parseHSLString(value);
-    h = res.h;
-    s = res.s;
-    v = res.v;
-    alpha = res.alpha;
-  } else if (value.indexOf('hsv') !== -1) {
-    const res = parseHSVString(value);
-    h = res.h;
-    s = res.s;
-    v = res.v;
-    alpha = res.alpha;
-  } else if (value.indexOf('rgb') !== -1) {
-    const res = parseRGBBracket(value);
-    h = res.h;
-    s = res.s;
-    v = res.v;
-    alpha = res.alpha;
-  } else if (value.indexOf('#') !== -1) {
-    const rgb = parseRGBHex(value);
-    const { r, g, b } = rgb;
-    alpha = rgb.alpha;
-
-    const res = rgb2hsv(r, g, b);
-    h = res.h;
-    s = res.s;
-    v = res.v;
-  }
-
-  fromHSV(h, s, v);
-
-  return {
-    h,
-    s,
-    v,
-    alpha,
-  };
-}
-
 export function parseRGBBracket(value: string) {
   let alpha = 100;
   let h = 0;
@@ -187,3 +136,53 @@ export function parseRGBHex(value: any) {
   };
 }
 
+export function parseColorToHSV(value: string) {
+  let alpha = 100;
+  let h = 0;
+  let s = 100;
+  let v = 100;
+
+  const fromHSV = (_h: number, _s: number, _v: number) => {
+    h = Math.max(0, Math.min(360, _h));
+    s = Math.max(0, Math.min(100, _s));
+    v = Math.max(0, Math.min(100, _v));
+  };
+
+  if (value.indexOf('hsl') !== -1) {
+    const res = parseHSLString(value);
+    h = res.h;
+    s = res.s;
+    v = res.v;
+    alpha = res.alpha;
+  } else if (value.indexOf('hsv') !== -1) {
+    const res = parseHSVString(value);
+    h = res.h;
+    s = res.s;
+    v = res.v;
+    alpha = res.alpha;
+  } else if (value.indexOf('rgb') !== -1) {
+    const res = parseRGBBracket(value);
+    h = res.h;
+    s = res.s;
+    v = res.v;
+    alpha = res.alpha;
+  } else if (value.indexOf('#') !== -1) {
+    const rgb = parseRGBHex(value);
+    const { r, g, b } = rgb;
+    alpha = rgb.alpha;
+
+    const res = rgb2hsv(r, g, b);
+    h = res.h;
+    s = res.s;
+    v = res.v;
+  }
+
+  fromHSV(h, s, v);
+
+  return {
+    h,
+    s,
+    v,
+    alpha,
+  };
+}

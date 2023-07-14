@@ -42,7 +42,7 @@ export const parseHexChannel = function (hex: any) {
     + (HEX_INT_MAP[hex[1].toUpperCase() as IHexKey] || +hex[1]);
   }
 
-  return HEX_INT_MAP[hex[1].toUpperCase() as IHexKey] || +hex[1];
+  return HEX_INT_MAP[hex[0].toUpperCase() as IHexKey] || +hex[0];
 };
 
 
