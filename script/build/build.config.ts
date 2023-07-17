@@ -7,6 +7,7 @@ export const BUILD_DIR_LIST = [
   'loader',
   'morse-pwd',
   'rtx',
+  'time',
   'url',
   'validate',
 ];

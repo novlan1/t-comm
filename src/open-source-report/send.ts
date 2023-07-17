@@ -1,6 +1,6 @@
 import { getOpenSourceReport } from './api';
 import { parseOpenSourceReport } from './parse';
-import { timeStampFormat } from '../date/time';
+import { timeStampFormat } from '../time/time';
 import { batchSendWxRobotMarkdown } from '../wecom-robot/batch-send';
 import type { IReportArr, IRequestInfo, ISearchInfo } from './types';
 

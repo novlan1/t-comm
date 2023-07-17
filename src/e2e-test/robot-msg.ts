@@ -1,5 +1,5 @@
 import { parseRobotMessage, genRobotMessage } from '../wecom-robot/message';
-import { timeStampFormat } from '../date/time';
+import { timeStampFormat } from '../time/time';
 import { EMOJI_MAP } from './config';
 
 const TRIGGER_MAP = {

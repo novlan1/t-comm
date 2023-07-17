@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { sendWxRobotMarkdown } from '../wecom-robot/base';
 import { getGitCommitInfo } from '../git/git';
-import { timeStampFormat } from '../date/time';
+import { timeStampFormat } from '../time/time';
 import { addTextForImg } from '../canvas/img-text';
 import { uploadCOSFile } from '../tencent-clound/cos/cos';
 import { saveBase64ImgToFile } from '../node-img/img';

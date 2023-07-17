@@ -1,5 +1,5 @@
 import { flatten } from '../base/list';
-import { timeStampFormat } from '../date/time';
+import { timeStampFormat } from '../time/time';
 import { getCOSFilePath } from './helper/helper';
 import { batchSendWxRobotMarkdown } from '../wecom-robot/batch-send';
 import type { ICosInfo, ISecretInfo, ILocalConfig } from './types';

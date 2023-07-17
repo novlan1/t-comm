@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-import { timeStampFormat } from '../date/time';
+import { timeStampFormat } from '../time/time';
 
 type ICheerIO = any;
 type IJSDocOptions = {

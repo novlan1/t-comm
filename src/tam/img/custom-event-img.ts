@@ -2,7 +2,8 @@ import { getMultiCustomEventData } from '../api/custom-event';
 import { parseMultiCustomEvent, getTableHeaders } from '../parse';
 import { createCanvasTable } from '../../canvas/table';
 import { compareTwoList, getMaxAndMinIdx } from '../../base/list';
-import { getSomeDayStartTimeStamp, getSomeDayEndTimeStamp, timeStampFormat } from '../../date';
+import { getSomeDayStartTimeStamp, getSomeDayEndTimeStamp } from '../../date';
+import { timeStampFormat } from '../../time/time';
 import { batchSendWxRobotBase64Img } from '../../wecom-robot/batch-send';
 import type { SecretInfoType } from '../types';
 

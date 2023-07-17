@@ -25,6 +25,7 @@ export * from './tam';
 export * from './tencent-clound';
 export * from './tencent-doc';
 export * from './tgit';
+export * from './time';
 export * from './url';
 export * from './util';
 export * from './validate';
