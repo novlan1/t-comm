@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.45](https://github.com/novlan1/t-comm/compare/v1.1.43...v1.1.45) (2023-07-17)
+
+
+### Features
+
+* **responsive:** 增加responsive ([ccf3d30](https://github.com/novlan1/t-comm/commit/ccf3d30f18be1b8163f548c81b57969f1fa33d44))
+
+
+
 ## [1.1.43](https://github.com/novlan1/t-comm/compare/v1.1.42...v1.1.43) (2023-07-17)
 
 
