@@ -2,6 +2,7 @@
 import { series } from 'gulp';
 import path from 'path';
 import fse from 'fs-extra';
+import * as fs from 'fs';
 import chalk from 'chalk';
 import { rollup } from 'rollup';
 import {
@@ -11,6 +12,7 @@ import {
 } from '@microsoft/api-extractor';
 import conventionalChangelog from 'conventional-changelog';
 import rollupConfig from './rollup.config';
+import { traverseFolder } from './src/util/fs-util';
 
 type TaskFunc = (cb: Function) => void;
 
@@ -35,37 +37,71 @@ const clearLibFile: TaskFunc = async (cb) => {
   cb();
 };
 
+
+function deleteFiles() {
+  function cb(file: string) {
+    const fileName = file.replace(/\.d\.ts$/, '');
+    if (file.endsWith('.d.ts')) {
+      const jsFile = path.resolve(path.dirname(file), `${fileName}.js`);
+      if (!fse.existsSync(jsFile)) {
+        fse.removeSync(file);
+      }
+
+      const dir = path.dirname(file);
+      const list = fs.readdirSync(dir);
+      if (!list.length) {
+        log.progress(`正在删除文件夹：${dir}`);
+        fse.removeSync(dir);
+      }
+
+      const dir2 = path.dirname(dir);
+      const list2 = fs.readdirSync(dir2);
+      if (!list2.length) {
+        log.progress(`正在删除文件夹：${dir2}`);
+        fse.removeSync(dir2);
+      }
+    }
+  }
+  traverseFolder(cb, './lib');
+}
+
+
 // rollup 打包
 const buildByRollup: TaskFunc = async (cb) => {
-  const inputOptions = {
-    input: rollupConfig.input,
-    external: rollupConfig.external,
-    plugins: rollupConfig.plugins,
-  };
-  const outOptions = rollupConfig.output;
-  let bundle: any;
+  for (const config of rollupConfig) {
+    const theConfig = config as any;
+    const inputOptions = {
+      input: theConfig.input,
+      external: theConfig.external,
+      plugins: theConfig.plugins,
+    };
+    const outOptions = theConfig.output;
+    let bundle: any;
 
-  try {
-    bundle = await rollup(inputOptions);
+    try {
+      bundle = await rollup(inputOptions);
 
-    // 写入需要遍历输出配置
-    if (Array.isArray(outOptions)) {
-      outOptions.forEach(async (outOption) => {
-        await bundle.write(outOption);
-      });
+      // 写入需要遍历输出配置
+      if (Array.isArray(outOptions)) {
+        outOptions.forEach(async (outOption) => {
+          await bundle.write(outOption);
+        });
+      }
+    } catch (e) {
+      if (e instanceof Error) {
+        log.error(e.message);
+      }
     }
-  } catch (e) {
-    if (e instanceof Error) {
-      log.error(e.message);
+
+
+    if (bundle != null) {
+      // closes the bundle
+      await bundle.close();
+      log.progress('Rollup built successfully');
     }
   }
 
-  if (bundle !== null) {
-    // closes the bundle
-    await bundle.close();
-    cb();
-    log.progress('Rollup built successfully');
-  }
+  cb();
 };
 
 // api-extractor 整理 .d.ts 文件
@@ -113,12 +149,13 @@ const apiExtractorGenerate: TaskFunc = async (cb) => {
       }
 
       // 删除所有子文件夹
-      const stat = fse.lstatSync(filePath);
-      if (stat.isDirectory()) {
-        log.progress(`正在删除文件夹：${file}`);
-        await fse.remove(filePath);
-      }
+      // const stat = fse.lstatSync(filePath);
+      // if (stat.isDirectory()) {
+      //   log.progress(`正在删除文件夹：${file}`);
+      //   await fse.remove(filePath);
+      // }
     });
+    deleteFiles();
     log.progress('API Extractor completed successfully');
     cb();
   } else {

@@ -1,0 +1,1 @@
+export { getRtxInfo } from './rtx';

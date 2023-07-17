@@ -5,9 +5,11 @@ import typescript from '@rollup/plugin-typescript';
 import babel from '@rollup/plugin-babel';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
+import filesize from 'rollup-plugin-filesize';
 // import { terser } from 'rollup-plugin-terser';
 import { DEFAULT_EXTENSIONS } from '@babel/core';
 
+import { getExtraBuildDir } from './script/build/rollup-helper';
 import pkg from './package.json';
 
 const paths = {
@@ -39,15 +41,13 @@ const rollupConfig: RollupOptions = {
   ], // 指出应将哪些模块视为外部模块，如 Peer dependencies 中的依赖
   // plugins 需要注意引用顺序
   plugins: [
-    // ts 的功能只在于编译出声明文件，所以 target 为 ESNext，编译交给 babel 来做
-    typescript({
-      tsconfig: './tsconfig.json',
-    }),
     // 配合 commnjs 解析第三方模块
     resolve(),
 
     // 使得 rollup 支持 commonjs 规范，识别 commonjs 规范的依赖
     commonjs(),
+
+    filesize(),
 
     babel({
       babelHelpers: 'runtime',
@@ -60,4 +60,18 @@ const rollupConfig: RollupOptions = {
   ],
 };
 
-export default rollupConfig;
+export default [
+  {
+    input: rollupConfig.input,
+    output: rollupConfig.output,
+    external: rollupConfig.external,
+    plugins: [
+      // ts 的功能只在于编译出声明文件，所以 target 为 ESNext，编译交给 babel 来做
+      typescript({
+        tsconfig: './tsconfig.json',
+      }),
+      ...(rollupConfig.plugins || []),
+    ],
+  },
+  ...getExtraBuildDir(rollupConfig),
+];

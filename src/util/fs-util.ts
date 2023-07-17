@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
+import * as path from 'path';
+
 const LOG_DIR = 'log';
 
 function innerCopy(src: string, dist: string) {
@@ -166,4 +168,12 @@ function createLogDir() {
   if (!fs.existsSync(`./${LOG_DIR}`)) {
     fs.mkdirSync(`./${LOG_DIR}`);
   }
+}
+
+
+export function getFileName(file: string) {
+  const basename = path.basename(file);
+  const extname = path.extname(file);
+  const fileName = basename.replace(new RegExp(`${extname}$`), '');
+  return fileName;
 }

@@ -19,6 +19,7 @@ export * from './open-source-report';
 export * from './pipeline';
 export * from './rainbow';
 export * from './rainbow-to-cos';
+export * from './rtx';
 export * from './sheet';
 export * from './tam';
 export * from './tencent-clound';
