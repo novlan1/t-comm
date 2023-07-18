@@ -13,6 +13,7 @@ export * from './i18n';
 export * from './jsdoc';
 export * from './loader';
 export * from './morse-pwd';
+export * from './mp';
 export * from './mp-ci';
 export * from './node-img';
 export * from './open-source-report';
