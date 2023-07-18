@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.47](https://github.com/novlan1/t-comm/compare/v1.1.46...v1.1.47) (2023-07-18)
+
+
+### Features
+
+* **v-console:** 性能数据使用旧接口 ([5c9313d](https://github.com/novlan1/t-comm/commit/5c9313d1ed3db5970a866c0667f4b1375a3294c5))
+
+
+
 ## [1.1.46](https://github.com/novlan1/t-comm/compare/v1.1.45...v1.1.46) (2023-07-18)
 
 
