@@ -133,7 +133,7 @@ function initOtherInfoPlugin() {
 }
 
 function getPerformanceInfo() {
-  const timing = performance.getEntries()[0] as PerformanceNavigationTiming;
+  const timing = performance.timing || {};
   const timeOrigin = ((performance as IPerformance)?.wx?.timeOrigin) || timing.fetchStart;
 
   const dnsTime = timing.domainLookupEnd - timing.domainLookupStart;
@@ -141,7 +141,7 @@ function getPerformanceInfo() {
   const backendTime = timing.responseStart - timing.requestStart;
   const respTime = timing.responseEnd - timing.responseStart;
   const domTime = timing.domContentLoadedEventStart - timing.responseEnd;
-  const firstRenderTime = timing.domInteractive - timeOrigin;
+  const firstRenderTime = timing.domLoading - timeOrigin;
   const wholePageTime = timing.loadEventEnd - timeOrigin;
   const parseDomTime = timing.domComplete - timing.domInteractive;
 
