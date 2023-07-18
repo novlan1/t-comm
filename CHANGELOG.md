@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.46](https://github.com/novlan1/t-comm/compare/v1.1.45...v1.1.46) (2023-07-18)
+
+
+### Features
+
+* **v-console:** 增加vConsole ([95a96c5](https://github.com/novlan1/t-comm/commit/95a96c54e101111a4f878d8975c5312e351fc562))
+
+
+
 ## [1.1.45](https://github.com/novlan1/t-comm/compare/v1.1.43...v1.1.45) (2023-07-17)
 
 
