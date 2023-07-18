@@ -10,5 +10,6 @@ export const BUILD_DIR_LIST = [
   'rtx',
   'time',
   'url',
+  'v-console',
   'validate',
 ];

@@ -29,6 +29,7 @@ export * from './tgit';
 export * from './time';
 export * from './url';
 export * from './util';
+export * from './v-console';
 export * from './validate';
 export * from './version-tip';
 export * from './weather';

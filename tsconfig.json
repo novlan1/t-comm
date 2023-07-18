@@ -22,7 +22,8 @@
     "resolveJsonModule": true
   },
   "include": [
-    "src"
+    "src",
+    "./typings"
   ],
   "exclude": [
     "dist"
