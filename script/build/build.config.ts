@@ -6,6 +6,7 @@ export const BUILD_DIR_LIST = [
   'env',
   'loader',
   'morse-pwd',
+  'mp',
   'responsive',
   'rtx',
   'time',

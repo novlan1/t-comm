@@ -35,3 +35,4 @@ export * from './validate';
 export * from './version-tip';
 export * from './weather';
 export * from './wecom-robot';
+export * from './wx';

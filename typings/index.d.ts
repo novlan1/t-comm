@@ -9,4 +9,5 @@ declare const uni: any;
 
 declare interface Window {
   VConsole?: any;
+  wx?: any
 }
