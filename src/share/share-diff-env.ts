@@ -7,6 +7,7 @@ import {
   WX_JS_SDK,
   QQ_JS_SDK,
   ShareConfig,
+  SHARE_DOM_MAP,
 } from './config';
 import { initCustomDom } from '../dialog/custom-dialog';
 
@@ -217,14 +218,14 @@ export function initCommShareTip() {
   }
 
   initCustomDom({
-    styleId: 'div_share_tip_style',
+    styleId: SHARE_DOM_MAP.SHARE_TIP_STYLE_ID,
     styleContent,
-    dialogId: 'div_share_tip',
+    dialogId: SHARE_DOM_MAP.SHARE_TIP_DOM_ID,
     dialogContent,
   });
 
 
-  const btn = document.getElementById('div_share_tip');
+  const btn = document.getElementById(SHARE_DOM_MAP.SHARE_TIP_DOM_ID);
   btn?.addEventListener(
     'click',
     () => {
@@ -251,7 +252,7 @@ export function initCommShareUI(callback: String) {
 
   const dialogContent = `
   <div class="share-dialog-login">\
-    <a href="javascript:;" class="share-dialog-close" onclick="document.getElementById('div_share_ui').style.display='none';">关闭</a>\
+    <a href="javascript:;" class="share-dialog-close" onclick="document.getElementById('${SHARE_DOM_MAP.SHARE_UI_DOM_ID}').style.display='none';">关闭</a>\
     <div class="share-choose-login">\
       <a href="javascript:;" onclick="javascript:${callback}(2);">\
         <span class="share-type share-type-1"></span>\
@@ -271,19 +272,19 @@ export function initCommShareUI(callback: String) {
       </a>\
     </div>\
   </div>\
-  <div class="share-layer" onclick="document.getElementById('div_share_ui').style.display='none';"></div>
+  <div class="share-layer" onclick="document.getElementById('${SHARE_DOM_MAP.SHARE_UI_DOM_ID}').style.display='none';"></div>
   `;
   initCustomDom({
-    styleId: 'div_share_ui_style',
+    styleId: SHARE_DOM_MAP.SHARE_UI_STYLE_ID,
     styleContent,
-    dialogId: 'div_share_ui',
+    dialogId: SHARE_DOM_MAP.SHARE_UI_DOM_ID,
     dialogContent,
   });
 }
 
 
 export function showCommShareUI() {
-  const dom =  document.getElementById('div_share_tip');
+  const dom = document.getElementById(SHARE_DOM_MAP.SHARE_UI_DOM_ID);
   if (dom) {
     dom.style.display = 'block';
   }
@@ -291,7 +292,7 @@ export function showCommShareUI() {
 
 
 export function showCommShareTip() {
-  const dom =  document.getElementById('div_share_tip');
+  const dom = document.getElementById(SHARE_DOM_MAP.SHARE_TIP_DOM_ID);
   if (dom) {
     dom.style.display = 'block';
   }
