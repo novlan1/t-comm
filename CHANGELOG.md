@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.49](https://github.com/novlan1/t-comm/compare/v1.1.48...v1.1.49) (2023-07-21)
+
+
+### Features
+
+* 增加share mp ([0690046](https://github.com/novlan1/t-comm/commit/06900467f6339b8c4244576d655b220e9e2a27cc))
+
+
+
 ## [1.1.48](https://github.com/novlan1/t-comm/compare/v1.1.47...v1.1.48) (2023-07-21)
 
 
