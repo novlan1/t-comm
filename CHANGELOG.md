@@ -1,5 +1,17 @@
 # 工具库更新日志
 
+## [1.1.48](https://github.com/novlan1/t-comm/compare/v1.1.47...v1.1.48) (2023-07-21)
+
+
+### Features
+
+* **dom-to-image:** 增加dom-to-image/dialo/rem-to-px/remove-param ([c9f368d](https://github.com/novlan1/t-comm/commit/c9f368dd3e65d2af1012dfafecd990298af3f634))
+* **share:** 增加分享模块 ([0c9b81a](https://github.com/novlan1/t-comm/commit/0c9b81a65af665460876542c75deb44d290fb21b))
+* **update-manager:** 增加update-manager ([7ac3ad4](https://github.com/novlan1/t-comm/commit/7ac3ad40137980b8092f9ee78a76149eaa579d74))
+* **wx:** wx js api ([f6e616f](https://github.com/novlan1/t-comm/commit/f6e616fc83c62b85db411d2eea63300618a30b37))
+
+
+
 ## [1.1.47](https://github.com/novlan1/t-comm/compare/v1.1.46...v1.1.47) (2023-07-18)
 
 
