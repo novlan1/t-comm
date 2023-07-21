@@ -10,6 +10,7 @@ export function initShareMp(shareInfo: {
   imageUrl?: string;
 }) {
   const page = getCurrentPage() as any;
+  if (!page) return;
   page.onShareAppMessage = () => ({
     title: `${shareInfo.title}` || '',
     path: shareInfo.path || '',

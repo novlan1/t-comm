@@ -4,10 +4,14 @@ import { urlToBase64 } from '../dom-to-image/dom-to-image';
 import {
   DEFAULT_API_LIST,
   DEFAULT_OPEN_TAG_LIST,
-  WX_JS_SDK, QQ_JS_SDK,
+  WX_JS_SDK,
+  QQ_JS_SDK,
   ShareConfig,
 } from './config';
 import { initCustomDom } from '../dialog/custom-dialog';
+
+import type { IGetWxSignaturePromise, IGetMiniProgramOpenLink } from './types';
+
 
 export function initQQShare({
   shareObject,
@@ -52,7 +56,7 @@ function getWxCfg({
 }: {
   apiList: Array<string>;
   openTagList: Array<string>;
-  getWxSignaturePromise: () => Promise<any>;
+  getWxSignaturePromise: IGetWxSignaturePromise;
 }) {
   return new Promise((resolve, reject) => {
     getWxSignaturePromise()
@@ -91,7 +95,7 @@ function configWx({
 }: {
   apiList: Array<string>;
   openTagList: Array<string>;
-  getWxSignaturePromise: () => Promise<any>;
+  getWxSignaturePromise: IGetWxSignaturePromise;
 }) {
   return new Promise((resolve, reject) => {
     loadJS(WX_JS_SDK).then(() => {
@@ -119,7 +123,7 @@ export function initWeixinShare({
   openTagList = DEFAULT_OPEN_TAG_LIST,
 }: {
   shareObject: Record<string, any>;
-  getWxSignaturePromise: () => Promise<any>;
+  getWxSignaturePromise: IGetWxSignaturePromise;
   apiList?: Array<string>;
   openTagList?: Array<string>;
 }) {
@@ -308,23 +312,23 @@ function calBase64Size(base64url: string) {
 function openWeixinOpenLink({
   shareObject,
   failedCallback,
-  postGetMiniProgramOpenLink,
+  getMiniProgramOpenLink,
   appId,
 }: {
   shareObject: Record<string, any>;
   failedCallback: Function;
-  postGetMiniProgramOpenLink: Function;
+  getMiniProgramOpenLink: IGetMiniProgramOpenLink;
   appId: string
 }) {
   const data = shareObject.path.split('?');
-  postGetMiniProgramOpenLink({
+  getMiniProgramOpenLink({
     adcfg: {},
     appid: appId,
     path: data.length > 0 ? data[0] : '',
     param_data: data.length > 1 ? data[1] : '',
     jump_type: 4,
   })
-    .then((response: {open_link: string}) => {
+    .then((response) => {
       if (response?.open_link) {
         window.location.href = response.open_link;
       } else {
@@ -338,11 +342,11 @@ function openWeixinOpenLink({
 
 
 export function initMsdkShare({
-  postGetMiniProgramOpenLink,
+  getMiniProgramOpenLink,
   appId,
   shareObject,
 }: {
-  postGetMiniProgramOpenLink: Function,
+  getMiniProgramOpenLink: IGetMiniProgramOpenLink,
   appId: string,
   shareObject: Record<string, any>,
 }) {
@@ -407,7 +411,7 @@ export function initMsdkShare({
             throw e;
           }
         },
-        postGetMiniProgramOpenLink,
+        getMiniProgramOpenLink,
         appId,
       });
     } else {
@@ -425,11 +429,11 @@ export function initMsdkShare({
 
 export function initInGameShare({
   shareObject,
-  postGetMiniProgramOpenLink,
+  getMiniProgramOpenLink,
   appId,
 }: {
   shareObject: Record<string, any>;
-  postGetMiniProgramOpenLink: Function;
+  getMiniProgramOpenLink: IGetMiniProgramOpenLink;
   appId: string;
 }) {
   initCommShareUI('slugSDKShareDelegate');
@@ -462,7 +466,7 @@ export function initInGameShare({
                   shareObject.icon,
                 );
               },
-              postGetMiniProgramOpenLink,
+              getMiniProgramOpenLink,
               appId,
             });
           } else {

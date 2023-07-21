@@ -1,3 +1,15 @@
+export type IGetWxSignaturePromise = () => Promise<{
+  wxappid?: string;
+  timestamp?: string;
+  noncestr?: string;
+  signature?: string;
+}>;
+
+
+export type IGetMiniProgramOpenLink = (params: any) => Promise<{
+  open_link?: string;
+}>;
+
 export type IShareObject = {
   title?: string;
   desc?: string;
@@ -15,14 +27,11 @@ export type IShareObject = {
 
   callback?: () => any;
 
-  getWxSignaturePromise?: () => Promise<any>;
-  postGetMiniProgramOpenLink?: () => Promise<any> ;
+  getWxSignaturePromise?: IGetWxSignaturePromise;
+  getMiniProgramOpenLink?: IGetMiniProgramOpenLink;
 };
 
 export type IShareUiObj = {
-  // initCommShareUI?: Function;
-  // showCommShareUI?: Function;
   openShareUI?: Function;
-
   showCommShareTip?: Function;
 };

@@ -14,8 +14,8 @@ import type { IShareObject } from './types';
 
 
 export function initShare(params: IShareObject = {
-  getWxSignaturePromise: () => Promise.resolve(),
-  postGetMiniProgramOpenLink: () => Promise.resolve(),
+  getWxSignaturePromise: () => Promise.resolve({}),
+  getMiniProgramOpenLink: () => Promise.resolve({}),
 }) {
   const obj = params;
   obj.title = obj.title || document.getElementsByTagName('title')?.[0]?.innerText;
@@ -33,8 +33,8 @@ export function initShare(params: IShareObject = {
   ShareConfig.setShareObject(obj);
 
   const {
-    getWxSignaturePromise = () => Promise.resolve(),
-    postGetMiniProgramOpenLink = () => Promise.resolve(),
+    getWxSignaturePromise = () => Promise.resolve({}),
+    getMiniProgramOpenLink = () => Promise.resolve({}),
   } = obj;
   const appId = obj.appId || '';
 
@@ -44,7 +44,7 @@ export function initShare(params: IShareObject = {
   const env = getEnvUAType();
   if (env.isMsdk) {
     initMsdkShare({
-      postGetMiniProgramOpenLink,
+      getMiniProgramOpenLink,
       appId,
       shareObject,
     });
@@ -68,7 +68,7 @@ export function initShare(params: IShareObject = {
   } else if (env.isSlugSdk) {
     initInGameShare({
       shareObject,
-      postGetMiniProgramOpenLink,
+      getMiniProgramOpenLink,
       appId,
     });
   }
