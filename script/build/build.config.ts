@@ -9,6 +9,7 @@ export const BUILD_DIR_LIST = [
   'mp',
   'responsive',
   'rtx',
+  'share',
   'time',
   'url',
   'v-console',

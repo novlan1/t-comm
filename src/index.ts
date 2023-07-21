@@ -25,6 +25,7 @@ export * from './rainbow-to-cos';
 export * from './rem-to-px';
 export * from './responsive';
 export * from './rtx';
+export * from './share';
 export * from './sheet';
 export * from './tam';
 export * from './tencent-clound';
