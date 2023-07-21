@@ -54,6 +54,16 @@ function getNonceStr() {
 }
 
 
+/**
+ * 获取jsAPI签名
+ *
+ * 校验地址：https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=jsapisign
+ *
+ * 文档地址：https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html
+ * @param ticket 票据
+ * @param url 当前url，不包括#之后的部分
+ * @returns signature
+ */
 export function genSignature(ticket: string, url: string) {
   const timestamp = Math.floor(Date.now() / 1000);
   const nonceStr = getNonceStr();
