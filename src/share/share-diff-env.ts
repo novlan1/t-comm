@@ -8,6 +8,7 @@ import {
   QQ_JS_SDK,
   ShareConfig,
   SHARE_DOM_MAP,
+  SHARE_TYPE_MAP,
 } from './config';
 import { initCustomDom } from '../dialog/custom-dialog';
 
@@ -254,19 +255,19 @@ export function initCommShareUI(callback: String) {
   <div class="share-dialog-login">\
     <a href="javascript:;" class="share-dialog-close" onclick="document.getElementById('${SHARE_DOM_MAP.SHARE_UI_DOM_ID}').style.display='none';">关闭</a>\
     <div class="share-choose-login">\
-      <a href="javascript:;" onclick="javascript:${callback}(2);">\
+      <a href="javascript:;" onclick="javascript:${callback}(${SHARE_TYPE_MAP.WX_TIMELINE});">\
         <span class="share-type share-type-1"></span>\
         <span class="share-public-text">朋友圈</span>\
       </a>\
-      <a href="javascript:;" onclick="javascript:${callback}(1);">\
+      <a href="javascript:;" onclick="javascript:${callback}(${SHARE_TYPE_MAP.WX_FRIENDS});">\
         <span class="share-type share-type-2"></span>\
         <span class="share-public-text">微信好友</span>\
       </a>\
-      <a href="javascript:;" onclick="javascript:${callback}(3);">\
+      <a href="javascript:;" onclick="javascript:${callback}(${SHARE_TYPE_MAP.QQ_FRIENDS});">\
         <span class="share-type share-type-3"></span>\
         <span class="share-public-text">QQ好友</span>\
       </a>\
-      <a href="javascript:;" onclick="javascript:${callback}(4);">\
+      <a href="javascript:;" onclick="javascript:${callback}(${SHARE_TYPE_MAP.QQ_ZONE});">\
         <span class="share-type share-type-4"></span>\
         <span class="share-public-text">QQ空间</span>\
       </a>\
@@ -347,7 +348,7 @@ export function initMsdkShare({
   appId,
   shareObject,
 }: {
-  getMiniProgramOpenLink: IGetMiniProgramOpenLink,
+  getMiniProgramOpenLink?: IGetMiniProgramOpenLink,
   appId: string,
   shareObject: Record<string, any>,
 }) {
@@ -380,17 +381,17 @@ export function initMsdkShare({
       || (env.isAndroid && imageDataSize < 9)
     ) {
       typeArr = {
-        1: `{"MsdkMethod":"WGSendToWeiXinWithUrl","scene":"0","title":"${title}","desc":"${desc}","imgData":"${imgData}","url":"${shareObject.link}","mediaTagName":"MSG_INVITE","messageExt":"${title}"}`,
-        2: `{"MsdkMethod":"WGSendToWeiXinWithUrl","scene":"1","title":"${title}","desc":"${desc}","imgData":"${imgData}","url":"${shareObject.link}","mediaTagName":"MSG_INVITE","messageExt":"${title}"}`,
-        3: `{"MsdkMethod":"WGSendToQQ","scene":"2","title":"${title}","desc":"${desc}","imgData":"${imgData}","url":"${shareObject.link}"}`,
-        4: `{"MsdkMethod":"WGSendToQQ","scene":"1","title":"${shareObject.title}","desc":"${desc}","imgData":"${imgData}","url":"${shareObject.link}"}`,
+        [SHARE_TYPE_MAP.WX_FRIENDS]: `{"MsdkMethod":"WGSendToWeiXinWithUrl","scene":"0","title":"${title}","desc":"${desc}","imgData":"${imgData}","url":"${shareObject.link}","mediaTagName":"MSG_INVITE","messageExt":"${title}"}`,
+        [SHARE_TYPE_MAP.WX_TIMELINE]: `{"MsdkMethod":"WGSendToWeiXinWithUrl","scene":"1","title":"${title}","desc":"${desc}","imgData":"${imgData}","url":"${shareObject.link}","mediaTagName":"MSG_INVITE","messageExt":"${title}"}`,
+        [SHARE_TYPE_MAP.QQ_FRIENDS]: `{"MsdkMethod":"WGSendToQQ","scene":"2","title":"${title}","desc":"${desc}","imgData":"${imgData}","url":"${shareObject.link}"}`,
+        [SHARE_TYPE_MAP.QQ_ZONE]: `{"MsdkMethod":"WGSendToQQ","scene":"1","title":"${shareObject.title}","desc":"${desc}","imgData":"${imgData}","url":"${shareObject.link}"}`,
       };
     } else {
       typeArr = {
-        1: `{"MsdkMethod":"WGSendToWeiXinWithUrl","scene":"0","title":"${title}","desc":"${desc}","url":"${shareObject.link}","mediaTagName":"MSG_INVITE","messageExt":"${title}"}`,
-        2: `{"MsdkMethod":"WGSendToWeiXinWithUrl","scene":"1","title":"${title}","desc":"${desc}","url":"${shareObject.link}","mediaTagName":"MSG_INVITE","messageExt":"${title}"}`,
-        3: `{"MsdkMethod":"WGSendToQQ","scene":"2","title":"${title}","desc":"${desc}","url":"${shareObject.link}"}`,
-        4: `{"MsdkMethod":"WGSendToQQ","scene":"1","title":"${title}","desc":"${desc}","url":"${shareObject.link}"}`,
+        [SHARE_TYPE_MAP.WX_FRIENDS]: `{"MsdkMethod":"WGSendToWeiXinWithUrl","scene":"0","title":"${title}","desc":"${desc}","url":"${shareObject.link}","mediaTagName":"MSG_INVITE","messageExt":"${title}"}`,
+        [SHARE_TYPE_MAP.WX_TIMELINE]: `{"MsdkMethod":"WGSendToWeiXinWithUrl","scene":"1","title":"${title}","desc":"${desc}","url":"${shareObject.link}","mediaTagName":"MSG_INVITE","messageExt":"${title}"}`,
+        [SHARE_TYPE_MAP.QQ_FRIENDS]: `{"MsdkMethod":"WGSendToQQ","scene":"2","title":"${title}","desc":"${desc}","url":"${shareObject.link}"}`,
+        [SHARE_TYPE_MAP.QQ_ZONE]: `{"MsdkMethod":"WGSendToQQ","scene":"1","title":"${title}","desc":"${desc}","url":"${shareObject.link}"}`,
       };
     }
 
@@ -400,7 +401,7 @@ export function initMsdkShare({
 
     const param = typeArr[type];
 
-    if (type === 1 && shareObject.path) {
+    if (type === SHARE_TYPE_MAP.WX_FRIENDS && shareObject.path && getMiniProgramOpenLink) {
       openWeixinOpenLink({
         shareObject,
         failedCallback: () => {
@@ -430,12 +431,12 @@ export function initMsdkShare({
 
 export function initInGameShare({
   shareObject,
-  getMiniProgramOpenLink,
   appId,
+  getMiniProgramOpenLink,
 }: {
   shareObject: Record<string, any>;
-  getMiniProgramOpenLink: IGetMiniProgramOpenLink;
   appId: string;
+  getMiniProgramOpenLink?: IGetMiniProgramOpenLink;
 }) {
   initCommShareUI('slugSDKShareDelegate');
 
@@ -454,8 +455,8 @@ export function initInGameShare({
     shareObject.callback?.();
     if (typeof window.customBrowserInterface === 'object') {
       switch (type) {
-        case 1:
-          if (shareObject?.path) {
+        case SHARE_TYPE_MAP.WX_FRIENDS:
+          if (shareObject?.path && getMiniProgramOpenLink) {
             openWeixinOpenLink({
               shareObject,
               failedCallback: () => {
@@ -480,7 +481,7 @@ export function initInGameShare({
             );
           }
           break;
-        case 2:
+        case SHARE_TYPE_MAP.WX_TIMELINE:
           window.customBrowserInterface?.sendToWeixinWithUrl(
             1,
             shareObject.title,
@@ -489,7 +490,7 @@ export function initInGameShare({
             shareObject.icon,
           );
           break;
-        case 3:
+        case SHARE_TYPE_MAP.QQ_FRIENDS:
           window.customBrowserInterface?.sendToQQ(
             2,
             shareObject.title,
@@ -498,7 +499,7 @@ export function initInGameShare({
             shareObject.icon,
           );
           break;
-        case 4:
+        case SHARE_TYPE_MAP.QQ_ZONE:
           window.customBrowserInterface?.sendToQQ(
             1,
             shareObject.title,

@@ -43,3 +43,10 @@ export class ShareConfig {
     };
   }
 }
+
+export const SHARE_TYPE_MAP = {
+  WX_FRIENDS: 1,
+  WX_TIMELINE: 2,
+  QQ_FRIENDS: 3,
+  QQ_ZONE: 4,
+};
