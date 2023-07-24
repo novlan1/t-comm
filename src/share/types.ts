@@ -18,6 +18,7 @@ export type IShareObject = {
 
   type?: string | number | null;
   path?: string | null;
+  miniprogram_link?: string | null;
 
   forceHistoryMode?: boolean | null;
   appId?: string;

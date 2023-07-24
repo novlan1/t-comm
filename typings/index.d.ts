@@ -13,5 +13,9 @@ declare interface Window {
   wx?: any;
   mqq?: any;
   html2canvas?: any;
+
+  // share related
   customBrowserInterface?: Record<string, any>
+  shareCallBack?: Function;
+  setTitleButtonsCallback?: Function;
 }

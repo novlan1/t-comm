@@ -34,11 +34,13 @@ export function initCustomDialog({
   content,
   confirmText,
   cancelText,
+  dialogId = 'customDialogId',
 }: {
   title: string;
   content: string;
   confirmText?: string;
   cancelText?: string;
+  dialogId?: string;
 }) {
   const styleContent = `
   .tip-toc-dialog-wrap,.tip-toc-operating-layer,.tip-toc-sharetips{position:fixed;top:0;left:0;z-index:9999;width:100%;height:100%;background:rgba(0,0,0,.8)}
@@ -61,8 +63,8 @@ export function initCustomDialog({
   const dialogContent = `
   <div
     class="tip-toc-dialog-wrap"
-    id="customDialogId"
-    onclick="document.getElementById('customDialogId').style.display='none';"
+    id="${dialogId}"
+    onclick="document.getElementById('${dialogId}').style.display='none';"
   >
   <div class="tip-toc-tipsdialog">
     <h4 class="tip-toc-dialog-title">
@@ -79,13 +81,13 @@ export function initCustomDialog({
         id="cancel_btn"
         class="tip-textbtn-primary"
         style="color: #9b9b9b;border-right: 1px solid #d8d8d8;"
-        onclick="document.getElementById('customDialogId').style.display='none';"
+        onclick="document.getElementById('${dialogId}').style.display='none';"
         >${cancelText}</a>
      ` : ''}
       <a
         id="confirm_btn"
         class="tip-textbtn-primary"
-        onclick="document.getElementById('customDialogId').style.display='none';"
+        onclick="document.getElementById('${dialogId}').style.display='none';"
       >
       ${confirmText}
       </a>
