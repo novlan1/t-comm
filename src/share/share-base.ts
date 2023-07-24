@@ -43,36 +43,99 @@ export function initShare(params: IShareObject = {
 
   // 提到函数中，方便测试
   const env = getEnvUAType();
-  if (env.isMsdk) {
-    initMsdkShare({
-      getMiniProgramOpenLink,
-      appId,
-      shareObject,
-    });
-  } else if (env.isGHelper) {
-    initGHelperShare({
-      shareObject,
-    });
-  } else if (env.isQQ) {
-    initQQShare({
-      shareObject,
-    });
-  } else if (env.isMiniProgram) {
-    initMiniProgramShare({
-      shareObject,
-    });
-  } else if (env.isWeixin) {
-    initWeixinShare({
-      shareObject,
-      getWxSignaturePromise,
-    });
-  } else if (env.isSlugSdk) {
-    initInGameShare({
-      shareObject,
-      getMiniProgramOpenLink,
-      appId,
-    });
+  const callbackList = [
+    {
+      condition: env.isMsdk,
+      callback() {
+        initMsdkShare({
+          getMiniProgramOpenLink,
+          appId,
+          shareObject,
+        });
+      },
+    },
+    {
+      condition: env.isGHelper,
+      callback() {
+        initGHelperShare({
+          shareObject,
+        });
+      },
+    },
+    {
+      condition: env.isQQ,
+      callback() {
+        initQQShare({
+          shareObject,
+        });
+      },
+    },
+    {
+      condition: env.isMiniProgram,
+      callback() {
+        initMiniProgramShare({
+          shareObject,
+        });
+      },
+    },
+    {
+      condition: env.isWeixin,
+      callback() {
+        initWeixinShare({
+          shareObject,
+          getWxSignaturePromise,
+        });
+      },
+    },
+    {
+      condition: env.isSlugSdk,
+      callback() {
+        initInGameShare({
+          shareObject,
+          getMiniProgramOpenLink,
+          appId,
+        });
+      },
+    },
+  ];
+
+  for (const item of callbackList) {
+    if (item.condition) {
+      item.callback();
+      break;
+    }
   }
+
+  // if (env.isMsdk) {
+  //   initMsdkShare({
+  //     getMiniProgramOpenLink,
+  //     appId,
+  //     shareObject,
+  //   });
+  // } else if (env.isGHelper) {
+  //   initGHelperShare({
+  //     shareObject,
+  //   });
+  // } else if (env.isQQ) {
+  //   initQQShare({
+  //     shareObject,
+  //   });
+  // } else if (env.isMiniProgram) {
+  //   initMiniProgramShare({
+  //     shareObject,
+  //   });
+  // } else if (env.isWeixin) {
+  //   initWeixinShare({
+  //     shareObject,
+  //     getWxSignaturePromise,
+  //   });
+  // } else if (env.isSlugSdk) {
+  //   initInGameShare({
+  //     shareObject,
+  //     getMiniProgramOpenLink,
+  //     appId,
+  //   });
+  // }
 }
 
 function showWindowNavigatorShareDialog() {
