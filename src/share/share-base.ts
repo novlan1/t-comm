@@ -10,6 +10,7 @@ import {
 } from './share-diff-env';
 import { DEFAULT_SHARE_ICON, ShareConfig } from './config';
 import { initCustomDialog } from '../dialog/custom-dialog';
+
 import type { IShareObject } from './types';
 
 

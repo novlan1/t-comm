@@ -94,11 +94,10 @@
     "tslib": "^2.3.1",
     "typescript": "4.5.5"
   },
-  "peerDependencies": {
-    "axios": "^0.26.1"
-  },
+  "peerDependencies": {},
   "dependencies": {
     "@babel/runtime": "^7.17.2",
+    "axios": "^0.26.1",
     "qs": "^6.11.0",
     "request": "^2.88.2"
   },
