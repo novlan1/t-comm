@@ -5,11 +5,12 @@ import type { IShareObject } from './types';
 
 export function initTipShare({
   shareObject,
-  invoke,
 }: {
   shareObject: IShareObject;
-  invoke: Function
 }) {
+  const invoke = shareObject.tipInvoke;
+  if (!invoke) return;
+
   const appShareParams = {
     type: '1',
     share_url: shareObject.link,
@@ -34,11 +35,12 @@ export function initTipShare({
 
 export function initPvpShare({
   shareObject,
-  invoke,
 }: {
   shareObject: IShareObject;
-  invoke: Function
 }) {
+  const invoke = shareObject.pvpInvoke;
+  if (!invoke) return;
+
   const appShareParams = {
     type: '1',
     share_url: shareObject.link,

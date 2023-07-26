@@ -30,6 +30,9 @@ export type IShareObject = {
 
   getWxSignaturePromise?: IGetWxSignaturePromise;
   getMiniProgramOpenLink?: IGetMiniProgramOpenLink;
+
+  tipInvoke?: Function;
+  pvpInvoke?: Function;
 };
 
 export type IShareUiObj = {
