@@ -1,183 +1,49 @@
 import { loadJS } from '../loader/loader';
-import {
-  BUILD_NAME_MAP,
-  LINE_STYLE,
-  EMPTY_LINE,
-  V_CONSOLE_URL,
-} from './config';
+import { insertStyle } from '../dom/style';
+import { V_CONSOLE_URL, V_CONSOLE_STYLE_CONTENT } from './config';
 
-interface IPlugin {
-  name: string;
-  global: boolean;
-  onClick: Function
-}
-
-type IOriginPerformance = typeof performance;
-interface IPerformance extends IOriginPerformance {
-  wx: any;
-}
-
-let vConsole: any;
+import { initVersionPlugin } from './plugin/version';
+import { initFeedbackPlugin } from './plugin/feedback';
+import { initSwitchEnvPlugin } from './plugin/env';
+import { initLoadDelayPlugin } from './plugin/delay';
+import { initMsdkPlugin } from './plugin/msdk';
+import { initVersionSimplePlugin } from './plugin/version-simple';
 
 
-export function loadVConsole() {
-  if (typeof window.VConsole === 'undefined') {
-    loadJS(V_CONSOLE_URL).then(() => {
-      initVConsole();
-    });
-  } else {
-    initVConsole();
-  }
-}
-
-
-function initVConsole() {
-  vConsole = new VConsole({
+export function loadVConsole(options: Record<string, any> = {}, plugins: Array<Function> = []) {
+  return new Promise((resolve) => {
+    if (typeof window.VConsole === 'undefined') {
+      loadJS(V_CONSOLE_URL).then(() => {
+        resolve(initVConsole(options, plugins));
+      });
+    } else {
+      resolve(initVConsole(options, plugins));
+    }
   });
-  vConsole.addPlugin(initOtherInfoPlugin());
 }
 
-const buildList = [
-  {
-    key: 'time',
-    label: 'Build Time',
-  },
-  {
-    key: 'author',
-    label: 'Build Author',
-  },
-  {
-    key: 'branch',
-    label: 'Build Branch',
-  },
-  {
-    key: 'netEnv',
-    label: 'Build Net Env',
-  },
-];
 
-const commitList = [
-  {
-    key: 'message',
-    label: 'Last Commit Message',
-  },
-  {
-    key: 'author',
-    label: 'Last Commit Author',
-  },
-  {
-    key: 'date',
-    label: 'Last Commit Time',
-  },
-  {
-    key: 'message',
-    label: 'Last Commit Hash',
-  },
-];
-
-function getVersionHtml() {
-  const buildInfo = (window[BUILD_NAME_MAP.build as any] || {}) as any;
-  const commitInfo = (window[BUILD_NAME_MAP.commit as any] || {}) as any;
-
-  const buildHtmlList = buildList.map((item) => {
-    const { key, label } = item;
-    return `<div ${LINE_STYLE}>${label}: ${buildInfo[key] || ''}</div>`;
-  });
-  const commitHtmlList = commitList.map((item) => {
-    const { key, label } = item;
-    return `<div ${LINE_STYLE}>${label}: ${commitInfo[key] || ''}</div>`;
+function initVConsole(options: Record<string, any>, plugins: Array<Function>) {
+  const vConsole = new VConsole({
+    ...(options || {}),
   });
 
+  vConsole.addPlugin(initVersionPlugin());
+  vConsole.addPlugin(initFeedbackPlugin());
+  vConsole.addPlugin(initSwitchEnvPlugin());
+  vConsole.addPlugin(initLoadDelayPlugin());
+  vConsole.addPlugin(initVersionSimplePlugin());
+  vConsole.addPlugin(initMsdkPlugin());
 
-  return [
-    ...buildHtmlList,
-    EMPTY_LINE,
-    ...commitHtmlList,
-    EMPTY_LINE,
-    EMPTY_LINE,
-  ].join('\n');
+  plugins.forEach((plugin) => {
+    vConsole.addPlugin(plugin());
+  });
+
+  insertStyle({
+    id: 'vConsolePluginStyle',
+    content: V_CONSOLE_STYLE_CONTENT,
+  });
+  return vConsole;
 }
 
 
-function initOtherInfoPlugin() {
-  const plugin = new VConsole.VConsolePlugin('otherInfo', '其他信息');
-  const parseNumber = (num: string | number) => +(+num).toFixed(2);
-
-  plugin.on('renderTab', (callback: Function) => {
-    const html = getPerformanceInfo()
-      .map((item) => {
-        const { label, value } = item;
-        return `<div ${LINE_STYLE}>${label}：${parseNumber(value)}ms </div>`;
-      })
-      .concat(EMPTY_LINE)
-      .concat(getVersionHtml())
-      .join('\n');
-
-    callback(html);
-  });
-
-
-  const btnList: Array<IPlugin> = [];
-  btnList.push({
-    name: '隐藏vConsole',
-    global: false,
-    onClick() {
-      vConsole.destroy();
-    },
-  });
-
-  plugin.on('addTool', (callback: Function) => {
-    callback(btnList);
-  });
-  return plugin;
-}
-
-function getPerformanceInfo() {
-  const timing = performance.timing || {};
-  const timeOrigin = ((performance as IPerformance)?.wx?.timeOrigin) || timing.fetchStart;
-
-  const dnsTime = timing.domainLookupEnd - timing.domainLookupStart;
-  const tcpTime = timing.connectEnd - timing.connectStart;
-  const backendTime = timing.responseStart - timing.requestStart;
-  const respTime = timing.responseEnd - timing.responseStart;
-  const domTime = timing.domContentLoadedEventStart - timing.responseEnd;
-  const firstRenderTime = timing.domLoading - timeOrigin;
-  const wholePageTime = timing.loadEventEnd - timeOrigin;
-  const parseDomTime = timing.domComplete - timing.domInteractive;
-
-  const list = [
-    {
-      value: dnsTime,
-      label: 'DNS连接耗时',
-    },
-    {
-      value: tcpTime,
-      label: 'TCP连接耗时',
-    },
-    {
-      value: backendTime,
-      label: '后端响应时间',
-    },
-    {
-      value: respTime,
-      label: 'HTML页面下载时间',
-    },
-    {
-      value: domTime,
-      label: 'DOM时间',
-    },
-    {
-      value: parseDomTime,
-      label: '解析DOM树耗时',
-    },
-    {
-      value: firstRenderTime,
-      label: '首次加载耗时',
-    },
-    {
-      value: wholePageTime,
-      label: '整页耗时',
-    },
-  ];
-  return list;
-}

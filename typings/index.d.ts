@@ -7,6 +7,7 @@ declare const VConsole: any;
 declare const uni: any;
 declare const GameHelper: any;
 declare const getCurrentPages: any;
+declare const wx: any;
 
 declare interface Window {
   VConsole?: any;
@@ -18,4 +19,6 @@ declare interface Window {
   customBrowserInterface?: Record<string, any>
   shareCallBack?: Function;
   setTitleButtonsCallback?: Function;
+
+  vConsole: any;
 }

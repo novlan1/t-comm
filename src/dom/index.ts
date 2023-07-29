@@ -1,0 +1,1 @@
+export { insertStyle } from './style';
