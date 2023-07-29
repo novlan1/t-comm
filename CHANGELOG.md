@@ -1,5 +1,15 @@
 # 工具库更新日志
 
+## [1.1.50](https://github.com/novlan1/t-comm/compare/v1.1.49...v1.1.50) (2023-07-29)
+
+
+### Features
+
+* **clipboard:** 优化vConsole、增加clipboard、insertStyle ([462dc06](https://github.com/novlan1/t-comm/commit/462dc068cc0ab62f9496bea1c9cc28362dd20fdf))
+* **share:** 增加tip/pvp share ([daa257d](https://github.com/novlan1/t-comm/commit/daa257d1575e94af93fdce6d08abee7468250434))
+
+
+
 ## [1.1.49](https://github.com/novlan1/t-comm/compare/v1.1.48...v1.1.49) (2023-07-21)
 
 
