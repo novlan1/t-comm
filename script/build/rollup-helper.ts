@@ -9,6 +9,7 @@ const root = process.cwd();
 const allInputs: Array<string> = [];
 function cb(file: string) {
   if (!file.endsWith('index.ts') && !file.endsWith('types.ts')) {
+  // if (file.endsWith('index.ts')) {
     allInputs.push(file);
   }
 }

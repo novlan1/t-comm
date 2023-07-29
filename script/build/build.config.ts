@@ -12,6 +12,6 @@ export const BUILD_DIR_LIST = [
   'share',
   'time',
   'url',
-  // 'v-console',
+  'v-console',
   'validate',
 ];
