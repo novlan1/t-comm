@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.52](https://github.com/novlan1/t-comm/compare/v1.1.51...v1.1.52) (2023-07-30)
+
+
+### Features
+
+* **vConsole:** 插件展示优化 ([fa00abf](https://github.com/novlan1/t-comm/commit/fa00abf4fc1f446d773ccb4c15816aad776c0e16))
+
+
+
 ## [1.1.51](https://github.com/novlan1/t-comm/compare/v1.1.50...v1.1.51) (2023-07-30)
 
 
