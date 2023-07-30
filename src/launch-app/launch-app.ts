@@ -265,7 +265,7 @@ export function gotoX5MGame(options: ILaunchAppParams = {}) {
   const scheme = getOpenGameScheme(GAME_X5M, pageUrl);
   const qqAppPackageName = 'com.tencent.tmgp.qqx5';
   const params = merge({}, {
-    isUseSchemeParams: true,
+    isUseSchemeParams: false,
     // 微信内
     appid: WX_APP_ID,
     weixinScheme: scheme,

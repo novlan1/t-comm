@@ -1,11 +1,15 @@
 import type { IPlugin } from '../types';
+import { V_CONSOLE_DOM } from '../config';
 
 export function initMsdkPlugin() {
   const plugin = new VConsole.VConsolePlugin('msdk', 'msdk工具');
-  const content = 'msdk工具';
+
+  const html = `<div class="${V_CONSOLE_DOM.WRAP}">
+  <div class="${V_CONSOLE_DOM.LINE}">msdk工具</div>
+  </div>`;
 
   plugin.on('renderTab', (callback: Function) => {
-    callback(content);
+    callback(html);
   });
   const btnList: Array<IPlugin> = [];
   btnList.push({
