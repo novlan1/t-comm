@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.51](https://github.com/novlan1/t-comm/compare/v1.1.50...v1.1.51) (2023-07-30)
+
+
+### Features
+
+* **launch-app:** 增加lodash中的get/merge、launch-app、msdk ([7eb78f6](https://github.com/novlan1/t-comm/commit/7eb78f6e4453c32a1d3c65669a846c38292e69f7))
+
+
+
 ## [1.1.50](https://github.com/novlan1/t-comm/compare/v1.1.49...v1.1.50) (2023-07-29)
 
 
