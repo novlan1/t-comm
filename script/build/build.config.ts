@@ -14,4 +14,5 @@ export const BUILD_DIR_LIST = [
   'url',
   'v-console',
   'validate',
+  'launch-app',
 ];

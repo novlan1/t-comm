@@ -61,6 +61,13 @@ export function loadJS(url: string, options: {
   });
 }
 
+export function loader(url: string, callback?: Function) {
+  loadJS(url).then(() => {
+    callback?.();
+  });
+}
+
+
 /**
  * 动态加载CSS
  * @param {string} url CSS链接

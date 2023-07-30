@@ -1,3 +1,4 @@
+import type { IEnv } from './types';
 /**
  * 获取UA
  * @private
@@ -58,27 +59,7 @@ export function checkUAIsIOS() {
  *
  */
 
-export function getEnvUAType(): {
-  isWeixin: boolean,
-  isWorkWeixin: boolean,
-  isQQ: boolean,
-  isPvpApp: boolean,
-  isTipApp: boolean,
-  isAndroid: boolean,
-  isIos: boolean,
-  isIOS: boolean,
-  isMsdk: boolean,
-  isMsdkV5: boolean,
-  isSlugSdk: boolean,
-  isInGame: boolean,
-  isGHelper: boolean,
-  isGHelper20004: boolean,
-  isMiniProgram: boolean,
-  isLolApp: boolean,
-  isWindowsPhone: boolean,
-  isSymbian: boolean,
-  isPc: boolean,
-} {
+export function getEnvUAType(): IEnv {
   const ua = getRealUA();
   const isWeixin = ua.indexOf('micromessenger') !== -1;
   const isWorkWeixin = ua.indexOf('wxwork') !== -1;
@@ -129,3 +110,6 @@ export function getEnvUAType(): {
 }
 
 
+export function initEnv() {
+  return getEnvUAType();
+}

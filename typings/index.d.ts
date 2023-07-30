@@ -8,6 +8,7 @@ declare const uni: any;
 declare const GameHelper: any;
 declare const getCurrentPages: any;
 declare const wx: any;
+declare const WeixinJSBridge: any;
 
 declare interface Window {
   VConsole?: any;
@@ -21,4 +22,17 @@ declare interface Window {
   setTitleButtonsCallback?: Function;
 
   vConsole: any;
+
+  // msdk related
+  msdkCallNative?: Function;
+  msdkCall?: Function;
+  setMsdkCallback?: Function;
+  msdkAddNativeCallbackObserver?: Function;
+  msdkRemoveNativeCallbackObserver?: Function;
+  msdkCloseWebview?: Function;
+  msdkiOSHandler?: Function;
+}
+
+declare interface Document {
+  attachEvent?: any;
 }

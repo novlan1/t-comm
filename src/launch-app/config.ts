@@ -1,0 +1,12 @@
+export const GAME_PVP = 331;
+export const GAME_GP = 411;
+export const GAME_HLDDZ = 323;
+export const GAME_MAJIANG = 304;
+export const GAME_LOLM = 425;
+export const GAME_NBA = 406;
+export const GAME_SJJQ = 460;
+export const GAME_LMJX = 428;
+export const GAME_TY = 281;
+export const GAME_TLBB = 396;
+export const GAME_CF = 2;
+export const GAME_X5M = 507;
