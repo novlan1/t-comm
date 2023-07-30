@@ -1,7 +1,7 @@
 import { merge } from '../lodash-mini/merge';
 import { initEnv } from '../env/env';
 import { launchApp } from './core';
-import { GAME_GP, GAME_HLDDZ, GAME_LOLM, GAME_MAJIANG, GAME_PVP, GAME_TLBB, GAME_TY, GAME_X5M } from './config';
+import { GAME_MAP } from './config';
 import type { ILaunchAppParams } from './types';
 
 
@@ -14,7 +14,7 @@ const WX_APP_ID = 'wx3d0d33def060a347';
  */
 export function gotoWzGame(options: ILaunchAppParams = {}) {
   const env = initEnv();
-  const apkName = 'com.tencent.tmgp.sgame';
+  const apkName = GAME_MAP.PVP.APK_NAME;
   const dialogTip = env.isWeixin ? '你还没有安装游戏哦，请安装“王者荣耀”，玩游戏累积战绩领奖' : '你还没有安装游戏哦，请安装“王者荣耀”，玩游戏累积战绩领奖';
 
   const params = merge({}, {
@@ -56,8 +56,8 @@ export function gotoWzCommunity(options: ILaunchAppParams = {}) {
     pageUrl = encodeURIComponent(pageUrl);
   }
 
-  const apkName = 'com.tencent.tmgp.sgame';
-  const scheme = getOpenGameScheme(GAME_PVP, pageUrl);
+  const apkName = GAME_MAP.PVP.APK_NAME;
+  const scheme = getOpenGameScheme(GAME_MAP.PVP.GID, pageUrl);
   const params = merge({}, {
     isUseSchemeParams: true,
     // 微信内
@@ -86,8 +86,8 @@ export function gotoWzCommunity(options: ILaunchAppParams = {}) {
  */
 export function gotoGPGame(options: ILaunchAppParams = {}) {
   const pageUrl = options.pageUrl || '';
-  const scheme = getOpenGameScheme(GAME_GP, pageUrl);
-  const qqAppPackageName = 'com.tencent.tmgp.pubgmhd';
+  const scheme = getOpenGameScheme(GAME_MAP.GP.GID, pageUrl);
+  const qqAppPackageName = GAME_MAP.GP.APK_NAME;
   const params = merge({}, {
     isUseSchemeParams: true,
     // 微信内
@@ -116,8 +116,8 @@ export function gotoGPGame(options: ILaunchAppParams = {}) {
  */
 export function gotoDzGame(options: ILaunchAppParams = {}) {
   const pageUrl = options.pageUrl || '';
-  const scheme = getOpenGameScheme(GAME_HLDDZ, pageUrl);
-  const qqAppPackageName = 'com.qqgame.hlddz';
+  const scheme = getOpenGameScheme(GAME_MAP.HLDDZ.GID, pageUrl);
+  const qqAppPackageName = GAME_MAP.HLDDZ.APK_NAME;
   const params = merge({}, {
     isUseSchemeParams: true,
     // 微信内
@@ -145,9 +145,9 @@ export function gotoDzGame(options: ILaunchAppParams = {}) {
  * @param {Object} options 可选，覆盖内部默认配置，参考 launchApp 的参数要求
  */
 export function gotoMJGame(options = {}) {
-  const scheme = getOpenGameScheme(GAME_MAJIANG);
-  const qqAppScheme = getOpenGameScheme(GAME_MAJIANG);
-  const qqAppPackageName = 'com.qqgame.happymj';
+  const scheme = getOpenGameScheme(GAME_MAP.MJ.GID);
+  const qqAppScheme = scheme;
+  const qqAppPackageName = GAME_MAP.MJ.APK_NAME;
   const params = merge({}, {
     // 微信内
     appid: WX_APP_ID,
@@ -175,7 +175,7 @@ export function gotoMJGame(options = {}) {
  */
 export function gotoLOLMGame(options: ILaunchAppParams = {}) {
   const scheme = getLOLMDeeplinkScheme(options.pageUrl || '');
-  const qqAppPackageName = 'com.tencent.lolm';
+  const qqAppPackageName = GAME_MAP.LOLM.APK_NAME;
   const params = merge({}, {
     isUseSchemeParams: true,
     // 微信内
@@ -203,9 +203,10 @@ export function gotoLOLMGame(options: ILaunchAppParams = {}) {
  * @param {Object} options 可选，覆盖内部默认配置，参考 launchApp 的参数要求
  */
 export function gotoTLBBGame(options = {}) {
-  const scheme = getOpenGameScheme(GAME_TLBB);
-  const qqAppScheme = getOpenGameScheme(GAME_TLBB);
-  const qqAppPackageName = 'com.tencent.tmgp.tstl';
+  const scheme = getOpenGameScheme(GAME_MAP.TLBB.GID);
+  const qqAppScheme = scheme;
+  const qqAppPackageName = GAME_MAP.TLBB.APK_NAME;
+
   const params = merge({}, {
     // 微信内
     appid: WX_APP_ID,
@@ -232,9 +233,10 @@ export function gotoTLBBGame(options = {}) {
  * @param {Object} options 可选，覆盖内部默认配置，参考 launchApp 的参数要求
  */
 export function gotoTDGame(options = {}) {
-  const scheme = getOpenGameScheme(GAME_TY);
-  const qqAppScheme = getOpenGameScheme(GAME_TY);
-  const qqAppPackageName = 'com.tencent.tmgp.wuxia';
+  const scheme = getOpenGameScheme(GAME_MAP.TY.GID);
+  const qqAppScheme = scheme;
+  const qqAppPackageName = GAME_MAP.TY.APK_NAME;
+
   const params = merge({}, {
     // 微信内
     appid: WX_APP_ID,
@@ -262,8 +264,9 @@ export function gotoTDGame(options = {}) {
  */
 export function gotoX5MGame(options: ILaunchAppParams = {}) {
   const pageUrl = options.pageUrl || '';
-  const scheme = getOpenGameScheme(GAME_X5M, pageUrl);
-  const qqAppPackageName = 'com.tencent.tmgp.qqx5';
+  const scheme = getOpenGameScheme(GAME_MAP.X5M.GID, pageUrl);
+  const qqAppPackageName = GAME_MAP.X5M.APK_NAME;
+
   const params = merge({}, {
     isUseSchemeParams: false,
     // 微信内
@@ -286,11 +289,38 @@ export function gotoX5MGame(options: ILaunchAppParams = {}) {
   launchApp(params);
 }
 
+export function gotoNarutoGame(options: ILaunchAppParams = {}) {
+  const scheme = 'tencentmsdk1104307008://';
+  const qqAppPackageName = GAME_MAP.NARUTO.APK_NAME;
+
+  const params = merge({}, {
+    isUseSchemeParams: false,
+    // 微信内
+    appid: WX_APP_ID,
+    weixinScheme: scheme,
+    // 手Q内拉起
+    qqAppScheme: scheme,
+    qqAppPackageName,
+    // 原生浏览器
+    browserAppScheme: scheme,
+    browserApkScheme: scheme,
+    // 唤起失败处理开启优先级：跳转下载 > 跳转链接 > 弹窗提示
+    openMarket: false,
+    needRedirect: false,
+    appMarketUrl: 'https://apps.apple.com/cn/app/id955396648',
+    apkMarketUrl: `market://details?id=${qqAppPackageName}`,
+    failTips: '可以微信搜索“火影忍者”小程序，玩游戏累积战绩领奖',
+  }, options);
+
+  launchApp(params);
+}
+
+
 const getLOLMDeeplinkScheme = function (pageUrl: string) {
   let scheme = 'lolm://';
   if (pageUrl) {
     scheme = `${scheme}?linktype=H5&param1=`;
-    // param1的值由lolm侧分配（联系magchang，brucelin）
+    // param1的值由lolm侧分配
     // param1=13000 对应H5链接前缀的是https://igame.qq.com/tip/ingame-page/
     // param1=13001 对应H5链接前缀的是https://test.igame.qq.com/tip/ingame-page/
     // param1=13002 对应H5链接前缀的是https://h5.nes.slol.qq.com/
@@ -324,39 +354,39 @@ export const getOpenGameScheme = function (gid: number, pageUrl = '') {
   const env = initEnv();
   let scheme = '';
   switch (gid) {
-    case GAME_PVP:
+    case GAME_MAP.PVP.GID:
       scheme = 'tencentmsdk1104466820://';
       if (pageUrl) {
         scheme = `${scheme}?gamedata=JUMPX5_${encodeURIComponent(pageUrl)}`;
       }
       break;
-    case GAME_GP:
+    case GAME_MAP.GP.GID:
       scheme = 'pubgmhd1106467070://';
       if (pageUrl) {
         // force关闭拍脸，dir是朝向，fullscreen全屏显示
         scheme = `${scheme}?exdata:method=open_url,url=${encodeURIComponent(pageUrl)},force=1,dir=2,fullscreen=1`;
       }
       break;
-    case GAME_HLDDZ:
+    case GAME_MAP.HLDDZ.GID:
       scheme = env.isIOS ? 'tencent363://' : 'qqgame.hlddz.scheme://';
       if (pageUrl) {
         const mode = 'MSDK_EmbeddedWebView';
         scheme = `${scheme}${env.isIOS ? '&a=:/' : ''}&Operation=OpenGeneralURL&URL=${pageUrl}&Size=FullScreen&Mode=${mode}&IsVideo=False&CheckGuest=True&InQueue=False&MultiInst=False`;
       }
       break;
-    case GAME_MAJIANG:
+    case GAME_MAP.MJ.GID:
       scheme = 'happymjscheme://';
       break;
-    case GAME_LOLM:
+    case GAME_MAP.LOLM.GID:
       scheme = getLOLMDeeplinkScheme(pageUrl);
       break;
-    case GAME_TY:
+    case GAME_MAP.TY.GID:
       scheme = 'tencent1105636778://';
       break;
-    case GAME_TLBB:
+    case GAME_MAP.TLBB.GID:
       scheme = 'tencent1105245568://';
       break;
-    case GAME_X5M:
+    case GAME_MAP.X5M.GID:
       scheme = 'tencent1105483033://';
       break;
     default:

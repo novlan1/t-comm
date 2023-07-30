@@ -9,5 +9,6 @@ export {
   gotoWzCommunity,
   gotoWzGame,
   gotoX5MGame,
+  gotoNarutoGame,
   getOpenGameScheme,
 } from './launch-app';
