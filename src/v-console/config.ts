@@ -20,6 +20,7 @@ export const V_CONSOLE_URL = 'https://image-1251917893.file.myqcloud.com/igame/n
 export const V_CONSOLE_STYLE_CONTENT = `
 .${V_CONSOLE_DOM.WRAP} {
   padding: 12px 16px 30px;
+  user-select: auto;
 }
 
 .${V_CONSOLE_DOM.WRAP} .${V_CONSOLE_DOM.LINE} {
@@ -27,6 +28,7 @@ export const V_CONSOLE_STYLE_CONTENT = `
   padding: 5px 0;
   color: var(--VC-PURPLE, #6467f0);
   word-break: break-all;
+  user-select: auto;
 }
 
 .${V_CONSOLE_DOM.WRAP} textarea {
@@ -46,6 +48,7 @@ export const V_CONSOLE_STYLE_CONTENT = `
   padding: 4px;
   line-height: 16px;
   font-size: 13px;
+  user-select: auto;
 }
 
 .${V_CONSOLE_DOM.WRAP} textarea:focus {

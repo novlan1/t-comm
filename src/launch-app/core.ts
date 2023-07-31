@@ -2,6 +2,7 @@ import { merge } from '../lodash-mini/merge';
 import { initEnv } from '../env/env';
 import { closeWebView } from '../msdk/msdk';
 import { loader } from '../loader/loader';
+
 import type { IEnv } from '../env/types';
 import type { ILaunchAppParams } from './types';
 
