@@ -24,6 +24,8 @@ export type ILaunchAppParams = {
 
   pageUrl?: string;
 
+  schemeMap?: Record<string, any>;
+
   Toast?: {
     showLoading: (str: string) => void;
     dismissLoading: () => void;
