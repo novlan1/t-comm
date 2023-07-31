@@ -1,5 +1,15 @@
 # 工具库更新日志
 
+## [1.1.54](https://github.com/novlan1/t-comm/compare/v1.1.53...v1.1.54) (2023-07-31)
+
+
+### Features
+
+* **launch-app:** 外部传参 ([fcaddc4](https://github.com/novlan1/t-comm/commit/fcaddc478a1e8e6333a364ace050b7fadf8561bb))
+* **launch-app:** 移除 ([93ee873](https://github.com/novlan1/t-comm/commit/93ee8736d4e55644ff246fd7e5afccb6285a369c))
+
+
+
 ## [1.1.53](https://github.com/novlan1/t-comm/compare/v1.1.52...v1.1.53) (2023-07-31)
 
 
