@@ -69,9 +69,7 @@
     "@typescript-eslint/eslint-plugin": "^5.39.0",
     "@typescript-eslint/parser": "^5.39.0",
     "better-docs": "^2.7.2",
-    "canvas": "^2.6.1",
     "chalk": "^4.1.2",
-    "cheerio": "^1.0.0-rc.12",
     "conventional-changelog": "^3.1.25",
     "docdash": "^1.2.0",
     "dotenv": "^16.0.3",
@@ -98,8 +96,13 @@
   "dependencies": {
     "@babel/runtime": "^7.17.2",
     "axios": "^0.26.1",
+    "canvas": "^2.6.1",
+    "cheerio": "^1.0.0-rc.12",
+    "cron-parser": "^4.8.1",
     "qs": "^6.11.0",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "tar": "^6.1.15",
+    "xlsx": "^0.18.5"
   },
   "lint-staged": {
     "*.{ts,js}": [
