@@ -1,5 +1,7 @@
 export {
   loadJS,
   loadCSS,
-  loader,
 } from './loader';
+export {
+  loader,
+} from './little-loader';
