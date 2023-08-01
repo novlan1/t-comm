@@ -6,6 +6,12 @@ import { loader } from '../loader/little-loader';
 import type { IEnv } from '../env/types';
 import type { ILaunchAppParams } from './types';
 
+
+// const closeWebView = () => console.log('closeWebView');
+// type ILaunchAppParams = any;
+// type IEnv = any;
+
+
 /**
  * @description 通过 location.href 来拉起
  * @param {String} scheme  必须，协议

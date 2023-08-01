@@ -4,6 +4,7 @@ import { launchApp } from './core';
 import { GAME_MAP } from './config';
 import type { ILaunchAppParams } from './types';
 
+// type ILaunchAppParams = any;
 
 function getScheme(options: Record<string, any>, gid: number, key?: string) {
   if (key && options[key]) {

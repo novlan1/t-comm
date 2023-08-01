@@ -55,7 +55,6 @@ export function initWeixinShare({
 }) {
   initCommShareTip();
 
-  const { wx } = window;
 
   configWx({
     apiList,
@@ -63,6 +62,8 @@ export function initWeixinShare({
     getWxSignaturePromise,
   })
     .then(() => {
+      const { wx } = window;
+
       // 处理分享参数
       const tmp = {
         title: shareObject.title,
@@ -87,10 +88,10 @@ export function initWeixinShare({
         tmp.link = `${tmp.link}&sharect=${new Date().getTime()}`;
       }
 
-      wx?.onMenuShareTimeline(tmp);
-      wx?.onMenuShareAppMessage(tmp);
-      wx?.onMenuShareQQ(tmp);
-      wx?.onMenuShareQZone(tmp);
+      wx?.onMenuShareTimeline?.(tmp);
+      wx?.onMenuShareAppMessage?.(tmp);
+      wx?.onMenuShareQQ?.(tmp);
+      wx?.onMenuShareQZone?.(tmp);
       // 请注意，原有的 wx.onMenuShareTimeline、wx.onMenuShareAppMessage、wx.onMenuShareQQ、wx.onMenuShareQZone 接口，
       // 即将废弃。请尽快迁移使用客户端6.7.2及JSSDK 1.4.0以上版本支持的 wx.updateAppMessageShareData、wx.updateTimelineShareData接口。
       // 2019.11.14 npm weixin-sdk-js还未更新到1.4.0，更新后需要改下
