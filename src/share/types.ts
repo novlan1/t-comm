@@ -1,10 +1,4 @@
-export type IGetWxSignaturePromise = () => Promise<{
-  wxappid?: string;
-  timestamp?: string;
-  noncestr?: string;
-  signature?: string;
-}>;
-
+import type { IGetWxSignaturePromise } from '../wx/types';
 
 export type IGetMiniProgramOpenLink = (params: any) => Promise<{
   open_link?: string;

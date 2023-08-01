@@ -3,3 +3,6 @@ export {
   getAPITicket,
   genSignature,
 } from './signature';
+export {
+  configWx,
+} from './wx-config';
