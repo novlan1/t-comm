@@ -1,15 +1,15 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import path from 'path';
-import { RollupOptions } from 'rollup';
+// import { RollupOptions } from 'rollup';
 import typescript from '@rollup/plugin-typescript';
 import babel from '@rollup/plugin-babel';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import filesize from 'rollup-plugin-filesize';
+// import filesize from 'rollup-plugin-filesize';
 // import { terser } from 'rollup-plugin-terser';
 import { DEFAULT_EXTENSIONS } from '@babel/core';
 
-// import { getExtraBuildDir } from './script/build/rollup-helper';
+import { getExtraBuildDir } from './script/build/rollup-helper';
 import pkg from './package.json';
 
 const paths = {
@@ -18,7 +18,7 @@ const paths = {
 };
 
 // rollup 配置项
-const rollupConfig: RollupOptions = {
+const rollupConfig = {
   input: paths.input,
   output: [
     // 输出 commonjs 规范的代码
@@ -47,7 +47,7 @@ const rollupConfig: RollupOptions = {
     // 使得 rollup 支持 commonjs 规范，识别 commonjs 规范的依赖
     commonjs(),
 
-    filesize(),
+    // filesize(),
 
     babel({
       babelHelpers: 'runtime',
@@ -73,5 +73,5 @@ export default [
       ...(rollupConfig.plugins || []),
     ],
   },
-  // ...getExtraBuildDir(rollupConfig),
+  ...getExtraBuildDir(rollupConfig),
 ];

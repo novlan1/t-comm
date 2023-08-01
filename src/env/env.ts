@@ -5,7 +5,7 @@ import type { IEnv } from './types';
  * @returns {string} ua
  */
 function getRealUA() {
-  return navigator.userAgent || '';
+  return (navigator.userAgent || '').toLowerCase();
 }
 
 /**
