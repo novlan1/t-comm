@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.56](https://github.com/novlan1/t-comm/compare/v1.1.55...v1.1.56) (2023-08-01)
+
+
+### Features
+
+* **loader:** 统一用little-loader ([8f11a31](https://github.com/novlan1/t-comm/commit/8f11a311c09dcac007c55ecc6d1545b175c6b070))
+
+
+
 ## [1.1.55](https://github.com/novlan1/t-comm/compare/v1.1.54...v1.1.55) (2023-08-01)
 
 
