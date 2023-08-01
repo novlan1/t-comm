@@ -1,7 +1,7 @@
 import { merge } from '../lodash-mini/merge';
 import { initEnv } from '../env/env';
 import { closeWebView } from '../msdk/msdk';
-import { loader } from '../loader/loader';
+import { loader } from '../loader/little-loader';
 
 import type { IEnv } from '../env/types';
 import type { ILaunchAppParams } from './types';
@@ -154,7 +154,8 @@ function launchInWeiXin({
 
   const onBridgeReady = () => {
     loader(sdkUrl, () => {
-      WeixinJSBridge.invoke(
+      console.log('[onBridgeReady]');
+      window.WeixinJSBridge?.invoke(
         'launchApplication',
         invokeParams,
         afterInvoke,
@@ -163,7 +164,7 @@ function launchInWeiXin({
   };
 
   // WeixinJSBridge 接口加载后再 invoke
-  if (typeof WeixinJSBridge === 'undefined') {
+  if (typeof window.WeixinJSBridge === 'undefined') {
     if (document.addEventListener) {
       document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
     } else if (document.attachEvent) {

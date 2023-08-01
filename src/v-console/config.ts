@@ -8,7 +8,7 @@ export const V_CONSOLE_DOM = {
   WRAP: 'v-console-custom-tab',
   URL_INPUT_ID: 'vConsolePluginInput',
   URL_JUMP_BUTTON: 'vConsolePluginButton',
-};
+} as const;
 
 export const EMPTY_LINE = `<div class="${V_CONSOLE_DOM.LINE}"> </div>`;
 export const V_CONSOLE_NO_DELAY = {
@@ -68,6 +68,14 @@ export const V_CONSOLE_STYLE_CONTENT = `
   padding: 0 12px;
 }
 
+.vc-cmd,
+.vc-cmd-input {
+  user-select: auto !important;
+}
+
+#${V_CONSOLE_DOM.URL_INPUT_ID} {
+  user-select: auto !important;
+}
 `;
 
 export const DEBUG_CGI_ENV = {

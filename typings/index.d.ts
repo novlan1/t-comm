@@ -31,6 +31,8 @@ declare interface Window {
   msdkRemoveNativeCallbackObserver?: Function;
   msdkCloseWebview?: Function;
   msdkiOSHandler?: Function;
+
+  WeixinJSBridge: any;
 }
 
 declare interface Document {
