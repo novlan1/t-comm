@@ -9,7 +9,7 @@ import filesize from 'rollup-plugin-filesize';
 // import { terser } from 'rollup-plugin-terser';
 import { DEFAULT_EXTENSIONS } from '@babel/core';
 
-import { getExtraBuildDir } from './script/build/rollup-helper';
+// import { getExtraBuildDir } from './script/build/rollup-helper';
 import pkg from './package.json';
 
 const paths = {
@@ -73,5 +73,5 @@ export default [
       ...(rollupConfig.plugins || []),
     ],
   },
-  ...getExtraBuildDir(rollupConfig),
+  // ...getExtraBuildDir(rollupConfig),
 ];

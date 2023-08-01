@@ -15,4 +15,5 @@ export const BUILD_DIR_LIST = [
   'v-console',
   'validate',
   'launch-app',
+  'wx',
 ];

@@ -153,6 +153,7 @@ function launchInWeiXin({
   };
 
   const onBridgeReady = () => {
+    console.log('onBridgeReady...');
     loader(sdkUrl, () => {
       console.log('[onBridgeReady]');
       window.WeixinJSBridge?.invoke(
@@ -165,6 +166,7 @@ function launchInWeiXin({
 
   // WeixinJSBridge 接口加载后再 invoke
   if (typeof window.WeixinJSBridge === 'undefined') {
+    console.log('WeixinJSBridge undefined');
     if (document.addEventListener) {
       document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
     } else if (document.attachEvent) {
@@ -172,6 +174,7 @@ function launchInWeiXin({
       document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
     }
   } else {
+    console.log('WeixinJSBridge not undefined');
     onBridgeReady();
   }
 }
@@ -338,6 +341,8 @@ export function launchApp(args: ILaunchAppParams = {}) {
     env,
     ...args,
   });
+  console.log('[params]', params);
+  console.log('[env]', env);
 
   // 二次封装失败、成功回调
   const customFailCallback = params.failCallback;
