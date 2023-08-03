@@ -3,6 +3,7 @@ import { configWx } from '../../wx/wx-config';
 import { WX_JS_SDK } from '../../wx/config';
 
 import {
+  ShareConfig,
   DEFAULT_API_LIST,
   DEFAULT_OPEN_TAG_LIST,
   QQ_JS_SDK,
@@ -41,6 +42,13 @@ export function initQQShare({
   });
 }
 
+export function hideQQShareBtn() {
+  loadJS('QQ_JS_SDK').then(() => {
+    window?.mqq?.ui?.setWebViewBehavior?.({
+      actionButton: 0, // 隐藏 webview右上角按钮
+    });
+  });
+}
 
 export function initWeixinShare({
   shareObject,
@@ -110,6 +118,32 @@ export function initWeixinShare({
     });
 }
 
+export function hideWeixinShareBtn() {
+  const { getWxSignaturePromise } = ShareConfig.shareObject;
+  if (!getWxSignaturePromise) return;
+
+  configWx({
+    apiList: ['checkJsApi', 'hideMenuItems'],
+    getWxSignaturePromise,
+  })
+    .then(() => {
+      const { wx } = window;
+      wx?.ready?.(() => {
+        wx.hideMenuItems({
+          menuList: [
+            'menuItem:share:qq', // 隐藏分享QQ好友、
+            'menuItem:share:QZone', // 隐藏分享QQ空间、
+            'menuItem:share:appMessage', // 隐藏分享微信好友、
+            'menuItem:share:timeline', // 隐藏分享微信朋友圈
+            'menuItem:share:wework', // 隐藏分享企业微信
+          ],
+        });
+      });
+    })
+    .catch((error) => {
+      console.log('[hideShareBtn] error : ', error);
+    });
+}
 
 /**
  * 设置小程序分享

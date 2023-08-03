@@ -1,6 +1,6 @@
 import type { IGetWxSignaturePromise } from '../wx/types';
-
-export type IGetMiniProgramOpenLink = (params: any) => Promise<{
+// type IGetWxSignaturePromise = any;
+export type IGetMiniProgramOpenLink = (params?: any) => Promise<{
   open_link?: string;
 }>;
 
@@ -27,6 +27,8 @@ export type IShareObject = {
 
   tipInvoke?: Function;
   pvpInvoke?: Function;
+
+  showTypeInGame?: Array<number>;
 };
 
 export type IShareUiObj = {

@@ -8,8 +8,8 @@ export function configWx({
   openTagList,
   getWxSignaturePromise,
 }: {
-  apiList: Array<string>;
-  openTagList: Array<string>;
+  apiList?: Array<string>;
+  openTagList?: Array<string>;
   getWxSignaturePromise: IGetWxSignaturePromise;
 }) {
   return new Promise((resolve, reject) => {
@@ -41,8 +41,8 @@ function getWxCfg({
   openTagList,
   getWxSignaturePromise,
 }: {
-  apiList: Array<string>;
-  openTagList: Array<string>;
+  apiList?: Array<string>;
+  openTagList?: Array<string>;
   getWxSignaturePromise: IGetWxSignaturePromise;
 }) {
   return new Promise((resolve, reject) => {

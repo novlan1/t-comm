@@ -6,15 +6,18 @@ export function getCurrentPage() {
 
 export function initShareMp(shareInfo: {
   title?: string;
+  mpPath?: string;
   path?: string;
   imageUrl?: string;
+  icon?: string;
+  mpImageUrl?: string;
 }) {
   const page = getCurrentPage() as any;
   if (!page) return;
   page.onShareAppMessage = () => ({
     title: `${shareInfo.title}` || '',
-    path: shareInfo.path || '',
-    imageUrl: shareInfo.imageUrl || '',
+    path: shareInfo.mpPath || shareInfo.path || '',
+    imageUrl: shareInfo.mpImageUrl || shareInfo.imageUrl || shareInfo.icon || '',
   });
 }
 

@@ -34,6 +34,9 @@ declare interface Window {
   msdkiOSHandler?: Function;
 
   WeixinJSBridge: any;
+  msdkShareDelegate?: any;
+  WebViewJavascriptBridge?: any;
+  msdkNativeCallback?: any;
 }
 
 declare interface Document {

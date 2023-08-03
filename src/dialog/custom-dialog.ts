@@ -1,3 +1,9 @@
+import { insertHtml, insertStyle } from '../dom/dom';
+
+const DEFAULT_CUSTOM_DIALOG_ID = 'customDialogId';
+const DEFAULT_CUSTOM_DIALOG_STYLE_ID = 'customDialogStyle';
+
+
 export function initCustomDom({
   styleId,
   styleContent,
@@ -9,23 +15,14 @@ export function initCustomDom({
   dialogId: string;
   dialogContent: string;
 }) {
-  const idObjectStyle = document.getElementById(styleId);
-  idObjectStyle?.parentNode?.removeChild(idObjectStyle);
-
-  const styleNode = document.createElement('style');
-  styleNode.id = styleId;
-  styleNode.type = 'text/css';
-  styleNode.innerHTML = styleContent;
-  document.getElementsByTagName('head')[0].appendChild(styleNode);
-
-  const idObject = document.getElementById(dialogId);
-  idObject?.parentNode?.removeChild(idObject);
-
-  const shareNode = document.createElement('div');
-  shareNode.id = dialogId;
-  shareNode.style.display = 'none';
-  shareNode.innerHTML = dialogContent;
-  document.getElementsByTagName('body')[0].appendChild(shareNode);
+  insertStyle({
+    id: styleId,
+    content: styleContent,
+  });
+  insertHtml({
+    id: dialogId,
+    content: dialogContent,
+  });
 }
 
 
@@ -34,12 +31,14 @@ export function initCustomDialog({
   content,
   confirmText,
   cancelText,
-  dialogId = 'customDialogId',
+  styleId = DEFAULT_CUSTOM_DIALOG_STYLE_ID,
+  dialogId = DEFAULT_CUSTOM_DIALOG_ID,
 }: {
   title: string;
   content: string;
   confirmText?: string;
   cancelText?: string;
+  styleId?: string;
   dialogId?: string;
 }) {
   const styleContent = `
@@ -96,9 +95,17 @@ export function initCustomDialog({
 </div>
   `;
   initCustomDom({
-    styleId: 'customDialogStyle',
+    styleId,
     styleContent,
-    dialogId: 'customDialogDom',
+    dialogId,
     dialogContent,
   });
+}
+
+
+export function showCustomDialog(domId = DEFAULT_CUSTOM_DIALOG_ID) {
+  const dom = document.getElementById(domId);
+  if (dom) {
+    dom.style.display = 'block';
+  }
 }

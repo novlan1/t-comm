@@ -1,12 +1,18 @@
-import { getEnvUAType } from '../../env/env';
+import { initEnv } from '../../env/env';
 import { removeUrlParams } from '../../url/remove-param';
-import { initCustomDialog } from '../../dialog/custom-dialog';
+import { initCustomDialog, showCustomDialog } from '../../dialog/custom-dialog';
 
 import { initMsdkShare, initInGameShare } from './share-in-game';
-import { initQQShare, initWeixinShare, initMiniProgramShare } from './share-im';
-import { initGHelperShare, initPvpShare, initTipShare } from './share-app';
+import {
+  initQQShare,
+  initWeixinShare,
+  initMiniProgramShare,
+  hideQQShareBtn,
+  hideWeixinShareBtn,
+} from './share-im';
+import { initGHelperShare, initPvpShare, initTipShare, hidePvpShareBtn } from './share-app';
 import { showCommShareTip } from '../helper';
-import { DEFAULT_SHARE_ICON, ShareConfig } from '../config';
+import { DEFAULT_SHARE_ICON, ShareConfig, DEFAULT_SHOW_TYPE_IN_GAME } from '../config';
 
 import type { IShareObject } from '../types';
 
@@ -22,6 +28,9 @@ export function initShare(params: IShareObject = {
   obj.type = obj.type || null;
   obj.path = obj.path || null;
   obj.forceHistoryMode = obj.forceHistoryMode || null;
+  if (!obj.showTypeInGame?.length) {
+    obj.showTypeInGame = DEFAULT_SHOW_TYPE_IN_GAME as any;
+  }
 
   // 分享链接：移除 reporttk 参数
   const link = obj.link || window.location.href;
@@ -34,19 +43,17 @@ export function initShare(params: IShareObject = {
     getWxSignaturePromise = () => Promise.resolve({}),
     getMiniProgramOpenLink = () => Promise.resolve({}),
   } = obj;
-  const appId = obj.appId || '';
 
   const { shareObject } = ShareConfig;
 
   // 提到函数中，方便测试
-  const env = getEnvUAType();
+  const env = initEnv();
   const callbackList = [
     {
       condition: env.isMsdk,
       callback() {
         initMsdkShare({
           getMiniProgramOpenLink,
-          appId,
           shareObject,
         });
       },
@@ -102,7 +109,6 @@ export function initShare(params: IShareObject = {
         initInGameShare({
           shareObject,
           getMiniProgramOpenLink,
-          appId,
         });
       },
     },
@@ -168,6 +174,7 @@ function showWindowNavigatorShareDialog() {
       content: '请复制链接到微信或手机QQ内打开参与活动',
       confirmText: '我知道了',
     });
+    showCustomDialog();
   }
 }
 
@@ -177,12 +184,27 @@ function showWindowNavigatorShareDialog() {
 export function openShareUI() {
   const { shareUiObj } = ShareConfig;
 
-  const env = getEnvUAType();
+  const env = initEnv();
   if (env.isInGame || env.isGHelper) {
     shareUiObj?.openShareUI?.();
   } else if (env.isQQ || env.isWeixin) {
     showCommShareTip();
   } else {
     showWindowNavigatorShareDialog();
+  }
+}
+
+
+export function hideShareBtn() {
+  const env = initEnv();
+
+  if (env.isQQ) { // 手Q
+    hideQQShareBtn();
+  } else if (env.isMiniProgram) { // 微信小程序 webview 环境
+    // 由于是内嵌形式，不支持实时与小程序通信，不能动态关闭小程序的转发功能
+  } else if (env.isWeixin) { // 微信 webview 环境
+    hideWeixinShareBtn();
+  } else if (env.isPvpApp) { // 王者人生 App
+    hidePvpShareBtn();
   }
 }

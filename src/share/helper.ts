@@ -2,6 +2,7 @@ import {
   ShareConfig,
   SHARE_DOM_MAP,
   SHARE_TYPE_MAP,
+  DEFAULT_SHOW_TYPE_IN_GAME,
 } from './config';
 import { initCustomDom } from '../dialog/custom-dialog';
 
@@ -58,7 +59,7 @@ export function initCommShareTip() {
 }
 
 
-export function initCommShareUI(callback: String) {
+export function initCommShareUI(callback: String, showTypeInGame = DEFAULT_SHOW_TYPE_IN_GAME) {
   const styleContent = `
   .share-dialog-login{ padding:30px 20px; position:fixed; left:0; right:0; bottom:0;background:#222222; z-index:2001}\
   .share-choose-login {width:100%;margin:20px auto 0;text-align: center;font-size:0;}\
@@ -72,29 +73,30 @@ export function initCommShareUI(callback: String) {
   .share-dialog-close{ width:25px; height:25px; display:block; position:absolute; right:10px; top:10px; background:url(//game.gtimg.cn/images/user/cp/a20170922tipYYB/close-b.png) center center no-repeat; background-size:15px 15px; text-indent:-1000em; overflow:hidden}\
   .share-layer{ width:100%; height:100%; position:fixed; left:0; top:0; z-index:2000; background:rgba(0,0,0,0.5) }
   `;
+  const showThisType = (type: any) => showTypeInGame.indexOf(type) > -1;
 
   const dialogContent = `
-  <div class="share-dialog-login">\
-    <a href="javascript:;" class="share-dialog-close" onclick="document.getElementById('${SHARE_DOM_MAP.SHARE_UI_DOM_ID}').style.display='none';">关闭</a>\
-    <div class="share-choose-login">\
-      <a href="javascript:;" onclick="javascript:${callback}(${SHARE_TYPE_MAP.WX_TIMELINE});">\
-        <span class="share-type share-type-1"></span>\
-        <span class="share-public-text">朋友圈</span>\
-      </a>\
-      <a href="javascript:;" onclick="javascript:${callback}(${SHARE_TYPE_MAP.WX_FRIENDS});">\
-        <span class="share-type share-type-2"></span>\
-        <span class="share-public-text">微信好友</span>\
-      </a>\
-      <a href="javascript:;" onclick="javascript:${callback}(${SHARE_TYPE_MAP.QQ_FRIENDS});">\
-        <span class="share-type share-type-3"></span>\
-        <span class="share-public-text">QQ好友</span>\
-      </a>\
-      <a href="javascript:;" onclick="javascript:${callback}(${SHARE_TYPE_MAP.QQ_ZONE});">\
-        <span class="share-type share-type-4"></span>\
-        <span class="share-public-text">QQ空间</span>\
-      </a>\
-    </div>\
-  </div>\
+  <div class="share-dialog-login">
+    <a href="javascript:;" class="share-dialog-close" onclick="document.getElementById('${SHARE_DOM_MAP.SHARE_UI_DOM_ID}').style.display='none';">关闭</a>
+    <div class="share-choose-login">
+      ${showThisType(SHARE_TYPE_MAP.WX_TIMELINE) ? `<a href="javascript:;" onclick="javascript:${callback}(${SHARE_TYPE_MAP.WX_TIMELINE});">
+        <span class="share-type share-type-1 share-type--wx-friends"></span>
+        <span class="share-public-text">朋友圈</span>
+      </a>` : ''}
+      ${showThisType(SHARE_TYPE_MAP.WX_FRIENDS) ? `<a href="javascript:;" onclick="javascript:${callback}(${SHARE_TYPE_MAP.WX_FRIENDS});">
+        <span class="share-type share-type-2 share-type--wx-timeline"></span>
+        <span class="share-public-text">微信好友</span>
+      </a>` : ''}
+      ${showThisType(SHARE_TYPE_MAP.QQ_FRIENDS) ? `<a href="javascript:;" onclick="javascript:${callback}(${SHARE_TYPE_MAP.QQ_FRIENDS});">
+        <span class="share-type share-type-3 share-type--qq-friends"></span>
+        <span class="share-public-text">QQ好友</span>
+      </a>` : ''}
+      ${showThisType(SHARE_TYPE_MAP.QQ_ZONE) ? `<a href="javascript:;" onclick="javascript:${callback}(${SHARE_TYPE_MAP.QQ_ZONE});">
+        <span class="share-type share-type-4 share-type--qq-zone"></span>
+        <span class="share-public-text">QQ空间</span>
+      </a>` : ''}
+    </div>
+  </div>
   <div class="share-layer" onclick="document.getElementById('${SHARE_DOM_MAP.SHARE_UI_DOM_ID}').style.display='none';"></div>
   `;
   initCustomDom({

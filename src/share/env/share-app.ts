@@ -98,3 +98,8 @@ export function initGHelperShare({
   }
 }
 
+export function hidePvpShareBtn() {
+  const params = { type: 0, title: '', button: '' };
+  const invoke = ShareConfig.shareObject.pvpInvoke;
+  invoke?.('setTitleButtons', params); // 设置顶部右侧
+}

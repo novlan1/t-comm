@@ -1,7 +1,7 @@
 export {
   initShare,
   openShareUI,
-} from './env/share';
+} from './env/share-web';
 export {
   initShareMp,
   openShareUIMp,

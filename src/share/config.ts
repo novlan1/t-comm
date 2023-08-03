@@ -48,4 +48,26 @@ export const SHARE_TYPE_MAP = {
   WX_TIMELINE: 2,
   QQ_FRIENDS: 3,
   QQ_ZONE: 4,
-};
+} as const;
+export const DEFAULT_SHOW_TYPE_IN_GAME = [
+  SHARE_TYPE_MAP.WX_FRIENDS,
+  SHARE_TYPE_MAP.WX_TIMELINE,
+  SHARE_TYPE_MAP.QQ_FRIENDS,
+  SHARE_TYPE_MAP.QQ_ZONE,
+] as const;
+
+const SHARE_TYPE_NAME_MAP = {
+  [SHARE_TYPE_MAP.WX_FRIENDS]: '微信好友',
+  [SHARE_TYPE_MAP.WX_TIMELINE]: '微信朋友圈',
+  [SHARE_TYPE_MAP.QQ_FRIENDS]: 'QQ好友',
+  [SHARE_TYPE_MAP.QQ_ZONE]: 'QQ空间',
+} as const;
+
+export const SHARE_TYPE_LIST = Object.keys(SHARE_TYPE_MAP).map((key) => {
+  const value = SHARE_TYPE_MAP[key as keyof typeof SHARE_TYPE_MAP];
+
+  return {
+    value,
+    label: SHARE_TYPE_NAME_MAP[value],
+  };
+});
