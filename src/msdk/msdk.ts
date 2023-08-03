@@ -1,6 +1,7 @@
 import { initEnv } from '../env/env';
 import { loader } from '../loader/little-loader';
 
+
 export function sendToMsdkNative(data = '') {
   const env = initEnv();
 
