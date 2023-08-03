@@ -1,13 +1,59 @@
-import { getEnvUAType } from '../env/env';
-import { urlToBase64 } from '../dom-to-image/dom-to-image';
+import { getEnvUAType } from '../../env/env';
+import { urlToBase64 } from '../../dom-to-image/dom-to-image';
+import { callJsBrowserAdapter } from '../../msdk/msdk';
 import {
   ShareConfig,
   SHARE_TYPE_MAP,
-} from './config';
-import { initCommShareUI, showCommShareUI, calBase64Size } from './helper';
+} from '../config';
+import { initCommShareUI, showCommShareUI, calBase64Size } from '../helper';
 
-import type { IGetMiniProgramOpenLink } from './types';
+import type { IGetMiniProgramOpenLink } from '../types';
 
+function shareInMSDK(param: any) {
+  if (typeof window.msdkShare === 'undefined') {
+    callJsBrowserAdapter().then(() => {
+      window.msdkShare(param);
+    });
+  } else {
+    window.msdkShare(param);
+  }
+}
+
+function shareInSlugSDK({
+  funcName,
+  scene,
+  title,
+  desc,
+  url,
+  imgUrl,
+}: {
+  funcName: string;
+  scene?: number | string;
+  title?: string;
+  desc?: string;
+  url?: string
+  imgUrl?: string;
+}) {
+  if (typeof window.msdkShare === 'undefined') {
+    callJsBrowserAdapter().then(() => {
+      window.customBrowserInterface?.[funcName]?.(
+        scene,
+        title,
+        desc,
+        url,
+        imgUrl,
+      );
+    });
+  } else {
+    window.customBrowserInterface?.[funcName]?.(
+      scene,
+      title,
+      desc,
+      url,
+      imgUrl,
+    );
+  }
+}
 
 function openWeixinOpenLink({
   shareObject,
@@ -104,8 +150,7 @@ export function initMsdkShare({
         shareObject,
         failedCallback: () => {
           try {
-          // @ts-ignore
-            msdkShare(param);
+            shareInMSDK(param);
           } catch (e) {
             console.log('e', e);
             throw e;
@@ -116,8 +161,7 @@ export function initMsdkShare({
       });
     } else {
       try {
-        // @ts-ignore
-        msdkShare(param);
+        shareInMSDK(param);
       } catch (e) {
         console.log('e', e);
         throw e;
@@ -151,64 +195,65 @@ export function initInGameShare({
   // @ts-ignore
   window.slugSDKShareDelegate = function (type: number) {
     shareObject.callback?.();
-    if (typeof window.customBrowserInterface === 'object') {
-      switch (type) {
-        case SHARE_TYPE_MAP.WX_FRIENDS:
-          if (shareObject?.path && getMiniProgramOpenLink) {
-            openWeixinOpenLink({
-              shareObject,
-              failedCallback: () => {
-                window.customBrowserInterface?.sendToWeixinWithUrl(
-                  2,
-                  shareObject.title,
-                  shareObject.desc,
-                  shareObject.link,
-                  shareObject.icon,
-                );
-              },
-              getMiniProgramOpenLink,
-              appId,
-            });
-          } else {
-            window.customBrowserInterface?.sendToWeixinWithUrl(
-              2,
-              shareObject.title,
-              shareObject.desc,
-              shareObject.link,
-              shareObject.icon,
-            );
-          }
-          break;
-        case SHARE_TYPE_MAP.WX_TIMELINE:
-          window.customBrowserInterface?.sendToWeixinWithUrl(
-            1,
-            shareObject.title,
-            shareObject.desc,
-            shareObject.link,
-            shareObject.icon,
-          );
-          break;
-        case SHARE_TYPE_MAP.QQ_FRIENDS:
-          window.customBrowserInterface?.sendToQQ(
-            2,
-            shareObject.title,
-            shareObject.desc,
-            shareObject.link,
-            shareObject.icon,
-          );
-          break;
-        case SHARE_TYPE_MAP.QQ_ZONE:
-          window.customBrowserInterface?.sendToQQ(
-            1,
-            shareObject.title,
-            shareObject.desc,
-            shareObject.link,
-            shareObject.icon,
-          );
-          break;
-      }
-    } else {
-      console.log('未引用sdk');
+    switch (type) {
+      case SHARE_TYPE_MAP.WX_FRIENDS:
+        if (shareObject?.path && getMiniProgramOpenLink) {
+          openWeixinOpenLink({
+            shareObject,
+            failedCallback: () => {
+              shareInSlugSDK({
+                funcName: 'sendToWeixinWithUrl',
+                scene: 2,
+                title: shareObject.title,
+                desc: shareObject.desc,
+                url: shareObject.link,
+                imgUrl: shareObject.icon,
+              });
+            },
+            getMiniProgramOpenLink,
+            appId,
+          });
+        } else {
+          shareInSlugSDK({
+            funcName: 'sendToWeixinWithUrl',
+            scene: 2,
+            title: shareObject.title,
+            desc: shareObject.desc,
+            url: shareObject.link,
+            imgUrl: shareObject.icon,
+          });
+        }
+        break;
+      case SHARE_TYPE_MAP.WX_TIMELINE:
+        shareInSlugSDK({
+          funcName: 'sendToWeixinWithUrl',
+          scene: 1,
+          title: shareObject.title,
+          desc: shareObject.desc,
+          url: shareObject.link,
+          imgUrl: shareObject.icon,
+        });
+        break;
+      case SHARE_TYPE_MAP.QQ_FRIENDS:
+        shareInSlugSDK({
+          funcName: 'sendToQQ',
+          scene: 2,
+          title: shareObject.title,
+          desc: shareObject.desc,
+          url: shareObject.link,
+          imgUrl: shareObject.icon,
+        });
+        break;
+      case SHARE_TYPE_MAP.QQ_ZONE:
+        shareInSlugSDK({
+          funcName: 'sendToQQ',
+          scene: 1,
+          title: shareObject.title,
+          desc: shareObject.desc,
+          url: shareObject.link,
+          imgUrl: shareObject.icon,
+        });
+        break;
     }
   };
 }

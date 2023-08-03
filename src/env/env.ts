@@ -72,6 +72,7 @@ export function getEnvUAType(): IEnv {
 
   const isIOS = isIos;
   const isMsdk = ua.indexOf(' msdk/') !== -1; // msdk
+  const isMsdkX = ua.indexOf(' webviewx msdk/') !== -1; // 嵌入式msdk浏览器
   const isMsdkV5 = ua.indexOf(' msdk/5') !== -1; // msdk V5
   const isSlugSdk = ua.indexOf('ingame') !== -1; // 微社区sdk
   const isInGame = isMsdk || isSlugSdk; // 是否游戏内
@@ -96,6 +97,7 @@ export function getEnvUAType(): IEnv {
     isIos,
     isIOS,
     isMsdk,
+    isMsdkX,
     isMsdkV5,
     isSlugSdk,
     isInGame,

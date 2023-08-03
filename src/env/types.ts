@@ -8,6 +8,7 @@ export type IEnv = {
   isIos: boolean,
   isIOS: boolean,
   isMsdk: boolean,
+  isMsdkX: boolean;
   isMsdkV5: boolean,
   isSlugSdk: boolean,
   isInGame: boolean,

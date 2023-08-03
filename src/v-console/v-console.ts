@@ -1,5 +1,5 @@
 import { loadJS } from '../loader/loader';
-import { insertStyle } from '../dom/style';
+import { insertStyle } from '../dom/dom';
 import { V_CONSOLE_URL, V_CONSOLE_STYLE_CONTENT } from './config';
 
 import { initVersionPlugin } from './plugin/version';

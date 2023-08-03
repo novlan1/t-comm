@@ -1,6 +1,6 @@
-import { ShareConfig } from './config';
+import { ShareConfig } from '../config';
 
-import type { IShareObject } from './types';
+import type { IShareObject } from '../types';
 
 
 export function initTipShare({

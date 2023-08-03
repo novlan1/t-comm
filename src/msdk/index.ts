@@ -4,4 +4,5 @@ export {
   removeMsdkNativeCallbackListener,
   closeMsdkWebview,
   closeWebView,
+  callJsBrowserAdapter,
 } from './msdk';

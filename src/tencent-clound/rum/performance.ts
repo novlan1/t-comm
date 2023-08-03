@@ -46,7 +46,7 @@ export async function getRUMPerformance({
     } catch (err) {}
 
     return {
-      data: data || [],
+      data: data.results || [],
     };
   })
     .catch((err: unknown) => {

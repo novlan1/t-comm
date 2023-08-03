@@ -20,6 +20,7 @@ declare interface Window {
   customBrowserInterface?: Record<string, any>
   shareCallBack?: Function;
   setTitleButtonsCallback?: Function;
+  msdkShare: any;
 
   vConsole: any;
 

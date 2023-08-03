@@ -1,15 +1,15 @@
-import { loadJS } from '../loader/loader';
-import { configWx } from '../wx/wx-config';
-import { WX_JS_SDK } from '../wx/config';
+import { loadJS } from '../../loader/loader';
+import { configWx } from '../../wx/wx-config';
+import { WX_JS_SDK } from '../../wx/config';
 
 import {
   DEFAULT_API_LIST,
   DEFAULT_OPEN_TAG_LIST,
   QQ_JS_SDK,
-} from './config';
-import { initCommShareTip } from './helper';
+} from '../config';
+import { initCommShareTip } from '../helper';
 
-import type { IGetWxSignaturePromise } from '../wx/types';
+import type { IGetWxSignaturePromise } from '../../wx/types';
 
 
 export function initQQShare({

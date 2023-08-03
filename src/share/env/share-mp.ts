@@ -17,3 +17,15 @@ export function initShareMp(shareInfo: {
     imageUrl: shareInfo.imageUrl || '',
   });
 }
+
+export function openShareUIMp(text = '点击右上角"..."分享', duration = 3000) {
+  uni.showToast({
+    title: text,
+    icon: 'none',
+    duration,
+    success() {
+    },
+    fail() {
+    },
+  });
+}

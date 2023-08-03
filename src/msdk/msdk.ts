@@ -1,4 +1,5 @@
 import { initEnv } from '../env/env';
+import { loader } from '../loader/little-loader';
 
 export function sendToMsdkNative(data = '') {
   const env = initEnv();
@@ -69,3 +70,30 @@ export function closeWebView() {
   }
 }
 
+/**
+ * 添加游戏内浏览器jssdk
+ */
+export function callJsBrowserAdapter() {
+  return new Promise((resolve) => {
+    const env = initEnv();
+    if (env.isMsdkV5) {
+      loader('https://image-1251917893.file.myqcloud.com/igame/common/js/msdkJsAdapterV5.js', () => {
+        resolve(true);
+      });
+    } else if (env.isMsdk) {
+      if (env.isMsdkX) {
+        loader('https://image-1251917893.file.myqcloud.com/igame/common/js/msdkJsAdapterV3_embedded.js', () => {
+          resolve(true);
+        });
+      } else {
+        loader('https://image-1251917893.file.myqcloud.com/igame/common/js/msdkJsAdapterV3.js', () => {
+          resolve(true);
+        });
+      }
+    } else if (env.isSlugSdk) {
+      loader('https://tiem-cdn.qq.com/slugteam/sdk/browser_adapt.js', () => {
+        resolve(true);
+      });
+    }
+  });
+}

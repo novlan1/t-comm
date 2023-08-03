@@ -1,14 +1,14 @@
-import { getEnvUAType } from '../env/env';
-import { removeUrlParams } from '../url/remove-param';
-import { initCustomDialog } from '../dialog/custom-dialog';
+import { getEnvUAType } from '../../env/env';
+import { removeUrlParams } from '../../url/remove-param';
+import { initCustomDialog } from '../../dialog/custom-dialog';
 
 import { initMsdkShare, initInGameShare } from './share-in-game';
 import { initQQShare, initWeixinShare, initMiniProgramShare } from './share-im';
 import { initGHelperShare, initPvpShare, initTipShare } from './share-app';
-import { showCommShareTip } from './helper';
-import { DEFAULT_SHARE_ICON, ShareConfig } from './config';
+import { showCommShareTip } from '../helper';
+import { DEFAULT_SHARE_ICON, ShareConfig } from '../config';
 
-import type { IShareObject } from './types';
+import type { IShareObject } from '../types';
 
 
 export function initShare(params: IShareObject = {
