@@ -1,13 +1,26 @@
-# Changelog
+# 工具库更新日志
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+## [1.1.62](https://github.com/novlan1/t-comm/compare/v1.1.61...v1.1.62) (2023-08-03)
 
-### [1.1.59](https://github.com/novlan1/t-comm/compare/v1.1.58...v1.1.59) (2023-08-01)
+
+### Features
+
+* 优化share ([3865cae](https://github.com/novlan1/t-comm/commit/3865caec1c77814573cd0ac1b1f15e077c5d9665))
+
+
+
+## [1.1.61](https://github.com/novlan1/t-comm/compare/v1.1.59...v1.1.61) (2023-08-03)
+
+
+
+## [1.1.59](https://github.com/novlan1/t-comm/compare/v1.1.58...v1.1.59) (2023-08-01)
 
 
 ### Features
 
 * **tam:** token增加缓存 ([71d73c0](https://github.com/novlan1/t-comm/commit/71d73c07155994be74e5bba3afabf947bedf7f2c))
+
+
 
 ## [1.1.58](https://github.com/novlan1/t-comm/compare/v1.1.57...v1.1.58) (2023-08-01)
 
@@ -2082,3 +2095,6 @@ All notable changes to this project will be documented in this file. See [standa
 * **toUnicode:** add toUnicode methods ([e198e4e](https://github.com/novlan1/t-comm/commit/e198e4ea746c82fcada7faa31ab8ec9428f04a5e))
 * **type:** 新增 isNumber 、 isString 类型判断方法 ([f0a4fef](https://github.com/novlan1/t-comm/commit/f0a4fefe507f7d6c8717c05d2f0c638407ca87a3))
 * upgrade packages, remove lodash in dependencies ([8c59fd9](https://github.com/novlan1/t-comm/commit/8c59fd9febde20ec0de3af142ef1550b95b8c1da))
+
+
+
