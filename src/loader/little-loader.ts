@@ -32,7 +32,7 @@ export const loader = function (src: string, callback: any, charset = 'utf-8', c
 
   let done = false;
   let err: any;
-  let _cleanup: any; // _must_ be set below.
+  let privateCleanup: any; // _must_ be set below.
 
   /**
      * Final handler for error or completion.
@@ -41,7 +41,7 @@ export const loader = function (src: string, callback: any, charset = 'utf-8', c
      *
      * @returns {void}
      */
-  const _finish = function () {
+  const privateFinish = function () {
     // Only call once.
     if (done) {
       return;
@@ -49,7 +49,7 @@ export const loader = function (src: string, callback: any, charset = 'utf-8', c
     done = true;
 
     // Internal cleanup.
-    _cleanup?.();
+    privateCleanup?.();
 
     // Callback.
     if (callback) {
@@ -62,16 +62,16 @@ export const loader = function (src: string, callback: any, charset = 'utf-8', c
      *
      * @returns {void}
      */
-  const _error = function () {
+  const privateError = function () {
     err = new Error(src || 'EMPTY');
-    _finish();
+    privateFinish();
   };
 
   const curScript = document.querySelector(`script[src="${src}"]`) as any;
   if (curScript) {
     const tc = setInterval(() => {
       if (curScript.isready) { // 判断js加载完成
-        _finish();
+        privateFinish();
         clearInterval(tc);
       }
     }, 20);
@@ -92,7 +92,7 @@ export const loader = function (src: string, callback: any, charset = 'utf-8', c
       let inserted = false;
 
       // Clear out listeners, state.
-      _cleanup = function () {
+      privateCleanup = function () {
         script.onreadystatechange = null;
         script.onerror = null;
         pendingScripts[id] = void 0;
@@ -130,7 +130,7 @@ export const loader = function (src: string, callback: any, charset = 'utf-8', c
             //
             // **Note**: We are not intending to _return_ a value, just have
             // a shorter short-circuit code path here.
-            return _error();
+            return privateError();
           }
         }
 
@@ -140,12 +140,12 @@ export const loader = function (src: string, callback: any, charset = 'utf-8', c
         // waiting for another onreadystatechange.
         if (script.readyState === 'complete') {
           script.isready = true;
-          _finish();
+          privateFinish();
         }
       };
 
       // Onerror handler _may_ work here.
-      script.onerror = _error;
+      script.onerror = privateError;
 
       // Since we're not appending the script to the DOM yet, the
       // reference to our script element might get garbage collected
@@ -170,15 +170,15 @@ export const loader = function (src: string, callback: any, charset = 'utf-8', c
       // This section is for modern browsers, including IE10+.
 
       // Clear out listeners.
-      _cleanup = function () {
+      privateCleanup = function () {
         script.onload = null;
         script.onerror = null;
       };
 
-      script.onerror = _error;
+      script.onerror = privateError;
       script.onload = () => {
         script.isready = true;
-        _finish();
+        privateFinish();
       };
       script.async = true;
       script.charset = charset || 'utf-8';
