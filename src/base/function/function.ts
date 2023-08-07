@@ -9,7 +9,7 @@
  *
  * // ()=>console.log(1)
  */
-export function parseFunction(func: string): string {
+export function parseFunction(func: any): any {
   if (typeof func !== 'string') return func;
   let data = '';
 
@@ -43,7 +43,7 @@ export function parseFunction(func: string): string {
  *
  * // => 3
  */
-export function cached(fn: Function): unknown {
+export function cached(fn: Function): any {
   const cache = Object.create(null);
   return function cachedFn(str: string) {
     const hit = cache[str];

@@ -86,7 +86,7 @@ export function isArray(arg: string) {
  * 判断是否合法的QQ号码
  * @param {String} qq 待检测的qq号
  */
-export function isQQNumber(qq: string) {
+export function isQQNumber(qq: any) {
   const reQQ = /^[1-9]\d{4,9}$/;
   if (!reQQ.test(qq)) {
     return false;

@@ -59,7 +59,7 @@ describe('MorsePwd', () => {
         mockFn();
       },
       envType: 'H5',
-      selector: '#app',
+      selector: '#app' as keyof HTMLElementTagNameMap,
 
     });
 
@@ -102,7 +102,7 @@ describe('MorsePwd', () => {
         mockFn();
       },
       envType: 'H5',
-      selector: '#app',
+      selector: '#app' as keyof HTMLElementTagNameMap,
     });
 
     mockDom.dispatch('touchstart');

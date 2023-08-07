@@ -1,3 +1,5 @@
+import * as fs from 'fs';
+
 /* eslint-disable @typescript-eslint/no-require-imports */
 function getKeyValue(key: string, sourceLine: Array<string>) {
   let result;
@@ -12,6 +14,32 @@ function getKeyValue(key: string, sourceLine: Array<string>) {
     if (ma) {
       result = ma[1] || '';
       break;
+    }
+  }
+  return result;
+}
+
+export function getEnvVariableMap(filepath: string) {
+  let sourceStr = '';
+  const re = new RegExp('(.*?)\\s*=\\s*(.*?)(\\s|$)');
+
+  if (fs.existsSync(filepath)) {
+    sourceStr = fs.readFileSync(filepath, 'utf-8');
+  } else {
+    sourceStr = filepath;
+  }
+  const sourceLine = sourceStr.split('\n');
+
+  const result: Record<string, any> = {};
+
+  for (const line of sourceLine) {
+    if (line.startsWith('#')) {
+      // 忽略注释行
+      continue;
+    }
+    const match = line.match(re);
+    if (match?.[1]) {
+      result[match[1]] = match[2] || '';
     }
   }
   return result;

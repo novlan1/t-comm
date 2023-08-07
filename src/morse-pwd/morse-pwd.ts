@@ -1,8 +1,8 @@
 interface IMorsePwd {
   pwd: Array<number>;
   cb: Function;
-  quiet: boolean;
-  holdTime: number;
+  quiet?: boolean;
+  holdTime?: number;
   envType: 'H5' | 'h5' | 'mp' | 'MP';
   selector?: keyof HTMLElementTagNameMap;
 }

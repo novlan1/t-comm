@@ -6,6 +6,7 @@ describe('loadCSS', () => {
     const oriFunc = document.createElement;
     document.createElement = function (...args) {
       mockFunc();
+      // @ts-ignore
       return oriFunc.apply(this, args);
     };
     loadCSS('https://test.css');

@@ -10,9 +10,10 @@
     "removeComments": false,
     "declaration": true,
     "sourceMap": false,
+    "allowJs": true,
     /* 强类型检查配置 */
     "strict": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     /* 模块分析配置 */
     "baseUrl": ".",
     "outDir": "dist",
