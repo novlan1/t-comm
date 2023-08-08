@@ -45,7 +45,9 @@ const rollupConfig = {
     resolve(),
 
     // 使得 rollup 支持 commonjs 规范，识别 commonjs 规范的依赖
-    commonjs(),
+    commonjs({
+      sourceMap: false,
+    }),
 
     // filesize(),
 

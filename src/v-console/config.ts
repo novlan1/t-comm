@@ -7,7 +7,8 @@ export const V_CONSOLE_DOM = {
   LINE: 'line',
   WRAP: 'v-console-custom-tab',
   URL_INPUT_ID: 'vConsolePluginInput',
-  URL_JUMP_BUTTON: 'vConsolePluginButton',
+  URL_JUMP_BUTTON: 'vConsolePluginUrlJumpButton',
+  GO_BACK_BUTTON: 'vConsolePluginGoBackButton',
 } as const;
 
 export const EMPTY_LINE = `<div class="${V_CONSOLE_DOM.LINE}"> </div>`;
@@ -66,6 +67,7 @@ export const V_CONSOLE_STYLE_CONTENT = `
   border: 1px solid #07c160;
   font-size: 14px;
   padding: 0 12px;
+  margin-right: 10px;
 }
 
 .vc-cmd,

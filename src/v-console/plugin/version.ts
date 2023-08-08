@@ -25,6 +25,11 @@ function jumpToUrl() {
   location.href = inputValue;
 }
 
+function goBack() {
+  history.go(-1);
+  window.vConsole?.hide?.();
+}
+
 export function initVersionPlugin() {
   const plugin = new VConsole.VConsolePlugin('versionPerformance', '其他信息');
   const parseNumber = (num: string | number) => +(+num).toFixed(2);
@@ -43,6 +48,7 @@ export function initVersionPlugin() {
     html += `
 <textarea id="${V_CONSOLE_DOM.URL_INPUT_ID}" type="text" placeholder="请输入跳转路径"></textarea>
 <button id="${V_CONSOLE_DOM.URL_JUMP_BUTTON}">跳转</button>
+<button id="${V_CONSOLE_DOM.GO_BACK_BUTTON}">返回上一页</button>
     `;
 
     html += '</div>';
@@ -65,17 +71,22 @@ export function initVersionPlugin() {
   });
 
   plugin.on('show', () => {
-    const input = document.getElementById(V_CONSOLE_DOM.URL_INPUT_ID);
-    const btn = document.getElementById(V_CONSOLE_DOM.URL_JUMP_BUTTON);
-    input?.addEventListener('input', updateInputValue);
-    btn?.addEventListener('click', jumpToUrl);
+    document.getElementById(V_CONSOLE_DOM.URL_INPUT_ID)
+      ?.addEventListener('input', updateInputValue);
+    document.getElementById(V_CONSOLE_DOM.URL_JUMP_BUTTON)
+      ?.addEventListener('click', jumpToUrl);
+    document.getElementById(V_CONSOLE_DOM.GO_BACK_BUTTON)
+      ?.addEventListener('click', goBack);
   });
 
   plugin.on('hide', () => {
-    const input = document.getElementById(V_CONSOLE_DOM.URL_INPUT_ID);
-    const btn = document.getElementById(V_CONSOLE_DOM.URL_JUMP_BUTTON);
-    input?.removeEventListener('input', updateInputValue);
-    btn?.removeEventListener('click', jumpToUrl);
+    document.getElementById(V_CONSOLE_DOM.URL_INPUT_ID)
+      ?.removeEventListener('input', updateInputValue);
+    document.getElementById(V_CONSOLE_DOM.URL_JUMP_BUTTON)
+      ?.removeEventListener('click', jumpToUrl);
+
+    document.getElementById(V_CONSOLE_DOM.GO_BACK_BUTTON)
+      ?.addEventListener('click', goBack);
   });
 
   return plugin;
