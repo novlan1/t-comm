@@ -55,7 +55,7 @@ export function capitalize(str: string): string {
  *
  * titleize('my name is yang')
  *
- * // My name is Yang
+ * // My Name Is Yang
  *
  * titleize('foo-bar')
  *

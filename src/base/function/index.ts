@@ -1,1 +1,4 @@
-export * from './function';
+export {
+  parseFunction,
+  cached,
+} from './function';
