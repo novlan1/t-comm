@@ -14,19 +14,26 @@ export function initCommShareTip() {
     wzydShareText = '点击“...”分享链接',
   } = ShareConfig.shareObject;
 
+  const commonStyleContent = `
+  .tip-toc-sharetips {position: fixed;z-index: 9999;height: 100%;width: 100%;left: 0;top: 0;}
+  `;
+
   if (isWzydShare) {
     styleContent = `
-    .tip-toc-sharetips {position: fixed;z-index: 9999;height: 100%;width: 100%;left: 0;top: 0;background: rgba(0,0,0,0.5);}
+    ${commonStyleContent}
+    .tip-toc-sharetips {background: rgba(0,0,0,0.5);}
     .tip-toc-share-arrow{background: url("https://image-1251917893.file.myqcloud.com/Esports/user/img/share-tip-arrow.png") no-repeat right center;background-size: .85rem .55rem;width: 100%;height: .55rem;margin-top: .16rem;}
     .tip-toc-share-box{display: flex;position: fixed;top: .66rem;right: .62rem;}
     .tip-toc-sharetips .share-tip {height: .93rem;width: auto;background: url(https://image-1251917893.file.myqcloud.com/Esports/user/img/share-tip-bg.png) no-repeat;background-size: 100% .93rem;color: #fff;font-size: .28rem;position: relative;margin-left: .89rem;}
     .tip-toc-sharetips .share-tip>span{display: block;max-width: 6rem;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;word-break: break-all;line-height: .93rem;}
-    .tip-toc-sharetips .share-tip::before{content: '';position: absolute;top: 0;left: -.89rem;width: .89rem;height: .93rem;background: url(https://image-1251917893.file.myqcloud.com/Esports/user/img/share-tip-left.png) no-repeat;background-size: 100%;}
-    .tip-toc-sharetips .share-tip::after{content: '';position: absolute;top: 0;right: -.61rem;width: .62rem;height: .93rem;background: url(https://image-1251917893.file.myqcloud.com/Esports/user/img/share-tip-right.png) no-repeat;background-size: 100%;}
+    ..tip-toc-sharetips .share-tip::before,.tip-toc-sharetips .share-tip::after{content: '';position: absolute;top: 0;height: .93rem;background-size: 100%;}
+    .tip-toc-sharetips .share-tip::before{left: -.89rem;width: .89rem;background: url(https://image-1251917893.file.myqcloud.com/Esports/user/img/share-tip-left.png) no-repeat;}
+    .tip-toc-sharetips .share-tip::after{right: -.61rem;width: .62rem;background: url(https://image-1251917893.file.myqcloud.com/Esports/user/img/share-tip-right.png) no-repeat;}
   `;
   } else {
     styleContent = `
-    .tip-toc-sharetips {position: fixed;z-index: 9999;height: 100%;width: 100%;left: 0;top: 0;background: rgba(0,0,0,0.7);}
+    ${commonStyleContent}
+    .tip-toc-sharetips {background: rgba(0,0,0,0.7);}
     .tip-toc-sharetips__arrow {position: absolute;top: .58rem;right: .58rem;width: 1.58rem;height: 1.52rem;background: url(https://image-1251917893.file.myqcloud.com/TIP_GameSystem_2020/toC/icon/share-arrow-2.png) center no-repeat;background-size: 1.58rem 1.52rem;}
     .tip-toc-sharetips__tip {padding: 2.1rem 2.2rem 0.1rem 0.2rem;text-align: right;font-size: .36rem;height: 2rem;color: #fff;}
     `;

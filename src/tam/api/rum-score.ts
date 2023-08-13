@@ -1,4 +1,4 @@
-import { fetchRUMData } from './rum-base';
+import { fetchCloudData } from '../../tencent-cloud/base/base';
 import { ScoreInfoType } from '../types';
 
 
@@ -9,7 +9,7 @@ export async function getRUMAllProject({
   secretId: string;
   secretKey: string;
 }) {
-  return fetchRUMData({
+  return fetchCloudData({
     secretId,
     secretKey,
     action: 'DescribeProjects',
@@ -48,7 +48,7 @@ async function getRUMScoreInfo({
   startTime: string;
   endTime: string;
 }) {
-  return fetchRUMData({
+  return fetchCloudData({
     secretId,
     secretKey,
     action: 'DescribeScores',

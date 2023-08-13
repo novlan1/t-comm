@@ -1,14 +1,18 @@
 import { parseHexChannel } from './helper';
 import { hsl2hsv, rgb2hsv } from './transform';
 
-export function parseHSLString(value: string) {
+function commonParseRGBOrHSL({
+  value,
+  reg = /hsla|hsl|\(|\)/gm,
+  transformFunc = hsl2hsv,
+}) {
+  let alpha = 100;
   let h = 0;
   let s = 100;
   let v = 100;
-  let alpha = 100;
 
 
-  const parts = value.replace(/hsla|hsl|\(|\)/gm, '')
+  const parts = value.replace(reg, '')
     .split(/\s|,/g)
     .filter(val => val !== '')
     .map((val, index) => (index > 2 ? parseFloat(val) : parseInt(val, 10)));
@@ -19,7 +23,7 @@ export function parseHSLString(value: string) {
     alpha = 100;
   }
   if (parts.length >= 3) {
-    const res = hsl2hsv(parts[0], parts[1], parts[2]);
+    const res = transformFunc(parts[0], parts[1], parts[2]);
     h = res.h;
     s = res.s;
     v = res.v;
@@ -31,6 +35,14 @@ export function parseHSLString(value: string) {
     v,
     alpha,
   };
+}
+
+export function parseHSLString(value: string) {
+  return commonParseRGBOrHSL({
+    value,
+    reg: /hsla|hsl|\(|\)/gm,
+    transformFunc: hsl2hsv,
+  });
 }
 
 export function parseHSVString(value: string) {
@@ -64,35 +76,11 @@ export function parseHSVString(value: string) {
 
 
 export function parseRGBBracket(value: string) {
-  let alpha = 100;
-  let h = 0;
-  let s = 100;
-  let v = 100;
-
-  const parts = value.replace(/rgba|rgb|\(|\)/gm, '')
-    .split(/\s|,/g)
-    .filter(val => val !== '')
-    .map((val, index) => (index > 2 ? parseFloat(val) : parseInt(val, 10)));
-
-  if (parts.length === 4) {
-    alpha = Math.floor(parseFloat(`${parts[3]}`) * 100);
-  } else if (parts.length === 3) {
-    alpha = 100;
-  }
-  if (parts.length >= 3) {
-    const res = rgb2hsv(parts[0], parts[1], parts[2]);
-    h = res.h;
-    s = res.s;
-    v = res.v;
-    // fromHSV(h, s, v);
-  }
-
-  return {
-    h,
-    s,
-    v,
-    alpha,
-  };
+  return commonParseRGBOrHSL({
+    value,
+    reg: /rgba|rgb|\(|\)/gm,
+    transformFunc: rgb2hsv,
+  });
 }
 
 export function parseRGBHex(value: any) {

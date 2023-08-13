@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-import { uploadCOSFile } from '../tencent-clound/cos';
+import { uploadCOSFile } from '../tencent-cloud/cos';
 import { getSavePath, getSaveFileName } from './helper/helper';
 import type {  ICosInfo, ISecretInfo, IRemoteConfig } from './types';
 
