@@ -1,4 +1,7 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
+import * as fs from 'fs';
+import * as path from 'path';
+
 import { sendWxRobotMarkdown } from '../wecom-robot/base';
 import { getGitCommitInfo } from '../git/git';
 import { timeStampFormat } from '../time/time';
@@ -43,15 +46,15 @@ export class MpCI {
   chatId?: string = '';
 
   buildSetting: any;
-  projectPath: string;
-  privateKeyPath: string;
+  projectPath = '';
+  privateKeyPath = '';
   cosInfo: any;
   commitInfo: any;
-  buildDesc: string;
+  buildDesc = '';
   buildTime?: string;
-  version: string;
+  version = '';
   previewResult: IUploadResult;
-  errorLink?: string;
+  errorLink?: string = '';
 
   pagePath?: string = '';
   searchQuery?: string = '';
@@ -123,8 +126,6 @@ export class MpCI {
   * main();
   */
   constructor(options: OptionsType) {
-    const path = require('path');
-    const fs = require('fs');
     let ci;
     try {
       ci = require('miniprogram-ci');
@@ -185,6 +186,16 @@ export class MpCI {
     this.cosInfo = cosInfo || {};
     this.errorLink = errorLink || '';
 
+    this.validateOptions();
+
+    if (this.ciLib) {
+      this.init();
+    }
+
+    this.initBaseInfo();
+  }
+
+  validateOptions() {
     if (!this.projectPath) {
       this.projectPath = path.resolve(this.root, 'dist/build/mp-weixin');
     }
@@ -202,11 +213,9 @@ export class MpCI {
     if (!fs.existsSync(this.pkgFile)) {
       throw new Error('ERROR: package.json 不存在');
     }
+  }
 
-    if (this.ciLib) {
-      this.init();
-    }
-
+  initBaseInfo() {
     this.getBuildTime();
 
     this.commitInfo = getGitCommitInfo(this.root);
