@@ -33,6 +33,7 @@ export * from './node-img';
 export * from './open-source-report';
 export * from './pages-statistics';
 export * from './pipeline';
+export * from './publish';
 export * from './rainbow';
 export * from './rainbow-to-cos';
 export * from './rd-platform-report';
