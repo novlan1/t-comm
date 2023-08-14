@@ -1,4 +1,4 @@
-import { getGitCodeLink, getGitMRLink, rmFirstAndLastSlash  } from '../util/git-link';
+import { getGitCodeLink, getGitMRLink, rmFirstAndLastSlash  } from '../git/git-link';
 
 export function genRobotMsg({
   errorMap,

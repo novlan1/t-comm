@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { genVersion } from './gen-version';
 import { genVersionTip } from './gen-version-tip';
-import { execCommand } from '../util/node-command';
+import { execCommand } from '../node/node-command';
 import { sendWxRobotMarkdown } from '../wecom-robot/base';
 import type { IAppInfo } from './types';
 

@@ -1,6 +1,5 @@
 import * as fs from 'fs';
 
-/* eslint-disable @typescript-eslint/no-require-imports */
 function getKeyValue(key: string, sourceLine: Array<string>) {
   let result;
   let ma;
@@ -18,6 +17,7 @@ function getKeyValue(key: string, sourceLine: Array<string>) {
   }
   return result;
 }
+
 
 export function getEnvVariableMap(filepath: string) {
   let sourceStr = '';
@@ -45,6 +45,7 @@ export function getEnvVariableMap(filepath: string) {
   return result;
 }
 
+
 /**
  * 读取文件中环境变量的值，支持：
  * - NPM_TOKEN=xxx
@@ -54,11 +55,11 @@ export function getEnvVariableMap(filepath: string) {
  * @returns {string} 环境变量的值
  */
 export function readEnvVariable(key: string, filepath: string) {
-  const fs = require('fs');
   if (!fs.lstatSync(filepath)) {
     console.log('[readEnvVariable] 文件不存在:', filepath, '，请先创建文件');
     process.exit(1);
   }
+
   try {
     const sourceStr = fs.readFileSync(filepath, 'utf-8');
     const sourceLine = sourceStr.split('\n');

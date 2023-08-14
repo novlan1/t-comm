@@ -85,3 +85,12 @@ export const hsl2hsv = function (hue: number, sat: number, light: number) {
     v: v * 100,
   };
 };
+
+export const hsv2hsl = function (hue: number, sat: number, val: number) {
+  return [
+    hue,
+    (sat * val / ((hue = (2 - sat) * val) < 1 ? hue : 2 - hue)) || 0,
+    hue / 2,
+  ];
+};
+

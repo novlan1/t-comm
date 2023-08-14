@@ -13,4 +13,5 @@ export {
   rgb2hsv,
   hsl2hsv,
   hsv2rgb,
+  hsv2hsl,
 } from './transform';

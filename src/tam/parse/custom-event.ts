@@ -1,5 +1,5 @@
 import { getPartRatio } from '../../base/number';
-import { saveJsonToLog } from '../../util/fs-util';
+import { saveJsonToLog } from '../../node/fs-util';
 
 /**
  * 处理事件数据

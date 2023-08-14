@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
-import { execCommand } from '../util';
+import { execCommand } from '../node/node-command';
 
 /**
  * 获取当前分支

@@ -6,7 +6,7 @@ import { compareTwoList, getMaxAndMinIdx } from '../../base/list';
 import { createCanvasTable } from '../../canvas/table';
 import { timeStampFormat } from '../../time/time';
 import { batchSendWxRobotBase64Img } from '../../wecom-robot/batch-send';
-import { saveJsonToLog } from '../../util/fs-util';
+import { saveJsonToLog } from '../../node/fs-util';
 import type { SecretInfoType } from '../types';
 
 

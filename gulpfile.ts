@@ -12,7 +12,7 @@ import {
 } from '@microsoft/api-extractor';
 import conventionalChangelog from 'conventional-changelog';
 import rollupConfig from './rollup.config';
-import { traverseFolder } from './src/util/fs-util';
+import { traverseFolder } from './src/node/fs-util';
 
 type TaskFunc = (cb: Function) => void;
 

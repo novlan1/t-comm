@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { queryGroupInfo } from '../rainbow/rainbow-admin';
 import { getSaveFileName } from './helper/helper';
-import { readJsonLog, saveJsonToLog } from '../util/fs-util';
+import { readJsonLog, saveJsonToLog } from '../node/fs-util';
 import type { ISecretInfo, ILocalConfig, IRemoteConfig } from './types';
 
 const readCOSConfig = (saveFileName: string): ILocalConfig => {

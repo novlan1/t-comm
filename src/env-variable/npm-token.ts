@@ -1,5 +1,6 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
-import { readEnvVariable } from './env-variable';
+import * as fs from 'fs';
+import * as path from 'path';
+import { readEnvVariable } from '../env-variable/env-variable';
 
 const npmTokenRoot = process.cwd();
 
@@ -7,7 +8,6 @@ const npmTokenRoot = process.cwd();
 function getNpmToken() {
   const NPM_TOKEN = 'NPM_TOKEN';
   const ENV_FILE = '.env.local';
-  const path = require('path');
 
   const envFile = path.resolve(npmTokenRoot, ENV_FILE);
   const token = readEnvVariable(NPM_TOKEN, envFile);
@@ -27,8 +27,6 @@ export function writeEnvTokenToNpmRC() {
 //registry.npmjs.org/:always-auth=true
 //registry.npmjs.org/:_authToken={{TOKEN}}`;
 
-  const fs = require('fs');
-  const path = require('path');
 
   const token = getNpmToken();
   const content = NPM_RC_TPL.replace('{{TOKEN}}', token);

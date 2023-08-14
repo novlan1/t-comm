@@ -8,7 +8,7 @@ import { timeStampFormat } from '../time/time';
 import { addTextForImg } from '../canvas/img-text';
 import { uploadCOSFile } from '../tencent-cloud/cos/cos';
 import { saveBase64ImgToFile } from '../node-img/img';
-import { formatBite } from '../util/format-bite';
+import { formatBite } from '../bite/format-bite';
 import { getCosUrlLink } from '../tencent-cloud/cos/link';
 
 import { getBundleBuildDesc, getBundleVersion, parseUploadResult, flattenSubPackages } from './helper';

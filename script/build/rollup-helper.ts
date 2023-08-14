@@ -2,7 +2,7 @@ import * as path from 'path';
 // import { terser } from 'rollup-plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 import { BUILD_DIR_LIST } from './build.config';
-import { traverseFolder, getFileName } from '../../src/util/fs-util';
+import { traverseFolder, getFileName } from '../../src/node/fs-util';
 
 const root = process.cwd();
 

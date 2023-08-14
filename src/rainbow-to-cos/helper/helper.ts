@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { hyphenate } from '../../base/string';
 import { RAINBOW_VALUE_TYPE_MAP } from './value-type';
-import { getJsonLogDir } from '../../util/fs-util';
+import { getJsonLogDir } from '../../node/fs-util';
 import { getCosUrlLink } from '../../tencent-cloud/cos/link';
 import type { RainbowKeyValueType } from './value-type';
 import type { ICosInfo } from '../types';

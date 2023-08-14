@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-import { formatBite } from '../../util/format-bite';
+import { formatBite } from '../../bite/format-bite';
 
 export function getCOSInstance(secretId: string, secretKey: string) {
   const COS = require('cos-nodejs-sdk-v5');

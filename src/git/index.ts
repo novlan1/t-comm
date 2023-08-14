@@ -1,3 +1,4 @@
+export { rmFirstAndLastSlash, getGitCodeLink, getGitMRLink } from './git-link';
 export {
   getGitCurBranch,
   getGitCommitInfo,

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-import { replaceAllPolyfill } from '../util/replace-all';
+import { replaceAllPolyfill } from '../base/string/replace-all';
 import { MAX_CONTENT_LENGTH } from './config';
-import { optimizeRobotContent } from '../util/optimize-robot-content';
+import { optimizeRobotContent } from '../wecom-robot/optimize-robot-content';
 import type { IAppInfo } from './types';
 
 function optimizeContent(content = '') {

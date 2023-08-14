@@ -5,7 +5,7 @@ import {
   getGitTagTime,
 } from '../git';
 
-import { execCommand } from '../util';
+import { execCommand } from '../node/node-command';
 import { TAG_MAP } from './config';
 
 function getTimeStampFromDate(date: string) {

@@ -1,4 +1,4 @@
-import { traverseFolder } from './fs-util';
+import { traverseFolder } from '../node/fs-util';
 /* eslint-disable @typescript-eslint/no-require-imports */
 
 /**

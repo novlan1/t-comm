@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-import { execCommand } from './node-command';
+import { execCommand } from '../node/node-command';
 
 
 const DEFAULT_HOST_TARGET_DIR = '/root/ft_local';
