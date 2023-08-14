@@ -1,16 +1,13 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import path from 'path';
-// import { RollupOptions } from 'rollup';
-import typescript from '@rollup/plugin-typescript';
-import babel from '@rollup/plugin-babel';
-import resolve from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
-// import filesize from 'rollup-plugin-filesize';
-// import { terser } from 'rollup-plugin-terser';
-import { DEFAULT_EXTENSIONS } from '@babel/core';
+const path = require('path');
+const typescript = require('@rollup/plugin-typescript');
+const { babel } = require('@rollup/plugin-babel');
+const { nodeResolve } = require('@rollup/plugin-node-resolve');
+const commonjs = require('@rollup/plugin-commonjs');
+const { DEFAULT_EXTENSIONS } = require('@babel/core');
 
-import { getExtraBuildDir } from './script/build/rollup-helper';
-import pkg from './package.json';
+const { getExtraBuildDir } = require('./script/build/rollup-helper');
+const pkg = require('./package.json');
+
 
 const paths = {
   input: path.join(__dirname, '/src/index.ts'),
@@ -42,7 +39,7 @@ const rollupConfig = {
   // plugins 需要注意引用顺序
   plugins: [
     // 配合 commnjs 解析第三方模块
-    resolve(),
+    nodeResolve(),
 
     // 使得 rollup 支持 commonjs 规范，识别 commonjs 规范的依赖
     commonjs({

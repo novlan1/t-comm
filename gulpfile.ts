@@ -41,7 +41,8 @@ const clearLibFile: TaskFunc = async (cb) => {
 function deleteFiles() {
   function cb(file: string) {
     const fileName = file.replace(/\.d\.ts$/, '');
-    if (file.endsWith('.d.ts')) {
+
+    if (file.endsWith('.d.ts') && !file.endsWith('types.d.ts')) {
       const jsFile = path.resolve(path.dirname(file), `${fileName}.js`);
       if (!fse.existsSync(jsFile)) {
         fse.removeSync(file);
@@ -65,6 +66,9 @@ function deleteFiles() {
   traverseFolder(cb, './lib');
 }
 
+function getRelativeFile(file) {
+  return path.relative(process.cwd(), file);
+}
 
 // rollup 打包
 const buildByRollup: TaskFunc = async (cb) => {
@@ -97,7 +101,7 @@ const buildByRollup: TaskFunc = async (cb) => {
     if (bundle != null) {
       // closes the bundle
       await bundle.close();
-      log.progress('Rollup built successfully');
+      log.progress(`Rollup built successfully ${getRelativeFile(inputOptions.input)}`);
     }
   }
 

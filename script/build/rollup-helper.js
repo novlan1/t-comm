@@ -1,14 +1,14 @@
-import * as path from 'path';
-// import { terser } from 'rollup-plugin-terser';
-import typescript from '@rollup/plugin-typescript';
-import { BUILD_DIR_LIST } from './build.config';
-import { traverseFolder, getFileName } from '../../src/node/fs-util';
+const path = require('path');
+const typescript = require('@rollup/plugin-typescript');
+const { BUILD_DIR_LIST } = require('./build-config');
+const { traverseFolder, getFileName } = require('../utils/node-fs');
+
 
 const root = process.cwd();
 
-const allInputs: Array<string> = [];
-function cb(file: string) {
-  if (!file.endsWith('index.ts') && !file.endsWith('types.ts')) {
+const allInputs = [];
+function cb(file) {
+  if (!file.endsWith('index.ts') && !file.endsWith('types.ts') && !file.endsWith('.DS_Store')) {
   // if (file.endsWith('index.ts')) {
     allInputs.push(file);
   }
@@ -20,8 +20,7 @@ function getAllInputFiles() {
   });
 }
 
-// @ts-ignore
-export function getExtraBuildDir(config) {
+function getExtraBuildDir(config) {
   getAllInputFiles();
 
   return allInputs.map((file) => {
@@ -35,10 +34,10 @@ export function getExtraBuildDir(config) {
           file: path.resolve(root, 'lib', dir, `${fileName}.js`),
           format: 'cjs',
         },
-        {
-          file: path.resolve(root, 'lib', dir, `${fileName}.esm.js`),
-          format: 'es',
-        },
+        // {
+        //   file: path.resolve(root, 'lib', dir, `${fileName}.esm.js`),
+        //   format: 'es',
+        // },
       ],
       external: config.external || [],
       plugins: [
@@ -54,3 +53,5 @@ export function getExtraBuildDir(config) {
   });
 }
 
+
+module.exports = { getExtraBuildDir };

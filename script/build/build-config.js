@@ -1,4 +1,4 @@
-export const BUILD_DIR_LIST = [
+const BUILD_DIR_LIST = [
   'base',
   'color',
   'cookie',
@@ -22,3 +22,5 @@ export const BUILD_DIR_LIST = [
   'launch-app',
   'wx',
 ];
+
+module.exports = { BUILD_DIR_LIST };
