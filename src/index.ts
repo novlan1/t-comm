@@ -19,6 +19,7 @@ export * from './env-variable';
 export * from './eslint-parser';
 export * from './git';
 export * from './i18n';
+export * from './ip';
 export * from './jsdoc';
 export * from './launch-app';
 export * from './loader';
