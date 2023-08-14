@@ -1,5 +1,6 @@
 export const BUILD_DIR_LIST = [
   'base',
+  'color',
   'cookie',
   'css',
   'date',
