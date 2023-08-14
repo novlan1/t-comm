@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.64](https://github.com/novlan1/t-comm/compare/v1.1.63...v1.1.64) (2023-08-14)
+
+
+### Features
+
+* **ip:** 增加获取ip方法 ([4745038](https://github.com/novlan1/t-comm/commit/474503875e1fe283b85468736d8333dbcb3cb73e))
+
+
+
 ## [1.1.63](https://github.com/novlan1/t-comm/compare/v1.1.62...v1.1.63) (2023-08-14)
 
 
