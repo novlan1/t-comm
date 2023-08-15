@@ -1,10 +1,10 @@
 import * as http from 'http';
 import * as path from 'path';
 import * as fs from 'fs';
-import type { IPublishOptions } from './types';
+import type { IPostFileOptions } from './types';
 
 
-export function postFile(fileDataInfo, fileKeyValue, options?: IPublishOptions) {
+export function postFile(fileDataInfo, fileKeyValue, options?: IPostFileOptions) {
   return new Promise(((resolve, reject) => {
     if (!options) {
       console.log('[publish] failed. 需要 options');

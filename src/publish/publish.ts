@@ -147,7 +147,11 @@ async function realPublish({
       return;
     }
 
-    if (moduleName === 'mobile-official-web') {
+    if (options.publishTargetDir) {
+      shell.runSync('sh', [PUBLISH_BASH_FILE, fileAll, options.publishTargetDir, devHostName, devHostPwd], {
+        stdio: 'inherit',
+      });
+    } else if (moduleName === 'mobile-official-web') {
       shell.runSync('sh', [PUBLISH_BASH_FILE, fileAll, '', devHostName, devHostPwd]);
     } else {
       shell.runSync('sh', [PUBLISH_BASH_FILE, fileAll, `${moduleName}/`, devHostName, devHostPwd], {
