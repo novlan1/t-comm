@@ -2,25 +2,20 @@ import * as path from 'path';
 import { spawnSync } from 'child_process';
 
 import { getIPAddress, getIPAddressStr } from '../ip/ip';
-import { readEnvVariable } from '../env-variable/env-variable';
 
-import { postFile } from './helper';
+import { getRootDir, getEnvValue } from './helper';
+import { postFile } from './post-file';
+import { ENV_MAP, PUBLISH_ENV_MAP, PUBLISH_HOST_ENV } from './config';
 import type { IPublishOptions } from './types';
 
-const rootDir = process.cwd();
-
-const localEnvPath = path.join(rootDir, '.env.local');
-const envPath = path.join(rootDir, '.env');
-
-
+const rootDir = getRootDir();
 const PUBLISH_BASH_FILE = path.resolve(__dirname, '../script/publish.sh');
-const ENV_DEV_HOST_NAME = 'DEV_HOST_NAME';
-const ENV_DEV_HOST_PWD = 'DEV_HOST_PWD';
 
 
 function getDevPwd() {
-  const devHostName = readEnvVariable(ENV_DEV_HOST_NAME, localEnvPath);
-  const devHostPwd = readEnvVariable(ENV_DEV_HOST_PWD, localEnvPath);
+  const devHostName = getEnvValue(ENV_MAP.DEV_HOST_NAME);
+  const devHostPwd = getEnvValue(ENV_MAP.DEV_HOST_PWD);
+
   return {
     devHostName,
     devHostPwd,
@@ -53,7 +48,7 @@ function validate({
     return 0;
   }
   // 禁止本机发布
-  if ((getIPAddress().indexOf('10.45') === 0 || getIPAddress().indexOf('10.20') === 0) && publishEnv === 'prod') {
+  if ((getIPAddress().indexOf('10.45') === 0 || getIPAddress().indexOf('10.20') === 0) && publishEnv === PUBLISH_ENV_MAP.PROD) {
     console.log('[publish] 禁止在本机发布!');
     return;
   }
@@ -61,12 +56,11 @@ function validate({
 }
 
 export async function localPublish(options: IPublishOptions) {
-  const dir = readEnvVariable('VUE_APP_DIR', localEnvPath);
-  const author = readEnvVariable('VUE_APP_AUTHOR', localEnvPath);
-  const publishPathProd = readEnvVariable('VUE_APP_PATH_PROD', envPath);
-  const publishPathTest = readEnvVariable('VUE_APP_PATH_TEST', envPath);
-  const args = process.argv.slice(2);
-  const publishEnv = args[0];
+  const dir = getEnvValue(ENV_MAP.VUE_APP_DIR);
+  const author = getEnvValue(ENV_MAP.VUE_APP_AUTHOR);
+  const publishPathProd = getEnvValue(ENV_MAP.VUE_APP_PATH_PROD);
+  const publishPathTest = getEnvValue(ENV_MAP.VUE_APP_PATH_TEST);
+  const { publishEnv = PUBLISH_ENV_MAP.TEST } = options;
 
   if (!validate({
     dir,
@@ -127,7 +121,7 @@ async function realPublish({
   options: IPublishOptions;
 }) {
   let desc = '';
-  let env = 'web-test';
+  let env: string = PUBLISH_HOST_ENV.TEST;
 
   const shell: Record<string, any> = {};
   shell.runSync = function (cmd, args, options) {
@@ -139,17 +133,17 @@ async function realPublish({
   };
 
 
-  if (publishEnv === 'prod') {
+  if (publishEnv === PUBLISH_ENV_MAP.PROD) {
     desc = `${publishPathProd}/${moduleName}`;
-    env = 'web-static';
-  } else if (publishEnv === 'devcloud') {
+    env = PUBLISH_HOST_ENV.PROD;
+  } else if (publishEnv === PUBLISH_ENV_MAP.DEV_CLOUD) {
     const {
       devHostName,
       devHostPwd,
     } = getDevPwd();
 
     if (!devHostName || !devHostPwd) {
-      console.log('[publish] failed: ', `没有找到有效的 ${ENV_DEV_HOST_NAME} 或 ${ENV_DEV_HOST_PWD}`);
+      console.log('[publish] failed: ', `没有找到有效的 ${ENV_MAP.DEV_HOST_NAME} 或 ${ENV_MAP.DEV_HOST_PWD}`);
       return;
     }
 
@@ -163,7 +157,7 @@ async function realPublish({
     return;
   } else {
     desc = `${publishPathTest}/${moduleName}`;
-    env = 'web-test';
+    env = PUBLISH_HOST_ENV.TEST;
   }
 
   const fileDataInfo = [

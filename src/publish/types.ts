@@ -3,4 +3,5 @@ export type IPublishOptions = {
   port: string;
   path: string;
   method?: string;
+  publishEnv?: string;
 };
