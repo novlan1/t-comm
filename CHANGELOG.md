@@ -1,5 +1,18 @@
 # 工具库更新日志
 
+## [1.1.65](https://github.com/novlan1/t-comm/compare/v1.1.64...v1.1.65) (2023-08-15)
+
+
+### Features
+
+* **cli:** 增加cli脚本 ([93185fe](https://github.com/novlan1/t-comm/commit/93185fe3b9aae2bd1f4d14e5940dfc3d5df99773))
+* **publish:** 使用统一的发布脚本 ([f9b6a45](https://github.com/novlan1/t-comm/commit/f9b6a4544fe754bc6a09ba59b7afe8bfcb77b465))
+* **publish:** 优化publish，从方法参数取值，而不是node命令行参数 ([cf5538d](https://github.com/novlan1/t-comm/commit/cf5538d631971c68db9ed205293ac47b7b847c03))
+* **publish:** 支持传入部署位置 ([43e7ee4](https://github.com/novlan1/t-comm/commit/43e7ee41fe9a1f133a01d7a5d4bd817050105e08))
+* **publish:** add local publish ([34d3ef0](https://github.com/novlan1/t-comm/commit/34d3ef0021a22a8361ec1a5f8b24b5470d9120ba))
+
+
+
 ## [1.1.64](https://github.com/novlan1/t-comm/compare/v1.1.63...v1.1.64) (2023-08-14)
 
 
