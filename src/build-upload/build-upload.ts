@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { execCommand } from '../node/node-command';
-
+import { getPublishBashPath } from '../publish/helper';
 
 const DEFAULT_HOST_TARGET_DIR = '/root/ft_local';
 
@@ -57,7 +57,7 @@ function upload({
   }
   console.log('[upload] 开始上传...');
 
-  const publishBash = require('path').resolve(__dirname, '../script/publish.sh');
+  const publishBash = getPublishBashPath();
 
   execCommand(`sh ${publishBash} ./dist/${bundleName}.tar.gz ${hostTargetDir} ${hostName} ${hostPwd}`, root, 'inherit');
 

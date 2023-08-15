@@ -7,11 +7,10 @@
   "typings": "lib/index.d.ts",
   "files": [
     "lib",
+    "bin",
     "LICENSE",
     "CHANGELOG.md",
-    "README.md",
-    "script",
-    "cil"
+    "README.md"
   ],
   "sideEffects": "false",
   "repository": {

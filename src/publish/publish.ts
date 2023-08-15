@@ -3,13 +3,13 @@ import { spawnSync } from 'child_process';
 
 import { getIPAddress, getIPAddressStr } from '../ip/ip';
 
-import { getRootDir, getEnvValue } from './helper';
+import { getRootDir, getEnvValue, getPublishBashPath } from './helper';
 import { postFile } from './post-file';
 import { ENV_MAP, PUBLISH_ENV_MAP, PUBLISH_HOST_ENV } from './config';
 import type { IPublishOptions } from './types';
 
 const rootDir = getRootDir();
-const PUBLISH_BASH_FILE = path.resolve(__dirname, '../script/publish.sh');
+const PUBLISH_BASH_FILE = getPublishBashPath();
 
 
 function getDevPwd() {

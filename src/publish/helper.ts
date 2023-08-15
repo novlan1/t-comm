@@ -8,6 +8,11 @@ export function getRootDir() {
 }
 
 
+export function getPublishBashPath() {
+  return path.resolve(__dirname, '../bin/publish.sh');
+}
+
+
 export function getEnvValue(key: string) {
   const rootDir = getRootDir();
   const localEnvPath = path.join(rootDir, '.env.local');
