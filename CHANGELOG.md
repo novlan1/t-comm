@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.66](https://github.com/novlan1/t-comm/compare/v1.1.65...v1.1.66) (2023-08-15)
+
+
+### Features
+
+* **publish:** 发布导出更多方法 ([7910211](https://github.com/novlan1/t-comm/commit/79102112494488442d0bdb23c98740429c3244e8))
+
+
+
 ## [1.1.65](https://github.com/novlan1/t-comm/compare/v1.1.64...v1.1.65) (2023-08-15)
 
 
