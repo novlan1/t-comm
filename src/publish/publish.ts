@@ -3,18 +3,18 @@ import { spawnSync } from 'child_process';
 
 import { getIPAddress, getIPAddressStr } from '../ip/ip';
 
-import { getRootDir, getEnvValue, getPublishBashPath } from './helper';
+import { getPublishRootDir, getPublishEnvValue, getPublishBashPath, getPublishModuleName } from './helper';
 import { postFile } from './post-file';
 import { ENV_MAP, PUBLISH_ENV_MAP, PUBLISH_HOST_ENV } from './config';
 import type { IPublishOptions } from './types';
 
-const rootDir = getRootDir();
+const rootDir = getPublishRootDir();
 const PUBLISH_BASH_FILE = getPublishBashPath();
 
 
 function getDevPwd() {
-  const devHostName = getEnvValue(ENV_MAP.DEV_HOST_NAME);
-  const devHostPwd = getEnvValue(ENV_MAP.DEV_HOST_PWD);
+  const devHostName = getPublishEnvValue(ENV_MAP.DEV_HOST_NAME);
+  const devHostPwd = getPublishEnvValue(ENV_MAP.DEV_HOST_PWD);
 
   return {
     devHostName,
@@ -50,16 +50,16 @@ function validate({
   // 禁止本机发布
   if ((getIPAddress().indexOf('10.45') === 0 || getIPAddress().indexOf('10.20') === 0) && publishEnv === PUBLISH_ENV_MAP.PROD) {
     console.log('[publish] 禁止在本机发布!');
-    return;
+    return 0;
   }
-  return;
+  return true;
 }
 
 export async function localPublish(options: IPublishOptions) {
-  const dir = getEnvValue(ENV_MAP.VUE_APP_DIR);
-  const author = getEnvValue(ENV_MAP.VUE_APP_AUTHOR);
-  const publishPathProd = getEnvValue(ENV_MAP.VUE_APP_PATH_PROD);
-  const publishPathTest = getEnvValue(ENV_MAP.VUE_APP_PATH_TEST);
+  const dir = getPublishEnvValue(ENV_MAP.VUE_APP_DIR);
+  const author = getPublishEnvValue(ENV_MAP.VUE_APP_AUTHOR);
+  const publishPathProd = getPublishEnvValue(ENV_MAP.VUE_APP_PATH_PROD);
+  const publishPathTest = getPublishEnvValue(ENV_MAP.VUE_APP_PATH_TEST);
   const { publishEnv = PUBLISH_ENV_MAP.TEST } = options;
 
   if (!validate({
@@ -73,8 +73,7 @@ export async function localPublish(options: IPublishOptions) {
 
   console.log('[publish] 准备发布模块:', dir);
 
-  const moduleName = dir.split('/')[1];
-
+  const moduleName = getPublishModuleName(dir);
 
   const staticDir = 'static';
   const tarName = `static_${moduleName}_${getIPAddressStr()}`;
@@ -147,14 +146,14 @@ async function realPublish({
       return;
     }
 
-    if (options.publishTargetDir) {
+    if (options?.publishTargetDir) {
       shell.runSync('sh', [PUBLISH_BASH_FILE, fileAll, options.publishTargetDir, devHostName, devHostPwd], {
         stdio: 'inherit',
       });
     } else if (moduleName === 'mobile-official-web') {
-      shell.runSync('sh', [PUBLISH_BASH_FILE, fileAll, '', devHostName, devHostPwd]);
+      shell.runSync('sh', [PUBLISH_BASH_FILE, fileAll, '/root/html/', devHostName, devHostPwd]);
     } else {
-      shell.runSync('sh', [PUBLISH_BASH_FILE, fileAll, `${moduleName}/`, devHostName, devHostPwd], {
+      shell.runSync('sh', [PUBLISH_BASH_FILE, fileAll, `/root/html/${moduleName}/`, devHostName, devHostPwd], {
         stdio: 'inherit',
       });
     }

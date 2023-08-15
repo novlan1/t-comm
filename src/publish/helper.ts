@@ -2,7 +2,7 @@ import * as path from 'path';
 import { readEnvVariable } from '../env-variable/env-variable';
 
 
-export function getRootDir() {
+export function getPublishRootDir() {
   const rootDir = process.cwd();
   return rootDir;
 }
@@ -13,8 +13,8 @@ export function getPublishBashPath() {
 }
 
 
-export function getEnvValue(key: string) {
-  const rootDir = getRootDir();
+export function getPublishEnvValue(key: string) {
+  const rootDir = getPublishRootDir();
   const localEnvPath = path.join(rootDir, '.env.local');
   const envPath = path.join(rootDir, '.env');
 
@@ -24,4 +24,9 @@ export function getEnvValue(key: string) {
 
 
   return localEnvValue || envValue || '';
+}
+
+
+export function getPublishModuleName(dir = '') {
+  return dir.split('/')[1] || '';
 }
