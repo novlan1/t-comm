@@ -10,7 +10,8 @@
     "LICENSE",
     "CHANGELOG.md",
     "README.md",
-    "script"
+    "script",
+    "cil"
   ],
   "sideEffects": "false",
   "repository": {
@@ -23,6 +24,9 @@
     "common",
     "utils"
   ],
+  "bin": {
+    "t-comm": "./bin/cli.js"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/novlan1/t-comm/issues"
@@ -102,6 +106,7 @@
     "axios": "*",
     "canvas": "^2.6.1",
     "cheerio": "^1.0.0-rc.12",
+    "commander": "^11.0.0",
     "cron-parser": "^4.8.1",
     "qs": "^6.11.0",
     "request": "^2.88.2",
