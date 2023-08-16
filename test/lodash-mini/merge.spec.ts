@@ -10,4 +10,39 @@ describe('merge', () => {
       o: { a: 3, b: 4 },
     });
   });
+
+  it('merge falsy', () => {
+    expect(merge({
+      isUseVueLoader: true,
+      isVue3: false,
+      useXSS: true,
+
+      a: 1,
+    }, {
+      useXSS: false,
+      a: null,
+    })).toEqual({
+      isUseVueLoader: true,
+      isVue3: false,
+      useXSS: false,
+      a: null,
+    });
+
+
+    const {
+      isUseVueLoader,
+      isVue3,
+      useXSS,
+    } = merge({}, {
+      isUseVueLoader: true,
+      isVue3: false,
+      useXSS: true,
+    }, {
+      isVue3: true,
+      useXSS: false,
+    });
+    expect(isUseVueLoader).toBe(true);
+    expect(isVue3).toBe(true);
+    expect(useXSS).toBe(false);
+  });
 });
