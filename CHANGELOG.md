@@ -1,5 +1,16 @@
 # 工具库更新日志
 
+## [1.1.67](https://github.com/novlan1/t-comm/compare/v1.1.66...v1.1.67) (2023-08-23)
+
+
+### Features
+
+* **replace-all-polyfill:** replaceAllPolyfill优化，支持正则过滤 ([f1d1378](https://github.com/novlan1/t-comm/commit/f1d1378f25f88c53b74b6fc1a8f470f18a5fbb1d))
+* **robot:** msg类型优化 ([d196309](https://github.com/novlan1/t-comm/commit/d19630970692f8700cd14015297672d40af1f909))
+* **tam:** 导出api方法 ([ffb17d6](https://github.com/novlan1/t-comm/commit/ffb17d6b553ae33f98233379830147e197e75d6f))
+
+
+
 ## [1.1.66](https://github.com/novlan1/t-comm/compare/v1.1.65...v1.1.66) (2023-08-15)
 
 
