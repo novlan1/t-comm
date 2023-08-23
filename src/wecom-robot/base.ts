@@ -21,10 +21,10 @@ import { sendToRobot } from './helper';
  * })
  */
 export function sendWxRobotMsg({ webhookUrl, chatId, alias, content }: {
-  webhookUrl: string
-  content: string
-  chatId?: string
-  alias?: string
+  webhookUrl: string;
+  content: string;
+  chatId?: string;
+  alias?: string | Array<string>;
 }): Promise<object> {
   return new Promise((resolve, reject) => {
     sendToRobot({
@@ -34,7 +34,7 @@ export function sendWxRobotMsg({ webhookUrl, chatId, alias, content }: {
         msgtype: 'text',
         text: {
           content,
-          mentioned_list: [alias],
+          mentioned_list: Array.isArray(alias) ? alias : [alias],
         },
       },
     })

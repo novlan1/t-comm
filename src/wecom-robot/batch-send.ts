@@ -83,7 +83,7 @@ export function batchSendWxRobotMsg({
   webhookUrl,
 }: {
   content: string;
-  alias: string;
+  alias: string | Array<string>;
 } & ISendReq) {
   return batchSendRobotByChatId(sendWxRobotMsg, chatId, {
     content,
