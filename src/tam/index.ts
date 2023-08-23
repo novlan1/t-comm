@@ -7,4 +7,6 @@ export {
 export {
   getRUMAllProject,
   getRUMScores,
+  getTAMScoreInfoByProjectId,
+  getTAMSummaryScoreByGroupIdList,
 } from './api/index';

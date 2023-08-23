@@ -101,6 +101,8 @@ function generatePublishInfo({
     targetVersion,
     changeLogFilePath,
   });
+
+  // @ts-ignore
   const content = template.concat(changelog).replaceAll('###', '\n\n###');
 
   return optimizeContent(content);

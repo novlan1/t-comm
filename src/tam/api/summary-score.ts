@@ -16,7 +16,7 @@ import { getCredential } from './credential';
  * @param {Function} options.secretInfo.encrypt encrypt
  * @returns {Promise<Array<object>>} 分数信息
  * @example
- * getScoreInfoByProjectId({
+ * getTAMScoreInfoByProjectId({
  *   projectId: 123123,
  *   date: 20210106
  *   secretInfo: {
@@ -51,7 +51,7 @@ import { getCredential } from './credential';
  * ]
  *
  */
-async function getScoreInfoByProjectId({
+export async function getTAMScoreInfoByProjectId({
   projectId,
   startDate,
   secretInfo,
@@ -282,7 +282,7 @@ async function getSummaryScoreByProjectList({
 }) {
   const res: Array<any> = [];
   for (const project of projectList) {
-    const temp = await getScoreInfoByProjectId({ projectId: project.ID, startDate: date, secretInfo });
+    const temp = await getTAMScoreInfoByProjectId({ projectId: project.ID, startDate: date, secretInfo });
     const projectInfo = {
       ...project,
       ...(temp[0] || {}),
@@ -309,7 +309,7 @@ async function getSummaryScoreByProjectList({
  * @param {Function} options.secretInfo.encrypt encrypt
  * @returns {Promise<({ data: object, projectIdList: Array<number> })>} 汇总数据
  * @example
- * getSummaryScoreByGroupIdList({
+ * getTAMSummaryScoreByGroupIdList({
  *   groupIdList: [1,2,3],
  *   date: '20210106',
  *   secretInfo: {
@@ -355,7 +355,7 @@ async function getSummaryScoreByProjectList({
  * };
  *
  */
-export async function getSummaryScoreByGroupIdList({
+export async function getTAMSummaryScoreByGroupIdList({
   date,
   groupIdList,
   secretInfo,

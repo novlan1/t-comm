@@ -1,4 +1,4 @@
-import { getSummaryScoreByGroupIdList } from '../api/summary-score';
+import { getTAMSummaryScoreByGroupIdList } from '../api/summary-score';
 import { getRUMScores } from '../api/rum-score';
 
 import { parseSummaryScore, getTableHeaders } from '../parse';
@@ -132,13 +132,13 @@ export async function genSummaryData({
     date,
   });
 
-  const data = await getSummaryScoreByGroupIdList({
+  const data = await getTAMSummaryScoreByGroupIdList({
     date: parsedDate,
     groupIdList,
     secretInfo,
   });
 
-  const preData = await getSummaryScoreByGroupIdList({
+  const preData = await getTAMSummaryScoreByGroupIdList({
     date: parsedPreDate,
     groupIdList,
     secretInfo,
