@@ -1,5 +1,14 @@
 # 工具库更新日志
 
+## [1.1.68](https://github.com/novlan1/t-comm/compare/v1.1.67...v1.1.68) (2023-08-24)
+
+
+### Bug Fixes
+
+* **replace-all:** 兼容正则 ([9f681a5](https://github.com/novlan1/t-comm/commit/9f681a5c3033fdec14eb24fead6281d4c3bb5a11))
+
+
+
 ## [1.1.67](https://github.com/novlan1/t-comm/compare/v1.1.66...v1.1.67) (2023-08-23)
 
 
