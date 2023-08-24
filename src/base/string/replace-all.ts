@@ -1,3 +1,8 @@
+/**
+ * polyfill for replaceAll
+ *
+ * @export
+ */
 export function replaceAllPolyfill() {
   // @ts-ignore
   String.prototype.replaceAll = function (s1, s2) {

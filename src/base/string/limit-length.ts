@@ -1,3 +1,11 @@
+/**
+ * 检查字符串长度
+ *
+ * @export
+ * @param {string} [str] 字符串
+ * @param {number} [num] 长度
+ * @returns {boolean}
+ */
 export function checkStringLength(str = '', num = 30) {
   let len = 0;
   const character = `${str}`;

@@ -62,6 +62,15 @@ function getBundleSize(list: Array<string>, buildPath: string) {
   }).filter(item => item);
 }
 
+/**
+ * 分析首页Bundle信息
+ *
+ * @export
+ * @param config 配置
+ * @param {string} config.domain 域名
+ * @param {string} config.buildPath 打包路径
+ * @returns {*}
+ */
 export function analyzeIndexBundle({ domain, buildPath }: {
   domain: string;
   buildPath: string;

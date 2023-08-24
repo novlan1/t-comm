@@ -1,8 +1,11 @@
+
 /**
  * 复制到剪切板
- * @param text 待复制的文本
+ *
+ * @param {string} text 待复制的文本
+ * @returns {Promise<void>}
  */
-export const clipboardWeb = function (text: string): Promise<void> {
+export function clipboardWeb(text: string): Promise<void> {
   return new Promise((resolve, reject) => {
     const pasteText = document.getElementById('#clipboard');
     pasteText?.remove();
@@ -23,5 +26,5 @@ export const clipboardWeb = function (text: string): Promise<void> {
       reject();
     }
   });
-};
+}
 

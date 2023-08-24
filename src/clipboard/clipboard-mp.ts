@@ -1,8 +1,11 @@
+
 /**
- * 复制到剪切板
- * @param text 待复制的文本
+ * 小程序粘贴
+ *
+ * @param {string} text 待复制的文本
+ * @returns {Promise<void>}
  */
-export const clipboardMp = function (text: string): Promise<void> {
+export function clipboardMp(text: string): Promise<void> {
   return new Promise((resolve, reject) => {
     if (wx) {
       wx.setClipboardData({
@@ -19,5 +22,5 @@ export const clipboardMp = function (text: string): Promise<void> {
       reject();
     }
   });
-};
+}
 

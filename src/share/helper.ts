@@ -4,6 +4,7 @@ import {
   SHARE_TYPE_MAP,
   DEFAULT_SHOW_TYPE_IN_GAME,
 } from './config';
+// import { initCustomDom } from './custom-dialog'; // press-ui
 import { initCustomDom } from '../dialog/custom-dialog';
 
 
@@ -26,7 +27,7 @@ export function initCommShareTip() {
     .tip-toc-share-box{display: flex;position: fixed;top: .66rem;right: .62rem;}
     .tip-toc-sharetips .share-tip {height: .93rem;width: auto;background: url(https://image-1251917893.file.myqcloud.com/Esports/user/img/share-tip-bg.png) no-repeat;background-size: 100% .93rem;color: #fff;font-size: .28rem;position: relative;margin-left: .89rem;}
     .tip-toc-sharetips .share-tip>span{display: block;max-width: 6rem;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;word-break: break-all;line-height: .93rem;}
-    ..tip-toc-sharetips .share-tip::before,.tip-toc-sharetips .share-tip::after{content: '';position: absolute;top: 0;height: .93rem;background-size: 100%;}
+    .tip-toc-sharetips .share-tip::before,.tip-toc-sharetips .share-tip::after{content: '';position: absolute;top: 0;height: .93rem;background-size: 100%;}
     .tip-toc-sharetips .share-tip::before{left: -.89rem;width: .89rem;background: url(https://image-1251917893.file.myqcloud.com/Esports/user/img/share-tip-left.png) no-repeat;}
     .tip-toc-sharetips .share-tip::after{right: -.61rem;width: .62rem;background: url(https://image-1251917893.file.myqcloud.com/Esports/user/img/share-tip-right.png) no-repeat;}
   `;
