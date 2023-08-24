@@ -79,4 +79,11 @@ describe('replaceAllPolyfill', () => {
     // @ts-ignore
     expect((`${strLong2}, \n${strLong2}`).replaceAll(strLong2, 'd')).toBe('d, \nd');
   });
+
+  it('regexp', () => {
+    replaceAllPolyfill();
+    const str = 'a+a+a+a+a+';
+    // @ts-ignore
+    expect(str.replaceAll(/a/, 'b')).toBe('b+b+b+b+b+');
+  });
 });
