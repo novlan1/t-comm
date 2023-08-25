@@ -12,8 +12,8 @@ const changeLogSidebar = SHOW_CHANGE_LOG ? [
 
 module.exports = {
   title: 't-comm',
-  description: '简单的工具库',
-  base: process.env.PUBLISH_PATH || '/t-comm',
+  description: '丰富易用的工具库',
+  base: process.env.PUBLISH_PATH || '/t-comm/',
   head: [
     [
       'link', { rel: 'icon', href: '/images/favicon.ico' },
