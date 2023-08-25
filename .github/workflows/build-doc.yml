@@ -33,7 +33,7 @@ jobs:
 
       # 生成静态文件
       - name: Build
-        run: npm run docs:build:new
+        run: pnpm run docs:build:new
 
       # 部署到 GitHub Pages
       - name: Deploy
