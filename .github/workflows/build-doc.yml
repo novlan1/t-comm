@@ -19,9 +19,21 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Cache .pnpm-store
+        uses: actions/cache@v1
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-node${{ matrix.node-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+      - name: Install pnpm
+        run: curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm@6
+
+      - name: Install Dependencies
+        run: pnpm install
+
       # 生成静态文件
       - name: Build
-        run: npm install && npm run docs:build:new
+        run: npm run docs:build:new
 
       # 部署到 GitHub Pages
       - name: Deploy
