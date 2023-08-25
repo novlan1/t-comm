@@ -56,6 +56,7 @@ specifiers:
   tslib: ^2.3.1
   typescript: 4.5.5
   vue-jest: ^3.0.7
+  vue-template-compiler: ^2.7.14
   vuepress: ^1.9.10
   xlsx: ^0.18.5
 
@@ -117,7 +118,8 @@ devDependencies:
   ts-node: 10.7.0_tgseqbmpq5foykrvhuhjoqlhzq
   tslib: 2.3.1
   typescript: 4.5.5
-  vue-jest: 3.0.7_babel-core@6.25.0
+  vue-jest: 3.0.7_qsfj6c7edyv7kxqgodoeftuyca
+  vue-template-compiler: 2.7.14
   vuepress: 1.9.10_babel-core@6.25.0
 
 packages:
@@ -2103,7 +2105,7 @@ packages:
       lru-cache: 7.18.3
       npm-pick-manifest: 8.0.1
       proc-log: 3.0.0
-      promise-inflight: 1.0.1
+      promise-inflight: 1.0.1_bluebird@3.7.2
       promise-retry: 2.0.1
       semver: 7.5.4
       which: 3.0.1
@@ -3230,10 +3232,10 @@ packages:
       toml: 3.0.0
       url-loader: 1.1.2_webpack@4.46.0
       vue: 2.7.14
-      vue-loader: 15.10.2_bfdls7zwcuojwlbj2tiic6ytfm
+      vue-loader: 15.10.2_da3r4gngnxu2vhbimaegveiewi
       vue-router: 3.6.5_vue@2.7.14
       vue-server-renderer: 2.7.14
-      vue-template-compiler: 2.7.10
+      vue-template-compiler: 2.7.14
       vuepress-html-webpack-plugin: 3.2.0_webpack@4.46.0
       vuepress-plugin-container: 2.1.5
       webpack: 4.46.0
@@ -5036,7 +5038,7 @@ packages:
       mississippi: 3.0.0
       mkdirp: 0.5.6
       move-concurrently: 1.0.1
-      promise-inflight: 1.0.1
+      promise-inflight: 1.0.1_bluebird@3.7.2
       rimraf: 2.7.1
       ssri: 6.0.2
       unique-filename: 1.1.1
@@ -14154,13 +14156,15 @@ packages:
     engines: {node: '>= 0.6.0'}
     dev: true
 
-  /promise-inflight/1.0.1:
+  /promise-inflight/1.0.1_bluebird@3.7.2:
     resolution: {integrity: sha512-6zWPyEOFaQBJYcGMHBKTKJ3u6TBsnMFOIZSa6ce1e/ZrrsOlnHRHbabMjLiBYKp+n44X9eUI6VUPaukCXHuG4g==}
     peerDependencies:
       bluebird: '*'
     peerDependenciesMeta:
       bluebird:
         optional: true
+    dependencies:
+      bluebird: 3.7.2
     dev: true
 
   /promise-retry/2.0.1:
@@ -17250,7 +17254,7 @@ packages:
       recast: 0.17.6
       ts-map: 1.0.3
       typescript: 3.9.10
-      vue-template-compiler: 2.7.10
+      vue-template-compiler: 2.7.14
     dev: true
 
   /vue-eslint-parser/9.1.0_eslint@8.25.0:
@@ -17275,7 +17279,7 @@ packages:
     resolution: {integrity: sha512-BXq3jwIagosjgNVae6tkHzzIk6a8MHFtzAdwhnV5VlvPTFxDCvIttgSiHWjdGoTJvXtmRu5HacExfdarRcFhog==}
     dev: true
 
-  /vue-jest/3.0.7_babel-core@6.25.0:
+  /vue-jest/3.0.7_qsfj6c7edyv7kxqgodoeftuyca:
     resolution: {integrity: sha512-PIOxFM+wsBMry26ZpfBvUQ/DGH2hvp5khDQ1n51g3bN0TwFwTy4J85XVfxTRMukqHji/GnAoGUnlZ5Ao73K62w==}
     peerDependencies:
       babel-core: ^6.25.0 || ^7.0.0-0
@@ -17293,12 +17297,13 @@ packages:
       object-assign: 4.1.1
       source-map: 0.5.7
       tsconfig: 7.0.0
+      vue-template-compiler: 2.7.14
       vue-template-es2015-compiler: 1.9.1
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vue-loader/15.10.2_bfdls7zwcuojwlbj2tiic6ytfm:
+  /vue-loader/15.10.2_da3r4gngnxu2vhbimaegveiewi:
     resolution: {integrity: sha512-ndeSe/8KQc/nlA7TJ+OBhv2qalmj1s+uBs7yHDRFaAXscFTApBzY9F1jES3bautmgWjDlDct0fw8rPuySDLwxw==}
     peerDependencies:
       '@vue/compiler-sfc': ^3.0.8
@@ -17324,7 +17329,7 @@ packages:
       loader-utils: 1.4.2
       vue-hot-reload-api: 2.3.4
       vue-style-loader: 4.1.3
-      vue-template-compiler: 2.7.10
+      vue-template-compiler: 2.7.14
       webpack: 4.46.0
     transitivePeerDependencies:
       - arc-templates
@@ -17410,8 +17415,8 @@ packages:
       loader-utils: 1.4.2
     dev: true
 
-  /vue-template-compiler/2.7.10:
-    resolution: {integrity: sha512-QO+8R9YRq1Gudm8ZMdo/lImZLJVUIAM8c07Vp84ojdDAf8HmPJc7XB556PcXV218k2AkKznsRz6xB5uOjAC4EQ==}
+  /vue-template-compiler/2.7.14:
+    resolution: {integrity: sha512-zyA5Y3ArvVG0NacJDkkzJuPQDF8RFeRlzV2vLeSnhSpieO6LK2OVbdLPi5MPPs09Ii+gMO8nY4S3iKQxBxDmWQ==}
     dependencies:
       de-indent: 1.0.2
       he: 1.2.0
