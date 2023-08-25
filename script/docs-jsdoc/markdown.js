@@ -5,7 +5,7 @@ const path = require('path');
 const sourceList = require('./config.js');
 
 const template = fs.readFileSync('./script/docs-jsdoc/template.hbs', 'utf8');
-const configure =  path.resolve(process.cwd(), './jsdoc2md.json');
+const configure =  path.resolve(process.cwd(), './script/docs-jsdoc/jsdoc2md.json');
 
 
 const makeMarkDownDoc = function (sourceName, sourceRootPath, outputPath) {

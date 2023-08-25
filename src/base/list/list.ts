@@ -28,6 +28,12 @@ export function shuffle<T>(array: Array<T>): Array<T> {
  * @param {Array<number>} cellWidthList - 宽度列表
  * @param {number} idx - 当前idx
  * @returns {number} 累计宽度
+ *
+ * @example
+ *
+ * getAccCellWidth([20, 10, 20, 10], 1)
+ *
+ * // 30
  */
 export function getAccCellWidth(cellWidthList: Array<number>, idx: number): number {
   let res = 0;

@@ -30,3 +30,16 @@ getMonthDay(2022, 2)  // 28
 ## 文档地址
 
 点击[这里](https://novlan1.github.io/t-comm/)查看。
+
+## 单文件引入
+
+对于一些不支持`tree-shaking`的项目，`t-comm`提供了单文件引入的方式。
+
+```ts
+import { timeStampFormat } from 't-comm/lib/time/time';
+
+const stamp = new Date('2020-11-27 8:23:24').getTime();
+timeStampFormat(stamp, 'yyyy-MM-dd hh:mm:ss');
+
+// 2020-11-27 08:23:24
+```

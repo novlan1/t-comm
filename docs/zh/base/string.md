@@ -1,5 +1,5 @@
 
-## `checkStringLength([str], [num])` 
+## `checkStringLength(str, [num])` 
 
 
 **描述**：<p>检查字符串长度</p>
@@ -7,13 +7,20 @@
 **参数**：
 
 
-| 参数名 | 类型 | 描述 |
-| --- | --- | --- |
-| [str] | <code>string</code> | <p>字符串</p> |
-| [num] | <code>number</code> | <p>长度</p> |
+| 参数名 | 类型 | 默认值 | 描述 |
+| --- | --- | --- | --- |
+| str | <code>string</code> |  | <p>字符串</p> |
+| [num] | <code>number</code> | <code>30</code> | <p>长度</p> |
 
 
 
+**示例**
+
+```typescript
+checkStringLength('123', 2) // true
+checkStringLength('123', 3) // true
+checkStringLength('123', 4) // false
+```
 <a name="replaceAllPolyfill"></a>
 
 ## `replaceAllPolyfill()` 
@@ -25,6 +32,11 @@
 
 
 
+**示例**
+
+```typescript
+replaceAllPolyfill()
+```
 <a name="camelize"></a>
 
 ## `camelize(str)` 

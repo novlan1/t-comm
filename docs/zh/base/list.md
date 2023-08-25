@@ -13,6 +13,13 @@
 
 **返回**: <p>数组</p>
 
+**示例**
+
+```typescript
+flat([[[1, 2, 3], 4], 5])
+
+// [1, 2, 3, 4, 5]
+```
 <a name="flatten"></a>
 
 ## `flatten(list, key)` 
@@ -85,6 +92,13 @@ shuffle([1, 2, 3, 4, 5])
 
 <p>累计宽度</p>
 
+**示例**
+
+```typescript
+getAccCellWidth([20, 10, 20, 10], 1)
+
+// 30
+```
 <a name="isListAllEqual"></a>
 
 ## `isListAllEqual(list)` 

@@ -2,6 +2,10 @@
  * polyfill for replaceAll
  *
  * @export
+ *
+ * @example
+ *
+ * replaceAllPolyfill()
  */
 export function replaceAllPolyfill() {
   // @ts-ignore

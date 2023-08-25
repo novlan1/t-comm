@@ -2,6 +2,12 @@
  * 递归拉平数组
  * @param list 数组
  * @returns 数组
+ *
+ * @example
+ *
+ * flat([[[1, 2, 3], 4], 5])
+ *
+ * // [1, 2, 3, 4, 5]
  */
 export function flat(list: Array<any>): Array<any> {
   return list.reduce((acc, item) => acc.concat(Array.isArray(item) ? flat(item) : item), []);
