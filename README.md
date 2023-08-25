@@ -8,17 +8,18 @@
   <img src="https://img.shields.io/codecov/c/github/novlan1/t-comm">
 </p>
 
+丰富易用的工具库。
 
-## Usage
+## 如何使用
 
-First, install it.
+1. 安装依赖
 
 
 ```bash
 npm install t-comm -S
 ```
 
-Then, use it in your project.
+2. 引入并使用
 
 ```ts
 import { getMonthDay } from 't-comm';
@@ -26,6 +27,6 @@ import { getMonthDay } from 't-comm';
 getMonthDay(2022, 2)  // 28
 ```
 
-## Docs
+## 文档地址
 
-Click [here](https://novlan1.github.io/t-comm/) to check docs.
+点击[这里](https://novlan1.github.io/t-comm/)查看。

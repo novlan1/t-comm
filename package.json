@@ -51,7 +51,10 @@
     "release": "yarn test && yarn build && np --no-cleanup --yolo --any-branch && npm run version:tip",
     "npm:token": "node script/npm-token/npm-token",
     "prepare": "husky install",
-    "init:env": "node script/env/rainbow-env"
+    "init:env": "node script/env/rainbow-env",
+    "docs:gen:new": "node script/docs-jsdoc/markdown",
+    "docs:dev": "vuepress dev docs",
+    "docs:build:new": "vuepress build docs"
   },
   "devDependencies": {
     "@babel/core": "^7.17.2",
@@ -99,7 +102,8 @@
     "ts-node": "^10.5.0",
     "tslib": "^2.3.1",
     "typescript": "4.5.5",
-    "vue-jest": "^3.0.7"
+    "vue-jest": "^3.0.7",
+    "vuepress": "^1.9.10"
   },
   "dependencies": {
     "@babel/runtime": "^7.17.2",

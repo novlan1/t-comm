@@ -1,0 +1,16 @@
+{
+    "source": {
+        "includePattern": ".+\\.(t|j)s(doc|x)?$",
+        "excludePattern": ".+\\.(test|spec).ts"
+    },
+    "tags": {
+        "allowUnknownTags": true
+    },
+    "plugins": [
+        "plugins/markdown",
+        "node_modules/better-docs/typescript"
+    ],
+    "opts": {
+        "template": "node_modules/better-docs"
+    }
+}

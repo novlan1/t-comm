@@ -21,7 +21,7 @@ jobs:
 
       # 生成静态文件
       - name: Build
-        run: npm install && npm run build && npm run docs:gen
+        run: npm install && npm run docs:build:new
 
       # 部署到 GitHub Pages
       - name: Deploy
@@ -33,4 +33,4 @@ jobs:
           # 打包后的文件部署到哪个分支上
           BRANCH: gh-pages
           # 打包后的文件在哪里
-          FOLDER: docs
+          FOLDER: docs/.vuepress/dist

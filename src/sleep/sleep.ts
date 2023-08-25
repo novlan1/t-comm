@@ -3,7 +3,7 @@
  * 等待一段时间
  * @func
  * @param {number} ms 毫秒
- * @returns Promise<any>
+ * @returns Promise
  * @example
  *
  * async function main() {

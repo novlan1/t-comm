@@ -10,6 +10,7 @@
  *
  * @example
  *
+ * ```ts
  * startPipeline({
  *   buildId,
  *   data: {}
