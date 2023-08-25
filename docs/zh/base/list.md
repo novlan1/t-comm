@@ -32,7 +32,7 @@ flat([[[1, 2, 3], 4], 5])
 
 | 参数名 | 类型 | 描述 |
 | --- | --- | --- |
-| list | <code>Array.&lt;Object&gt;</code> | <p>对象数组</p> |
+| list | <code>Array&lt;Object&gt;</code> | <p>对象数组</p> |
 | key | <code>string</code> | <p>对象的key</p> |
 
 **返回**: <code>object</code><br>
@@ -60,9 +60,9 @@ flatten(list, 'id')
 
 | 参数名 | 类型 | 描述 |
 | --- | --- | --- |
-| array | <code>Array.&lt;any&gt;</code> | <p>数组</p> |
+| array | <code>Array&lt;any&gt;</code> | <p>数组</p> |
 
-**返回**: <code>Array.&lt;any&gt;</code><br>
+**返回**: <code>Array&lt;any&gt;</code><br>
 
 <p>乱序后的数组</p>
 
@@ -85,7 +85,7 @@ shuffle([1, 2, 3, 4, 5])
 
 | 参数名 | 类型 | 描述 |
 | --- | --- | --- |
-| cellWidthList | <code>Array.&lt;number&gt;</code> | <p>宽度列表</p> |
+| cellWidthList | <code>Array&lt;number&gt;</code> | <p>宽度列表</p> |
 | idx | <code>number</code> | <p>当前idx</p> |
 
 **返回**: <code>number</code><br>
@@ -111,7 +111,7 @@ getAccCellWidth([20, 10, 20, 10], 1)
 
 | 参数名 | 类型 | 描述 |
 | --- | --- | --- |
-| list | <code>Array.&lt;(number\|string)&gt;</code> | <p>数组</p> |
+| list | <code>Array&lt;(number\|string)&gt;</code> | <p>数组</p> |
 
 **返回**: <code>Boolean</code><br>
 
@@ -140,7 +140,7 @@ isListAllEqual([0, 0, 2])
 
 | 参数名 | 类型 |
 | --- | --- |
-| data | <code>Array.&lt;any&gt;</code> | 
+| data | <code>Array&lt;any&gt;</code> | 
 
 **返回**: <code>Object</code><br>
 
@@ -200,7 +200,7 @@ const data = [
 
 | 参数名 | 类型 | 描述 |
 | --- | --- | --- |
-| data | <code>Array.&lt;Object&gt;</code> | <p>输入数据</p> |
+| data | <code>Array&lt;Object&gt;</code> | <p>输入数据</p> |
 | preDataMap | <code>Object</code> | <p>上次数据的map</p> |
 | uniqKey | <code>string</code> | <p>唯一键</p> |
 
@@ -274,8 +274,8 @@ getPreviousRatio(data, preDataMap);
 
 | 参数名 | 类型 | 描述 |
 | --- | --- | --- |
-| data | <code>Array.&lt;object&gt;</code> | <p>原始数据</p> |
-| reverseScoreKeys | <code>Array.&lt;string&gt;</code> | <p>逆序的key列表</p> |
+| data | <code>Array&lt;object&gt;</code> | <p>原始数据</p> |
+| reverseScoreKeys | <code>Array&lt;string&gt;</code> | <p>逆序的key列表</p> |
 
 **返回**: <code>Object</code><br>
 
@@ -323,7 +323,7 @@ getMaxAndMinIdx(data, [])
 
 | 参数名 | 类型 | 描述 |
 | --- | --- | --- |
-| preDataList | <code>Array.&lt;Object&gt;</code> | <p>之前的数据，作为对照</p> |
+| preDataList | <code>Array&lt;Object&gt;</code> | <p>之前的数据，作为对照</p> |
 | key | <code>string</code> | <p>主键</p> |
 
 **返回**: <code>Object</code><br>
@@ -368,11 +368,11 @@ flattenPreData(data, 'ProjectName');
 
 | 参数名 | 类型 | 描述 |
 | --- | --- | --- |
-| list | <code>Array.&lt;object&gt;</code> | <p>现在数据</p> |
-| preList | <code>Array.&lt;object&gt;</code> | <p>参照数据</p> |
+| list | <code>Array&lt;object&gt;</code> | <p>现在数据</p> |
+| preList | <code>Array&lt;object&gt;</code> | <p>参照数据</p> |
 | key | <code>string</code> | <p>唯一key名称</p> |
 
-**返回**: <code>Array.&lt;object&gt;</code><br>
+**返回**: <code>Array&lt;object&gt;</code><br>
 
 <p>对比结果，增加为list的每一项增加previousValue和ratio属性</p>
 

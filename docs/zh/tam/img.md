@@ -193,7 +193,7 @@ firstScreen: 1000,
 | --- | --- | --- |
 | options | <code>object</code> | <p>配置</p> |
 | options.date | <code>string</code> | <p>日期，yyyyMMdd格式</p> |
-| options.groupIdList | <code>Array.&lt;number&gt;</code> | <p>groupId列表</p> |
+| options.groupIdList | <code>Array&lt;number&gt;</code> | <p>groupId列表</p> |
 | options.secretInfo | <code>object</code> | <p>密钥信息</p> |
 | options.secretInfo.apiKey | <code>string</code> | <p>apiKey</p> |
 | options.secretInfo.loginName | <code>string</code> | <p>loginName</p> |

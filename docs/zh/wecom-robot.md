@@ -47,7 +47,7 @@ sendWxRobotMsg({
 | config.webhookUrl | <code>string</code> | <p>钩子链接</p> |
 | config.chatId | <code>string</code> | <p>会话id</p> |
 | config.content | <code>string</code> | <p>内容</p> |
-| config.attachments | <code>Array.&lt;object&gt;</code> | <p>附加内容</p> |
+| config.attachments | <code>Array&lt;object&gt;</code> | <p>附加内容</p> |
 
 **返回**: <code>Promise.&lt;object&gt;</code><br>
 

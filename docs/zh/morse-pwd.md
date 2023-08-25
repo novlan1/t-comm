@@ -23,7 +23,7 @@
 | Param | Type | Description |
 | --- | --- | --- |
 | options | <code>Object</code> | <p>选项</p> |
-| options.pwd | <code>Array.&lt;number&gt;</code> | <p>密码</p> |
+| options.pwd | <code>Array&lt;number&gt;</code> | <p>密码</p> |
 | options.cb | <code>function</code> | <p>成功回调</p> |
 | options.quiet | <code>Boolean</code> | <p>是否安静模式（不打印日志）</p> |
 | options.holdTime | <code>number</code> | <p>等待多久后就恢复原位</p> |
@@ -53,7 +53,7 @@ beforeDestroy() {
 | Param | Type | Description |
 | --- | --- | --- |
 | options | <code>Object</code> | <p>选项</p> |
-| options.pwd | <code>Array.&lt;number&gt;</code> | <p>密码</p> |
+| options.pwd | <code>Array&lt;number&gt;</code> | <p>密码</p> |
 | options.cb | <code>function</code> | <p>成功回调</p> |
 | options.quiet | <code>Boolean</code> | <p>是否安静模式（不打印日志）</p> |
 | options.holdTime | <code>number</code> | <p>等待多久后就恢复原位</p> |

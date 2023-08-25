@@ -54,6 +54,7 @@ const makeMarkDownDoc = function (sourceName, sourceRootPath, outputPath) {
       const lines = mdStr
         .replace(/&nbsp;/g, ' ')
         .replace(/(?<=##.*)\\_/g, '_')
+        .replace(/Array\.&lt;/g, 'Array&lt;')
         .split('\n');
       lines.splice(0, 1);
       let newText = lines.join('\n');

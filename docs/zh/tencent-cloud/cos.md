@@ -10,7 +10,7 @@
 | 参数名 | 类型 | 描述 |
 | --- | --- | --- |
 | config | <code>object</code> | <p>配置信息</p> |
-| config.files | <code>Array.&lt;object&gt;</code> | <p>文件列表</p> |
+| config.files | <code>Array&lt;object&gt;</code> | <p>文件列表</p> |
 | config.files.key | <code>string</code> | <p>文件key</p> |
 | config.files.path | <code>string</code> | <p>文件路径</p> |
 | config.secretId | <code>string</code> | <p>COS secretId</p> |

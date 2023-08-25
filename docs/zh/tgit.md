@@ -75,7 +75,7 @@ getProjectDefaultBranch({
 | options.projectName | <code>string</code> | <p>项目名称</p> |
 | options.privateToken | <code>string</code> | <p>密钥</p> |
 
-**返回**: <code>Promise.&lt;Array.&lt;object&gt;&gt;</code><br>
+**返回**: <code>Promise.&lt;Array&lt;object&gt;&gt;</code><br>
 
 <p>请求Promise</p>
 
@@ -296,7 +296,7 @@ getOneProjectDetail({
 | options.page | <code>string</code> | <p>起始页码</p> |
 | options.privateToken | <code>string</code> | <p>密钥</p> |
 
-**返回**: <code>Promise.&lt;Array.&lt;object&gt;&gt;</code><br>
+**返回**: <code>Promise.&lt;Array&lt;object&gt;&gt;</code><br>
 
 <p>请求Promise</p>
 
@@ -326,7 +326,7 @@ getOneProjectBySearch({
 | privateToken | <code>string</code> | <p>密钥</p> |
 | search | <code>string</code> | <p>搜索内容</p> |
 
-**返回**: <code>Array.&lt;object&gt;</code><br>
+**返回**: <code>Array&lt;object&gt;</code><br>
 
 <p>项目列表</p>
 
@@ -353,7 +353,7 @@ console.log(projects)
 | options.id | <code>string</code> | <p>项目id</p> |
 | options.privateToken | <code>string</code> | <p>密钥</p> |
 
-**返回**: <code>Promise.&lt;Array.&lt;object&gt;&gt;</code><br>
+**返回**: <code>Promise.&lt;Array&lt;object&gt;&gt;</code><br>
 
 <p>请求Promise</p>
 

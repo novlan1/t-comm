@@ -329,7 +329,7 @@ updateRainbowKVAndPublish({
 | config.secretInfo.envName | <code>string</code> | <p>配置环境</p> |
 | config.secretInfo.groupName | <code>string</code> | <p>配置组</p> |
 
-**返回**: <code>Promise.&lt;Array.&lt;object&gt;&gt;</code><br>
+**返回**: <code>Promise.&lt;Array&lt;object&gt;&gt;</code><br>
 
 <p>分组配置</p>
 
