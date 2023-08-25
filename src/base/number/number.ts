@@ -54,7 +54,6 @@ export function getPartRatio(summary: number, part: number) {
  * 阿拉伯数字和中文数字映射表
  * @type {object}
  * @example
- * import { NUMBER_CHI_MAP } from 't-comm'
  *
  * console.log(NUMBER_CHI_MAP[1]);
  * // '一'

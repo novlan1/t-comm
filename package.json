@@ -55,7 +55,8 @@
     "docs:gen:new": "node script/docs-jsdoc/markdown",
     "docs:dev": "vuepress dev docs",
     "docs:build:new": "vuepress build docs",
-    "docs:deploy": "node script/docs-jsdoc/docs-mine"
+    "docs:deploy:mine": "node script/docs-jsdoc/docs-mine",
+    "docs:deploy": "node script/docs-jsdoc/deploy"
   },
   "devDependencies": {
     "@babel/core": "^7.17.2",

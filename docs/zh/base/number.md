@@ -11,8 +11,6 @@
 **示例**
 
 ```typescript
-import { NUMBER_CHI_MAP } from 't-comm'
-
 console.log(NUMBER_CHI_MAP[1]);
 // '一'
 
