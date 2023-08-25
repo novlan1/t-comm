@@ -15,7 +15,7 @@ export function flat(list: Array<any>): Array<any> {
 
 
 /**
- * 拉平数组
+ * 拉平数组，不会递归处理
  * @param {Array<Object>} list - 对象数组
  * @param {string} key - 对象的key
  * @returns {object} 拉平后的对象
