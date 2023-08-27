@@ -32,6 +32,8 @@ const rollupConfig = {
     },
   ],
   external: [
+    'fs',
+    'path',
     // ...Object.keys(pkg.dependencies),
     /@babel\/runtime/,
     'axios',

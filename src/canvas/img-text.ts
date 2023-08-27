@@ -1,6 +1,24 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 /**
  * 为图片增加文字
+ *
+ * @param {Object} config 配置
+ * @param {number} config.width 宽度
+ * @param {number} config.height 高度
+ * @param {Array<string>} config.textList 文字列表，支持多行
+ * @param {string} config.imgPath 图片路径
+ * @returns {string} canvas.toDataURL生成的base64图片
+ *
+ * @example
+ *
+ * ```ts
+ * const imgUrl = addTextForImg({
+ *   width: 300,
+ *   height: 300,
+ *   textList: ['第一行', '第二行'],
+ *   imgPath: './test.png',
+ * })
+ * ```
  */
 export async function addTextForImg({
   width,

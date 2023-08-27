@@ -4,6 +4,11 @@
  *
  * @param {string} text 待复制的文本
  * @returns {Promise<void>}
+ * @example
+ *
+ * ```ts
+ * clipboardMp('stupid').then(() => {});
+ * ```
  */
 export function clipboardMp(text: string): Promise<void> {
   return new Promise((resolve, reject) => {

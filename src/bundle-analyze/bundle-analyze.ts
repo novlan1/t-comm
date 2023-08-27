@@ -31,6 +31,8 @@ function getSourceFromReg(content: string, reg: RegExp) {
  *   'static/js/index.8ec239e5.js',
  *   'static/index.b0707a6a.css'
  * ]
+ *
+ * @ignore
  */
 function getEntryFiles(content: string, domain: string) {
   const scriptReg = new RegExp(`<script .*?src="${domain}/?(.+?)".*?/?>`, 'g');
@@ -70,6 +72,14 @@ function getBundleSize(list: Array<string>, buildPath: string) {
  * @param {string} config.domain 域名
  * @param {string} config.buildPath 打包路径
  * @returns {*}
+ *
+ * @example
+ * ```ts
+ * analyzeIndexBundle({
+ *   domain: '',
+ *   buildPath: '',
+ * })
+ * ```
  */
 export function analyzeIndexBundle({ domain, buildPath }: {
   domain: string;
