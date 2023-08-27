@@ -28,7 +28,10 @@ getMonthDay(2022, 2)  // 28
 import { timeStampFormat } from 't-comm/lib/time/time';
 
 const stamp = new Date('2020-11-27 8:23:24').getTime();
-timeStampFormat(stamp, 'yyyy-MM-dd hh:mm:ss');
 
+timeStampFormat(stamp, 'yyyy-MM-dd hh:mm:ss');
 // 2020-11-27 08:23:24
 ```
+
+> 注意，只有非`node.js`环境下使用的模块，才进行了单独打包。
+
