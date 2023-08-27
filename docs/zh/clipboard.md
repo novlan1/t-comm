@@ -13,6 +13,11 @@
 
 
 
+**示例**
+
+```ts
+clipboardMp('stupid').then(() => {});
+```
 <a name="clipboardWeb"></a>
 
 ## `clipboardWeb(text)` 
@@ -29,3 +34,8 @@
 
 
 
+**示例**
+
+```ts
+clipboardMp('stupid').then(() => {});
+```

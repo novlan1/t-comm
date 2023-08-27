@@ -1,5 +1,5 @@
 
-## `addTextForImg()` 
+## `addTextForImg(config)` 
 
 
 **描述**：<p>为图片增加文字</p>
@@ -7,7 +7,28 @@
 **参数**：
 
 
+| 参数名 | 类型 | 描述 |
+| --- | --- | --- |
+| config | <code>Object</code> | <p>配置</p> |
+| config.width | <code>number</code> | <p>宽度</p> |
+| config.height | <code>number</code> | <p>高度</p> |
+| config.textList | <code>Array&lt;string&gt;</code> | <p>文字列表，支持多行</p> |
+| config.imgPath | <code>string</code> | <p>图片路径</p> |
 
+**返回**: <code>string</code><br>
+
+<p>canvas.toDataURL生成的base64图片</p>
+
+**示例**
+
+```ts
+const imgUrl = addTextForImg({
+  width: 300,
+  height: 300,
+  textList: ['第一行', '第二行'],
+  imgPath: './test.png',
+})
+```
 <a name="mergeMultiCanvasPic"></a>
 
 ## `mergeMultiCanvasPic(config)` 

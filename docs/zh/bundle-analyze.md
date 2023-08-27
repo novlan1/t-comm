@@ -1,20 +1,4 @@
 
-## `getEntryFiles()` 
-
-
-**描述**：<p>result示例：</p>
-<p>[
-'static/js/chunk-vendors.59912eed.js',
-'static/js/index.8ec239e5.js',
-'static/index.b0707a6a.css'
-]</p>
-
-**参数**：
-
-
-
-<a name="analyzeIndexBundle"></a>
-
 ## `analyzeIndexBundle(config)` 
 
 
@@ -31,3 +15,11 @@
 
 
 
+**示例**
+
+```ts
+analyzeIndexBundle({
+  domain: '',
+  buildPath: '',
+})
+```
