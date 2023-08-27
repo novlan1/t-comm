@@ -1,6 +1,7 @@
 const path = require('path');
+const fs = require('fs');
 const typescript = require('@rollup/plugin-typescript');
-const { BUILD_DIR_LIST } = require('./build-config');
+// const { BUILD_DIR_LIST } = require('./build-config');
 const { traverseFolder, getFileName } = require('../utils/node-fs');
 
 
@@ -15,7 +16,18 @@ function cb(file) {
 }
 
 function getAllInputFiles() {
-  BUILD_DIR_LIST.forEach((dir) => {
+  const srcDir = path.resolve(root, 'src');
+  const list = fs.readdirSync(srcDir);
+
+  const buildDirList =  list.filter((item) => {
+    const newPath = `${srcDir}/${item}`;
+    const stat = fs.lstatSync(newPath);
+    return stat.isDirectory();
+  });
+  console.log('[buildDirList]', buildDirList);
+
+
+  buildDirList.forEach((dir) => {
     traverseFolder(cb, path.resolve(root, 'src', dir));
   });
 }
