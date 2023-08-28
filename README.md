@@ -27,10 +27,6 @@ import { getMonthDay } from 't-comm';
 getMonthDay(2022, 2)  // 28
 ```
 
-## 文档地址
-
-点击[这里](https://novlan1.github.io/t-comm/)查看。
-
 ## 单文件引入
 
 对于一些不支持`tree-shaking`的项目，`t-comm`提供了单文件引入的方式。
@@ -45,4 +41,9 @@ timeStampFormat(stamp, 'yyyy-MM-dd hh:mm:ss');
 ```
 
 > 注意，只有非`node.js`环境下使用的模块，才进行了单独打包。
+
+
+## 详细文档
+
+点击[这里](https://novlan1.github.io/t-comm/)查看。
 
