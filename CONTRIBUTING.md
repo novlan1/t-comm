@@ -11,7 +11,7 @@ npm run build
 发布：
 
 ```bash
-npx np --no-cleanup --yolo --any-branch && npm publish
+npm run release-patch && npm publish
 ```
 
 ## 文档

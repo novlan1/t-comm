@@ -61,7 +61,7 @@ const rollupConfig = {
   ],
 };
 
-export default [
+const allRollupConfig = [
   {
     input: rollupConfig.input,
     output: rollupConfig.output,
@@ -76,3 +76,6 @@ export default [
   },
   ...getExtraBuildDir(rollupConfig),
 ];
+
+
+module.exports = allRollupConfig;

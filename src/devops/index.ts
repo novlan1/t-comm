@@ -8,3 +8,7 @@ export {
   createDevopsTemplateInstances,
   updateDevopsTemplateInstances,
 } from './template';
+
+export {
+  updateDevopsMpCIPipeline,
+} from './mp-ci/devops-mp-ci';

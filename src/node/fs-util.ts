@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
 import * as path from 'path';
+import * as fs from 'fs';
 
 const LOG_DIR = 'log';
 
 function innerCopy(src: string, dist: string) {
-  const fs = require('fs');
   if (fs.statSync(src).isFile()) {
     return;
   }
@@ -28,7 +27,6 @@ function innerCopy(src: string, dist: string) {
  * @param dist {String} 复制到目标目录
  */
 function innerCopyDir(src: string, dist: string) {
-  const fs = require('fs');
   const b = fs.existsSync(dist);
   if (!b) {
     mkDirsSync(dist); // 创建目录
@@ -38,8 +36,6 @@ function innerCopyDir(src: string, dist: string) {
 
 // 递归创建目录 同步方法
 export function mkDirsSync(dirname: string) {
-  const fs = require('fs');
-  const path = require('path');
   if (fs.existsSync(dirname)) {
     return true;
   }
@@ -67,23 +63,45 @@ export function copyDir(src: string, dist: string, callback?: Function) {
  * 删除目录
  * @param {Object} path
  */
-export function deleteFolder(path: string) {
-  const fs = require('fs');
-  let files = [];
-  if (fs.existsSync(path)) {
-    files = fs.readdirSync(path);
+export function deleteFolder(tPath: string) {
+  let files: Array<string> = [];
+  if (fs.existsSync(tPath)) {
+    files = fs.readdirSync(tPath);
     files.forEach((file: string) => {
-      const curPath = `${path}/${file}`;
+      const curPath = `${tPath}/${file}`;
       if (fs.statSync(curPath).isDirectory()) {
         deleteFolder(curPath);
       } else {
         fs.unlinkSync(curPath);
       }
     });
-    fs.rmdirSync(path);
+    fs.rmdirSync(tPath);
   }
 }
 
+
+/**
+ * 递归删除空目录
+ * @param path 路径
+ * @param level 层级
+ */
+export function rmEmptyDir(tPath: string, level = 0) {
+  const files = fs.readdirSync(tPath);
+
+  if (files.length > 0) {
+    let tempFile = 0;
+    files.forEach((file) => {
+      tempFile += 1;
+      rmEmptyDir(`${tPath}/${file}`, level + 1);
+    });
+
+    if (tempFile === files.length && level !== 0) {
+      fs.rmdirSync(tPath);
+    }
+  } else {
+    level !== 0 && fs.rmdirSync(tPath);
+  }
+}
 
 /**
  * 拷贝文件
@@ -91,7 +109,6 @@ export function deleteFolder(path: string) {
  * @param {Object} to		拷贝到那里
  */
 export function copyFile(from: string, to: string) {
-  const fs = require('fs');
   return fs.writeFileSync(to, fs.readFileSync(from));
 }
 
@@ -101,23 +118,21 @@ export function copyFile(from: string, to: string) {
  * @param {Function} cb 回调参数
  * @param {String} path 文件夹或文件路径
  */
-export function traverseFolder(cb: Function, path: string) {
-  const fs = require('fs');
-  if (fs.statSync(path).isDirectory()) {
-    const files = fs.readdirSync(path);
+export function traverseFolder(cb: Function, tPath: string) {
+  if (fs.statSync(tPath).isDirectory()) {
+    const files = fs.readdirSync(tPath);
 
     files.forEach((file: string) => {
-      const curPath = require('path').resolve(path, file);
-      // `${path}/${file}`;
+      const curPath = path.resolve(tPath, file);
+      // `${tPath}/${file}`;
       traverseFolder(cb, curPath);
     });
   } else {
-    cb(path);
+    cb(tPath);
   }
 }
 
 export function readJsonLog(file: string, defaultContent = '{}') {
-  const fs = require('fs');
   const filePath = `./${LOG_DIR}/${file}`;
 
   if (!fs.existsSync(filePath)) {
@@ -131,12 +146,10 @@ export function readJsonLog(file: string, defaultContent = '{}') {
 }
 
 export function getJsonLogDir() {
-  const path = require('path');
   return path.resolve(process.cwd(), './log');
 }
 
 export function saveJsonToLog(content: object, file: string, needLog = true) {
-  const fs = require('fs');
   if (!needLog) return;
   createLogDir();
   fs.writeFileSync(`./${LOG_DIR}/${file}`, JSON.stringify(content, null, 2), {
@@ -145,7 +158,6 @@ export function saveJsonToLog(content: object, file: string, needLog = true) {
 }
 
 export function getJsonFromLog(file: string) {
-  const fs = require('fs');
   const filePath = `./${LOG_DIR}/${file}`;
   let data = {};
 
@@ -164,7 +176,6 @@ export function getJsonFromLog(file: string) {
 
 
 function createLogDir() {
-  const fs = require('fs');
   if (!fs.existsSync(`./${LOG_DIR}`)) {
     fs.mkdirSync(`./${LOG_DIR}`);
   }

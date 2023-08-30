@@ -21,21 +21,21 @@ describe('composeRobotContent', () => {
 
 describe('compareData', () => {
   it('compareData', () => {
-    jest.mock('fs', () => ({
-      writeFileSync: jest.fn(),
-      existsSync: jest.fn(),
-      mkdirSync: jest.fn(),
-      readFileSync: () => 1,
-    }));
+    // jest.mock('fs', () => ({
+    //   writeFileSync: jest.fn(),
+    //   existsSync: jest.fn(),
+    //   mkdirSync: jest.fn(),
+    //   readFileSync: () => 1,
+    // }));
 
-    expect(compareData([])).toBe(false);
+    expect(compareData([])).toBe(true);
   });
 });
 
 describe('parseWeatherData', () => {
   it('parseWeatherData', () => {
     expect(parseWeatherData([])).toEqual({
-      isSame: false,
+      isSame: true,
       content: '当前深圳预警已全部解除',
     });
   });

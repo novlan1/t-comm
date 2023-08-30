@@ -7,6 +7,7 @@ export {
   saveJsonToLog,
   getJsonFromLog,
   getFileName,
+  rmEmptyDir,
 } from './fs-util';
 export { execCommand } from './node-command';
 export { nodeGet, nodePost, nodePut } from './node-request';

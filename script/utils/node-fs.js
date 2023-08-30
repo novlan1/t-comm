@@ -24,7 +24,43 @@ function getFileName(file) {
 }
 
 
+function deleteFolder(path) {
+  const fs = require('fs');
+  let files = [];
+  if (fs.existsSync(path)) {
+    files = fs.readdirSync(path);
+    files.forEach((file) => {
+      const curPath = `${path}/${file}`;
+      if (fs.statSync(curPath).isDirectory()) {
+        deleteFolder(curPath);
+      } else {
+        fs.unlinkSync(curPath);
+      }
+    });
+    fs.rmdirSync(path);
+  }
+}
+
+function rmEmptyDir(path, level = 0) {
+  const files = fs.readdirSync(path);
+  console.log('files', files);
+  if (files.length > 0) {
+    let tempFile = 0;
+    files.forEach((file) => {
+      tempFile += 1;
+      rmEmptyDir(`${path}/${file}`, level + 1);
+    });
+    if (tempFile === files.length && level !== 0) {
+      fs.rmdirSync(path);
+    }
+  } else {
+    level !== 0 && fs.rmdirSync(path);
+  }
+}
+
 module.exports = {
   traverseFolder,
   getFileName,
+  deleteFolder,
+  rmEmptyDir,
 };
