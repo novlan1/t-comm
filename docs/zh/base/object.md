@@ -1,3 +1,4 @@
+[[toc]]
 
 ## `toHumpObj(obj)` 
 

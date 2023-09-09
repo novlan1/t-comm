@@ -21,9 +21,16 @@ function getSidebarConfig() {
         };
       });
 
+      if (children.length === 1) {
+        return {
+          title: name,
+          path: children[0].path,
+        };
+      }
+
       return {
         title: name,
-        collapsable: false,
+        collapsable: true,
         children,
       };
     }

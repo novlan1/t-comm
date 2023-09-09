@@ -1,3 +1,4 @@
+[[toc]]
 
 ## `parseFunction(func)` 
 

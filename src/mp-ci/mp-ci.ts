@@ -126,12 +126,15 @@ export class MpCI {
   * main();
   */
   constructor(options: OptionsType) {
-    let ci;
-    try {
-      ci = require('miniprogram-ci');
-    } catch (err) {
-      console.log('[MpCI] err', err);
+    let { ci } = options;
+    if (!ci) {
+      try {
+        ci = require('miniprogram-ci');
+      } catch (err) {
+        console.log('[MpCI] err', err);
+      }
     }
+
     this.ciLib = ci;
 
     this.options = options;
@@ -210,20 +213,34 @@ export class MpCI {
       throw new Error('ERROR: projectPath 位置不存在');
     }
 
-    if (!fs.existsSync(this.pkgFile)) {
-      throw new Error('ERROR: package.json 不存在');
-    }
+    // if (!fs.existsSync(this.pkgFile)) {
+    //   throw new Error('ERROR: package.json 不存在');
+    // }
   }
 
   initBaseInfo() {
     this.getBuildTime();
 
-    this.commitInfo = getGitCommitInfo(this.root);
-    this.buildDesc = getBundleBuildDesc({
-      root: this.root,
-      env: this.env,
-    }) || '';
-    this.version = getBundleVersion(this.root);
+    if (!this.options.commitInfo) {
+      this.commitInfo = getGitCommitInfo(this.root);
+    } else {
+      this.commitInfo = this.options.commitInfo;
+    }
+
+    if (!this.options.buildDesc) {
+      this.buildDesc = getBundleBuildDesc({
+        root: this.root,
+        env: this.env,
+      }) || '';
+    } else {
+      this.buildDesc = this.options.buildDesc;
+    }
+
+    if (!this.options.version) {
+      this.version = getBundleVersion(this.root);
+    } else {
+      this.version = this.options.version;
+    }
   }
 
   init() {

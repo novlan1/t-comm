@@ -1,5 +1,8 @@
+import type { IGitCommitInfo } from '../git/types';
+
+
 export type OptionsType = {
-  ci: any;
+  ci?: any;
   appId: string
   appName?: string
   robotNumber: number,
@@ -12,6 +15,9 @@ export type OptionsType = {
   env?: string,
 
   buildSetting?: object,
+  buildDesc?: string;
+  version?: string;
+  commitInfo?: Partial<IGitCommitInfo>;
 
   webhookUrl?: string,
   chatId?: string,

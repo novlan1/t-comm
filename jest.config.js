@@ -27,7 +27,7 @@ module.exports = {
   //     },
   //   ],
   // },
-  transformIgnorePatterns: ['/node_modules/(!@tencent/pmd-tools/)'],
+  transformIgnorePatterns: ['/node_modules/*'],
   moduleNameMapper: {
     axios: 'axios/dist/node/axios.cjs',
   },

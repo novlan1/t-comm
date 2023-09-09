@@ -33,16 +33,20 @@ describe('merge', () => {
       isUseVueLoader,
       isVue3,
       useXSS,
+      terserFunctions,
     } = merge({}, {
       isUseVueLoader: true,
       isVue3: false,
       useXSS: true,
+      terserFunctions: ['console.log'],
     }, {
       isVue3: true,
       useXSS: false,
+      terserFunctions: [],
     });
     expect(isUseVueLoader).toBe(true);
     expect(isVue3).toBe(true);
     expect(useXSS).toBe(false);
+    expect(terserFunctions).toMatchObject(['console.log']);
   });
 });

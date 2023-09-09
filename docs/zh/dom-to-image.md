@@ -1,3 +1,4 @@
+[[toc]]
 
 ## `convertDomToImage(trigger, imageElId)` 
 

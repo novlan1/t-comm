@@ -17,9 +17,12 @@ import {
   compareFromLogFile,
   getRainbowMpCIFileName,
   isPipelineUpdated,
+  getUnusedPipelineList,
 } from './helper';
 
-const {  CI_PREFIX_MAP } = DEVOPS_MP_CI_CONFIG;
+const { CI_PREFIX_MAP } = DEVOPS_MP_CI_CONFIG;
+
+const usefulPipelineIdList: Array<string> = [];
 
 
 async function updateOrCreateInstance({
@@ -29,6 +32,7 @@ async function updateOrCreateInstance({
   forceUpdate,
   devopsConfig,
   templateIdMap,
+  onlyCollectNoUsedPipeline,
 }) {
   const newConfig = JSON.parse(rainbowMap[mpCIKey].value);
   const robotMapKey = isWxCI ? 'robotMap' : 'qqRobotMap';
@@ -66,35 +70,70 @@ async function updateOrCreateInstance({
       continue;
     }
 
-    const res = await cgiName({
-      ...devopsConfig,
-      templateId: isWxCI ? templateIdMap.WX_MP_CI : templateIdMap.QQ_MP_CI,
-      ...extraParam,
-      pipelineName,
-      pipelineParam: [
-        ...getPipelineParam({
-          branch,
-          env,
-          rainbowConfigKey: mpCIKey,
-          repo: newConfig.ci.repo,
-          isWxCI,
-        }),
-      ],
-    })
-      .catch((err) => {
-        console.log('[cgiName] err', err);
-      });
+    if (extraParam.pipelineId) {
+      usefulPipelineIdList.push(extraParam.pipelineId);
+    }
 
-    console.log('[cgiName] res', res);
-    const pipelineId = extraParam.pipelineId || res?.data?.successPipelinesId?.[0];
-
-    if (!forceUpdate && pipelineId) {
-      await startDevopsPipeline({
-        ...devopsConfig,
-        pipelineId,
-        data: {},
+    if (!onlyCollectNoUsedPipeline) {
+      await realUpdateOrCreatePipeline({
+        cgiName,
+        devopsConfig,
+        isWxCI,
+        templateIdMap,
+        extraParam,
+        pipelineName,
+        branch,
+        env,
+        mpCIKey,
+        newConfig,
+        forceUpdate,
       });
     }
+  }
+}
+
+
+async function realUpdateOrCreatePipeline({
+  cgiName,
+  devopsConfig,
+  isWxCI,
+  templateIdMap,
+  extraParam,
+  pipelineName,
+  branch,
+  env,
+  mpCIKey,
+  newConfig,
+  forceUpdate,
+}) {
+  const res = await cgiName({
+    ...devopsConfig,
+    templateId: isWxCI ? templateIdMap.WX_MP_CI : templateIdMap.QQ_MP_CI,
+    ...extraParam,
+    pipelineName,
+    pipelineParam: [
+      ...getPipelineParam({
+        branch,
+        env,
+        rainbowConfigKey: mpCIKey,
+        repo: newConfig.ci.repo,
+        isWxCI,
+      }),
+    ],
+  })
+    .catch((err) => {
+      console.log('[cgiName] err', err);
+    });
+
+  console.log('[cgiName] res', res);
+  const pipelineId = extraParam.pipelineId || res?.data?.successPipelinesId?.[0];
+
+  if (!forceUpdate && pipelineId) {
+    await startDevopsPipeline({
+      ...devopsConfig,
+      pipelineId,
+      data: {},
+    });
   }
 }
 
@@ -126,6 +165,7 @@ async function handleChangedConfig({
 export async function updateDevopsMpCIPipeline({
   isWxCI = true,
   forceUpdate = false,
+  onlyCollectNoUsedPipeline = false,
   devopsConfig,
   templateIdMap,
   rainbowGroupSecretInfo,
@@ -149,9 +189,17 @@ export async function updateDevopsMpCIPipeline({
       forceUpdate,
       devopsConfig,
       templateIdMap,
+      onlyCollectNoUsedPipeline,
     });
   }
 
+  const unusedPipeline = getUnusedPipelineList({
+    isWxCI,
+    templateIdMap,
+    usefulList: usefulPipelineIdList,
+  });
+
   saveJsonToLog(rainbowMap, getRainbowMpCIFileName(isWxCI));
+  saveJsonToLog({ unusedPipeline }, `devops-unused-pipeline-${isWxCI ? 'wx' : 'qq'}.json`);
 }
 

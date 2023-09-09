@@ -2,7 +2,8 @@
 enum ReportType {
   PERFORMANCE = 1,
   BUNDLE = 2,
-  AUTO_TEST = 3
+  AUTO_TEST = 3,
+  BUNDLE_MP = 4,
 }
 
 enum ReportPlatform {

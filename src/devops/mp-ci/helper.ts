@@ -51,7 +51,6 @@ export function parseRobotMap(obj = {}) {
 /**
  * 获取流水线名称
  * @param {object} config 配置信息
- * @returns
  * @ignore
  *
  * @example
@@ -226,4 +225,16 @@ export async function isPipelineUpdated({
   return {
     type: 'CREATE',
   };
+}
+
+
+export function getUnusedPipelineList({
+  usefulList,
+  isWxCI,
+  templateIdMap,
+}) {
+  const templateId = isWxCI ? templateIdMap.WX_MP_CI : templateIdMap.QQ_MP_CI;
+  const remoteInstances = remoteInstancesMap[templateId] || [];
+
+  return remoteInstances.filter(item => usefulList.indexOf(item.pipelineId) === -1);
 }

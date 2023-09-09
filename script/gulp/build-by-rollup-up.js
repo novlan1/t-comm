@@ -6,6 +6,7 @@ const { log } = require('./helper');
 
 
 function getRelativeFile(file) {
+  if (typeof file !== 'string') return '';
   return path.relative(process.cwd(), file);
 }
 

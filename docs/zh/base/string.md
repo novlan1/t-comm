@@ -1,3 +1,4 @@
+[[toc]]
 
 ## `checkStringLength(str, [num])` 
 

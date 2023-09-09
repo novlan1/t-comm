@@ -1,3 +1,4 @@
+[[toc]]
 
 ## `timeStampFormat(timestamp, fmt, [defaultVal])` 
 

@@ -6,14 +6,12 @@ import { genRobotMessage } from '../wecom-robot/message';
 import type { IUploadResult } from './types';
 
 
-export function getBundleBuildDesc({
-  root,
-  env = 'test',
-}: {
-  root: string;
-  env?: string;
+export function getInnerBundleBuildDesc({
+  env,
+  branch,
+  author,
+  message,
 }) {
-  const commitInfo = getGitCommitInfo(root);
   const buildDesc = genRobotMessage([
     [
       {
@@ -22,22 +20,46 @@ export function getBundleBuildDesc({
       },
       {
         label: '分支',
-        content: commitInfo.branch,
+        content: branch,
       },
       {
         label: '最后提交',
-        content: `${commitInfo.author} - ${commitInfo.message}`,
+        content: `${author} - ${message}`,
       },
     ],
   ]);
   return buildDesc;
 }
 
+
+export function getBundleBuildDesc({
+  root,
+  env = 'test',
+}: {
+  root: string;
+  env?: string;
+}) {
+  const commitInfo = getGitCommitInfo(root);
+
+  return getInnerBundleBuildDesc({
+    env,
+    branch: commitInfo.branch,
+    author: commitInfo.author,
+    message: commitInfo.message,
+  });
+}
+
 export function getBundleVersion(root: string) {
   const path = require('path');
-  const pkgFile = path.resolve(root, './package.json');
-  const pkg = require(pkgFile) || {};
-  return pkg.version;
+
+  try {
+    const pkgFile = path.resolve(root, './package.json');
+    const pkg = require(pkgFile) || {};
+    return pkg.version;
+  } catch (err) {
+    console.log('[getBundleVersion] error: ', err);
+  }
+  return '';
 }
 
 /**

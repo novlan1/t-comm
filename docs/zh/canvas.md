@@ -1,3 +1,4 @@
+[[toc]]
 
 ## `addTextForImg(config)` 
 

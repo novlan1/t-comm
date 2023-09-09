@@ -1,3 +1,4 @@
+[[toc]]
 
 ## `getCookie(key)` 
 

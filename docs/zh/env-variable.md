@@ -1,3 +1,4 @@
+[[toc]]
 
 ## `readEnvVariable(key, filepath)` 
 

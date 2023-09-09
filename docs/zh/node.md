@@ -1,3 +1,4 @@
+[[toc]]
 
 ## `innerCopyDir(src, dist)` 
 
@@ -45,6 +46,23 @@
 | 参数名 | 类型 |
 | --- | --- |
 | path | <code>Object</code> | 
+
+
+
+<a name="rmEmptyDir"></a>
+
+## `rmEmptyDir(path, level)` 
+
+
+**描述**：<p>递归删除空目录</p>
+
+**参数**：
+
+
+| 参数名 | 描述 |
+| --- | --- |
+| path | <p>路径</p> |
+| level | <p>层级</p> |
 
 
 

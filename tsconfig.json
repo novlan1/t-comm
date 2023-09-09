@@ -16,8 +16,8 @@
     "noImplicitAny": false,
     /* 模块分析配置 */
     "baseUrl": ".",
-    "outDir": "dist",
-    "declarationDir": ".",
+    "outDir": "lib",
+    "declarationDir": "lib",
     "esModuleInterop": true,
     "moduleResolution": "node",
     "resolveJsonModule": true

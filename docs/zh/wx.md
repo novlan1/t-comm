@@ -1,3 +1,4 @@
+[[toc]]
 
 ## `genSignature(ticket, url)` 
 

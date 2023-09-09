@@ -21,7 +21,7 @@ module.exports = {
   ],
   markdown: {
     // 显示行号
-    lineNumbers: true,
+    lineNumbers: false,
     extractHeaders: ['h2', 'h3', 'h4'],
   },
   locales: {
@@ -34,7 +34,7 @@ module.exports = {
     },
   },
   themeConfig: {
-    sidebarDepth: 1, // 嵌套标题深度
+    sidebarDepth: 0, // 嵌套标题深度
     lastUpdated: 'Last Updated', // string | boolean
     smoothScroll: true,
     nav: [
@@ -52,11 +52,36 @@ module.exports = {
         title: '介绍',
         path: '/',
       },
+
+      {
+        title: '工具',
+        collapsable: false,
+        children: [
+          ...getSidebarConfig(),
+        ],
+      },
+      {
+        title: 'CLI命令',
+        collapsable: false,
+        children: [
+          {
+            title: 'publish',
+            path: '/cli/publish.md',
+          },
+          {
+            title: 'mp-env',
+            path: '/cli/mp-env.md',
+          },
+          {
+            title: 'mp-upload',
+            path: '/cli/mp-upload.md',
+          },
+        ],
+      },
       {
         title: '贡献指南',
         path: '/CONTRIBUTING.md',
       },
-      ...getSidebarConfig(),
       ...changeLogSidebar,
     ],
   },

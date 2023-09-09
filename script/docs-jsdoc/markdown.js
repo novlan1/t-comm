@@ -69,7 +69,7 @@ const makeMarkDownDoc = function (sourceName, sourceRootPath, outputPath) {
       newText = newText.replace(/:::<\/p>/g, ':::');
 
       if (newText.trim().length) {
-        fs.outputFile(path.resolve(process.cwd(), `${outputPath}/${outputName}.md`), newText);
+        fs.outputFile(path.resolve(process.cwd(), `${outputPath}/${outputName}.md`), `[[toc]]\n${newText}`);
       }
     });
 };

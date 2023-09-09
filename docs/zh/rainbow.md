@@ -1,3 +1,4 @@
+[[toc]]
 
 ## `addOrUpdateRainbowKV(config)` 
 

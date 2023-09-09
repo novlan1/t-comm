@@ -1,4 +1,5 @@
 import { execCommand } from '../node/node-command';
+import type { IGitCommitInfo } from './types';
 
 /**
  * 获取当前分支
@@ -31,7 +32,7 @@ export function getGitCurBranch(root?: string) {
  *   branch: 'master'
  * }
  */
-export function getGitCommitInfo(root?: string) {
+export function getGitCommitInfo(root?: string): IGitCommitInfo {
   const command = 'git log --no-merges -1 \
   --date=iso --pretty=format:\'{"author": "%aN","message": "%s", "hash": "%h", "date": "%ad", "timeStamp": "%at"},\' \
   $@ | \
@@ -42,8 +43,9 @@ export function getGitCommitInfo(root?: string) {
   const info = Object.assign({}, JSON.parse(stdout)[0], {
     branch: getGitCurBranch(root),
   });
+  const infoMessage = info.message || '';
 
-  const message = (info.message.split(':')[1] || info.message.split('：')[1] || '').trim();
+  const message = (infoMessage.split(':')[1] || infoMessage.split('：')[1] || '').trim();
   const res = Object.assign({}, info, {
     message: message || info.message,
   });
@@ -63,7 +65,7 @@ export function getGitLastTag(root?: string) {
   const command = 'git describe --abbrev=0';
 
   const tag = execCommand(command, root);
-  return tag;
+  return tag || '';
 }
 
 
