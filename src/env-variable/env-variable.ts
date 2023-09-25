@@ -55,9 +55,9 @@ export function getEnvVariableMap(filepath: string) {
  * @returns {string} 环境变量的值
  */
 export function readEnvVariable(key: string, filepath: string): string {
-  if (!fs.lstatSync(filepath)) {
+  if (!fs.existsSync(filepath)) {
     console.log('[readEnvVariable] 文件不存在:', filepath, '，请先创建文件');
-    process.exit(1);
+    return '';
   }
 
   try {

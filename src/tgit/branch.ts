@@ -81,6 +81,7 @@ export async function getProjectDefaultBranch({ projectName, privateToken }: {
  * @param {object} options 输入配置
  * @param {string} options.projectName 项目名称
  * @param {string} options.privateToken 密钥
+ * @param {string} options.baseUrl baseUrl
  * @returns {Promise<Array<object>>} 请求Promise
  * @example
  *
@@ -91,9 +92,10 @@ export async function getProjectDefaultBranch({ projectName, privateToken }: {
  *
  * })
  */
-export function getBranchesByProjectName({ projectName, privateToken }: {
-  projectName: string
-  privateToken: string
+export function getBranchesByProjectName({ projectName, privateToken, baseUrl }: {
+  projectName: string;
+  privateToken: string;
+  baseUrl: string
 }): Promise<Array<object>> {
   return new Promise((resolve, reject) => {
     if (!projectName) {
@@ -102,7 +104,7 @@ export function getBranchesByProjectName({ projectName, privateToken }: {
     }
 
     instance({
-      url: `/projects/${encodeURIComponent(projectName)}/repository/branches`,
+      url: `${baseUrl}/api/v3/projects/${encodeURIComponent(projectName)}/repository/branches`,
       method: 'GET',
       params: {
         per_page: 100,

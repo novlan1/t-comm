@@ -8,4 +8,6 @@ export type IPostFileOptions = {
 export type IPublishOptions = IPostFileOptions & {
   publishEnv?: string;
   publishTargetDir?: string;
+  fileTar?: string;
+  fileDir?: string;
 };

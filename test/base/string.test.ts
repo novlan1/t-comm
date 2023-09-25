@@ -78,6 +78,10 @@ describe('replaceAllPolyfill', () => {
     const strLong2 = 'node-modules/.pnpm/@*ttt+[press]?-ui@1.0.18/node-modules/@ttt/(press)-ui/press-switch/press-switch';
     // @ts-ignore
     expect((`${strLong2}, \n${strLong2}`).replaceAll(strLong2, 'd')).toBe('d, \nd');
+
+    const str2 = '✨ Features | 新功能\n\n✨ Features | 新功能';
+    // @ts-ignore
+    expect(str2.replaceAll('✨ Features | 新功能', 'Features 🎉')).toBe('Features 🎉\n\nFeatures 🎉');
   });
 
   it('regexp', () => {

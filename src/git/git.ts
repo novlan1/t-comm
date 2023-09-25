@@ -32,12 +32,12 @@ export function getGitCurBranch(root?: string) {
  *   branch: 'master'
  * }
  */
-export function getGitCommitInfo(root?: string): IGitCommitInfo {
-  const command = 'git log --no-merges -1 \
-  --date=iso --pretty=format:\'{"author": "%aN","message": "%s", "hash": "%h", "date": "%ad", "timeStamp": "%at"},\' \
+export function getGitCommitInfo(root?: string, mergeCommit?: false): IGitCommitInfo {
+  const command = `git log ${mergeCommit ? '' : '--no-merges'} -1 \
+  --date=iso --pretty=format:'{"author": "%aN","message": "%s", "hash": "%h", "date": "%ad", "timeStamp": "%at"},' \
   $@ | \
-  perl -pe \'BEGIN{print "["}; END{print "]\n"}\' | \
-  perl -pe \'s/},]/}]/\'';
+  perl -pe 'BEGIN{print "["}; END{print "]\n"}' | \
+  perl -pe 's/},]/}]/'`;
   const stdout = execCommand(command, root);
 
   const info = Object.assign({}, JSON.parse(stdout)[0], {

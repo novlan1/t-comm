@@ -131,6 +131,7 @@ export async function mpUploadAndReport({
     rdProjectId,
     subProject,
     ci: ciConfig,
+    mpCISetting,
   } = config;
 
   const ci = new MpCI({
@@ -150,6 +151,7 @@ export async function mpUploadAndReport({
     commitInfo,
     version,
     buildDesc,
+    buildSetting: mpCISetting || {},
   });
 
   await ci.uploadAndPreview();

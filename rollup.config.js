@@ -95,7 +95,6 @@ const allRollupConfig = [
     }],
     external: ROLLUP_EXTERNALS,
     plugins: [
-      // ts 的功能只在于编译出声明文件，所以 target 为 ESNext，编译交给 babel 来做
       typescript({
         tsconfig: './tsconfig.json',
       }),

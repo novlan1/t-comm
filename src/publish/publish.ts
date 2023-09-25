@@ -77,8 +77,8 @@ export async function localPublish(options: IPublishOptions) {
 
   const staticDir = 'static';
   const tarName = `static_${moduleName}_${getIPAddressStr()}`;
-  const fileSrc = path.join(rootDir, 'dist', dir, staticDir, `${tarName}.tar`);
-  const fileAll = path.join(rootDir, 'dist', dir, staticDir);
+  const fileSrc = options.fileTar || path.join(rootDir, 'dist', dir, staticDir, `${tarName}.tar`);
+  const fileAll = options.fileDir || path.join(rootDir, 'dist', dir, staticDir);
 
   console.log('[publish] moduleName: ', moduleName);
 

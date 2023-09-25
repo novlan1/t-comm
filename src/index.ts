@@ -31,6 +31,7 @@ export * from './mp-ci';
 export * from './msdk';
 export * from './node';
 export * from './node-img';
+export * from './npm-tip';
 export * from './open-source-report';
 export * from './pages-statistics';
 export * from './pipeline';

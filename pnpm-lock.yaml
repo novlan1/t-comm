@@ -25,7 +25,7 @@ specifiers:
   better-docs: ^2.7.2
   chalk: ^4.1.2
   cheerio: ^1.0.0-rc.12
-  commander: ^11.0.0
+  commander: ^10.0.1
   conventional-changelog: ^3.1.25
   cron-parser: ^4.8.1
   docdash: ^1.2.0
@@ -34,6 +34,7 @@ specifiers:
   eslint-config-light: ^1.0.4
   eslint-plugin-jest: ^27.1.1
   fs-extra: ^10.0.1
+  glob: ^10.3.4
   gulp: ^4.0.2
   husky: ^7.0.4
   increase-memory-limit: ^1.0.7
@@ -64,7 +65,7 @@ dependencies:
   '@babel/runtime': 7.17.7
   axios: 1.4.0
   cheerio: 1.0.0-rc.12
-  commander: 11.0.0
+  commander: 10.0.1
   cron-parser: 4.8.1
   qs: 6.11.0
   request: 2.88.2
@@ -99,6 +100,7 @@ devDependencies:
   eslint-config-light: 1.0.4_4dmkg3pmozpettntaj24sg7sti
   eslint-plugin-jest: 27.1.1_iod5huo7mfsfjnkok5ga47dtga
   fs-extra: 10.0.1
+  glob: 10.3.4
   gulp: 4.0.2
   husky: 7.0.4
   increase-memory-limit: 1.0.7
@@ -2088,7 +2090,7 @@ packages:
       lru-cache: 7.18.3
       npm-pick-manifest: 8.0.1
       proc-log: 3.0.0
-      promise-inflight: 1.0.1_bluebird@3.7.2
+      promise-inflight: 1.0.1
       promise-retry: 2.0.1
       semver: 7.5.4
       which: 3.0.1
@@ -5028,7 +5030,7 @@ packages:
     dependencies:
       '@npmcli/fs': 3.1.0
       fs-minipass: 3.0.2
-      glob: 10.3.3
+      glob: 10.3.4
       lru-cache: 7.18.3
       minipass: 5.0.0
       minipass-collect: 1.0.2
@@ -5654,12 +5656,6 @@ packages:
   /commander/10.0.1:
     resolution: {integrity: sha512-y4Mg2tXshplEbSGzx7amzPwKKOCGuoSRP/CjEdwwk0FOGlUbq6lKuoyDZTNZkmxHdJtp54hdfY/JUrdL7Xfdug==}
     engines: {node: '>=14'}
-    dev: true
-
-  /commander/11.0.0:
-    resolution: {integrity: sha512-9HMlXtt/BNoYr8ooyjjNRdIilOTkVJXB+GhxMTtOKwk0R4j4lS4NpjuqmRxroBfnfTSHQIHQB7wryHhXarNjmQ==}
-    engines: {node: '>=16'}
-    dev: false
 
   /commander/2.17.1:
     resolution: {integrity: sha512-wPMUt6FnH2yzG95SA6mzjQOEKUU3aLaDEmzs1ti+1E9h+CsrZghRlqEM/EJ4KscsQVG8uNN4uVreUeT8+drlgg==}
@@ -8915,8 +8911,8 @@ packages:
       - supports-color
     dev: true
 
-  /glob/10.3.3:
-    resolution: {integrity: sha512-92vPiMb/iqpmEgsOoIDvTjc50wf9CCCvMzsi6W0JLPeUKE8TWP1a73PgqSrqy7iAZxaSD1YdzU7QZR5LF51MJw==}
+  /glob/10.3.4:
+    resolution: {integrity: sha512-6LFElP3A+i/Q8XQKEvZjkEWEOTgAIALR9AO2rwT8bgPhDd1anmqDJDZ6lLddI4ehxxxR1S5RIqKe1uapMQfYaQ==}
     engines: {node: '>=16 || 14 >=14.17'}
     hasBin: true
     dependencies:
@@ -14111,6 +14107,15 @@ packages:
     engines: {node: '>= 0.6.0'}
     dev: true
 
+  /promise-inflight/1.0.1:
+    resolution: {integrity: sha512-6zWPyEOFaQBJYcGMHBKTKJ3u6TBsnMFOIZSa6ce1e/ZrrsOlnHRHbabMjLiBYKp+n44X9eUI6VUPaukCXHuG4g==}
+    peerDependencies:
+      bluebird: '*'
+    peerDependenciesMeta:
+      bluebird:
+        optional: true
+    dev: true
+
   /promise-inflight/1.0.1_bluebird@3.7.2:
     resolution: {integrity: sha512-6zWPyEOFaQBJYcGMHBKTKJ3u6TBsnMFOIZSa6ce1e/ZrrsOlnHRHbabMjLiBYKp+n44X9eUI6VUPaukCXHuG4g==}
     peerDependencies:
@@ -14460,7 +14465,7 @@ packages:
     resolution: {integrity: sha512-AEtWXYfopBj2z5N5PbkAOeNHRPUg5q+Nen7QLxV8M2zJq1ym6/lCz3fYNTCXe19puu2d06jfHhrP7v/S2PtMMw==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dependencies:
-      glob: 10.3.3
+      glob: 10.3.4
       json-parse-even-better-errors: 3.0.0
       normalize-package-data: 5.0.0
       npm-normalize-package-bin: 3.0.1
