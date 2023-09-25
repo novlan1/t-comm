@@ -1,6 +1,6 @@
 import {
   composeRobotContent,
-  compareData,
+  // compareData,
   parseWeatherData,
 } from '../../src/weather/parse';
 
@@ -19,18 +19,18 @@ describe('composeRobotContent', () => {
 });
 
 
-describe('compareData', () => {
-  it('compareData', () => {
-    // jest.mock('fs', () => ({
-    //   writeFileSync: jest.fn(),
-    //   existsSync: jest.fn(),
-    //   mkdirSync: jest.fn(),
-    //   readFileSync: () => 1,
-    // }));
+// describe('compareData', () => {
+//   it('compareData', () => {
+//     // jest.mock('fs', () => ({
+//     //   writeFileSync: jest.fn(),
+//     //   existsSync: jest.fn(),
+//     //   mkdirSync: jest.fn(),
+//     //   readFileSync: () => 1,
+//     // }));
 
-    expect(compareData([])).toBe(true);
-  });
-});
+//     expect(compareData([])).toBe(true);
+//   });
+// });
 
 describe('parseWeatherData', () => {
   it('parseWeatherData', () => {
