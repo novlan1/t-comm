@@ -1,5 +1,16 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import { rgb2hsv, hsv2rgb } from 't-comm';
+
+// or
+
+import { rgb2hsv, hsv2rgb} from 't-comm/lib/color/index';
+```
+
+
 ## `rgb2hsv()` 
 
 

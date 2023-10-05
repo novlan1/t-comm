@@ -1,5 +1,28 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import {
+  getGitCurBranch,
+  getGitCommitInfo,
+  getGitLastTag,
+  getGitCommitsBeforeTag,
+  getGitAuthor
+} from 't-comm';
+
+// or
+
+import {
+  getGitCurBranch,
+  getGitCommitInfo,
+  getGitLastTag,
+  getGitCommitsBeforeTag,
+  getGitAuthor
+} from 't-comm/lib/git/index';
+```
+
+
 ## `getGitCurBranch()` 
 
 

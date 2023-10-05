@@ -1,5 +1,16 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import { parseFunction, cached } from 't-comm';
+
+// or
+
+import { parseFunction, cached} from 't-comm/lib/base/function/index';
+```
+
+
 ## `parseFunction(func)` 
 
 

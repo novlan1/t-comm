@@ -1,5 +1,16 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import { parseUploadResult } from 't-comm';
+
+// or
+
+import { parseUploadResult} from 't-comm/lib/mp-ci/index';
+```
+
+
 ## `parseUploadResult()` 
 
 

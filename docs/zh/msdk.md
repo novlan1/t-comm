@@ -1,5 +1,16 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import { callJsBrowserAdapter } from 't-comm';
+
+// or
+
+import { callJsBrowserAdapter} from 't-comm/lib/msdk/index';
+```
+
+
 ## `callJsBrowserAdapter()` 
 
 

@@ -1,5 +1,16 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import { genSignature, getWxCfg } from 't-comm';
+
+// or
+
+import { genSignature, getWxCfg} from 't-comm/lib/wx/index';
+```
+
+
 ## `genSignature(ticket, url)` 
 
 

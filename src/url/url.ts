@@ -115,3 +115,26 @@ export function decodeUrlParam(str: string): object {
   }
   return res;
 }
+
+
+export function getUrlPara(paraName, search = '') {
+  if (!search && typeof window !== 'undefined') {
+    search  = window.location.search;
+  }
+  if (!search && typeof location !== 'undefined') {
+    const { hash } = location;
+    search = hash ? hash.substring(hash.indexOf('?')) : '';
+  }
+  if (!search) search = '';
+
+  const query = search.substring(1);
+  const vars = query.split('&');
+  for (let i = 0; i < vars.length; i++) {
+    const pair = vars[i].split('=');
+    if (pair[0] == paraName) {
+      return pair[1];
+    }
+  }
+  return '';
+}
+

@@ -1,5 +1,16 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import { checkUAIsIOS, getEnvUAType } from 't-comm';
+
+// or
+
+import { checkUAIsIOS, getEnvUAType} from 't-comm/lib/env/index';
+```
+
+
 ## `checkUAIsIOS()` 
 
 

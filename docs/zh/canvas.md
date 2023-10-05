@@ -1,5 +1,24 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import {
+  addTextForImg,
+  mergeMultiCanvasPic,
+  createCanvasTable
+} from 't-comm';
+
+// or
+
+import {
+  addTextForImg,
+  mergeMultiCanvasPic,
+  createCanvasTable
+} from 't-comm/lib/canvas/index';
+```
+
+
 ## `addTextForImg(config)` 
 
 

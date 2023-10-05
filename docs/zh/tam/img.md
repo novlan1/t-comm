@@ -1,5 +1,26 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import {
+  genCustomEventImgAndSendRobot,
+  genMultiImgAndSendRobot,
+  parseResult,
+  genSummaryDataAndSendRobot
+} from 't-comm';
+
+// or
+
+import {
+  genCustomEventImgAndSendRobot,
+  genMultiImgAndSendRobot,
+  parseResult,
+  genSummaryDataAndSendRobot
+} from 't-comm/lib/tam/img/index';
+```
+
+
 ## `genCustomEventImgAndSendRobot(options)` 
 
 

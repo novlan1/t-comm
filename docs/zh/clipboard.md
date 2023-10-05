@@ -1,5 +1,16 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import { clipboardMp, clipboardWeb } from 't-comm';
+
+// or
+
+import { clipboardMp, clipboardWeb} from 't-comm/lib/clipboard/index';
+```
+
+
 ## `clipboardMp(text)` 
 
 

@@ -22,6 +22,7 @@ export * from './i18n';
 export * from './ip';
 export * from './jsdoc';
 export * from './launch-app';
+export * from './launch-game';
 export * from './loader';
 export * from './lodash-mini';
 export * from './mixin';

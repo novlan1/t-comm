@@ -1,5 +1,16 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import { timeStampFormat, dateFormat } from 't-comm';
+
+// or
+
+import { timeStampFormat, dateFormat} from 't-comm/lib/time/index';
+```
+
+
 ## `timeStampFormat(timestamp, fmt, [defaultVal])` 
 
 

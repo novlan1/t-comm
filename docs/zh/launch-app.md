@@ -1,5 +1,40 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import {
+  getOpenGameScheme,
+  launchApp,
+  gotoWzGame,
+  gotoWzCommunity,
+  gotoGPGame,
+  gotoDzGame,
+  gotoMJGame,
+  gotoLOLMGame,
+  gotoTLBBGame,
+  gotoTDGame,
+  gotoX5MGame
+} from 't-comm';
+
+// or
+
+import {
+  getOpenGameScheme,
+  launchApp,
+  gotoWzGame,
+  gotoWzCommunity,
+  gotoGPGame,
+  gotoDzGame,
+  gotoMJGame,
+  gotoLOLMGame,
+  gotoTLBBGame,
+  gotoTDGame,
+  gotoX5MGame
+} from 't-comm/lib/launch-app/index';
+```
+
+
 ## `getOpenGameScheme` 
 
 

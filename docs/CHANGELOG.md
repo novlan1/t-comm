@@ -8,6 +8,27 @@
 
 
 
+
+
+### [1.3.11](https://github.com/novlan1/t-comm/compare/v1.3.10...v1.3.11) (2023-10-04)
+
+
+### Bug Fixes 🐞
+
+* **launch-game:** msdk v5--no-verify ([c926cab](https://github.com/novlan1/t-comm/commit/c926cabda7134577d8b4f04339abd510c6b0d347))
+
+### [1.3.10](https://github.com/novlan1/t-comm/compare/v1.3.9...v1.3.10) (2023-10-03)
+
+
+### Tests ✅
+
+* update test case ([f8f3f00](https://github.com/novlan1/t-comm/commit/f8f3f00a761d37895f4b76e4f0e2fdc99c56b587))
+
+
+### Features 🎉
+
+* **launch-game:** add launch game ([f7d7f0d](https://github.com/novlan1/t-comm/commit/f7d7f0dd5ee9265c150a9a6f35203b1660466c7d))
+
 ### [1.3.9](https://github.com/novlan1/t-comm/compare/v1.3.8...v1.3.9) (2023-09-22)
 
 

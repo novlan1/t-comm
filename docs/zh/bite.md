@@ -1,5 +1,16 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import { formatBite } from 't-comm';
+
+// or
+
+import { formatBite} from 't-comm/lib/bite/index';
+```
+
+
 ## `formatBite(number)` 
 
 

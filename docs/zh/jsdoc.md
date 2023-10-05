@@ -1,5 +1,16 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import { JsDocHandler  } from 't-comm';
+
+// or
+
+import { JsDocHandler } from 't-comm/lib/jsdoc/index';
+```
+
+
 ## JsDocHandler 
 
 

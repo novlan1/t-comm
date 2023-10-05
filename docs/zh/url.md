@@ -1,5 +1,26 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import {
+  getQueryObj,
+  composeUrlQuery,
+  encodeUrlParam,
+  decodeUrlParam
+} from 't-comm';
+
+// or
+
+import {
+  getQueryObj,
+  composeUrlQuery,
+  encodeUrlParam,
+  decodeUrlParam
+} from 't-comm/lib/url/index';
+```
+
+
 ## `getQueryObj(url)` 
 
 

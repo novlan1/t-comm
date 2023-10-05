@@ -1,5 +1,16 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import { MorsePwd  } from 't-comm';
+
+// or
+
+import { MorsePwd } from 't-comm/lib/morse-pwd/index';
+```
+
+
 ## MorsePwd 
 
 

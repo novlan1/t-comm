@@ -1,5 +1,26 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import {
+  saveBase64ImgToFile,
+  turnLocalImg2Base64,
+  saveRemoteImgToLocal,
+  getImgMd5
+} from 't-comm';
+
+// or
+
+import {
+  saveBase64ImgToFile,
+  turnLocalImg2Base64,
+  saveRemoteImgToLocal,
+  getImgMd5
+} from 't-comm/lib/node-img/index';
+```
+
+
 ## `saveBase64ImgToFile(config)` 
 
 

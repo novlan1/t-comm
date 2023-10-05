@@ -1,5 +1,24 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import {
+  fetchWeatherData,
+  sendWeatherRobotMsg,
+  getWeatherRobotContent
+} from 't-comm';
+
+// or
+
+import {
+  fetchWeatherData,
+  sendWeatherRobotMsg,
+  getWeatherRobotContent
+} from 't-comm/lib/weather/index';
+```
+
+
 ## `fetchWeatherData()` 
 
 

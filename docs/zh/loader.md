@@ -1,5 +1,16 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import { loader, loadCSS } from 't-comm';
+
+// or
+
+import { loader, loadCSS} from 't-comm/lib/loader/index';
+```
+
+
 ## `loader` 
 
 

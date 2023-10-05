@@ -1,5 +1,32 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import {
+  innerCopyDir,
+  copyDir,
+  deleteFolder,
+  rmEmptyDir,
+  copyFile,
+  traverseFolder,
+  execCommand
+} from 't-comm';
+
+// or
+
+import {
+  innerCopyDir,
+  copyDir,
+  deleteFolder,
+  rmEmptyDir,
+  copyFile,
+  traverseFolder,
+  execCommand
+} from 't-comm/lib/node/index';
+```
+
+
 ## `innerCopyDir(src, dist)` 
 
 
@@ -102,7 +129,7 @@
 
 <a name="execCommand"></a>
 
-## `execCommand(command, root)` 
+## `execCommand(command, root, stdio)` 
 
 
 **描述**：<p>nodejs中调用 child_process.execSync 执行命令</p>
@@ -114,6 +141,7 @@
 | --- | --- | --- |
 | command | <code>string</code> | <p>命令</p> |
 | root | <code>string</code> | <p>执行命令的目录</p> |
+| stdio | <code>string</code> | <p>结果输出，默认为 pipe</p> |
 
 **返回**: <code>string</code><br>
 

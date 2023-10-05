@@ -1,5 +1,36 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import {
+  addOrUpdateRainbowKV,
+  addRainbowKV,
+  updateRainbowKV,
+  createRainbowPublishJob,
+  publishRainbowTask,
+  closeRainbowTask,
+  updateRainbowKVAndPublish,
+  queryGroupInfo,
+  fetchRainbowConfig
+} from 't-comm';
+
+// or
+
+import {
+  addOrUpdateRainbowKV,
+  addRainbowKV,
+  updateRainbowKV,
+  createRainbowPublishJob,
+  publishRainbowTask,
+  closeRainbowTask,
+  updateRainbowKVAndPublish,
+  queryGroupInfo,
+  fetchRainbowConfig
+} from 't-comm/lib/rainbow/index';
+```
+
+
 ## `addOrUpdateRainbowKV(config)` 
 
 

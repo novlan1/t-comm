@@ -1,5 +1,16 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import { sleep } from 't-comm';
+
+// or
+
+import { sleep} from 't-comm/lib/sleep/index';
+```
+
+
 ## `sleep(ms)` 
 
 

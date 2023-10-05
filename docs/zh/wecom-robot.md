@@ -1,5 +1,28 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import {
+  sendWxRobotMsg,
+  sendWxRobotMarkdown,
+  sendWxRobotImg,
+  batchSendWxRobotBase64Img,
+  sendWxRobotBase64Img
+} from 't-comm';
+
+// or
+
+import {
+  sendWxRobotMsg,
+  sendWxRobotMarkdown,
+  sendWxRobotImg,
+  batchSendWxRobotBase64Img,
+  sendWxRobotBase64Img
+} from 't-comm/lib/wecom-robot/index';
+```
+
+
 ## `sendWxRobotMsg(config)` 
 
 

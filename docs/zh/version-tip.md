@@ -1,5 +1,24 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import {
+  genVersionAndSendChangeLog,
+  genVersionTip,
+  genVersion
+} from 't-comm';
+
+// or
+
+import {
+  genVersionAndSendChangeLog,
+  genVersionTip,
+  genVersion
+} from 't-comm/lib/version-tip/index';
+```
+
+
 ## `genVersionAndSendChangeLog(options)` 
 
 

@@ -1,5 +1,24 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import {
+  convertDomToImage,
+  urlToBase64,
+  convertImageToCanvas
+} from 't-comm';
+
+// or
+
+import {
+  convertDomToImage,
+  urlToBase64,
+  convertImageToCanvas
+} from 't-comm/lib/dom-to-image/index';
+```
+
+
 ## `convertDomToImage(trigger, imageElId)` 
 
 

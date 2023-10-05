@@ -4,4 +4,5 @@ export {
   composeUrlQuery,
   encodeUrlParam,
   decodeUrlParam,
+  getUrlPara,
 } from './url';

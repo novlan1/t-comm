@@ -1,5 +1,26 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import {
+  getCookie,
+  setCookie,
+  clearCookie,
+  clearAll
+} from 't-comm';
+
+// or
+
+import {
+  getCookie,
+  setCookie,
+  clearCookie,
+  clearAll
+} from 't-comm/lib/cookie/index';
+```
+
+
 ## `getCookie(key)` 
 
 

@@ -1,5 +1,36 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import {
+  checkStringLength,
+  replaceAllPolyfill,
+  camelize,
+  hyphenate,
+  capitalize,
+  titleize,
+  lowerInitial,
+  toUnicodeAt,
+  toUnicode
+} from 't-comm';
+
+// or
+
+import {
+  checkStringLength,
+  replaceAllPolyfill,
+  camelize,
+  hyphenate,
+  capitalize,
+  titleize,
+  lowerInitial,
+  toUnicodeAt,
+  toUnicode
+} from 't-comm/lib/base/string/index';
+```
+
+
 ## `checkStringLength(str, [num])` 
 
 

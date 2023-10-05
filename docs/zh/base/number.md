@@ -1,5 +1,28 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import {
+  NUMBER_CHI_MAP,
+  getUnitPreviousRatio,
+  getPartRatio,
+  getThousandSeparator,
+  getThousandSeparator2
+} from 't-comm';
+
+// or
+
+import {
+  NUMBER_CHI_MAP,
+  getUnitPreviousRatio,
+  getPartRatio,
+  getThousandSeparator,
+  getThousandSeparator2
+} from 't-comm/lib/base/number/index';
+```
+
+
 ## `NUMBER_CHI_MAP` 
 
 

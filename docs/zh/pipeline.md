@@ -1,5 +1,16 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import { startPipeline } from 't-comm';
+
+// or
+
+import { startPipeline} from 't-comm/lib/pipeline/index';
+```
+
+
 ## `startPipeline(config)` 
 
 

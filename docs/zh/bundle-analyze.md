@@ -1,5 +1,16 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import { analyzeIndexBundle } from 't-comm';
+
+// or
+
+import { analyzeIndexBundle} from 't-comm/lib/bundle-analyze/index';
+```
+
+
 ## `analyzeIndexBundle(config)` 
 
 

@@ -1,5 +1,16 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import { removeCss } from 't-comm';
+
+// or
+
+import { removeCss} from 't-comm/lib/css/index';
+```
+
+
 ## `removeCss(href)` 
 
 

@@ -1,5 +1,42 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import {
+  getBranchLifeCycle,
+  getProjectDefaultBranch,
+  getBranchesByProjectName,
+  getOneBranchDetail,
+  getOneCommitDetail,
+  createMR,
+  getMrList,
+  getOneMrComments,
+  getOneProjectDetail,
+  getOneProjectBySearch,
+  getAllProjects,
+  deleteTGitProject
+} from 't-comm';
+
+// or
+
+import {
+  getBranchLifeCycle,
+  getProjectDefaultBranch,
+  getBranchesByProjectName,
+  getOneBranchDetail,
+  getOneCommitDetail,
+  createMR,
+  getMrList,
+  getOneMrComments,
+  getOneProjectDetail,
+  getOneProjectBySearch,
+  getAllProjects,
+  deleteTGitProject
+} from 't-comm/lib/tgit/index';
+```
+
+
 ## `getBranchLifeCycle(options)` 
 
 
@@ -75,6 +112,7 @@ getProjectDefaultBranch({
 | options | <code>object</code> | <p>输入配置</p> |
 | options.projectName | <code>string</code> | <p>项目名称</p> |
 | options.privateToken | <code>string</code> | <p>密钥</p> |
+| options.baseUrl | <code>string</code> | <p>baseUrl</p> |
 
 **返回**: <code>Promise.&lt;Array&lt;object&gt;&gt;</code><br>
 

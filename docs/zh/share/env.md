@@ -1,5 +1,16 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import { initMiniProgramShare, openShareUI } from 't-comm';
+
+// or
+
+import { initMiniProgramShare, openShareUI} from 't-comm/lib/share/env/index';
+```
+
+
 ## `initMiniProgramShare()` 
 
 

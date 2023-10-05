@@ -1,5 +1,16 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import { statisticsPages, statisticsComponent } from 't-comm';
+
+// or
+
+import { statisticsPages, statisticsComponent} from 't-comm/lib/pages-statistics/index';
+```
+
+
 ## `statisticsPages()` 
 
 

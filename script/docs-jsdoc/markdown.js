@@ -7,6 +7,57 @@ const sourceList = require('./config.js');
 const template = fs.readFileSync('./script/docs-jsdoc/template.hbs', 'utf8');
 const configure =  path.resolve(process.cwd(), './script/docs-jsdoc/jsdoc2md.json');
 
+function getAllExports(str) {
+  const reg = /\n##\s`?([^()\n`]+)/g;
+  let regRes = reg.exec(str);
+  const res = [];
+
+  while (regRes) {
+    res.push(regRes[1]);
+    regRes = reg.exec(str);
+  }
+  return res;
+}
+
+function getInsertImportWay(methods, fileName) {
+  if (!methods.length) {
+    return '';
+  }
+
+  const newFileName = fileName.replace('./src/', '').replace('/*', '/index');
+
+  if (methods.length <= 2) {
+    const methodStr = methods.join(', ');
+    return `
+## 引入方式
+
+\`\`\`ts
+import { ${methodStr} } from 't-comm';
+
+// or
+
+import { ${methodStr}} from 't-comm/lib/${newFileName}';
+\`\`\`
+`;
+  }
+
+  const methodStr = methods.join(',\n  ');
+  return `
+## 引入方式
+
+\`\`\`ts
+import {
+  ${methodStr}
+} from 't-comm';
+
+// or
+
+import {
+  ${methodStr}
+} from 't-comm/lib/${newFileName}';
+\`\`\`
+`;
+}
 
 const makeMarkDownDoc = function (sourceName, sourceRootPath, outputPath) {
   let sourcePath = `${sourceRootPath}/${sourceName}`;
@@ -50,7 +101,7 @@ const makeMarkDownDoc = function (sourceName, sourceRootPath, outputPath) {
       template,
     })
     .then((mdStr) => {
-      // 删除第一行的a标签，要不vueperss生成侧边栏的时候，会出错
+      // 删除第一行的 a 标签，否则 vueperss 生成侧边栏的时候，会出错
       const lines = mdStr
         .replace(/&nbsp;/g, ' ')
         .replace(/(?<=##.*)\\_/g, '_')
@@ -69,7 +120,10 @@ const makeMarkDownDoc = function (sourceName, sourceRootPath, outputPath) {
       newText = newText.replace(/:::<\/p>/g, ':::');
 
       if (newText.trim().length) {
-        fs.outputFile(path.resolve(process.cwd(), `${outputPath}/${outputName}.md`), `[[toc]]\n${newText}`);
+        const allExports = getAllExports(newText);
+        const importWayStr = getInsertImportWay(allExports, sourcePath);
+
+        fs.outputFile(path.resolve(process.cwd(), `${outputPath}/${outputName}.md`), `[[toc]]\n${importWayStr}\n${newText}`);
       }
     });
 };

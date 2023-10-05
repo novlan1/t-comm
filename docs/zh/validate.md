@@ -1,5 +1,50 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import {
+  isIdCard,
+  isRegExp,
+  isDate,
+  isFunction,
+  isExternal,
+  validURL,
+  validLowerCase,
+  validUpperCase,
+  validAlphabets,
+  validEmail,
+  isString,
+  isArray,
+  isQQNumber,
+  isEmail,
+  isMobile,
+  isTel
+} from 't-comm';
+
+// or
+
+import {
+  isIdCard,
+  isRegExp,
+  isDate,
+  isFunction,
+  isExternal,
+  validURL,
+  validLowerCase,
+  validUpperCase,
+  validAlphabets,
+  validEmail,
+  isString,
+  isArray,
+  isQQNumber,
+  isEmail,
+  isMobile,
+  isTel
+} from 't-comm/lib/validate/index';
+```
+
+
 ## `isIdCard(idCard)` 
 
 

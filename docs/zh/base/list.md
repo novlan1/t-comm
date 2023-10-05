@@ -1,5 +1,38 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import {
+  flat,
+  flatten,
+  shuffle,
+  getAccCellWidth,
+  isListAllEqual,
+  getKeyValuesMap,
+  getPreviousRatio,
+  getMaxAndMinIdx,
+  flattenPreData,
+  compareTwoList
+} from 't-comm';
+
+// or
+
+import {
+  flat,
+  flatten,
+  shuffle,
+  getAccCellWidth,
+  isListAllEqual,
+  getKeyValuesMap,
+  getPreviousRatio,
+  getMaxAndMinIdx,
+  flattenPreData,
+  compareTwoList
+} from 't-comm/lib/base/list/index';
+```
+
+
 ## `flat(list)` 
 
 

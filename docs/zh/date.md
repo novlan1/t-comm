@@ -1,5 +1,36 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import {
+  getMonthDay,
+  getMonthDay2,
+  isSameWeek,
+  parseTime,
+  getTimeAgo,
+  getTimeAgoOrDate,
+  getCountDownObj,
+  getDayStartTimestamp,
+  getDayEndTimeStamp
+} from 't-comm';
+
+// or
+
+import {
+  getMonthDay,
+  getMonthDay2,
+  isSameWeek,
+  parseTime,
+  getTimeAgo,
+  getTimeAgoOrDate,
+  getCountDownObj,
+  getDayStartTimestamp,
+  getDayEndTimeStamp
+} from 't-comm/lib/date/index';
+```
+
+
 ## `getMonthDay(year, month)` 
 
 

@@ -1,5 +1,16 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import { watchRainbowToCosAndSendRobot } from 't-comm';
+
+// or
+
+import { watchRainbowToCosAndSendRobot} from 't-comm/lib/rainbow-to-cos/index';
+```
+
+
 ## `watchRainbowToCosAndSendRobot(options)` 
 
 

@@ -1,5 +1,16 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import { toHumpObj, extend } from 't-comm';
+
+// or
+
+import { toHumpObj, extend} from 't-comm/lib/base/object/index';
+```
+
+
 ## `toHumpObj(obj)` 
 
 

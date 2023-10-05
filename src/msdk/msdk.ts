@@ -38,8 +38,11 @@ export function removeMsdkNativeCallbackListener(callback: Function) {
   }
 }
 
-export function closeMsdkWebview() {
-  const env = initEnv();
+export function closeMsdkWebview(env?: any) {
+  if (!env) {
+    env = initEnv();
+  }
+  console.info('[closeMsdkWebview] env', env);
 
   // ua需要先判断MSDK V5版本
   if (env.isMsdkV5 && typeof window.msdkCall === 'function') {
@@ -53,6 +56,8 @@ export function closeMsdkWebview() {
     } else if (typeof window.msdkCallNative === 'function') {
       window.msdkCallNative('{"MsdkMethod":"CloseWebview"}');
     }
+  } else if (env.isSlugSdk && window.customBrowserInterface) {
+    window.customBrowserInterface.closeWebview();
   }
 }
 

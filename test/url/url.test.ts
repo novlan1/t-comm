@@ -1,4 +1,4 @@
-import { getQueryObj, composeUrlQuery } from '../../src';
+import { getQueryObj, composeUrlQuery, getUrlPara } from '../../src';
 
 describe('getQueryObj', () => {
   it('getQueryObj', () => {
@@ -35,5 +35,17 @@ describe('composeUrlQuery', () => {
       age: '18',
       from: 'test',
     })).toBe('https://baidu.com?gender=male&name=mike&feel=cold&age=18&from=test');
+  });
+});
+
+
+describe('getUrlPara', () => {
+  it('getUrlPara', () => {
+    expect(getUrlPara('gender', '?gender=male&name=mike&feel=cold&age=18&from=test')).toBe('male');
+    expect(getUrlPara('from', '?gender=male&name=mike&feel=cold&age=18&from=test')).toBe('test');
+    expect(getUrlPara('age', '?gender=male&name=mike&feel=cold&age=18&from=test')).toBe('18');
+
+    expect(getUrlPara('other', '?gender=male&name=mike&feel=cold&age=18&from=test')).toBe('');
+    expect(getUrlPara('other')).toBe('');
   });
 });

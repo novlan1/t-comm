@@ -1,5 +1,16 @@
 [[toc]]
 
+## 引入方式
+
+```ts
+import { getTencentDocUserInfo } from 't-comm';
+
+// or
+
+import { getTencentDocUserInfo} from 't-comm/lib/tencent-doc/index';
+```
+
+
 ## `getTencentDocUserInfo()` 
 
 

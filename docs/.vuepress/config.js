@@ -16,7 +16,7 @@ module.exports = {
   base: process.env.PUBLISH_PATH || '/t-comm/',
   head: [
     [
-      'link', { rel: 'icon', href: '/images/favicon.ico' },
+      'link', { rel: 'icon', href: 'https://mike-1255355338.cos.ap-guangzhou.myqcloud.com/article/2023/10/own_mike_5489135b5a3b9258d8.png' },
     ],
   ],
   markdown: {
