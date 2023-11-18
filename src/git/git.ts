@@ -16,12 +16,44 @@ export function getGitCurBranch(root?: string) {
   return res;
 }
 
+/**
+ * 获取提交信息
+ * @param {string} root 根路径
+ * @param {boolean} mergeCommit 是否包含 merge 的提交
+ * @param {boolean} splitMessage 是否去掉提交信息的前缀
+ * @returns {string} 提交信息
+ *
+ * @example
+ * ```ts
+ * getGitCommitInfo()
+ * // '优化一部分文档'
+ * ```
+ */
+export function getGitCommitMessage(root?: string, mergeCommit = false, splitMessage = false) {
+  const infoMessage = execCommand(
+    `git log ${mergeCommit ? '' : '--no-merges'} -1 \
+  --format=%s | cat`,
+    root,
+  );
+
+  if (splitMessage) {
+    const message = (infoMessage.split(':')[1] || infoMessage.split('：')[1] || '').trim();
+    return message;
+  }
+
+  return infoMessage;
+}
+
 
 /**
  * 获取提交信息
+ * @param {string} root 根路径
+ * @param {boolean} mergeCommit 是否包含 merge 的提交
+ * @param {boolean} splitMessage 是否去掉提交信息的前缀
  * @returns {Object} 提交对象
  *
  * @example
+ * ```ts
  * getGitCommitInfo()
  * {
  *   author: 'novlan1',
@@ -31,25 +63,36 @@ export function getGitCurBranch(root?: string) {
  *   timeStamp: '1664678071',
  *   branch: 'master'
  * }
+ * ```
  */
-export function getGitCommitInfo(root?: string, mergeCommit?: false): IGitCommitInfo {
-  const command = `git log ${mergeCommit ? '' : '--no-merges'} -1 \
-  --date=iso --pretty=format:'{"author": "%aN","message": "%s", "hash": "%h", "date": "%ad", "timeStamp": "%at"},' \
+export function getGitCommitInfo(root?: string, mergeCommit = false, splitMessage = false): IGitCommitInfo {
+  const command = `
+  git log ${mergeCommit ? '' : '--no-merges'} -1 \
+  --date=iso --pretty=format:'{"author": "%aN", "hash": "%h", "date": "%ad", "timeStamp": "%at"},' \
   $@ | \
   perl -pe 'BEGIN{print "["}; END{print "]\n"}' | \
   perl -pe 's/},]/}]/'`;
   const stdout = execCommand(command, root);
+  let info = {
+    author: 'UNKNOWN',
+    message: 'UNKNOWN',
+    hash: 'UNKNOWN',
+    date: 'UNKNOWN',
+    timeStamp: '0',
+    branch: '',
+  };
 
-  const info = Object.assign({}, JSON.parse(stdout)[0], {
-    branch: getGitCurBranch(root),
-  });
-  const infoMessage = info.message || '';
+  try {
+    // 如果提交信息包括双引号，会解析失败
+    info = JSON.parse(stdout)[0];
+  } catch (err) {
+    console.warn('[getGitCommitInfo] parse error');
+  }
 
-  const message = (infoMessage.split(':')[1] || infoMessage.split('：')[1] || '').trim();
-  const res = Object.assign({}, info, {
-    message: message || info.message,
-  });
-  return res;
+  info.branch = getGitCurBranch(root);
+  info.message = getGitCommitMessage(root, mergeCommit, splitMessage);
+
+  return info;
 }
 
 

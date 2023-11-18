@@ -1,5 +1,5 @@
 /**
- * url参数变数组
+ * url参数变对象
  * @param {string} url 输入URL
  * @returns {Object} search对象
  *
@@ -117,6 +117,21 @@ export function decodeUrlParam(str: string): object {
 }
 
 
+/**
+ * 获取 Url 参数
+ * @param {string} paraName 参数 key
+ * @param {string} search url search 部分
+ * @returns paraValue
+ *
+ * @example
+ * ```ts
+ * getUrlPara('gender', '?gender=male&name=mike&feel=cold&age=18&from=test')
+ * // male
+ *
+ * getUrlPara('age', '?gender=male&name=mike&feel=cold&age=18&from=test')
+ * // 18
+ * ```
+ */
 export function getUrlPara(paraName, search = '') {
   if (!search && typeof window !== 'undefined') {
     search  = window.location.search;
@@ -137,4 +152,3 @@ export function getUrlPara(paraName, search = '') {
   }
   return '';
 }
-

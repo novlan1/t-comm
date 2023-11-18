@@ -8,7 +8,8 @@ import {
   getUnitPreviousRatio,
   getPartRatio,
   getThousandSeparator,
-  getThousandSeparator2
+  getThousandSeparator2,
+  random
 } from 't-comm';
 
 // or
@@ -18,7 +19,8 @@ import {
   getUnitPreviousRatio,
   getPartRatio,
   getThousandSeparator,
-  getThousandSeparator2
+  getThousandSeparator2,
+  random
 } from 't-comm/lib/base/number/index';
 ```
 
@@ -26,7 +28,7 @@ import {
 ## `NUMBER_CHI_MAP` 
 
 
-**描述**：<p>阿拉伯数字和中文数字映射表</p>
+**描述**：<p>阿拉伯数字和中文数字映射表，0 - 32</p>
 
 **参数**：
 
@@ -153,4 +155,26 @@ getThousandSeparator('12312312')
 getThousandSeparator2('12345678 123456789')
 
 // => 12,345,678 123,456,789
+```
+<a name="random"></a>
+
+## `random(min, max)` 
+
+
+**描述**：<p>在区间内获取随机整数</p>
+
+**参数**：
+
+
+| 参数名 | 类型 | 描述 |
+| --- | --- | --- |
+| min | <code>number</code> | <p>最小值</p> |
+| max | <code>number</code> | <p>最大值</p> |
+
+**返回**: <p>随机数</p>
+
+**示例**
+
+```ts
+random(0, 19) // 1
 ```

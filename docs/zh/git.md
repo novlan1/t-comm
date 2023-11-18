@@ -5,6 +5,7 @@
 ```ts
 import {
   getGitCurBranch,
+  getGitCommitMessage,
   getGitCommitInfo,
   getGitLastTag,
   getGitCommitsBeforeTag,
@@ -15,6 +16,7 @@ import {
 
 import {
   getGitCurBranch,
+  getGitCommitMessage,
   getGitCommitInfo,
   getGitLastTag,
   getGitCommitsBeforeTag,
@@ -41,14 +43,47 @@ getBranch()
 
 // => master
 ```
-<a name="getGitCommitInfo"></a>
+<a name="getGitCommitMessage"></a>
 
-## `getGitCommitInfo()` 
+## `getGitCommitMessage(root, mergeCommit, splitMessage)` 
 
 
 **描述**：<p>获取提交信息</p>
 
 **参数**：
+
+
+| 参数名 | 类型 | 描述 |
+| --- | --- | --- |
+| root | <code>string</code> | <p>根路径</p> |
+| mergeCommit | <code>boolean</code> | <p>是否包含 merge 的提交</p> |
+| splitMessage | <code>boolean</code> | <p>是否去掉提交信息的前缀</p> |
+
+**返回**: <code>string</code><br>
+
+<p>提交信息</p>
+
+**示例**
+
+```ts
+getGitCommitInfo()
+// '优化一部分文档'
+```
+<a name="getGitCommitInfo"></a>
+
+## `getGitCommitInfo(root, mergeCommit, splitMessage)` 
+
+
+**描述**：<p>获取提交信息</p>
+
+**参数**：
+
+
+| 参数名 | 类型 | 描述 |
+| --- | --- | --- |
+| root | <code>string</code> | <p>根路径</p> |
+| mergeCommit | <code>boolean</code> | <p>是否包含 merge 的提交</p> |
+| splitMessage | <code>boolean</code> | <p>是否去掉提交信息的前缀</p> |
 
 **返回**: <code>Object</code><br>
 
@@ -56,7 +91,7 @@ getBranch()
 
 **示例**
 
-```typescript
+```ts
 getGitCommitInfo()
 {
   author: 'novlan1',

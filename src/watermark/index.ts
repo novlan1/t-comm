@@ -1,0 +1,1 @@
+export { createWatcherMark } from './watermark';

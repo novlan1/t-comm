@@ -2,8 +2,10 @@ export { rmFirstAndLastSlash, getGitCodeLink, getGitMRLink } from './git-link';
 export {
   getGitCurBranch,
   getGitCommitInfo,
-  getGitLastTag,
+  getGitCommitMessage,
   getGitCommitsBeforeTag,
+
+  getGitLastTag,
   getGitTagTime,
   getGitAuthor,
 } from './git';

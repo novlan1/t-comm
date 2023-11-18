@@ -15,12 +15,12 @@ const addScript = function (script: any) {
 };
 
 /**
-   * 加载js文件
-   * @param {String}          src  js文件路径
-   * @param {Function|Object} callback  加载回调
-   * @param {String}          charset  指定js的字符集
-   * @param {Object}          context Callback context
-   */
+ * 以 Callback 的方式加载 js 文件
+ * @param {String}          src  js文件路径
+ * @param {Function|Object} callback  加载回调
+ * @param {String}          charset  指定js的字符集
+ * @param {Object}          context Callback context
+ */
 export const loader = function (src: string, callback: any, charset = 'utf-8', context = null) {
   let setup;
 

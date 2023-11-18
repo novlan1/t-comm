@@ -3,18 +3,28 @@
 ## 引入方式
 
 ```ts
-import { loader, loadCSS } from 't-comm';
+import {
+  loader,
+  loaderUnity,
+  loadJS,
+  loadCSS
+} from 't-comm';
 
 // or
 
-import { loader, loadCSS} from 't-comm/lib/loader/index';
+import {
+  loader,
+  loaderUnity,
+  loadJS,
+  loadCSS
+} from 't-comm/lib/loader/index';
 ```
 
 
 ## `loader` 
 
 
-**描述**：<p>加载js文件</p>
+**描述**：<p>以 Callback 的方式加载 js 文件</p>
 
 **参数**：
 
@@ -46,6 +56,43 @@ import { loader, loadCSS} from 't-comm/lib/loader/index';
 <p>Error handler</p>
 
 **Kind**: inner method of [<code>loader</code>](#loader)  
+<a name="loaderUnity"></a>
+
+## `loaderUnity` 
+
+
+**描述**：<p>以 Promise 或者 Callback 的方式加载 js 文件，取决于是否传递 Callback</p>
+
+**参数**：
+
+
+| 参数名 | 类型 | 描述 |
+| --- | --- | --- |
+| url | <code>string</code> | <p>js文件路径</p> |
+| [cb] | <code>function</code> | <p>回调</p> |
+
+**返回**: <code>Promise.&lt;number&gt;</code><br>
+
+<p>promise</p>
+
+<a name="loadJS"></a>
+
+## `loadJS(url)` 
+
+
+**描述**：<p>以 Promise 的方式加载 js 文件</p>
+
+**参数**：
+
+
+| 参数名 | 类型 | 描述 |
+| --- | --- | --- |
+| url | <code>string</code> | <p>js文件路径</p> |
+
+**返回**: <code>Promise.&lt;number&gt;</code><br>
+
+<p>promise</p>
+
 <a name="loadCSS"></a>
 
 ## `loadCSS(url)` 

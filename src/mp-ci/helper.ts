@@ -64,6 +64,7 @@ export function getBundleVersion(root: string) {
 
 /**
  * 解析上传结果
+ * @ignore
  */
 export function parseUploadResult(result: IUploadResult) {
   const {

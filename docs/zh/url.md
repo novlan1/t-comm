@@ -4,27 +4,177 @@
 
 ```ts
 import {
+  resolveUrlParams,
+  formatUrlParams,
+  extendUrlParams,
+  removeUrlParams,
+  keepUrlParams,
+  filterUrlParams,
   getQueryObj,
   composeUrlQuery,
   encodeUrlParam,
-  decodeUrlParam
+  decodeUrlParam,
+  getUrlPara
 } from 't-comm';
 
 // or
 
 import {
+  resolveUrlParams,
+  formatUrlParams,
+  extendUrlParams,
+  removeUrlParams,
+  keepUrlParams,
+  filterUrlParams,
   getQueryObj,
   composeUrlQuery,
   encodeUrlParam,
-  decodeUrlParam
+  decodeUrlParam,
+  getUrlPara
 } from 't-comm/lib/url/index';
 ```
 
 
+## `resolveUrlParams([url], [key])` 
+
+
+**描述**：<p>提取链接参数，兼容hash模式和history模式，以及拼接异常情况</p>
+
+**参数**：
+
+
+| 参数名 | 类型 | 默认值 | 描述 |
+| --- | --- | --- | --- |
+| [url] | <code>string</code> | <code>&quot;&#x27;&#x27;&quot;</code> | <p>地址</p> |
+| [key] | <code>string</code> | <code>&quot;&#x27;&#x27;&quot;</code> | <p>可选，若不为空，则提取返回该key对应的参数值</p> |
+
+**返回**: <p>地址参数对象，或者是指定参数值</p>
+
+**示例**
+
+```typescript
+const url = 'https://igame.qq.com?name=mike&age=18#/index?from=china&home=china'
+const params = resolveUrlParams(url); // { from: 'china', home: 'china', name: 'mike', age: 18 }
+const paramsAge =  resolveUrlParams(url, 'age'); // 18
+```
+<a name="formatUrlParams"></a>
+
+## `formatUrlParams(url, keepParamsObj, [forceHistoryMode])` 
+
+
+**描述**：<p>根据传入的参数，移除原来的所有参数，根据传入的 keepParamsObj 进行重新拼接地址，以 hash 模式返回</p>
+
+**参数**：
+
+
+| 参数名 | 类型 | 描述 |
+| --- | --- | --- |
+| url | <code>string</code> | <p>地址</p> |
+| keepParamsObj | <code>object</code> | <p>参数对象</p> |
+| [forceHistoryMode] | <code>boolean</code> | <p>是否强制 history 模式</p> |
+
+**返回**: <p>只有传入参数的地址</p>
+
+**示例**
+
+```typescript
+const url1 = formatUrlParams('http://www.test.com?a=1&b=2&c=3', { e: 5 }); // http://www.test.com/#/?e=5
+const url2 = formatUrlParams('http://www.test.com?a=1&b=2&c=3#/detail?d=4', { f: 5 }); // http://www.test.com/#/detail?f=5
+```
+<a name="extendUrlParams"></a>
+
+## `extendUrlParams(url, extParamsObj, [forceHistoryMode])` 
+
+
+**描述**：<p>拼接额外参数</p>
+
+**参数**：
+
+
+| 参数名 | 类型 | 描述 |
+| --- | --- | --- |
+| url | <code>string</code> | <p>地址</p> |
+| extParamsObj | <code>object</code> | <p>待添加的参数对象</p> |
+| [forceHistoryMode] | <code>boolean</code> | <p>是否强制 history 模式</p> |
+
+**返回**: <p>重新拼接的地址</p>
+
+**示例**
+
+```typescript
+const url1 = extendUrlParams('http://www.test.com?a=1&b=2&c=3#/detail?d=4', { e: 5 }); // 'http://www.test.com/#/detail?a=1&b=2&c=3&d=4&e=5'
+```
+<a name="removeUrlParams"></a>
+
+## `removeUrlParams(url, removeKeyArr)` 
+
+
+**描述**：<p>移除参数</p>
+
+**参数**：
+
+
+| 参数名 | 类型 | 描述 |
+| --- | --- | --- |
+| url | <code>string</code> | <p>地址</p> |
+| removeKeyArr | <code>string</code> | <p>待移除的参数名集合</p> |
+
+**返回**: <p>重新拼接的地址</p>
+
+**示例**
+
+```typescript
+const url = removeUrlParams('http://www.test.com/#/detail?a=1&b=2&c=3', ['a', 'b']); // 'http://www.test.com/#/detail?c=3'
+const url2 = removeUrlParams('http://www.test.com?d=4&f=6#/detail?a=1&b=2&c=3', ['a', 'd']); // 'http://www.test.com/#/detail?b=2&c=3&f=6'
+```
+<a name="keepUrlParams"></a>
+
+## `keepUrlParams(url, keepKeyArr, [forceHistoryMode])` 
+
+
+**描述**：<p>除保留参数外，一律移除</p>
+
+**参数**：
+
+
+| 参数名 | 类型 | 描述 |
+| --- | --- | --- |
+| url | <code>string</code> | <p>地址</p> |
+| keepKeyArr | <code>string</code> | <p>待保留的参数名集合</p> |
+| [forceHistoryMode] | <code>boolean</code> | <p>是否强制 history 模式</p> |
+
+**返回**: <p>重新拼接的地址</p>
+
+**示例**
+
+```typescript
+const url = keepUrlParams('http://www.test.com?a=1&b=2&c=3#/detail?d=4', ['a', 'd']); // 'http://www.test.com/#/detail?a=1&d=4'
+```
+<a name="filterUrlParams"></a>
+
+## `filterUrlParams([params])` 
+
+
+**描述**：<p>根据地址长度，进行过滤地址参数，允许指定保留特定参数</p>
+
+**参数**：
+
+
+| 参数名 | 类型 | 默认值 | 描述 |
+| --- | --- | --- | --- |
+| [params] | <code>object</code> | <code>{ limit: 1024 }</code> | <p>参数</p> |
+| params.url | <code>number</code> |  | <p>待过滤地址，默认当前页面地址</p> |
+| params.limit | <code>number</code> |  | <p>参数长度限制</p> |
+| params.keepKey | <code>array</code> |  | <p>指定保留的参数，比如业务参数、框架参数（登录态、统计上报等）</p> |
+
+
+
+<a name="getQueryObj"></a>
+
 ## `getQueryObj(url)` 
 
 
-**描述**：<p>url参数变数组</p>
+**描述**：<p>url参数变对象</p>
 
 **参数**：
 
@@ -137,4 +287,30 @@ encodeUrlParam({a: 1})
 decodeUrlParam('%7B%22a%22%3A1%7D')
 
 // { a: 1 }
+```
+<a name="getUrlPara"></a>
+
+## `getUrlPara(paraName, search)` 
+
+
+**描述**：<p>获取 Url 参数</p>
+
+**参数**：
+
+
+| 参数名 | 类型 | 描述 |
+| --- | --- | --- |
+| paraName | <code>string</code> | <p>参数 key</p> |
+| search | <code>string</code> | <p>url search 部分</p> |
+
+**返回**: <p>paraValue</p>
+
+**示例**
+
+```ts
+getUrlPara('gender', '?gender=male&name=mike&feel=cold&age=18&from=test')
+// male
+
+getUrlPara('age', '?gender=male&name=mike&feel=cold&age=18&from=test')
+// 18
 ```

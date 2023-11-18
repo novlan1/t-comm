@@ -3,13 +3,40 @@
 ## 引入方式
 
 ```ts
-import { checkUAIsIOS, getEnvUAType } from 't-comm';
+import {
+  checkNodeEnv,
+  checkUAIsIOS,
+  getEnvUAType
+} from 't-comm';
 
 // or
 
-import { checkUAIsIOS, getEnvUAType} from 't-comm/lib/env/index';
+import {
+  checkNodeEnv,
+  checkUAIsIOS,
+  getEnvUAType
+} from 't-comm/lib/env/index';
 ```
 
+
+## `checkNodeEnv` 
+
+
+**描述**：<p>检查是否是node环境</p>
+
+**参数**：
+
+**返回**: <code>boolean</code><br>
+
+<p>是否node环境</p>
+
+**示例**
+
+```typescript
+const res = checkNodeEnv();
+  // false
+```
+<a name="checkUAIsIOS"></a>
 
 ## `checkUAIsIOS()` 
 

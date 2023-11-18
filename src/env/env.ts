@@ -115,3 +115,16 @@ export function getEnvUAType(): IEnv {
 export function initEnv() {
   return getEnvUAType();
 }
+
+
+/**
+ * 检查是否是node环境
+ * @return {boolean} 是否node环境
+ * @example
+
+  const res = checkNodeEnv();
+  // false
+ */
+export const checkNodeEnv = function () {
+  return !((typeof window !== 'undefined' && window.navigator));
+};

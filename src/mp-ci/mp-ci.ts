@@ -27,7 +27,7 @@ function getMainPackageSize(result: IUploadResult) {
 }
 
 
-export class MpCI {
+class MpCI {
   ciLib: any;
   options: OptionsType;
 
@@ -72,10 +72,10 @@ export class MpCI {
   *
   * const { MpCI, fetchRainbowConfig } = require('t-comm');
   *
-  * const env = \"${env}\"
-  * const branch = \"${branch}\"
+  * const env = "${env}"
+  * const branch = "${branch}"
   *
-  * const root = \"${WORKSPACE}\";
+  * const root = "${WORKSPACE}";
   *
   * async function getCIConfig() {
   *   let res = {};
@@ -474,3 +474,4 @@ export class MpCI {
 }
 
 
+export { MpCI };

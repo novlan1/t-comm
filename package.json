@@ -1,6 +1,6 @@
 {
   "name": "t-comm",
-  "version": "1.3.11",
+  "version": "1.3.30",
   "description": "丰富易用的工具库",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
@@ -8,6 +8,7 @@
   "files": [
     "lib",
     "bin",
+    "barcode",
     "LICENSE",
     "CHANGELOG.md",
     "README.md"

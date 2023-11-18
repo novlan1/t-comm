@@ -1,6 +1,11 @@
 import { loader } from './little-loader';
 
 
+/**
+ * 以 Promise 的方式加载 js 文件
+ * @param {string}  url  js文件路径
+ * @returns {Promise<number>} promise
+ */
 export function loadJS(url: string) {
   return new Promise((resolve) => {
     loader(url, () => {

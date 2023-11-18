@@ -1,4 +1,8 @@
 export {
+  parseCommentJson,
+  readCommentJson,
+} from './comment-json';
+export {
   mkDirsSync,
   copyDir,
   copyFile,

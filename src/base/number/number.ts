@@ -51,7 +51,7 @@ export function getPartRatio(summary: number, part: number) {
 
 /**
  *
- * 阿拉伯数字和中文数字映射表
+ * 阿拉伯数字和中文数字映射表，0 - 32
  * @type {object}
  * @example
  *
@@ -62,6 +62,7 @@ export function getPartRatio(summary: number, part: number) {
  * // '二'
  */
 export const NUMBER_CHI_MAP = {
+  0: '零',
   1: '一',
   2: '二',
   3: '三',
@@ -82,6 +83,18 @@ export const NUMBER_CHI_MAP = {
   18: '十八',
   19: '十九',
   20: '二十',
+  21: '二十一',
+  22: '二十二',
+  23: '二十三',
+  24: '二十四',
+  25: '二十五',
+  26: '二十六',
+  27: '二十七',
+  28: '二十八',
+  29: '二十九',
+  30: '三十',
+  31: '三十一',
+  32: '三十二',
 };
 
 
@@ -120,3 +133,24 @@ export function getThousandSeparator2(value: number | string) {
   const reg = /\B(?=(\d{3})+\b)/g;
   return `${value}`.replace(reg, ',');
 }
+
+
+/**
+ * 在区间内获取随机整数
+ * @param {number} min 最小值
+ * @param {number} max 最大值
+ * @returns 随机数
+ *
+ * @example
+ * ```ts
+ * random(0, 19) // 1
+ * ```
+ */
+export function random(min, max) {
+  if (min >= 0 && max > 0 && max >= min) {
+    const gap = max - min + 1;
+    return Math.floor(Math.random() * gap + min);
+  }
+  return 0;
+}
+

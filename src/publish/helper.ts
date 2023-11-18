@@ -1,4 +1,5 @@
 import * as path from 'path';
+import * as fs from 'fs';
 import { readEnvVariable } from '../env-variable/env-variable';
 
 
@@ -7,9 +8,20 @@ export function getPublishRootDir() {
   return rootDir;
 }
 
+function findPublishSh(dir) {
+  const FILE_NAME = 'publish.sh';
+  const file = path.resolve(dir, FILE_NAME);
+
+  if (fs.existsSync(file)) {
+    return file;
+  }
+}
+
 
 export function getPublishBashPath() {
-  return path.resolve(__dirname, '../bin/publish.sh');
+  return findPublishSh(path.resolve(__dirname, '..'))
+  || findPublishSh(path.resolve(__dirname, '../bin'))
+  || findPublishSh(path.resolve(__dirname, '../../bin')) || 'ERROR_FILE';
 }
 
 

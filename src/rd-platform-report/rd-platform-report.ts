@@ -12,6 +12,15 @@ enum ReportPlatform {
   MP = 2,
 }
 
+/**
+ * 上报数据到研发平台
+ * @param {object} param 参数
+ * @param {object} param.data 上报数据
+ * @param {string} param.host 请求域名
+ * @param {ReportType} param.type 上报类型
+ * @param {ReportPlatform} param.platform 上报平台
+ * @returns 上报结果
+ */
 export async function reportToRdPlatform({
   data,
   host,

@@ -1,1 +1,5 @@
-export { removeCss } from './css';
+export {
+  removeCss,
+  loadCssCode,
+  loadStyles,
+} from './css';

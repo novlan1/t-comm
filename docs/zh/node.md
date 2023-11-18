@@ -4,6 +4,8 @@
 
 ```ts
 import {
+  parseCommentJson,
+  readCommentJson,
   innerCopyDir,
   copyDir,
   deleteFolder,
@@ -16,6 +18,8 @@ import {
 // or
 
 import {
+  parseCommentJson,
+  readCommentJson,
   innerCopyDir,
   copyDir,
   deleteFolder,
@@ -26,6 +30,38 @@ import {
 } from 't-comm/lib/node/index';
 ```
 
+
+## `parseCommentJson(content)` 
+
+
+**描述**：<p>解析带注释的 json 文件</p>
+
+**参数**：
+
+
+| 参数名 | 描述 |
+| --- | --- |
+| content | <p>原始文件内容</p> |
+
+**返回**: <p>json数据</p>
+
+<a name="readCommentJson"></a>
+
+## `readCommentJson(file)` 
+
+
+**描述**：<p>获取带注释的 json 文件内容</p>
+
+**参数**：
+
+
+| 参数名 | 描述 |
+| --- | --- |
+| file | <p>文件路径</p> |
+
+**返回**: <p>json数据</p>
+
+<a name="innerCopyDir"></a>
 
 ## `innerCopyDir(src, dist)` 
 

@@ -10,6 +10,17 @@ import { initMsdkPlugin } from './plugin/msdk';
 import { initVersionSimplePlugin } from './plugin/version-simple';
 
 
+/**
+ * 加载 vConsole
+ * @param {Object} [options = {}] vConsole 选项
+ * @param {Array<string>} [plugins = []] 插件列表
+ * @returns {Promise<Object>} vConsole 实例
+ *
+ * @example
+ * ```ts
+ * loadVConsole()
+ * ```
+ */
 export function loadVConsole(options: Record<string, any> = {}, plugins: Array<Function> = []) {
   return new Promise((resolve) => {
     if (typeof window.VConsole === 'undefined') {

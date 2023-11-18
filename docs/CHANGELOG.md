@@ -10,6 +10,220 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### [1.3.30](https://github.com/novlan1/t-comm/compare/v1.3.29...v1.3.30) (2023-11-16)
+
+
+### Documentation 📖
+
+* update docs ([458c07f](https://github.com/novlan1/t-comm/commit/458c07f0b293ebbe3f7dff4a40a1fbd89cd2c1e1))
+
+
+### Features 🎉
+
+* **barcode:** add barcode ([0173317](https://github.com/novlan1/t-comm/commit/01733178ed41bb13961068260627264c479e96c9))
+
+### [1.3.29](https://github.com/novlan1/t-comm/compare/v1.3.28...v1.3.29) (2023-11-14)
+
+
+### Bug Fixes 🐞
+
+* **commit-info:** 优化获取提交信息，兼容引号 ([bada546](https://github.com/novlan1/t-comm/commit/bada5460c2e1aa13e67a3f4733a8e539074c3830))
+
+### [1.3.28](https://github.com/novlan1/t-comm/compare/v1.3.27...v1.3.28) (2023-11-13)
+
+
+### Features 🎉
+
+* **css:** add load css code and css styles ([02b35b0](https://github.com/novlan1/t-comm/commit/02b35b0e6c8ab40c652f4ba05a19dae199ee895a))
+
+### [1.3.27](https://github.com/novlan1/t-comm/compare/v1.3.26...v1.3.27) (2023-11-13)
+
+
+### Bug Fixes 🐞
+
+* **git-commit-info:** 兼容message获取失败情况 ([446d0fa](https://github.com/novlan1/t-comm/commit/446d0fa5eca56ff9a9c0724410a7cad2482c8bbd))
+
+### [1.3.26](https://github.com/novlan1/t-comm/compare/v1.3.25...v1.3.26) (2023-11-09)
+
+
+### Features 🎉
+
+* **debounce:** add debounce and throttle ([5601b0c](https://github.com/novlan1/t-comm/commit/5601b0c88aedad27b6a76d47bdb27c1cbfd32e37))
+* **gid-map:** add gid map ([274c686](https://github.com/novlan1/t-comm/commit/274c68612bf5c444362bef4e73f761d4a904bbe5))
+
+### [1.3.25](https://github.com/novlan1/t-comm/compare/v1.3.24...v1.3.25) (2023-11-03)
+
+
+### Bug Fixes 🐞
+
+* **uploader:** fix merge options ([16fd731](https://github.com/novlan1/t-comm/commit/16fd731d238c46e6833579643b18c26ce5ddfb21))
+
+### [1.3.24](https://github.com/novlan1/t-comm/compare/v1.3.23...v1.3.24) (2023-11-02)
+
+
+### Features 🎉
+
+* **uploader:** add uploader ([8dc382b](https://github.com/novlan1/t-comm/commit/8dc382b4bbd96541046dbae69aac106e5d65617d))
+
+### [1.3.23](https://github.com/novlan1/t-comm/compare/v1.3.22...v1.3.23) (2023-11-02)
+
+
+### Bug Fixes 🐞
+
+* **functional-component:** vue从default中取 ([b6ec509](https://github.com/novlan1/t-comm/commit/b6ec5098ffdd29af7d1f5c02f2681f94c58be1aa))
+
+
+### Tests ✅
+
+* update persist data tests ([c7caf5f](https://github.com/novlan1/t-comm/commit/c7caf5fb40d473e003d1cc57f3c05f5513830d9a))
+
+
+### Features 🎉
+
+* **location:** add location ([e4aa278](https://github.com/novlan1/t-comm/commit/e4aa278102f54752f3e22d5938247523c6ab59bc))
+* **persist-data:** add persist data ([2e71b65](https://github.com/novlan1/t-comm/commit/2e71b653969fc07451ec778087243d2cf7aa7113))
+
+
+### Code Refactoring ♻️
+
+* **location:** 移除post/configWX ([63a885e](https://github.com/novlan1/t-comm/commit/63a885edba5c3d577db4487be275fe205772b3a9))
+* **location:** update location ([7c02125](https://github.com/novlan1/t-comm/commit/7c02125be7e7dda6eeacc4eb03b8e4940f0dad16))
+
+
+### Documentation 📖
+
+* **city:** add city docs ([544b43a](https://github.com/novlan1/t-comm/commit/544b43a15a1b7a3c1dc2eb7136d152b53e7a5bc7))
+* **functional-component:** add docs ([3909ff5](https://github.com/novlan1/t-comm/commit/3909ff5ab23b0e3e5bf73850cb521d1ea15ef5fd))
+* **location:** 导出mp-location ([9957bb5](https://github.com/novlan1/t-comm/commit/9957bb53d07fe19ccd9190707f1dbd547f9f4371))
+* update docs ([6aa716d](https://github.com/novlan1/t-comm/commit/6aa716d87779d8416be0c90ef9a92cbfc428c3c5))
+
+### [1.3.22](https://github.com/novlan1/t-comm/compare/v1.3.21...v1.3.22) (2023-10-30)
+
+
+### Features 🎉
+
+* **functional-component:** 增加函数式调用组件 ([4bf5c85](https://github.com/novlan1/t-comm/commit/4bf5c8598e0a10be03888a44c74a2b5961075e58))
+
+### [1.3.21](https://github.com/novlan1/t-comm/compare/v1.3.20...v1.3.21) (2023-10-28)
+
+
+### Features 🎉
+
+* **msdk:** add slug sdk launch app ([41ad0c4](https://github.com/novlan1/t-comm/commit/41ad0c4ceec11d1bf06055485572d0badecb44a3))
+
+### [1.3.20](https://github.com/novlan1/t-comm/compare/v1.3.19...v1.3.20) (2023-10-28)
+
+
+### Documentation 📖
+
+* add docs for watermark ([fc26967](https://github.com/novlan1/t-comm/commit/fc26967f89219616081f9579a4de467fe051e529))
+* update docs ([6ac506f](https://github.com/novlan1/t-comm/commit/6ac506f468dff01b99985cea8d57b61a3ae9c7e7))
+* update url docs ([164dcc5](https://github.com/novlan1/t-comm/commit/164dcc54862767780b0b5f1e6f1b4f7cf84c4db5))
+* update watermark docs ([e93b268](https://github.com/novlan1/t-comm/commit/e93b268731106aa75f79cf259fdf54828987bd5c))
+
+
+### Features 🎉
+
+* **loaderUnity:** add loaderUnity ([9a9118e](https://github.com/novlan1/t-comm/commit/9a9118e73a19d0e917b3e9dd4e0a5503edf867d6))
+* **msdk:** add launch mp ([6b0f86b](https://github.com/novlan1/t-comm/commit/6b0f86b904e8f8f80526f1c0f4199c852ffdeb87))
+* **promise:** add toPromise ([a9412e6](https://github.com/novlan1/t-comm/commit/a9412e68b0bcbbc68f66cda361dfb6c20aa96f2d))
+* **url:** add more url methods ([40ca08e](https://github.com/novlan1/t-comm/commit/40ca08ebc526fc1c468fad7a9c93e66d2af8a574))
+
+### [1.3.19](https://github.com/novlan1/t-comm/compare/v1.3.18...v1.3.19) (2023-10-26)
+
+
+### Bug Fixes 🐞
+
+* **water-mark:** fix more watermark ([e226239](https://github.com/novlan1/t-comm/commit/e2262398182fcb69265261a40852b7f4e97a36ba))
+
+### [1.3.18](https://github.com/novlan1/t-comm/compare/v1.3.17...v1.3.18) (2023-10-26)
+
+
+### Features 🎉
+
+* add watermark ([79d3526](https://github.com/novlan1/t-comm/commit/79d3526410e0d9924afa5902954d345033c41c90))
+
+### [1.3.17](https://github.com/novlan1/t-comm/compare/v1.3.16...v1.3.17) (2023-10-25)
+
+
+### Features 🎉
+
+* add devops watcher ([628fcd5](https://github.com/novlan1/t-comm/commit/628fcd5fffc8b40e11d48d2ac70b355281ea5a07))
+
+### [1.3.16](https://github.com/novlan1/t-comm/compare/v1.3.15...v1.3.16) (2023-10-25)
+
+
+### Bug Fixes 🐞
+
+* 优化发布脚本 ([11fe737](https://github.com/novlan1/t-comm/commit/11fe737aae8a2f3f2ae372828e2db53343df7b68))
+
+### [1.3.15](https://github.com/novlan1/t-comm/compare/v1.3.14...v1.3.15) (2023-10-25)
+
+
+### Documentation 📖
+
+* **mp-ci:** add docs ([e14d694](https://github.com/novlan1/t-comm/commit/e14d694b4d2ce4181e5f49f74d9eaa8aa836cd3c))
+* **rd-report:** add docs ([987ccab](https://github.com/novlan1/t-comm/commit/987ccab7b38b0006440fc0db8c2aa456c135c258))
+
+
+### Features 🎉
+
+* **random:** add random ([bb09b21](https://github.com/novlan1/t-comm/commit/bb09b215cd0fe22d63109c9d3c5b1f4649e3d7bd))
+
+### [1.3.14](https://github.com/novlan1/t-comm/compare/v1.3.13...v1.3.14) (2023-10-17)
+
+
+### Features 🎉
+
+* **comment-json:** add read comment json ([343975c](https://github.com/novlan1/t-comm/commit/343975cb5bdefa541b418882d7a8db8d04555707))
+
+### [1.3.13](https://github.com/novlan1/t-comm/compare/v1.3.12...v1.3.13) (2023-10-07)
+
+
+### Bug Fixes 🐞
+
+* **launch-game:** fix launch game prefix ([299b448](https://github.com/novlan1/t-comm/commit/299b44876ed63a3b47dc55d88ba9505a6197e0d9))
+
+### [1.3.12](https://github.com/novlan1/t-comm/compare/v1.3.11...v1.3.12) (2023-10-07)
+
+
+### Documentation 📖
+
+* 增加引入方式 ([0b516f0](https://github.com/novlan1/t-comm/commit/0b516f0147946354af4075c6b1658cb82827cc28))
+* update readme ([625a7de](https://github.com/novlan1/t-comm/commit/625a7de973de7ac90207edf240a667257ad11850))
+* update readme ([ea346f8](https://github.com/novlan1/t-comm/commit/ea346f8198ab8132dced66285eb1d1702f0d18f3))
+
+
+### Chore 🚀 
+
+* add some coments for url and v-console ([4846a4a](https://github.com/novlan1/t-comm/commit/4846a4a1909d5daf0535d242d4e49c8c63bffc71))
+
+
+### Features 🎉
+
+* **launch-game:** add launch ddz ([412df6d](https://github.com/novlan1/t-comm/commit/412df6d7c2627d3731b0c2aef21f77eafa3ab97b))
+* **launch-game:** add launch gp ([094a1d2](https://github.com/novlan1/t-comm/commit/094a1d20f38472aa29ad733e4f3f7d672a65a86f))
+* **launch-game:** add wx js link params for ddz ([1dfc754](https://github.com/novlan1/t-comm/commit/1dfc754f5cb7f47a561565e9e183415c9ab4be63))
+
 ### [1.3.11](https://github.com/novlan1/t-comm/compare/v1.3.10...v1.3.11) (2023-10-04)
 
 

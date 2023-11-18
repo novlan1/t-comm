@@ -1,5 +1,15 @@
 import * as os from 'os';
 
+
+/**
+ * 获取ip地址
+ * @returns 字符串，形如 x.x.x.x
+ *
+ * @example
+ * ```ts
+ * getIPAddress() // 10.10.10.10
+ * ```
+ */
 export function getIPAddress() {
   const interfaces = os.networkInterfaces();
   // eslint-disable-next-line no-restricted-syntax
@@ -20,9 +30,14 @@ export function getIPAddress() {
 }
 
 /**
- * @returns 获取ip的字符串
- * @ignore
- * x_x_x_x
+ *
+ * 获取ip的字符串
+ * @returns 字符串，形如 x_x_x_x
+ *
+ * @example
+ * ```ts
+ * getIPAddressStr() // 10_10_10_10
+ * ```
  */
 export function getIPAddressStr() {
   let ip = getIPAddress();

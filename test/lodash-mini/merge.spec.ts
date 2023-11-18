@@ -49,4 +49,60 @@ describe('merge', () => {
     expect(useXSS).toBe(false);
     expect(terserFunctions).toMatchObject(['console.log']);
   });
+
+  it('not modify input object', () => {
+    const rawObject =  {
+      a: 'a',
+      b: 'b',
+    };
+    const res = merge(
+      {},
+      rawObject,
+      {
+        a: 'new-a',
+        b: 'new-b',
+        c: 'new-c',
+      },
+    );
+
+    expect(res).toMatchObject({
+      a: 'new-a',
+      b: 'new-b',
+      c: 'new-c',
+    });
+
+
+    expect(rawObject).toMatchObject({
+      a: 'a',
+      b: 'b',
+    });
+  });
+
+  it('modify input object', () => {
+    const rawObject =  {
+      a: 'a',
+      b: 'b',
+    };
+    const res = merge(
+      rawObject,
+      {
+        a: 'new-a',
+        b: 'new-b',
+        c: 'new-c',
+      },
+    );
+
+    expect(res).toMatchObject({
+      a: 'new-a',
+      b: 'new-b',
+      c: 'new-c',
+    });
+
+
+    expect(rawObject).toMatchObject({
+      a: 'new-a',
+      b: 'new-b',
+      c: 'new-c',
+    });
+  });
 });
