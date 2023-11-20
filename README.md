@@ -55,5 +55,5 @@ timeStampFormat(stamp, 'yyyy-MM-dd hh:mm:ss');
 
 ### 详细文档
 
-点击[这里](https://novlan1.github.io/t-comm/)查看。
+点击[这里查看](https://novlan1.github.io/t-comm/)。
 

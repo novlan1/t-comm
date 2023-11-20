@@ -29,6 +29,19 @@
 
 
 
+
+### [1.3.31](https://github.com/novlan1/t-comm/compare/v1.3.30...v1.3.31) (2023-11-19)
+
+
+### Documentation 📖
+
+* update readme ([6a231a6](https://github.com/novlan1/t-comm/commit/6a231a618a20c9d66f60158cd50fdc51b2d5fb95))
+
+
+### Features 🎉
+
+* **vue-start:** add vue-start image v-lazy ([26fcf9a](https://github.com/novlan1/t-comm/commit/26fcf9aa39648a600661734c2cea372ba53d3e85))
+
 ### [1.3.30](https://github.com/novlan1/t-comm/compare/v1.3.29...v1.3.30) (2023-11-16)
 
 

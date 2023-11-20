@@ -125,6 +125,9 @@ const makeMarkDownDoc = function (sourceName, sourceRootPath, outputPath) {
 
         fs.outputFile(path.resolve(process.cwd(), `${outputPath}/${outputName}.md`), `[[toc]]\n${importWayStr}\n${newText}`);
       }
+    })
+    .catch((err) => {
+      console.log('[err]', err);
     });
 };
 
