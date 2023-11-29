@@ -76,6 +76,10 @@ module.exports = {
             title: 'mp-upload',
             path: '/cli/mp-upload.md',
           },
+          {
+            title: 'deploy-github',
+            path: '/cli/deploy-github.md',
+          },
         ],
       },
       {

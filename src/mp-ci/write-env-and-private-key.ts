@@ -94,3 +94,38 @@ export async function writeEnvAndPrivateKey({
 }
 
 
+export async function writeEnvAndPrivateKeyByOptions(options) {
+  console.log('[options] ', options);
+  const {
+    branch,
+    env,
+    root,
+    configKey: rainbowConfigKey,
+    appid: rainbowAppId,
+    envName: rainbowEnvName,
+    groupName: rainbowGroupName,
+  } = options;
+
+  if (!branch
+       || !env
+       || !root
+       || !rainbowConfigKey
+       || !rainbowAppId
+       || !rainbowEnvName
+       || !rainbowGroupName
+  ) {
+    console.error('缺少必要参数，请检查！');
+    return;
+  }
+
+  writeEnvAndPrivateKey({
+    branch,
+    env,
+    root,
+
+    rainbowConfigKey,
+    rainbowAppId,
+    rainbowEnvName,
+    rainbowGroupName,
+  });
+}

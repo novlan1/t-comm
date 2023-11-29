@@ -7,5 +7,5 @@ export {
   flattenSubPackages,
 } from './helper';
 export { MpCI } from './mp-ci';
-export { mpUploadAndReport } from './mp-upload-and-report';
-export { writeEnvAndPrivateKey } from './write-env-and-private-key';
+export { mpUploadAndReport, mpUploadAndReportByOptions } from './mp-upload-and-report';
+export { writeEnvAndPrivateKey, writeEnvAndPrivateKeyByOptions } from './write-env-and-private-key';

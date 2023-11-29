@@ -1,0 +1,1 @@
+export { getMatchListFromReg } from './regexp';

@@ -1,5 +1,6 @@
 import * as path from 'path';
 import * as fs from 'fs';
+import { getMatchListFromReg } from '../base/regexp/regexp';
 
 
 function getHtmlContent(buildPath: string) {
@@ -8,17 +9,6 @@ function getHtmlContent(buildPath: string) {
     encoding: 'utf-8',
   });
   return content;
-}
-
-function getSourceFromReg(content: string, reg: RegExp) {
-  let match = reg.exec(content);
-  const result: Array<string> = [];
-
-  while (match) {
-    result.push(match[1]);
-    match = reg.exec(content);
-  }
-  return result;
 }
 
 
@@ -39,8 +29,8 @@ function getEntryFiles(content: string, domain: string) {
   const cssReg = new RegExp(`<link .*?href="${domain}/?(.+?)".*?/?>`, 'g');
 
   const result = [
-    ...getSourceFromReg(content, scriptReg),
-    ...getSourceFromReg(content, cssReg),
+    ...getMatchListFromReg(content, scriptReg),
+    ...getMatchListFromReg(content, cssReg),
   ];
 
   console.log('[getEntryFiles] result', result);

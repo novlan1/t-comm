@@ -1,6 +1,7 @@
 import { reportToRdPlatform } from '../rd-platform-report/rd-platform-report';
 import { getCIConfig, getRobot } from './write-env-and-private-key';
 import { MpCI } from './mp-ci';
+import { getInnerBundleBuildDesc } from './helper';
 
 
 function flattenSubPackages(result) {
@@ -187,3 +188,83 @@ export async function mpUploadAndReport({
 }
 
 
+export async function mpUploadAndReportByOptions(options) {
+  console.log('[options] ', options);
+  const {
+    branch,
+    env,
+    root,
+
+    configKey: rainbowConfigKey,
+    appid: rainbowAppId,
+    envName: rainbowEnvName,
+    groupName: rainbowGroupName,
+
+    rdHost,
+    bkStartType,
+    bkBuildUrl,
+    bkStartUserName,
+    bkPipelineId,
+
+    commitAuthor,
+    commitMessage,
+    commitHash,
+    mpVersion,
+  } = options;
+
+  if (!branch
+     || !env
+     || !root
+
+     || !rainbowConfigKey
+     || !rainbowAppId
+     || !rainbowEnvName
+     || !rainbowGroupName
+
+     || !rdHost
+     || !bkStartType
+     || !bkBuildUrl
+     || !bkStartUserName
+     || !bkPipelineId
+
+     || !commitAuthor
+     || !commitMessage
+     || !commitHash
+     || !mpVersion
+  ) {
+    console.error('缺少必要参数，请检查！');
+    return;
+  }
+
+  mpUploadAndReport({
+    branch,
+    env,
+    root,
+
+    rainbowConfigKey,
+    rainbowAppId,
+    rainbowEnvName,
+    rainbowGroupName,
+
+    rdHost,
+    bkStartType,
+    bkBuildUrl,
+    bkStartUserName,
+    bkPipelineId,
+
+    commitInfo: {
+      author: commitAuthor,
+      message: commitMessage,
+      hash: commitHash,
+      branch,
+    },
+
+    buildDesc: getInnerBundleBuildDesc({
+      env,
+      branch,
+      author: commitAuthor,
+      message: commitMessage,
+    }),
+    version: mpVersion,
+  });
+}

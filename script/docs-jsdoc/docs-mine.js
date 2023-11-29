@@ -1,12 +1,14 @@
 const { execSync } = require('child_process');
+
 const ENV_FILE = '.env.local';
+const REPO = 't-comm';
+const TARGET_DIR = 'docs/.vuepress/dist';
+
 
 function main() {
   require('dotenv').config({ path: ENV_FILE });
 
-  const token = process.env.GITHUB_TOKEN;
-
-  execSync(`sh script/docs-jsdoc/docs-mine.sh ${token}`, {
+  execSync(`node ./bin/cli deploy:github --repo ${REPO} --dir ${TARGET_DIR}`, {
     stdio: 'inherit',
   });
 }

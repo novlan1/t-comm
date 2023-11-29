@@ -30,6 +30,55 @@
 
 
 
+
+
+
+
+
+### [1.3.36](https://github.com/novlan1/t-comm/compare/v1.3.35...v1.3.36) (2023-11-29)
+
+
+### Bug Fixes 🐞
+
+* **deploy-github:** add branch ([43deed2](https://github.com/novlan1/t-comm/commit/43deed2b0be60e47a3a15fb46e8e5893754bb989))
+
+### [1.3.35](https://github.com/novlan1/t-comm/compare/v1.3.34...v1.3.35) (2023-11-29)
+
+
+### Features 🎉
+
+* **cli:** add deploy github ([0f629b8](https://github.com/novlan1/t-comm/commit/0f629b881d1914e486c7a256a66c239419576228))
+* **extract-class:** add extract class for component ([43c3ed7](https://github.com/novlan1/t-comm/commit/43c3ed7beaaabf04a62dbf7b8bfc14eb90f9376e))
+
+### [1.3.34](https://github.com/novlan1/t-comm/compare/v1.3.33...v1.3.34) (2023-11-27)
+
+
+### Features 🎉
+
+* **emits:** add addEmitsForComponent getMatchListFromReg ([54aed97](https://github.com/novlan1/t-comm/commit/54aed97844e851136572feebef3a47692bdf6df0))
+
+### [1.3.33](https://github.com/novlan1/t-comm/compare/v1.3.32...v1.3.33) (2023-11-27)
+
+
+### Features 🎉
+
+* **add-name:** add add-name for component ([f036953](https://github.com/novlan1/t-comm/commit/f036953c8ff5f0013468feaafd53dd9ae7988d16))
+* **rem:** add transform rem ([062cbd7](https://github.com/novlan1/t-comm/commit/062cbd7077e9870b81847d1a051defce98e40cad))
+
+### [1.3.32](https://github.com/novlan1/t-comm/compare/v1.3.31...v1.3.32) (2023-11-27)
+
+
+### Documentation 📖
+
+* **v-console:** add docs ([a1709c9](https://github.com/novlan1/t-comm/commit/a1709c9f638009e49c5084646e99ecf5748705a0))
+
+
+### Features 🎉
+
+* **component:** add extract props and events ([74d0eb8](https://github.com/novlan1/t-comm/commit/74d0eb8ab02219c6306eb5fbe7851e74ade78b84))
+* **find-rount-name:** add findRouteName ([9046c97](https://github.com/novlan1/t-comm/commit/9046c972804d3eec41000360f8872888fcea0b77))
+* **scheduler:** add scheduler ([4c2f050](https://github.com/novlan1/t-comm/commit/4c2f05007447f5480fe314806a2dc1ca49999dec))
+
 ### [1.3.31](https://github.com/novlan1/t-comm/compare/v1.3.30...v1.3.31) (2023-11-19)
 
 

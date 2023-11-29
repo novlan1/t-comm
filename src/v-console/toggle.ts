@@ -6,6 +6,9 @@ const V_CONSOLE_STORAGE = {
   VALUE: '1',
 };
 
+/**
+ * vConsole 当前展示状态
+ */
 export const V_CONSOLE_STATE = {
   show: false,
 };
@@ -17,6 +20,13 @@ function loadTheVConsole() {
 }
 
 
+/**
+ * 展示 vConsole
+ * @example
+ * ```ts
+ * showVConsole()
+ * ```
+ */
 export function showVConsole() {
   V_CONSOLE_STATE.show = true;
   localStorage.setItem(V_CONSOLE_STORAGE.KEY, V_CONSOLE_STORAGE.VALUE);
@@ -24,12 +34,27 @@ export function showVConsole() {
 }
 
 
+/**
+ * 关闭 vConsole
+ * @example
+ * ```ts
+ * closeVConsole()
+ * ```
+ */
 export function closeVConsole() {
   localStorage.removeItem(V_CONSOLE_STORAGE.KEY);
   V_CONSOLE_STATE.show = false;
   window.vConsole?.destroy();
 }
 
+/**
+ * 切换展示 vConsole
+ * @returns 是否展示
+ * @example
+ * ```ts
+ * toggleVConsole()
+ * ```
+ */
 export function toggleVConsole() {
   if (V_CONSOLE_STATE.show) {
     closeVConsole();
@@ -40,6 +65,13 @@ export function toggleVConsole() {
 }
 
 
+/**
+ * 检查 localStorage 设置，并展示vConsole
+ * @example
+ * ```ts
+ * checkAndShowVConsole()
+ * ```
+ */
 export function checkAndShowVConsole() {
   const showVConsole = localStorage.getItem(V_CONSOLE_STORAGE.KEY) === V_CONSOLE_STORAGE.VALUE;
   if (showVConsole) {

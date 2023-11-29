@@ -1,0 +1,1 @@
+export { transFormRem } from './rem';

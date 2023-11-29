@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 const { program } = require('commander');
-const { execSync } = require('child_process');
-
 const { version } = require('../package.json');
-const { writeEnvAndPrivateKey, mpUploadAndReport, getInnerBundleBuildDesc } = require('../lib');
+const { writeEnvAndPrivateKeyByOptions, mpUploadAndReportByOptions } = require('../lib');
+
+const { publish } = require('./publish');
+const { deployGithubPage } = require('./deploy-github-page');
 
 program
   .name('t-comm')
@@ -20,23 +21,7 @@ program.command('publish')
   .option('-n, --name <ip>', 'server host name')
   .option('-p, --password <string>', 'server host password')
   .option('-o, --port <number>', 'server port', 36000)
-  .action((options) => {
-    console.log('[options] ', options);
-    const { source, target, name, password, port } = options;
-
-    if (!source || !target || !name || !password || !port) {
-      console.error('缺少必要参数，请检查！');
-      return;
-    }
-
-    publishWithBash({
-      source,
-      target,
-      name,
-      password,
-      port,
-    });
-  });
+  .action(publish);
 
 
 program.command('mp-env')
@@ -50,41 +35,7 @@ program.command('mp-env')
   .option('-a, --appid <string>', 'rainbow app id')
   .option('--envName <string>', 'rainbow env name', 'Default')
   .option('-g, --groupName <string>', 'rainbow group name')
-  .action((options) => {
-    console.log('[options] ', options);
-    const {
-      branch,
-      env,
-      root,
-      configKey: rainbowConfigKey,
-      appid: rainbowAppId,
-      envName: rainbowEnvName,
-      groupName: rainbowGroupName,
-    } = options;
-
-    if (!branch
-       || !env
-       || !root
-       || !rainbowConfigKey
-       || !rainbowAppId
-       || !rainbowEnvName
-       || !rainbowGroupName
-    ) {
-      console.error('缺少必要参数，请检查！');
-      return;
-    }
-
-    writeEnvAndPrivateKey({
-      branch,
-      env,
-      root,
-
-      rainbowConfigKey,
-      rainbowAppId,
-      rainbowEnvName,
-      rainbowGroupName,
-    });
-  });
+  .action(writeEnvAndPrivateKeyByOptions);
 
 
 program.command('mp-upload')
@@ -111,105 +62,22 @@ program.command('mp-upload')
   .option('--commitHash <string>', 'hash of last commit')
   // version
   .option('--mpVersion <string>', 'miniProgram bundle version')
+  .action(mpUploadAndReportByOptions);
 
-  .action((options) => {
-    console.log('[options] ', options);
-    const {
-      branch,
-      env,
-      root,
 
-      configKey: rainbowConfigKey,
-      appid: rainbowAppId,
-      envName: rainbowEnvName,
-      groupName: rainbowGroupName,
-
-      rdHost,
-      bkStartType,
-      bkBuildUrl,
-      bkStartUserName,
-      bkPipelineId,
-
-      commitAuthor,
-      commitMessage,
-      commitHash,
-      mpVersion,
-    } = options;
-
-    if (!branch
-     || !env
-     || !root
-
-     || !rainbowConfigKey
-     || !rainbowAppId
-     || !rainbowEnvName
-     || !rainbowGroupName
-
-     || !rdHost
-     || !bkStartType
-     || !bkBuildUrl
-     || !bkStartUserName
-     || !bkPipelineId
-
-     || !commitAuthor
-     || !commitMessage
-     || !commitHash
-     || !mpVersion
-    ) {
-      console.error('缺少必要参数，请检查！');
-      return;
-    }
-
-    mpUploadAndReport({
-      branch,
-      env,
-      root,
-
-      rainbowConfigKey,
-      rainbowAppId,
-      rainbowEnvName,
-      rainbowGroupName,
-
-      rdHost,
-      bkStartType,
-      bkBuildUrl,
-      bkStartUserName,
-      bkPipelineId,
-
-      commitInfo: {
-        author: commitAuthor,
-        message: commitMessage,
-        hash: commitHash,
-        branch,
-      },
-
-      buildDesc: getInnerBundleBuildDesc({
-        env,
-        branch,
-        author: commitAuthor,
-        message: commitMessage,
-      }),
-      version: mpVersion,
-    });
-  });
+program
+  .command('deploy:github')
+  .description('Deploy Github Page')
+  .option('--repo <repo>', 'Repository Name')
+  .option('--user <user>', 'User Name')
+  .option('--email <email>', 'Login Email')
+  .option('--dir <dir>', 'Target Directory')
+  .option('--token <token>', 'Github Token')
+  .option('--branch <branch>', 'Repository Branch')
+  .option('--message <message>', 'Commit Message')
+  .action(deployGithubPage);
 
 
 program.parse();
 
 
-function publishWithBash({
-  source,
-  target,
-  name,
-  password,
-  port,
-}) {
-  const publishBash = require('path').resolve(__dirname, './publish.sh');
-  const command = `sh ${publishBash} ${source} ${target} ${name} ${password} ${port}`;
-
-  execSync(command, {
-    cwd: process.cwd(),
-    encoding: 'utf-8',
-    stdio: 'inherit',
-  });
-}
