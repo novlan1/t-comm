@@ -6,6 +6,7 @@
 import {
   addEmitsForComponent,
   addNameForComponent,
+  extractClass,
   extractEvent,
   extractProps
 } from 't-comm';
@@ -15,6 +16,7 @@ import {
 import {
   addEmitsForComponent,
   addNameForComponent,
+  extractClass,
   extractEvent,
   extractProps
 } from 't-comm/lib/component/index';
@@ -67,6 +69,25 @@ addNameForComponent('xxx.vue');
 ```ts
 addNameForComponent('xxx.vue', 'PressUploader');
 ```
+<a name="extractClass"></a>
+
+## `extractClass(params)` 
+
+
+**描述**：<p>提取 Vue 组件的 class</p>
+
+**参数**：
+
+
+| 参数名 | 类型 | 描述 |
+| --- | --- | --- |
+| params | <code>obj</code> | <p>参数</p> |
+| params.filePath | <code>string</code> | <p>源文件地址</p> |
+| [params.targetFilePath] | <code>string</code> | <p>输出文件地址</p> |
+| [params.extractRegexp] | <code>Regexp</code> | <p>提取正则</p> <pre class="prettyprint source lang-ts"><code>extractClass({   filePath: 'xxx.vue', }) </code></pre> |
+
+
+
 <a name="extractEvent"></a>
 
 ## `extractEvent(params)` 
