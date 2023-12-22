@@ -5,6 +5,8 @@ import {
   GAME_SCHEME_PREFIX_MAP,
   DEFAULT_WX_JS_SDK,
 } from './helper';
+import type { IBaseLaunchParams } from './types';
+
 
 /**
  * 拉起 GN
@@ -38,6 +40,9 @@ export function launchGNGameRoom({
 
   wxJSLink = DEFAULT_WX_JS_SDK,
   env = initEnv(),
+}: IBaseLaunchParams & {
+  roomId: string;
+  roomPwd: string;
 }) {
   const schemeParam = getGPSchemeParam(roomId, roomPwd);
 

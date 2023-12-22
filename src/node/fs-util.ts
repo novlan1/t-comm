@@ -1,5 +1,6 @@
 import * as path from 'path';
 import * as fs from 'fs';
+import { writeFileSync, readFileSync } from '../fs/fs';
 
 const LOG_DIR = 'log';
 
@@ -13,7 +14,7 @@ function innerCopy(src: string, dist: string) {
     const tDist = `${dist}/${p}`;
     const stat = fs.statSync(tSrc);
     if (stat.isFile()) { // 判断是文件还是目录
-      fs.writeFileSync(tDist, fs.readFileSync(tSrc));
+      writeFileSync(tDist, readFileSync(tSrc));
     } else if (stat.isDirectory()) {
       innerCopyDir(tSrc, tDist); // 当是目录是，递归复制
     }
@@ -109,7 +110,7 @@ export function rmEmptyDir(tPath: string, level = 0) {
  * @param {Object} to		拷贝到那里
  */
 export function copyFile(from: string, to: string) {
-  return fs.writeFileSync(to, fs.readFileSync(from));
+  return writeFileSync(to, readFileSync(from));
 }
 
 
@@ -140,9 +141,7 @@ export function readJsonLog(file: string, defaultContent = '{}') {
     return defaultContent;
   }
 
-  return fs.readFileSync(filePath, {
-    encoding: 'utf-8',
-  }) || defaultContent;
+  return readFileSync(filePath) || defaultContent;
 }
 
 export function getJsonLogDir() {
@@ -152,9 +151,7 @@ export function getJsonLogDir() {
 export function saveJsonToLog(content: object, file: string, needLog = true) {
   if (!needLog) return;
   createLogDir();
-  fs.writeFileSync(`./${LOG_DIR}/${file}`, JSON.stringify(content, null, 2), {
-    encoding: 'utf-8',
-  });
+  writeFileSync(`./${LOG_DIR}/${file}`, content, true);
 }
 
 export function getJsonFromLog(file: string) {

@@ -1,7 +1,7 @@
 import { callJsBrowserAdapter } from './msdk';
 import { initEnv } from '../env/env';
 
-export function launchMiniProgramInSlugSdk(appId, path) {
+export function launchMiniProgramInSlugSdk(appId: string, path: string) {
   if (typeof window.customBrowserInterface === 'undefined') {
     callJsBrowserAdapter().then(() => {
       window.customBrowserInterface?.openMiniProgram(appId, path);
@@ -12,8 +12,8 @@ export function launchMiniProgramInSlugSdk(appId, path) {
 }
 
 export function launchMiniProgramInGame({
-  appId,
-  path,
+  appId = '',
+  path = '',
   type = 0,
   isWxMp = true,
 }) {

@@ -6,7 +6,7 @@ export default class SlugSdkLocation implements LocationInterface {
     return new Promise((resolve, reject) => {
       callJsBrowserAdapter().then(() => {
         if (typeof window.customBrowserInterface === 'object') {
-          window.customBrowserInterface.getLocationInfo((result) => {
+          window.customBrowserInterface.getLocationInfo((result: any) => {
             if (result?.code == 1) {
               const location = { lat: result.latitude, lng: result.longitude };
               resolve({ location, flag: LocationFlag.LocationSuccess });

@@ -132,7 +132,7 @@ export function decodeUrlParam(str: string): object {
  * // 18
  * ```
  */
-export function getUrlPara(paraName, search = '') {
+export function getUrlPara(paraName: string, search = '') {
   if (!search && typeof window !== 'undefined') {
     search  = window.location.search;
   }

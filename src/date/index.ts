@@ -2,6 +2,7 @@ export {
   getMonthDay,
   getMonthDay2,
   isSameWeek,
+  isSameDay,
 } from './date';
 export {
   parseTime,

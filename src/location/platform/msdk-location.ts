@@ -12,7 +12,7 @@ export default class MsdkLocation implements LocationInterface {
       // && (ConfigInfo.instance.getTipGid() === GAME_HLDDZ || ConfigInfo.instance.getTipGid() === GAME_GP)
       ) {
         callJsBrowserAdapter().then(() => {
-          addMsdkNativeCallbackListener((data) => {
+          addMsdkNativeCallbackListener((data: any) => {
             console.log('addMsdkNativeCallbackListener', data);
             const response = JSON.parse(data);
             if (response?.cmd === 'reqLocation') {

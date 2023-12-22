@@ -5,6 +5,7 @@ import { loader } from '../loader/little-loader';
 import { initEnv } from '../env/env';
 import { closeMsdkWebview } from '../msdk/msdk';
 import { GAME_MAP } from '../launch-app/config';
+import type { IBaseLaunchParams } from './types';
 
 
 export const GAME_SCHEME_PREFIX_MAP = {
@@ -23,19 +24,19 @@ const gidAppIdMap = {
   [GAME_MAP.GP.GID]: 'wxc4c0253df149f02d',
 } as const;
 
-export function getWxGameCircleUrl(gid) {
-  const appId = gidAppIdMap[gid];
+export function getWxGameCircleUrl(gid: string | number) {
+  const appId = gidAppIdMap[gid as keyof typeof gidAppIdMap];
   return ` https://game.weixin.qq.com/cgi-bin/h5/static/gamecenter/detail.html?appid=${appId}&ssid=39&autoinstall=1&type=1#wechat_redirect`;
 }
 
-export function getGPSchemeParam(roomId, roomPwd) {
+export function getGPSchemeParam(roomId: string | number, roomPwd: string | number) {
   const time = Math.floor(new Date().getTime() / 60000);
 
   const schemeParam = `rmid:${roomId},rmpw:${roomPwd},t:${time}`;
   return schemeParam;
 }
 
-function getQRcodeUrl(launchParams) {
+function getQRcodeUrl(launchParams: Record<string, any>) {
   const qrCodeUrl = composeUrlQuery(window.location.href, {
     enterGame: true,
     ...(launchParams || {}),
@@ -61,15 +62,10 @@ export function launchInWX({
   wxJSLink: string;
   schemeUrl: string;
   schemeParam: string;
-  launchParams?: Record<string, string>;
 
-  context?: any;
-  qrCodeLib?: any;
-  dialogHandler?: any
-  otherDialogParams?: object;
   resolve: Function;
   reject: Function;
-}) {
+} & IBaseLaunchParams) {
   loader(wxJSLink, () => {
     window.WeixinJSBridge.invoke(
       'launchApplication', {
@@ -77,7 +73,7 @@ export function launchInWX({
         extInfo: schemeParam,
         parameter: schemeParam,
       },
-      (res) => {
+      (res: any) => {
         console.info('[launchCore wx] res: ', res);
 
         if (res.err_msg.indexOf('ok') === -1) {
@@ -109,14 +105,14 @@ function showQRcode({
   qrCodeLib, // qrcode npm library
   dialogHandler,
   otherDialogParams = {},
-}) {
-  const qrCodeUrl = getQRcodeUrl(launchParams);
+}: IBaseLaunchParams) {
+  const qrCodeUrl = getQRcodeUrl(launchParams || {});
   console.info('[showQRcode] url', qrCodeUrl);
 
   if (!dialogHandler || !qrCodeLib) return;
 
   qrCodeLib.toDataURL(qrCodeUrl)
-    .then((url) => {
+    .then((url: string) => {
       dialogHandler.show({
         context,
         title: '提示',
@@ -128,7 +124,7 @@ function showQRcode({
       });
       console.info(url);
     })
-    .catch((err) => {
+    .catch((err: any) => {
       console.error(err);
     });
 }
@@ -146,6 +142,9 @@ export function launchCore({
   schemePrefix = '',
   wxJSLink = 'https://res.wx.qq.com/open/js/jweixin-1.4.0.js',
   env = initEnv(),
+}: IBaseLaunchParams & {
+  schemePrefix?: string;
+  schemeParam?: any;
 }) {
   // const time = Math.floor(new Date().getTime() / 60000);
 

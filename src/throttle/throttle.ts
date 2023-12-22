@@ -15,10 +15,10 @@
  * window.onscroll = throttle(count, 500)
  * ```
  */
-export function throttle(fn, time) {
-  let timer;
+export function throttle(fn: Function, time: number) {
+  let timer: ReturnType<typeof setTimeout> | null;
 
-  return function (...args) {
+  return function (...args: Array<any>) {
     // @ts-ignore
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const that = this;

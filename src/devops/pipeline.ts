@@ -154,7 +154,10 @@ export async function getPipelineList({
  * @param {Array} list 结果列表，可不传，用于迭代
  * @returns 流水线列表
  */
-export async function getAllPipelineList(args, list: Array<any> = []) {
+export async function getAllPipelineList(
+  args: Parameters<typeof getPipelineList>[0],
+  list: Array<any> = [],
+): Promise<any> {
   const page = args.page || 1;
   const res = await getPipelineList({
     ...args,
@@ -174,7 +177,7 @@ export async function getAllPipelineList(args, list: Array<any> = []) {
 }
 
 
-function findRunningTooLongPipelines(list, time, maxTime) {
+function findRunningTooLongPipelines(list: Array<any>, time: number, maxTime: number) {
   const res = list
     .filter(item => item.latestBuildStatus === 'RUNNING')
     .filter((item) => {
@@ -186,7 +189,7 @@ function findRunningTooLongPipelines(list, time, maxTime) {
 }
 
 
-function genRobotMessage(dataList, host, projectId) {
+function genRobotMessage(dataList: Array<any>, host: string, projectId: string) {
   const list = [
     `【流水线执行时间过长监控】${timeStampFormat(Date.now(), 'yyyy-MM-dd hh:mm:ss')}<@guowangyang>`,
   ];

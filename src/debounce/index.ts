@@ -17,10 +17,10 @@
  * window.onscroll = debounce(count, 500)
  * ```
  */
-export function debounce(fn, time) {
-  let timer;
+export function debounce(fn: Function, time: number) {
+  let timer: ReturnType<typeof setTimeout>;
 
-  return function (...args) {
+  return function (...args: Array<any>) {
     // @ts-ignore
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const that = this;

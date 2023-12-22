@@ -6,10 +6,10 @@
 import {
   handleImgUnit,
   getHttpsUrl,
-  getCdnUrl,
-  getCompressImgUrl,
   tinyImage,
-  isSupportedWebp
+  isSupportedWebp,
+  getCdnUrl,
+  getCompressImgUrl
 } from 't-comm';
 
 // or
@@ -17,10 +17,10 @@ import {
 import {
   handleImgUnit,
   getHttpsUrl,
-  getCdnUrl,
-  getCompressImgUrl,
   tinyImage,
-  isSupportedWebp
+  isSupportedWebp,
+  getCdnUrl,
+  getCompressImgUrl
 } from 't-comm/lib/image/index';
 ```
 
@@ -77,40 +77,6 @@ handleImgUnit('5rem')
 
 **返回**: <p>新的地址</p>
 
-<a name="getCdnUrl"></a>
-
-## `getCdnUrl` 
-
-
-**描述**：<p>获取 cdn 链接</p>
-
-**参数**：
-
-
-| 参数名 | 类型 | 描述 |
-| --- | --- | --- |
-| url | <code>string</code> | <p>图片地址</p> |
-
-**返回**: <p>新的地址</p>
-
-<a name="getCompressImgUrl"></a>
-
-## `getCompressImgUrl` 
-
-
-**描述**：<p>获取压缩后的图片</p>
-
-**参数**：
-
-
-| 参数名 | 类型 | 默认值 | 描述 |
-| --- | --- | --- | --- |
-| url | <code>string</code> |  | <p>图片地址</p> |
-| [imageWidth] | <code>number</code> | <code>0</code> | <p>宽度</p> |
-| [imageHeight] | <code>number</code> | <code>0</code> | <p>高度</p> |
-
-**返回**: <p>新的 url 地址</p>
-
 <a name="tinyImage"></a>
 
 ## `tinyImage` 
@@ -141,4 +107,38 @@ handleImgUnit('5rem')
 **返回**: <code>Promise.&lt;boolean&gt;</code><br>
 
 <p>是否支持</p>
+
+<a name="getCdnUrl"></a>
+
+## `getCdnUrl(url)` 
+
+
+**描述**：<p>获取 cdn 链接</p>
+
+**参数**：
+
+
+| 参数名 | 类型 | 描述 |
+| --- | --- | --- |
+| url | <code>string</code> | <p>图片地址</p> |
+
+**返回**: <p>新的地址</p>
+
+<a name="getCompressImgUrl"></a>
+
+## `getCompressImgUrl(url, [imageWidth], [imageHeight])` 
+
+
+**描述**：<p>获取压缩后的图片</p>
+
+**参数**：
+
+
+| 参数名 | 类型 | 默认值 | 描述 |
+| --- | --- | --- | --- |
+| url | <code>string</code> |  | <p>图片地址</p> |
+| [imageWidth] | <code>number</code> | <code>0</code> | <p>宽度</p> |
+| [imageHeight] | <code>number</code> | <code>0</code> | <p>高度</p> |
+
+**返回**: <p>新的 url 地址</p>
 

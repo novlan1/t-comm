@@ -1,3 +1,4 @@
+import { timeStampFormat } from '../time/time';
 /**
  * 获取一个月有多少天
  * 原理：new Date()第2个参数默认为1，就是每个月的1号，把它设置为0时，
@@ -81,5 +82,32 @@ export function isSameWeek(date1: number, date2: number) {
 
   const md1 = toMonday(dt1);
   const md2 = toMonday(dt2);
+  return md1 === md2;
+}
+
+function toZeroTime(date: Date) {
+  const time = new Date(date).getTime();
+  return timeStampFormat(time, 'yyyy-MM-dd');
+}
+
+
+/**
+ * 判断是否是同一天
+ * @param {number} date1 时间戳
+ * @param {number} date2 时间戳
+ * @returns 是否相同
+ * @example
+ * ```ts
+ * isSameDay(1702613769418, 1702613769419) // true
+ * ```
+ */
+export function isSameDay(date1: number, date2: number) {
+  const dt1 = new Date();
+  dt1.setTime(date1);
+  const dt2 = new Date();
+  dt2.setTime(date2);
+
+  const md1 = toZeroTime(dt1);
+  const md2 = toZeroTime(dt2);
   return md1 === md2;
 }

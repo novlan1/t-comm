@@ -4,11 +4,11 @@ import { MpCI } from './mp-ci';
 import { getInnerBundleBuildDesc } from './helper';
 
 
-function flattenSubPackages(result) {
+function flattenSubPackages(result: {subPackageInfo: Array<{name: any}>}) {
   const {
     subPackageInfo = [],
   } = result;
-  return subPackageInfo.reduce((acc, item) => {
+  return subPackageInfo.reduce((acc: Record<string, any>, item) => {
     acc[item.name] = item;
     return acc;
   }, {});
@@ -31,7 +31,7 @@ async function reportToRd({
   bkStartType,
   bkBuildUrl,
   bkPipelineId,
-}) {
+}: Record<string, any>) {
   if (!bundleInfo || !bundleInfo.__APP__) return;
   const mainBundleSize = parseInt(`${(bundleInfo.__APP__?.size || 0) / 1024}`, 10);
   const totalBundleSize = parseInt(`${(bundleInfo.__FULL__?.size || 0) / 1024}`, 10);
@@ -107,7 +107,7 @@ export async function mpUploadAndReport({
   commitInfo,
   version,
   buildDesc,
-}) {
+}: Record<string, any>) {
   const rainbowSecretInfo = {
     appId: rainbowAppId,
     envName: rainbowEnvName,
@@ -188,7 +188,7 @@ export async function mpUploadAndReport({
 }
 
 
-export async function mpUploadAndReportByOptions(options) {
+export async function mpUploadAndReportByOptions(options: Record<string, any>) {
   console.log('[options] ', options);
   const {
     branch,

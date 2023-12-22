@@ -8,8 +8,8 @@ import { initVLazy } from './helper/init-v-lazy/init-v-lazy';
 
 import type { AppOptionsType } from './types';
 
-let router;
-let store;
+let router: any;
+let store: any;
 
 
 /**
@@ -52,7 +52,7 @@ export function startApp(options: AppOptionsType) {
  * 创建路由和Store
  * @private
  */
-function createRouterAndStore(options) {
+function createRouterAndStore(options: any) {
   if (router || store) {
     return;
   }

@@ -7,6 +7,7 @@ import {
   getMonthDay,
   getMonthDay2,
   isSameWeek,
+  isSameDay,
   parseTime,
   getTimeAgo,
   getTimeAgoOrDate,
@@ -21,6 +22,7 @@ import {
   getMonthDay,
   getMonthDay2,
   isSameWeek,
+  isSameDay,
   parseTime,
   getTimeAgo,
   getTimeAgoOrDate,
@@ -121,6 +123,28 @@ isSameWeek(1601308800000, 1601395200000)
 isSameWeek(1601308800000, 1601913600000)
 
 // false
+```
+<a name="isSameDay"></a>
+
+## `isSameDay(date1, date2)` 
+
+
+**描述**：<p>判断是否是同一天</p>
+
+**参数**：
+
+
+| 参数名 | 类型 | 描述 |
+| --- | --- | --- |
+| date1 | <code>number</code> | <p>时间戳</p> |
+| date2 | <code>number</code> | <p>时间戳</p> |
+
+**返回**: <p>是否相同</p>
+
+**示例**
+
+```ts
+isSameDay(1702613769418, 1702613769419) // true
 ```
 <a name="parseTime"></a>
 

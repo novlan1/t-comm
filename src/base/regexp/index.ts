@@ -1,1 +1,1 @@
-export { getMatchListFromReg } from './regexp';
+export { getMatchListFromReg, getPreReleaseTag } from './regexp';

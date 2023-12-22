@@ -5,7 +5,7 @@ import * as fs from 'fs';
  * @param content 原始文件内容
  * @returns json数据
  */
-export function parseCommentJson(content) {
+export function parseCommentJson(content: string) {
   const newContent = content.replace(/(?:\s+|^)\/\/[^\n]*/g, '');
   // console.log('[newContent]', newContent);
 
@@ -23,7 +23,7 @@ export function parseCommentJson(content) {
  * @param file 文件路径
  * @returns json数据
  */
-export function readCommentJson(file) {
+export function readCommentJson(file: string) {
   const content = fs.readFileSync(file, {
     encoding: 'utf-8',
   });

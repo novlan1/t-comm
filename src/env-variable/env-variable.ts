@@ -63,7 +63,7 @@ export function readEnvVariable(key: string, filepath: string): string {
   try {
     const sourceStr = fs.readFileSync(filepath, 'utf-8');
     const sourceLine = sourceStr.split('\n');
-    return getKeyValue(key, sourceLine);
+    return getKeyValue(key, sourceLine)!;
   } catch (e) {
     console.log('[readEnvVariable] 打开文件失败:', filepath);
     process.exit(1);

@@ -1,10 +1,14 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { fetchRainbowConfig } from '../rainbow/rainbow-user';
+import { writeFileSync } from '../fs/fs';
 
 
 // 从七彩石获取CI配置
-export async function getCIConfig(rainbowConfigKey, rainbowSecretInfo): Promise<any> {
+export async function getCIConfig(
+  rainbowConfigKey: string,
+  rainbowSecretInfo: Parameters<typeof fetchRainbowConfig>[1],
+): Promise<any> {
   let res = {};
   const str = await fetchRainbowConfig(rainbowConfigKey, rainbowSecretInfo);
   try {
@@ -34,7 +38,7 @@ export function getRobot({
 
 
 // 写入环境变量
-function writeEnv(robot, localEnv = '') {
+function writeEnv(robot: number, localEnv = '') {
   fs.writeFileSync('.env.local', `
 ${localEnv}
 VUE_APP_AUTHOR=CI Robot ${robot}
@@ -46,12 +50,10 @@ VUE_APP_AUTHOR=CI Robot ${robot}
 
 
 // 写入密钥
-function writePrivateKey(root, privateKey) {
+function writePrivateKey(root: string, privateKey: string) {
   const nRoot = root || process.cwd();
 
-  fs.writeFileSync(path.resolve(nRoot, 'private.key'), privateKey, {
-    encoding: 'utf-8',
-  });
+  writeFileSync(path.resolve(nRoot, 'private.key'), privateKey);
 }
 
 
@@ -64,7 +66,7 @@ export async function writeEnvAndPrivateKey({
   rainbowAppId,
   rainbowEnvName,
   rainbowGroupName,
-}) {
+}: Record<'branch' | 'env' | 'rainbowConfigKey' | 'rainbowAppId' | 'rainbowEnvName' | 'rainbowGroupName' | 'root', string>) {
   const rainbowSecretInfo = {
     appId: rainbowAppId,
     envName: rainbowEnvName,
@@ -94,7 +96,7 @@ export async function writeEnvAndPrivateKey({
 }
 
 
-export async function writeEnvAndPrivateKeyByOptions(options) {
+export async function writeEnvAndPrivateKeyByOptions(options: any) {
   console.log('[options] ', options);
   const {
     branch,

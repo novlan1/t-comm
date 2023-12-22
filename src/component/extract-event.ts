@@ -1,12 +1,11 @@
-import * as fs from 'fs';
+import { writeFileSync, readFileSync } from '../fs/fs';
 
 const DEFAULT_EXTRACT_REGEXP = /\$emit\('([\w]+)'/g;
 
-function getEventList(filePath, extractRegexp) {
-  const data = fs.readFileSync(filePath, {
-    encoding: 'utf-8',
-  });
-  const eventList: Array<Record<string, any>> = [];
+function getEventList(filePath: string, extractRegexp: RegExp) {
+  const data = readFileSync(filePath);
+
+  const eventList: Array<{ name: string}> = [];
 
   let match = extractRegexp.exec(data);
   while (match) {
@@ -18,7 +17,7 @@ function getEventList(filePath, extractRegexp) {
   return eventList;
 }
 
-function genTable(list) {
+function genTable(list: Array<{ name: string }>) {
   const table = [
     '| 事件名 | 说明     | 参数 |',
     '| ------------------ | ---------------- | --------- |',
@@ -49,11 +48,13 @@ export function extractEvent({
   filePath,
   targetFilePath = './log/extract-event.md',
   extractRegexp = DEFAULT_EXTRACT_REGEXP,
+}: {
+  filePath: string;
+  targetFilePath?: string;
+  extractRegexp?: RegExp;
 }) {
   const eventList = getEventList(filePath, extractRegexp);
   const table = genTable(eventList);
 
-  fs.writeFileSync(targetFilePath, table, {
-    encoding: 'utf-8',
-  });
+  writeFileSync(targetFilePath, table);
 }

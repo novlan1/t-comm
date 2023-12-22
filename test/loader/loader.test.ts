@@ -4,7 +4,7 @@ describe('loadCSS', () => {
   it('loadCSS', () => {
     const mockFunc = jest.fn();
     const oriFunc = document.createElement;
-    document.createElement = function (...args) {
+    document.createElement = function (...args: Array<any>) {
       mockFunc();
       // @ts-ignore
       return oriFunc.apply(this, args);

@@ -1,6 +1,6 @@
-import * as fs from 'fs';
 import * as path from 'path';
 import { readEnvVariable } from '../env-variable/env-variable';
+import { writeFileSync } from '../fs/fs';
 
 const npmTokenRoot = process.cwd();
 
@@ -32,9 +32,7 @@ export function writeEnvTokenToNpmRC() {
   const content = NPM_RC_TPL.replace('{{TOKEN}}', token);
   const npmRCFile = path.resolve(npmTokenRoot, '.npmrc');
 
-  fs.writeFileSync(npmRCFile, content, {
-    encoding: 'utf-8',
-  });
+  writeFileSync(npmRCFile, content);
 }
 
 

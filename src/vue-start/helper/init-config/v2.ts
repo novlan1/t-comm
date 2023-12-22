@@ -1,6 +1,6 @@
 import { initCommonConfig } from './helper';
 
-export function initConfig(app) {
+export function initConfig(app: any) {
   app.config.productionTip = false;
 
   initCommonConfig(app);

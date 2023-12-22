@@ -28,17 +28,17 @@ const storeData: any = {};
  * }
  * ```
  */
-export function showFunctionalComponent(vueInstance, dialogComponent, dialogOptions) {
+export function showFunctionalComponent(vueInstance: any, dialogComponent: any, dialogOptions: Record<string, any>) {
   return new Promise((resolve) => {
     if (typeof dialogComponent === 'function') {
       dialogComponent()
-        .then((dialog) => {
+        .then((dialog: any) => {
           const component = showDialog(vueInstance, dialog.default, dialogOptions);
           if (component) {
             resolve(component);
           }
         })
-        .catch((err) => {
+        .catch((err: unknown) => {
           console.error('[showFunctionalComponent] error: ', err);
         });
     } else {
@@ -51,7 +51,7 @@ export function showFunctionalComponent(vueInstance, dialogComponent, dialogOpti
 }
 
 
-function showDialog(vueInstance, dialogComponent, dialogOptions) {
+function showDialog(vueInstance: any, dialogComponent: any, dialogOptions: Record<string, any>) {
   const scopeId = dialogComponent._scopeId;
   const storeComponent = storeData[scopeId];
   if (scopeId && storeComponent) {
@@ -127,7 +127,7 @@ function showDialog(vueInstance, dialogComponent, dialogOptions) {
  * @param {array} dialogList 弹窗列表
  * @param {Object} dialogComponent 弹窗组件，支持静态导入 import Dialog from '..' 和动态导入 const Dialog = () => import('...') 两种形式
  */
-export function showFunctionalComponentQueue(context, dialogList, dialogComponent) {
+export function showFunctionalComponentQueue(context: any, dialogList: Array<any>, dialogComponent: any) {
   const showDialog = () => {
     if (dialogList.length > 0) {
       const dialogInfo = dialogList.pop();

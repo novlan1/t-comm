@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { uploadCOSFile } from '../tencent-cloud/cos';
 import { getSavePath, getSaveFileName } from './helper/helper';
+import { writeFileSync } from '../fs/fs';
+
 import type {  ICosInfo, ISecretInfo, IRemoteConfig } from './types';
 
 
@@ -75,7 +77,6 @@ export async function syncRainbowToCOS({
   appName: string;
   cosInfo: ICosInfo;
 }) {
-  const fs = require('fs');
   const cosKeyList = getCOSKeyAndSavePath({
     configList,
     secretInfo,
@@ -84,9 +85,7 @@ export async function syncRainbowToCOS({
   });
 
   cosKeyList.forEach((item) => {
-    fs.writeFileSync(item.savePath, item.value, {
-      encoding: 'utf-8',
-    });
+    writeFileSync(item.savePath, item.value);
   });
 
   const files = pushCOSFiles(cosKeyList);

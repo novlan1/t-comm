@@ -15,7 +15,7 @@ import { checkNodeEnv } from '../env/env';
  * clearPersist('name'); // true
  * const name2 = getPersist('name'); // undefined
  */
-export function savePersist(key, value, expireMsec = 0) {
+export function savePersist(key: string, value: string, expireMsec = 0) {
   if (checkNodeEnv()) {
     return false;
   }
@@ -43,7 +43,7 @@ export function savePersist(key, value, expireMsec = 0) {
  * @param {string} key
  * @return {string} key对应的值
  */
-export function getPersist(key) {
+export function getPersist(key: string) {
   if (checkNodeEnv()) {
     return undefined;
   }

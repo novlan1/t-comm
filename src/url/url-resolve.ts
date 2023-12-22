@@ -28,7 +28,7 @@ export function resolveUrlParams(url = '', key = '') {
   }
 
   // 提取多个键值对
-  const params = {};
+  const params: Record<string, string> = {};
   const kvList = matchList.map(item => item.replace(/(\?|&)/g, '')); // 移除 ? 或 & 前缀
   kvList.forEach((kv) => {
     const [key, value] = kv.split('=');
@@ -52,7 +52,7 @@ export function resolveUrlParams(url = '', key = '') {
  * const url1 = formatUrlParams('http://www.test.com?a=1&b=2&c=3', { e: 5 }); // http://www.test.com/#/?e=5
  * const url2 = formatUrlParams('http://www.test.com?a=1&b=2&c=3#/detail?d=4', { f: 5 }); // http://www.test.com/#/detail?f=5
  */
-export function formatUrlParams(url = '', keepParamsObj = {}, forceHistoryMode?) {
+export function formatUrlParams(url = '', keepParamsObj: Record<string, any> = {}, forceHistoryMode = false) {
   // 参数校验
   const keepKeyArr = Object.keys(keepParamsObj);
   if (!url || keepKeyArr.length === 0) {
@@ -109,13 +109,13 @@ export function formatUrlParams(url = '', keepParamsObj = {}, forceHistoryMode?)
  * @example
  * const url1 = extendUrlParams('http://www.test.com?a=1&b=2&c=3#/detail?d=4', { e: 5 }); // 'http://www.test.com/#/detail?a=1&b=2&c=3&d=4&e=5'
  */
-export function extendUrlParams(url, extParamsObj, forceHistoryMode?) {
+export function extendUrlParams(url: string, extParamsObj: Record<string, any>, forceHistoryMode = false) {
   // 获取链接上的所有参数
-  const urlParamsObj = resolveUrlParams(url);
+  const urlParamsObj = resolveUrlParams(url) || {};
 
   // 合并传入的参数
   const keepParamsObj = {
-    ...urlParamsObj,
+    ...(urlParamsObj as Record<string, string>),
     ...extParamsObj,
   };
 
@@ -134,12 +134,12 @@ export function extendUrlParams(url, extParamsObj, forceHistoryMode?) {
  * const url = removeUrlParams('http://www.test.com/#/detail?a=1&b=2&c=3', ['a', 'b']); // 'http://www.test.com/#/detail?c=3'
  * const url2 = removeUrlParams('http://www.test.com?d=4&f=6#/detail?a=1&b=2&c=3', ['a', 'd']); // 'http://www.test.com/#/detail?b=2&c=3&f=6'
  */
-export function removeUrlParams(url, removeKeyArr, forceHistoryMode?) {
+export function removeUrlParams(url: string, removeKeyArr: Array<string>, forceHistoryMode = false) {
   // 获取链接上的所有参数
-  const urlParamsObj = resolveUrlParams(url);
+  const urlParamsObj = resolveUrlParams(url) as Record<string, string>;
 
   // 移除指定的key集合
-  const keepParamsObj = {};
+  const keepParamsObj: Record<string, string> = {};
   Object.keys(urlParamsObj).forEach((key) => {
     if (!removeKeyArr.includes(key)) {
       keepParamsObj[key] = urlParamsObj[key];
@@ -161,12 +161,12 @@ export function removeUrlParams(url, removeKeyArr, forceHistoryMode?) {
  * @example
  * const url = keepUrlParams('http://www.test.com?a=1&b=2&c=3#/detail?d=4', ['a', 'd']); // 'http://www.test.com/#/detail?a=1&d=4'
  */
-export function keepUrlParams(url, keepKeyArr, forceHistoryMode?) {
+export function keepUrlParams(url: string, keepKeyArr: Array<string>, forceHistoryMode = false) {
   // 获取链接上的所有参数
-  const urlParamsObj = resolveUrlParams(url);
+  const urlParamsObj = resolveUrlParams(url) as Record<string, string>;
 
   // 只保留指定的key集合
-  const keepParamsObj = {};
+  const keepParamsObj: Record<string, string> = {};
   Object.keys(urlParamsObj).forEach((key: string) => {
     if (keepKeyArr.includes(key)) {
       keepParamsObj[key] = urlParamsObj[key];

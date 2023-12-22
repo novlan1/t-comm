@@ -1,6 +1,5 @@
-import * as fs from 'fs';
 import { transFormRem } from '../rem/rem';
-
+import { writeFileSync, readFileSync } from '../fs/fs';
 
 /**
  * 替换文件的 rem 单位，转为 px
@@ -11,13 +10,9 @@ import { transFormRem } from '../rem/rem';
  * ```
  */
 export function remToPxInFile(filePath: string) {
-  const data = fs.readFileSync(filePath, {
-    encoding: 'utf-8',
-  });
+  const data = readFileSync(filePath);
 
   const newData = transFormRem(data, 50, 'px');
 
-  fs.writeFileSync(filePath, newData, {
-    encoding: 'utf-8',
-  });
+  writeFileSync(filePath, newData);
 }

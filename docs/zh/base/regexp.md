@@ -3,11 +3,11 @@
 ## 引入方式
 
 ```ts
-import { getMatchListFromReg } from 't-comm';
+import { getMatchListFromReg, getPreReleaseTag } from 't-comm';
 
 // or
 
-import { getMatchListFromReg} from 't-comm/lib/base/regexp/index';
+import { getMatchListFromReg, getPreReleaseTag} from 't-comm/lib/base/regexp/index';
 ```
 
 
@@ -32,4 +32,26 @@ import { getMatchListFromReg} from 't-comm/lib/base/regexp/index';
 getMatchListFromReg(content, /emit\('([^',]+)'/g);
 
 // ['start', 'end']
+```
+<a name="getPreReleaseTag"></a>
+
+## `getPreReleaseTag(version)` 
+
+
+**描述**：<p>获取预发布版本标签，比如 alpha, beta</p>
+
+**参数**：
+
+
+| 参数名 | 类型 | 描述 |
+| --- | --- | --- |
+| version | <code>string</code> | <p>版本号</p> |
+
+**返回**: <p>标签</p>
+
+**示例**
+
+```ts
+getPreReleaseTag('1.2.2-beta.0')
+// beta
 ```

@@ -119,13 +119,13 @@ export function getAreaData(data = RAW_CITY_DATA, areaArray: Array<ProvType> = [
 
   Object.keys(provData).forEach((key) => {
     const provObject: any = {};
-    provObject.text = provData[key];
+    provObject.text = provData[key as unknown as keyof typeof provData];
     provObject.code = key;
     areaArray.push(provObject);
   });
 
   Object.keys(cityData).forEach((key1) => {
-    const cityList = cityData[key1];
+    const cityList = cityData[key1 as unknown as keyof typeof cityData];
     const array: Array<ProvType> = [];
     if (Array.isArray(cityList)) {
       const cityObject: ProvType = {};
@@ -140,7 +140,7 @@ export function getAreaData(data = RAW_CITY_DATA, areaArray: Array<ProvType> = [
 
       Object.keys(cityList).forEach((key2) => {
         const cityObject: ProvType = {};
-        cityObject.text = cityList[key2];
+        cityObject.text = cityList[key2 as unknown as keyof typeof cityList];
         cityObject.code = key2;
         array.push(cityObject);
       });
@@ -202,24 +202,24 @@ export function getAreaCode(provinceStr = '', cityStr = '') {
   * const res2 =  getCityName(11)
   * // ['北京', '北京']
   */
-export function getAreaName(provinceId, cityId?: number) {
+export function getAreaName(provinceId: string | number, cityId?: number) {
   let provName = '';
   // eslint-disable-next-line no-prototype-builtins
   if (RAW_CITY_DATA.provData.hasOwnProperty(provinceId)) {
-    provName = RAW_CITY_DATA.provData[provinceId];
+    provName = RAW_CITY_DATA.provData[provinceId as keyof typeof RAW_CITY_DATA.provData];
   }
   let cityName = '';
   let cityList = {};
 
   // eslint-disable-next-line no-prototype-builtins
   if (RAW_CITY_DATA.cityData.hasOwnProperty(provinceId)) {
-    cityList = RAW_CITY_DATA.cityData[provinceId];
+    cityList = RAW_CITY_DATA.cityData[provinceId as keyof typeof RAW_CITY_DATA.cityData];
   }
 
   if (Array.isArray(cityList)) {
     cityName = provName;
   } else if (cityId) {
-    cityName = cityList[cityId];
+    cityName = cityList[cityId as keyof typeof cityList];
   }
 
   return [provName, cityName];
@@ -237,8 +237,8 @@ export function getAreaName(provinceId, cityId?: number) {
   * const res2 =  getCityName(11)
   * // 北京
   */
-export function getProvName(provinceId) {
-  const provName = RAW_CITY_DATA.provData[provinceId];
+export function getProvName(provinceId: string | number) {
+  const provName = RAW_CITY_DATA.provData[provinceId as keyof typeof RAW_CITY_DATA.provData];
   return provName;
 }
 
@@ -255,15 +255,15 @@ export function getProvName(provinceId) {
   * const res2 =  getCityName(11)
   * // 北京
   */
-export function getCityName(provinceId, cityId?: number) {
-  const provName = RAW_CITY_DATA.provData[provinceId];
+export function getCityName(provinceId: number | string, cityId?: number | string) {
+  const provName = RAW_CITY_DATA.provData[provinceId as keyof typeof RAW_CITY_DATA.provData];
   let cityName = '';
-  const cityList = RAW_CITY_DATA.cityData[provinceId];
+  const cityList = RAW_CITY_DATA.cityData[provinceId as keyof typeof RAW_CITY_DATA.cityData];
 
   if (Array.isArray(cityList)) {
     cityName = provName;
   } else if (cityId && cityList) {
-    cityName = cityList[cityId];
+    cityName = cityList[cityId as keyof typeof cityList];
   }
   return cityName;
 }

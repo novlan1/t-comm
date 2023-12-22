@@ -1,6 +1,19 @@
 import { MorsePwd } from '../morse-pwd';
 
 
+/**
+ * 摩斯密码的 Vue mixin，方便实用
+ * @param {array} pwd 密钥
+ * @param {Function} cb 回到函数
+ * @returns 换入内容
+ * @example
+ * ```ts
+ * getMorsePwdMixin([1, 1, 1, 1, 1], function () {
+ *   if (isInIFrame()) return;
+ *   this.onShowLaunchApp();
+ * }),
+ * ```
+ */
 export const getMorsePwdMixin = (pwd: number[], cb: Function) => ({
   data() {
     return {
@@ -32,3 +45,5 @@ export const getMorsePwdMixin = (pwd: number[], cb: Function) => ({
     },
   },
 } as any);
+
+export const morsePwdMixin = getMorsePwdMixin;

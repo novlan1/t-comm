@@ -44,7 +44,7 @@ export const build = series(
 );
 
 // 自定义生成 changelog
-export async function changelog(cb) {
+export async function changelog(cb: Function) {
   const changelogPath: string = path.join(paths.root, 'CHANGELOG.md');
 
   // 对命令 conventional-changelog -p angular -i CHANGELOG.md -w -r 0

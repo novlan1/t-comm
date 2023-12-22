@@ -2,6 +2,7 @@ import {
   getUnitPreviousRatio,
   getThousandSeparator,
   getThousandSeparator2,
+  padZero,
 } from '../../src';
 
 describe('getUnitPreviousRatio', () => {
@@ -36,5 +37,17 @@ describe('getThousandSeparator', () => {
 describe('getThousandSeparator2', () => {
   it('getThousandSeparator2', () => {
     expect(getThousandSeparator2('12345678 123456789')).toBe('12,345,678 123,456,789');
+  });
+});
+
+describe('padZero', () => {
+  it('padZero', () => {
+    expect(padZero(1, 3)).toBe('001');
+    expect(padZero(1, 4)).toBe('0001');
+
+    expect(padZero(1, 1)).toBe('1');
+
+    expect(padZero(100, 1)).toBe('100');
+    expect(padZero(100, 2)).toBe('100');
   });
 });

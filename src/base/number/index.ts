@@ -5,4 +5,7 @@ export {
   getThousandSeparator,
   getThousandSeparator2,
   random,
+  padZero,
+  addNumber,
+  range,
 } from './number';

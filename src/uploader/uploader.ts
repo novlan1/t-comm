@@ -4,7 +4,7 @@ import { IUploaderOptions } from './types';
 import { UPLOADER_CONFIG } from './config';
 
 export class UploadManager {
-  static uploadManager;
+  static uploadManager: UploadManager;
 
   static getInstance() {
     if (!this.uploadManager) {
@@ -58,7 +58,7 @@ export class UploadManager {
     });
   }
 
-  requestUpload(file) {
+  requestUpload(file: File): Promise<{url: string}> {
     return new Promise((resolve, reject) => {
       if (this.isRequesting) {
         reject({ errMsg: '正在上传文件，请稍后再试' });
@@ -129,10 +129,10 @@ export class UploadManager {
  * UploadManager.getInstance().updateHashCode();
  * ```
  */
-export function uploadFile(file) {
+export function uploadFile(file: File) {
   return new Promise((resolve, reject) => {
     UploadManager.getInstance().requestUpload(file)
-      .then((res) => {
+      .then((res: { url: string }) => {
         if (!res.url) {
           reject();
         } else {

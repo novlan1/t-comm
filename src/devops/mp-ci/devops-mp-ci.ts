@@ -33,7 +33,7 @@ async function updateOrCreateInstance({
   devopsConfig,
   templateIdMap,
   onlyCollectNoUsedPipeline,
-}) {
+}: Record<string, any>) {
   const newConfig = JSON.parse(rainbowMap[mpCIKey].value);
   const robotMapKey = isWxCI ? 'robotMap' : 'qqRobotMap';
   const newInfo = newConfig[robotMapKey] || {};
@@ -105,7 +105,7 @@ async function realUpdateOrCreatePipeline({
   mpCIKey,
   newConfig,
   forceUpdate,
-}) {
+}: Record<string, any>) {
   const res = await cgiName({
     ...devopsConfig,
     templateId: isWxCI ? templateIdMap.WX_MP_CI : templateIdMap.QQ_MP_CI,
@@ -121,7 +121,7 @@ async function realUpdateOrCreatePipeline({
       }),
     ],
   })
-    .catch((err) => {
+    .catch((err: any) => {
       console.log('[cgiName] err', err);
     });
 
@@ -145,7 +145,7 @@ async function handleChangedConfig({
   forceUpdate?: boolean
 }) {
   const { ADDED: added, UPDATED: updated, DELETED: deleted, newObj: rainbowMap } = compareRes;
-  const filterMpCI = list => list.filter(item => item.endsWith('_mp_ci'));
+  const filterMpCI = (list: Array<string>) => list.filter(item => item.endsWith('_mp_ci'));
   console.log('[compareRes]', added, updated, deleted);
   let updatedMpCIs: Array<any> = [];
 
@@ -169,7 +169,7 @@ export async function updateDevopsMpCIPipeline({
   devopsConfig,
   templateIdMap,
   rainbowGroupSecretInfo,
-}) {
+}: Record<string, any>) {
   const resp = await queryGroupInfo({
     secretInfo: rainbowGroupSecretInfo,
   });

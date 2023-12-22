@@ -1,5 +1,6 @@
-import * as fs from 'fs';
 import { getMatchListFromReg } from '../base/regexp/regexp';
+import { writeFileSync, readFileSync } from '../fs/fs';
+
 
 /**
  * 为 Vue 组件添加 emits 属性
@@ -12,12 +13,10 @@ import { getMatchListFromReg } from '../base/regexp/regexp';
  * addNameForComponent('xxx.vue');
  * ```
  */
-export function addEmitsForComponent(filePath, fileContent = '') {
+export function addEmitsForComponent(filePath: string, fileContent = '') {
   let content = fileContent;
   if (!content) {
-    content = fs.readFileSync(filePath, {
-      encoding: 'utf-8',
-    });
+    content = readFileSync(filePath, false);
   }
 
   if (/emits:\s*\[/.test(content)) return;
@@ -31,15 +30,13 @@ export function addEmitsForComponent(filePath, fileContent = '') {
     getEmitsStr(emits),
   );
 
-  fs.writeFileSync(filePath, newSource, {
-    encoding: 'utf-8',
-  });
+  writeFileSync(filePath, newSource);
 
   return newSource;
 }
 
 
-function getEmitList(source) {
+function getEmitList(source: string) {
   const reg = /emit\('([^',]+)'/g;
   const emits = getMatchListFromReg(source, reg);
 
@@ -50,7 +47,7 @@ function getEmitList(source) {
 }
 
 
-function getEmitsStr(emits) {
+function getEmitsStr(emits: Array<string>) {
   const emitsStr = emits.map(item => `'${item}'`).join(',\n    ');
 
   return  [

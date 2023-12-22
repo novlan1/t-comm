@@ -6,7 +6,11 @@ export {
   sendToMsdkNative,
   addMsdkNativeCallbackListener,
   removeMsdkNativeCallbackListener,
+
   closeMsdkWebview,
   closeWebView,
+
   callJsBrowserAdapter,
+  callJsReSetFullScreen,
+  callJsSetFullScreen,
 } from './msdk';

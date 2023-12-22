@@ -149,7 +149,7 @@ export class LocationWeb {
       }
 
       // 特殊处理下特权sdk定位失败，降级到腾讯地图定位
-      const failCallback = (error) => {
+      const failCallback = (error: any) => {
         const failHandle = locationHandle.failHandle(options, this.getInstance().locationHandle);
         if (failHandle) {
           this.getInstance().locationHandle = failHandle;
@@ -188,7 +188,7 @@ export class LocationWeb {
    * @param {object} options 定位配置信息
    * @private
    */
-  private static storeLocationInfo(location, options) {
+  private static storeLocationInfo(location: any, options: any) {
     // 缓存位置信息
     if (location) {
       // 定位成功后，再读取当前时间，并存储

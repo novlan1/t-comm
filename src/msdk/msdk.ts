@@ -1,7 +1,14 @@
-import { initEnv } from '../env/env';
+import { initEnv, getEnvUAType } from '../env/env';
 import { loader } from '../loader/little-loader';
 
 
+/**
+ * MSDK 浏览器中，向原生发送数据
+ * @param {string} data 发送的数据
+ * ```ts
+ * sendToMsdkNative('123')
+ * ```
+ */
 export function sendToMsdkNative(data = '') {
   const env = initEnv();
 
@@ -38,6 +45,13 @@ export function removeMsdkNativeCallbackListener(callback: Function) {
   }
 }
 
+/**
+ * MSDK 浏览器中，关闭 webView
+ * @example
+ * ```ts
+ * closeMsdkWebview()
+ * ```
+ */
 export function closeMsdkWebview(env?: any) {
   if (!env) {
     env = initEnv();
@@ -61,6 +75,14 @@ export function closeMsdkWebview(env?: any) {
   }
 }
 
+
+/**
+ * 关闭 webView，包含 msdk 浏览器和其他浏览器
+ * @example
+ * ```ts
+ * closeWebView()
+ * ```
+ */
 export function closeWebView() {
   console.log('[closeWebView] call close webview');
   const env = initEnv();
@@ -78,6 +100,10 @@ export function closeWebView() {
 
 /**
  * 添加游戏内浏览器jssdk
+ * @example
+ * ```ts
+ * callJsBrowserAdapter();
+ * ```
  */
 export function callJsBrowserAdapter() {
   return new Promise((resolve) => {
@@ -103,3 +129,70 @@ export function callJsBrowserAdapter() {
     }
   });
 }
+
+/**
+ * 设置 MSDK 浏览器退出全屏，需提前加载 sdk
+ * @example
+ * ```ts
+ * callJsReSetFullScreen();
+ * ```
+ */
+export const callJsReSetFullScreen = function () {
+  callJsSetFullScreen(false);
+};
+
+/**
+ * 设置 MSDK 浏览器全屏，需提前加载 sdk
+ * @param isFullScreen 是否全屏
+ * @example
+ * ```ts
+ * callJsSetFullScreen();
+ * callJsSetFullScreen(false);
+ * ```
+ */
+export const callJsSetFullScreen = function (isFullScreen = true) {
+  const { isSlugSdk, isMsdkV5, isMsdk, isMsdkX, isAndroid } = getEnvUAType();
+
+  if (isSlugSdk) {
+    if (typeof window.customBrowserInterface === 'object') {
+      const method = isFullScreen ? 'hideUi' : 'showUi';
+      window.customBrowserInterface[method]();
+    }
+  } else if (isMsdkV5) {
+    const setFullScreenStr = JSON.stringify({
+      MsdkMethod: 'setFullScreen',
+      isFullScreen: !!isFullScreen,
+    });
+    // 延时设置全屏
+    setTimeout(() => {
+      if (isAndroid) {
+        window.msdkCall?.(setFullScreenStr);
+      } else {
+        if (window.WebViewJavascriptBridge) {
+          window.msdkCall?.(setFullScreenStr);
+        } else {
+          document.addEventListener('WebViewJavascriptBridgeReady', () => {
+            window.msdkCall?.(setFullScreenStr);
+          }, false);
+        }
+      }
+    }, 100);
+  } else if (isMsdk && !isMsdkX) {
+    const setFullScreenStr = JSON.stringify({
+      MsdkMethod: 'WGSetFullScreen',
+      isFullScreen: !!isFullScreen,
+    });
+
+    if (isAndroid) {
+      window.msdkCall?.('WGSetFullScreen', setFullScreenStr);
+    } else {
+      if (window.WebViewJavascriptBridge) {
+        window.msdkCall?.('WGSetFullScreen', setFullScreenStr);
+      } else {
+        document.addEventListener('WebViewJavascriptBridgeReady', () => {
+          window.msdkCall?.('WGSetFullScreen', setFullScreenStr);
+        }, false);
+      }
+    }
+  }
+};

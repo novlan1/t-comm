@@ -123,7 +123,7 @@ async function realPublish({
   let env: string = PUBLISH_HOST_ENV.TEST;
 
   const shell: Record<string, any> = {};
-  shell.runSync = function (cmd, args, options) {
+  shell.runSync = function (cmd: string, args: Array<string>, options: Record<string, any>) {
     const shellResult = spawnSync(cmd, args, options);
     if (shellResult.status !== 0) {
       console.log('[publish] failed: ', shellResult.stderr);

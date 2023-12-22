@@ -1,4 +1,4 @@
-export function initStore(options) {
+export function initStore(options: any) {
   if (!options.Vuex) return;
 
   options.Vue.use(options.Vuex);

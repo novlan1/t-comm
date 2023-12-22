@@ -11,6 +11,11 @@ export function getInnerBundleBuildDesc({
   branch,
   author,
   message,
+}: {
+  env: string;
+  branch: string;
+  author: string;
+  message: string;
 }) {
   const buildDesc = genRobotMessage([
     [

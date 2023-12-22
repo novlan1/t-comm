@@ -1,7 +1,7 @@
 
-import * as fs from 'fs';
+import { writeFileSync, readFileSync } from '../fs/fs';
 
-const getComponentNameStr = componentName => `export default {\n  name: '${componentName}',`;
+const getComponentNameStr = (componentName: string) => `export default {\n  name: '${componentName}',`;
 
 /**
  * 为 Vue 组件添加、修正 name 属性
@@ -14,21 +14,18 @@ const getComponentNameStr = componentName => `export default {\n  name: '${compo
  * addNameForComponent('xxx.vue', 'PressUploader');
  * ```
  */
-export function addNameForComponent(filePath, componentName) {
-  const content = fs.readFileSync(filePath, {
-    encoding: 'utf-8',
-  });
+export function addNameForComponent(filePath: string, componentName: string) {
+  const content = readFileSync(filePath);
 
   const result = content
     .replace(/export default {(?!\s+name)/, getComponentNameStr(componentName))
-    .replace(/export default {\s+name: '(\w+)',/, (a, origin) => {
+    .replace(/export default {\s+name: '(\w+)',/, (a: string, origin: string) => {
       console.log('[origin] ', origin);
       return getComponentNameStr(componentName);
     });
 
-  fs.writeFileSync(filePath, result, {
-    encoding: 'utf-8',
-  });
+  writeFileSync(filePath, result);
+
 
   return result;
 }

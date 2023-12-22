@@ -36,6 +36,11 @@ export function requestUploadFile({
   hashCode,
   uploadFileKey = UPLOADER_CONFIG.UPLOAD_FILE_KEY,
   url = UPLOADER_CONFIG.UPLOAD_URL_PREFIX,
+}: {
+  file: File;
+  hashCode: string;
+  uploadFileKey?: string;
+  url?: string;
 }): Promise<{
     url: string;
   }> {

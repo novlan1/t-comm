@@ -8,7 +8,7 @@ export function getPublishRootDir() {
   return rootDir;
 }
 
-function findPublishSh(dir) {
+function findPublishSh(dir: string) {
   const FILE_NAME = 'publish.sh';
   const file = path.resolve(dir, FILE_NAME);
 

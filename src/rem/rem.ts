@@ -18,7 +18,7 @@
  * // 10.50px
  * ```
  */
-export function transFormRem(content, factor = 100, unit = 'rpx') {
+export function transFormRem(content: string, factor = 100, unit = 'rpx') {
   if (content == null) {
     return content;
   }

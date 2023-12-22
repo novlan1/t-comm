@@ -46,7 +46,7 @@ export interface LocationOptions {
   forceUpdateLocation: boolean, // 是否忽略缓存，强制刷新定位信息
 
   Dialog?: { // 提示弹窗
-    confirm: (any) => Promise<any>;
+    confirm: (_: any) => Promise<any>;
   };
   useMsdkLocation?: boolean; // 是否使用msdk定位，中间层自己限定某些游戏
   msdkLocationReqStr?: string; // msdk定位时，传递的reqData，默认为 JSON.stringify({ cmd: 'reqLocation' })

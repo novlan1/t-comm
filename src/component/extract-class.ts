@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+import { writeFileSync, readFileSync } from '../fs/fs';
 
 const DEFAULT_EXTRACT_REGEXP = /(?<=class=")([^"=/?).]+?)(?=")/g;
 // /(?!class=")(?=tip)([^"]+)/g
@@ -20,17 +20,17 @@ export function extractClass({
   filePath,
   targetFilePath = './log/extract-class.md',
   extractRegexp = DEFAULT_EXTRACT_REGEXP,
+}: {
+  filePath: string;
+  targetFilePath?: string;
+  extractRegexp?: RegExp;
 }) {
-  const content = fs.readFileSync(filePath, {
-    encoding: 'utf-8',
-  });
+  const content = readFileSync(filePath);
 
   let res: Array<string> = [];
   res = Array.from(new Set(content.match(extractRegexp)));
 
   console.log('[extractClass] res: ', res);
 
-  fs.writeFileSync(targetFilePath, JSON.stringify(res, null, 2), {
-    encoding: 'utf-8',
-  });
+  writeFileSync(targetFilePath, res, true);
 }

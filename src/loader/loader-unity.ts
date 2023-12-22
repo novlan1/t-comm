@@ -8,7 +8,7 @@ import { loadJS as loaderPromise } from './loader';
  * @param {function}  [cb]  回调
  * @returns {Promise<number>} promise
  */
-export const loaderUnity = (source, cb, ...args) => {
+export const loaderUnity = (source: string, cb: Function, ...args: Array<any>) => {
   if (typeof cb === 'function') {
     return loaderCb.call(this, source, cb, ...args);
   }

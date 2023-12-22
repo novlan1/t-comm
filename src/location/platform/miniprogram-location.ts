@@ -8,7 +8,7 @@ export default class TencentMapApiLocation implements LocationInterface {
       // @ts-ignore
       wx.getLocation({
         type: 'gcj02',
-        success(res) {
+        success(res: any) {
           const location = {
             lat: parseFloat(`${res.latitude}`),
             lng: parseFloat(`${res.longitude}`),
@@ -16,7 +16,7 @@ export default class TencentMapApiLocation implements LocationInterface {
           TencentMapApiLocation.lastLocation = location;
           resolve({ location, flag: LocationFlag.LocationSuccess });
         },
-        fail(error) {
+        fail(error: any) {
           console.log('MiniProgramLocation', error);
           // 频繁调用导致失败，返回最后一次location
           if (error.errMsg && error.errMsg.indexOf('频繁调用') > -1) {

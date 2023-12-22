@@ -81,7 +81,7 @@ describe('formatUrlParams', () => {
 
   it('地址 history模式参数并存', () => {
     const res = formatUrlParams('http://www.test.com?a=1&b=2&c=3', { d: 4 });
-    expect(res).toBe('http://www.test.com/?d=4');
+    expect(res).toBe('http://www.test.com/#/?d=4');
   });
 
   it('hash 模式和history模式参数并存', () => {
@@ -110,7 +110,7 @@ describe('extendUrlParams', () => {
 
   it('地址 history模式参数并存', () => {
     const res = extendUrlParams('http://www.test.com?a=1&b=2&c=3', { d: 4 });
-    expect(res).toBe('http://www.test.com/?a=1&b=2&c=3&d=4');
+    expect(res).toBe('http://www.test.com/#/?a=1&b=2&c=3&d=4');
   });
 
   it('地址 history模式参数并存 + 强制history模式返回', () => {
@@ -139,7 +139,7 @@ describe('keepUrlParams', () => {
 
   it('地址 history模式参数并存', () => {
     const res = keepUrlParams('http://www.test.com?a=1&b=2&c=3', ['a', 'b']);
-    expect(res).toBe('http://www.test.com/?a=1&b=2');
+    expect(res).toBe('http://www.test.com/#/?a=1&b=2');
   });
 
   it('地址 history模式参数并存 + 强制history模式返回', () => {

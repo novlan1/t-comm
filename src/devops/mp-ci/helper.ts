@@ -13,7 +13,7 @@ const {
 
 const remoteInstancesMap: Record<string, IRemoteInstances> = {};
 
-export function genOneFileFromRainbowGroup(list) {
+export function genOneFileFromRainbowGroup(list: Array<any>) {
   const obj = list.reduce((acc, item) => {
     acc[item.key] = {
       value: item.value,
@@ -25,9 +25,9 @@ export function genOneFileFromRainbowGroup(list) {
 }
 
 
-export function parseRobotMap(obj = {}) {
+export function parseRobotMap(obj: Record<string, any> = {}) {
   const branches = Object.keys(obj);
-  const res = {};
+  const res: Record<string, any> = {};
 
   for (const branch of branches) {
     const envs = Object.keys(obj[branch]);
@@ -69,7 +69,7 @@ export function getPipelineName({
   branch,
   ciKey,
   prefix,
-}) {
+}: Record<string, any>) {
   return [
     prefix,
     ciKey,
@@ -80,7 +80,7 @@ export function getPipelineName({
 }
 
 
-export function parseInstanceName(name) {
+export function parseInstanceName(name: string) {
   const list = name.split(CI_SEPARATOR);
   const {
     0: prefix,
@@ -105,7 +105,7 @@ export function getPipelineParam({
   rainbowConfigKey,
   repo,
   isWxCI,
-}) {
+}: Record<string, any>) {
   const res = [
     {
       id: 'rainbowConfigKey',
@@ -165,15 +165,15 @@ export function getPipelineParam({
 }
 
 
-export function compareFromLogFile(key, obj) {
+export function compareFromLogFile(key: string, obj: Record<string, any>) {
   const originFile = getJsonFromLog(key);
   const compareRes = compareTwoObj(originFile, obj);
   return compareRes;
 }
 
 
-export const getTemplateInstanceFileName = isWxCI => `devops-template-instances-${isWxCI ? 'wx' : 'qq'}.json`;
-export const getRainbowMpCIFileName = isWxCI => `devops-mp-ci-rainbow-${isWxCI ? 'wx' : 'qq'}.json`;
+export const getTemplateInstanceFileName = (isWxCI: boolean) => `devops-template-instances-${isWxCI ? 'wx' : 'qq'}.json`;
+export const getRainbowMpCIFileName = (isWxCI: boolean) => `devops-mp-ci-rainbow-${isWxCI ? 'wx' : 'qq'}.json`;
 
 
 export async function isPipelineUpdated({
@@ -182,7 +182,7 @@ export async function isPipelineUpdated({
   forceUpdate,
   devopsConfig,
   templateIdMap,
-}) {
+}: Record<string, any>) {
   const {
     prefix,
     projectShortName,
@@ -232,7 +232,7 @@ export function getUnusedPipelineList({
   usefulList,
   isWxCI,
   templateIdMap,
-}) {
+}: Record<string, any>) {
   const templateId = isWxCI ? templateIdMap.WX_MP_CI : templateIdMap.QQ_MP_CI;
   const remoteInstances = remoteInstancesMap[templateId] || [];
 

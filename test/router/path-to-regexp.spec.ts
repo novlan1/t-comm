@@ -7,7 +7,7 @@ describe('pathToRegexp', () => {
     expect(pathToRegexp('/sche/:id')).toStrictEqual(/^\/sche\/([^\/]+?)(?:\/)?$/i);
 
     // eslint-disable-next-line prefer-const
-    let keys = [];
+    let keys: Array<any> = [];
     expect(pathToRegexp('/sche/:id', keys)).toStrictEqual(/^\/sche\/([^\/]+?)(?:\/)?$/i);
     console.log('keys', keys);
 
@@ -27,7 +27,7 @@ describe('pathToRegexp', () => {
   it('pathToRegexp.b', () => {
     const pathHome = '/homepage/:uid?';
     // eslint-disable-next-line prefer-const
-    let keys = [];
+    let keys: Array<any> = [];
     expect(pathToRegexp(pathHome, keys)).toEqual(/^\/homepage(?:\/([^\/]+?))?(?:\/)?$/i);
 
     expect(keys).toEqual([
@@ -46,7 +46,7 @@ describe('pathToRegexp', () => {
   it('pathToRegexp.c', () => {
     const path = '/match-data/:childid/:grouptype?';
     // eslint-disable-next-line prefer-const
-    let keys = [];
+    let keys: Array<any> = [];
     expect(pathToRegexp(path, keys)).toEqual(/^\/match-data\/([^\/]+?)(?:\/([^\/]+?))?(?:\/)?$/i);
 
     expect(keys).toEqual([

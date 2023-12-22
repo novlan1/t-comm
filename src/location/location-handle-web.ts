@@ -7,7 +7,7 @@ import H5GeolocationLocation from './platform/h5-geolocation-location';
 import MsdkLocation from './platform/msdk-location';
 import SlugSdkLocation from './platform/slug-sdk-location';
 
-function locationHandle(options) {
+function locationHandle(options: any): any {
   const { isInGame, isMsdkX, isWeixin, isSlugSdk, isMiniProgram } = getEnvUAType();
   let handle;
   if (options.useWxSdk && isWeixin) {
@@ -28,7 +28,7 @@ function locationHandle(options) {
   return handle;
 }
 
-locationHandle.failHandle = function (options, handle) {
+locationHandle.failHandle = function (options: any, handle: any) {
   if (options.useTencentMapIfFail
     && handle
     && handle instanceof TipSdkLocation) {

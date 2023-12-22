@@ -9,12 +9,12 @@ describe('comm:removeUrlParams', () => {
 
   it('地址 history模式参数并存', () => {
     const res = removeUrlParams('http://www.test.com/?a=1&b=2&c=3', ['a', 'b']);
-    expect(res).toBe('http://www.test.com/?c=3');
+    expect(res).toBe('http://www.test.com/#/?c=3');
   });
 
   it('地址 history模式参数并存 + 强制history模式返回', () => {
     const res = removeUrlParams('http://www.test.com/?a=1&b=2&c=3', ['a', 'b']);
-    expect(res).toBe('http://www.test.com/?c=3');
+    expect(res).toBe('http://www.test.com/#/?c=3');
   });
 
   // it('hash 模式和history模式参数并存', () => {

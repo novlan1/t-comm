@@ -4,7 +4,7 @@ import * as fs from 'fs';
 import type { IPostFileOptions } from './types';
 
 
-export function postFile(fileDataInfo, fileKeyValue, options?: IPostFileOptions) {
+export function postFile(fileDataInfo: any, fileKeyValue: Array<any>, options?: IPostFileOptions) {
   return new Promise(((resolve, reject) => {
     if (!options) {
       console.log('[publish] failed. 需要 options');

@@ -13,7 +13,7 @@ import { getAreaCode } from '../../city/city';
 export default class TencentMapLocation implements LocationInterface {
   public getLocation(options: LocationOptions): Promise<LocationResult> {
     return new Promise((resolve, reject) => {
-      function geoShowPosition(location) {
+      function geoShowPosition(location: any) {
         if (!!location.province && !!location.city) {
           const retList = getAreaCode(location.province, location.city);
           if (retList.length > 1) {

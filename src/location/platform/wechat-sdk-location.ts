@@ -14,7 +14,7 @@ export default class WechatSdkLocation implements LocationInterface {
       options.configWx?.(['getLocation', 'openLocation'], []).then((wx) => {
         const tmp = {
           type: 'gcj02',
-          success(res) {
+          success(res: any) {
             const location = {
               lat: parseFloat(res.latitude),
               lng: parseFloat(res.longitude),
@@ -22,7 +22,7 @@ export default class WechatSdkLocation implements LocationInterface {
             resolve({ location, flag: LocationFlag.LocationSuccess });
             locationSuccessFlag = true;
           },
-          fail(error) {
+          fail(error: any) {
             console.log('WechatSdkLocation', error);
             reject();
             locationSuccessFlag = false;

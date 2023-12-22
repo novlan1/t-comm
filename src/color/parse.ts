@@ -5,6 +5,10 @@ function commonParseRGBOrHSL({
   value,
   reg = /hsla|hsl|\(|\)/gm,
   transformFunc = hsl2hsv,
+}: {
+  value: string;
+  reg?: RegExp;
+  transformFunc?: Function
 }) {
   let alpha = 100;
   let h = 0;

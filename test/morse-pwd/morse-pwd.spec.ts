@@ -2,21 +2,21 @@ import * as sinon from 'sinon';
 import { MorsePwd } from '../../src';
 
 
-let mockDom;
+let mockDom: any;
 
 beforeEach(() => {
   document.querySelector = jest.fn();
   mockDom = {
     eventQueue: {},
-    addEventListener(type, cb) {
+    addEventListener(type: string, cb: Function) {
       this.eventQueue[type] = cb;
     },
-    dispatch(type) {
+    dispatch(type: string) {
       if (typeof this.eventQueue[type] === 'function') {
         this.eventQueue[type]();
       }
     },
-    removeEventListener(type) {
+    removeEventListener(type: string) {
       delete this.eventQueue[type];
     },
   };
@@ -53,7 +53,7 @@ describe('MorsePwd', () => {
     // @ts-ignore
     document.querySelector.mockReturnValue(mockDom);
     const mockFn = jest.fn();
-    const morsePwd =    MorsePwd.init({
+    const morsePwd: any =  MorsePwd.init({
       pwd: [1, 1, 1],
       cb: () => {
         mockFn();

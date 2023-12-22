@@ -18,7 +18,7 @@ export function initRouter(options: AppOptionsType) {
       mode: routerMode,
       fallback: false,
       routes, // routes
-      scrollBehavior(to, from, savedPosition) {
+      scrollBehavior(to: any, from: any, savedPosition: boolean) {
         if (savedPosition) {
           return savedPosition;
         }
@@ -31,7 +31,7 @@ export function initRouter(options: AppOptionsType) {
       base: process.env.VUE_APP_ROUTER_BASE || '/',
       fallback: false,
       routes,
-      scrollBehavior(to, from, savedPosition) {
+      scrollBehavior(to: any, from: any, savedPosition: boolean) {
         if (savedPosition) {
           return savedPosition;
         }

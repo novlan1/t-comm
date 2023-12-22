@@ -9,7 +9,10 @@ import {
   getPartRatio,
   getThousandSeparator,
   getThousandSeparator2,
-  random
+  random,
+  padZero,
+  addNumber,
+  range
 } from 't-comm';
 
 // or
@@ -20,7 +23,10 @@ import {
   getPartRatio,
   getThousandSeparator,
   getThousandSeparator2,
-  random
+  random,
+  padZero,
+  addNumber,
+  range
 } from 't-comm/lib/base/number/index';
 ```
 
@@ -177,4 +183,77 @@ getThousandSeparator2('12345678 123456789')
 
 ```ts
 random(0, 19) // 1
+```
+<a name="padZero"></a>
+
+## `padZero(num, [targetLength])` 
+
+
+**描述**：<p>数字左侧加 0，直到满足长度要求</p>
+
+**参数**：
+
+
+| 参数名 | 类型 | 默认值 | 描述 |
+| --- | --- | --- | --- |
+| num | <code>string</code> \| <code>number</code> |  | <p>当前数字</p> |
+| [targetLength] | <code>number</code> | <code>2</code> | <p>目标长度</p> |
+
+**返回**: <code>string</code><br>
+
+<p>新的字符串</p>
+
+**示例**
+
+```ts
+padZero(1, 3); // 001
+```
+<a name="addNumber"></a>
+
+## `addNumber(num1, num2)` 
+
+
+**描述**：<p>add num and avoid float number</p>
+
+**参数**：
+
+
+| 参数名 | 类型 | 描述 |
+| --- | --- | --- |
+| num1 | <code>number</code> | <p>第1个数字</p> |
+| num2 | <code>number</code> | <p>第2个数字</p> |
+
+**返回**: <code>number</code><br>
+
+<p>结果</p>
+
+**示例**
+
+```ts
+addNumber(0.1, 0.2); // 0.3
+```
+<a name="range"></a>
+
+## `range(num, min, max)` 
+
+
+**描述**：<p>根据边界值修正数字</p>
+
+**参数**：
+
+
+| 参数名 | 类型 | 描述 |
+| --- | --- | --- |
+| num | <code>number</code> | <p>待处理的数字</p> |
+| min | <code>number</code> | <p>边界最小值</p> |
+| max | <code>number</code> | <p>边界最大值</p> |
+
+**返回**: <code>number</code><br>
+
+<p>处理结果</p>
+
+**示例**
+
+```ts
+range(12, 1, 2); // 2
 ```

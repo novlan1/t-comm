@@ -146,7 +146,7 @@ export function getThousandSeparator2(value: number | string) {
  * random(0, 19) // 1
  * ```
  */
-export function random(min, max) {
+export function random(min: number, max: number) {
   if (min >= 0 && max > 0 && max >= min) {
     const gap = max - min + 1;
     return Math.floor(Math.random() * gap + min);
@@ -154,3 +154,53 @@ export function random(min, max) {
   return 0;
 }
 
+
+/**
+ * 数字左侧加 0，直到满足长度要求
+ * @param {string | number} num 当前数字
+ * @param {number} [targetLength=2] 目标长度
+ * @returns {string} 新的字符串
+ * @example
+ * ```ts
+ * padZero(1, 3); // 001
+ * ```
+ */
+export function padZero(num: number | string, targetLength = 2) {
+  let str = `${num}`;
+  while (str.length < targetLength) {
+    str = `0${str}`;
+  }
+  return str;
+}
+
+
+/**
+ * add num and avoid float number
+ * @param {number} num1 第1个数字
+ * @param {number} num2 第2个数字
+ * @returns {number} 结果
+ * @example
+ * ```ts
+ * addNumber(0.1, 0.2); // 0.3
+ * ```
+ */
+export function addNumber(num1: number, num2: number) {
+  const cardinal = Math.pow(10, 10);
+  return Math.round((num1 + num2) * cardinal) / cardinal;
+}
+
+
+/**
+ * 根据边界值修正数字
+ * @param {number} num 待处理的数字
+ * @param {number} min 边界最小值
+ * @param {number} max 边界最大值
+ * @returns {number} 处理结果
+ * @example
+ * ```ts
+ * range(12, 1, 2); // 2
+ * ```
+ */
+export function range(num: number, min: number, max: number) {
+  return Math.min(Math.max(num, min), max);
+}

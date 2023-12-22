@@ -24,7 +24,7 @@ describe('parseFunction', () => {
 
 describe('cached', () => {
   it('cached', () => {
-    function test(a) {
+    function test(a: number) {
       return a + 2;
     }
     expect(cached(test)(1)).toBe(3);

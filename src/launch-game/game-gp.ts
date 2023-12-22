@@ -5,6 +5,7 @@ import {
   GAME_SCHEME_PREFIX_MAP,
   DEFAULT_WX_JS_SDK,
 } from './helper';
+import type { IBaseLaunchParams } from './types';
 
 
 /**
@@ -39,6 +40,9 @@ export function launchGPGameRoom({
 
   wxJSLink = DEFAULT_WX_JS_SDK,
   env = initEnv(),
+}: IBaseLaunchParams & {
+  roomId: string;
+  roomPwd: string;
 }) {
   const schemeParam = getGPSchemeParam(roomId, roomPwd);
 

@@ -12,11 +12,17 @@ function getNpmTipTemplate({
   postfix,
   feedbackTitle,
   feedbackList,
+}: {
+  prefix: string;
+  link: string;
+  postfix: string;
+  feedbackTitle: string;
+  feedbackList: Array<string>;
 }) {
   return `${colorFactory(96)}${prefix} (${colorFactory(94)} ${link} ${colorFactory(96)}) ${postfix}${colorFactory()}\n\n`
   + `${colorFactory(96)}${feedbackTitle}${colorFactory()}\n`
   + `${feedbackList
-    .map(feedback => `${colorFactory(96)}>${colorFactory(94)} ${feedback} ${colorFactory()}`)
+    .map((feedback: string) => `${colorFactory(96)}>${colorFactory(94)} ${feedback} ${colorFactory()}`)
     .join('\n')
   }\n`;
 }
@@ -28,6 +34,12 @@ function getNpmTips({
   packagePostfix,
   packagePostfixEn,
   feedbackList,
+}: {
+  packageName: string;
+  packageLink: string;
+  packagePostfix: string;
+  packagePostfixEn: string;
+  feedbackList: Array<string>;
 }) {
   const content = isUtf8Encoding()
     ? getNpmTipTemplate({
@@ -76,7 +88,7 @@ function isUtf8Encoding() {
   return false;
 }
 
-function isShowInfo(kContent) {
+function isShowInfo(kContent: string) {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   const { env: { ADBLOCK, CI, DISABLE_OPENCOLLECTIVE, OPEN_SOURCE_CONTRIBUTOR, npm_config_loglevel } } = process;
   const isSilent = typeof npm_config_loglevel === 'string' && ['silent', 'error', 'warn'].includes(npm_config_loglevel);
@@ -113,6 +125,12 @@ export function npmInstallTip({
   packagePostfix,
   packagePostfixEn,
   feedbackList,
+}: {
+  packageName: string;
+  packageLink: string;
+  packagePostfix: string;
+  packagePostfixEn: string;
+  feedbackList: Array<string>;
 }) {
   const content = getNpmTips({
     packageName,

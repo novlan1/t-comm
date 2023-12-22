@@ -4,12 +4,17 @@ import {
   GAME_SCHEME_PREFIX_MAP,
   DEFAULT_WX_JS_SDK,
 } from './helper';
+import type { IBaseLaunchParams } from './types';
 
 
 function getMJSchemeParam({
   seriesId,
   gameId,
   uin,
+}: {
+  gameId: string;
+  seriesId: string;
+  uin: string;
 }) {
   const schemeParam = `firmMatch=1&seriesid=${seriesId}&gameid=${gameId}&uin=${uin}`;
 
@@ -52,6 +57,10 @@ export function launchMJGameRoom({
 
   wxJSLink = DEFAULT_WX_JS_SDK,
   env = initEnv(),
+}: IBaseLaunchParams & {
+  gameId: string;
+  seriesId: string;
+  uin: string;
 }) {
   const schemeParam = getMJSchemeParam({
     seriesId,

@@ -18,7 +18,7 @@ export function removeCss(href: string) {
 }
 
 
-function loadStyle(url, urlClass) {
+function loadStyle(url: string, urlClass: string) {
   const link = document.createElement('link');
   link.type = 'text/css';
   link.rel = 'stylesheet';
@@ -64,7 +64,7 @@ export function loadStyles(urls: Array<string>, urlClass: string) {
  * );
  * ```
  */
-export function loadCssCode(code, className) {
+export function loadCssCode(code: string, className: string) {
   Array.prototype.slice.call(document.getElementsByClassName(className)).forEach(item => item.remove());
 
   const style: HTMLStyleElement = document.createElement('style');

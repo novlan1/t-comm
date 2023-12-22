@@ -17,6 +17,7 @@ specifiers:
   '@types/gulp': ^4.0.9
   '@types/jest': ^27.4.0
   '@types/node': ^17.0.17
+  '@types/sinon': ^17.0.2
   '@typescript-eslint/eslint-plugin': ^5.39.0
   '@typescript-eslint/parser': ^5.39.0
   axios: '*'
@@ -87,6 +88,7 @@ devDependencies:
   '@types/gulp': 4.0.9
   '@types/jest': 27.4.1
   '@types/node': 17.0.21
+  '@types/sinon': 17.0.2
   '@typescript-eslint/eslint-plugin': 5.39.0_fin4gqhsxg7lmbfdm7qx6k7c5e
   '@typescript-eslint/parser': 5.39.0_xvcshhxeosngsn5bmcucl2prs4
   babel-core: 6.25.0
@@ -2723,6 +2725,16 @@ packages:
       '@types/http-errors': 2.0.1
       '@types/mime': 3.0.1
       '@types/node': 17.0.21
+    dev: true
+
+  /@types/sinon/17.0.2:
+    resolution: {integrity: sha512-Zt6heIGsdqERkxctIpvN5Pv3edgBrhoeb3yHyxffd4InN0AX2SVNKSrhdDZKGQICVOxWP/q4DyhpfPNMSrpIiA==}
+    dependencies:
+      '@types/sinonjs__fake-timers': 8.1.5
+    dev: true
+
+  /@types/sinonjs__fake-timers/8.1.5:
+    resolution: {integrity: sha512-mQkU2jY8jJEF7YHjHvsQO8+3ughTL1mcnn96igfhONmR+fUPSKIkefQYpSe8bsly2Ep7oQbn/6VG5/9/0qcArQ==}
     dev: true
 
   /@types/source-list-map/0.1.2:

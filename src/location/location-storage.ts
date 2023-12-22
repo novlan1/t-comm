@@ -31,7 +31,7 @@ export default class LocationStorage {
   }
 
   // 存储缓存位置信息到sessionStorage和localStorage
-  public static setLocationToStorage(location: LocationData, expireMS): void {
+  public static setLocationToStorage(location: LocationData, expireMS: number): void {
     window.sessionStorage.setItem('position', JSON.stringify(location));
     savePersist('position', JSON.stringify(location), expireMS);
   }

@@ -2,6 +2,7 @@ import { getWxGameCircleUrl, launchInWX } from './helper';
 import { getUrlPara } from '../url/url';
 import { GAME_MAP } from '../launch-app/config';
 import { initEnv } from '../env/env';
+import type { IBaseLaunchParams } from './types';
 
 
 function ddzScheme({
@@ -9,6 +10,11 @@ function ddzScheme({
   seriesId,
   uin,
   env,
+}: {
+  gameId: string | number;
+  seriesId: string | number;
+  uin: string | number;
+  env: Record<string, boolean>;
 }) {
   const schemeHost = env.isIOS ? 'wx76fc280041c16519' : 'qqgame.hlddz.scheme';
 
@@ -68,7 +74,11 @@ export const launchDDZGameRoom = ({
 
   wxJSLink = 'https://res2.wx.qq.com/open/js/jweixin-1.6.0.js',
   env = initEnv(),
-}) => {
+}: {
+  gameId: string;
+  seriesId: string;
+  uin: string;
+} & IBaseLaunchParams) => {
   const {
     schemeUrl,
     schemeParam,

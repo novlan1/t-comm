@@ -35,6 +35,135 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+### [1.3.45](https://github.com/novlan1/t-comm/compare/v1.3.44...v1.3.45) (2023-12-21)
+
+
+### Code Refactoring ♻️
+
+* **img:** 拆分compress img ([bd7be32](https://github.com/novlan1/t-comm/commit/bd7be32893ead1ea7867491a005107534f45a22a))
+* **img:** 拆分compress img ([6c616a0](https://github.com/novlan1/t-comm/commit/6c616a0c7a6cc5d89d954a6413e58092faf850e1))
+
+
+### Features 🎉
+
+* **number:** add number ([f305e95](https://github.com/novlan1/t-comm/commit/f305e95099d841405f90ce94e9977de9d74d177d))
+
+### [1.3.44](https://github.com/novlan1/t-comm/compare/v1.3.43...v1.3.44) (2023-12-20)
+
+
+### Documentation 📖
+
+* update docs ([13ec46e](https://github.com/novlan1/t-comm/commit/13ec46e459deeed3effbf618760d82ac25f41740))
+
+
+### Chore 🚀 
+
+* ts配置更新 ([ad70939](https://github.com/novlan1/t-comm/commit/ad709391906d406aed87c1d1292528657b1c2736))
+* update ts config ([222e0c0](https://github.com/novlan1/t-comm/commit/222e0c076863ef30695c895940af73ded69af7be))
+
+### [1.3.43](https://github.com/novlan1/t-comm/compare/v1.3.42...v1.3.43) (2023-12-19)
+
+
+### Features 🎉
+
+* **pad-zero:** add pad zero ([1a62a87](https://github.com/novlan1/t-comm/commit/1a62a87f86e96734e73db9f4f69e2bce8a585a7a))
+
+
+### Code Refactoring ♻️
+
+* 补充ts类型 ([1e2d63d](https://github.com/novlan1/t-comm/commit/1e2d63d8a1ba9bba8814e148c137b7f62a5abd54))
+* 补充ts类型 ([dc4b7d5](https://github.com/novlan1/t-comm/commit/dc4b7d58e31f1824f7ce4cc5d0da802bcabfdaec))
+* 补充ts类型 ([c3f56e7](https://github.com/novlan1/t-comm/commit/c3f56e7bfd2f8abb307099e510f85aa9536f676c))
+* 补充ts类型 ([eb35f2d](https://github.com/novlan1/t-comm/commit/eb35f2d57107a967c0f025e3cf36034fd078cd58))
+
+
+### Tests ✅
+
+* update test cases ([847cb39](https://github.com/novlan1/t-comm/commit/847cb3989efeaf1cfe4b93e48a182cabbd9a8355))
+
+### [1.3.42](https://github.com/novlan1/t-comm/compare/v1.3.41...v1.3.42) (2023-12-15)
+
+
+### Code Refactoring ♻️
+
+* **fs:** use writeFile and readFile of fs module ([602112b](https://github.com/novlan1/t-comm/commit/602112b76683a22aa23e9366f399d769ca07e1a5))
+
+
+### Features 🎉
+
+* **date:** add is same day ([3eb79ae](https://github.com/novlan1/t-comm/commit/3eb79aea1ce4a6b6485b53227f16051d7ee13044))
+
+### [1.3.41](https://github.com/novlan1/t-comm/compare/v1.3.40...v1.3.41) (2023-12-14)
+
+
+### Features 🎉
+
+* **polling:** add polling request ([feaea44](https://github.com/novlan1/t-comm/commit/feaea443a403125b215483a8a3a82d6515871c16))
+
+### [1.3.40](https://github.com/novlan1/t-comm/compare/v1.3.39...v1.3.40) (2023-12-12)
+
+
+### Features 🎉
+
+* **path:** add normalize path ([a36016e](https://github.com/novlan1/t-comm/commit/a36016e956e5a421c33d9b9b88bb23e3b9105d99))
+
+### [1.3.39](https://github.com/novlan1/t-comm/compare/v1.3.39-beta.0...v1.3.39) (2023-12-12)
+
+
+### Features 🎉
+
+* **fs:** add readyfileSync writeFileSync ([761b5f2](https://github.com/novlan1/t-comm/commit/761b5f27617a19dbd03a850493172944efc3bc26))
+* **msdk:** add set full screen and reset full screen ([03d2842](https://github.com/novlan1/t-comm/commit/03d2842fad0915e3865df5e0b8b293c28c9ee9e7))
+* **tag:** add getPreReleaseTag ([eca0cf5](https://github.com/novlan1/t-comm/commit/eca0cf541662c16b623cefdfb2da2c230a9697bf))
+
+### [1.3.39-beta.0](https://github.com/novlan1/t-comm/compare/v1.3.38...v1.3.39-beta.0) (2023-11-30)
+
+### [1.3.38](https://github.com/novlan1/t-comm/compare/v1.3.37...v1.3.38) (2023-11-30)
+
+
+### Bug Fixes 🐞
+
+* update insert change log ([eaf15ff](https://github.com/novlan1/t-comm/commit/eaf15ff9160987403bc16b856c6776c09d3d7ddc))
+
+### [1.3.37](https://github.com/novlan1/t-comm/compare/v1.3.37-beta.0...v1.3.37) (2023-11-30)
+
+
+### Features 🎉
+
+* **inset-doc-change-log:** add insert doc change log ([445b8c9](https://github.com/novlan1/t-comm/commit/445b8c9239b1969c4f49a9623d552a50e251c503))
+
+### [1.3.37-beta.0](https://github.com/novlan1/t-comm/compare/v1.3.37-alpha.0...v1.3.37-beta.0) (2023-11-30)
+
+
+### Chore 🚀 
+
+* update scripts ([682bc6b](https://github.com/novlan1/t-comm/commit/682bc6b5d0a46f53c2a94a8a61d613b4abb8bb16))
+
+### [1.3.37-alpha.0](https://github.com/novlan1/t-comm/compare/v1.3.36...v1.3.37-alpha.0) (2023-11-30)
+
+
+### Documentation 📖
+
+* update docs ([d939363](https://github.com/novlan1/t-comm/commit/d939363e0016c99d526c19174d32a30f90ce20a7))
+
+
+### Chore 🚀 
+
+* update change log ([d9e2bc2](https://github.com/novlan1/t-comm/commit/d9e2bc25cfe97f7c879e80631f076d53a1a2294c))
+* update docs ([cc00439](https://github.com/novlan1/t-comm/commit/cc004393381727b1d2ce76c8486e00c528f44d03))
+
 ### [1.3.36](https://github.com/novlan1/t-comm/compare/v1.3.35...v1.3.36) (2023-11-29)
 
 
