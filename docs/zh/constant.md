@@ -1,6 +1,6 @@
 [[toc]]
 
-## 引入方式
+## 引入
 
 ```ts
 import { GID_MAP } from 't-comm';

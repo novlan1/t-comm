@@ -1,6 +1,6 @@
 [[toc]]
 
-## 引入方式
+## 引入
 
 ```ts
 import { rgb2hsv, hsv2rgb } from 't-comm';

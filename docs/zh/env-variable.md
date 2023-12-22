@@ -1,6 +1,6 @@
 [[toc]]
 
-## 引入方式
+## 引入
 
 ```ts
 import { readEnvVariable, writeEnvTokenToNpmRC } from 't-comm';
