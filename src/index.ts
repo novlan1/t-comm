@@ -18,6 +18,7 @@ export * from './devops';
 export * from './dialog';
 export * from './dom';
 export * from './dom-to-image';
+export * from './e-bus';
 export * from './e2e-test';
 export * from './env';
 export * from './env-variable';

@@ -3,11 +3,11 @@
 ## 引入
 
 ```ts
-import { getMorsePwdMixin } from 't-comm';
+import { getMorsePwdMixin, getMsdkFullScreen } from 't-comm';
 
 // or
 
-import { getMorsePwdMixin} from 't-comm/lib/mixin/index';
+import { getMorsePwdMixin, getMsdkFullScreen} from 't-comm/lib/mixin/index';
 ```
 
 
@@ -33,4 +33,20 @@ getMorsePwdMixin([1, 1, 1, 1, 1], function () {
   if (isInIFrame()) return;
   this.onShowLaunchApp();
 }),
+```
+<a name="getMsdkFullScreen"></a>
+
+## `getMsdkFullScreen()` 
+
+
+**描述**：<p>msdk 浏览器全屏方法，点击外链时可全屏，返回时退出全屏</p>
+
+**参数**：
+
+
+
+**示例**
+
+```ts
+mixins: [getMsdkFullScreen()],
 ```

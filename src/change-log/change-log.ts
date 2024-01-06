@@ -84,7 +84,7 @@ export function insertDocChangeLog({
   console.log('[insertDocChangeLog] version: ', version);
   if (!version) return;
 
-  const reg = new RegExp(`(\\n[#]+\\s*\\[${version}\\].*?\\n)(?=[#]+\\s*\\[\\d+\\.\\d+\\.\\d+)`, 's');
+  const reg = new RegExp(`\\n([#]+\\s*\\[${version}\\].*?\\n)(?=[#]+\\s*\\[\\d+\\.\\d+\\.\\d+)`, 's');
 
   const match = changeLog.match(reg);
 

@@ -1,51 +1,35 @@
 # 更新日志
 
+### [1.3.48](https://github.com/novlan1/t-comm/compare/v1.3.47...v1.3.48) (2024-01-04)
 
 
+### Features 🎉
+
+* **e-bus:** add ebus ([487b969](https://github.com/novlan1/t-comm/commit/487b96901973f11b58fc38d7ae0cf65bda82b5bf))
+
+### [1.3.47](https://github.com/novlan1/t-comm/compare/v1.3.46...v1.3.47) (2023-12-25)
 
 
+### Documentation 📖
+
+* update docs ([77b214e](https://github.com/novlan1/t-comm/commit/77b214e2e1dfcd8f46587f49f0db29767807824b))
 
 
+### Features 🎉
+
+* **change-log:** update insert change log ([c69b4b3](https://github.com/novlan1/t-comm/commit/c69b4b36ca659e30049b0839ddf1ffd42c72428f))
+
+### [1.3.46](https://github.com/novlan1/t-comm/compare/v1.3.45...v1.3.46) (2023-12-22)
 
 
+### Documentation 📖
+
+* update docs ([cd7be3e](https://github.com/novlan1/t-comm/commit/cd7be3e04ad9d664616bd32186f9644547e87713))
 
 
+### Features 🎉
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+* **msdk:** add msdk full screen mixin ([f2c74e3](https://github.com/novlan1/t-comm/commit/f2c74e385bd87c96b57428faa1d21d239d0e465d))
 
 ### [1.3.45](https://github.com/novlan1/t-comm/compare/v1.3.44...v1.3.45) (2023-12-21)
 
