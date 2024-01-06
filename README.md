@@ -1,7 +1,7 @@
 
 <div align="center">
 <img
-  src="https://mike-1255355338.cos.ap-guangzhou.myqcloud.com/article/2023/10/own_mike_5489135b5a3b9258d8.png" 
+  src="https://mike-1255355338.cos.ap-guangzhou.myqcloud.com/press%2Fimg%2Fown_mike_5489135b5a3b9258d8.gif" 
   width="120"
   style="margin-bottom: 20px;margin-top: 20px;"
 />
