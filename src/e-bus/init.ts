@@ -14,7 +14,7 @@ export const initGlobalVue3EBus = function (app: any) {
   }
 
   app.config.globalProperties.$ebus = globalEBus;
-  return app;
+  return [app, globalEBus];
 };
 
 
@@ -29,6 +29,6 @@ export const initDiffVue3EBus = function (app: any) {
 
   const eBus = new EventBus();
   app.config.globalProperties.$ebus = eBus;
-  return app;
+  return [app, eBus];
 };
 

@@ -1,5 +1,72 @@
 # 更新日志
 
+### [1.3.54](https://github.com/novlan1/t-comm/compare/v1.3.53...v1.3.54) (2024-02-19)
+
+
+### Features 🎉
+
+* **tam:** update sort key ([c363a67](https://github.com/novlan1/t-comm/commit/c363a677959109c740da7aef9e4afa54e2bb92cb))
+
+### [1.3.53](https://github.com/novlan1/t-comm/compare/v1.3.52...v1.3.53) (2024-02-02)
+
+
+### Features 🎉
+
+* **toast:** add toast ([9e77577](https://github.com/novlan1/t-comm/commit/9e77577d6b56323fa0d1b23f5c1b438c1e1d40ad))
+
+### [1.3.52](https://github.com/novlan1/t-comm/compare/v1.3.51...v1.3.52) (2024-01-30)
+
+
+### Chore 🚀 
+
+* **v-console:** 类型优化 ([643647f](https://github.com/novlan1/t-comm/commit/643647f28442726e582d6f9a0427372270a983cf))
+
+
+### Documentation 📖
+
+* **debug:** add docs ([7796476](https://github.com/novlan1/t-comm/commit/7796476fdec87a06ec64b271a0f0435d1f6e6117))
+
+
+### Features 🎉
+
+* **version:** add version ([97cff3c](https://github.com/novlan1/t-comm/commit/97cff3c221be61e58c343b7c698874a049fb78ab))
+
+### [1.3.51](https://github.com/novlan1/t-comm/compare/v1.3.50...v1.3.51) (2024-01-23)
+
+
+### Features 🎉
+
+* **e-bus:** emit global ebus ([7348c1f](https://github.com/novlan1/t-comm/commit/7348c1ff2ba385e4cc104b6a0d86df9d1f284ba0))
+
+### [1.3.50](https://github.com/novlan1/t-comm/compare/v1.3.49...v1.3.50) (2024-01-23)
+
+
+### Chore 🚀 
+
+* change vscode source.fixAll.eslint to explicit from true ([a31da09](https://github.com/novlan1/t-comm/commit/a31da09bcc2c0da5c175d4dc5f2ba487aaad633f))
+
+
+### Features 🎉
+
+* **vconsole:** add gen vconsole ([d4885d1](https://github.com/novlan1/t-comm/commit/d4885d14fcae2f0e49d14829db6ac804fb3b14b3))
+
+### [1.3.49](https://github.com/novlan1/t-comm/compare/v1.3.48...v1.3.49) (2024-01-12)
+
+
+### Documentation 📖
+
+* update readme img ([6f85e5b](https://github.com/novlan1/t-comm/commit/6f85e5bd26995d6552b6ed48ee98307892ab394c))
+
+
+### Features 🎉
+
+* **daily-merge:** add daily merge ([5900217](https://github.com/novlan1/t-comm/commit/5900217bc582a14db7ff8f8c8b03ca332cb89290))
+
+
+### Bug Fixes 🐞
+
+* **daily-merge:** fix to confirm logic ([445dff0](https://github.com/novlan1/t-comm/commit/445dff046b051be55947d038acfa7c675e0c4b95))
+
 ### [1.3.48](https://github.com/novlan1/t-comm/compare/v1.3.47...v1.3.48) (2024-01-04)
 
 

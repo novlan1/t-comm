@@ -1,5 +1,7 @@
 import { ScoreInfoType } from '../types';
 import { getPartRatio } from '../../base/number';
+const SORT_KEY = 'PageUv';
+
 
 function formatNum(num: number | string) {
   if (typeof num !== 'number') {
@@ -60,7 +62,7 @@ export function parseSummaryScore({
 }) {
   const res = data
     .filter(item => !ignoreProjectIdList.includes(+item.ProjectId))
-    .sort((a, b) => +b.PagePv - +a.PagePv)
+    .sort((a, b) => +b[SORT_KEY] - +a[SORT_KEY])
     .map((item) => {
       const temp: Record<string, any> = {};
       const projectId = item.ProjectId;

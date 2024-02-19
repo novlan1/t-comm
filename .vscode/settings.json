@@ -13,7 +13,7 @@
   "vetur.format.defaultFormatter.scss": "none",
   // 开启eslint自动修复js/ts功能
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "cSpell.words": [
     "wecom"

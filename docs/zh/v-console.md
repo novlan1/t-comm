@@ -5,6 +5,7 @@
 ```ts
 import {
   V_CONSOLE_STATE,
+  genVConsole,
   showVConsole,
   closeVConsole,
   toggleVConsole,
@@ -16,6 +17,7 @@ import {
 
 import {
   V_CONSOLE_STATE,
+  genVConsole,
   showVConsole,
   closeVConsole,
   toggleVConsole,
@@ -34,6 +36,39 @@ import {
 
 
 
+<a name="genVConsole"></a>
+
+## `genVConsole(params)` 
+
+
+**描述**：<p>生成 v-console
+有几种情况：</p>
+<ol>
+<li>不显示</li>
+<li>立即显示</li>
+<li>异步判断后，确定是否显示</li>
+</ol>
+
+**参数**：
+
+
+| 参数名 | 描述 |
+| --- | --- |
+| params | <p>参数</p> |
+
+
+
+**示例**
+
+```ts
+genVConsole({
+  immediateShow: isShowVConsole === 'true'
+    || isTestEnv()
+    || noDelay === V_CONSOLE_NO_DELAY.VALUE,
+  hide: isShowVConsole === 'false' || !!UserInfo.tipUid(),
+  asyncConfirmFunc: checkIsDevList,
+});
+```
 <a name="showVConsole"></a>
 
 ## `showVConsole()` 

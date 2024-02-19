@@ -15,7 +15,7 @@ export const EMPTY_LINE = `<div class="${V_CONSOLE_DOM.LINE}"> </div>`;
 export const V_CONSOLE_NO_DELAY = {
   KEY: 'vConsole_no_delay',
   VALUE: '1',
-};
+} as const;
 
 export const V_CONSOLE_URL = 'https://image-1251917893.file.myqcloud.com/igame/npm/vconsole%403.15.1/vconsole.min.js';
 export const V_CONSOLE_STYLE_CONTENT = `

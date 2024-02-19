@@ -6,3 +6,4 @@ export {
   checkAndShowVConsole,
 } from './toggle';
 export { loadVConsole } from './v-console';
+export { genVConsole } from './debug'
