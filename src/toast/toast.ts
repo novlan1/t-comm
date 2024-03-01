@@ -1,7 +1,6 @@
 
 let loadingToastId: any = {};
 let toastId: any = {};
-const mToast: {[key: string]: Function} = {};
 
 let toastComp: any;
 
@@ -25,8 +24,12 @@ function getToast() {
  * 显示普通Toast
  * @param text  文案
  * @param duration  显示时间，默认2秒
+ * @example
+ * ```ts
+ * Toast.show('文本', 3000);
+ * ```
  */
-mToast.show = function (text = '', duration = 2000) {
+export const showToast = function (text = '', duration = 2000) {
   getToast().then(() => {
     if (loadingToastId?.clear) {
       setTimeout(() => {
@@ -42,8 +45,12 @@ mToast.show = function (text = '', duration = 2000) {
  * 显示成功样式Toast（toast带√样式）
  * @param text  文案
  * @param duration  显示时间，默认2秒
+ * @example
+ * ```ts
+ * Toast.showSuccess('文本', 3000);
+ * ```
  */
-mToast.showSuccess = function (text = '', duration = 2000) {
+export const showSuccess = function (text = '', duration = 2000) {
   getToast().then(() => {
     if (loadingToastId?.clear) {
       setTimeout(() => {
@@ -56,11 +63,15 @@ mToast.showSuccess = function (text = '', duration = 2000) {
 };
 
 /**
- * 显示失败样式Taost(toast带！样式)
+ * 显示失败样式 Toast(toast带！样式)
  * @param text  文案
  * @param duration  显示时间，默认2秒
+ * @example
+ * ```ts
+ * Toast.showFail('文本', 3000);
+ * ```
  */
-mToast.showFail = function (text = '', duration = 2000) {
+export const showFail = function (text = '', duration = 2000) {
   getToast().then(() => {
     if (loadingToastId?.clear) {
       setTimeout(() => {
@@ -74,22 +85,35 @@ mToast.showFail = function (text = '', duration = 2000) {
 
 /**
  * 清除（隐藏）上一个toast
+ * @example
+ * ```ts
+ * Toast.clear();
+ *
+ * clearToast();
+ * ```
  */
-mToast.clear = function () {
+export const clearToast = function () {
   if (toastId.clear) toastId.clear();
 };
 
 /**
  * 显示loading Toast
- * @function
- * @name showLoading-web
  * @param {string | object} options 配置，传递字符串时候为message
  * @param {string} options.message 内容
  * @param {number} options.duration 展示时长(ms)，值为 0 时，toast 不会消失
  * @param {boolean} options.forbidClick 是否禁止背景点击
  * @param {string} options.selector 自定义选择器
+ * @example
+ * ```ts
+ * Toast.showLoading('文本');
+ *
+ * Toast.showLoading({
+ *   message: '文本',
+ *   zIndex: 1000,
+ * });
+ * ```
  */
-mToast.showLoading = function (options = {}) {
+export const showLoading = function (options = {}) {
   getToast().then(() => {
     if (loadingToastId?.clear) {
       loadingToastId.clear();
@@ -105,13 +129,36 @@ mToast.showLoading = function (options = {}) {
 
 /**
  * 隐藏loading toast
+ * @example
+ * ```ts
+ * Toast.dismissLoading();
+ * ```
  */
-mToast.dismissLoading = function () {
+export const dismissLoading = function () {
   if (loadingToastId?.clear) {
     loadingToastId.clear();
     loadingToastId = {};
   }
 };
 
+/**
+ * Toast 对象
+ * @example
+ * ```ts
+ * Toast.show('文本')
+ * ```
+ */
+export const Toast = {
+  show: showToast,
+  showToast,
 
-export { mToast as Toast };
+  showSuccess,
+  showFail,
+
+  clear: clearToast,
+  clearToast,
+
+  showLoading,
+  dismissLoading,
+};
+
