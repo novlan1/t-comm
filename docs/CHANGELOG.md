@@ -1,5 +1,24 @@
 # 更新日志
 
+### [1.3.55](https://github.com/novlan1/t-comm/compare/v1.3.54...v1.3.55) (2024-03-01)
+
+
+### Documentation 📖
+
+* **toast:** add toast docs ([744c4b1](https://github.com/novlan1/t-comm/commit/744c4b1944df0a7c945e14ef31457b743506cf73))
+
+
+### Chore 🚀 
+
+* not track pnpm-lock.yaml ([a8f79cc](https://github.com/novlan1/t-comm/commit/a8f79ccae2bc59d8d1ec5b89a7d7409b34ee087d))
+* not track pnpm-lock.yaml ([c2a7a77](https://github.com/novlan1/t-comm/commit/c2a7a77b375805d3b547c7d9ecb56567c2323650))
+
+
+### Code Refactoring ♻️
+
+* **toast:** 修改toast导出 ([5b69859](https://github.com/novlan1/t-comm/commit/5b698593a1fed3d907f1d14edefcfbb89328527f))
+* **toast:** 修改toast导出 ([5b10706](https://github.com/novlan1/t-comm/commit/5b10706faca86ff863850460b3e8cbb218f7c60d))
+
 ### [1.3.54](https://github.com/novlan1/t-comm/compare/v1.3.53...v1.3.54) (2024-02-19)
 
 
