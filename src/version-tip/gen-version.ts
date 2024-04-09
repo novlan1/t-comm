@@ -4,6 +4,7 @@ import {
   getGitCommitsBeforeTag,
   getGitTagTime,
 } from '../git';
+import { timeStampFormat } from '../time/time';
 
 import { execCommand } from '../node/node-command';
 import { TAG_MAP } from './config';
@@ -76,7 +77,8 @@ export function shouldGenVersion(root?: string, forceGenVersion?: boolean): numb
   }
 
   const tagTimeStamp = getTimeStampFromDate(tagDate);
-  console.log(`[GEN VERSION] Tag TimeStamp: ${tagTimeStamp}`);
+  const dateStr = timeStampFormat(tagTimeStamp, 'yyyy-MM-dd hh:mm:ss');
+  console.log(`[GEN VERSION] Tag TimeStamp: ${dateStr}`);
 
   if (Date.now() - tagTimeStamp < INTERVAL_TIME) {
     console.log(`[GEN VERSION] ERROR: 间隔小于${INTERVAL_TIME}`);

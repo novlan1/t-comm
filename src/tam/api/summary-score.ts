@@ -68,6 +68,8 @@ export async function getTAMScoreInfoByProjectId({
     headers: {
       ...credential,
     },
+  }).catch((err) => {
+    console.log('[getTAMScoreInfoByProjectId.err]', err);
   });
 
   return result?.data?.message || [];
@@ -128,7 +130,7 @@ export async function getTAMScoreInfoByProjectId({
  * ];
  *
  */
-async function getProjectByGroupId({
+export async function getProjectByGroupId({
   groupId,
   secretInfo,
 }: {
@@ -143,6 +145,8 @@ async function getProjectByGroupId({
     headers: {
       ...credential,
     },
+  }).catch((err) => {
+    console.log('[getProjectByGroupId.err]', err);
   });
   return result?.data?.result || [];
 }

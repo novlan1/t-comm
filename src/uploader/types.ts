@@ -1,5 +1,5 @@
 export type IUploaderOptions = {
-  requestHashUrl?: string;
+  requestHashUrl?: string | Function;
   uploadFileKey?: string;
   uploadUrlPrefix?: string;
 };

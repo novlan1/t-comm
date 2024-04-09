@@ -1,6 +1,6 @@
 {
   "name": "t-comm",
-  "version": "1.3.55",
+  "version": "1.3.75",
   "description": "丰富易用的工具库",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
@@ -64,8 +64,7 @@
     "release:patch": "standard-version --release-as patch -a",
     "release:alpha": "standard-version --prerelease alpha -a",
     "release:beta": "standard-version --prerelease beta -a",
-    "step:build": "node script/gulp/test-task",
-    "postinstall": "node -e \"try{require('./lib/npm-tip/post-install')}catch(e){}\""
+    "step:build": "node script/gulp/test-task"
   },
   "devDependencies": {
     "@babel/core": "^7.17.2",
@@ -92,6 +91,7 @@
     "better-docs": "^2.7.2",
     "chalk": "^4.1.2",
     "conventional-changelog": "^3.1.25",
+    "cos-nodejs-sdk-v5": "^2.11.19",
     "docdash": "^1.2.0",
     "dotenv": "^16.0.3",
     "eslint": "^8.25.0",

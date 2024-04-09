@@ -3,11 +3,11 @@
 ## 引入
 
 ```ts
-import { MorsePwd  } from 't-comm';
+import { MorsePwd , simpleMorse } from 't-comm';
 
 // or
 
-import { MorsePwd } from 't-comm/lib/morse-pwd/index';
+import { MorsePwd , simpleMorse} from 't-comm/lib/morse-pwd/index';
 ```
 
 
@@ -136,4 +136,30 @@ export default {
   },
 }
 </script>
+```
+<a name="simpleMorse"></a>
+
+## `simpleMorse(param)` 
+
+
+**描述**：<p>简单的摩斯密码，只有点击</p>
+
+**参数**：
+
+
+| 参数名 | 类型 | 描述 |
+| --- | --- | --- |
+| param | <code>object</code> | <p>参数</p> |
+
+
+
+**示例**
+
+```ts
+simpleMorse({
+  target: 5, // 目标值
+  callback: () => console.log('test'),
+  timeout: 300, // 超时取消
+  debug: false,
+})
 ```

@@ -15,6 +15,16 @@ import { uploadFile} from 't-comm/lib/uploader/index';
 
 
 **描述**：<p>上传文件</p>
+<p>上传的本质：</p>
+<ol>
+<li>
+<p>小程序上传文件是先用 chooseFile 获取一个文件，可以得到
+一个临时路径，然后用 uploadFile 上传该临时路径</p>
+</li>
+<li>
+<p>H5 是 input 获取文件，然后用 FormData 上传 File 对象</p>
+</li>
+</ol>
 
 **参数**：
 

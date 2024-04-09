@@ -31,13 +31,13 @@ const PATH_REGEXP = new RegExp([
   * @param  {Object=} options
   * @return {!Array}
   */
-function parse(str, options) {
+function parse(str: string, options?: any) {
   const tokens = [];
   let key = 0;
   let index = 0;
   let path = '';
-  const defaultDelimiter = (options && options.delimiter) || DEFAULT_DELIMITER;
-  const delimiters = (options && options.delimiters) || DEFAULT_DELIMITERS;
+  const defaultDelimiter = (options?.delimiter) || DEFAULT_DELIMITER;
+  const delimiters = (options?.delimiters) || DEFAULT_DELIMITERS;
   let pathEscaped = false;
   let res;
 
@@ -111,7 +111,7 @@ function parse(str, options) {
   * @param  {Object=}            options
   * @return {!function(Object=, Object=)}
   */
-function compile(str, options) {
+function compile(str: string, options?: any) {
   return tokensToFunction(parse(str, options));
 }
 
@@ -119,7 +119,7 @@ function compile(str, options) {
   * Expose a method for transforming tokens into the path function.
   * @ignore
   */
-function tokensToFunction(tokens) {
+function tokensToFunction(tokens: Array<any>) {
   // Compile all the tokens into regexps.
   const matches = new Array(tokens.length);
 
@@ -130,9 +130,9 @@ function tokensToFunction(tokens) {
     }
   }
 
-  return function (data, options) {
+  return function (data: any, options: any) {
     let path = '';
-    const encode = (options && options.encode) || encodeURIComponent;
+    const encode = (options?.encode) || encodeURIComponent;
 
     for (let i = 0; i < tokens.length; i++) {
       const token = tokens[i];
@@ -200,7 +200,7 @@ function tokensToFunction(tokens) {
   * @param  {string} str
   * @return {string}
   */
-function escapeString(str) {
+function escapeString(str: string) {
   return str.replace(/([.+*?=^!:${}()[\]|/\\])/g, '\\$1');
 }
 
@@ -210,7 +210,7 @@ function escapeString(str) {
   * @param  {string} group
   * @return {string}
   */
-function escapeGroup(group) {
+function escapeGroup(group: string) {
   return group.replace(/([=!:$/()])/g, '\\$1');
 }
 
@@ -220,8 +220,8 @@ function escapeGroup(group) {
   * @param  {Object} options
   * @return {string}
   */
-function flags(options) {
-  return options && options.sensitive ? '' : 'i';
+function flags(options: any) {
+  return options?.sensitive ? '' : 'i';
 }
 
 /**
@@ -231,7 +231,7 @@ function flags(options) {
   * @param  {Array=}  keys
   * @return {!RegExp}
   */
-function regexpToRegexp(path, keys) {
+function regexpToRegexp(path: any, keys?: Array<any>) {
   if (!keys) return path;
 
   // Use a negative lookahead to match only capturing groups.
@@ -262,7 +262,7 @@ function regexpToRegexp(path, keys) {
   * @param  {Object=} options
   * @return {!RegExp}
   */
-function arrayToRegexp(path, keys, options) {
+function arrayToRegexp(path: any, keys?: Array<any>, options?: any): any {
   const parts = [];
 
   for (let i = 0; i < path.length; i++) {
@@ -280,7 +280,7 @@ function arrayToRegexp(path, keys, options) {
   * @param  {Object=} options
   * @return {!RegExp}
   */
-function stringToRegexp(path, keys, options) {
+function stringToRegexp(path: string, keys?: Array<any>, options?: any) {
   return tokensToRegExp(parse(path, options), keys, options);
 }
 
@@ -292,7 +292,7 @@ function stringToRegexp(path, keys, options) {
   * @param  {Object=} options
   * @return {!RegExp}
   */
-function tokensToRegExp(tokens, keys, options) {
+function tokensToRegExp(tokens: Array<any>, keys?: Array<any>, options?: any) {
   options = options || {};
 
   const { strict } = options;
@@ -356,7 +356,7 @@ function tokensToRegExp(tokens, keys, options) {
   * @param  {Object=}               options
   * @return {!RegExp}
   */
-function pathToRegexp(path, keys, options) {
+function pathToRegexp(path: string | RegExp | Array<any>, keys?: Array<any>, options?: any) {
   if (path instanceof RegExp) {
     return regexpToRegexp(path, keys);
   }
@@ -372,6 +372,11 @@ function pathToRegexp(path, keys, options) {
  * Expose `pathToRegexp`.
  * @ignore
  */
+
+pathToRegexp.parse = parse;
+pathToRegexp.compile = compile;
+pathToRegexp.tokensToFunction = tokensToFunction;
+pathToRegexp.tokensToRegExp = tokensToRegExp;
 
 export default pathToRegexp;
 export {

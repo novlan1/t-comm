@@ -1,10 +1,10 @@
-export function sortObjectByKey(obj: any) {
+export function sortObjectByKey<T extends string | number, F>(obj: Record<T, F>): Record<T, F> {
   if (!obj) {
     return obj;
   }
 
-  const list = Object.keys(obj).map(key => ({
-    value: obj[key],
+  const list = Object.keys(obj).map((key: string) => ({
+    value: obj[key as T],
     key,
   }));
 
@@ -13,9 +13,9 @@ export function sortObjectByKey(obj: any) {
     if (a.key > b.key) return 1;
     return 0;
   });
-  const result = list.reduce((acc: any, item) => {
-    acc[item.key] = item.value;
+  const result = list.reduce((acc: Record<T, F>, item) => {
+    acc[item.key as T] = item.value;
     return acc;
-  }, {});
+  }, {} as any);
   return result;
 }

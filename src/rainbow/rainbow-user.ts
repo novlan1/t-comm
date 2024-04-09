@@ -50,6 +50,7 @@ export function fetchRainbowConfig(key: string, secretInfo: {
             items: Array<{
               key_values: Array<{
                 key: any;
+                value: any;
               }>
             }>
           }

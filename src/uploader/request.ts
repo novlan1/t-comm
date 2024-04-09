@@ -44,6 +44,13 @@ export function requestUploadFile({
 }): Promise<{
     url: string;
   }> {
+  if (['mp-weixin', 'mp-qq'].includes(process.env.UNI_PLATFORM || '')) {
+    return requestUploadFileInMp({
+      file,
+      hashCode,
+      url,
+    });
+  }
   return new Promise((resolve, reject) => {
     const formData = new FormData();
     formData.append(uploadFileKey, file);
@@ -69,3 +76,52 @@ export function requestUploadFile({
   });
 }
 
+
+function requestUploadFileInMp({
+  hashCode,
+  file,
+  url: prefixUrl,
+}: {
+  file: File;
+  hashCode: string;
+  url: string;
+}): Promise<{
+    url: string;
+  }>  {
+  return new Promise((resolve, reject) => {
+    const widthHeight = '';
+    const url = `${prefixUrl}${hashCode}&width_height=${widthHeight}`;
+
+    uni.uploadFile({
+      url,
+      // @ts-ignore
+      filePath: file.path,
+      name: 'upload_pic_input',
+      formData: {
+        _hash: hashCode,
+      },
+      success(res: any) {
+        if (res.data) {
+          let data = { url: '', r: 0 };
+          try {
+            data = JSON.parse(res.data);
+          } catch (err) {}
+
+          if (data.r == 0) {
+            resolve({
+              url: data.url,
+            });
+            return;
+          }
+
+          reject(res);
+        } else {
+          reject(res);
+        }
+      },
+      fail(res: any) {
+        reject(res);
+      },
+    });
+  });
+}

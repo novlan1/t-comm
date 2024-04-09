@@ -9,4 +9,5 @@ export {
   getRUMScores,
   getTAMScoreInfoByProjectId,
   getTAMSummaryScoreByGroupIdList,
+  getProjectByGroupId,
 } from './api/index';

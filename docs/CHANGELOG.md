@@ -1,5 +1,154 @@
 # 更新日志
 
+### [1.3.75](https://github.com/novlan1/t-comm/compare/v1.3.74...v1.3.75) (2024-04-03)
+
+
+### Features 🎉
+
+* **slash:** add slash ([aff4d20](https://github.com/novlan1/t-comm/commit/aff4d208dd43ed0d946a907df8e521aae041f411))
+
+### [1.3.74](https://github.com/novlan1/t-comm/compare/v1.3.73...v1.3.74) (2024-04-02)
+
+### [1.3.73](https://github.com/novlan1/t-comm/compare/v1.3.72...v1.3.73) (2024-04-02)
+
+
+### Features 🎉
+
+* **act-id:** add act id map ([ca26316](https://github.com/novlan1/t-comm/commit/ca263161287a1e6683a8229d2521cda79cc0575a))
+
+### [1.3.72](https://github.com/novlan1/t-comm/compare/v1.3.71...v1.3.72) (2024-04-02)
+
+
+### Features 🎉
+
+* **open-location:** 类型优化 ([0b3ab15](https://github.com/novlan1/t-comm/commit/0b3ab154f084cc1ff95f7e72393236e207c23d1d))
+
+### [1.3.71](https://github.com/novlan1/t-comm/compare/v1.3.70...v1.3.71) (2024-04-01)
+
+
+### Features 🎉
+
+* **open-location:** 支持iframe ([7d02f6e](https://github.com/novlan1/t-comm/commit/7d02f6ea25cb39820224ceaa8b59b9344ecd35d0))
+
+### [1.3.70](https://github.com/novlan1/t-comm/compare/v1.3.69...v1.3.70) (2024-03-31)
+
+
+### Features 🎉
+
+* **open-location:** export types ([72ae8c7](https://github.com/novlan1/t-comm/commit/72ae8c7c9343d971580b360e480361772e900f73))
+
+### [1.3.69](https://github.com/novlan1/t-comm/compare/v1.3.68...v1.3.69) (2024-03-31)
+
+
+### Features 🎉
+
+* **open-location:** add open location ([17647c1](https://github.com/novlan1/t-comm/commit/17647c14d418dd4b3544ea73cdf84421e1653d42))
+
+### [1.3.68](https://github.com/novlan1/t-comm/compare/v1.3.67...v1.3.68) (2024-03-30)
+
+
+### Features 🎉
+
+* **route-leave-cache:** 支持手动调用 ([ba2443d](https://github.com/novlan1/t-comm/commit/ba2443d2f4e83f7d8cf5f877b8ba13cc2aa5c7b1))
+
+### [1.3.67](https://github.com/novlan1/t-comm/compare/v1.3.66...v1.3.67) (2024-03-30)
+
+
+### Features 🎉
+
+* **before-route-leave:** add before route leave cache ([f3bd8f7](https://github.com/novlan1/t-comm/commit/f3bd8f7ae91aa1bf7681effba072484a83287c3c))
+
+### [1.3.66](https://github.com/novlan1/t-comm/compare/v1.3.65...v1.3.66) (2024-03-29)
+
+
+### Documentation 📖
+
+* update uploader docs ([bf3556a](https://github.com/novlan1/t-comm/commit/bf3556a20ef1fc6969320095f4551348308be203))
+* update uploader docs ([4025659](https://github.com/novlan1/t-comm/commit/402565907ffdd59001a92d7caf57349f4bf5457e))
+
+
+### Features 🎉
+
+* **simple-morse:** add simple morse ([7d6bab9](https://github.com/novlan1/t-comm/commit/7d6bab9f350b4d0e8624e7daf9cc8a5d6cc3f8c3))
+
+### [1.3.65](https://github.com/novlan1/t-comm/compare/v1.3.64...v1.3.65) (2024-03-29)
+
+
+### Features 🎉
+
+* **uploader:** 支持小程序上传 ([641b8f6](https://github.com/novlan1/t-comm/commit/641b8f6a76a06a1fecdd1aca349c5a9398936bb1))
+
+### [1.3.64](https://github.com/novlan1/t-comm/compare/v1.3.63...v1.3.64) (2024-03-29)
+
+
+### Features 🎉
+
+* **flat:** 补充flat类型 ([59c844b](https://github.com/novlan1/t-comm/commit/59c844b818dfa9f276fa46d8651a9c041621cf55))
+* **flatten:** update flatten type ([1db2e4f](https://github.com/novlan1/t-comm/commit/1db2e4faddb633bfaea6a0c6912b1b975820573a))
+* **launch-game:** update launch game ([55ee0c4](https://github.com/novlan1/t-comm/commit/55ee0c40c221dee342665843574cca1fad57719b))
+
+### [1.3.63](https://github.com/novlan1/t-comm/compare/v1.3.62...v1.3.63) (2024-03-15)
+
+
+### Features 🎉
+
+* **node-port:** add check valid port ([58cde23](https://github.com/novlan1/t-comm/commit/58cde230b6e97e4e688232643fcba6229ca331a6))
+
+### [1.3.62](https://github.com/novlan1/t-comm/compare/v1.3.61...v1.3.62) (2024-03-15)
+
+
+### Code Refactoring ♻️
+
+* **path-to-regexp:** update types ([4c2e60c](https://github.com/novlan1/t-comm/commit/4c2e60c32c6d9e6c205c25456c5603ec5760e042))
+
+### [1.3.61](https://github.com/novlan1/t-comm/compare/v1.3.60...v1.3.61) (2024-03-15)
+
+
+### Chore 🚀 
+
+* remove post install script ([00663a0](https://github.com/novlan1/t-comm/commit/00663a01ad939bbb235c8b7c31ed069d835b2f18))
+
+
+### Features 🎉
+
+* **path-regexp:** 导出path-to-regexp ([399050f](https://github.com/novlan1/t-comm/commit/399050fbc00eec066603deded76ef67ce2289089))
+
+### [1.3.60](https://github.com/novlan1/t-comm/compare/v1.3.59...v1.3.60) (2024-03-14)
+
+
+### Features 🎉
+
+* **version-tip:** 支持第一个大版本 ([3951428](https://github.com/novlan1/t-comm/commit/39514288467e7e68013b8c829fb68ec232c782de))
+
+### [1.3.59](https://github.com/novlan1/t-comm/compare/v1.3.58...v1.3.59) (2024-03-13)
+
+
+### Features 🎉
+
+* add tam export ([e008a8c](https://github.com/novlan1/t-comm/commit/e008a8c70383ea71e43d7e7e9859c7ca20cf6abc))
+* **version:** support first version ([6d5cbbb](https://github.com/novlan1/t-comm/commit/6d5cbbb2bd274ea0947619a8b735c746602dc225))
+
+### [1.3.58](https://github.com/novlan1/t-comm/compare/v1.3.57...v1.3.58) (2024-03-07)
+
+
+### Features 🎉
+
+* **version-tip:** support lerna changelog ([694aedc](https://github.com/novlan1/t-comm/commit/694aedcc00475da81d303dd0aec2b86bb2eb81e5))
+
+### [1.3.57](https://github.com/novlan1/t-comm/compare/v1.3.56...v1.3.57) (2024-03-06)
+
+
+### Features 🎉
+
+* **robot-msg:** add robot msg ([dc0156a](https://github.com/novlan1/t-comm/commit/dc0156a54670513d2aa7b3e2d10711e407aedfb5))
+
+### [1.3.56](https://github.com/novlan1/t-comm/compare/v1.3.55...v1.3.56) (2024-03-06)
+
+
+### Features 🎉
+
+* **router:** add match params ([3f2a38a](https://github.com/novlan1/t-comm/commit/3f2a38a58dfb1aea368a126e82b4eee0e22043ff))
+
 ### [1.3.55](https://github.com/novlan1/t-comm/compare/v1.3.54...v1.3.55) (2024-03-01)
 
 

@@ -77,8 +77,9 @@ export function launchInWX({
         console.info('[launchCore wx] res: ', res);
 
         if (res.err_msg.indexOf('ok') === -1) {
-          if (res.err_msg.indexOf('permission') > -1
-          || res.err_msg.indexOf('access_denied') > -1
+          if ((res.err_msg.indexOf('permission') > -1
+          || res.err_msg.indexOf('access_denied') > -1)
+          && qrCodeLib && dialogHandler
           ) {
             showQRcode({
               launchParams,
@@ -88,10 +89,10 @@ export function launchInWX({
               otherDialogParams,
             });
           } else {
-            reject();
+            reject(res);
           }
         } else {
-          resolve(1);
+          resolve(res);
         }
       },
     );

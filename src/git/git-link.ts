@@ -1,6 +1,7 @@
-export function rmFirstAndLastSlash(str = '') {
-  return str.replace(/^\/|\/$/g, '');
-}
+import { removeFirstAndLastSlash } from '../slash/slash';
+
+
+export const rmFirstAndLastSlash = removeFirstAndLastSlash;
 
 export function getGitCodeLink({
   domain,

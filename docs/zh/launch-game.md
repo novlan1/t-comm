@@ -100,10 +100,6 @@ launchGNGameRoom({
 | params | <code>object</code> | <p>拉起参数</p> |
 | params.roomId | <code>string</code> | <p>房间 Id</p> |
 | params.roomPwd | <code>string</code> | <p>房间 Pwd</p> |
-| [params.context] | <code>object</code> | <p>上下文，可传入组件实例 this</p> |
-| [params.qrCodeLib] | <code>object</code> | <p>qrcode</p> |
-| [params.dialogHandler] | <code>object</code> | <p>弹窗 handler</p> |
-| [params.otherDialogParams] | <code>object</code> | <p>弹窗的其他参数</p> |
 | [params.wxJSLink] | <code>string</code> | <p>wx js link</p> |
 | [params.env] | <code>object</code> | <p>环境对象</p> |
 

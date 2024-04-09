@@ -110,6 +110,7 @@ pnpm-lock.yaml
 .env.local
 
 /test.js
+/test-*.js
 repo/
 # /docs/zh
 

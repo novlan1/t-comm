@@ -1,6 +1,8 @@
 import { parseRobotMessage, genRobotMessage } from '../wecom-robot/message';
 import { timeStampFormat } from '../time/time';
 import { EMOJI_MAP } from './config';
+import type { ITestList } from './types';
+
 
 const TRIGGER_MAP = {
   MANUAL: '手动',
@@ -37,18 +39,32 @@ function getFailedTestUnits({
 }: {
   passes: number;
   tests: number;
-  testList: Array<{
-    fail: number;
-    title: string;
-  }>
+  testList: ITestList;
 }) {
-  if (passes == tests) return [];
-  if (!testList?.length) return [];
+  if (passes == tests) return {};
+  if (!testList?.length) return {};
 
-  const failedTests = testList.filter(item => !!item.fail).map(item => item.title);
+  const failedTests = testList.filter(item => !!item.fail);
+  const failTestTitles = failedTests.map(item => item.title);
 
-  if (!failedTests?.length) return [];
-  return [`失败：${failedTests.join('、')}`];
+  if (!failTestTitles?.length) return {};
+  return {
+    errorTitle: `失败：${failTestTitles.join('、')}`,
+    errorDetail: getFailedDetail(failedTests),
+  };
+}
+
+function getFailedDetail(failedTests: Array<{
+  err: {
+    estack?: string;
+  };
+  title: string;
+}>) {
+  return failedTests.map((item) => {
+    const errMsg = (item.err.estack || '').replace(/[\n]+/g, '; ');
+
+    return `${item.title}: ${errMsg}`;
+  }).filter(item => item);
 }
 
 
@@ -70,10 +86,7 @@ export function getE2ETestRobotMessage(data: {
     passes: number;
     link: string;
 
-    testList: Array<{
-      fail: number;
-      title: string;
-    }>
+    testList: ITestList;
   }>
 }, notificationList = []) {
   const {
@@ -92,15 +105,16 @@ export function getE2ETestRobotMessage(data: {
 
   const time = timeStampFormat(new Date(start).getTime(), 'MM-dd hh:mm:ss');
   const title = `>${hasFailed ? EMOJI_MAP.FAIL : EMOJI_MAP.PASS}【自动化测试】`;
-  const messageList = [
+  const errorDetailList: Array<Array<string>> = [];
+  const messageList: any = [
     [
       `${title}${parseRobotMessage({
         content: `${name}-${comment}`,
         link: projectLink,
       })}`,
       {
-        content: `${tests}/${passes}`,
-        label: '全部/成功',
+        content: `${passes}/${tests}`,
+        label: '成功/全部',
       },
       {
         content: `${Math.ceil(duration / 1000)}s`,
@@ -130,18 +144,26 @@ export function getE2ETestRobotMessage(data: {
         link,
       });
 
+      const failedInfo = getFailedTestUnits({
+        testList,
+        passes,
+        tests,
+      });
+      if (failedInfo.errorDetail?.length) {
+        errorDetailList.push(['\n']);
+        errorDetailList.push(failedInfo.errorDetail);
+      }
+
       return [
         `- ${fileName}`,
-        `${tests}/${passes}`,
-        ...getFailedTestUnits({
-          testList,
-          passes,
-          tests,
-        }),
+        `${passes}/${tests}`,
+        failedInfo?.errorTitle || '',
       ];
     });
 
   messageList.push(...fileMessageList);
+  messageList.push(...['\n', '\n']);
+  messageList.push(...errorDetailList);
 
   return {
     message: genRobotMessage(messageList),

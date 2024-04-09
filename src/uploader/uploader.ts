@@ -44,9 +44,16 @@ export class UploadManager {
     return new Promise((resolve, reject) => {
       // 后台是两小时过期，这里稍微减去5分钟
       this.isRequesting = true;
-      requestHashCode(this.options.requestHashUrl).then((response) => {
+      let promise: Promise<any>;
+      if (typeof this.options.requestHashUrl === 'function') {
+        promise = this.options.requestHashUrl();
+      } else {
+        promise = requestHashCode(this.options.requestHashUrl);
+      }
+
+      promise.then((response) => {
         this.isRequesting = false;
-        this.hash = response.hash;
+        this.hash = response.hash || response._hash;
         this.timestamp = response.timestamp;
 
         resolve(this.hash);
@@ -109,6 +116,13 @@ export class UploadManager {
 
 /**
  * 上传文件
+ *
+ * 上传的本质：
+ *
+ * 1. 小程序上传文件是先用 chooseFile 获取一个文件，可以得到
+ * 一个临时路径，然后用 uploadFile 上传该临时路径
+ *
+ * 2. H5 是 input 获取文件，然后用 FormData 上传 File 对象
  * @param {File} file 文件
  * @returns {Promise<{url: string}>} 上传结果
  *

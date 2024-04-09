@@ -18,14 +18,45 @@ export function parseChangeLog({
   changelogStr: string,
   targetVersion: string,
 }) {
+  // 非大版本（1.0.0，2.0.0等），比如 1.1.1
+  // 不是第一个版本
   let currentVersion = changelogStr.match(new RegExp(
     `(?<=### \\[${targetVersion}\\].*\n).*?(?=\n##+ \\[?\\d+.\\d+.\\d+)`,
     's',
   ));
 
+  // 大版本
+  // 不是第一个版本
   if (!currentVersion || !currentVersion[0]) {
     currentVersion = changelogStr.match(new RegExp(
       `(?<=## \\[${targetVersion}\\].*\n).*?(?=\n##+ \\[?\\d+.\\d+.\\d+)`,
+      's',
+    ));
+  }
+
+  // changeLog 的另一种形式，lerna 生成的
+  if (!currentVersion || !currentVersion[0]) {
+    changelogStr = changelogStr.replace(/<\/?small>/g, '');
+    currentVersion = changelogStr.match(new RegExp(
+      `(?<=## ${targetVersion}.*\n).*?(?=\n##+ ?\\d+.\\d+.\\d+)`,
+      's',
+    ));
+  }
+
+  // 非大版本
+  // 第一个版本
+  if (!currentVersion || !currentVersion[0]) {
+    currentVersion = changelogStr.match(new RegExp(
+      `(?<=### ${targetVersion}.*\n).*`,
+      's',
+    ));
+  }
+
+  // 大版本
+  // 第一个版本
+  if (!currentVersion || !currentVersion[0]) {
+    currentVersion = changelogStr.match(new RegExp(
+      `(?<=## ${targetVersion}.*\n).*`,
       's',
     ));
   }
@@ -124,7 +155,11 @@ function generatePublishInfo({
  *   appInfo,
  * });
  */
-export function genVersionTip({ readmeFilePath, appInfo, showNpmLink = false }: {
+export function genVersionTip({
+  readmeFilePath,
+  appInfo,
+  showNpmLink = false,
+}: {
   showNpmLink?: boolean
   readmeFilePath: string
   appInfo: IAppInfo
