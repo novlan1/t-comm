@@ -136,12 +136,17 @@ export async function genCustomEventImg({
 
   const tableData = getMaxAndMinIdx(parsedData);
 
-  const img = createCanvasTable({
-    data: tableData,
-    headers: getTableHeaders(tableData, tableHeaderMap),
-    title: `拉起游戏数据汇总 ${headerDate}`,
-    cellWidthList: Object.values(tableHeaderMap).map(item => (item as any).tableWidth || 65),
-  });
+  let img = '';
+  try {
+    img = createCanvasTable({
+      data: tableData,
+      headers: getTableHeaders(tableData, tableHeaderMap),
+      title: `拉起游戏数据汇总 ${headerDate}`,
+      cellWidthList: Object.values(tableHeaderMap).map(item => (item as any).tableWidth || 65),
+    });
+  } catch (err) {
+    console.log('[genCustomEventImg.createCanvasTable.error]', err);
+  }
 
   return img;
 }

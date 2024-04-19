@@ -39,7 +39,7 @@ import {
 **示例**
 
 ```typescript
-getBranch()
+getGitCurBranch()
 
 // => master
 ```
@@ -66,7 +66,7 @@ getBranch()
 **示例**
 
 ```ts
-getGitCommitInfo()
+getGitCommitMessage()
 // '优化一部分文档'
 ```
 <a name="getGitCommitInfo"></a>

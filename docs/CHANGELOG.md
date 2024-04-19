@@ -1,5 +1,52 @@
 # 更新日志
 
+### [1.3.80](https://github.com/novlan1/t-comm/compare/v1.3.79...v1.3.80) (2024-04-16)
+
+
+### Features 🎉
+
+* **mp-ci:** add update mp-sheet v0 ([04481f2](https://github.com/novlan1/t-comm/commit/04481f2e6d378642f1c21208bc0de8f4a6e82341))
+
+### [1.3.79](https://github.com/novlan1/t-comm/compare/v1.3.78...v1.3.79) (2024-04-16)
+
+
+### Features 🎉
+
+* **mp-ci:** add qq-mp result update sheet ([f908f2f](https://github.com/novlan1/t-comm/commit/f908f2ffb884805e5867afd926aef4924da89aa2))
+
+
+### Chore 🚀 
+
+* update test script ([6988ce7](https://github.com/novlan1/t-comm/commit/6988ce79cacef2654395dc095d679ade8d637055))
+
+### [1.3.78](https://github.com/novlan1/t-comm/compare/v1.3.77...v1.3.78) (2024-04-16)
+
+
+### Features 🎉
+
+* **report-rd-platform:** 支持多个腾讯云项目 ([182293b](https://github.com/novlan1/t-comm/commit/182293b83ceff8fd9a49e3dbf825afde8f9c21d4))
+* **tam:** canvas报错后依然返回数据 ([2533704](https://github.com/novlan1/t-comm/commit/25337044cfdc7cbc9a9934327fac7056aebea921))
+
+### [1.3.77](https://github.com/novlan1/t-comm/compare/v1.3.76...v1.3.77) (2024-04-15)
+
+
+### Features 🎉
+
+* **open-location:** add get open locaiton href ([1c3f9ea](https://github.com/novlan1/t-comm/commit/1c3f9ea276d455dee34fe9bdf8e96dcb0f00c4a5))
+* **pipeline:** 支持传入overTimeConfigList ([f59c271](https://github.com/novlan1/t-comm/commit/f59c27196de8f7b3620fa1013b418faaf1a7f948))
+
+### [1.3.76](https://github.com/novlan1/t-comm/compare/v1.3.75...v1.3.76) (2024-04-10)
+
+
+### Documentation 📖
+
+* update comment ([9a26b8e](https://github.com/novlan1/t-comm/commit/9a26b8e8947d76d1848e68ee747ef4d4759f460e))
+
+
+### Features 🎉
+
+* **mp:** add saveMpImage ([be2841b](https://github.com/novlan1/t-comm/commit/be2841b82d9e27b6f4bfc356089ca3a0a080144d))
+
 ### [1.3.75](https://github.com/novlan1/t-comm/compare/v1.3.74...v1.3.75) (2024-04-03)
 
 

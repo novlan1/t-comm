@@ -7,7 +7,7 @@ import type { IGitCommitInfo } from './types';
  *
  * @example
  *
- * getBranch()
+ * getGitCurBranch()
  *
  * // => master
  */
@@ -25,7 +25,7 @@ export function getGitCurBranch(root?: string) {
  *
  * @example
  * ```ts
- * getGitCommitInfo()
+ * getGitCommitMessage()
  * // '优化一部分文档'
  * ```
  */

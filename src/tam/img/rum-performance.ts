@@ -244,12 +244,17 @@ export async function genRUMPerfImgAndSend({
   if (!tableData.length) return;
   const len = Object.keys(tableData[0]).length;
 
-  const img = createCanvasTable({
-    data: tableData,
-    headers: getTableHeaders(Object.keys(tableData[0]) as any),
-    title,
-    cellWidthList: [95, ...Array.from({ length: len }).map(() => 65)],
-  });
+  let img = '';
+  try {
+    img = createCanvasTable({
+      data: tableData,
+      headers: getTableHeaders(Object.keys(tableData[0]) as any),
+      title,
+      cellWidthList: [95, ...Array.from({ length: len }).map(() => 65)],
+    });
+  } catch (err) {
+    console.error('[genRUMPerfImgAndSend.createCanvasTable.err]', err);
+  }
 
   if (!img || !chatId) {
     return;

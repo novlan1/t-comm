@@ -15,16 +15,18 @@ async function main() {
       openId: OPEN_ID,
 
       bookId: '300000000$HDrklTrCLcjw',
+      // bookId: '300000000$HXFJfWyuynWX',
       requests: [
         {
           // addSheetRequest: {
           //   title: 'test',
           // },
           updateRangeRequest: {
-            sheetId: 'hjvlvz',
+            sheetId: 'ndem2e',
+            // sheetId: 'MjLh7J',
             gridData: {
-              startRow: 0,
-              startColumn: 0,
+              startRow: 8,
+              startColumn: 4,
               rows: [
                 {
                   values: [

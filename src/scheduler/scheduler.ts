@@ -1,6 +1,8 @@
+import type { IRequest } from './types';
+
 
 class Scheduler {
-  pendingState: Array<Function>;
+  pendingState: Array<IRequest>;
   doingJobs: number;
   maxConcurrency: number;
 
@@ -39,34 +41,48 @@ class Scheduler {
     this.maxConcurrency = maxConcurrency;
   }
 
-  add = (promiseCreator: any) => new Promise((resolve, reject) => {
+  add(promiseCreator: IRequest): Promise<any> {
+    return new Promise((resolve, reject) => {
     // 关键是给传过来的函数加个回调属性，当resolved的时候，就能返回对应的结果了。
-    promiseCreator.resolve = resolve;
-    promiseCreator.reject = reject;
-    this.pendingState.push(promiseCreator);
-    this.doJob();
-  });
+      promiseCreator.resolve = resolve;
+      promiseCreator.reject = reject;
+      this.pendingState.push(promiseCreator);
+      this.doJob();
+    });
+  }
+
+  unshift(promiseCreator: IRequest): Promise<any> {
+    return new Promise((resolve, reject) => {
+      // 关键是给传过来的函数加个回调属性，当resolved的时候，就能返回对应的结果了。
+      promiseCreator.resolve = resolve;
+      promiseCreator.reject = reject;
+      this.pendingState.unshift(promiseCreator);
+      this.doJob();
+    });
+  }
+
 
   doJob = () => {
-    if (this.doingJobs < 2) {
-      if (this.pendingState.length) {
-        this.doingJobs += 1;
-        const job = this.pendingState.shift();
+    if (this.doingJobs < this.maxConcurrency && this.pendingState.length) {
+      this.doingJobs += 1;
+      const job = this.pendingState.shift();
 
-        job?.()
-          .then((res: any) => {
-          // @ts-ignore
-            job.resolve(res);
-          })
-          .catch((e: any) => {
-          // @ts-ignore
-            job.reject(e);
-          })
-          .finally(() => {
-            this.doingJobs -= 1;
-            this.doJob();
-          });
+      if (!job) {
+        return;
       }
+
+      job()
+        .then((res: any) => {
+          this.doingJobs -= 1;
+          job.resolve?.(res);
+          this.doJob();
+        })
+        .catch((e: any) => {
+          this.doingJobs -= 1;
+          job.reject?.(e);
+          this.doJob();
+        })
+        .finally(() => {});
     }
   };
 }

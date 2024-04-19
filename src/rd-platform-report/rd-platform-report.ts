@@ -34,9 +34,11 @@ export async function reportToRdPlatform({
 }) {
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   const axios = require('axios');
+  const url = host.includes('localhost:') ? `${host}/performance-report` : `${host}/rd-platform-cgi/performance-report`;
+
   const res = await axios({
     method: 'POST',
-    url: `${host}/rd-platform-cgi/performance-report`,
+    url,
     data: {
       data,
       type,

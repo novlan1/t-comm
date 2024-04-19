@@ -26,3 +26,8 @@ export type ScoreInfoType = {
   CreateTime: string
   [k: string]: string | number
 };
+
+export interface IRumSecretItem {
+  rumSecretId: string;
+  rumSecretKey: string;
+}

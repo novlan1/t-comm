@@ -17,7 +17,9 @@ async function main() {
       openId: OPEN_ID,
 
       bookId: '300000000$HDrklTrCLcjw',
-      range: 'BB08J2!B16:C16',
+      // bookId: '300000000$HXFJfWyuynWX',
+      // range: 'BB08J2!B16:C16',
+      range: 'ndem2e!B16:C16',
       values: [['123', '123123']],
     });
     console.log('result', result);

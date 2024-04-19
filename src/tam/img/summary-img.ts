@@ -5,9 +5,10 @@ import { parseSummaryScore, getTableHeaders } from '../parse';
 import { compareTwoList, getMaxAndMinIdx } from '../../base/list';
 import { createCanvasTable } from '../../canvas/table';
 import { timeStampFormat } from '../../time/time';
+
 import { batchSendWxRobotBase64Img } from '../../wecom-robot/batch-send';
 import { saveJsonToLog } from '../../node/fs-util';
-import type { SecretInfoType } from '../types';
+import type { SecretInfoType, IRumSecretItem } from '../types';
 
 
 async function getRUMScoreList({
@@ -16,7 +17,7 @@ async function getRUMScoreList({
   parsedPreDate,
   date,
 }: {
-  secretInfo: SecretInfoType;
+  secretInfo: Pick<SecretInfoType, 'rumSecretId' | 'rumSecretKey'>;
   parsedDate: string;
   parsedPreDate: string;
   date: string | number | Date;
@@ -106,13 +107,19 @@ export async function genSummaryData({
   ignoreProjectIdList = [],
 
   tableHeaderMap = {},
+
+  rumSecretList = [],
 }: {
   date: number | string | Date;
   groupIdList: Array<number>;
   secretInfo: SecretInfoType;
+
   extraDataMap: any;
   ignoreProjectIdList: Array<string | number>;
+
   tableHeaderMap: Record<string, any>;
+
+  rumSecretList?: Array<IRumSecretItem>;
 }) {
   const parsedDate = timeStampFormat(new Date(date).getTime(), 'yyyyMMdd');
   const headerDate = timeStampFormat(new Date(date).getTime(), 'yyyy-MM-dd');
@@ -125,12 +132,6 @@ export async function genSummaryData({
   if (!sortKeyList.length) {
     return;
   }
-  const { rumScores, preRumScores } = await getRUMScoreList({
-    secretInfo,
-    parsedDate,
-    parsedPreDate,
-    date,
-  });
 
   const data = await getTAMSummaryScoreByGroupIdList({
     date: parsedDate,
@@ -144,12 +145,28 @@ export async function genSummaryData({
     secretInfo,
   });
 
-  if (rumScores) {
-    data.data.push(...rumScores);
+  console.log('[genSummaryData.rumSecretList]', rumSecretList);
+
+  if (rumSecretList?.length) {
+    for (const item of rumSecretList) {
+      const { rumScores, preRumScores } = await getRUMScoreList({
+        secretInfo: item,
+        parsedDate,
+        parsedPreDate,
+        date,
+      });
+
+      console.log('[genSummaryData.rumScores?.length]', rumScores?.length);
+
+      if (rumScores) {
+        data.data.push(...rumScores);
+      }
+      if (preRumScores) {
+        preData.data.push(...preRumScores);
+      }
+    }
   }
-  if (preRumScores) {
-    preData.data.push(...preRumScores);
-  }
+
 
   const parsedData = parseSummaryScore({
     data: data.data,
@@ -174,12 +191,18 @@ export async function genSummaryData({
 
   saveJsonToLog(tableData, 'summary.table-data.json');
 
-  const img = createCanvasTable({
-    data: tableData,
-    headers: getTableHeaders(tableData, tableHeaderMap),
-    title: `TAM日报 ${headerDate}`,
-    cellWidthList: Object.values(tableHeaderMap).map(item => (item as any).tableWidth || 65),
-  });
+  let img = '';
+  try {
+    img = createCanvasTable({
+      data: tableData,
+      headers: getTableHeaders(tableData, tableHeaderMap),
+      title: `TAM日报 ${headerDate}`,
+      cellWidthList: Object.values(tableHeaderMap).map(item => (item as any).tableWidth || 65),
+    });
+  } catch (err) {
+    console.log('[genSummaryData.createCanvasTable.error]', err);
+  }
+
 
   return {
     img,
@@ -248,6 +271,8 @@ export async function genSummaryDataAndSendRobot({
 
   webhookUrl,
   chatId,
+
+  rumSecretList = [],
 }: {
   date: number;
   groupIdList: Array<number>;
@@ -260,7 +285,16 @@ export async function genSummaryDataAndSendRobot({
 
   webhookUrl: string;
   chatId: string;
+
+  rumSecretList?: Array<IRumSecretItem>;
 }) {
+  if (!rumSecretList.length && secretInfo.rumSecretId && secretInfo.rumSecretKey) {
+    rumSecretList = [{
+      rumSecretId: secretInfo.rumSecretId,
+      rumSecretKey: secretInfo.rumSecretKey,
+    }];
+  }
+
   const result = await genSummaryData({
     date,
     groupIdList,
@@ -270,13 +304,15 @@ export async function genSummaryDataAndSendRobot({
     ignoreProjectIdList,
 
     tableHeaderMap,
+
+    rumSecretList,
   });
 
   if (!result) return;
   const { img, data } = result;
 
   if (!img || !chatId) {
-    return;
+    return data;
   }
 
   await batchSendWxRobotBase64Img({

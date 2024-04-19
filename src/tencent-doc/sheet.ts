@@ -38,7 +38,7 @@ export async function updateTencentSheetImage({
   insertImages,
 }: ISecretInfo & {
   bookId: string;
-  insertImages: Array<string>
+  insertImages: any;
 }) {
   const result = await axios({
     method: 'POST',

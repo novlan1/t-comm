@@ -12,6 +12,7 @@ import type { OpenLocation } from './types';
  *   name,
  *   address,
  * });
+ * ```
  */
 export function openLocationInMp({
   lat = '',
@@ -65,7 +66,13 @@ export function openLocationInH5({
   route,
   context,
 }: OpenLocation): Promise<number> {
-  const href =  `https://apis.map.qq.com/uri/v1/marker?marker=coord:${lat},${lng};title:${name};addr:${address}&referer=tip`;
+  const href = getOpenLocationUrl({
+    lat,
+    lng,
+    name,
+    address,
+  });
+
   if (route && context) {
     context.$router.push({
       path: route,
@@ -75,7 +82,20 @@ export function openLocationInH5({
     });
     return Promise.resolve(1);
   }
+
   window.location.href = href;
 
   return Promise.resolve(1);
+}
+
+export function getOpenLocationUrl({
+  lat = '',
+  lng = '',
+  name = '',
+  address = '',
+
+}: Pick<OpenLocation, 'lat' | 'lng' | 'name' | 'address'>) {
+  const href =  `https://apis.map.qq.com/uri/v1/marker?marker=coord:${lat},${lng};title:${name};addr:${address}&referer=tip`;
+
+  return href;
 }

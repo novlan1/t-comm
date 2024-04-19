@@ -34,6 +34,7 @@ openLocationInMp({
   name,
   address,
 });
+```
 <a name="openLocationInH5"></a>
 
 ## `openLocationInH5(param)` 

@@ -26,10 +26,10 @@ const OVER_TIME_CONFIG_LIST = [
     label: '20分钟',
     value: 20 * 60 * 1000,
   },
-  {
-    label: '10分钟',
-    value: 10 * 60 * 1000,
-  },
+  // {
+  //   label: '10分钟',
+  //   value: 10 * 60 * 1000,
+  // },
   // for test
   // {
   //   label: '1分钟',
@@ -177,7 +177,11 @@ export async function getAllPipelineList(
 }
 
 
-function findRunningTooLongPipelines(list: Array<any>, time: number, maxTime: number) {
+function findRunningTooLongPipelines(
+  list: Array<any>,
+  time: number,
+  maxTime: number,
+) {
   const res = list
     .filter(item => item.latestBuildStatus === 'RUNNING')
     .filter((item) => {
@@ -189,7 +193,12 @@ function findRunningTooLongPipelines(list: Array<any>, time: number, maxTime: nu
 }
 
 
-function genRobotMessage(dataList: Array<any>, host: string, projectId: string) {
+function genRobotMessage(
+  dataList: Array<any>,
+  host: string,
+  projectId: string,
+  overTimeConfigList: typeof OVER_TIME_CONFIG_LIST,
+) {
   const list = [
     `【流水线执行时间过长监控】${timeStampFormat(Date.now(), 'yyyy-MM-dd hh:mm:ss')}<@guowangyang>`,
   ];
@@ -200,8 +209,8 @@ function genRobotMessage(dataList: Array<any>, host: string, projectId: string) 
   const overtimePipelines: Array<any> = [];
 
   // eslint-disable-next-line @typescript-eslint/prefer-for-of
-  for (let i = 0;i < OVER_TIME_CONFIG_LIST.length;i++) {
-    const item = OVER_TIME_CONFIG_LIST[i];
+  for (let i = 0;i < overTimeConfigList.length;i++) {
+    const item = overTimeConfigList[i];
     const pipelines = findRunningTooLongPipelines(dataList, item.value, maxTime);
     overtimePipelines.push(...pipelines);
 
@@ -237,15 +246,17 @@ export async function sendOverTimePipelineMessage({
   pipelineHost,
   webhookUrl,
   chatId,
+  overTimeConfigList = OVER_TIME_CONFIG_LIST,
 }: {
   params: any;
   pipelineHost: string;
   webhookUrl: string;
   chatId: Array<string>;
+  overTimeConfigList?: Array<{label: string, value: number}>;
 }) {
   const pipelineList = await getAllPipelineList(params);
 
-  const res = genRobotMessage(pipelineList, pipelineHost, params.projectId);
+  const res = genRobotMessage(pipelineList, pipelineHost, params.projectId, overTimeConfigList);
   let { message } = res;
   const { overtimePipelines } = res;
 
