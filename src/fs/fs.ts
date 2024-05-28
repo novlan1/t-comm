@@ -48,3 +48,9 @@ export function readFileSync(file: string, isJson = false) {
 
   return result;
 }
+
+
+export function isDirectory(filePath = '') {
+  const stat = fs.lstatSync(filePath);
+  return stat.isDirectory();
+}

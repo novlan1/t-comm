@@ -1,5 +1,20 @@
 import axios from 'axios';
 
+
+/**
+ * 获取 i18n token
+ *
+ * @export
+ * @param {string} appId appId
+ * @param {string} appKey appKey
+ * @returns {Promise<string>} token
+ * @example
+ * ```ts
+ * getI18nToken('appId', 'appKey').then(token => {
+ *   console.log('token', token)
+ * })
+ * ```
+ */
 export function getI18nToken(appId: string, appKey: string) {
   return new Promise((resolve, reject) => {
     axios({

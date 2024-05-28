@@ -17,13 +17,19 @@ import { instance } from './helper';
 export function getOneProjectDetail({
   projectName,
   privateToken,
+  baseUrl,
 }: {
   projectName: string;
   privateToken: string;
+  baseUrl?: string;
 }) {
+  let url = `/api/v3/projects/${encodeURIComponent(projectName)}`;
+  if (baseUrl) {
+    url = `${baseUrl}${url}`;
+  }
   return new Promise((resolve, reject) => {
     instance({
-      url: `/projects/${encodeURIComponent(projectName)}`,
+      url,
       method: 'GET',
       headers: {
         'PRIVATE-TOKEN': privateToken,

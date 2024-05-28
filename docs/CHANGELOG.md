@@ -1,5 +1,92 @@
 # 更新日志
 
+### [1.3.90](https://github.com/novlan1/t-comm/compare/v1.3.89...v1.3.90) (2024-05-23)
+
+
+### Features 🎉
+
+* add isDirectory ([b267126](https://github.com/novlan1/t-comm/commit/b267126b14933e40f53b75d99b13555b80dc7d55))
+* **git:** add getAllGitRepo ([7b8fb82](https://github.com/novlan1/t-comm/commit/7b8fb82a980004c19eef777ff8bba4b12405b542))
+* **git:** add reclone and transformGitToSSH ([28a88bc](https://github.com/novlan1/t-comm/commit/28a88bca071f5ceb86ea14780f0254062a595724))
+
+### [1.3.89](https://github.com/novlan1/t-comm/compare/v1.3.88...v1.3.89) (2024-05-14)
+
+
+### Features 🎉
+
+* 优化daily-merge ([d47cb37](https://github.com/novlan1/t-comm/commit/d47cb3787e374b2f5c15c831544f998480c346bf))
+* **ast:** 支持保留之前的引用 ([90ace6d](https://github.com/novlan1/t-comm/commit/90ace6da1202f19296da86b824600f5456aa28fe))
+* **ast:** 支持空导入 ([fdf4491](https://github.com/novlan1/t-comm/commit/fdf4491d7a8a9b6ed235816a2019e8baa518b47d))
+
+### [1.3.88](https://github.com/novlan1/t-comm/compare/v1.3.87...v1.3.88) (2024-05-06)
+
+
+### Features 🎉
+
+* **ast:** 支持source为数组 ([4e76a6a](https://github.com/novlan1/t-comm/commit/4e76a6ac5f4ee1e6bff6dc3ba6741cf457430764))
+
+### [1.3.87](https://github.com/novlan1/t-comm/compare/v1.3.86...v1.3.87) (2024-05-06)
+
+
+### Features 🎉
+
+* add export ast ([db8e3b0](https://github.com/novlan1/t-comm/commit/db8e3b0b3555614b7e314a200b073972f378e92e))
+
+
+### Bug Fixes 🐞
+
+* **ast:** 修复默认导出的替换 ([51e3cd2](https://github.com/novlan1/t-comm/commit/51e3cd2746d127c43dac3600782f5fc91a967088))
+
+### [1.3.86](https://github.com/novlan1/t-comm/compare/v1.3.85...v1.3.86) (2024-05-04)
+
+
+### Features 🎉
+
+* **ast:** add replace dependencies ([d9a36e4](https://github.com/novlan1/t-comm/commit/d9a36e4544f61525311f717d7449a318f513372e))
+
+### [1.3.85](https://github.com/novlan1/t-comm/compare/v1.3.84...v1.3.85) (2024-04-20)
+
+
+### Features 🎉
+
+* **slash:** add remove last slash ([bc5f125](https://github.com/novlan1/t-comm/commit/bc5f1253e8c6a710f2f0576505a00735d7befc15))
+
+### [1.3.84](https://github.com/novlan1/t-comm/compare/v1.3.82...v1.3.84) (2024-04-20)
+
+
+### Features 🎉
+
+* **v-console:** 支持showConsole事件 ([b6fe6c1](https://github.com/novlan1/t-comm/commit/b6fe6c10e7fcb6fbc95bfca902623ba0d076315c))
+
+### [1.3.82](https://github.com/novlan1/t-comm/compare/v1.3.81...v1.3.82) (2024-04-19)
+
+
+### Features 🎉
+
+* **v-console:** 插件显示的时候重新渲染 ([0bd9a40](https://github.com/novlan1/t-comm/commit/0bd9a4010dde479c5d3c2b908b568c72848f6101))
+
+### [1.3.81](https://github.com/novlan1/t-comm/compare/v1.3.80...v1.3.81) (2024-04-19)
+
+
+### Chore 🚀 
+
+* lint ([81710e7](https://github.com/novlan1/t-comm/commit/81710e7606c58d57055c75b7ea81b3b50d39a4f3))
+
+
+### Documentation 📖
+
+* **git:** update docs ([7c3d86e](https://github.com/novlan1/t-comm/commit/7c3d86e08ab7b1b503d3db0e9d2b75e706a63290))
+
+
+### Features 🎉
+
+* **scheduler:** 支持unshift插入请求 ([c97ef4e](https://github.com/novlan1/t-comm/commit/c97ef4e13942a6aacfe87a73d8c7577c05a1348e))
+
+
+### Bug Fixes 🐞
+
+* **debug:** 修复vconsole ([7cb3723](https://github.com/novlan1/t-comm/commit/7cb37232d2f5a8c82fca23b2edcbbd9ecc6b4400))
+
 ### [1.3.80](https://github.com/novlan1/t-comm/compare/v1.3.79...v1.3.80) (2024-04-16)
 
 

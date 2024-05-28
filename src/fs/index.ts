@@ -1,1 +1,1 @@
-export { writeFileSync, readFileSync } from './fs';
+export { writeFileSync, readFileSync, isDirectory } from './fs';

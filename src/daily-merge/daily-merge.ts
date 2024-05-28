@@ -1,4 +1,6 @@
 import { getBranchesByProjectName } from '../tgit/branch';
+import { getOneProjectDetail } from '../tgit/project';
+
 import { execCommand } from '../node/node-command';
 import { batchSendWxRobotMarkdown } from '../wecom-robot/batch-send';
 import { getGitCommitInfo } from '../git/git';
@@ -163,8 +165,19 @@ async function sendSendMsg(content: string, webhookUrl: string) {
 
 /**
  * 每日合并
- * @param {object} param 参数
  *
+ * @export
+ * @async
+ * @param {object} param0 参数
+ * @param {string} param0.webhookUrl 机器人地址
+ * @param {string} param0.appName 项目名称
+ * @param {string} param0.devRoot 项目根路径
+ * @param {string} param0.baseUrl 基础请求 url
+ * @param {string} param0.repoName 仓库名称
+ * @param {string} param0.privateToken 密钥
+ * @param {boolean} [param0.isDryRun=false] 是否演练
+ * @param {string} [param0.mainBranch='develop'] 主分支
+ * @returns {*}
  * @example
  *
  * ```ts
@@ -185,7 +198,6 @@ async function sendSendMsg(content: string, webhookUrl: string) {
 export async function dailyMerge({
   webhookUrl,
   appName,
-  projectId,
   devRoot,
 
   baseUrl,
@@ -197,7 +209,6 @@ export async function dailyMerge({
 }: {
   webhookUrl: string;
   appName: string;
-  projectId: string | number;
   devRoot: string;
 
   baseUrl: string;
@@ -257,6 +268,14 @@ export async function dailyMerge({
     return !all.includes(branch);
   });
 
+  const projectDetail: any = await getOneProjectDetail({
+    baseUrl,
+    projectName: repoName,
+    privateToken,
+  });
+  const projectId = projectDetail.id || '';
+
+  console.log('[projectDetail]', projectDetail);
 
   const content = getMessageContent({
     appName,
@@ -273,6 +292,11 @@ export async function dailyMerge({
   console.log('[noMergeBranches]', JSON.stringify(noMergeBranches));
 
   console.log('[robot message]', content);
+
+  if (!webhookUrl) {
+    console.log('[No webhookUrl]');
+    return;
+  }
   await sendSendMsg(content, webhookUrl);
 
   console.log('<===== END ');

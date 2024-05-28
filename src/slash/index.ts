@@ -1,1 +1,1 @@
-export { removeFirstAndLastSlash, removeFirstSlash } from './slash';
+export { removeFirstAndLastSlash, removeFirstSlash, removeLastSlash } from './slash';

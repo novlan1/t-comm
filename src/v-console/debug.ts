@@ -1,5 +1,4 @@
-import { loadVConsole } from './v-console'
-import { isPromise } from '../validate/type'
+import { loadVConsole } from './v-console';
 
 
 /**
@@ -32,18 +31,17 @@ export function genVConsole({
   vConsoleConfig?: Record<string, any>;
   asyncConfirmFunc?: Function;
 }) {
-
   if (hide) {
     return;
   }
 
   if (immediateShow) {
-    loadVConsole(vConsoleConfig)
+    loadVConsole(vConsoleConfig);
   }
 
-  if (isPromise(asyncConfirmFunc)) {
+  if (typeof asyncConfirmFunc === 'function') {
     asyncConfirmFunc?.()?.then(() => {
-      loadVConsole(vConsoleConfig)
-    })
+      loadVConsole(vConsoleConfig);
+    });
   }
 }

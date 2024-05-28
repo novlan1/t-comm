@@ -1,4 +1,6 @@
+export { getAllGitRepo } from './all-git-repo';
 export { rmFirstAndLastSlash, getGitCodeLink, getGitMRLink } from './git-link';
+
 export {
   getGitCurBranch,
   getGitCommitInfo,
@@ -9,3 +11,4 @@ export {
   getGitTagTime,
   getGitAuthor,
 } from './git';
+export { transformGitToSSH } from './ssh';

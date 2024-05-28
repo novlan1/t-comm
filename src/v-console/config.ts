@@ -9,6 +9,11 @@ export const V_CONSOLE_DOM = {
   URL_INPUT_ID: 'vConsolePluginInput',
   URL_JUMP_BUTTON: 'vConsolePluginUrlJumpButton',
   GO_BACK_BUTTON: 'vConsolePluginGoBackButton',
+
+  PLUGIN_NAME_PREFIX: '__vc_plug_',
+  // 需要小写，作为插件 id
+  PLUGIN_VERSION_NAME: 'version_performance',
+  PLUGIN_SIMPLE_VERSION_NAME: 'simple_version',
 } as const;
 
 export const EMPTY_LINE = `<div class="${V_CONSOLE_DOM.LINE}"> </div>`;

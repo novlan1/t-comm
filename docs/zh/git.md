@@ -4,26 +4,60 @@
 
 ```ts
 import {
+  getAllGitRepo,
   getGitCurBranch,
   getGitCommitMessage,
   getGitCommitInfo,
   getGitLastTag,
   getGitCommitsBeforeTag,
-  getGitAuthor
+  getGitAuthor,
+  reCloneGitRemote
 } from 't-comm';
 
 // or
 
 import {
+  getAllGitRepo,
   getGitCurBranch,
   getGitCommitMessage,
   getGitCommitInfo,
   getGitLastTag,
   getGitCommitsBeforeTag,
-  getGitAuthor
+  getGitAuthor,
+  reCloneGitRemote
 } from 't-comm/lib/git/index';
 ```
 
+
+## `getAllGitRepo(root)` 
+
+
+**描述**：<p>获取所有 git 仓库</p>
+
+**参数**：
+
+
+| 参数名 | 类型 | 描述 |
+| --- | --- | --- |
+| root | <code>string</code> | <p>根路径</p> |
+
+**返回**: <code>array</code><br>
+
+<p>路径列表</p>
+
+**示例**
+
+```ts
+getAllGitRepo('/root/yang');
+
+[
+  {
+    root: '/root',
+    origin: 'git@git.address',
+  }
+]
+```
+<a name="getGitCurBranch"></a>
 
 ## `getGitCurBranch()` 
 
@@ -148,4 +182,22 @@ getGitCommitInfo()
 | isPriorGit | <p>是否优先使用git用户信息</p> |
 
 **返回**: <p>user</p>
+
+<a name="reCloneGitRemote"></a>
+
+## `reCloneGitRemote(list)` 
+
+
+**描述**：<p>根据配置表，重新 clone 仓库</p>
+
+**参数**：
+
+
+| 参数名 | 类型 | 描述 |
+| --- | --- | --- |
+| list | <code>Array&lt;item&gt;</code> | <p>列表</p> |
+| item.root | <code>string</code> | <p>路径</p> |
+| item.origin | <code>string</code> | <p>origin</p> |
+
+
 

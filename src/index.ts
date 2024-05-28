@@ -1,3 +1,4 @@
+export * from './ast';
 export * from './base';
 export * from './bite';
 export * from './build-upload';

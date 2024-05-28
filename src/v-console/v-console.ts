@@ -54,6 +54,10 @@ function initVConsole(options: Record<string, any>, plugins: Array<Function>) {
     id: 'vConsolePluginStyle',
     content: V_CONSOLE_STYLE_CONTENT,
   });
+
+  if (window && !window.vConsole) {
+    window.vConsole = vConsole;
+  }
   return vConsole;
 }
 

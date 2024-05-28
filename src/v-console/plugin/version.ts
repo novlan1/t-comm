@@ -30,32 +30,50 @@ function goBack() {
   window.vConsole?.hide?.();
 }
 
-export function initVersionPlugin() {
-  const plugin = new VConsole.VConsolePlugin('versionPerformance', '其他信息');
+function renderPlugin(callback: Function) {
   const parseNumber = (num: string | number) => +(+num).toFixed(2);
+  let html = `<div class="${V_CONSOLE_DOM.WRAP}">`;
 
-  plugin.on('renderTab', (callback: Function) => {
-    let html = `<div class="${V_CONSOLE_DOM.WRAP}">`;
-    html += getPerformanceInfo()
-      .map((item) => {
-        const { label, value } = item;
-        return `<div class="${V_CONSOLE_DOM.LINE}">${label}：${parseNumber(value)}ms </div>`;
-      })
-      .concat(EMPTY_LINE)
-      .concat(getVersionHtml())
-      .join('\n');
+  html += getPerformanceInfo()
+    .map((item) => {
+      const { label, value } = item;
+      return `<div class="${V_CONSOLE_DOM.LINE}">${label}：${parseNumber(value)}ms </div>`;
+    })
+    .concat(EMPTY_LINE)
+    .concat(getVersionHtml())
+    .join('\n');
 
-    html += `
+  html += `
 <textarea id="${V_CONSOLE_DOM.URL_INPUT_ID}" type="text" placeholder="请输入跳转路径"></textarea>
 <button id="${V_CONSOLE_DOM.URL_JUMP_BUTTON}">跳转</button>
 <button id="${V_CONSOLE_DOM.GO_BACK_BUTTON}">返回上一页</button>
-    `;
+  `;
 
-    html += '</div>';
+  html += '</div>';
 
-    callback(html);
+  callback(html);
+}
+
+
+export function initVersionPlugin() {
+  const plugin = new VConsole.VConsolePlugin(V_CONSOLE_DOM.PLUGIN_VERSION_NAME, '其他信息');
+  const callback = function (html: string) {
+    const dom = document.getElementById(`${V_CONSOLE_DOM.PLUGIN_NAME_PREFIX}${V_CONSOLE_DOM.PLUGIN_VERSION_NAME}`);
+
+    if (dom) {
+      dom.innerHTML = html;
+    }
+  };
+
+  plugin.on('renderTab', (callback: Function) => {
+    renderPlugin(callback);
   });
-
+  plugin.on('showConsole', () => {
+    renderPlugin(callback);
+  });
+  plugin.on('show', () => {
+    renderPlugin(callback);
+  });
 
   const btnList: Array<IPlugin> = [];
   btnList.push({
