@@ -2,6 +2,20 @@
 import { IParsedConfigItem, IImportType } from './types';
 
 
+/**
+ * 替换引用
+ *
+ * @export
+ * @param {string} content 输入内容
+ * @param {Array<IParsedConfigItem>} parsedConfigList 替换配置
+ * @param {string} keyword 提前返回关键词
+ * @returns {string} 处理后的内容
+ *
+ * @example
+ * ```ts
+ * replaceDependencies('', [], '@tx/pmd-vue')
+ * ```
+ */
 export function replaceDependencies(content: string, parsedConfigList: Array<IParsedConfigItem>, keyword: string) {
   const parser = require('@babel/parser');
   const traverse = require('@babel/traverse').default;

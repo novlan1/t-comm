@@ -33,6 +33,21 @@ function parseOneReplaceConfig(config: IImportItem): {
 }
 
 
+/**
+ * 解析替换配置
+ *
+ * @export
+ * @param {Array<IReplaceConfig>} configList 配置列表
+ * @returns {array} 处理后的配置列表
+ *
+ * @example
+ * ```ts
+ * parseReplaceConfig([{
+ *   source: '',
+ *   target: '',
+ * }])
+ * ```
+ */
 export function parseReplaceConfig(configList: Array<IReplaceConfig>) {
   const result = configList.reduce((acc: Array<{
     source: Array<string>;
