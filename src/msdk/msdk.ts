@@ -123,7 +123,7 @@ export function callJsBrowserAdapter() {
         });
       }
     } else if (env.isSlugSdk) {
-      loader('https://tiem-cdn.qq.com/slugteam/sdk/browser_adapt.js', () => {
+      loader('https://image-1251917893.file.myqcloud.com/igame/common/js/browser_adapt_20240702.js', () => {
         resolve(true);
       });
     }

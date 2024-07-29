@@ -4,12 +4,8 @@ import { getOneProjectDetail } from '../tgit/project';
 import { execCommand } from '../node/node-command';
 import { batchSendWxRobotMarkdown } from '../wecom-robot/batch-send';
 import { getGitCommitInfo } from '../git/git';
+import { shouldInclude, DEFAULT_WHITE_REG } from './helper';
 
-
-const WHITE_BRANCH_LIST = [
-  'develop',
-  'release',
-];
 
 const CHAT_ID = ['ALL'];
 
@@ -26,10 +22,13 @@ async function getBranches({
   baseUrl,
   repoName,
   privateToken,
+  whiteBranchReg,
 }: {
   baseUrl: string;
   repoName: string;
   privateToken: string;
+
+  whiteBranchReg?: RegExp
 }) {
   const res = await getBranchesByProjectName({
     projectName: repoName,
@@ -48,9 +47,10 @@ async function getBranches({
     return false;
   });
 
+  console.log('[Origin Branches]', list.map(item => item?.name));
 
-  const branches = list.filter(branch => WHITE_BRANCH_LIST.indexOf(branch.name) <= -1);
-  console.log('[branches]', branches.map(item => item?.name));
+  const branches = list.filter(branch => shouldInclude(branch.name, whiteBranchReg));
+  console.log('[Filter  Branches]', branches.map(item => item?.name));
   return branches;
 }
 
@@ -177,6 +177,7 @@ async function sendSendMsg(content: string, webhookUrl: string) {
  * @param {string} param0.privateToken 密钥
  * @param {boolean} [param0.isDryRun=false] 是否演练
  * @param {string} [param0.mainBranch='develop'] 主分支
+ * @param {Regexp} [param0.whiteBranchReg=/^release\|develop\|hotfix\\/.+$/] 不处理的分支正则
  * @returns {*}
  * @example
  *
@@ -206,6 +207,8 @@ export async function dailyMerge({
 
   isDryRun = false,
   mainBranch = 'develop',
+
+  whiteBranchReg = DEFAULT_WHITE_REG,
 }: {
   webhookUrl: string;
   appName: string;
@@ -217,6 +220,8 @@ export async function dailyMerge({
 
   isDryRun?: boolean;
   mainBranch?: string;
+
+  whiteBranchReg?: RegExp;
 }) {
   console.log('\nSTART Daily Merge =====>');
   if (!baseUrl) {
@@ -233,6 +238,8 @@ export async function dailyMerge({
     baseUrl,
     repoName,
     privateToken,
+
+    whiteBranchReg,
   });
 
   if (!branches || !branches.length) {

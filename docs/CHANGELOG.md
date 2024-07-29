@@ -1,5 +1,46 @@
 # 更新日志
 
+### [1.3.94](https://github.com/novlan1/t-comm/compare/v1.3.93...v1.3.94) (2024-07-29)
+
+
+### Features 🎉
+
+* **console.image:** add consoleImage ([9e0b022](https://github.com/novlan1/t-comm/commit/9e0b022c308aaf9e150bab6d8324df03bf1c73c1))
+* **vconsole:** vconsole增加aegis性能数据的展示 ([3d8eeec](https://github.com/novlan1/t-comm/commit/3d8eeec569842933a8fe3b254c41962b2b744ba0))
+
+### [1.3.93](https://github.com/novlan1/t-comm/compare/v1.3.92...v1.3.93) (2024-07-10)
+
+
+### Bug Fixes 🐞
+
+* **daily-merge:** 打印日志，分支过滤优化 ([d6f575d](https://github.com/novlan1/t-comm/commit/d6f575dae05bdf798ed6871ccc2842e90c0327e6))
+
+### [1.3.92](https://github.com/novlan1/t-comm/compare/v1.3.91...v1.3.92) (2024-07-10)
+
+
+### Features 🎉
+
+* **daily-merge:** add whiteBranchReg param ([3a3d313](https://github.com/novlan1/t-comm/commit/3a3d3132a36f85ca1531258acffa0df797607137))
+
+### [1.3.91](https://github.com/novlan1/t-comm/compare/v1.3.90...v1.3.91) (2024-07-02)
+
+
+### Chore 🚀 
+
+* update test cases ([45fff0c](https://github.com/novlan1/t-comm/commit/45fff0c072994376abef3e7d1fece54aae73b1da))
+
+
+### Documentation 📖
+
+* 文档优化 ([b4842d0](https://github.com/novlan1/t-comm/commit/b4842d037bb151734ed55f39885b30f9fa940fbe))
+* update ast docs ([b1d11d1](https://github.com/novlan1/t-comm/commit/b1d11d11985af896b7f33f1d0b71a348caecdc55))
+
+
+### Features 🎉
+
+* **slug-sdk:** update js sdk ([70d9f18](https://github.com/novlan1/t-comm/commit/70d9f188c7e206e9ea4f060df67e925a74dd92bb))
+* update docs ([7d63379](https://github.com/novlan1/t-comm/commit/7d633790f360fe34c7db1d97a1a876517b29b44d))
+
 ### [1.3.90](https://github.com/novlan1/t-comm/compare/v1.3.89...v1.3.90) (2024-05-23)
 
 

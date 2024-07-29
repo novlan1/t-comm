@@ -30,6 +30,7 @@ import { dailyMerge} from 't-comm/lib/daily-merge/index';
 | param0.privateToken | <code>string</code> |  | <p>密钥</p> |
 | [param0.isDryRun] | <code>boolean</code> | <code>false</code> | <p>是否演练</p> |
 | [param0.mainBranch] | <code>string</code> | <code>&quot;&#x27;develop&#x27;&quot;</code> | <p>主分支</p> |
+| [param0.whiteBranchReg] | <code>Regexp</code> | <code>/^release\|develop\|hotfix\\/.+$/</code> | <p>不处理的分支正则</p> |
 
 
 

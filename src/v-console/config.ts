@@ -128,3 +128,36 @@ export const COMMIT_LIST = [
     label: 'Last Commit Hash',
   },
 ];
+
+
+export const AEGIS_PERFORMANCE_KEY = '__AEGIS_PERFORMANCE';
+export const AEGIS_PERFORMANCE_LIST = [
+  {
+    key: 'dnsLookup',
+    label: 'Aegis DNS 查询',
+  },
+  {
+    key: 'tcp',
+    label: 'Aegis TCP 链接',
+  },
+  {
+    key: 'ttfb',
+    label: 'Aegis SSL 建连',
+  },
+  {
+    key: 'contentDownload',
+    label: 'Aegis contentDownload',
+  },
+  {
+    key: 'resourceDownload',
+    label: 'Aegis resourceDownload',
+  },
+  {
+    key: 'domParse',
+    label: 'Aegis DOM解析',
+  },
+  {
+    key: 'firstScreenTiming',
+    label: 'Aegis 首屏耗时',
+  },
+];

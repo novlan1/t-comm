@@ -9,6 +9,7 @@ export * from './city';
 export * from './clipboard';
 export * from './color';
 export * from './component';
+export * from './console';
 export * from './constant';
 export * from './cookie';
 export * from './cron';

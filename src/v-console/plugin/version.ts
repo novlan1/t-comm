@@ -4,6 +4,9 @@ import {
   V_CONSOLE_DOM,
   BUILD_LIST,
   COMMIT_LIST,
+
+  AEGIS_PERFORMANCE_KEY,
+  AEGIS_PERFORMANCE_LIST,
 } from '../config';
 import type { IPlugin } from '../types';
 
@@ -41,6 +44,8 @@ function renderPlugin(callback: Function) {
     })
     .concat(EMPTY_LINE)
     .concat(getVersionHtml())
+    .concat(EMPTY_LINE)
+    .concat(getAegisPerformanceInfo())
     .join('\n');
 
   html += `
@@ -180,6 +185,23 @@ function getVersionHtml() {
     EMPTY_LINE,
     ...commitHtmlList,
     EMPTY_LINE,
+    EMPTY_LINE,
+  ].join('\n');
+}
+
+
+function getAegisPerformanceInfo() {
+  const perfInfo = (window[AEGIS_PERFORMANCE_KEY as any] || {}) as any;
+
+  const perfHtmlList = AEGIS_PERFORMANCE_LIST.map((item) => {
+    const { key, label } = item;
+    return `<div class="${V_CONSOLE_DOM.LINE}">${label}: ${perfInfo[key] ?? ''}</div>`;
+  });
+
+
+  return [
+    EMPTY_LINE,
+    ...perfHtmlList,
     EMPTY_LINE,
   ].join('\n');
 }
