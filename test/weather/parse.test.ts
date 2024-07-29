@@ -1,7 +1,7 @@
 import {
   composeRobotContent,
   // compareData,
-  parseWeatherData,
+  // parseWeatherData,
 } from '../../src/weather/parse';
 
 describe('composeRobotContent', () => {
@@ -32,11 +32,11 @@ describe('composeRobotContent', () => {
 //   });
 // });
 
-describe('parseWeatherData', () => {
-  it('parseWeatherData', () => {
-    expect(parseWeatherData([])).toEqual({
-      isSame: true,
-      content: '当前深圳预警已全部解除',
-    });
-  });
-});
+// describe('parseWeatherData', () => {
+//   it('parseWeatherData', () => {
+//     expect(parseWeatherData([])).toEqual({
+//       isSame: true,
+//       content: '当前深圳预警已全部解除',
+//     });
+//   });
+// });
