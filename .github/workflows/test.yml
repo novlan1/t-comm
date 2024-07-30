@@ -41,6 +41,7 @@ jobs:
         with:
           files: coverage/coverage-final.json
           flags: unittests,${{ matrix.os }}
+          token: ${{ secrets.CODECOV_TOKEN }}
           name: fly-helper
           fail_ci_if_error: true
           verbose: true
