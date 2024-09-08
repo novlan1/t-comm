@@ -100,7 +100,8 @@ dist
 # TernJS port file
 .tern-port
 
-lib
+lib/
+es/
 temp
 *.bak
 

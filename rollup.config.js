@@ -13,6 +13,7 @@ const pkg = require('./package.json');
 const PATHS = {
   input: path.join(__dirname, '/src/index.ts'),
   output: path.join(__dirname, '/lib'),
+  outputES: path.join(__dirname, '/es'),
 };
 
 
@@ -82,6 +83,21 @@ const allRollupConfig = [
       // ts 的功能只在于编译出声明文件，所以 target 为 ESNext，编译交给 babel 来做
       typescript({
         tsconfig: './tsconfig.json',
+      }),
+      ...ROLLUP_PLUGINS,
+    ],
+  },
+  {
+    input: getAllSourceInput(),
+    output: [{
+      format: 'es',
+      exports: 'named',
+      dir: PATHS.outputES,
+    }],
+    external: ROLLUP_EXTERNALS,
+    plugins: [
+      typescript({
+        tsconfig: './tsconfig-es.json',
       }),
       ...ROLLUP_PLUGINS,
     ],

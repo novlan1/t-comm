@@ -1,1 +1,2 @@
-export { compareVersion } from './version'
+export { getPreReleaseVersion } from './bump';
+export { compareVersion } from './version';

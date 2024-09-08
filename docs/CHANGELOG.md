@@ -1,5 +1,68 @@
 # 更新日志
 
+### [1.3.101](https://github.com/novlan1/t-comm/compare/v1.3.100...v1.3.101) (2024-09-07)
+
+
+### Chore 🚀 
+
+* add es module ([f03724d](https://github.com/novlan1/t-comm/commit/f03724d68e12afb8855e369389a09eb5a454afcc))
+
+### [1.3.100](https://github.com/novlan1/t-comm/compare/v1.3.99...v1.3.100) (2024-08-28)
+
+
+### Features 🎉
+
+* **mp-ci:** update mp-cli modify ([d939c1b](https://github.com/novlan1/t-comm/commit/d939c1be2cb8b0f663666adf4cf16dd6798b258a))
+
+### [1.3.99](https://github.com/novlan1/t-comm/compare/v1.3.98...v1.3.99) (2024-08-26)
+
+
+### Features 🎉
+
+* **mp-ci:** 优化修改配置 ([03149d3](https://github.com/novlan1/t-comm/commit/03149d35c126739e58828b806bd9bb3eddf53659))
+
+### [1.3.98](https://github.com/novlan1/t-comm/compare/v1.3.97...v1.3.98) (2024-08-26)
+
+
+### Features 🎉
+
+* **base64:** encode, decode 支持非拉丁字符 ([e9ec697](https://github.com/novlan1/t-comm/commit/e9ec697faef416c024d6ab8ed2e8b4a961e6f655))
+* **mp-ci:** 优化修改配置 ([82f74da](https://github.com/novlan1/t-comm/commit/82f74da9e7bbecdc763da99f69bb4238d9477145))
+* **mp-ci:** 优化修改mp-ci配置 ([1fbabac](https://github.com/novlan1/t-comm/commit/1fbabac83b8cc45d961ecf879863317085d77b27))
+
+### [1.3.97](https://github.com/novlan1/t-comm/compare/v1.3.96...v1.3.97) (2024-08-15)
+
+
+### Bug Fixes 🐞
+
+* **bump-version:** 修复bump-version ([ebb3cb4](https://github.com/novlan1/t-comm/commit/ebb3cb4fe802a2b2832ecf25527ff49d1bafaba0))
+
+### [1.3.96](https://github.com/novlan1/t-comm/compare/v1.3.95...v1.3.96) (2024-08-15)
+
+
+### Chore 🚀 
+
+* add commit-msg husky ([5a082a3](https://github.com/novlan1/t-comm/commit/5a082a386d10211fa5397b1e0c8c72114e0bf1dc))
+
+
+### Features 🎉
+
+* add base64 encode & decode ([7b0aa6a](https://github.com/novlan1/t-comm/commit/7b0aa6ab0c679fa75f34b1545432549a1ef179d8))
+* **bump-version:** add bump-version ([762a219](https://github.com/novlan1/t-comm/commit/762a2190745c0ec26636d2bc4241e5c9f496127a))
+
+### [1.3.95](https://github.com/novlan1/t-comm/compare/v1.3.94...v1.3.95) (2024-08-07)
+
+
+### Tests ✅
+
+* update test case ([a8761c6](https://github.com/novlan1/t-comm/commit/a8761c6cb9f86399aebc1253c83792c2f849cca3))
+
+
+### Features 🎉
+
+* **devops-ci:** support useDevopsWXCIPlugin ([2b72ba3](https://github.com/novlan1/t-comm/commit/2b72ba343184e7401321e8ea19cf0bd7b9bad4fb))
+* **list:** add split long list ([406c543](https://github.com/novlan1/t-comm/commit/406c54374abd3e0b7cc283eacdf932eb4386113d))
+
 ### [1.3.94](https://github.com/novlan1/t-comm/compare/v1.3.93...v1.3.94) (2024-07-29)
 
 

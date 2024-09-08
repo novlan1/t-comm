@@ -118,6 +118,7 @@ async function realUpdateOrCreatePipeline({
         rainbowConfigKey: mpCIKey,
         repo: newConfig.ci.repo,
         isWxCI,
+        devopsParams: newConfig.devopsParams || {},
       }),
     ],
   })

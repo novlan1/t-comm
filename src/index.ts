@@ -1,5 +1,6 @@
 export * from './ast';
 export * from './base';
+export * from './base64';
 export * from './bite';
 export * from './build-upload';
 export * from './bundle-analyze';

@@ -59,11 +59,16 @@ export function updateQQTencentSheetLine(rainbowConfig: Record<string, any>) {
   Object.keys(qqRobotMap).forEach((branch) => {
     const value = qqRobotMap[branch] || {};
     if (!value.tencentDocsLine) {
-      value.tencentDocsLine = {
-        test: restLines[cur],
-        release: restLines[cur + 1],
-      };
-      cur += 2;
+      const temp: Record<string, any> = {};
+      if (value.test) {
+        temp.test = restLines[cur];
+        cur += 1;
+      }
+      if (value.release) {
+        temp.release = restLines[cur];
+        cur += 1;
+      }
+      value.tencentDocsLine = temp;
     }
   });
 }

@@ -105,6 +105,7 @@ export function getPipelineParam({
   rainbowConfigKey,
   repo,
   isWxCI,
+  devopsParams,
 }: Record<string, any>) {
   const res = [
     {
@@ -157,6 +158,14 @@ export function getPipelineParam({
         type: 'STRING',
         defaultValue: '',
         desc: 'Tam上报ID',
+        readOnly: false,
+      },
+      {
+        id: 'useDevopsWXCIPlugin',
+        required: true,
+        type: 'STRING',
+        defaultValue: devopsParams?.useDevopsWXCIPlugin || '0',
+        desc: '是否使用蓝盾平台小程序CI插件',
         readOnly: false,
       },
     ]);
