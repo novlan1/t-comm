@@ -61,6 +61,7 @@ export * from './rd-platform-report';
 export * from './rem';
 export * from './rem-to-px';
 export * from './responsive';
+export * from './rollup';
 export * from './router';
 export * from './rtx';
 export * from './scheduler';

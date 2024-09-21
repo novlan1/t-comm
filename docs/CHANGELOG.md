@@ -1,5 +1,26 @@
 # 更新日志
 
+### [1.3.104](https://github.com/novlan1/t-comm/compare/v1.3.103...v1.3.104) (2024-09-14)
+
+
+### Features 🎉
+
+* **deps:** add getDeps ([29dd61d](https://github.com/novlan1/t-comm/commit/29dd61d897f2afac6da2497f3eeb23f39f5df358))
+
+### [1.3.103](https://github.com/novlan1/t-comm/compare/v1.3.102...v1.3.103) (2024-09-11)
+
+
+### Features 🎉
+
+* 防止router报错 ([b07be67](https://github.com/novlan1/t-comm/commit/b07be67e998c6cfb9a79459648bc9788002303f7))
+
+### [1.3.102](https://github.com/novlan1/t-comm/compare/v1.3.101...v1.3.102) (2024-09-11)
+
+
+### Features 🎉
+
+* **router:** add hook-router and getUniRouteName ([a0273af](https://github.com/novlan1/t-comm/commit/a0273afdec01b8a8a7fbe1a532bef2ecdf5f96c6))
+
 ### [1.3.101](https://github.com/novlan1/t-comm/compare/v1.3.100...v1.3.101) (2024-09-07)
 
 
