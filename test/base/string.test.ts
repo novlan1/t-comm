@@ -4,7 +4,9 @@ import {
   camelize,
   hyphenate,
   capitalize,
+  lowerInitial,
   titleize,
+  pascalCase,
   replaceAllPolyfill,
 } from '../../src';
 
@@ -34,6 +36,13 @@ describe('toUnicode', () => {
 describe('camelize', () => {
   it('camelize', () => {
     expect(camelize('ab-cd-ef')).toBe('abCdEf');
+    expect(camelize('ab_cd_ef')).toBe('ab_cd_ef');
+    expect(camelize('-cd-ef')).toBe('CdEf');
+  });
+
+  it('handle snake', () => {
+    expect(camelize('ab_cd_ef', true)).toBe('abCdEf');
+    expect(camelize('-cd_ef', true)).toBe('CdEf');
   });
 });
 
@@ -49,6 +58,12 @@ describe('hyphenate', () => {
 describe('capitalize', () => {
   it('capitalize', () => {
     expect(capitalize('abc')).toBe('Abc');
+  });
+});
+
+describe('lowerInitial', () => {
+  it('lowerInitial', () => {
+    expect(lowerInitial('GroupId')).toBe('groupId');
   });
 });
 
@@ -89,5 +104,14 @@ describe('replaceAllPolyfill', () => {
     const str = 'a+a+a+a+a+';
     // @ts-ignore
     expect(str.replaceAll(/a/, 'b')).toBe('b+b+b+b+b+');
+  });
+});
+
+
+describe('pascalCase', () => {
+  it('pascalCase', () => {
+    expect(pascalCase('ab-cd')).toBe('AbCd');
+    expect(pascalCase('abcd')).toBe('Abcd');
+    expect(pascalCase('abCdEf')).toBe('AbCdEf');
   });
 });

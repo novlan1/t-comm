@@ -1,3 +1,5 @@
+export { genQueryToStr } from './gen-query-to-str';
+
 export { removeUrlParams } from './remove-param';
 
 export {

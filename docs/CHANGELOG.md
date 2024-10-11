@@ -1,5 +1,37 @@
 # 更新日志
 
+### [1.3.106](https://github.com/novlan1/t-comm/compare/v1.3.105...v1.3.106) (2024-09-27)
+
+
+### Tests ✅
+
+* update tests ([d0fb6fd](https://github.com/novlan1/t-comm/commit/d0fb6fd2192eb9869ebcc280e461fb992ff43243))
+
+
+### Features 🎉
+
+* **component-name:** add componentName handle funcs ([182be76](https://github.com/novlan1/t-comm/commit/182be7664a1bf8e07348338001d6248bc55e0ff2))
+
+### [1.3.105](https://github.com/novlan1/t-comm/compare/v1.3.104...v1.3.105) (2024-09-25)
+
+
+### Tests ✅
+
+* **changelog:** add changelog parse tests ([ef9100c](https://github.com/novlan1/t-comm/commit/ef9100c0ef9678622ce743319ed1062e2f450db0))
+* **changelog:** add changelog parse tests ([99fcb72](https://github.com/novlan1/t-comm/commit/99fcb72a03d61b620e2f22d1a96e6b0f0138ec5f))
+
+
+### Chore 🚀 
+
+* not ignore pnpm-lock ([6bdefe4](https://github.com/novlan1/t-comm/commit/6bdefe4515ee8329adf28663efac7d74a0291b40))
+* update workflow ([36ad924](https://github.com/novlan1/t-comm/commit/36ad9243bbca37b672bd2c02fae25e11e5298860))
+
+
+### Features 🎉
+
+* add genQueryToStr ([8e0abb7](https://github.com/novlan1/t-comm/commit/8e0abb770e3f2214092d834dbfe8a4e645decdc0))
+* add sortByStr ([b54ff70](https://github.com/novlan1/t-comm/commit/b54ff70383f026859fadff43f94d9a54307ed555))
+
 ### [1.3.104](https://github.com/novlan1/t-comm/compare/v1.3.103...v1.3.104) (2024-09-14)
 
 

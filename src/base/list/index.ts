@@ -8,4 +8,5 @@ export {
   flattenPreData,
   compareTwoList,
 } from './parse-list';
+export { sortByStr } from './sort';
 export { splitLongList } from './split';

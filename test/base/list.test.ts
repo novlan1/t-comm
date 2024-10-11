@@ -1,4 +1,4 @@
-import { flatten, flat, shuffle, getAccCellWidth  } from '../../src';
+import { flatten, flat, shuffle, getAccCellWidth, sortByStr } from '../../src';
 import * as listUtils from '../../src/base/list';
 
 describe('flatten', () => {
@@ -42,5 +42,24 @@ describe('getAccCellWidth', () => {
     expect(getAccCellWidth([1, 2, 3], 2)).toBe(6);
     expect(getAccCellWidth([1, 2, 3], 3)).toBe(6);
     expect(getAccCellWidth([1, 2, 3], 4)).toBe(6);
+  });
+});
+
+
+describe('sortByStr', () => {
+  it('sortByStr', () => {
+    const list = [
+      'abcd',
+      'addf',
+      'ddf',
+      'dd/da',
+    ];
+    sortByStr(list);
+    expect(list).toStrictEqual([
+      'abcd',
+      'addf',
+      'dd/da',
+      'ddf',
+    ]);
   });
 });
