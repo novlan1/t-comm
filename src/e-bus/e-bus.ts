@@ -5,10 +5,10 @@ export class EventBus {
     this.events = {};
   }
 
-  emit(eventName: string, data: any) {
+  emit(eventName: string, ...args: Array<any>) {
     if (this.events[eventName]) {
       this.events[eventName].forEach((fn) => {
-        fn(data);
+        fn(...args);
       });
     }
   }

@@ -11,21 +11,24 @@ export function uniHookRouter({
   const originNavigateBack = uni.navigateBack;
   const originReplaceTo = uni.redirectTo;
 
+  if (originNavigateTo) {
+    uni.navigateTo = (...args: Array<any>) => {
+      navigateToHooks?.forEach(cb => cb?.(...args));
+      originNavigateTo(...args);
+    };
+  }
 
-  uni.navigateTo = (...args: Array<any>) => {
-    navigateToHooks?.forEach(cb => cb?.(...args));
-    originNavigateTo(...args);
-  };
+  if (originNavigateBack) {
+    uni.navigateBack = (...args: Array<any>) => {
+      navigateBackHooks?.forEach(cb => cb?.(...args));
+      originNavigateBack(...args);
+    };
+  }
 
-
-  uni.navigateBack = (...args: Array<any>) => {
-    navigateBackHooks?.forEach(cb => cb?.(...args));
-    originNavigateBack(...args);
-  };
-
-
-  uni.redirectTo = (...args: Array<any>) => {
-    redirectToHooks?.forEach(cb => cb?.(...args));
-    originReplaceTo(...args);
-  };
+  if (originReplaceTo) {
+    uni.redirectTo = (...args: Array<any>) => {
+      redirectToHooks?.forEach(cb => cb?.(...args));
+      originReplaceTo(...args);
+    };
+  }
 }

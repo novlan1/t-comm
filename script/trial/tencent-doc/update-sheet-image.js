@@ -25,7 +25,7 @@ async function main() {
       clientId: CLIENT_ID,
       openId: OPEN_ID,
 
-      bookId: '300000000$HDrklTrCLcjw',
+      bookId: '300000000$HcVvbqHdoKdH',
       insertImages: {
         sheetID: 'BB08J2',
         images: [
@@ -35,7 +35,7 @@ async function main() {
             width: 100,
             height: 100,
             row: 6,
-            col: 1,
+            col: 3,
             offsetX: null,
             offsetY: null,
             clip_info: null,

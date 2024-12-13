@@ -1,6 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import { writeFileSync, readFileSync } from '../fs/fs';
+import { timeStampFormat } from '../time/time';
 
 const LOG_DIR = 'log';
 
@@ -104,6 +105,39 @@ export function rmEmptyDir(tPath: string, level = 0) {
   }
 }
 
+
+export function deleteFolderRecursive(path: string, options = {
+  deleteFile: false,
+  log: false,
+}) {
+  const deleteFile = options.deleteFile ?? false;
+  const log = options.log ?? false;
+
+  if (fs.existsSync(path)) {
+    const list = fs.readdirSync(path);
+
+    list.forEach((file) => {
+      const curPath = `${path}/${file}`;
+
+      if (fs.statSync(curPath).isDirectory()) { // recurse
+        deleteFolderRecursive(curPath);
+      } else { // delete file
+        if (deleteFile) {
+          fs.unlinkSync(curPath);
+        }
+      }
+    });
+
+    if (!list.length) {
+      if (log) {
+        console.log('>>> delete: ', path);
+      }
+      fs.rmdirSync(path);
+    }
+  }
+}
+
+
 /**
  * 拷贝文件
  * @param {Object} from 文件来自那里
@@ -154,6 +188,49 @@ export function saveJsonToLog(content: object, file: string, needLog = true) {
   writeFileSync(`./${LOG_DIR}/${file}`, content, true);
 }
 
+
+export function saveJsonToLogMore(content: any, file: string, options?: {
+  needLog?: boolean;
+  max?: number;
+}) {
+  const needLog = options?.needLog ?? true;
+  const max = options?.max ?? 10;
+
+  if (!needLog) return;
+
+  createLogDir();
+  const filePath = `./log/${file}`;
+
+
+  let beforeContent = [];
+  let newContent = [{
+    logTime: timeStampFormat(Date.now(), 'yyyy-MM-dd hh:mm:ss'),
+    data: content,
+  }];
+
+
+  if (fs.existsSync(filePath)) {
+    try {
+      beforeContent = readFileSync(filePath, true).logList || [];
+    } catch (err) {
+      beforeContent = [];
+    }
+  }
+  if (beforeContent && Array.isArray(beforeContent)) {
+    newContent.push(...beforeContent);
+  }
+
+  newContent = newContent.slice(0, max);
+
+  try {
+    fs.writeFile(filePath, JSON.stringify({ logList: newContent }, null, 2), {
+      encoding: 'utf-8',
+    }, () => {});
+  } catch (err) {
+  }
+}
+
+
 export function getJsonFromLog(file: string) {
   const filePath = `./${LOG_DIR}/${file}`;
   let data = {};
@@ -184,4 +261,14 @@ export function getFileName(file: string) {
   const extname = path.extname(file);
   const fileName = basename.replace(new RegExp(`${extname}$`), '');
   return fileName;
+}
+
+export function readJson(content: string, file: string): Record<string, any> {
+  let data = {};
+  try {
+    data = JSON.parse(content);
+  } catch (e) {
+    console.error('>>> read json error: ', file);
+  }
+  return data;
 }

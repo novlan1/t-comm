@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { hyphenate } from '../../base/string';
 import { RAINBOW_VALUE_TYPE_MAP } from './value-type';
-import { getJsonLogDir } from '../../node/fs-util';
+import { getJsonLogDir, readJsonLog } from '../../node/fs-util';
 import { getCosUrlLink } from '../../tencent-cloud/cos/link';
 import type { RainbowKeyValueType } from './value-type';
-import type { ICosInfo } from '../types';
+import type { ICosInfo, ILocalConfig } from '../types';
+
 
 export function getSaveFileName({
   appName,
@@ -80,3 +81,13 @@ export function getCOSFilePath({
   });
 }
 
+
+export const readCOSConfig = (saveFileName: string): ILocalConfig => {
+  let content = [];
+  try {
+    content = JSON.parse(readJsonLog(saveFileName, '[]'));
+  } catch (err) {
+    console.log('[readCOSConfig] err: \n', err);
+  }
+  return content;
+};

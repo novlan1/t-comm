@@ -1,18 +1,10 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
 import { queryGroupInfo } from '../rainbow/rainbow-admin';
-import { getSaveFileName } from './helper/helper';
-import { readJsonLog, saveJsonToLog } from '../node/fs-util';
-import type { ISecretInfo, ILocalConfig, IRemoteConfig } from './types';
+import { fetchRainbowConfig } from '../rainbow/rainbow-user';
+import { saveJsonToLog } from '../node/fs-util';
 
-const readCOSConfig = (saveFileName: string): ILocalConfig => {
-  let content = [];
-  try {
-    content = JSON.parse(readJsonLog(saveFileName, '[]'));
-  } catch (err) {
-    console.log('[readCOSConfig] err: \n', err);
-  }
-  return content;
-};
+import { getSaveFileName, readCOSConfig } from './helper/helper';
+import type { ISecretInfo, ILocalConfig, IRemoteConfig } from './types';
+import { RainbowKeyValueType } from './helper/value-type';
 
 
 export function fetchLatestRainbowData({
@@ -62,3 +54,56 @@ export function fetchLatestRainbowData({
 }
 
 
+export function fetchLatestOneRainbowData({
+  secretInfo,
+  appName,
+  key,
+  valueType = 4,
+}: {
+  secretInfo: {
+    appId: string;
+    groupName: string;
+    envName: string;
+  };
+  appName: string;
+  key: string;
+  valueType?: RainbowKeyValueType
+}): Promise<{
+    config: Array<IRemoteConfig>;
+    originConfig: ILocalConfig;
+    equal: boolean;
+  }> {
+  return new Promise((resolve, reject) => {
+    const { groupName, envName } = secretInfo || {};
+    const saveFileName = getSaveFileName({
+      appName,
+      groupName,
+      envName,
+      key,
+      valueType,
+    });
+
+    const originConfig = readCOSConfig(saveFileName);
+
+    fetchRainbowConfig(key, secretInfo).then((res) => {
+      let config = res;
+      try {
+        config = JSON.parse(res);
+      } catch (err) {
+      }
+      const equal = JSON.stringify(config, null, 0) === JSON.stringify(originConfig, null, 0);
+      console.log(`[fetchLatestOneRainbowData] 是否有更新 ${appName}·${groupName}·${envName}.${key}: ${!equal}`);
+
+      saveJsonToLog(config, saveFileName);
+
+      resolve({
+        config,
+        originConfig,
+        equal,
+      });
+    })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+}

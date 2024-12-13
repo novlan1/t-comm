@@ -2,7 +2,7 @@ export const getFromName = (delta = 0) => {
   const pages = getCurrentPages();
   const page = pages[pages.length - 1 - delta];
 
-  return page.route || '';
+  return page?.route || '';
 };
 
 export const getToName = (routerParams?: Array<any>) => {

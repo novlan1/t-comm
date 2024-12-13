@@ -25,7 +25,7 @@ export function throttle(fn: Function, time: number) {
     // const args = [...arguments];
 
     if (!timer) {
-      setTimeout(() => {
+      timer = setTimeout(() => {
         timer = null; // 注意，一定要先置为null，再执行fn
         fn.apply(that, args);
       }, time);

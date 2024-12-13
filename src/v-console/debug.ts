@@ -42,6 +42,10 @@ export function genVConsole({
   if (typeof asyncConfirmFunc === 'function') {
     asyncConfirmFunc?.()?.then(() => {
       loadVConsole(vConsoleConfig);
+    })
+    // 异常捕获，避免 TAM PROMISE_ERROR 错误上报
+    .catch((error: any) => {
+      console.log('checkIsDevList', error);
     });
   }
 }

@@ -16,10 +16,10 @@ async function main() {
       clientId: CLIENT_ID,
       openId: OPEN_ID,
 
-      bookId: '300000000$HDrklTrCLcjw',
+      bookId: '300000000$HcVvbqHdoKdH', // '300000000$HDrklTrCLcjw',
       // bookId: '300000000$HXFJfWyuynWX',
       // range: 'BB08J2!B16:C16',
-      range: 'ndem2e!B16:C16',
+      range: 'BB08J2!B16:C16',
       values: [['123', '123123']],
     });
     console.log('result', result);

@@ -1,7 +1,7 @@
 import { EventBus } from './e-bus';
 
 
-const globalEBus = new EventBus();
+export const globalEBus = new EventBus();
 
 
 /**

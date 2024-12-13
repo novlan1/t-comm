@@ -9,9 +9,12 @@ export {
   deleteFolder,
   traverseFolder,
   saveJsonToLog,
+  saveJsonToLogMore,
   getJsonFromLog,
   getFileName,
   rmEmptyDir,
+  deleteFolderRecursive,
+  readJson,
 } from './fs-util';
 export { execCommand } from './node-command';
 export { nodeGet, nodePost, nodePut } from './node-request';

@@ -1,4 +1,4 @@
-import { toHumpObj, extend, isObjectEqual, sortObjectByKey } from '../../src';
+import { toHumpObj, extend, isObjectEqual, sortObjectByKey, sliceObject } from '../../src';
 
 describe('sortObjectByKey', () => {
   it('sortObjectByKey', () => {
@@ -80,5 +80,22 @@ describe('isObjectEqual', () => {
     expect(isObjectEqual({}, {})).toBe(true);
     expect(isObjectEqual({ a: 1 }, { a: 1 })).toBe(true);
     expect(isObjectEqual({ a: 1 }, { a: 2 })).toBe(false);
+  });
+});
+
+
+describe('sliceObject', () => {
+  it('sliceObject', () => {
+    expect(sliceObject({ a: 1, b: 2, c: 3 }, 2)).toEqual({
+      a: 1,
+      b: 2,
+    });
+  });
+
+  it('sliceObject object', () => {
+    expect(sliceObject({ a: { a: 1 }, b: { b: 2 }, c: 3 }, 2)).toEqual({
+      a: { a: 1 },
+      b: { b: 2 },
+    });
   });
 });

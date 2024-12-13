@@ -140,6 +140,15 @@ export function getPipelineParam({
       desc: '环境',
       readOnly: false,
     },
+    {
+      id: 'forceNpm',
+      required: true,
+      type: 'STRING',
+      // 从 devopsParams 中获取
+      defaultValue: devopsParams?.forceNpm ?? '1',
+      desc: '是否强制使用 NPM，默认是',
+      readOnly: false,
+    },
   ];
 
   if (isWxCI) {
@@ -166,6 +175,17 @@ export function getPipelineParam({
         type: 'STRING',
         defaultValue: devopsParams?.useDevopsWXCIPlugin || '0',
         desc: '是否使用蓝盾平台小程序CI插件',
+        readOnly: false,
+      },
+    ]);
+  } else {
+    res.push(...[
+      {
+        id: 'useNode16',
+        required: true,
+        type: 'STRING',
+        defaultValue: devopsParams?.useDevopsWXCIPlugin == '1' ? '1' : '0',
+        desc: '是否使用 node 16 版本',
         readOnly: false,
       },
     ]);

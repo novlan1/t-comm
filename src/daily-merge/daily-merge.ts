@@ -8,7 +8,7 @@ import { shouldInclude, DEFAULT_WHITE_REG } from './helper';
 
 
 const CHAT_ID = ['ALL'];
-
+const DOC_URL = 'https://docs.qq.com/doc/DSGN2Uk1hTllydkRh';
 
 function getStartTime() {
   const date = new Date();
@@ -145,6 +145,7 @@ function getMessageContent({
     `- 成功合并：${successBranches.join('、')}`,
     `- 存在冲突：${conflictBranches.join('、')}`,
     `- 无需合并：${noMergeBranches.join('、')}`,
+    `- [说明文档](${DOC_URL})<@guowangyang>`,
   ];
 
   if (toConfirmBranches.length) {

@@ -1,5 +1,140 @@
 # 更新日志
 
+### [1.3.125](https://github.com/novlan1/t-comm/compare/v1.3.124...v1.3.125) (2024-12-13)
+
+
+### Features 🎉
+
+* **log:** add consoleLog consoleInfo ([213434a](https://github.com/novlan1/t-comm/commit/213434ab06c938b453bea286fedfbc41d95b69d3))
+
+### [1.3.124](https://github.com/novlan1/t-comm/compare/v1.3.123...v1.3.124) (2024-12-10)
+
+
+### Features 🎉
+
+* **mp-ci:** 支持传入forceNpm ([2dbbfd6](https://github.com/novlan1/t-comm/commit/2dbbfd6f5466440d554e919c1cc1e0a0fc8b643a))
+
+### [1.3.123](https://github.com/novlan1/t-comm/compare/v1.3.122...v1.3.123) (2024-12-06)
+
+
+### Chore 🚀 
+
+* update script ([bc73ad2](https://github.com/novlan1/t-comm/commit/bc73ad2275b1053e82a3fd1498d2c3cae8acf7dc))
+
+
+### Features 🎉
+
+* **string:** add sliceObject ([6deb558](https://github.com/novlan1/t-comm/commit/6deb5582ff55d513f6c6fdc3de9d226e055d3886))
+
+### [1.3.122](https://github.com/novlan1/t-comm/compare/v1.3.121...v1.3.122) (2024-11-25)
+
+
+### Features 🎉
+
+* add saveJsonToLogMore ([116b3e4](https://github.com/novlan1/t-comm/commit/116b3e4e7a0b350fbf49719fe849dab806ef8b2f))
+
+### [1.3.121](https://github.com/novlan1/t-comm/compare/v1.3.120...v1.3.121) (2024-11-21)
+
+
+### Features 🎉
+
+* **parseComponentPath:** 修复绝对路径 ([385318c](https://github.com/novlan1/t-comm/commit/385318c5475cffa42e8fa4aee62d00e10cd312ef))
+* **parseComponentPath:** 修复绝对路径 ([4f317ad](https://github.com/novlan1/t-comm/commit/4f317ad6be70ccdabd5e2125659f79d556c261a8))
+
+### [1.3.120](https://github.com/novlan1/t-comm/compare/v1.3.119...v1.3.120) (2024-11-21)
+
+
+### Features 🎉
+
+* **ebus:** export globalEBus ([9f95ca2](https://github.com/novlan1/t-comm/commit/9f95ca2cf8ee4e0c00ef99576de574ae68e2ff51))
+* **parseComponentPath:** 支持绝对路径 ([5d855ec](https://github.com/novlan1/t-comm/commit/5d855ec7f637e6f4f264c19a68171d5ff3296cac))
+
+### [1.3.119](https://github.com/novlan1/t-comm/compare/v1.3.118...v1.3.119) (2024-11-05)
+
+
+### Features 🎉
+
+* **fs-util:** add deleteFolderRecursive ([6dfab9a](https://github.com/novlan1/t-comm/commit/6dfab9a12a16cb187769177707d8f08664239ba6))
+* **path:** add flatten/iterative/parse path funcs ([912636a](https://github.com/novlan1/t-comm/commit/912636a24ef96606c33bd4511cbe6c3d3a2cd0ac))
+* **random-string:** add random string ([b1f645f](https://github.com/novlan1/t-comm/commit/b1f645fc574c0bd14b497023dae2df56f9e8541c))
+
+### [1.3.118](https://github.com/novlan1/t-comm/compare/v1.3.117...v1.3.118) (2024-11-02)
+
+
+### Bug Fixes 🐞
+
+* **debug:** genVConsole 白名单接口异常捕获处理，避免 TAM 上报无效告警 ([7fcbf92](https://github.com/novlan1/t-comm/commit/7fcbf92b2806d39ac72d191b991eb71d946b87cd))
+
+### [1.3.117](https://github.com/novlan1/t-comm/compare/v1.3.116...v1.3.117) (2024-10-30)
+
+
+### Features 🎉
+
+* **mp-ci:** qq ci支持node16 ([299969d](https://github.com/novlan1/t-comm/commit/299969d61ea93722e15b53158b6dc2c925071beb))
+
+### [1.3.116](https://github.com/novlan1/t-comm/compare/v1.3.115...v1.3.116) (2024-10-28)
+
+
+### Features 🎉
+
+* **uni-hook-router:** 防止uni.navigateTo为空 ([d8f5cf7](https://github.com/novlan1/t-comm/commit/d8f5cf7915ff7bd061254c5ce2cb2962376e1e0a))
+
+### [1.3.115](https://github.com/novlan1/t-comm/compare/v1.3.113...v1.3.115) (2024-10-27)
+
+### [1.3.113](https://github.com/novlan1/t-comm/compare/v1.3.112...v1.3.113) (2024-10-27)
+
+
+### Features 🎉
+
+* **daily-merge:** 文档地址 ([d981f16](https://github.com/novlan1/t-comm/commit/d981f16ab1e04be6829c32281a4008d1978d359c))
+
+### [1.3.112](https://github.com/novlan1/t-comm/compare/v1.3.111...v1.3.112) (2024-10-27)
+
+
+### Features 🎉
+
+* **daily-merge:** 文档地址 ([7188cf7](https://github.com/novlan1/t-comm/commit/7188cf70aa31dca21644b069f7f25f14878d54f7))
+
+### [1.3.111](https://github.com/novlan1/t-comm/compare/v1.3.110...v1.3.111) (2024-10-27)
+
+
+### Features 🎉
+
+* **daily-merge:** 文档地址 ([6377e28](https://github.com/novlan1/t-comm/commit/6377e28fab8fe10d9454900e7aab526ae2724472))
+
+### [1.3.110](https://github.com/novlan1/t-comm/compare/v1.3.109...v1.3.110) (2024-10-27)
+
+
+### Features 🎉
+
+* **rainbow-history:** add history monitor ([0873de6](https://github.com/novlan1/t-comm/commit/0873de693803f01e6d8df8888470185486e9397f))
+
+### [1.3.109](https://github.com/novlan1/t-comm/compare/v1.3.108...v1.3.109) (2024-10-23)
+
+
+### Bug Fixes 🐞
+
+* **throttle:** fix throttle ([6c23fae](https://github.com/novlan1/t-comm/commit/6c23fae5f6573db03e653418d161e3423af84a40))
+
+### [1.3.108](https://github.com/novlan1/t-comm/compare/v1.3.107...v1.3.108) (2024-10-23)
+
+
+### Features 🎉
+
+* **ebus:** 支持多于1个参数 ([37671c4](https://github.com/novlan1/t-comm/commit/37671c49d57ebf09d5cf77c036a4e8fd6a26c53a))
+
+### [1.3.107](https://github.com/novlan1/t-comm/compare/v1.3.106...v1.3.107) (2024-10-22)
+
+
+### Features 🎉
+
+* **publish:** expose PUBLISH_ENV_MAP ([a3a464d](https://github.com/novlan1/t-comm/commit/a3a464dee4fb6cf7b61effd4f1ddbab7d1667387))
+
+
+### Bug Fixes 🐞
+
+* **uni-route-name:** 防止编译报错 ([88df3fa](https://github.com/novlan1/t-comm/commit/88df3faeab077378c0fcf6556383eea59521660d))
+
 ### [1.3.106](https://github.com/novlan1/t-comm/compare/v1.3.105...v1.3.106) (2024-09-27)
 
 
