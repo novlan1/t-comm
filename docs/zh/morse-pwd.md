@@ -1,12 +1,11 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import { MorsePwd , simpleMorse } from 't-comm';
 
 // or
-
 import { MorsePwd , simpleMorse} from 't-comm/lib/morse-pwd/index';
 ```
 

@@ -1,12 +1,11 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import { writeFileSync, readFileSync } from 't-comm';
 
 // or
-
 import { writeFileSync, readFileSync} from 't-comm/lib/fs/index';
 ```
 

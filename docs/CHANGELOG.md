@@ -1,5 +1,17 @@
 # 更新日志
 
+### [1.3.126](https://github.com/novlan1/t-comm/compare/v1.3.125...v1.3.126) (2024-12-13)
+
+
+### Tests ✅
+
+* update test cases ([1c4ddf7](https://github.com/novlan1/t-comm/commit/1c4ddf7b7c6f79dbc4c127da1310120c5e4ceae5))
+
+
+### Features 🎉
+
+* **publish-ci:** 支持特殊符号的密码 ([abb0757](https://github.com/novlan1/t-comm/commit/abb07573a3585e88d3be9c83aba55e748f587dc0))
+
 ### [1.3.125](https://github.com/novlan1/t-comm/compare/v1.3.124...v1.3.125) (2024-12-13)
 
 

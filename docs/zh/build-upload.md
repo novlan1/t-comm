@@ -1,12 +1,11 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import { buildAndUpload } from 't-comm';
 
 // or
-
 import { buildAndUpload} from 't-comm/lib/build-upload/index';
 ```
 

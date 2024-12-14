@@ -1,6 +1,6 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import {
@@ -12,11 +12,11 @@ import {
   rmEmptyDir,
   copyFile,
   traverseFolder,
-  execCommand
+  execCommand,
+  execCommandAll
 } from 't-comm';
 
 // or
-
 import {
   parseCommentJson,
   readCommentJson,
@@ -26,7 +26,8 @@ import {
   rmEmptyDir,
   copyFile,
   traverseFolder,
-  execCommand
+  execCommand,
+  execCommandAll
 } from 't-comm/lib/node/index';
 ```
 
@@ -166,6 +167,27 @@ import {
 <a name="execCommand"></a>
 
 ## `execCommand(command, root, stdio)` 
+
+
+**描述**：<p>nodejs 中调用 child_process.execSync 执行命令，
+这个方法会对输出结果截断，只返回第一行内容</p>
+
+**参数**：
+
+
+| 参数名 | 类型 | 描述 |
+| --- | --- | --- |
+| command | <code>string</code> | <p>命令</p> |
+| root | <code>string</code> | <p>执行命令的目录</p> |
+| stdio | <code>string</code> | <p>结果输出，默认为 pipe</p> |
+
+**返回**: <code>string</code><br>
+
+<p>命令执行结果</p>
+
+<a name="execCommandAll"></a>
+
+## `execCommandAll(command, root, stdio)` 
 
 
 **描述**：<p>nodejs中调用 child_process.execSync 执行命令</p>

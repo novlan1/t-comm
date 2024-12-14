@@ -1,12 +1,11 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import { watchRainbowToCosAndSendRobot } from 't-comm';
 
 // or
-
 import { watchRainbowToCosAndSendRobot} from 't-comm/lib/rainbow-to-cos/index';
 ```
 

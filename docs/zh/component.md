@@ -1,21 +1,24 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import {
   addEmitsForComponent,
   addNameForComponent,
+  getFullCompName,
+  getPureCompName,
   extractClass,
   extractEvent,
   extractProps
 } from 't-comm';
 
 // or
-
 import {
   addEmitsForComponent,
   addNameForComponent,
+  getFullCompName,
+  getPureCompName,
   extractClass,
   extractEvent,
   extractProps
@@ -69,6 +72,53 @@ addNameForComponent('xxx.vue');
 ```ts
 addNameForComponent('xxx.vue', 'PressUploader');
 ```
+<a name="getFullCompName"></a>
+
+## `getFullCompName(name, prefix)` 
+
+
+**描述**：<p>获取组件全称</p>
+
+**参数**：
+
+
+| 参数名 | 描述 |
+| --- | --- |
+| name | <p>组件名称</p> |
+| prefix | <p>前缀</p> |
+
+**返回**: <p>全称</p>
+
+**示例**
+
+```ts
+getFullCompName('swiper-item', 'press-')
+getFullCompName('press-swiper-item', 'press-')
+
+// press-swiper-item
+```
+<a name="getPureCompName"></a>
+
+## `getPureCompName(name, prefix)` 
+
+
+**描述**：<p>获取组件简称</p>
+
+**参数**：
+
+
+| 参数名 | 描述 |
+| --- | --- |
+| name | <p>组件名称</p> |
+| prefix | <p>前缀</p> |
+
+**返回**: <p>简称</p>
+<pre class="prettyprint source lang-ts"><code>getPureCompName('press-swiper-item', 'press-')
+getPureCompName('swiper-item', 'press-')
+
+//swiper-item
+</code></pre>
+
 <a name="extractClass"></a>
 
 ## `extractClass(params)` 

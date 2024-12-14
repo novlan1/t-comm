@@ -1,12 +1,11 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import { readEnvVariable, writeEnvTokenToNpmRC } from 't-comm';
 
 // or
-
 import { readEnvVariable, writeEnvTokenToNpmRC} from 't-comm/lib/env-variable/index';
 ```
 

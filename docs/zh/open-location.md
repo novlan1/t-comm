@@ -1,12 +1,11 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import { openLocationInMp, openLocationInH5 } from 't-comm';
 
 // or
-
 import { openLocationInMp, openLocationInH5} from 't-comm/lib/open-location/index';
 ```
 

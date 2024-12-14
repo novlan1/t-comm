@@ -1,12 +1,11 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import { getTencentDocUserInfo } from 't-comm';
 
 // or
-
 import { getTencentDocUserInfo} from 't-comm/lib/tencent-doc/index';
 ```
 

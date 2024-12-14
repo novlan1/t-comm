@@ -1,6 +1,6 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import {
@@ -17,7 +17,6 @@ import {
 } from 't-comm';
 
 // or
-
 import {
   getMonthDay,
   getMonthDay2,

@@ -1,12 +1,11 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import { startApp } from 't-comm';
 
 // or
-
 import { startApp} from 't-comm/lib/vue-start/index';
 ```
 

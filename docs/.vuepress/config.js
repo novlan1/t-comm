@@ -11,8 +11,8 @@ const changeLogSidebar = SHOW_CHANGE_LOG ? [
 
 
 module.exports = {
-  title: 't-comm',
-  description: '丰富易用的工具库',
+  title: 'T Comm',
+  description: '专业、稳定、纯粹的工具库',
   base: process.env.PUBLISH_PATH || '/t-comm/',
   head: [
     [
@@ -45,6 +45,10 @@ module.exports = {
       {
         text: 'Press UI',
         link: 'https://novlan1.github.io/press-ui/',
+      },
+      {
+        text: 'Plugin Light',
+        link: 'https://novlan1.github.io/plugin-light/',
       },
     ],
     sidebar: [

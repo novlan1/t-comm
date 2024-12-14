@@ -1,12 +1,11 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import { showFunctionalComponent, showFunctionalComponentQueue } from 't-comm';
 
 // or
-
 import { showFunctionalComponent, showFunctionalComponentQueue} from 't-comm/lib/functional-component/index';
 ```
 

@@ -27,7 +27,7 @@ function publishWithBash({
   port,
 }) {
   const publishBash = require('path').resolve(__dirname, './publish.sh');
-  const command = `sh ${publishBash} ${source} ${target} ${name} ${password} ${port}`;
+  const command = `sh ${publishBash} ${source} ${target} ${name} "${password}" ${port}`;
 
   execSync(command, {
     cwd: process.cwd(),

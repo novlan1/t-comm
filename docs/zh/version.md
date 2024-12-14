@@ -1,15 +1,30 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
-import { compareVersion } from 't-comm';
+import { getPreReleaseVersion, compareVersion } from 't-comm';
 
 // or
-
-import { compareVersion} from 't-comm/lib/version/index';
+import { getPreReleaseVersion, compareVersion} from 't-comm/lib/version/index';
 ```
 
+
+## `getPreReleaseVersion(key)` 
+
+
+**描述**：<p>生成 alpha、beta 等这些预发布的版本</p>
+
+**参数**：
+
+
+| 参数名 | 描述 |
+| --- | --- |
+| key | <p>关键词</p> |
+
+**返回**: <p>生成的版本</p>
+
+<a name="compareVersion"></a>
 
 ## `compareVersion(v1, v2)` 
 

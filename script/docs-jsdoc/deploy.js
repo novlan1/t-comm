@@ -9,7 +9,7 @@ function main() {
   const hostName = process.env.HOST_NAME;
   const hostPwd =  process.env.HOST_PWD;
 
-  execSync(`node bin/cli publish -s ${sourceDir} -t ${targetDir} -n ${hostName} -p ${hostPwd}`, {
+  execSync(`node bin/cli publish -s ${sourceDir} -t ${targetDir} -n ${hostName} -p "${hostPwd}"`, {
     stdio: 'inherit',
   });
 }

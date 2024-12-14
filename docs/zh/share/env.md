@@ -1,12 +1,11 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import { initMiniProgramShare, openShareUI } from 't-comm';
 
 // or
-
 import { initMiniProgramShare, openShareUI} from 't-comm/lib/share/env/index';
 ```
 

@@ -1,12 +1,11 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import { getRouteLeaveCache } from 't-comm';
 
 // or
-
 import { getRouteLeaveCache} from 't-comm/lib/uni-app/index';
 ```
 

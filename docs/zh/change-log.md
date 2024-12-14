@@ -1,12 +1,11 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import { insertDocChangeLog } from 't-comm';
 
 // or
-
 import { insertDocChangeLog} from 't-comm/lib/change-log/index';
 ```
 

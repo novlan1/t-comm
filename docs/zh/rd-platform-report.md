@@ -1,12 +1,11 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import { reportToRdPlatform } from 't-comm';
 
 // or
-
 import { reportToRdPlatform} from 't-comm/lib/rd-platform-report/index';
 ```
 

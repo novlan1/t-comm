@@ -1,12 +1,11 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import { initGlobalVue3EBus, initDiffVue3EBus } from 't-comm';
 
 // or
-
 import { initGlobalVue3EBus, initDiffVue3EBus} from 't-comm/lib/e-bus/index';
 ```
 

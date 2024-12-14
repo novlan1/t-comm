@@ -1,6 +1,6 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import {
@@ -11,12 +11,12 @@ import {
   capitalize,
   titleize,
   lowerInitial,
+  pascalCase,
   toUnicodeAt,
   toUnicode
 } from 't-comm';
 
 // or
-
 import {
   checkStringLength,
   replaceAllPolyfill,
@@ -25,6 +25,7 @@ import {
   capitalize,
   titleize,
   lowerInitial,
+  pascalCase,
   toUnicodeAt,
   toUnicode
 } from 't-comm/lib/base/string/index';
@@ -71,10 +72,10 @@ replaceAllPolyfill()
 ```
 <a name="camelize"></a>
 
-## `camelize(str)` 
+## `camelize(str, handleSnake)` 
 
 
-**描述**：<p>横线转驼峰命名</p>
+**描述**：<p>横线转驼峰命名，如果第一个字符是字母，则不处理。</p>
 
 **参数**：
 
@@ -82,6 +83,7 @@ replaceAllPolyfill()
 | 参数名 | 类型 | 描述 |
 | --- | --- | --- |
 | str | <code>string</code> | <p>输入字符串</p> |
+| handleSnake | <code>boolean</code> | <p>是否处理下划线，默认不处理</p> |
 
 **返回**: <code>string</code><br>
 
@@ -197,6 +199,31 @@ titleize('foo-bar')
 lowerInitial('GroupId')
 
 // groupId
+```
+<a name="pascalCase"></a>
+
+## `pascalCase(str)` 
+
+
+**描述**：<p>用大驼峰，即 PascalCase 格式，来格式化字符串</p>
+
+**参数**：
+
+
+| 参数名 | 描述 |
+| --- | --- |
+| str | <p>字符串</p> |
+
+**返回**: <p>PascalCase 的字符串</p>
+
+**示例**
+
+```ts
+pascalCase('ab-cd')
+// AbCd
+
+pascalCase('ab_cd')
+// AbCd
 ```
 <a name="toUnicodeAt"></a>
 

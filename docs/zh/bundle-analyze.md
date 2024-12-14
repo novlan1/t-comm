@@ -1,12 +1,11 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import { analyzeIndexBundle } from 't-comm';
 
 // or
-
 import { analyzeIndexBundle} from 't-comm/lib/bundle-analyze/index';
 ```
 

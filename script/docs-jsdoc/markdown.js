@@ -29,13 +29,12 @@ function getInsertImportWay(methods, fileName) {
   if (methods.length <= 2) {
     const methodStr = methods.join(', ');
     return `
-## 引入
+<h2>引入</h2>
 
 \`\`\`ts
 import { ${methodStr} } from 't-comm';
 
 // or
-
 import { ${methodStr}} from 't-comm/lib/${newFileName}';
 \`\`\`
 `;
@@ -43,7 +42,7 @@ import { ${methodStr}} from 't-comm/lib/${newFileName}';
 
   const methodStr = methods.join(',\n  ');
   return `
-## 引入
+<h2>引入</h2>
 
 \`\`\`ts
 import {
@@ -51,7 +50,6 @@ import {
 } from 't-comm';
 
 // or
-
 import {
   ${methodStr}
 } from 't-comm/lib/${newFileName}';

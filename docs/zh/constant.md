@@ -1,12 +1,11 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import { GID_MAP } from 't-comm';
 
 // or
-
 import { GID_MAP} from 't-comm/lib/constant/index';
 ```
 

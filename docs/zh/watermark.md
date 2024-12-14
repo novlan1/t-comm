@@ -1,12 +1,11 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import { createWatcherMark } from 't-comm';
 
 // or
-
 import { createWatcherMark} from 't-comm/lib/watermark/index';
 ```
 

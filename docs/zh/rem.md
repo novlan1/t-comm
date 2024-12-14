@@ -1,12 +1,11 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import { transFormRem } from 't-comm';
 
 // or
-
 import { transFormRem} from 't-comm/lib/rem/index';
 ```
 

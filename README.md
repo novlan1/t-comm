@@ -6,6 +6,7 @@
   style="margin-bottom: 20px;margin-top: 20px;"
 />
 </div>
+<!-- 复制到 docs 时，去掉 ”详细文档“ 那一节 -->
 
 <p align="center">
   <img src="https://img.shields.io/travis/com/novlan1/t-comm">
@@ -19,7 +20,7 @@
 
 ### 介绍
 
-`t-comm` 是一个丰富、易用的工具库。
+`t-comm` 是一个专业、稳定、纯粹的工具库。
 
 ### 如何使用
 

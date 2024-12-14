@@ -1,12 +1,11 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import { toHumpObj, extend } from 't-comm';
 
 // or
-
 import { toHumpObj, extend} from 't-comm/lib/base/object/index';
 ```
 

@@ -1,12 +1,11 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import { genSignature, getWxCfg } from 't-comm';
 
 // or
-
 import { genSignature, getWxCfg} from 't-comm/lib/wx/index';
 ```
 

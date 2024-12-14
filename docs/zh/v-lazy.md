@@ -1,12 +1,11 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import { getVLazyOptions } from 't-comm';
 
 // or
-
 import { getVLazyOptions} from 't-comm/lib/v-lazy/index';
 ```
 

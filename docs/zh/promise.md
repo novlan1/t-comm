@@ -1,12 +1,11 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import { toPromise } from 't-comm';
 
 // or
-
 import { toPromise} from 't-comm/lib/promise/index';
 ```
 

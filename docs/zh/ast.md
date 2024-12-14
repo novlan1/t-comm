@@ -1,12 +1,11 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import { parseReplaceConfig, replaceDependencies } from 't-comm';
 
 // or
-
 import { parseReplaceConfig, replaceDependencies} from 't-comm/lib/ast/index';
 ```
 

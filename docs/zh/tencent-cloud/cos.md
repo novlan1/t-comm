@@ -1,12 +1,11 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import { uploadCOSFile } from 't-comm';
 
 // or
-
 import { uploadCOSFile} from 't-comm/lib/tencent-cloud/cos/index';
 ```
 

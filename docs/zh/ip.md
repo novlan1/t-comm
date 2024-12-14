@@ -1,12 +1,11 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import { getIPAddress, getIPAddressStr } from 't-comm';
 
 // or
-
 import { getIPAddress, getIPAddressStr} from 't-comm/lib/ip/index';
 ```
 

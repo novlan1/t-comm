@@ -1,12 +1,11 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import { sendOpenSourceReport } from 't-comm';
 
 // or
-
 import { sendOpenSourceReport} from 't-comm/lib/open-source-report/index';
 ```
 

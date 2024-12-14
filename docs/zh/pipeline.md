@@ -1,12 +1,11 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import { startPipeline } from 't-comm';
 
 // or
-
 import { startPipeline} from 't-comm/lib/pipeline/index';
 ```
 

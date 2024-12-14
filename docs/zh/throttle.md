@@ -1,12 +1,11 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import { throttle } from 't-comm';
 
 // or
-
 import { throttle} from 't-comm/lib/throttle/index';
 ```
 

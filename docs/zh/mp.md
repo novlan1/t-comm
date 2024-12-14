@@ -1,12 +1,11 @@
 [[toc]]
 
-## 引入
+<h2>引入</h2>
 
 ```ts
 import { saveMpImage } from 't-comm';
 
 // or
-
 import { saveMpImage} from 't-comm/lib/mp/index';
 ```
 
