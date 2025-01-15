@@ -1,4 +1,7 @@
 export function sliceObject<T>(info: Record<string, T>, max: number) {
+  if (!info) {
+    return {};
+  }
   const keys = Object.keys(info);
   if (keys.length < max) {
     return info;

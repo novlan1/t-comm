@@ -3,14 +3,35 @@
 <h2>引入</h2>
 
 ```ts
-import { debounce } from 't-comm';
+import { debounceRun, debounce } from 't-comm';
 
 // or
-import { debounce} from 't-comm/lib/debounce/index';
+import { debounceRun, debounce} from 't-comm/lib/debounce/index';
 ```
 
 
-## `debounce(fn, time)` 
+## `debounceRun` 
+
+
+**描述**：<p>不用生成中间函数的防抖</p>
+
+**参数**：
+
+
+
+**示例**
+
+```ts
+debounceRun(func, args, {
+  funcKey: 'funcKey',
+  wait: 500, // 默认 500
+  throttle: false, // 是否是节流，默认 false
+  immediate: true, // 是否立即执行，默认 true
+})
+``
+<a name="debounce"></a>
+
+## `debounce(fn, time, immediate)` 
 
 
 **描述**：<p>防抖，场景：搜索</p>
@@ -24,6 +45,7 @@ import { debounce} from 't-comm/lib/debounce/index';
 | --- | --- | --- |
 | fn | <code>function</code> | <p>主函数</p> |
 | time | <code>number</code> | <p>间隔时间，单位 <code>ms</code></p> |
+| immediate | <code>boolean</code> | <p>是否立即执行，默认 <code>false</code></p> |
 
 **返回**: <p>闭包函数</p>
 
@@ -34,4 +56,6 @@ function count() {
  console.log('xxxxx')
 }
 window.onscroll = debounce(count, 500)
+
+window.onscroll = debounce(count, 500, true)
 ```

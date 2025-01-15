@@ -166,6 +166,15 @@ async function sendSendMsg(content: string, webhookUrl: string) {
 
 /**
  * 每日合并
+ * 1. 获取昨天有活跃的分支
+ * 2. 对于每个分支，进行合并并推送
+ *     - 清理 Git 环境
+ *     - 切到主分支，并拉最新代码
+ *     - 切到当前分支，拉最新代码
+ *     - 尝试执行 git merge
+ *     - 对比 merge 前后的 commit 信息是否相同，作为判断 merge 是否成功的依据
+ * 3. 发送机器人消息
+ *
  *
  * @export
  * @async
@@ -186,7 +195,6 @@ async function sendSendMsg(content: string, webhookUrl: string) {
  * dailyMerge({
  *   webhookUrl: 'xx',
  *   appName: 'xx',
- *   projectId: 'xx',
  *   devRoot: 'xx',
  *
  *   baseUrl: 'xx',
@@ -243,7 +251,7 @@ export async function dailyMerge({
     whiteBranchReg,
   });
 
-  if (!branches || !branches.length) {
+  if (!branches?.length) {
     console.log('[no branch to merge]');
     sendSendMsg(`>【${appName || ''}自动合并】未找到需要合并的分支`, webhookUrl);
     return;

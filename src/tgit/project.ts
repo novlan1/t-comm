@@ -115,7 +115,7 @@ export async function getAllProjects(privateToken: string, search = ''): Promise
     });
     res = res.concat(temp);
     page += 1;
-    if (!temp || !temp.length) {
+    if (!temp?.length) {
       break;
     }
   }

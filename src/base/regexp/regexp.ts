@@ -38,6 +38,8 @@ const PRE_RELEASE_VERSION = /\d+\.\d+\.\d+-(\w+).\d+/;
  */
 export function getPreReleaseTag(version: string) {
   const match = version.match(PRE_RELEASE_VERSION);
-  if (!match || !match[1]) return '';
+  if (!match?.[1]) {
+    return '';
+  }
   return match[1];
 }

@@ -44,8 +44,8 @@ export function genVConsole({
       loadVConsole(vConsoleConfig);
     })
     // 异常捕获，避免 TAM PROMISE_ERROR 错误上报
-    .catch((error: any) => {
-      console.log('checkIsDevList', error);
-    });
+      .catch((error: any) => {
+        console.log('checkIsDevList', error);
+      });
   }
 }

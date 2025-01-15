@@ -14,6 +14,19 @@ import { dailyMerge} from 't-comm/lib/daily-merge/index';
 
 
 **描述**：<p>每日合并</p>
+<ol>
+<li>获取昨天有活跃的分支</li>
+<li>对于每个分支，进行合并并推送
+<ul>
+<li>清理 Git 环境</li>
+<li>切到主分支，并拉最新代码</li>
+<li>切到当前分支，拉最新代码</li>
+<li>尝试执行 git merge</li>
+<li>对比 merge 前后的 commit 信息是否相同，作为判断 merge 是否成功的依据</li>
+</ul>
+</li>
+<li>发送机器人消息</li>
+</ol>
 
 **参数**：
 
@@ -39,7 +52,6 @@ import { dailyMerge} from 't-comm/lib/daily-merge/index';
 dailyMerge({
   webhookUrl: 'xx',
   appName: 'xx',
-  projectId: 'xx',
   devRoot: 'xx',
 
   baseUrl: 'xx',

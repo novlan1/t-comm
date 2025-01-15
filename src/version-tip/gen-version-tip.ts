@@ -27,7 +27,7 @@ export function parseChangeLog({
 
   // 大版本
   // 不是第一个版本
-  if (!currentVersion || !currentVersion[0]) {
+  if (!currentVersion?.[0]) {
     currentVersion = changelogStr.match(new RegExp(
       `(?<=## \\[${targetVersion}\\].*\n).*?(?=\n##+ \\[?\\d+.\\d+.\\d+)`,
       's',
@@ -35,7 +35,7 @@ export function parseChangeLog({
   }
 
   // changeLog 的另一种形式，lerna 生成的
-  if (!currentVersion || !currentVersion[0]) {
+  if (!currentVersion?.[0]) {
     changelogStr = changelogStr.replace(/<\/?small>/g, '');
     currentVersion = changelogStr.match(new RegExp(
       `(?<=## ${targetVersion}.*\n).*?(?=\n##+ ?\\d+.\\d+.\\d+)`,
@@ -45,7 +45,7 @@ export function parseChangeLog({
 
   // 非大版本
   // 第一个版本
-  if (!currentVersion || !currentVersion[0]) {
+  if (!currentVersion?.[0]) {
     currentVersion = changelogStr.match(new RegExp(
       `(?<=### ${targetVersion}.*\n).*`,
       's',
@@ -54,14 +54,14 @@ export function parseChangeLog({
 
   // 大版本
   // 第一个版本
-  if (!currentVersion || !currentVersion[0]) {
+  if (!currentVersion?.[0]) {
     currentVersion = changelogStr.match(new RegExp(
       `(?<=## ${targetVersion}.*\n).*`,
       's',
     ));
   }
 
-  if (!currentVersion || !currentVersion[0]) {
+  if (!currentVersion?.[0]) {
     console.log(`[GEN VERSION TIP] ERROR: NOT FOUND CHANGELOG INFO OF ${targetVersion} `);
     return '';
   }

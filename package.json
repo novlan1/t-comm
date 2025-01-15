@@ -1,6 +1,6 @@
 {
   "name": "t-comm",
-  "version": "1.3.126",
+  "version": "1.3.143",
   "description": "专业、稳定、纯粹的工具库",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",

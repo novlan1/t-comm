@@ -3,10 +3,10 @@
 <h2>引入</h2>
 
 ```ts
-import { getRouteLeaveCache } from 't-comm';
+import { getRouteLeaveCache, startUniProject } from 't-comm';
 
 // or
-import { getRouteLeaveCache} from 't-comm/lib/uni-app/index';
+import { getRouteLeaveCache, startUniProject} from 't-comm/lib/uni-app/index';
 ```
 
 
@@ -27,3 +27,28 @@ import { getRouteLeaveCache} from 't-comm/lib/uni-app/index';
 
 **返回**: <p>返回对象，包含 beforeRouteLeave 和 activated 方法</p>
 
+<a name="startUniProject"></a>
+
+## `startUniProject(options)` 
+
+
+**描述**：<p>启动 uni-app 项目</p>
+
+**参数**：
+
+
+| 参数名 | 描述 |
+| --- | --- |
+| options | <p>参数</p> |
+
+
+
+**示例**
+
+```ts
+startUniProject();
+
+startUniProject({
+  debug: false, // 默认为 true，会打印参数
+})
+```

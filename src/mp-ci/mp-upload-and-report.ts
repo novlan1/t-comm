@@ -32,7 +32,7 @@ async function reportToRd({
   bkBuildUrl,
   bkPipelineId,
 }: Record<string, any>) {
-  if (!bundleInfo || !bundleInfo.__APP__) return;
+  if (!bundleInfo?.__APP__) return;
   const mainBundleSize = parseInt(`${(bundleInfo.__APP__?.size || 0) / 1024}`, 10);
   const totalBundleSize = parseInt(`${(bundleInfo.__FULL__?.size || 0) / 1024}`, 10);
 

@@ -98,4 +98,11 @@ describe('sliceObject', () => {
       b: { b: 2 },
     });
   });
+
+  it('sliceObject empty', () => {
+    // @ts-expect-error
+    expect(sliceObject(null, 2)).toEqual({});
+    // @ts-expect-error
+    expect(sliceObject(undefined, 2)).toEqual({});
+  });
 });

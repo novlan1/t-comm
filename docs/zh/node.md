@@ -179,7 +179,7 @@ import {
 | --- | --- | --- |
 | command | <code>string</code> | <p>命令</p> |
 | root | <code>string</code> | <p>执行命令的目录</p> |
-| stdio | <code>string</code> | <p>结果输出，默认为 pipe</p> |
+| stdio | <code>string</code> \| <code>object</code> | <p>结果输出，默认为 pipe</p> |
 
 **返回**: <code>string</code><br>
 

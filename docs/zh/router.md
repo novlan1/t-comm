@@ -6,14 +6,16 @@
 import {
   findRouteName,
   getRouterFuncPath,
-  getH5CurrentUrl
+  getH5CurrentUrl,
+  uniHookRouter
 } from 't-comm';
 
 // or
 import {
   findRouteName,
   getRouterFuncPath,
-  getH5CurrentUrl
+  getH5CurrentUrl,
+  uniHookRouter
 } from 't-comm/lib/router/index';
 ```
 
@@ -78,4 +80,31 @@ console.log('name', name);
 
 ```ts
 getH5CurrentUrl(this.$route);
+```
+<a name="uniHookRouter"></a>
+
+## `uniHookRouter()` 
+
+
+**描述**：<p>拦截路由</p>
+
+**参数**：
+
+
+
+**示例**
+
+```ts
+uniHookRouter({
+  navigateToHooks: [
+    () => console.log('1')
+  ],
+   navigateBackHooks: [
+     () => console.log('2')
+   ],
+   redirectToHooks: [
+     () => console.log('3')
+   ],
+   debug: true,
+})
 ```
