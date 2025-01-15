@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14]
+        node-version: [20]
     steps:
       - name: checkout
         uses: actions/checkout@v2
@@ -28,10 +28,10 @@ jobs:
           key: ${{ runner.os }}-node${{ matrix.node-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
 
       - name: Install pnpm
-        run: curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm@6
+        run: npm install -g pnpm@9
 
       - name: Install Dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: pnpm install
 
       - name: Run Test
         run: pnpm test
