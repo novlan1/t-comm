@@ -1,5 +1,5 @@
 export { checkStringLength } from './limit-length';
-export { randomString } from './random';
+export { randomString, getRandomString } from './random';
 
 export { replaceAllPolyfill } from './replace-all';
 export { camelize, hyphenate, capitalize, titleize, lowerInitial, pascalCase } from './string';

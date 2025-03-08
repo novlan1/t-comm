@@ -129,21 +129,21 @@ function parseResult(results: Array<{
     region: string;
   }> = {};
   for (const item of results) {
-    item.series.forEach((it: {
+    (item.series || []).forEach((it: {
       tags: {
         region: string;
       },
       columns: Array<TableHeaderType>;
       values: Array<any>
     }) => {
-      const key = it.tags.region;
+      const key = it?.tags?.region || '';
 
       if (key) {
         if (!obj[key]) obj[key] = { region: key };
 
-        it.columns.reduce((acc: Record<string, any>, column, columnIndex) => {
+        (it?.columns || []).reduce((acc: Record<string, any>, column, columnIndex) => {
           if (TABLE_HEADER_MAP[column] !== undefined) {
-            acc[column] = it.values[0][columnIndex];
+            acc[column] = it.values?.[0]?.[columnIndex];
           }
           return acc;
         }, obj[key]);

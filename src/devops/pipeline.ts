@@ -193,16 +193,25 @@ function findRunningTooLongPipelines(
 }
 
 
-function genRobotMessage(
-  dataList: Array<any>,
-  host: string,
+function genRobotMessage({
+  pipelineList,
+  pipelineHost,
+  projectId,
+  overTimeConfigList,
+  mentionList = ['guowangyang'],
+}: {
+  pipelineList: Array<any>,
+  pipelineHost: string,
+
   projectId: string,
   overTimeConfigList: typeof OVER_TIME_CONFIG_LIST,
-) {
+  mentionList: string[],
+}) {
+  const mentionStr = mentionList.map(mention => `<@${mention}>`).join('');
   const list = [
-    `【流水线执行时间过长监控】${timeStampFormat(Date.now(), 'yyyy-MM-dd hh:mm:ss')}<@guowangyang>`,
+    `【流水线执行时间过长监控】${timeStampFormat(Date.now(), 'yyyy-MM-dd hh:mm:ss')}${mentionStr}`,
   ];
-  console.log('[All Pipeline Length]: ', dataList.length);
+  console.log('[All Pipeline Length]: ', pipelineList.length);
 
   let maxTime = Number.MAX_VALUE;
   let curIndex = 1;
@@ -211,7 +220,7 @@ function genRobotMessage(
   // eslint-disable-next-line @typescript-eslint/prefer-for-of
   for (let i = 0;i < overTimeConfigList.length;i++) {
     const item = overTimeConfigList[i];
-    const pipelines = findRunningTooLongPipelines(dataList, item.value, maxTime);
+    const pipelines = findRunningTooLongPipelines(pipelineList, item.value, maxTime);
     overtimePipelines.push(...pipelines);
 
     maxTime = item.value;
@@ -219,7 +228,7 @@ function genRobotMessage(
     if (pipelines.length) {
       console.log('[pipelines.length]', `${item.label}: ${pipelines.length}`);
       const pipelineStr = pipelines
-        .map(item => `[${item.pipelineName}](${host}/console/pipeline/${projectId}/${item.pipelineId}/history)`)
+        .map(item => `[${item.pipelineName}](${pipelineHost}/console/pipeline/${projectId}/${item.pipelineId}/history)`)
         .join(', ');
       list.push(`${curIndex}. 超过${item.label}有: ${pipelineStr}`);
       curIndex += 1;
@@ -247,16 +256,24 @@ export async function sendOverTimePipelineMessage({
   webhookUrl,
   chatId,
   overTimeConfigList = OVER_TIME_CONFIG_LIST,
+  mentionList = ['guowangyang'],
 }: {
   params: any;
   pipelineHost: string;
   webhookUrl: string;
   chatId: Array<string>;
   overTimeConfigList?: Array<{label: string, value: number}>;
+  mentionList: string[]
 }) {
   const pipelineList = await getAllPipelineList(params);
 
-  const res = genRobotMessage(pipelineList, pipelineHost, params.projectId, overTimeConfigList);
+  const res = genRobotMessage({
+    pipelineList,
+    pipelineHost,
+    projectId: params.projectId,
+    overTimeConfigList,
+    mentionList,
+  });
   let { message } = res;
   const { overtimePipelines } = res;
 

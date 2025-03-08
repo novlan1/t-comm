@@ -1,4 +1,5 @@
 export { getAllGitRepo } from './all-git-repo';
+export { checkGitClean } from './check-clean';
 export { rmFirstAndLastSlash, getGitCodeLink, getGitMRLink } from './git-link';
 
 export {

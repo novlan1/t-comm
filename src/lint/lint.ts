@@ -239,6 +239,7 @@ export async function checkLint({
 
   chatId = ['ALL'],
   checkAll,
+  mentionList = [],
 }: {
   privateToken: string;
   gitApiPrefix: string;
@@ -258,10 +259,11 @@ export async function checkLint({
 
   chatId?: string[];
   checkAll?: boolean;
+  mentionList?: string[];
 }) {
   let jsKeyword = '--ext .js,.ts .';
   let vueKeyword = '--ext .vue .';
-  let sassKeyword = '**/*.{css,scss}';
+  let sassKeyword = '"**/*.{css,scss}"';
 
   if (sourceBranch && targetBranch) {
     const {
@@ -292,6 +294,8 @@ export async function checkLint({
   console.log('正在执行 lint vue ...');
 
   execCommand(`npx eslint ${vueKeyword} --quiet -o ${outputVue} --format json || true`, workspace, 'inherit');
+
+  console.log('正在执行 lint css/scss ...');
 
   execCommand(`npx stylelint ${sassKeyword} --quiet -o ${outputScss} --formatter json || true`, workspace, 'inherit');
 
@@ -332,6 +336,8 @@ export async function checkLint({
 
       repo,
       repoUrl,
+
+      mentionList,
     });
 
     try {
@@ -375,6 +381,7 @@ export async function checkLint({
 
     repo,
     repoUrl,
+    mentionList,
   });
 
 
@@ -511,6 +518,8 @@ function genRobotMessage({
 
   postFix,
   checkAll = false,
+
+  mentionList = [],
 }: {
   jsTotal: number;
   jsErrorFiles: JSErrorFile[];
@@ -533,6 +542,8 @@ function genRobotMessage({
 
   postFix?: string;
   checkAll?: boolean;
+
+  mentionList?: string[];
 }) {
   const genTitle = (prefix: string) => (`${prefix}${checkAll ? '【LINT】全量模式' : '【LINT】增量模式'}`);
   const postFixList = postFix ? [postFix] : [];
@@ -559,9 +570,9 @@ function genRobotMessage({
       // '遵守代码规范是防止项目腐化的第一步',
       ...mrInfo,
       ...repoInfo,
-      `可在[归档产物](${buildUrl})中查看详情，或本地运行 \`npx eslint\` 等命令`,
+      `可在[流水线](${buildUrl})中查看详情，或本地运行 \`npx eslint --fix file\` 等命令`,
       `[说明文档](${docLink})`,
-      '<@guowangyang>',
+      mentionList.map(mention => `<@${mention}>`).join(''),
       ...postFixList,
     ].join('，'),
 
