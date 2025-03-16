@@ -3,12 +3,62 @@
 <h2>引入</h2>
 
 ```ts
-import { saveMpImage } from 't-comm';
+import {
+  getPageTotal,
+  getComponentInfo,
+  saveMpImage
+} from 't-comm';
 
 // or
-import { saveMpImage} from 't-comm/lib/mp/index';
+import {
+  getPageTotal,
+  getComponentInfo,
+  saveMpImage
+} from 't-comm/lib/mp/index';
 ```
 
+
+## `getPageTotal(dist)` 
+
+
+**描述**：<p>统计页面总数、分包数目等</p>
+
+**参数**：
+
+
+| 参数名 |
+| --- |
+| dist | 
+
+**返回**: <p>result</p>
+
+**示例**
+
+```ts
+getPageTotal('./dist/dev/mp-weixin')
+```
+<a name="getComponentInfo"></a>
+
+## `getComponentInfo(dist)` 
+
+
+**描述**：<p>统计组件数目、wxml大小、wxss大小、js大小等</p>
+
+**参数**：
+
+
+| 参数名 |
+| --- |
+| dist | 
+
+**返回**: <p>result</p>
+
+**示例**
+
+```ts
+getComponentInfo('./dist/dev/mp-weixin')
+```
+<a name="saveMpImage"></a>
 
 ## `saveMpImage(url, options)` 
 
