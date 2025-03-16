@@ -36,7 +36,7 @@ const complete: TaskFunc = (cb) => {
 // 2. rollup 打包
 // 3. api-extractor 生成统一的声明文件, 删除多余的声明文件
 // 4. 完成
-export const build = series(
+export const build: any = series(
   clearLibFile,
   buildByRollup,
   generateDts,
@@ -48,14 +48,15 @@ export async function changelog(cb: Function) {
   const changelogPath: string = path.join(paths.root, 'CHANGELOG.md');
 
   // 对命令 conventional-changelog -p angular -i CHANGELOG.md -w -r 0
+  // @ts-ignore
   const changelogPipe = await conventionalChangelog({
-    preset: 'angular',
-    releaseCount: 0,
+    // preset: 'angular',
+    // releaseCount: 0,
   });
   changelogPipe.setEncoding('utf8');
 
   const resultArray = ['# 工具库更新日志\n\n'];
-  changelogPipe.on('data', (chunk) => {
+  changelogPipe.on('data', (chunk: any) => {
     // 原来的 commits 路径是进入提交列表
     chunk = chunk.replace(/\/commits\//g, '/commit/');
     resultArray.push(chunk);

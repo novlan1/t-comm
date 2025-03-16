@@ -574,7 +574,9 @@ function genRobotMessage({
       `[说明文档](${docLink})`,
       mentionList.map(mention => `<@${mention}>`).join(''),
       ...postFixList,
-    ].join('，'),
+    ]
+      .filter(item => item)
+      .join('，'),
 
     [`- **JS/TS 错误**：${jsTotal ? `${jsErrorFiles.length}个文件${jsTotal}个错误` : '无'}`],
     [`- **Vue 错误**：${vueTotal ? `${vueErrorFiles.length}个文件${vueTotal}个错误` : '无'}`],

@@ -1,10 +1,29 @@
 {
   "name": "t-comm",
-  "version": "1.3.150",
+  "version": "1.3.151",
   "description": "专业、稳定、纯粹的工具库",
+  "keywords": [
+    "t-comm",
+    "common",
+    "utils"
+  ],
+  "homepage": "https://novlan1.github.io/t-comm/",
+  "bugs": {
+    "url": "https://github.com/novlan1/t-comm/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/novlan1/t-comm.git"
+  },
+  "license": "MIT",
+  "author": "ygw",
+  "sideEffects": "false",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
   "typings": "lib/index.d.ts",
+  "bin": {
+    "t-comm": "./bin/cli.js"
+  },
   "files": [
     "lib",
     "es",
@@ -14,58 +33,51 @@
     "CHANGELOG.md",
     "README.md"
   ],
-  "sideEffects": "false",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/novlan1/t-comm.git"
-  },
-  "author": "ygw",
-  "keywords": [
-    "t-comm",
-    "common",
-    "utils"
-  ],
-  "bin": {
-    "t-comm": "./bin/cli.js"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/novlan1/t-comm/issues"
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
-  },
-  "homepage": "https://novlan1.github.io/t-comm/",
   "scripts": {
-    "build": "gulp build",
     "api": "api-extractor run",
-    "docs:gen": "jsdoc -c script/docs/jsdoc.json && cp script/docs/jsdoc.js docs && node script/docs/jsdoc-local.js",
+    "build": "gulp build",
+    "changelog": "gulp changelog",
     "docs:build": "bash generateDocs.sh",
+    "docs:build:new": "vuepress build docs",
+    "docs:deploy": "node script/docs-jsdoc/deploy",
+    "docs:deploy:mine": "node script/docs-jsdoc/docs-mine",
+    "docs:dev": "vuepress dev docs",
+    "docs:gen": "jsdoc -c script/docs/jsdoc.json && cp script/docs/jsdoc.js docs && node script/docs/jsdoc-local.js",
+    "docs:gen:new": "node script/docs-jsdoc/markdown",
     "docs:open": "open docs/index.html",
-    "test": "jest --coverage --verbose -u",
+    "init:env": "node script/env/rainbow-env",
     "lint": "eslint --ext .js,.ts,.tsx,.jsx,.vue .",
     "lint:fix": "eslint --fix --ext .js,.ts,.tsx,.jsx,.vue .",
     "lint:json": "eslint --ext .js,.ts,.tsx,.jsx,.vue . -f json-with-metadata -o ./coverage/lint-results-meta.json",
-    "changelog": "gulp changelog",
-    "version": "yarn changelog && git add CHANGELOG.md",
-    "version:tip": "node script/version-tip/version-tip",
-    "release": "yarn test && yarn build && np --no-cleanup --yolo --any-branch && npm run version:tip",
     "npm:token": "node script/npm-token/npm-token",
     "prepare": "husky install",
-    "init:env": "node script/env/rainbow-env",
-    "docs:gen:new": "node script/docs-jsdoc/markdown",
-    "docs:dev": "vuepress dev docs",
-    "docs:build:new": "vuepress build docs",
-    "docs:deploy:mine": "node script/docs-jsdoc/docs-mine",
-    "docs:deploy": "node script/docs-jsdoc/deploy",
+    "release": "yarn test && yarn build && np --no-cleanup --yolo --any-branch && npm run version:tip",
+    "release:alpha": "standard-version --prerelease alpha -a",
+    "release:beta": "standard-version --prerelease beta -a",
     "release:first": "standard-version --first-release",
     "release:major": "standard-version --release-as major -a",
     "release:minor": "standard-version --release-as minor -a",
     "release:patch": "standard-version --release-as patch -a",
-    "release:alpha": "standard-version --prerelease alpha -a",
-    "release:beta": "standard-version --prerelease beta -a",
-    "step:build": "node script/gulp/test-task"
+    "step:build": "node script/gulp/test-task",
+    "test": "jest --coverage --verbose -u",
+    "version": "yarn changelog && git add CHANGELOG.md",
+    "version:tip": "node script/version-tip/version-tip"
+  },
+  "lint-staged": {
+    "*.{ts,js}": [
+      "eslint --fix"
+    ]
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.17.2",
+    "@commitlint/config-conventional": "^17.1.0",
+    "axios": "*",
+    "cheerio": "^1.0.0-rc.12",
+    "commander": "^10.0.1",
+    "cron-parser": "^4.8.1",
+    "qs": "^6.11.0",
+    "request": "^2.88.2",
+    "tar": "^6.1.15"
   },
   "devDependencies": {
     "@babel/core": "^7.17.2",
@@ -79,7 +91,7 @@
     "@rollup/plugin-node-resolve": "^13.1.3",
     "@rollup/plugin-typescript": "^8.3.0",
     "eslint-config-light": "^1.5.1",
-    "@types/conventional-changelog": "^3.1.1",
+    "@types/conventional-changelog": "^3.1.5",
     "@types/fs-extra": "^9.0.13",
     "@types/gulp": "^4.0.9",
     "@types/jest": "^27.4.0",
@@ -90,6 +102,7 @@
     "babel-core": "6.25",
     "babel-jest": "^29.6.2",
     "better-docs": "^2.7.2",
+    "canvas": "^2.6.1",
     "chalk": "^4.1.2",
     "conventional-changelog": "^3.1.25",
     "cos-nodejs-sdk-v5": "^2.11.19",
@@ -97,8 +110,8 @@
     "dotenv": "^16.0.3",
     "eslint": "^8.25.0",
     "eslint-plugin-jest": "^27.1.1",
-    "fs-extra": "^10.0.1",
     "form-data": "^4.0.1",
+    "fs-extra": "^10.0.1",
     "glob": "^10.3.4",
     "gulp": "^4.0.2",
     "husky": "^7.0.4",
@@ -121,25 +134,11 @@
     "vue-jest": "^3.0.7",
     "vue-template-compiler": "^2.7.14",
     "vuepress": "^1.9.10",
-    "xlsx": "https://cdn.sheetjs.com/xlsx-0.19.3/xlsx-0.19.3.tgz",
-    "canvas": "^2.6.1"
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.19.3/xlsx-0.19.3.tgz"
   },
-  "dependencies": {
-    "@babel/runtime": "^7.17.2",
-    "@commitlint/config-conventional": "^17.1.0",
-    "axios": "*",
-    "cheerio": "^1.0.0-rc.12",
-    "commander": "^10.0.1",
-    "cron-parser": "^4.8.1",
-    "qs": "^6.11.0",
-    "request": "^2.88.2",
-    "tar": "^6.1.15"
-  },
-  "peerDependencies": {},
-  "lint-staged": {
-    "*.{ts,js}": [
-      "eslint --fix"
-    ]
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "standard-version": {
     "scripts": {
