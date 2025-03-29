@@ -1,5 +1,5 @@
 
-import { writeFileSync, readFileSync } from '../fs/fs';
+import { readFileSync, writeFileSync } from '../fs/fs';
 
 const getComponentNameStr = (componentName: string) => `export default {\n  name: '${componentName}',`;
 

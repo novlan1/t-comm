@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import type { SecretInfoType } from '../types';
 
 const tokenMap: Record<string, any> = {};

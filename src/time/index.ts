@@ -1,2 +1,2 @@
 export { getNowBySecond } from './now';
-export { timeStampFormat, dateFormat } from './time';
+export { dateFormat, timeStampFormat } from './time';

@@ -1,12 +1,15 @@
 
-const path = require('path');
 const fs = require('fs');
+const path = require('path');
+
 const {
   Extractor,
   ExtractorConfig,
 } = require('@microsoft/api-extractor');
-const { traverseFolder, deleteFolder } = require('../utils/node-fs');
-const { log, PATHS } = require('./helper');
+
+const { deleteFolder, traverseFolder } = require('../utils/node-fs');
+
+const { PATHS, log } = require('./helper');
 
 
 // api-extractor 整理 .d.ts 文件

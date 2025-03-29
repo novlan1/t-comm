@@ -1,4 +1,5 @@
 import * as fs from 'fs';
+
 import { getCOSInstance, onUploadCOSProgress } from './helper';
 
 

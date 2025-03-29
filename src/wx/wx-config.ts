@@ -1,6 +1,8 @@
-import type { IGetWxSignaturePromise } from './types';
-import { WX_JS_SDK } from './config';
 import { loadJS } from '../loader/loader';
+
+import { WX_JS_SDK } from './config';
+
+import type { IGetWxSignaturePromise } from './types';
 
 
 export function configWx({

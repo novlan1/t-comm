@@ -1,11 +1,12 @@
-import * as path from 'path';
 import { spawnSync } from 'child_process';
+import * as path from 'path';
 
 import { getIPAddress, getIPAddressStr } from '../ip/ip';
 
-import { getPublishRootDir, getPublishEnvValue, getPublishBashPath, getPublishModuleName } from './helper';
-import { postFile } from './post-file';
 import { ENV_MAP, PUBLISH_ENV_MAP, PUBLISH_HOST_ENV } from './config';
+import { getPublishBashPath, getPublishEnvValue, getPublishModuleName, getPublishRootDir } from './helper';
+import { postFile } from './post-file';
+
 import type { IPublishOptions } from './types';
 
 const rootDir = getPublishRootDir();

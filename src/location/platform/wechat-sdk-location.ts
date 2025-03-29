@@ -1,4 +1,4 @@
-import { LocationInterface, LocationFlag, LocationResult, LocationOptions } from '../location-interface';
+import { LocationFlag, LocationInterface, LocationOptions, LocationResult } from '../location-interface';
 // import { configWx } from '../../tools/weixin';
 
 // 用微信sdk获取lbs定位

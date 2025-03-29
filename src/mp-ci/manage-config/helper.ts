@@ -58,7 +58,8 @@ export function updateQQTencentSheetLine(rainbowConfig: Record<string, any>) {
 
   Object.keys(qqRobotMap).forEach((branch) => {
     const value = qqRobotMap[branch] || {};
-    if (!value.tencentDocsLine) {
+    if (!value.tencentDocsLine
+      || !Object.keys(value.tencentDocsLine).length) {
       const temp: Record<string, any> = {};
       if (value.test) {
         temp.test = restLines[cur];

@@ -1,4 +1,4 @@
-import { LocationInterface, LocationFlag, LocationResult, LocationData } from '../location-interface';
+import { LocationData, LocationFlag, LocationInterface, LocationResult } from '../location-interface';
 
 export default class TencentMapApiLocation implements LocationInterface {
   static lastLocation: LocationData;

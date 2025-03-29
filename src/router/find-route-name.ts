@@ -1,6 +1,6 @@
 import pathToRegexp from './path-to-regexp';
 
-import type { IRoute, IMeta } from './types';
+import type { IMeta, IRoute } from './types';
 
 export function getQueryBaseStr(str = '') {
   if (!str) {

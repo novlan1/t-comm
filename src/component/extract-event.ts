@@ -1,4 +1,4 @@
-import { writeFileSync, readFileSync } from '../fs/fs';
+import { readFileSync, writeFileSync } from '../fs/fs';
 
 const DEFAULT_EXTRACT_REGEXP = /\$emit\('([\w]+)'/g;
 

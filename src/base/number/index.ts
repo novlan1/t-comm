@@ -1,11 +1,11 @@
 export {
-  getUnitPreviousRatio,
-  getPartRatio,
   NUMBER_CHI_MAP,
-  getThousandSeparator,
-  getThousandSeparator2,
-  random,
-  padZero,
   addNumber,
+  getPartRatio,
+  getThousandSeparator2,
+  getThousandSeparator,
+  getUnitPreviousRatio,
+  padZero,
+  random,
   range,
 } from './number';

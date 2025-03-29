@@ -1,6 +1,7 @@
-import type { ISecretInfo } from '../types';
-import { genRainbowHeaderSignature } from './rainbow-signature';
 import { BASE_URL } from './helper';
+import { genRainbowHeaderSignature } from './rainbow-signature';
+
+import type { ISecretInfo } from '../types';
 
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const axios = require('axios');

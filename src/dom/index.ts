@@ -1,1 +1,1 @@
-export { insertStyle, insertHtml } from './dom';
+export { insertHtml, insertStyle } from './dom';

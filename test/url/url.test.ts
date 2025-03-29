@@ -1,4 +1,4 @@
-import { getQueryObj, composeUrlQuery, getUrlPara } from '../../src';
+import { composeUrlQuery, getQueryObj, getUrlPara } from '../../src';
 
 describe('getQueryObj', () => {
   it('getQueryObj', () => {

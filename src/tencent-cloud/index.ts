@@ -1,13 +1,13 @@
 export { pushUrlCache } from './cdn/index';
 export {
-  uploadCOSFile,
-  getCOSBucketList,
-  deleteCOSMultipleObject,
-
-  getCosUrlLink,
+  deleteCOSEmptyFolder,
 
   deleteCOSLongAgoObject,
-  deleteCOSEmptyFolder,
+  deleteCOSMultipleObject,
+  getCOSBucketList,
+
+  getCosUrlLink,
+  uploadCOSFile,
 
   uploadCOSStreamFile,
 } from './cos/index';

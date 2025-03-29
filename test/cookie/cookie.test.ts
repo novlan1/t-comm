@@ -1,4 +1,4 @@
-import { getCookie, setCookie, clearCookie, clearAll } from '../../src';
+import { clearAll, clearCookie, getCookie, setCookie } from '../../src';
 
 describe('getCookie', () => {
   it('getCookie', () => {

@@ -1,6 +1,6 @@
-import * as page from './page';
-import * as element from './element';
 import * as drag from './drag';
+import * as element from './element';
+import * as page from './page';
 import * as scroll from './scroll';
 
 

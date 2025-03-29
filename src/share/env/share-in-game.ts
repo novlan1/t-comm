@@ -1,13 +1,15 @@
-import { initEnv } from '../../env/env';
 import { urlToBase64 } from '../../dom-to-image/dom-to-image';
+import { initEnv } from '../../env/env';
 import { callJsBrowserAdapter } from '../../msdk/msdk';
-import { msdkShareV5 } from './share-msdk-v5';
+
 import {
-  ShareConfig,
-  SHARE_TYPE_MAP,
   DEFAULT_SHOW_TYPE_IN_GAME,
+  SHARE_TYPE_MAP,
+  ShareConfig,
 } from '../config';
-import { initCommShareUI, showCommShareUI, calBase64Size } from '../helper';
+import { calBase64Size, initCommShareUI, showCommShareUI } from '../helper';
+
+import { msdkShareV5 } from './share-msdk-v5';
 
 import type { IGetMiniProgramOpenLink } from '../types';
 

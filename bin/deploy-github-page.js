@@ -1,5 +1,5 @@
-const path = require('path');
 const { execSync } = require('child_process');
+const path = require('path');
 
 const ENV_FILE = '.env.local';
 const BASH_FILE = path.resolve(__dirname, './deploy-github-page.sh');

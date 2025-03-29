@@ -1,5 +1,5 @@
+import { readFileSync, writeFileSync } from '../fs/fs';
 import { transFormRem } from '../rem/rem';
-import { writeFileSync, readFileSync } from '../fs/fs';
 
 /**
  * 替换文件的 rem 单位，转为 px

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-import { IParsedConfigItem, IImportType } from './types';
+import { IImportType, IParsedConfigItem } from './types';
 
 
 /**

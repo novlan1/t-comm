@@ -2,7 +2,7 @@
  * 测试version-tip功能
  * 可以修改package.json中的version，来查看不同效果
  */
-const { genVersionTip, batchSendWxRobotMarkdown } = require('../../lib/index');
+const { batchSendWxRobotMarkdown, genVersionTip } = require('../../lib/index');
 
 const pkg = require('../../package.json');
 

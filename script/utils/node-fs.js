@@ -1,5 +1,5 @@
-const path = require('path');
 const fs = require('fs');
+const path = require('path');
 
 
 function traverseFolder(cb, path) {
@@ -59,8 +59,8 @@ function rmEmptyDir(path, level = 0) {
 }
 
 module.exports = {
-  traverseFolder,
-  getFileName,
   deleteFolder,
+  getFileName,
   rmEmptyDir,
+  traverseFolder,
 };

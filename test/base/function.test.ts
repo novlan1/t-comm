@@ -1,4 +1,4 @@
-import { parseFunction, cached } from '../../src';
+import { cached, parseFunction } from '../../src';
 
 describe('parseFunction', () => {
   it('parseFunction.string', () => {

@@ -1,9 +1,10 @@
 import { initEnv } from '../env/env';
+
 import {
-  launchCore,
-  getGPSchemeParam,
-  GAME_SCHEME_PREFIX_MAP,
   DEFAULT_WX_JS_SDK,
+  GAME_SCHEME_PREFIX_MAP,
+  getGPSchemeParam,
+  launchCore,
 } from './helper';
 
 

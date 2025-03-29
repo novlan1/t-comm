@@ -1,5 +1,6 @@
-import { getWeatherRobotContent } from './weather';
 import { batchSendWxRobotMarkdown } from '../wecom-robot/batch-send';
+
+import { getWeatherRobotContent } from './weather';
 
 /**
  * 获取天气信息并发送

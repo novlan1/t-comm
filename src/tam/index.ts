@@ -1,13 +1,13 @@
 export {
-  genSummaryDataAndSendRobot,
   genCustomEventImgAndSendRobot,
-  genRUMPerfImgAndSend,
   genMultiImgAndSendRobot,
+  genRUMPerfImgAndSend,
+  genSummaryDataAndSendRobot,
 } from './img';
 export {
+  getProjectByGroupId,
   getRUMAllProject,
   getRUMScores,
   getTAMScoreInfoByProjectId,
   getTAMSummaryScoreByGroupIdList,
-  getProjectByGroupId,
 } from './api/index';

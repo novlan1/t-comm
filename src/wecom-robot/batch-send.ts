@@ -1,5 +1,6 @@
+import { sendWxRobotMarkdown, sendWxRobotMsg } from './base';
 import { sendWxRobotBase64Img } from './send-img';
-import { sendWxRobotMsg, sendWxRobotMarkdown } from './base';
+
 import type { Get } from '../types/common';
 
 const SEND_TO_ALL = 'ALL';

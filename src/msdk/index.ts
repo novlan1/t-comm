@@ -3,14 +3,14 @@ export {
 } from './mini-program';
 
 export {
-  sendToMsdkNative,
   addMsdkNativeCallbackListener,
-  removeMsdkNativeCallbackListener,
-
-  closeMsdkWebview,
-  closeWebView,
 
   callJsBrowserAdapter,
   callJsReSetFullScreen,
   callJsSetFullScreen,
+
+  closeMsdkWebview,
+  closeWebView,
+  removeMsdkNativeCallbackListener,
+  sendToMsdkNative,
 } from './msdk';

@@ -1,6 +1,6 @@
 export {
-  initEnv,
-  getEnvUAType,
-  checkUAIsIOS,
   checkNodeEnv,
+  checkUAIsIOS,
+  getEnvUAType,
+  initEnv,
 } from './env';

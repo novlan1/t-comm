@@ -1,7 +1,7 @@
 import {
-  isRegExp,
   isDate,
   isFunction,
+  isRegExp,
 } from '../../src';
 
 

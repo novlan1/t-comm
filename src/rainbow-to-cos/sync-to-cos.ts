@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-import { uploadCOSFile } from '../tencent-cloud/cos';
-import { getSavePath, getSaveFileName } from './helper/helper';
 import { writeFileSync } from '../fs/fs';
+import { uploadCOSFile } from '../tencent-cloud/cos';
 
-import type {  ICosInfo, ISecretInfo, IRemoteConfig } from './types';
+import { getSaveFileName, getSavePath } from './helper/helper';
+
+import type {  ICosInfo, IRemoteConfig, ISecretInfo } from './types';
 
 
 function pushCOSFiles(list: Array<{

@@ -1,5 +1,116 @@
 # 更新日志
 
+### [1.5.12](https://github.com/novlan1/t-comm/compare/v1.5.11...v1.5.12) (2025-03-26)
+
+
+### Documentation 📖
+
+* update docs ([d168e79](https://github.com/novlan1/t-comm/commit/d168e798da2bdcc9eb8d721d82696cbc6cd90b8c))
+
+
+### Code Refactoring ♻️
+
+* use eslint import/order rule ([f839405](https://github.com/novlan1/t-comm/commit/f8394055e4c72c0f6e33beeaac0f40a4b4811d40))
+
+
+### Features 🎉
+
+* **rainbow-config:** 优化updateRainbowConfig ([a3c7885](https://github.com/novlan1/t-comm/commit/a3c788599802d7764db2ac6a0af1243fcf23ac55))
+
+### [1.5.11](https://github.com/novlan1/t-comm/compare/v1.5.10...v1.5.11) (2025-03-21)
+
+
+### Features 🎉
+
+* **json:** add safeJsonParse ([76920f8](https://github.com/novlan1/t-comm/commit/76920f8ee3dd353394dc3ae7b77f1e27cfc40570))
+
+### [1.5.10](https://github.com/novlan1/t-comm/compare/v1.5.9...v1.5.10) (2025-03-20)
+
+
+### Features 🎉
+
+* **lint:** 优化日志 ([45f4f29](https://github.com/novlan1/t-comm/commit/45f4f29aafd18551973a874c584566af101a6350))
+
+### [1.5.9](https://github.com/novlan1/t-comm/compare/v1.5.8...v1.5.9) (2025-03-20)
+
+
+### Features 🎉
+
+* **lint:** 支持throw error ([4984988](https://github.com/novlan1/t-comm/commit/498498825df842d8b79d178ba8cb4173f1a82d17))
+
+### [1.5.8](https://github.com/novlan1/t-comm/compare/v1.5.7...v1.5.8) (2025-03-20)
+
+
+### Features 🎉
+
+* **lint:** 优化lint ([5fcae5f](https://github.com/novlan1/t-comm/commit/5fcae5f1ac1d1357c36ca9c291c90920d295467c))
+
+### [1.5.7](https://github.com/novlan1/t-comm/compare/v1.5.6...v1.5.7) (2025-03-20)
+
+
+### Features 🎉
+
+* **lint:** 优化日志 ([52af4c6](https://github.com/novlan1/t-comm/commit/52af4c6cf6916db263ce4c653074618a12234b8f))
+
+### [1.5.6](https://github.com/novlan1/t-comm/compare/v1.5.5...v1.5.6) (2025-03-20)
+
+
+### Features 🎉
+
+* **lint:** 支持过滤要检查的文件类型 ([2f43361](https://github.com/novlan1/t-comm/commit/2f43361ceae9bf90c62a58162b7a8905707f08b5))
+
+### [1.5.5](https://github.com/novlan1/t-comm/compare/v1.5.4...v1.5.5) (2025-03-20)
+
+
+### Features 🎉
+
+* **lint:** 防止报错 ([51f9258](https://github.com/novlan1/t-comm/commit/51f9258f3e4f0be466e37722d7a178c63095aa2c))
+
+### [1.5.4](https://github.com/novlan1/t-comm/compare/v1.5.3...v1.5.4) (2025-03-20)
+
+
+### Features 🎉
+
+* **lint:** 异常处理 ([04be872](https://github.com/novlan1/t-comm/commit/04be872ed34b637ea545fc70ed5ed2075f7b95bc))
+
+### [1.5.3](https://github.com/novlan1/t-comm/compare/v1.5.2...v1.5.3) (2025-03-20)
+
+### [1.5.2](https://github.com/novlan1/t-comm/compare/v1.5.1...v1.5.2) (2025-03-20)
+
+
+### Features 🎉
+
+* **lint:** 优化lint ([eefbe0f](https://github.com/novlan1/t-comm/commit/eefbe0fb07350caf63e396a4cd49d55e61c62bcc))
+* **lint:** 增加当前分支描述 ([debd645](https://github.com/novlan1/t-comm/commit/debd6459e477154a1efcdc7d7442faca6e3fd876))
+
+### [1.5.1](https://github.com/novlan1/t-comm/compare/v1.5.0...v1.5.1) (2025-03-19)
+
+
+### Features 🎉
+
+* **lint:** support tsx ([8a6f0d8](https://github.com/novlan1/t-comm/commit/8a6f0d8e5a50eae7877c0b805b1016ce8c5b0267))
+
+## [1.5.0](https://github.com/novlan1/t-comm/compare/v1.3.151...v1.5.0) (2025-03-18)
+
+
+### Chore 🚀 
+
+* sort vscode/.settings.json and packages.json ([639d8d4](https://github.com/novlan1/t-comm/commit/639d8d4d40109b7627434f5b99b5f446157c78c5))
+* update ts type ([f0a2955](https://github.com/novlan1/t-comm/commit/f0a2955a158af2c23223236fdacca37abba1cc5b))
+* update ts type ([8cbbae8](https://github.com/novlan1/t-comm/commit/8cbbae8892dde8c8ab950c8e551401c66377452e))
+* update types ([3588602](https://github.com/novlan1/t-comm/commit/3588602bd2d8b8595643ac3b9833320ea8caba87))
+* update vscode/.settings.json ([0b4aa07](https://github.com/novlan1/t-comm/commit/0b4aa0757c70308cb40b2c8eec9c133d8bb6e52d))
+
+
+### Documentation 📖
+
+* update docs ([382f715](https://github.com/novlan1/t-comm/commit/382f71583e472a39b646e1a9069cca8d21299579))
+
+
+### Features 🎉
+
+* **url:** 优化urlParams ([7f2cc81](https://github.com/novlan1/t-comm/commit/7f2cc815336f648a3fcfa6aeae4bf050fe8a6b42))
+
 ### [1.3.151](https://github.com/novlan1/t-comm/compare/v1.3.150...v1.3.151) (2025-03-11)
 
 

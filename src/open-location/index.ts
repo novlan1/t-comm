@@ -1,2 +1,2 @@
-export { openLocationInH5, openLocationInMp, getOpenLocationUrl } from './option-location';
+export { getOpenLocationUrl, openLocationInH5, openLocationInMp } from './option-location';
 export type { OpenLocation } from './types';

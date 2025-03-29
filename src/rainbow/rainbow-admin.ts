@@ -1,5 +1,6 @@
-import { baseRequestRainbow } from './helper/rainbow-base-request';
 import { getVersion } from './helper/helper';
+import { baseRequestRainbow } from './helper/rainbow-base-request';
+
 import type { ISecretInfo, ModifyConfigParam } from './types';
 import type { RainbowKeyValueType } from '../rainbow-to-cos/helper/value-type';
 

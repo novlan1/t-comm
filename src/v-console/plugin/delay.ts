@@ -1,5 +1,6 @@
+import { V_CONSOLE_DOM, V_CONSOLE_NO_DELAY } from '../config';
+
 import type { IPlugin } from '../types';
-import { V_CONSOLE_NO_DELAY, V_CONSOLE_DOM } from '../config';
 
 function getCurrentState() {
   const value =  window.sessionStorage.getItem(V_CONSOLE_NO_DELAY.KEY);

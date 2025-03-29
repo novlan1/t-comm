@@ -1,5 +1,6 @@
 import { clipboardWeb } from '../../clipboard/clipboard-web';
 import { V_CONSOLE_DOM } from '../config';
+
 import type { IPlugin } from '../types';
 
 

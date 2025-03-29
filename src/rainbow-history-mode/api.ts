@@ -1,5 +1,6 @@
 import { fetchLatestOneRainbowData } from '../rainbow-to-cos/api';
-import type { ISecretInfo, IAddedMap } from './type';
+
+import type { IAddedMap, ISecretInfo } from './type';
 
 
 export function getHistoryModeConfigDiff({

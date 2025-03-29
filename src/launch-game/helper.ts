@@ -1,10 +1,11 @@
+import { initEnv } from '../env/env';
+import { GAME_MAP } from '../launch-app/config';
+import { loader } from '../loader/little-loader';
+import { closeMsdkWebview } from '../msdk/msdk';
 import {
   composeUrlQuery,
 } from '../url/url';
-import { loader } from '../loader/little-loader';
-import { initEnv } from '../env/env';
-import { closeMsdkWebview } from '../msdk/msdk';
-import { GAME_MAP } from '../launch-app/config';
+
 import type { IBaseLaunchParams } from './types';
 
 

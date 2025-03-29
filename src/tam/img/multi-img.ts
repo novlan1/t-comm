@@ -1,7 +1,10 @@
+import { mergeMultiCanvasPic } from '../../canvas/multi-img';
+
+import { batchSendWxRobotBase64Img } from '../../wecom-robot/batch-send';
+
 import { genCustomEventImg } from './custom-event-img';
 import { genSummaryData } from './summary-img';
-import { mergeMultiCanvasPic } from '../../canvas/multi-img';
-import { batchSendWxRobotBase64Img } from '../../wecom-robot/batch-send';
+
 import type { SecretInfoType } from '../types';
 
 

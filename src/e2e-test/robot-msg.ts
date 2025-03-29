@@ -1,6 +1,8 @@
-import { parseRobotMessage, genRobotMessage } from '../wecom-robot/message';
 import { timeStampFormat } from '../time/time';
+import { genRobotMessage, parseRobotMessage } from '../wecom-robot/message';
+
 import { EMOJI_MAP } from './config';
+
 import type { ITestList } from './types';
 
 

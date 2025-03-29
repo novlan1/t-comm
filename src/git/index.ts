@@ -1,15 +1,15 @@
 export { getAllGitRepo } from './all-git-repo';
 export { checkGitClean } from './check-clean';
-export { rmFirstAndLastSlash, getGitCodeLink, getGitMRLink } from './git-link';
+export { getGitCodeLink, getGitMRLink, rmFirstAndLastSlash } from './git-link';
 
 export {
-  getGitCurBranch,
+  getGitAuthor,
   getGitCommitInfo,
   getGitCommitMessage,
   getGitCommitsBeforeTag,
+  getGitCurBranch,
 
   getGitLastTag,
   getGitTagTime,
-  getGitAuthor,
 } from './git';
 export { transformGitToSSH } from './ssh';

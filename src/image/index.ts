@@ -2,7 +2,7 @@ export {
   getCdnUrl,
   getCompressImgUrl,
   getHttpsUrl,
-  tinyImage,
   handleImgUnit,
   isSupportedWebp,
+  tinyImage,
 } from './image';

@@ -1,13 +1,13 @@
 import {
-  toUnicodeAt,
-  toUnicode,
   camelize,
-  hyphenate,
   capitalize,
+  hyphenate,
   lowerInitial,
-  titleize,
   pascalCase,
   replaceAllPolyfill,
+  titleize,
+  toUnicode,
+  toUnicodeAt,
 } from '../../src';
 
 

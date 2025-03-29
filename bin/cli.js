@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 const { program } = require('commander');
-const { version } = require('../package.json');
-const { writeEnvAndPrivateKeyByOptions, mpUploadAndReportByOptions } = require('../lib');
 
-const { publish } = require('./publish');
+const { mpUploadAndReportByOptions, writeEnvAndPrivateKeyByOptions } = require('../lib');
+const { version } = require('../package.json');
+
 const { deployGithubPage } = require('./deploy-github-page');
+const { publish } = require('./publish');
 
 program
   .name('t-comm')

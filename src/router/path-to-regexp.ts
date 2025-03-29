@@ -380,8 +380,8 @@ pathToRegexp.tokensToRegExp = tokensToRegExp;
 
 export default pathToRegexp;
 export {
-  parse,
   compile,
+  parse,
   tokensToFunction,
   tokensToRegExp,
 };

@@ -1,11 +1,12 @@
 import { getEnvUAType } from '../env/env';
+
+import H5GeolocationLocation from './platform/h5-geolocation-location';
+import MsdkLocation from './platform/msdk-location';
+import SlugSdkLocation from './platform/slug-sdk-location';
 import TencentMapApiLocation from './platform/tencent-map-api-location';
 import TencentMapLocation from './platform/tencent-map-location';
 import TipSdkLocation from './platform/tip-sdk-location';
 import WechatSdkLocation from './platform/wechat-sdk-location';
-import H5GeolocationLocation from './platform/h5-geolocation-location';
-import MsdkLocation from './platform/msdk-location';
-import SlugSdkLocation from './platform/slug-sdk-location';
 
 function locationHandle(options: any): any {
   const { isInGame, isMsdkX, isWeixin, isSlugSdk, isMiniProgram } = getEnvUAType();

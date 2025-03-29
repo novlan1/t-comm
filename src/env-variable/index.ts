@@ -1,2 +1,2 @@
-export { readEnvVariable, getEnvVariableMap } from './env-variable';
+export { getEnvVariableMap, readEnvVariable } from './env-variable';
 export { writeEnvTokenToNpmRC } from './npm-token';

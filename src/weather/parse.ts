@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-import { saveJsonToLog, readJsonLog } from '../node/fs-util';
+import { readJsonLog, saveJsonToLog } from '../node/fs-util';
 
 /**
  * 组装发送给机器人的消息

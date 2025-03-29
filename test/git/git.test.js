@@ -1,8 +1,8 @@
 import {
-  getGitCurBranch,
   getGitCommitInfo,
-  getGitLastTag,
   getGitCommitsBeforeTag,
+  getGitCurBranch,
+  getGitLastTag,
   getGitTagTime,
 } from '../../src';
 

@@ -1,4 +1,4 @@
 export {
-  initCustomDom,
   initCustomDialog,
+  initCustomDom,
 } from './custom-dialog';

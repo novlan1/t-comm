@@ -1,5 +1,6 @@
-import type { ISecretInfo } from '../tencent-doc/types';
 import { batchUpdateTencentSheetV3 } from '../tencent-doc/sheet';
+
+import type { ISecretInfo } from '../tencent-doc/types';
 
 
 function getUpdateQQMpResultRows({

@@ -2,6 +2,7 @@
  * 创建文档
  */
 const { createTencentDoc } = require('../../../lib');
+
 const {
   ACCESS_TOKEN,
   CLIENT_ID,

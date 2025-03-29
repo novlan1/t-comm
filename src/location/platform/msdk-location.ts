@@ -1,7 +1,7 @@
-import { LocationInterface, LocationFlag, LocationResult, LocationOptions } from '../location-interface';
-import { callJsBrowserAdapter, sendToMsdkNative, addMsdkNativeCallbackListener } from '../../msdk/msdk';
-// import { GAME_HLDDZ, GAME_GP } from '../../tools/game';
 import { initEnv } from '../../env/env';
+import { addMsdkNativeCallbackListener, callJsBrowserAdapter, sendToMsdkNative } from '../../msdk/msdk';
+import { LocationFlag, LocationInterface, LocationOptions, LocationResult } from '../location-interface';
+// import { GAME_HLDDZ, GAME_GP } from '../../tools/game';
 // import ConfigInfo from '../../config';
 
 

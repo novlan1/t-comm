@@ -1,4 +1,4 @@
-import { getMonthDay, getMonthDay2, isSameWeek, isSameDay } from '../../src';
+import { getMonthDay2, getMonthDay, isSameDay, isSameWeek } from '../../src';
 
 describe('getMonthDay', () => {
   it('getMonthDay', () => {

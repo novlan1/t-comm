@@ -1,12 +1,12 @@
+import { getAreaCode } from '../../city/city';
+import { loader } from '../../loader/loader-unity';
 import {
+  LocationFlag,
   LocationInterface,
   LocationOptions,
   LocationResult,
-  LocationFlag,
   tencentMapConfig,
 } from '../location-interface';
-import { loader } from '../../loader/loader-unity';
-import { getAreaCode } from '../../city/city';
 
 
 // 用腾讯地图sdk获取lbs地址

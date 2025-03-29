@@ -1,6 +1,7 @@
-import { traverseFolder } from '../node/fs-util';
 import fs from 'fs';
 import path from 'path';
+
+import { traverseFolder } from '../node/fs-util';
 
 
 /**

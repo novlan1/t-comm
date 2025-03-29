@@ -1,4 +1,5 @@
 const path = require('path');
+
 const chalk = require('chalk');
 
 const log = {
@@ -18,6 +19,6 @@ const PATHS = {
 
 
 module.exports = {
-  log,
   PATHS,
+  log,
 };

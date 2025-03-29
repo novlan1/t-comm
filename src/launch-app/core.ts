@@ -1,10 +1,10 @@
-import { merge } from '../lodash-mini/merge';
 import { initEnv } from '../env/env';
-import { closeWebView } from '../msdk/msdk';
 import { loader } from '../loader/little-loader';
+import { merge } from '../lodash-mini/merge';
+import { closeWebView } from '../msdk/msdk';
 
-import type { IEnv } from '../env/types';
 import type { ILaunchAppParams } from './types';
+import type { IEnv } from '../env/types';
 
 
 // const closeWebView = () => console.log('closeWebView');

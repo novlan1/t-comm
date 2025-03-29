@@ -1,5 +1,6 @@
-import { callJsBrowserAdapter } from './msdk';
 import { initEnv } from '../env/env';
+
+import { callJsBrowserAdapter } from './msdk';
 
 export function launchMiniProgramInSlugSdk(appId: string, path: string) {
   if (typeof window.customBrowserInterface === 'undefined') {

@@ -1,5 +1,5 @@
 export {
+  clearPersist,
   getPersist,
   savePersist,
-  clearPersist,
 } from './persist-data';

@@ -1,5 +1,6 @@
+import { getPersist, savePersist } from '../storage/persist-data';
+
 import { LocationData } from './location-interface';
-import { savePersist, getPersist } from '../storage/persist-data';
 
 export default class LocationStorage {
   // 从sessionStorage获取缓存位置信息

@@ -1,6 +1,7 @@
-const jsdoc2md = require('jsdoc-to-markdown');
-const fs = require('fs-extra');
 const path = require('path');
+
+const fs = require('fs-extra');
+const jsdoc2md = require('jsdoc-to-markdown');
 
 const sourceList = require('./config.js');
 

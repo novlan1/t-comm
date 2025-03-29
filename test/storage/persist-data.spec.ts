@@ -1,4 +1,4 @@
-import { savePersist, getPersist, clearPersist } from '../../src/index';
+import { clearPersist, getPersist, savePersist } from '../../src/index';
 
 describe('savePersist', () => {
   it('savePersist', () => {

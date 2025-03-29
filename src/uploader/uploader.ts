@@ -1,7 +1,8 @@
 import { merge } from '../lodash-mini/merge';
-import { requestUploadFile, requestHashCode } from './request';
-import { IUploaderOptions } from './types';
+
 import { UPLOADER_CONFIG } from './config';
+import { requestHashCode, requestUploadFile } from './request';
+import { IUploaderOptions } from './types';
 
 export class UploadManager {
   static uploadManager: UploadManager;

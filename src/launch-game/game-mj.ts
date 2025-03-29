@@ -1,9 +1,11 @@
 import { initEnv } from '../env/env';
+
 import {
-  launchCore,
-  GAME_SCHEME_PREFIX_MAP,
   DEFAULT_WX_JS_SDK,
+  GAME_SCHEME_PREFIX_MAP,
+  launchCore,
 } from './helper';
+
 import type { IBaseLaunchParams } from './types';
 
 

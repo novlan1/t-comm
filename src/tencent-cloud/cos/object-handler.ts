@@ -1,6 +1,6 @@
 import {
-  getCOSBucketList,
   deleteCOSMultipleObject,
+  getCOSBucketList,
 } from './cos';
 
 export async function deleteCOSLongAgoObject({

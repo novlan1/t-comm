@@ -1,9 +1,10 @@
-import { saveJsonToLog, getJsonFromLog } from '../../node/fs-util';
 import { compareTwoObj } from '../../base/object/compare';
+import { getJsonFromLog, saveJsonToLog } from '../../node/fs-util';
 import { getAllDevopsTemplateInstances } from '../template';
-import type { IRemoteInstances } from '../types';
 
 import { DEVOPS_MP_CI_CONFIG } from './config';
+
+import type { IRemoteInstances } from '../types';
 
 
 const {

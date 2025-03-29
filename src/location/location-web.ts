@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import { LocationOptions, LocationFlag, LocationInterface } from './location-interface';
 import { LocationDefaultOptions } from './location-default-options';
 import locationHandle from './location-handle-web';
+import { LocationFlag, LocationInterface, LocationOptions } from './location-interface';
 import LocationStorage from './location-storage';
 import TencentMapApiLocation from './platform/tencent-map-api-location';
 // import Dialog from '../widget/vant/dialog';

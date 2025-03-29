@@ -1,8 +1,11 @@
 const path = require('path');
+
 // const fs = require('fs');
 const typescript = require('@rollup/plugin-typescript');
+
+const { getFileName, traverseFolder } = require('../utils/node-fs');
+
 const { BUILD_DIR_LIST } = require('./build-config');
-const { traverseFolder, getFileName } = require('../utils/node-fs');
 
 
 const root = process.cwd();

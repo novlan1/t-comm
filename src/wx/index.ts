@@ -1,7 +1,7 @@
 export {
-  getAccessToken,
-  getAPITicket,
   genSignature,
+  getAPITicket,
+  getAccessToken,
 } from './signature';
 export {
   configWx,

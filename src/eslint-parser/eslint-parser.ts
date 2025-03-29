@@ -1,6 +1,7 @@
+import { batchSendWxRobotMarkdown } from '../wecom-robot/batch-send';
+
 import { parseEslintError } from './parse';
 import { genRobotMsg } from './robot-msg';
-import { batchSendWxRobotMarkdown } from '../wecom-robot/batch-send';
 
 import type { RepoConfigType } from './types';
 

@@ -1,9 +1,9 @@
 export {
   Toast,
-  showToast,
-  showSuccess,
-  showFail,
   clearToast,
-  showLoading,
   dismissLoading,
+  showFail,
+  showLoading,
+  showSuccess,
+  showToast,
 } from './toast';

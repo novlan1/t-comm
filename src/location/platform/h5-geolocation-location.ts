@@ -1,4 +1,4 @@
-import { LocationInterface, LocationFlag, LocationResult } from '../location-interface';
+import { LocationFlag, LocationInterface, LocationResult } from '../location-interface';
 
 export default class TencentMapApiLocation implements LocationInterface {
   getLocation(): Promise<LocationResult> {

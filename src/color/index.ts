@@ -3,15 +3,15 @@ export {
   rgbToHex,
 } from './helper';
 export {
-  parseHSLString,
   parseColorToHSV,
+  parseHSLString,
   parseHSVString,
   parseRGBBracket,
   parseRGBHex,
 } from './parse';
 export {
-  rgb2hsv,
   hsl2hsv,
-  hsv2rgb,
   hsv2hsl,
+  hsv2rgb,
+  rgb2hsv,
 } from './transform';

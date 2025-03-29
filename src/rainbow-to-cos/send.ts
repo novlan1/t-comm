@@ -1,9 +1,10 @@
 import { fetchLatestRainbowData } from './api';
-import { syncRainbowToCOS } from './sync-to-cos';
-import { sendRainbowInfoToRobot } from './robot-msg';
-
-import type { ISecretInfo, ICosInfo } from './types';
 import { SendToRobotTypeMap } from './config';
+import { sendRainbowInfoToRobot } from './robot-msg';
+import { syncRainbowToCOS } from './sync-to-cos';
+
+import type { ICosInfo, ISecretInfo } from './types';
+
 
 /**
  * 监听rainbow，同步到cos，并发送到机器人

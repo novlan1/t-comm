@@ -1,18 +1,20 @@
+import { initCustomDialog, showCustomDialog } from '../../dialog/custom-dialog';
 import { initEnv } from '../../env/env';
 import { removeUrlParams } from '../../url/remove-param';
-import { initCustomDialog, showCustomDialog } from '../../dialog/custom-dialog';
 
-import { initMsdkShare, initInGameShare } from './share-in-game';
+import { DEFAULT_SHARE_ICON, DEFAULT_SHOW_TYPE_IN_GAME, ShareConfig } from '../config';
+import { showCommShareTip } from '../helper';
+
+import { hidePvpShareBtn, initGHelperShare, initPvpShare, initTipShare } from './share-app';
 import {
-  initQQShare,
-  initWeixinShare,
-  initMiniProgramShare,
   hideQQShareBtn,
   hideWeixinShareBtn,
+  initMiniProgramShare,
+  initQQShare,
+  initWeixinShare,
 } from './share-im';
-import { initGHelperShare, initPvpShare, initTipShare, hidePvpShareBtn } from './share-app';
-import { showCommShareTip } from '../helper';
-import { DEFAULT_SHARE_ICON, ShareConfig, DEFAULT_SHOW_TYPE_IN_GAME } from '../config';
+import { initInGameShare, initMsdkShare } from './share-in-game';
+
 
 import type { IShareObject } from '../types';
 

@@ -1,4 +1,5 @@
 import { getCOSInstance, onUploadCOSProgress } from './helper';
+
 import type { ICosMeta } from './types';
 
 const pushFiles = ({

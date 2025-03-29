@@ -1,10 +1,11 @@
+import { getGitCommitInfo } from '../git/git';
+import { execCommand } from '../node/node-command';
 import { getBranchesByProjectName } from '../tgit/branch';
 import { getOneProjectDetail } from '../tgit/project';
 
-import { execCommand } from '../node/node-command';
 import { batchSendWxRobotMarkdown } from '../wecom-robot/batch-send';
-import { getGitCommitInfo } from '../git/git';
-import { shouldInclude, DEFAULT_WHITE_REG } from './helper';
+
+import { DEFAULT_WHITE_REG, shouldInclude } from './helper';
 
 
 const CHAT_ID = ['ALL'];

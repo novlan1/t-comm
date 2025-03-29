@@ -1,13 +1,13 @@
 export {
-  uploadCOSFile,
-  getCOSBucketList,
   deleteCOSMultipleObject,
+  getCOSBucketList,
+  uploadCOSFile,
 } from './cos';
 export {
   getCosUrlLink,
 } from './link';
 export {
-  deleteCOSLongAgoObject,
   deleteCOSEmptyFolder,
+  deleteCOSLongAgoObject,
 } from './object-handler';
 export { uploadCOSStreamFile } from './stream';

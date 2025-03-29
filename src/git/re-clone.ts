@@ -1,6 +1,8 @@
-import { transformGitToSSH } from './ssh';
-import { execCommand } from '../node/node-command';
 import * as path from 'path';
+
+import { execCommand } from '../node/node-command';
+
+import { transformGitToSSH } from './ssh';
 
 
 /**

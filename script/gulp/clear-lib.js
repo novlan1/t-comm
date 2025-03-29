@@ -1,5 +1,6 @@
-const { log, PATHS } = require('./helper');
 const { execSync } = require('child_process');
+
+const { PATHS, log } = require('./helper');
 
 // 删除 lib 文件
 const clearLibFile = async (cb) => {

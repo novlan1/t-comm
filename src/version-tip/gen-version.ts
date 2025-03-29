@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import {
-  getGitLastTag,
   getGitCommitsBeforeTag,
+  getGitLastTag,
   getGitTagTime,
 } from '../git';
+import { execCommand } from '../node/node-command';
 import { timeStampFormat } from '../time/time';
 
-import { execCommand } from '../node/node-command';
 import { TAG_MAP } from './config';
 
 function getTimeStampFromDate(date: string) {

@@ -1,4 +1,4 @@
-import { callJsSetFullScreen, callJsReSetFullScreen } from '../msdk/msdk';
+import { callJsReSetFullScreen, callJsSetFullScreen } from '../msdk/msdk';
 
 
 /**

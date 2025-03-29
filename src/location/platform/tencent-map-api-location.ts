@@ -1,8 +1,9 @@
-import { LocationInterface, LocationFlag, LocationResult, tencentMapConfig, LocationOptions } from '../location-interface';
-import { get } from '../../lodash-mini';
 import axios from 'axios';
+
 // import { post } from '../../network/post';
 import { getAreaCode } from '../../city/city';
+import { get } from '../../lodash-mini';
+import { LocationFlag, LocationInterface, LocationOptions, LocationResult, tencentMapConfig } from '../location-interface';
 
 // 用腾讯地图api通过IP获取lbs地址
 export default class TencentMapApiLocation implements LocationInterface {

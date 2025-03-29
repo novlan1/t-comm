@@ -1,12 +1,17 @@
 import fs from 'fs';
 import path from 'path';
+
 import axios from 'axios';
 
-import { batchSendWxRobotMarkdown } from '../wecom-robot/batch-send';
-import { writeFileSync, readFileSync } from '../fs/fs';
+import { readFileSync, writeFileSync } from '../fs/fs';
+import { getGitCurBranch } from '../git/git';
 import { execCommand } from '../node/node-command';
 
-import type { JSErrorFile, SCSSErrorFile } from './types';
+import { batchSendWxRobotMarkdown } from '../wecom-robot/batch-send';
+
+import { FILE_TYPE_MAP } from './config';
+
+import type { FileMap, JSErrorFile, SCSSErrorFile } from './types';
 
 
 const ESLINT_CONFIG_FILE = '.eslintrc.js';
@@ -240,6 +245,9 @@ export async function checkLint({
   chatId = ['ALL'],
   checkAll,
   mentionList = [],
+
+  lintFiles = Object.keys(FILE_TYPE_MAP),
+  throwError = true,
 }: {
   privateToken: string;
   gitApiPrefix: string;
@@ -260,71 +268,86 @@ export async function checkLint({
   chatId?: string[];
   checkAll?: boolean;
   mentionList?: string[];
-}) {
-  let jsKeyword = '--ext .js,.ts .';
-  let vueKeyword = '--ext .vue .';
-  let sassKeyword = '"**/*.{css,scss}"';
 
-  if (sourceBranch && targetBranch) {
+  lintFiles?: string[];
+  throwError?: boolean;
+}) {
+  if (!checkAll && (!sourceBranch || !targetBranch)) {
+    throw new Error('增量模式，必须提供 sourceBranch 和 targetBranch！');
+  }
+  const fileMap: FileMap = Object.keys(FILE_TYPE_MAP)
+    .filter(item => lintFiles.includes(item))
+    .reduce((acc, key) => ({
+      ...acc,
+      [key]: FILE_TYPE_MAP[key as keyof typeof FILE_TYPE_MAP],
+    }), {});
+
+
+  if (!checkAll) {
     const {
-      jsTsFiles,
-      vueFiles,
-      scssFiles,
+      diffFilesMap,
     } = getDiffFile({
-      sourceBranch,
-      targetBranch,
+      sourceBranch: sourceBranch!,
+      targetBranch: targetBranch!,
       workspace,
     });
 
-    jsKeyword =  jsTsFiles.join(' ');
-    vueKeyword = vueFiles.join(' ');
-    sassKeyword = scssFiles.join(' ');
+
+    Object.keys(fileMap).forEach((key) => {
+      fileMap[key as keyof typeof fileMap].lintKeyword = diffFilesMap[key];
+    });
   }
 
-  const outputJs = path.resolve(workspace, 'lint-js.json');
-  const outputVue = path.resolve(workspace, 'lint-vue.json');
-  const outputScss = path.resolve(workspace, 'lint-scss.json');
+  const innerExecCommand = (key: string, info: {
+    lintKeyword: string;
+    outputFileName: string;
+    isStyle?: boolean;
+    isVue?: boolean;
+  }) => {
+    console.log(`正在执行 lint ${key} ...`);
+    if (info.isVue) {
+      removeParserOptionsProject(workspace);
+    }
 
+    const outputFile = path.resolve(workspace, info.outputFileName);
 
-  console.log('正在执行 lint js/ts ...');
-  execCommand(`npx eslint ${jsKeyword} --quiet -o ${outputJs} --format json || true`, workspace, 'inherit');
+    if (info.isStyle) {
+      try {
+        // inherit 无法真正捕获错误
+        const lintResult = execCommand(`npx stylelint ${info.lintKeyword} --quiet -o ${outputFile} --formatter json || true`, workspace, 'pipe');
+        console.log('[StyleLint] result: \n', lintResult);
+      } catch (err) {
+        console.log('[StyleLint] error: ', err);
+      }
+    } else {
+      try {
+        const lintResult = execCommand(`npx eslint ${info.lintKeyword} --quiet -o ${outputFile} --format json || true`, workspace, 'pipe');
+        console.log('[ESLint] result: \n', lintResult);
+      } catch (err) {
+        console.log('[ESLint] error: ', err);
+      }
+    }
+    return outputFile;
+  };
 
-  removeParserOptionsProject(workspace);
+  Object.keys(fileMap).forEach((key) => {
+    const outputFile = innerExecCommand(key, fileMap[key as keyof typeof fileMap]);
+    fileMap[key].outputFile = outputFile;
+  });
 
-  console.log('正在执行 lint vue ...');
+  const { errorMap } = parseResult({
+    fileMap,
+  });
 
-  execCommand(`npx eslint ${vueKeyword} --quiet -o ${outputVue} --format json || true`, workspace, 'inherit');
-
-  console.log('正在执行 lint css/scss ...');
-
-  execCommand(`npx stylelint ${sassKeyword} --quiet -o ${outputScss} --formatter json || true`, workspace, 'inherit');
-
-  const {
-    jsTotal,
-    jsErrorFiles,
-
-    vueTotal,
-    vueErrorFiles,
-
-    scssTotal,
-    scssErrorFiles,
-  } = parseResult({
-    outputJs,
-    outputVue,
-    outputScss,
+  Object.keys(fileMap).forEach((key) => {
+    fileMap[key as keyof typeof fileMap].errorFiles = errorMap[key as keyof typeof errorMap].errorFiles;
+    fileMap[key as keyof typeof fileMap].total = errorMap[key as keyof typeof errorMap].total;
   });
 
   let commentSuccess = false;
   if (mrId) {
     const message = genRobotMessage({
-      jsTotal,
-      jsErrorFiles,
-
-      vueTotal,
-      vueErrorFiles,
-
-      scssTotal,
-      scssErrorFiles,
+      fileMap,
 
       checkAll,
       mrUrl,
@@ -338,6 +361,7 @@ export async function checkLint({
       repoUrl,
 
       mentionList,
+      workspace,
     });
 
     try {
@@ -350,10 +374,10 @@ export async function checkLint({
       });
     } catch (err) {
     }
+
+    console.log('[commentSuccess]', commentSuccess);
   }
 
-
-  console.log('[commentSuccess]', commentSuccess);
 
   const getPostFix = () => {
     if (!mrId) return '';
@@ -361,14 +385,7 @@ export async function checkLint({
   };
 
   const robotMessage = genRobotMessage({
-    jsTotal,
-    jsErrorFiles,
-
-    vueTotal,
-    vueErrorFiles,
-
-    scssTotal,
-    scssErrorFiles,
+    fileMap,
 
     postFix: getPostFix(),
     mrUrl,
@@ -381,43 +398,43 @@ export async function checkLint({
 
     repo,
     repoUrl,
+
     mentionList,
+    workspace,
   });
 
+  console.log('[robotMessage]: \n', robotMessage);
 
-  await batchSendWxRobotMarkdown({
-    content: robotMessage,
-    chatId,
-    webhookUrl,
-  });
+  try {
+    await batchSendWxRobotMarkdown({
+      content: robotMessage,
+      chatId,
+      webhookUrl,
+    });
+  } catch (err) {
+    console.log('[batchSendWxRobotMarkdown] err', err);
+  }
+
 
   if (mrId) {
-    await tryCreateMRNote({
-      projectName: repo,
-      mrId,
-      errorFiles: jsErrorFiles,
-      workspace,
-      privateToken,
-      gitApiPrefix,
-    });
-    await tryCreateMRNote({
-      projectName: repo,
-      mrId,
-      errorFiles: vueErrorFiles,
-      workspace,
-      privateToken,
-      gitApiPrefix,
-    });
-    await tryCreateMRNote({
-      projectName: repo,
-      mrId,
-      errorFiles: scssErrorFiles,
-      isScss: true,
-      workspace,
-      privateToken,
-      gitApiPrefix,
-    });
+    for (const key of Object.keys(fileMap)) {
+      await tryCreateMRNote({
+        projectName: repo,
+        mrId,
+        errorFiles: fileMap[key].errorFiles || [],
+        workspace,
+        privateToken,
+        gitApiPrefix,
+        isScss: fileMap[key].isStyle,
+      });
+    }
   }
+  const hasError = !!Object.values(fileMap).find(item => item.total);
+  if (throwError && hasError) {
+    throw new Error('Lint 检查不通过！');
+  }
+
+  return fileMap;
 }
 
 
@@ -436,75 +453,83 @@ function getErrorInfo(result: Array<{
   };
 }
 
-function parseResult({
-  outputJs,
-  outputVue,
-  outputScss,
-}: {
-  outputJs: string;
-  outputVue: string;
-  outputScss: string;
-}) {
-  const readyFile = (file: string) => {
-    if (!fs.existsSync(file)) {
-      writeFileSync(file, [], true);
-      return [];
-    }
-    return readFileSync(file, true);
+
+const readyFile = (file: string) => {
+  if (!fs.existsSync(file)) {
+    writeFileSync(file, [], true);
+    return [];
+  }
+  return readFileSync(file, true);
+};
+
+
+const parseErrorResult = (key: string, info: {
+  outputFile?: string,
+  isStyle?: boolean
+}) => {
+  if (!info.outputFile || !fs.existsSync(info.outputFile)) {
+    return {
+      total: 0,
+      errorFiles: [],
+    };
+  }
+
+  const content = readyFile(info.outputFile!);
+  console.log(`[result] ${key}: \n`, JSON.stringify(content, null, 2));
+  let resultTotal = 0;
+  let resultErrorFiles: JSErrorFile[] = [];
+
+  if (info.isStyle) {
+    const parsed = content.filter((item: Record<string, any>) => item.warnings?.length).map((item: any) => ({
+      ...item,
+      errorCount: item.warnings.filter((warn: Record<string, any>) => warn.severity === 'error').length,
+    }));
+
+    const {
+      total,
+      errorFiles,
+    } = getErrorInfo(parsed);
+    resultTotal = total;
+    resultErrorFiles = errorFiles;
+  } else {
+    const {
+      total,
+      errorFiles,
+    } = getErrorInfo(content);
+    resultTotal = total;
+    resultErrorFiles = errorFiles;
+  }
+
+  return {
+    total: resultTotal,
+    errorFiles: resultErrorFiles,
   };
+};
 
-  const jsResult = readyFile(outputJs);
-  const vueResult = readyFile(outputVue);
-  const scssResult = readyFile(outputScss);
+function parseResult({
+  fileMap,
+}: {
+  fileMap: FileMap;
+}) {
+  const errorMap: {
+    [k: string]: {
+      total: number;
+      errorFiles: JSErrorFile[];
+    }
+  } = {};
 
-  console.log('\n');
-  console.log('[jsResult] \n', JSON.stringify(jsResult, null, 2));
-  console.log('[vueResult] \n', JSON.stringify(vueResult, null, 2));
-  console.log('[scssResult] \n', JSON.stringify(scssResult, null, 2));
-  console.log('\n');
-
-  const {
-    total: jsTotal,
-    errorFiles: jsErrorFiles,
-  } = getErrorInfo(jsResult);
-
-  const {
-    total: vueTotal,
-    errorFiles: vueErrorFiles,
-  } = getErrorInfo(vueResult);
-
-  const parsed = scssResult.filter((item: Record<string, any>) => item.warnings?.length).map((item: any) => ({
-    ...item,
-    errorCount: item.warnings.filter((warn: Record<string, any>) => warn.severity === 'error').length,
-  }));
-
-  const {
-    total: scssTotal,
-    errorFiles: scssErrorFiles,
-  } = getErrorInfo(parsed);
+  Object.keys(fileMap).forEach((key) => {
+    errorMap[key as keyof typeof errorMap] = parseErrorResult(key, fileMap[key]);
+  });
 
 
   return {
-    jsTotal,
-    jsErrorFiles,
-
-    vueTotal,
-    vueErrorFiles,
-
-    scssTotal,
-    scssErrorFiles,
+    errorMap,
   };
 }
 
 function genRobotMessage({
-  jsTotal,
-  jsErrorFiles,
-
-  vueTotal,
-  vueErrorFiles,
-
-  scssTotal,
-  scssErrorFiles,
+  fileMap,
 
   mrUrl,
   sourceBranch,
@@ -520,15 +545,9 @@ function genRobotMessage({
   checkAll = false,
 
   mentionList = [],
+  workspace,
 }: {
-  jsTotal: number;
-  jsErrorFiles: JSErrorFile[];
-
-  vueTotal: number;
-  vueErrorFiles: JSErrorFile[];
-
-  scssTotal: number;
-  scssErrorFiles: SCSSErrorFile[]
+  fileMap: FileMap;
 
   mrUrl?: string;
   sourceBranch?: string;
@@ -544,43 +563,52 @@ function genRobotMessage({
   checkAll?: boolean;
 
   mentionList?: string[];
-}) {
+  workspace: string;
+}): string {
   const genTitle = (prefix: string) => (`${prefix}${checkAll ? '【LINT】全量模式' : '【LINT】增量模式'}`);
   const postFixList = postFix ? [postFix] : [];
-  const mrInfo = [
+  const curBranch = getGitCurBranch(workspace);
+
+  const repoAndMrInfo = [
     mrUrl ? `[${mrUrl}](${mrUrl})` : '',
     (sourceBranch && targetBranch) ? `${sourceBranch} => ${targetBranch}` : '',
+    (checkAll && repo && repoUrl) ? `[${repo}](${repoUrl})` : '',
+    (checkAll && curBranch) ? `分支: ${curBranch}` : '',
   ].filter(item => item);
 
-  const repoInfo = (checkAll && repo && repoUrl) ? [`[${repo}](${repoUrl})`] : [];
+  const allTotal = Object.values(fileMap).reduce((acc, item) => acc + (item.total ?? 0), 0);
 
-  if (!jsTotal && !vueTotal && !scssTotal) {
+  if (!allTotal) {
     return [
       genTitle('✅'),
-      ...mrInfo,
-      ...repoInfo,
+      ...repoAndMrInfo,
       '未发现代码规范异常',
       ...postFixList,
     ].join('，');
   }
 
+  const lintErrorMessageList = Object.keys(fileMap)
+    .filter(item => !!fileMap[item].total)
+    .map((key) => {
+      const info = fileMap[key];
+      const { total, errorFiles } = info;
+
+      return `- **${key.toUpperCase()} 错误**：${total && errorFiles?.length ? `${errorFiles?.length}个文件${total}个错误` : '无'}`;
+    });
+
   return [
     [
       genTitle('⚠️'),
       // '遵守代码规范是防止项目腐化的第一步',
-      ...mrInfo,
-      ...repoInfo,
+      ...repoAndMrInfo,
       `可在[流水线](${buildUrl})中查看详情，或本地运行 \`npx eslint --fix file\` 等命令`,
-      `[说明文档](${docLink})`,
+      docLink ? `[说明文档](${docLink})` : '',
       mentionList.map(mention => `<@${mention}>`).join(''),
       ...postFixList,
     ]
       .filter(item => item)
       .join('，'),
-
-    [`- **JS/TS 错误**：${jsTotal ? `${jsErrorFiles.length}个文件${jsTotal}个错误` : '无'}`],
-    [`- **Vue 错误**：${vueTotal ? `${vueErrorFiles.length}个文件${vueTotal}个错误` : '无'}`],
-    [`- **SCSS/CSS 错误**：${scssTotal ? `${scssErrorFiles.length}个文件${scssTotal}个错误` : '无'}`],
+    ...lintErrorMessageList,
   ].join('\n');
 }
 
@@ -606,15 +634,15 @@ function getDiffFile({
     .filter(item => fs.existsSync(path.resolve(workspace, item)));
 
   console.log('diff list: ', JSON.stringify(list, null, 2));
-
-  const jsTsFiles = list.filter(item => item.endsWith('.js') || item.endsWith('.ts'));
-  const vueFiles = list.filter(item => item.endsWith('.vue'));
-  const scssFiles = list.filter(item => item.endsWith('.scss') || item.endsWith('.css'));
+  const diffFilesMap: Record<string, string> = {};
+  Object.keys(FILE_TYPE_MAP).forEach((key: string) => {
+    const { reg } = FILE_TYPE_MAP[key as keyof typeof FILE_TYPE_MAP];
+    const files = list.filter(item => reg.test(item));
+    diffFilesMap[key] = files.join(' ');
+  });
 
   return {
-    jsTsFiles,
-    vueFiles,
-    scssFiles,
+    diffFilesMap,
   };
 }
 

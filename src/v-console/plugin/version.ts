@@ -1,13 +1,14 @@
 import {
-  BUILD_NAME_MAP,
-  EMPTY_LINE,
-  V_CONSOLE_DOM,
-  BUILD_LIST,
-  COMMIT_LIST,
 
   AEGIS_PERFORMANCE_KEY,
   AEGIS_PERFORMANCE_LIST,
+  BUILD_LIST,
+  BUILD_NAME_MAP,
+  COMMIT_LIST,
+  EMPTY_LINE,
+  V_CONSOLE_DOM,
 } from '../config';
+
 import type { IPlugin } from '../types';
 
 

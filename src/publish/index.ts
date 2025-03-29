@@ -1,3 +1,3 @@
 export { PUBLISH_ENV_MAP } from './config';
-export { getPublishEnvValue, getPublishRootDir, getPublishModuleName, getPublishBashPath } from './helper';
+export { getPublishBashPath, getPublishEnvValue, getPublishModuleName, getPublishRootDir } from './helper';
 export { localPublish } from './publish';

@@ -1,1 +1,1 @@
-export { uploadFile, UploadManager } from './uploader';
+export { UploadManager, uploadFile } from './uploader';

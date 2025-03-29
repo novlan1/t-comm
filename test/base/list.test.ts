@@ -1,4 +1,4 @@
-import { flatten, flat, shuffle, getAccCellWidth, sortByStr } from '../../src';
+import { flat, flatten, getAccCellWidth, shuffle, sortByStr } from '../../src';
 import * as listUtils from '../../src/base/list';
 
 describe('flatten', () => {

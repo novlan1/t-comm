@@ -1,8 +1,11 @@
 import { flatten } from '../base/list';
 import { timeStampFormat } from '../time/time';
-import { getCOSFilePath } from './helper/helper';
+
 import { batchSendWxRobotMarkdown } from '../wecom-robot/batch-send';
-import type { ICosInfo, ISecretInfo, ILocalConfig } from './types';
+
+import { getCOSFilePath } from './helper/helper';
+
+import type { ICosInfo, ILocalConfig, ISecretInfo } from './types';
 
 function isEqual(a: any, b: any) {
   let wrapA = a;

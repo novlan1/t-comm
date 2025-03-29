@@ -1,5 +1,5 @@
-import { V_CONSOLE_DOM } from '../config';
 import { dateFormat } from '../../time/time';
+import { V_CONSOLE_DOM } from '../config';
 
 
 function renderVersion(callback: Function) {

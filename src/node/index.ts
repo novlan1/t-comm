@@ -3,18 +3,18 @@ export {
   readCommentJson,
 } from './comment-json';
 export {
-  mkDirsSync,
   copyDir,
   copyFile,
   deleteFolder,
-  traverseFolder,
+  deleteFolderRecursive,
+  getFileName,
+  getJsonFromLog,
+  mkDirsSync,
+  readJson,
+  rmEmptyDir,
   saveJsonToLog,
   saveJsonToLogMore,
-  getJsonFromLog,
-  getFileName,
-  rmEmptyDir,
-  deleteFolderRecursive,
-  readJson,
+  traverseFolder,
 } from './fs-util';
 export { execCommand } from './node-command';
 export { nodeGet, nodePost, nodePut } from './node-request';

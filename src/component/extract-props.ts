@@ -1,5 +1,5 @@
 import { hyphenate } from '../base/string/string';
-import { writeFileSync, readFileSync } from '../fs/fs';
+import { readFileSync, writeFileSync } from '../fs/fs';
 
 
 const DEFAULT_EXTRACT_REGEXP = /([\w]+):\s*\{\s+type:\s*([\w]+),\s+default:\s(.*),/g;

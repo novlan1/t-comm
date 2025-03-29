@@ -1,10 +1,10 @@
 import {
-  parseHexChannel,
-  rgbToHex,
-  rgb2hsv,
-  hsv2rgb,
   hsl2hsv,
+  hsv2rgb,
   parseColorToHSV,
+  parseHexChannel,
+  rgb2hsv,
+  rgbToHex,
 } from '../../src';
 
 describe('parseHexChannel', () => {

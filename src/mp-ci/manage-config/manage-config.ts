@@ -1,6 +1,7 @@
+import { sortObjectByKey  } from '../../base/object/sort';
+
 import { ERROR_MAP } from './config';
 import { sortRobotMapByRobot, updateQQTencentSheetLine } from './helper';
-import { sortObjectByKey  } from '../../base/object/sort';
 
 
 function changeRobot({

@@ -1,10 +1,12 @@
+import { saveJsonToLog } from '../node/fs-util';
 import { queryGroupInfo } from '../rainbow/rainbow-admin';
 import { fetchRainbowConfig } from '../rainbow/rainbow-user';
-import { saveJsonToLog } from '../node/fs-util';
 
 import { getSaveFileName, readCOSConfig } from './helper/helper';
-import type { ISecretInfo, ILocalConfig, IRemoteConfig } from './types';
+
 import { RainbowKeyValueType } from './helper/value-type';
+
+import type { ILocalConfig, IRemoteConfig, ISecretInfo } from './types';
 
 
 export function fetchLatestRainbowData({

@@ -1,14 +1,15 @@
 /**
  * 更新表格图片
  */
+const IMAGE = require('path').resolve(__dirname, 'press-ui-logo.png');
+
 const { updateTencentSheetImage, uploadTencentDocImage } = require('../../../lib');
+
 const {
   ACCESS_TOKEN,
   CLIENT_ID,
   OPEN_ID,
 } = require('./config');
-
-const IMAGE = require('path').resolve(__dirname, 'press-ui-logo.png');
 
 
 async function main() {

@@ -1,6 +1,8 @@
 import axios from 'axios';
-import type { SecretInfoType, ScoreInfoType } from '../types';
+
 import { getCredential } from './credential';
+
+import type { ScoreInfoType, SecretInfoType } from '../types';
 
 
 /**

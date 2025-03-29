@@ -1,7 +1,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { fetchRainbowConfig } from '../rainbow/rainbow-user';
+
 import { writeFileSync } from '../fs/fs';
+import { fetchRainbowConfig } from '../rainbow/rainbow-user';
 
 
 // 从七彩石获取CI配置

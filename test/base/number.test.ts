@@ -1,7 +1,7 @@
 import {
-  getUnitPreviousRatio,
-  getThousandSeparator,
   getThousandSeparator2,
+  getThousandSeparator,
+  getUnitPreviousRatio,
   padZero,
 } from '../../src';
 

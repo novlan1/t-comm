@@ -1,4 +1,4 @@
-import { toHumpObj, extend, isObjectEqual, sortObjectByKey, sliceObject } from '../../src';
+import { extend, isObjectEqual, sliceObject, sortObjectByKey, toHumpObj } from '../../src';
 
 describe('sortObjectByKey', () => {
   it('sortObjectByKey', () => {

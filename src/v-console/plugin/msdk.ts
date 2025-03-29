@@ -1,5 +1,6 @@
-import type { IPlugin } from '../types';
 import { V_CONSOLE_DOM } from '../config';
+
+import type { IPlugin } from '../types';
 
 export function initMsdkPlugin() {
   const plugin = new VConsole.VConsolePlugin('msdk', 'msdk工具');

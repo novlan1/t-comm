@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import axios from 'axios';
+
 import type { ISecretInfo } from './types';
 
 export async function createTencentDoc({

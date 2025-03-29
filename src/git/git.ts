@@ -1,4 +1,5 @@
 import { execCommand } from '../node/node-command';
+
 import type { IGitCommitInfo } from './types';
 
 /**
@@ -12,7 +13,12 @@ import type { IGitCommitInfo } from './types';
  * // => master
  */
 export function getGitCurBranch(root?: string) {
-  const res = execCommand('git symbolic-ref --short -q HEAD', root);
+  let res = '';
+  try {
+    res = execCommand('git symbolic-ref --short -q HEAD', root);
+  } catch (err) {
+    console.log('[getGitCurBranch] error: ', err);
+  }
   return res;
 }
 

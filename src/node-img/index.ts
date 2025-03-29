@@ -1,6 +1,6 @@
 export {
-  saveBase64ImgToFile,
-  turnLocalImg2Base64,
-  saveRemoteImgToLocal,
   getImgMd5,
+  saveBase64ImgToFile,
+  saveRemoteImgToLocal,
+  turnLocalImg2Base64,
 } from './img';

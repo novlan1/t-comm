@@ -1,7 +1,8 @@
 import { reportToRdPlatform } from '../rd-platform-report/rd-platform-report';
-import { getCIConfig, getRobot } from './write-env-and-private-key';
-import { MpCI } from './mp-ci';
+
 import { getInnerBundleBuildDesc } from './helper';
+import { MpCI } from './mp-ci';
+import { getCIConfig, getRobot } from './write-env-and-private-key';
 
 
 function flattenSubPackages(result: {subPackageInfo: Array<{name: any}>}) {

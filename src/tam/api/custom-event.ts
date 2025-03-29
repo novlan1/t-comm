@@ -1,6 +1,8 @@
 import axios from 'axios';
-import type { SecretInfoType } from '../types';
+
 import { getCredential } from './credential';
+
+import type { SecretInfoType } from '../types';
 
 
 function getCustomEventQuery({

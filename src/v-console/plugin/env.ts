@@ -1,5 +1,6 @@
-import type { IPlugin } from '../types';
 import { DEBUG_CGI_ENV, V_CONSOLE_DOM } from '../config';
+
+import type { IPlugin } from '../types';
 
 function getCurrentEnv() {
   const value =  window.sessionStorage.getItem(DEBUG_CGI_ENV.KEY);

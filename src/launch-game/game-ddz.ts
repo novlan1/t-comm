@@ -1,7 +1,9 @@
-import { getWxGameCircleUrl, launchInWX } from './helper';
-import { getUrlPara } from '../url/url';
-import { GAME_MAP } from '../launch-app/config';
 import { initEnv } from '../env/env';
+import { GAME_MAP } from '../launch-app/config';
+import { getUrlPara } from '../url/url';
+
+import { getWxGameCircleUrl, launchInWX } from './helper';
+
 import type { IBaseLaunchParams } from './types';
 
 

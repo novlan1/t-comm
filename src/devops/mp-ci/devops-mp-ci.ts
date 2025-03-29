@@ -1,23 +1,23 @@
-import { queryGroupInfo } from '../../rainbow/rainbow-admin';
 import { saveJsonToLog } from '../../node/fs-util';
+import { queryGroupInfo } from '../../rainbow/rainbow-admin';
 
+import { startDevopsPipeline } from '../pipeline';
 import {
   createDevopsTemplateInstances,
   updateDevopsTemplateInstances,
 } from '../template';
-import { startDevopsPipeline } from '../pipeline';
 
 
 import { DEVOPS_MP_CI_CONFIG } from './config';
 import {
+  compareFromLogFile,
   genOneFileFromRainbowGroup,
-  parseRobotMap,
   getPipelineName,
   getPipelineParam,
-  compareFromLogFile,
   getRainbowMpCIFileName,
-  isPipelineUpdated,
   getUnusedPipelineList,
+  isPipelineUpdated,
+  parseRobotMap,
 } from './helper';
 
 const { CI_PREFIX_MAP } = DEVOPS_MP_CI_CONFIG;

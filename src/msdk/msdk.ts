@@ -1,4 +1,4 @@
-import { initEnv, getEnvUAType } from '../env/env';
+import { getEnvUAType, initEnv } from '../env/env';
 import { loader } from '../loader/little-loader';
 
 

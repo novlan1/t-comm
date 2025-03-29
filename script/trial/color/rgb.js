@@ -1,4 +1,4 @@
-const { parseRGBHex, rgb2hsv, hsv2rgb } = require('../../../lib');
+const { hsv2rgb, parseRGBHex, rgb2hsv } = require('../../../lib');
 
 
 function main() {

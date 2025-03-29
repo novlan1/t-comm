@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
+import { getImgMd5, saveBase64ImgToFile } from '../node-img';
+
 import { sendWxRobotImg } from './base';
-import { saveBase64ImgToFile, getImgMd5 } from '../node-img';
 
 /**
  * 发送企业微信机器人base64图片，其实就是先保存到本地，然后生成md5，最后发送

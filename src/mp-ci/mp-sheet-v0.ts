@@ -1,5 +1,6 @@
+import { updateTencentSheet, updateTencentSheetImage } from '../tencent-doc/sheet';
 import { uploadTencentDocImage } from '../tencent-doc/tencent-doc';
-import { updateTencentSheetImage, updateTencentSheet } from '../tencent-doc/sheet';
+
 import type { ISecretInfo } from '../tencent-doc/types';
 
 

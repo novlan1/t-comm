@@ -1,8 +1,8 @@
 import {
-  isListAllEqual,
+  flattenPreData,
   getKeyValuesMap,
   getMaxAndMinIdx,
-  flattenPreData,
+  isListAllEqual,
 } from '../../src';
 
 

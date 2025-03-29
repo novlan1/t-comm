@@ -2,18 +2,19 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-import { sendWxRobotMarkdown } from '../wecom-robot/base';
-import { getGitCommitInfo } from '../git/git';
-import { timeStampFormat } from '../time/time';
-import { addTextForImg } from '../canvas/img-text';
-import { uploadCOSFile } from '../tencent-cloud/cos/cos';
-import { saveBase64ImgToFile } from '../node-img/img';
 import { formatBite } from '../bite/format-bite';
+import { addTextForImg } from '../canvas/img-text';
+import { getGitCommitInfo } from '../git/git';
+import { saveBase64ImgToFile } from '../node-img/img';
+import { uploadCOSFile } from '../tencent-cloud/cos/cos';
 import { getCosUrlLink } from '../tencent-cloud/cos/link';
+import { timeStampFormat } from '../time/time';
+import { sendWxRobotMarkdown } from '../wecom-robot/base';
 
-import { getBundleBuildDesc, getBundleVersion, parseUploadResult, flattenSubPackages } from './helper';
-import type { IUploadResult, OptionsType } from './types';
 import { DEFAULT_BUILD_SETTING, MAX_TRY_TIMES_MAP, PREVIEW_IMG_MAX_WORD_LENGTH } from './config';
+import { flattenSubPackages, getBundleBuildDesc, getBundleVersion, parseUploadResult } from './helper';
+
+import type { IUploadResult, OptionsType } from './types';
 
 
 function getFullPackageSize(result: IUploadResult) {

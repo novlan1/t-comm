@@ -1,10 +1,11 @@
-const glob = require('glob');
 const path = require('path');
-const typescript = require('@rollup/plugin-typescript');
-const { babel } = require('@rollup/plugin-babel');
-const { nodeResolve } = require('@rollup/plugin-node-resolve');
-const commonjs = require('@rollup/plugin-commonjs');
+
 const { DEFAULT_EXTENSIONS } = require('@babel/core');
+const { babel } = require('@rollup/plugin-babel');
+const commonjs = require('@rollup/plugin-commonjs');
+const { nodeResolve } = require('@rollup/plugin-node-resolve');
+const typescript = require('@rollup/plugin-typescript');
+const glob = require('glob');
 
 // const { getExtraBuildDir } = require('./script/build/rollup-helper');
 const pkg = require('./package.json');

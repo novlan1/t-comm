@@ -1,4 +1,4 @@
 export {
-  parseFunction,
   cached,
+  parseFunction,
 } from './function';

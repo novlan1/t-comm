@@ -1,11 +1,12 @@
+import { initCustomDom } from '../dialog/custom-dialog';
+
 import {
-  ShareConfig,
+  DEFAULT_SHOW_TYPE_IN_GAME,
   SHARE_DOM_MAP,
   SHARE_TYPE_MAP,
-  DEFAULT_SHOW_TYPE_IN_GAME,
+  ShareConfig,
 } from './config';
 // import { initCustomDom } from './custom-dialog'; // press-ui
-import { initCustomDom } from '../dialog/custom-dialog';
 
 
 export function initCommShareTip() {

@@ -1,5 +1,6 @@
 
 const { getTencentDocUserInfo } = require('../../../lib');
+
 const {
   ACCESS_TOKEN,
 } = require('./config');

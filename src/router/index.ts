@@ -1,6 +1,6 @@
 export { findRouteName } from './find-route-name';
 export { getRouterFuncPath } from './helper';
-export { matchParams, getH5CurrentUrl } from './match-params';
+export { getH5CurrentUrl, matchParams } from './match-params';
 export { default as pathToRegexp } from './path-to-regexp';
 
 export { uniHookRouter } from './uni-hook-router';

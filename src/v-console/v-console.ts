@@ -1,12 +1,13 @@
-import { loadJS } from '../loader/loader';
 import { insertStyle } from '../dom/dom';
-import { V_CONSOLE_URL, V_CONSOLE_STYLE_CONTENT } from './config';
+import { loadJS } from '../loader/loader';
 
-import { initVersionPlugin } from './plugin/version';
-import { initFeedbackPlugin } from './plugin/feedback';
-import { initSwitchEnvPlugin } from './plugin/env';
+import { V_CONSOLE_STYLE_CONTENT, V_CONSOLE_URL } from './config';
+
 import { initLoadDelayPlugin } from './plugin/delay';
+import { initSwitchEnvPlugin } from './plugin/env';
+import { initFeedbackPlugin } from './plugin/feedback';
 import { initMsdkPlugin } from './plugin/msdk';
+import { initVersionPlugin } from './plugin/version';
 import { initVersionSimplePlugin } from './plugin/version-simple';
 
 

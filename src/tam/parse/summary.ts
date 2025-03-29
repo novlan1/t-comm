@@ -1,5 +1,5 @@
-import { ScoreInfoType } from '../types';
 import { getPartRatio } from '../../base/number';
+import { ScoreInfoType } from '../types';
 const SORT_KEY = 'PageUv';
 
 

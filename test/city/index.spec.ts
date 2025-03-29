@@ -1,12 +1,12 @@
 import {
+
+  RAW_CITY_DATA,
+  getAreaCode,
   getAreaData,
   getAreaDataAll,
   getAreaName,
-  getAreaCode,
-  getProvName,
   getCityName,
-
-  RAW_CITY_DATA,
+  getProvName,
 } from '../../src/index';
 
 describe('getAreaData', () => {

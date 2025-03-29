@@ -37,6 +37,7 @@ export * from './i18n';
 export * from './image';
 export * from './ip';
 export * from './jsdoc';
+export * from './json';
 export * from './launch-app';
 export * from './launch-game';
 export * from './lint';

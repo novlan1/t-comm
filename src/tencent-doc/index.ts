@@ -6,16 +6,16 @@ export {
 } from './refresh-token';
 
 export {
-  createTencentDoc,
-  convertTencentFileId,
-  uploadTencentDocImage,
   asyncExportTencentDoc,
   checkExportTencentDocProgress,
+  convertTencentFileId,
+  createTencentDoc,
+  uploadTencentDocImage,
 } from './tencent-doc';
 export {
+  batchUpdateTencentSheetV3,
   updateTencentSheet,
   updateTencentSheetImage,
-  batchUpdateTencentSheetV3,
 } from './sheet';
 export {
   getTencentDocUserInfo,

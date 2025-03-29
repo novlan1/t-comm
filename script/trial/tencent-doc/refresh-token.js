@@ -1,5 +1,6 @@
 
 const { refreshTencentDocToken } = require('../../../lib');
+
 const {
   CLIENT_ID,
   CLIENT_SECRET,

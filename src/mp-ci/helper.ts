@@ -1,8 +1,11 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-import { getGitCommitInfo } from '../git/git';
-import { BUNDLE_NAME_MAP } from './config';
 import { formatBite } from '../bite/format-bite';
+import { getGitCommitInfo } from '../git/git';
+
 import { genRobotMessage } from '../wecom-robot/message';
+
+import { BUNDLE_NAME_MAP } from './config';
+
 import type { IUploadResult } from './types';
 
 

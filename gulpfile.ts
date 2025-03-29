@@ -1,8 +1,10 @@
-import { series } from 'gulp';
 import path from 'path';
-import fse from 'fs-extra';
+
 import chalk from 'chalk';
 import conventionalChangelog from 'conventional-changelog';
+import fse from 'fs-extra';
+import { series } from 'gulp';
+
 import { buildByRollup } from './script/gulp/build-by-rollup-up';
 import { clearLibFile } from './script/gulp/clear-lib';
 import { generateDts } from './script/gulp/generate-dts';

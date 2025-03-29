@@ -3,6 +3,7 @@
  * 参考: https://docs.qq.com/open/document/app/openapi/v2/file/common/id.html
  */
 const { convertTencentFileId } = require('../../../lib');
+
 const {
   ACCESS_TOKEN,
   CLIENT_ID,

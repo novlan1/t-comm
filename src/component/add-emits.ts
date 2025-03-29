@@ -1,5 +1,5 @@
 import { getMatchListFromReg } from '../base/regexp/regexp';
-import { writeFileSync, readFileSync } from '../fs/fs';
+import { readFileSync, writeFileSync } from '../fs/fs';
 
 
 /**

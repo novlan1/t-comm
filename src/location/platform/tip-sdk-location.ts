@@ -1,4 +1,4 @@
-import { LocationInterface, LocationFlag, LocationResult, LocationOptions } from '../location-interface';
+import { LocationFlag, LocationInterface, LocationOptions, LocationResult } from '../location-interface';
 // import { post } from '../../network/post';
 
 

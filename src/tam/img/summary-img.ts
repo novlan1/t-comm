@@ -1,14 +1,15 @@
-import { getTAMSummaryScoreByGroupIdList } from '../api/summary-score';
-import { getRUMScores } from '../api/rum-score';
 
-import { parseSummaryScore, getTableHeaders } from '../parse';
 import { compareTwoList, getMaxAndMinIdx } from '../../base/list';
 import { createCanvasTable } from '../../canvas/table';
+import { saveJsonToLog } from '../../node/fs-util';
 import { timeStampFormat } from '../../time/time';
 
 import { batchSendWxRobotBase64Img } from '../../wecom-robot/batch-send';
-import { saveJsonToLog } from '../../node/fs-util';
-import type { SecretInfoType, IRumSecretItem } from '../types';
+import { getRUMScores } from '../api/rum-score';
+import { getTAMSummaryScoreByGroupIdList } from '../api/summary-score';
+import { getTableHeaders, parseSummaryScore } from '../parse';
+
+import type { IRumSecretItem, SecretInfoType } from '../types';
 
 
 async function getRUMScoreList({

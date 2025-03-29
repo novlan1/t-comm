@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { getDevopsAccessToken } from './token';
-import type { ISecretInfo, IRemoteInstances } from './types';
+
+import type { IRemoteInstances, ISecretInfo } from './types';
 
 interface ITemplateReq {
   projectId: string;

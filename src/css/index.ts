@@ -1,5 +1,5 @@
 export {
-  removeCss,
   loadCssCode,
   loadStyles,
+  removeCss,
 } from './css';

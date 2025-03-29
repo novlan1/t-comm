@@ -1,4 +1,4 @@
-import { getHttpsUrl, getCdnUrl, getCompressImgUrl } from '../image/image';
+import { getCdnUrl, getCompressImgUrl, getHttpsUrl } from '../image/image';
 
 
 let windowLoaded = false;

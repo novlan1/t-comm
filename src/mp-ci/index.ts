@@ -1,10 +1,10 @@
 export { updateMpCIRainbowConfig } from './manage-config/manage-config';
 
 export {
-  getInnerBundleBuildDesc,
+  flattenSubPackages,
   getBundleBuildDesc,
   getBundleVersion,
-  flattenSubPackages,
+  getInnerBundleBuildDesc,
 } from './helper';
 export { MpCI } from './mp-ci';
 

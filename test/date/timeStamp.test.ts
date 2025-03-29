@@ -1,12 +1,12 @@
 import {
-  getDayStartTimestamp,
-  getDayEndTimeStamp,
-  getTodayStartTimestamp,
-  getTodayEndTimeStamp,
-  getYesterdayStartTimeStamp,
-  getYesterdayEndTimeStamp,
-  getDBYStartTimeStamp,
   getDBYEndTimeStamp,
+  getDBYStartTimeStamp,
+  getDayEndTimeStamp,
+  getDayStartTimestamp,
+  getTodayEndTimeStamp,
+  getTodayStartTimestamp,
+  getYesterdayEndTimeStamp,
+  getYesterdayStartTimeStamp,
 } from '../../src';
 
 describe('getDayStartTimestamp', () => {

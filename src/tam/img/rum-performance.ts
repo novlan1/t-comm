@@ -1,7 +1,8 @@
-import { getRUMPerformance } from '../../tencent-cloud/rum/performance';
-import { createCanvasTable } from '../../canvas/table';
-import { batchSendWxRobotBase64Img } from '../../wecom-robot/batch-send';
 import { compareTwoList, getMaxAndMinIdx } from '../../base/list';
+import { createCanvasTable } from '../../canvas/table';
+import { getRUMPerformance } from '../../tencent-cloud/rum/performance';
+import { batchSendWxRobotBase64Img } from '../../wecom-robot/batch-send';
+
 import CountryMap from './country-map';
 
 // const DEFAULT_REGION = '其他';

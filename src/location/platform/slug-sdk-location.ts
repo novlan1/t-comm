@@ -1,5 +1,5 @@
-import { LocationInterface, LocationFlag, LocationResult } from '../location-interface';
 import { callJsBrowserAdapter } from '../../msdk/msdk';
+import { LocationFlag, LocationInterface, LocationResult } from '../location-interface';
 
 export default class SlugSdkLocation implements LocationInterface {
   getLocation(): Promise<LocationResult> {

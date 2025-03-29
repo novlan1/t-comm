@@ -1,5 +1,5 @@
 import { replaceAllPolyfill } from '../base/string/replace-all';
-import { writeFileSync, readFileSync } from '../fs/fs';
+import { readFileSync, writeFileSync } from '../fs/fs';
 
 
 const replaceList = [

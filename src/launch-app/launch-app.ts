@@ -1,7 +1,9 @@
-import { merge } from '../lodash-mini/merge';
 import { initEnv } from '../env/env';
-import { launchApp } from './core';
+import { merge } from '../lodash-mini/merge';
+
 import { GAME_MAP } from './config';
+import { launchApp } from './core';
+
 import type { ILaunchAppParams } from './types';
 
 // type ILaunchAppParams = any;

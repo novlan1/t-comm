@@ -1,6 +1,7 @@
-import * as path from 'path';
 import * as fs from 'fs';
-import { writeFileSync, readFileSync } from '../fs/fs';
+import * as path from 'path';
+
+import { readFileSync, writeFileSync } from '../fs/fs';
 import { timeStampFormat } from '../time/time';
 
 const LOG_DIR = 'log';

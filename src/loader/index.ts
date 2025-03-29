@@ -1,6 +1,6 @@
 export {
-  loadJS,
   loadCSS,
+  loadJS,
 } from './loader';
 
 export {

@@ -1,6 +1,8 @@
-import { getHistoryModeConfigDiff } from './api';
-import type { ISecretInfo, IAddedMap } from './type';
 import { batchSendWxRobotMarkdown } from '../wecom-robot/batch-send';
+
+import { getHistoryModeConfigDiff } from './api';
+
+import type { IAddedMap, ISecretInfo } from './type';
 
 
 export async function getHistoryModeConfigDiffAndSendRobot({

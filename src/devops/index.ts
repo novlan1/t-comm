@@ -1,14 +1,14 @@
 export {
-  startDevopsPipeline,
-  getPipelineList,
   getAllPipelineList,
+  getPipelineList,
   sendOverTimePipelineMessage,
+  startDevopsPipeline,
 } from './pipeline';
 
 export {
-  getDevopsTemplateInstances,
-  getAllDevopsTemplateInstances,
   createDevopsTemplateInstances,
+  getAllDevopsTemplateInstances,
+  getDevopsTemplateInstances,
   updateDevopsTemplateInstances,
 } from './template';
 

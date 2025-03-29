@@ -1,5 +1,6 @@
-import { BASE_URL } from './helper/helper';
 import { flatten } from '../base';
+
+import { BASE_URL } from './helper/helper';
 
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const axios = require('axios');

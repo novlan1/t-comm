@@ -1,12 +1,12 @@
 export {
-  getCityName,
-  getProvName,
-
-  getAreaName,
   getAreaCode,
 
   getAreaData,
   getAreaDataAll,
+
+  getAreaName,
+  getCityName,
+  getProvName,
 } from './city';
 
 export {

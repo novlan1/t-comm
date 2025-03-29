@@ -1,5 +1,5 @@
-const { getSidebarConfig } = require('./sidebar');
 const { SHOW_CHANGE_LOG } = require('./changelog.env');
+const { getSidebarConfig } = require('./sidebar');
 
 
 const changeLogSidebar = SHOW_CHANGE_LOG ? [
