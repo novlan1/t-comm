@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -20,7 +22,7 @@ import {
 ```
 
 
-## `launchDDZGameRoom` 
+### `launchDDZGameRoom` 
 
 
 **描述**：<p>拉起 DDZ</p>
@@ -54,7 +56,7 @@ launchDDZGameRoom({
 ```
 <a name="launchGNGameRoom"></a>
 
-## `launchGNGameRoom(params)` 
+### `launchGNGameRoom(params)` 
 
 
 **描述**：<p>拉起 GN</p>
@@ -86,7 +88,7 @@ launchGNGameRoom({
 ```
 <a name="launchGPGameRoom"></a>
 
-## `launchGPGameRoom(params)` 
+### `launchGPGameRoom(params)` 
 
 
 **描述**：<p>拉起 GP</p>
@@ -114,7 +116,7 @@ launchGPGameRoom({
 ```
 <a name="launchMJGameRoom"></a>
 
-## `launchMJGameRoom(params)` 
+### `launchMJGameRoom(params)` 
 
 
 **描述**：<p>拉起 MJ</p>

@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { watchRainbowToCosAndSendRobot } from 't-comm';
@@ -10,7 +12,7 @@ import { watchRainbowToCosAndSendRobot} from 't-comm/lib/rainbow-to-cos/index';
 ```
 
 
-## `watchRainbowToCosAndSendRobot(options)` 
+### `watchRainbowToCosAndSendRobot(options)` 
 
 
 **描述**：<p>监听rainbow，同步到cos，并发送到机器人</p>

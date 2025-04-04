@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -30,7 +32,7 @@ import {
 ```
 
 
-## `addOrUpdateRainbowKV(config)` 
+### `addOrUpdateRainbowKV(config)` 
 
 
 **描述**：<p>添加或更新配置</p>
@@ -78,7 +80,7 @@ addOrUpdateRainbowKV({
 ```
 <a name="addRainbowKV"></a>
 
-## `addRainbowKV(config)` 
+### `addRainbowKV(config)` 
 
 
 **描述**：<p>增加配置</p>
@@ -126,7 +128,7 @@ addRainbowKV({
 ```
 <a name="updateRainbowKV"></a>
 
-## `updateRainbowKV(config)` 
+### `updateRainbowKV(config)` 
 
 
 **描述**：<p>修改配置</p>
@@ -174,7 +176,7 @@ updateRainbowKV({
 ```
 <a name="createRainbowPublishJob"></a>
 
-## `createRainbowPublishJob(config)` 
+### `createRainbowPublishJob(config)` 
 
 
 **描述**：<p>创建发布任务</p>
@@ -215,7 +217,7 @@ createRainbowPublishJob({
 ```
 <a name="publishRainbowTask"></a>
 
-## `publishRainbowTask(config)` 
+### `publishRainbowTask(config)` 
 
 
 **描述**：<p>发布任务</p>
@@ -256,7 +258,7 @@ publishRainbowTask({
 ```
 <a name="closeRainbowTask"></a>
 
-## `closeRainbowTask(config)` 
+### `closeRainbowTask(config)` 
 
 
 **描述**：<p>关闭任务</p>
@@ -297,7 +299,7 @@ closeRainbowTask({
 ```
 <a name="updateRainbowKVAndPublish"></a>
 
-## `updateRainbowKVAndPublish(config)` 
+### `updateRainbowKVAndPublish(config)` 
 
 
 **描述**：<p>更新或新增值并发布</p>
@@ -342,7 +344,7 @@ updateRainbowKVAndPublish({
 ```
 <a name="queryGroupInfo"></a>
 
-## `queryGroupInfo(config)` 
+### `queryGroupInfo(config)` 
 
 
 **描述**：<p>查询分组配置</p>
@@ -381,7 +383,7 @@ queryGroupInfo({
 ```
 <a name="fetchRainbowConfig"></a>
 
-## `fetchRainbowConfig(key, secretInfo)` 
+### `fetchRainbowConfig(key, secretInfo)` 
 
 
 **描述**：<p>拉取七彩石配置</p>

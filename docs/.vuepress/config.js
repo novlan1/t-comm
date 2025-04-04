@@ -39,16 +39,16 @@ module.exports = {
     smoothScroll: true,
     nav: [
       {
-        text: '源码地址',
-        link: 'https://github.com/novlan1/t-comm',
-      },
-      {
         text: 'Press UI',
         link: 'https://novlan1.github.io/press-ui/',
       },
       {
         text: 'Plugin Light',
         link: 'https://novlan1.github.io/plugin-light/',
+      },
+      {
+        text: '源码',
+        link: 'https://github.com/novlan1/t-comm',
       },
     ],
     sidebar: [

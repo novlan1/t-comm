@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { getAuditorFromRainbowConfig } from 't-comm';
@@ -10,7 +12,7 @@ import { getAuditorFromRainbowConfig} from 't-comm/lib/minimatch/index';
 ```
 
 
-## `getAuditorFromRainbowConfig(params)` 
+### `getAuditorFromRainbowConfig(params)` 
 
 
 **描述**：<p>获取审核人</p>

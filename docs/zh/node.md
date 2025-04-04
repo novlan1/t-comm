@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -32,7 +34,7 @@ import {
 ```
 
 
-## `parseCommentJson(content)` 
+### `parseCommentJson(content)` 
 
 
 **描述**：<p>解析带注释的 json 文件</p>
@@ -48,7 +50,7 @@ import {
 
 <a name="readCommentJson"></a>
 
-## `readCommentJson(file)` 
+### `readCommentJson(file)` 
 
 
 **描述**：<p>获取带注释的 json 文件内容</p>
@@ -64,7 +66,7 @@ import {
 
 <a name="innerCopyDir"></a>
 
-## `innerCopyDir(src, dist)` 
+### `innerCopyDir(src, dist)` 
 
 
 **描述**：<p>复制目录、子目录，及其中的文件</p>
@@ -81,7 +83,7 @@ import {
 
 <a name="copyDir"></a>
 
-## `copyDir(src, dist, callback)` 
+### `copyDir(src, dist, callback)` 
 
 
 **描述**：<p>拷贝目录以及子文件</p>
@@ -99,7 +101,7 @@ import {
 
 <a name="deleteFolder"></a>
 
-## `deleteFolder(path)` 
+### `deleteFolder(path)` 
 
 
 **描述**：<p>删除目录</p>
@@ -115,7 +117,7 @@ import {
 
 <a name="rmEmptyDir"></a>
 
-## `rmEmptyDir(path, level)` 
+### `rmEmptyDir(path, level)` 
 
 
 **描述**：<p>递归删除空目录</p>
@@ -132,7 +134,7 @@ import {
 
 <a name="copyFile"></a>
 
-## `copyFile(from, to)` 
+### `copyFile(from, to)` 
 
 
 **描述**：<p>拷贝文件</p>
@@ -149,7 +151,7 @@ import {
 
 <a name="traverseFolder"></a>
 
-## `traverseFolder(cb, path)` 
+### `traverseFolder(cb, path)` 
 
 
 **描述**：<p>递归遍历文件夹，并执行某操作</p>
@@ -166,7 +168,7 @@ import {
 
 <a name="execCommand"></a>
 
-## `execCommand(command, root, stdio)` 
+### `execCommand(command, root, stdio)` 
 
 
 **描述**：<p>nodejs 中调用 child_process.execSync 执行命令，
@@ -187,7 +189,7 @@ import {
 
 <a name="execCommandAll"></a>
 
-## `execCommandAll(command, root, stdio)` 
+### `execCommandAll(command, root, stdio)` 
 
 
 **描述**：<p>nodejs中调用 child_process.execSync 执行命令</p>

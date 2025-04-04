@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { startApp } from 't-comm';
@@ -10,7 +12,7 @@ import { startApp} from 't-comm/lib/vue-start/index';
 ```
 
 
-## `startApp(options)` 
+### `startApp(options)` 
 
 
 **描述**：<p>Vue项目初始化</p>

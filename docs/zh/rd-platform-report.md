@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { reportToRdPlatform } from 't-comm';
@@ -10,7 +12,7 @@ import { reportToRdPlatform} from 't-comm/lib/rd-platform-report/index';
 ```
 
 
-## `reportToRdPlatform(param)` 
+### `reportToRdPlatform(param)` 
 
 
 **描述**：<p>上报数据到研发平台</p>

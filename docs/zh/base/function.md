@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { parseFunction, cached } from 't-comm';
@@ -10,7 +12,7 @@ import { parseFunction, cached} from 't-comm/lib/base/function/index';
 ```
 
 
-## `parseFunction(func)` 
+### `parseFunction(func)` 
 
 
 **描述**：<p>将字符串转为函数</p>
@@ -35,7 +37,7 @@ parseFunction('()=>console.log(1)')
 ```
 <a name="cached"></a>
 
-## `cached(fn)` 
+### `cached(fn)` 
 
 
 **描述**：<p>记忆函数：缓存函数的运算结果</p>

@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -32,7 +34,7 @@ import {
 ```
 
 
-## `flat(list)` 
+### `flat(list)` 
 
 
 **描述**：<p>递归拉平数组</p>
@@ -55,7 +57,7 @@ flat([[[1, 2, 3], 4], 5])
 ```
 <a name="flatten"></a>
 
-## `flatten(list, key)` 
+### `flatten(list, key)` 
 
 
 **描述**：<p>拉平数组，不会递归处理</p>
@@ -83,7 +85,7 @@ flatten(list, 'id')
 ```
 <a name="shuffle"></a>
 
-## `shuffle(array)` 
+### `shuffle(array)` 
 
 
 **描述**：<p>打乱数组顺序</p>
@@ -108,7 +110,7 @@ shuffle([1, 2, 3, 4, 5])
 ```
 <a name="getAccCellWidth"></a>
 
-## `getAccCellWidth(cellWidthList, idx)` 
+### `getAccCellWidth(cellWidthList, idx)` 
 
 
 **描述**：<p>获取累积宽度</p>
@@ -134,7 +136,7 @@ getAccCellWidth([20, 10, 20, 10], 1)
 ```
 <a name="isListAllEqual"></a>
 
-## `isListAllEqual(list)` 
+### `isListAllEqual(list)` 
 
 
 **描述**：<p>判断数组是否全部相等</p>
@@ -163,7 +165,7 @@ isListAllEqual([0, 0, 2])
 ```
 <a name="getKeyValuesMap"></a>
 
-## `getKeyValuesMap(data)` 
+### `getKeyValuesMap(data)` 
 
 
 **描述**：<p>获取对象的value列表，并输出大对象形式</p>
@@ -223,7 +225,7 @@ const data = [
 ```
 <a name="getPreviousRatio"></a>
 
-## `getPreviousRatio(data, preDataMap, uniqKey)` 
+### `getPreviousRatio(data, preDataMap, uniqKey)` 
 
 
 **描述**：<p>获取相对上次的比例，会给输入的对象数组的每一项增加 ratio、previousValue 属性</p>
@@ -297,7 +299,7 @@ getPreviousRatio(data, preDataMap);
 ```
 <a name="getMaxAndMinIdx"></a>
 
-## `getMaxAndMinIdx(data, reverseScoreKeys)` 
+### `getMaxAndMinIdx(data, reverseScoreKeys)` 
 
 
 **描述**：<p>给对象数组的每一项，添加isMax、isMin、、isSecondMax、isSecondMin、idx、lastIdx等属性</p>
@@ -346,7 +348,7 @@ getMaxAndMinIdx(data, [])
 ```
 <a name="flattenPreData"></a>
 
-## `flattenPreData(preDataList, key)` 
+### `flattenPreData(preDataList, key)` 
 
 
 **描述**：<p>拉平之前数据</p>
@@ -391,7 +393,7 @@ flattenPreData(data, 'ProjectName');
 ```
 <a name="compareTwoList"></a>
 
-## `compareTwoList(list, preList, key)` 
+### `compareTwoList(list, preList, key)` 
 
 
 **描述**：<p>对比两个对象列表</p>

@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -24,7 +26,7 @@ import {
 ```
 
 
-## `callJsReSetFullScreen` 
+### `callJsReSetFullScreen` 
 
 
 **描述**：<p>设置 MSDK 浏览器退出全屏，需提前加载 sdk</p>
@@ -40,7 +42,7 @@ callJsReSetFullScreen();
 ```
 <a name="callJsSetFullScreen"></a>
 
-## `callJsSetFullScreen` 
+### `callJsSetFullScreen` 
 
 
 **描述**：<p>设置 MSDK 浏览器全屏，需提前加载 sdk</p>
@@ -62,7 +64,7 @@ callJsSetFullScreen(false);
 ```
 <a name="sendToMsdkNative"></a>
 
-## `sendToMsdkNative(data)` 
+### `sendToMsdkNative(data)` 
 
 
 **描述**：<p>MSDK 浏览器中，向原生发送数据</p>
@@ -78,7 +80,7 @@ callJsSetFullScreen(false);
 
 <a name="closeMsdkWebview"></a>
 
-## `closeMsdkWebview()` 
+### `closeMsdkWebview()` 
 
 
 **描述**：<p>MSDK 浏览器中，关闭 webView</p>
@@ -94,7 +96,7 @@ closeMsdkWebview()
 ```
 <a name="closeWebView"></a>
 
-## `closeWebView()` 
+### `closeWebView()` 
 
 
 **描述**：<p>关闭 webView，包含 msdk 浏览器和其他浏览器</p>
@@ -110,7 +112,7 @@ closeWebView()
 ```
 <a name="callJsBrowserAdapter"></a>
 
-## `callJsBrowserAdapter()` 
+### `callJsBrowserAdapter()` 
 
 
 **描述**：<p>添加游戏内浏览器jssdk</p>

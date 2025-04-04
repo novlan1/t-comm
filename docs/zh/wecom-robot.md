@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -22,7 +24,7 @@ import {
 ```
 
 
-## `sendWxRobotMsg(config)` 
+### `sendWxRobotMsg(config)` 
 
 
 **描述**：<p>给机器人发送普通消息</p>
@@ -56,7 +58,7 @@ sendWxRobotMsg({
 ```
 <a name="sendWxRobotMarkdown"></a>
 
-## `sendWxRobotMarkdown(config)` 
+### `sendWxRobotMarkdown(config)` 
 
 
 **描述**：<p>给机器人发送Markdown消息</p>
@@ -90,7 +92,7 @@ sendWxRobotMarkdown({
 ```
 <a name="sendWxRobotImg"></a>
 
-## `sendWxRobotImg(config)` 
+### `sendWxRobotImg(config)` 
 
 
 **描述**：<p>给机器人发送图片</p>
@@ -124,7 +126,7 @@ sendWxRobotImg({
 ```
 <a name="batchSendWxRobotBase64Img"></a>
 
-## `batchSendWxRobotBase64Img(config)` 
+### `batchSendWxRobotBase64Img(config)` 
 
 
 **描述**：<p>批量发送企业微信机器人base64图片</p>
@@ -156,7 +158,7 @@ batchSendWxRobotBase64Img({
 ```
 <a name="sendWxRobotBase64Img"></a>
 
-## `sendWxRobotBase64Img(config)` 
+### `sendWxRobotBase64Img(config)` 
 
 
 **描述**：<p>发送企业微信机器人base64图片，其实就是先保存到本地，然后生成md5，最后发送</p>

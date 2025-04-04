@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { clipboardMp, clipboardWeb } from 't-comm';
@@ -10,7 +12,7 @@ import { clipboardMp, clipboardWeb} from 't-comm/lib/clipboard/index';
 ```
 
 
-## `clipboardMp(text)` 
+### `clipboardMp(text)` 
 
 
 **描述**：<p>小程序粘贴</p>
@@ -31,7 +33,7 @@ clipboardMp('stupid').then(() => {});
 ```
 <a name="clipboardWeb"></a>
 
-## `clipboardWeb(text)` 
+### `clipboardWeb(text)` 
 
 
 **描述**：<p>复制到剪切板</p>

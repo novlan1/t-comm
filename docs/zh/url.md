@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -48,7 +50,7 @@ import {
 ```
 
 
-## `extendUrlParams(url, removeKeyArr)` 
+### `extendUrlParams(url, removeKeyArr)` 
 
 
 **描述**：<p>拼接额外参数</p>
@@ -70,7 +72,7 @@ const url1 = extendUrlParams('http://www.test.com?a=1&b=2&c=3#/detail?d=4', { e:
 ```
 <a name="filterUrlParams"></a>
 
-## `filterUrlParams([params])` 
+### `filterUrlParams([params])` 
 
 
 **描述**：<p>根据地址长度，进行过滤地址参数，允许指定保留特定参数</p>
@@ -89,7 +91,7 @@ const url1 = extendUrlParams('http://www.test.com?a=1&b=2&c=3#/detail?d=4', { e:
 
 <a name="formatUrlParams"></a>
 
-## `formatUrlParams(url, keepParamsObj)` 
+### `formatUrlParams(url, keepParamsObj)` 
 
 
 **描述**：<p>根据传入的参数，移除原来的所有参数，根据传入的 keepParamsObj 进行重新拼接地址，以 hash 模式返回</p>
@@ -112,7 +114,7 @@ const url2 = formatUrlParams('http://www.test.com?a=1&b=2&c=3#/detail?d=4', { f:
 ```
 <a name="decode"></a>
 
-## `decode(str)` 
+### `decode(str)` 
 
 
 **描述**：<p>多重解码。避免内嵌在外部时地址参数被编码，先进行URL解码再进行HTML字符实体解码</p>
@@ -129,7 +131,7 @@ const url2 = formatUrlParams('http://www.test.com?a=1&b=2&c=3#/detail?d=4', { f:
 
 <a name="stringifyParams"></a>
 
-## `stringifyParams({)` 
+### `stringifyParams({)` 
 
 
 **描述**：<p>将参数对象转成字符串</p>
@@ -146,7 +148,7 @@ const url2 = formatUrlParams('http://www.test.com?a=1&b=2&c=3#/detail?d=4', { f:
 
 <a name="addUrlParam"></a>
 
-## `addUrlParam(url, key, value)` 
+### `addUrlParam(url, key, value)` 
 
 
 **描述**：<p>小程序不支持URL对象，用字符串拼接方式添加
@@ -166,7 +168,7 @@ const url2 = formatUrlParams('http://www.test.com?a=1&b=2&c=3#/detail?d=4', { f:
 
 <a name="decode"></a>
 
-## `decode(str)` 
+### `decode(str)` 
 
 
 **描述**：<p>多重解码。避免内嵌在外部时地址参数被编码，先进行URL解码再进行HTML字符实体解码</p>
@@ -183,7 +185,7 @@ const url2 = formatUrlParams('http://www.test.com?a=1&b=2&c=3#/detail?d=4', { f:
 
 <a name="stringifyParams"></a>
 
-## `stringifyParams({)` 
+### `stringifyParams({)` 
 
 
 **描述**：<p>将参数对象转成字符串</p>
@@ -200,7 +202,7 @@ const url2 = formatUrlParams('http://www.test.com?a=1&b=2&c=3#/detail?d=4', { f:
 
 <a name="addUrlParam"></a>
 
-## `addUrlParam(url, key, value)` 
+### `addUrlParam(url, key, value)` 
 
 
 **描述**：<p>小程序不支持URL对象，用字符串拼接方式添加
@@ -220,7 +222,7 @@ const url2 = formatUrlParams('http://www.test.com?a=1&b=2&c=3#/detail?d=4', { f:
 
 <a name="addUrlParams"></a>
 
-## `addUrlParams(url, params, [shouldOverride])` 
+### `addUrlParams(url, params, [shouldOverride])` 
 
 
 **描述**：<p>为url添加参数</p>
@@ -238,7 +240,7 @@ const url2 = formatUrlParams('http://www.test.com?a=1&b=2&c=3#/detail?d=4', { f:
 
 <a name="keepUrlParams"></a>
 
-## `keepUrlParams(url, removeKeyArr)` 
+### `keepUrlParams(url, removeKeyArr)` 
 
 
 **描述**：<p>除保留参数外，一律移除</p>
@@ -260,7 +262,7 @@ const url = keepUrlParams('http://www.test.com?a=1&b=2&c=3#/detail?d=4', ['a', '
 ```
 <a name="removeUrlParams"></a>
 
-## `removeUrlParams(url, removeKeyArr)` 
+### `removeUrlParams(url, removeKeyArr)` 
 
 
 **描述**：<p>移除参数</p>
@@ -283,7 +285,7 @@ const url2 = removeUrlParams('http://www.test.com?d=4&f=6#/detail?a=1&b=2&c=3', 
 ```
 <a name="resolveUrlParams"></a>
 
-## `resolveUrlParams([url], [key])` 
+### `resolveUrlParams([url], [key])` 
 
 
 **描述**：<p>提取链接参数，兼容hash模式和history模式，以及拼接异常情况</p>
@@ -307,7 +309,7 @@ const paramsAge =  resolveUrlParams(url, 'age'); // 18
 ```
 <a name="getQueryObj"></a>
 
-## `getQueryObj(url)` 
+### `getQueryObj(url)` 
 
 
 **描述**：<p>url参数变对象</p>
@@ -338,7 +340,7 @@ console.log(res);
 ```
 <a name="composeUrlQuery"></a>
 
-## `composeUrlQuery(url, queryObj)` 
+### `composeUrlQuery(url, queryObj)` 
 
 
 **描述**：<p>组装<code>url</code>参数，将search参数添加在后面</p>
@@ -376,7 +378,7 @@ composeUrlQuery('https://baidu.com?gender=male', {
 ```
 <a name="encodeUrlParam"></a>
 
-## `encodeUrlParam(obj)` 
+### `encodeUrlParam(obj)` 
 
 
 **描述**：<p>将对象字符串化</p>
@@ -401,7 +403,7 @@ encodeUrlParam({a: 1})
 ```
 <a name="decodeUrlParam"></a>
 
-## `decodeUrlParam(obj)` 
+### `decodeUrlParam(obj)` 
 
 
 **描述**：<p>将字符串解码，与<code>encodeUrlParam</code>相对</p>
@@ -426,7 +428,7 @@ decodeUrlParam('%7B%22a%22%3A1%7D')
 ```
 <a name="getUrlPara"></a>
 
-## `getUrlPara(paraName, search)` 
+### `getUrlPara(paraName, search)` 
 
 
 **描述**：<p>获取 Url 参数</p>

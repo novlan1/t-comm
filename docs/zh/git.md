@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -28,7 +30,7 @@ import {
 ```
 
 
-## `getAllGitRepo(root)` 
+### `getAllGitRepo(root)` 
 
 
 **描述**：<p>获取所有 git 仓库</p>
@@ -58,7 +60,7 @@ getAllGitRepo('/root/yang');
 ```
 <a name="getGitCurBranch"></a>
 
-## `getGitCurBranch()` 
+### `getGitCurBranch()` 
 
 
 **描述**：<p>获取当前分支</p>
@@ -78,7 +80,7 @@ getGitCurBranch()
 ```
 <a name="getGitCommitMessage"></a>
 
-## `getGitCommitMessage(root, mergeCommit, splitMessage)` 
+### `getGitCommitMessage(root, mergeCommit, splitMessage)` 
 
 
 **描述**：<p>获取提交信息</p>
@@ -104,7 +106,7 @@ getGitCommitMessage()
 ```
 <a name="getGitCommitInfo"></a>
 
-## `getGitCommitInfo(root, mergeCommit, splitMessage)` 
+### `getGitCommitInfo(root, mergeCommit, splitMessage)` 
 
 
 **描述**：<p>获取提交信息</p>
@@ -137,7 +139,7 @@ getGitCommitInfo()
 ```
 <a name="getGitLastTag"></a>
 
-## `getGitLastTag()` 
+### `getGitLastTag()` 
 
 
 **描述**：<p>获取最新tag</p>
@@ -150,7 +152,7 @@ getGitCommitInfo()
 
 <a name="getGitCommitsBeforeTag"></a>
 
-## `getGitCommitsBeforeTag(tag)` 
+### `getGitCommitsBeforeTag(tag)` 
 
 
 **描述**：<p>获取tag到head的提交数目</p>
@@ -168,7 +170,7 @@ getGitCommitInfo()
 
 <a name="getGitAuthor"></a>
 
-## `getGitAuthor(isPriorGit)` 
+### `getGitAuthor(isPriorGit)` 
 
 
 **描述**：<p>获取当前用户</p>
@@ -184,7 +186,7 @@ getGitCommitInfo()
 
 <a name="reCloneGitRemote"></a>
 
-## `reCloneGitRemote(list)` 
+### `reCloneGitRemote(list)` 
 
 
 **描述**：<p>根据配置表，重新 clone 仓库</p>

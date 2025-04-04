@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { startPipeline } from 't-comm';
@@ -10,7 +12,7 @@ import { startPipeline} from 't-comm/lib/pipeline/index';
 ```
 
 
-## `startPipeline(config)` 
+### `startPipeline(config)` 
 
 
 **描述**：<p>启动流水线</p>

@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { transFormRem } from 't-comm';
@@ -10,7 +12,7 @@ import { transFormRem} from 't-comm/lib/rem/index';
 ```
 
 
-## `transFormRem(content, factor, unit)` 
+### `transFormRem(content, factor, unit)` 
 
 
 **描述**：<p>转化 rem 单位</p>

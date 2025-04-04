@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -18,7 +20,7 @@ import {
 ```
 
 
-## `checkNodeEnv` 
+### `checkNodeEnv` 
 
 
 **描述**：<p>检查是否是node环境</p>
@@ -37,7 +39,7 @@ const res = checkNodeEnv();
 ```
 <a name="checkUAIsIOS"></a>
 
-## `checkUAIsIOS()` 
+### `checkUAIsIOS()` 
 
 
 **描述**：<p>检查是否是ios环境</p>
@@ -57,7 +59,7 @@ checkUAIsIOS()
 ```
 <a name="getEnvUAType"></a>
 
-## `getEnvUAType()` 
+### `getEnvUAType()` 
 
 
 **描述**：<p>获取useragent类型</p>

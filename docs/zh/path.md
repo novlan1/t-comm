@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { normalizePath, getRelativePath } from 't-comm';
@@ -10,7 +12,7 @@ import { normalizePath, getRelativePath} from 't-comm/lib/path/index';
 ```
 
 
-## `normalizePath` 
+### `normalizePath` 
 
 
 **描述**：<p>格式化路径</p>
@@ -33,7 +35,7 @@ normalizePath('xxx\\xxx\\xxx');
 ```
 <a name="getRelativePath"></a>
 
-## `getRelativePath(pathA, pathB)` 
+### `getRelativePath(pathA, pathB)` 
 
 
 **描述**：<p>A引用B时，拿引用路径</p>

@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -18,7 +20,7 @@ import {
 ```
 
 
-## `addTextForImg(config)` 
+### `addTextForImg(config)` 
 
 
 **描述**：<p>为图片增加文字</p>
@@ -50,7 +52,7 @@ const imgUrl = addTextForImg({
 ```
 <a name="mergeMultiCanvasPic"></a>
 
-## `mergeMultiCanvasPic(config)` 
+### `mergeMultiCanvasPic(config)` 
 
 
 **描述**：<p>绘制多张图</p>
@@ -76,7 +78,7 @@ mergeMultiCanvasPic({
 ```
 <a name="createCanvasTable"></a>
 
-## `createCanvasTable(config)` 
+### `createCanvasTable(config)` 
 
 
 **描述**：<p>创建canvas的table</p>

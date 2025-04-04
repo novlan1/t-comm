@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -26,7 +28,7 @@ import {
 ```
 
 
-## `V_CONSOLE_STATE` 
+### `V_CONSOLE_STATE` 
 
 
 **描述**：<p>vConsole 当前展示状态</p>
@@ -37,7 +39,7 @@ import {
 
 <a name="genVConsole"></a>
 
-## `genVConsole(params)` 
+### `genVConsole(params)` 
 
 
 **描述**：<p>生成 v-console
@@ -70,7 +72,7 @@ genVConsole({
 ```
 <a name="showVConsole"></a>
 
-## `showVConsole()` 
+### `showVConsole()` 
 
 
 **描述**：<p>展示 vConsole</p>
@@ -86,7 +88,7 @@ showVConsole()
 ```
 <a name="closeVConsole"></a>
 
-## `closeVConsole()` 
+### `closeVConsole()` 
 
 
 **描述**：<p>关闭 vConsole</p>
@@ -102,7 +104,7 @@ closeVConsole()
 ```
 <a name="toggleVConsole"></a>
 
-## `toggleVConsole()` 
+### `toggleVConsole()` 
 
 
 **描述**：<p>切换展示 vConsole</p>
@@ -118,7 +120,7 @@ toggleVConsole()
 ```
 <a name="checkAndShowVConsole"></a>
 
-## `checkAndShowVConsole()` 
+### `checkAndShowVConsole()` 
 
 
 **描述**：<p>检查 localStorage 设置，并展示vConsole</p>
@@ -134,7 +136,7 @@ checkAndShowVConsole()
 ```
 <a name="loadVConsole"></a>
 
-## `loadVConsole([options], [plugins])` 
+### `loadVConsole([options], [plugins])` 
 
 
 **描述**：<p>加载 vConsole</p>

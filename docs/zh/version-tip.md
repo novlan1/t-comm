@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -18,7 +20,7 @@ import {
 ```
 
 
-## `genVersionAndSendChangeLog(options)` 
+### `genVersionAndSendChangeLog(options)` 
 
 
 **描述**：<p>运行standard-version，并且发送changelog到机器人</p>
@@ -39,7 +41,7 @@ import {
 
 <a name="genVersionTip"></a>
 
-## `genVersionTip(config)` 
+### `genVersionTip(config)` 
 
 
 **描述**：<p>生成版本信息，可以用来发送到群聊中</p>
@@ -70,7 +72,7 @@ const content = genVersionTip({
 ```
 <a name="genVersion"></a>
 
-## `genVersion(config)` 
+### `genVersion(config)` 
 
 
 **描述**：<p>自动生成version，核心是利用 standard-version 命令</p>

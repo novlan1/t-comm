@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { getMatchListFromReg, getPreReleaseTag } from 't-comm';
@@ -10,7 +12,7 @@ import { getMatchListFromReg, getPreReleaseTag} from 't-comm/lib/base/regexp/ind
 ```
 
 
-## `getMatchListFromReg(content, reg)` 
+### `getMatchListFromReg(content, reg)` 
 
 
 **描述**：<p>匹配正则，获取匹配到的列表</p>
@@ -34,7 +36,7 @@ getMatchListFromReg(content, /emit\('([^',]+)'/g);
 ```
 <a name="getPreReleaseTag"></a>
 
-## `getPreReleaseTag(version)` 
+### `getPreReleaseTag(version)` 
 
 
 **描述**：<p>获取预发布版本标签，比如 alpha, beta</p>

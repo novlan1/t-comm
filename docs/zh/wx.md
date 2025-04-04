@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { genSignature, getWxCfg } from 't-comm';
@@ -10,7 +12,7 @@ import { genSignature, getWxCfg} from 't-comm/lib/wx/index';
 ```
 
 
-## `genSignature(ticket, url)` 
+### `genSignature(ticket, url)` 
 
 
 **描述**：<p>获取jsAPI签名</p>
@@ -29,7 +31,7 @@ import { genSignature, getWxCfg} from 't-comm/lib/wx/index';
 
 <a name="getWxCfg"></a>
 
-## `getWxCfg(apiList, openTagList)` 
+### `getWxCfg(apiList, openTagList)` 
 
 
 **描述**：<p>请求微信鉴权接口</p>

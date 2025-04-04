@@ -42,7 +42,7 @@
     "docs:deploy": "node script/docs-jsdoc/deploy",
     "docs:deploy:mine": "node script/docs-jsdoc/docs-mine",
     "docs:dev": "vuepress dev docs",
-    "docs:gen": "jsdoc -c script/docs/jsdoc.json && cp script/docs/jsdoc.js docs && node script/docs/jsdoc-local.js",
+    "docs:gen": "npm run docs:gen:new",
     "docs:gen:new": "node script/docs-jsdoc/markdown",
     "docs:open": "open docs/index.html",
     "init:env": "node script/env/rainbow-env",

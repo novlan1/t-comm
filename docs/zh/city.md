@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -24,7 +26,7 @@ import {
 ```
 
 
-## `getAreaDataAll()` 
+### `getAreaDataAll()` 
 
 
 **描述**：<p>获取如下格式的城市列表，包含<code>全国</code>、<code>全省</code>选项</p>
@@ -87,7 +89,7 @@ const res = getAreaDataAll();
 ```
 <a name="getAreaData"></a>
 
-## `getAreaData([data], [areaArray], [allProvFlag])` 
+### `getAreaData([data], [areaArray], [allProvFlag])` 
 
 
 **描述**：<p>获取城市列表，默认不包含<code>全省</code>选项</p>
@@ -145,7 +147,7 @@ const res = getAreaData();
 ```
 <a name="getAreaCode"></a>
 
-## `getAreaCode(provinceStr, cityStr)` 
+### `getAreaCode(provinceStr, cityStr)` 
 
 
 **描述**：<p>根据省份城市转化为<code>id</code>数组</p>
@@ -170,7 +172,7 @@ const res =  getAreaCode('山东', '德州');
 ```
 <a name="getAreaName"></a>
 
-## `getAreaName(provinceId, cityId)` 
+### `getAreaName(provinceId, cityId)` 
 
 
 **描述**：<p>根据<code>id</code>将省份城市转化为字符串数组</p>
@@ -198,7 +200,7 @@ const res2 =  getCityName(11)
 ```
 <a name="getProvName"></a>
 
-## `getProvName(provinceId)` 
+### `getProvName(provinceId)` 
 
 
 **描述**：<p>根据<code>id</code>获取省份名字</p>
@@ -225,7 +227,7 @@ const res2 =  getCityName(11)
 ```
 <a name="getCityName"></a>
 
-## `getCityName(provinceId, cityId)` 
+### `getCityName(provinceId, cityId)` 
 
 
 **描述**：<p>根据<code>id</code>获取城市名字</p>

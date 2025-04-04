@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -32,7 +34,7 @@ import {
 ```
 
 
-## `checkStringLength(str, [num])` 
+### `checkStringLength(str, [num])` 
 
 
 **描述**：<p>检查字符串长度</p>
@@ -56,7 +58,7 @@ checkStringLength('123', 4) // false
 ```
 <a name="replaceAllPolyfill"></a>
 
-## `replaceAllPolyfill()` 
+### `replaceAllPolyfill()` 
 
 
 **描述**：<p>polyfill for replaceAll</p>
@@ -72,7 +74,7 @@ replaceAllPolyfill()
 ```
 <a name="camelize"></a>
 
-## `camelize(str, handleSnake)` 
+### `camelize(str, handleSnake)` 
 
 
 **描述**：<p>横线转驼峰命名，如果第一个字符是字母，则不处理。</p>
@@ -98,7 +100,7 @@ camelize('ab-cd-ef')
 ```
 <a name="hyphenate"></a>
 
-## `hyphenate(str)` 
+### `hyphenate(str)` 
 
 
 **描述**：<p>驼峰命名转横线命名：拆分字符串，使用 - 相连，并且转换为小写</p>
@@ -123,7 +125,7 @@ hyphenate('abCd')
 ```
 <a name="capitalize"></a>
 
-## `capitalize(str)` 
+### `capitalize(str)` 
 
 
 **描述**：<p>字符串首位大写</p>
@@ -148,7 +150,7 @@ capitalize('abc')
 ```
 <a name="titleize"></a>
 
-## `titleize(str)` 
+### `titleize(str)` 
 
 
 **描述**：<p>将每个单词的首字母转换为大写</p>
@@ -177,7 +179,7 @@ titleize('foo-bar')
 ```
 <a name="lowerInitial"></a>
 
-## `lowerInitial(str)` 
+### `lowerInitial(str)` 
 
 
 **描述**：<p>首字母小写</p>
@@ -202,7 +204,7 @@ lowerInitial('GroupId')
 ```
 <a name="pascalCase"></a>
 
-## `pascalCase(str)` 
+### `pascalCase(str)` 
 
 
 **描述**：<p>用大驼峰，即 PascalCase 格式，来格式化字符串</p>
@@ -227,7 +229,7 @@ pascalCase('ab_cd')
 ```
 <a name="toUnicodeAt"></a>
 
-## `toUnicodeAt(str, index)` 
+### `toUnicodeAt(str, index)` 
 
 
 **描述**：<p>获取字符串指定下标的 unicode</p>
@@ -253,7 +255,7 @@ unicodeAt('ABC', 1)
 ```
 <a name="toUnicode"></a>
 
-## `toUnicode(str)` 
+### `toUnicode(str)` 
 
 
 **描述**：<p>获取字符串的 unicode</p>

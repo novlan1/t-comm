@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { getPreReleaseVersion, compareVersion } from 't-comm';
@@ -10,7 +12,7 @@ import { getPreReleaseVersion, compareVersion} from 't-comm/lib/version/index';
 ```
 
 
-## `getPreReleaseVersion(key)` 
+### `getPreReleaseVersion(key)` 
 
 
 **描述**：<p>生成 alpha、beta 等这些预发布的版本</p>
@@ -26,7 +28,7 @@ import { getPreReleaseVersion, compareVersion} from 't-comm/lib/version/index';
 
 <a name="compareVersion"></a>
 
-## `compareVersion(v1, v2)` 
+### `compareVersion(v1, v2)` 
 
 
 **描述**：<p>版本比较</p>

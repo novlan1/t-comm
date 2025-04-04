@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { getMorsePwdMixin, getMsdkFullScreen } from 't-comm';
@@ -10,7 +12,7 @@ import { getMorsePwdMixin, getMsdkFullScreen} from 't-comm/lib/mixin/index';
 ```
 
 
-## `getMorsePwdMixin` 
+### `getMorsePwdMixin` 
 
 
 **描述**：<p>摩斯密码的 Vue mixin，方便实用</p>
@@ -35,7 +37,7 @@ getMorsePwdMixin([1, 1, 1, 1, 1], function () {
 ```
 <a name="getMsdkFullScreen"></a>
 
-## `getMsdkFullScreen()` 
+### `getMsdkFullScreen()` 
 
 
 **描述**：<p>msdk 浏览器全屏方法，点击外链时可全屏，返回时退出全屏</p>

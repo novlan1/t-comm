@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { toHumpObj, extend } from 't-comm';
@@ -10,7 +12,7 @@ import { toHumpObj, extend} from 't-comm/lib/base/object/index';
 ```
 
 
-## `toHumpObj(obj)` 
+### `toHumpObj(obj)` 
 
 
 **描述**：<p>将对象中的key由下划线专为驼峰</p>
@@ -49,7 +51,7 @@ toHumpObj(obj);
 ```
 <a name="extend"></a>
 
-## `extend(to, from)` 
+### `extend(to, from)` 
 
 
 **描述**：<p>将属性混合到目标对象中</p>

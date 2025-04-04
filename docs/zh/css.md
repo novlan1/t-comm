@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -18,7 +20,7 @@ import {
 ```
 
 
-## `removeCss(href)` 
+### `removeCss(href)` 
 
 
 **描述**：<p>移除CSS</p>
@@ -39,7 +41,7 @@ removeCss('https://xxx.css')
 ```
 <a name="loadStyles"></a>
 
-## `loadStyles(urls, urlClass)` 
+### `loadStyles(urls, urlClass)` 
 
 
 **描述**：<p>加载多个样式文件，并在加载前移除具有相同类名的文件</p>
@@ -61,7 +63,7 @@ loadStyles(['https://a.com/b.css'], 'load-style');
 ```
 <a name="loadCssCode"></a>
 
-## `loadCssCode(code, className)` 
+### `loadCssCode(code, className)` 
 
 
 **描述**：<p>加载样式代码块，会将样式代码包裹在 style 标签内，并加载到当前页面中</p>

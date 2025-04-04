@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -32,7 +34,7 @@ import {
 ```
 
 
-## `getMonthDay(year, month)` 
+### `getMonthDay(year, month)` 
 
 
 **描述**：<p>获取一个月有多少天
@@ -62,7 +64,7 @@ getMonthDay(2022, 4) // 30
 ```
 <a name="getMonthDay2"></a>
 
-## `getMonthDay2(year, month)` 
+### `getMonthDay2(year, month)` 
 
 
 **描述**：<p>获取一个月有多少天</p>
@@ -94,7 +96,7 @@ getMonthDay2(2022, 4)
 ```
 <a name="isSameWeek"></a>
 
-## `isSameWeek(date1, date2)` 
+### `isSameWeek(date1, date2)` 
 
 
 **描述**：<p>判断两个日期是否属于同一周</p>
@@ -125,7 +127,7 @@ isSameWeek(1601308800000, 1601913600000)
 ```
 <a name="isSameDay"></a>
 
-## `isSameDay(date1, date2)` 
+### `isSameDay(date1, date2)` 
 
 
 **描述**：<p>判断是否是同一天</p>
@@ -147,7 +149,7 @@ isSameDay(1702613769418, 1702613769419) // true
 ```
 <a name="parseTime"></a>
 
-## `parseTime(time, cFormat)` 
+### `parseTime(time, cFormat)` 
 
 
 **描述**：<p>功能和上面的dateFormat/timeStampFormat类型，只是参数time可以接收多种类型，且参数cFormat用的是{y}形式</p>
@@ -175,7 +177,7 @@ const res = parseTime(date, 'yyyy-MM-dd hh:mm:ss')
 ```
 <a name="getTimeAgo"></a>
 
-## `getTimeAgo(timestamp)` 
+### `getTimeAgo(timestamp)` 
 
 
 **描述**：<p>获取某个时间戳距离今天的时间</p>
@@ -204,7 +206,7 @@ getTimeAgo(date2);
 ```
 <a name="getTimeAgoOrDate"></a>
 
-## `getTimeAgoOrDate(timestamp, format)` 
+### `getTimeAgoOrDate(timestamp, format)` 
 
 
 **描述**：<p>功能：获取多久之前，若间隔超过一天，返回时刻描述</p>
@@ -233,7 +235,7 @@ getTimeAgoOrDate(date);
 ```
 <a name="getCountDownObj"></a>
 
-## `getCountDownObj(time, [maxUnit])` 
+### `getCountDownObj(time, [maxUnit])` 
 
 
 **描述**：<p>倒计时（eg:距开赛1天）</p>
@@ -272,7 +274,7 @@ getCountDownObj(1 * 24 * 60 * 60 + 2 * 60 * 60 + 1 * 60 + 11, 'HOUR')
 ```
 <a name="getDayStartTimestamp"></a>
 
-## `getDayStartTimestamp(n)` 
+### `getDayStartTimestamp(n)` 
 
 
 **描述**：<p>获取几天前的起始时间戳</p>
@@ -290,7 +292,7 @@ getCountDownObj(1 * 24 * 60 * 60 + 2 * 60 * 60 + 1 * 60 + 11, 'HOUR')
 
 <a name="getDayEndTimeStamp"></a>
 
-## `getDayEndTimeStamp(n, unit, endFlag)` 
+### `getDayEndTimeStamp(n, unit, endFlag)` 
 
 
 **描述**：<p>获取几天前的终止时间戳</p>

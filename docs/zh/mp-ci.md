@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { MpCI  } from 't-comm';
@@ -10,7 +12,7 @@ import { MpCI } from 't-comm/lib/mp-ci/index';
 ```
 
 
-## MpCI 
+### MpCI 
 
 
 **参数**：
@@ -27,7 +29,7 @@ import { MpCI } from 't-comm/lib/mp-ci/index';
 
 <a name="new_MpCI_new"></a>
 
-### `new MpCI(options)`
+#### `new MpCI(options)`
 <p>小程序自动化构建工具</p>
 
 
@@ -94,25 +96,25 @@ main();
 ```
 <a name="MpCI+upload"></a>
 
-### `mpCI.upload()`
+#### `mpCI.upload()`
 <p>上传</p>
 
 **Kind**: instance method of [<code>MpCI</code>](#MpCI)  
 <a name="MpCI+tryPreview"></a>
 
-### `mpCI.tryPreview()`
+#### `mpCI.tryPreview()`
 <p>预览</p>
 
 **Kind**: instance method of [<code>MpCI</code>](#MpCI)  
 <a name="MpCI+uploadPreviewImg"></a>
 
-### `mpCI.uploadPreviewImg()`
+#### `mpCI.uploadPreviewImg()`
 <p>上传预览图片到COS</p>
 
 **Kind**: instance method of [<code>MpCI</code>](#MpCI)  
 <a name="MpCI+sendRobotMsg"></a>
 
-### `mpCI.sendRobotMsg()`
+#### `mpCI.sendRobotMsg()`
 <p>发送机器人消息</p>
 
 **Kind**: instance method of [<code>MpCI</code>](#MpCI)  

@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { formatBite } from 't-comm';
@@ -10,7 +12,7 @@ import { formatBite} from 't-comm/lib/bite/index';
 ```
 
 
-## `formatBite(number)` 
+### `formatBite(number)` 
 
 
 **描述**：<p>格式化 bite 单位，最多保留2位小数，最大单位为BB</p>

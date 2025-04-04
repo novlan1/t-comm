@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { parseReplaceConfig, replaceDependencies } from 't-comm';
@@ -10,7 +12,7 @@ import { parseReplaceConfig, replaceDependencies} from 't-comm/lib/ast/index';
 ```
 
 
-## `parseReplaceConfig(configList)` 
+### `parseReplaceConfig(configList)` 
 
 
 **描述**：<p>解析替换配置</p>
@@ -36,7 +38,7 @@ parseReplaceConfig([{
 ```
 <a name="replaceDependencies"></a>
 
-## `replaceDependencies(content, parsedConfigList, keyword)` 
+### `replaceDependencies(content, parsedConfigList, keyword)` 
 
 
 **描述**：<p>替换引用</p>

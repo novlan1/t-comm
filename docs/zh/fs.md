@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { writeFileSync, readFileSync } from 't-comm';
@@ -10,7 +12,7 @@ import { writeFileSync, readFileSync} from 't-comm/lib/fs/index';
 ```
 
 
-## `writeFileSync(file, data, [isJson])` 
+### `writeFileSync(file, data, [isJson])` 
 
 
 **描述**：<p>写入文件</p>
@@ -35,7 +37,7 @@ writeFileSync({ a: 1 }, 'b.json', true);
 ```
 <a name="readFileSync"></a>
 
-## `readFileSync(file, [isJson])` 
+### `readFileSync(file, [isJson])` 
 
 
 **描述**：<p>读取文件</p>

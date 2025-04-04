@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { remToPxInFile } from 't-comm';
@@ -10,7 +12,7 @@ import { remToPxInFile} from 't-comm/lib/rem-to-px/index';
 ```
 
 
-## `remToPxInFile(filePath)` 
+### `remToPxInFile(filePath)` 
 
 
 **描述**：<p>替换文件的 rem 单位，转为 px</p>

@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -20,7 +22,7 @@ import {
 ```
 
 
-## `saveBase64ImgToFile(config)` 
+### `saveBase64ImgToFile(config)` 
 
 
 **描述**：<p>node环境下，保存base64图片到文件</p>
@@ -50,7 +52,7 @@ saveBase64ImgToFile({
 ```
 <a name="turnLocalImg2Base64"></a>
 
-## `turnLocalImg2Base64(savePath)` 
+### `turnLocalImg2Base64(savePath)` 
 
 
 **描述**：<p>node环境下，本地图片转为base64</p>
@@ -73,7 +75,7 @@ const base64str = turnLocalImg2Base64('/temp.png')
 ```
 <a name="saveRemoteImgToLocal"></a>
 
-## `saveRemoteImgToLocal(config)` 
+### `saveRemoteImgToLocal(config)` 
 
 
 **描述**：<p>node环境下，保存网络图片到本地</p>
@@ -103,7 +105,7 @@ saveRemoteImgToLocal({
 ```
 <a name="getImgMd5"></a>
 
-## `getImgMd5(options)` 
+### `getImgMd5(options)` 
 
 
 **描述**：<p>获取图片md5</p>

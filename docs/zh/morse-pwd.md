@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { MorsePwd , simpleMorse } from 't-comm';
@@ -10,7 +12,7 @@ import { MorsePwd , simpleMorse} from 't-comm/lib/morse-pwd/index';
 ```
 
 
-## MorsePwd 
+### MorsePwd 
 
 
 **参数**：
@@ -27,7 +29,7 @@ import { MorsePwd , simpleMorse} from 't-comm/lib/morse-pwd/index';
 
 <a name="new_MorsePwd_new"></a>
 
-### `new MorsePwd(options)`
+#### `new MorsePwd(options)`
 <p>摩斯密码初始化</p>
 
 
@@ -43,7 +45,7 @@ import { MorsePwd , simpleMorse} from 't-comm/lib/morse-pwd/index';
 
 <a name="MorsePwd+clear"></a>
 
-### `morsePwd.clear()`
+#### `morsePwd.clear()`
 <p>清除监听事件</p>
 
 **Kind**: instance method of [<code>MorsePwd</code>](#MorsePwd)  
@@ -55,7 +57,7 @@ beforeDestroy() {
 ```
 <a name="MorsePwd.init"></a>
 
-### `MorsePwd.init(options)` ⇒ <code>Object</code>
+#### `MorsePwd.init(options)` ⇒ <code>Object</code>
 <p>初始化</p>
 
 **Kind**: static method of [<code>MorsePwd</code>](#MorsePwd)  
@@ -138,7 +140,7 @@ export default {
 ```
 <a name="simpleMorse"></a>
 
-## `simpleMorse(param)` 
+### `simpleMorse(param)` 
 
 
 **描述**：<p>简单的摩斯密码，只有点击</p>

@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { JsDocHandler  } from 't-comm';
@@ -10,7 +12,7 @@ import { JsDocHandler } from 't-comm/lib/jsdoc/index';
 ```
 
 
-## JsDocHandler 
+### JsDocHandler 
 
 
 **参数**：
@@ -24,7 +26,7 @@ import { JsDocHandler } from 't-comm/lib/jsdoc/index';
 
 <a name="new_JsDocHandler_new"></a>
 
-### `new JsDocHandler(options)`
+#### `new JsDocHandler(options)`
 <p>处理jsdoc的脚本</p>
 <ol>
 <li>增加导航栏的分隔符</li>
@@ -45,7 +47,7 @@ import { JsDocHandler } from 't-comm/lib/jsdoc/index';
 
 <a name="JsDocHandler.init"></a>
 
-### `JsDocHandler.init(options)` ⇒ <code>object</code>
+#### `JsDocHandler.init(options)` ⇒ <code>object</code>
 <p>初始化并运行</p>
 
 **Kind**: static method of [<code>JsDocHandler</code>](#JsDocHandler)  

@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -34,7 +36,7 @@ import {
 ```
 
 
-## `getOpenGameScheme` 
+### `getOpenGameScheme` 
 
 
 **描述**：<p>获取拉起各个游戏的scheme,如果参数中设置了页面，则为deeplink scheme</p>
@@ -51,7 +53,7 @@ import {
 
 <a name="launchApp"></a>
 
-## `launchApp(args)` 
+### `launchApp(args)` 
 
 
 **描述**：<p>兼容微信、手Q、手机原生浏览器、游戏内环境的唤起第三方 APP 方法。用于替代 launch 方法，优化传参以及底层实现。</p>
@@ -82,7 +84,7 @@ import {
 
 <a name="gotoWzGame"></a>
 
-## `gotoWzGame(options)` 
+### `gotoWzGame(options)` 
 
 
 **描述**：<p>拉起王者荣耀游戏</p>
@@ -98,7 +100,7 @@ import {
 
 <a name="gotoWzCommunity"></a>
 
-## `gotoWzCommunity(options)` 
+### `gotoWzCommunity(options)` 
 
 
 **描述**：<p>拉起王者荣耀游戏微社区</p>
@@ -115,7 +117,7 @@ import {
 
 <a name="gotoGPGame"></a>
 
-## `gotoGPGame(options)` 
+### `gotoGPGame(options)` 
 
 
 **描述**：<p>拉起和平精英游戏</p>
@@ -131,7 +133,7 @@ import {
 
 <a name="gotoDzGame"></a>
 
-## `gotoDzGame(options)` 
+### `gotoDzGame(options)` 
 
 
 **描述**：<p>拉起欢乐斗地主游戏</p>
@@ -147,7 +149,7 @@ import {
 
 <a name="gotoMJGame"></a>
 
-## `gotoMJGame(options)` 
+### `gotoMJGame(options)` 
 
 
 **描述**：<p>拉起欢乐麻将游戏</p>
@@ -163,7 +165,7 @@ import {
 
 <a name="gotoLOLMGame"></a>
 
-## `gotoLOLMGame(options)` 
+### `gotoLOLMGame(options)` 
 
 
 **描述**：<p>拉起英雄联盟手游</p>
@@ -179,7 +181,7 @@ import {
 
 <a name="gotoTLBBGame"></a>
 
-## `gotoTLBBGame(options)` 
+### `gotoTLBBGame(options)` 
 
 
 **描述**：<p>拉起天龙八部游戏</p>
@@ -195,7 +197,7 @@ import {
 
 <a name="gotoTDGame"></a>
 
-## `gotoTDGame(options)` 
+### `gotoTDGame(options)` 
 
 
 **描述**：<p>拉起天涯明月刀游戏</p>
@@ -211,7 +213,7 @@ import {
 
 <a name="gotoX5MGame"></a>
 
-## `gotoX5MGame(options)` 
+### `gotoX5MGame(options)` 
 
 
 **描述**：<p>拉起qq炫舞游戏</p>

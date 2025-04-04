@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -26,7 +28,7 @@ import {
 ```
 
 
-## `addEmitsForComponent(filePath, [fileContent])` 
+### `addEmitsForComponent(filePath, [fileContent])` 
 
 
 **描述**：<p>为 Vue 组件添加 emits 属性</p>
@@ -50,7 +52,7 @@ addNameForComponent('xxx.vue');
 ```
 <a name="addNameForComponent"></a>
 
-## `addNameForComponent(filePath, componentName)` 
+### `addNameForComponent(filePath, componentName)` 
 
 
 **描述**：<p>为 Vue 组件添加、修正 name 属性</p>
@@ -74,7 +76,7 @@ addNameForComponent('xxx.vue', 'PressUploader');
 ```
 <a name="getFullCompName"></a>
 
-## `getFullCompName(name, prefix)` 
+### `getFullCompName(name, prefix)` 
 
 
 **描述**：<p>获取组件全称</p>
@@ -99,7 +101,7 @@ getFullCompName('press-swiper-item', 'press-')
 ```
 <a name="getPureCompName"></a>
 
-## `getPureCompName(name, prefix)` 
+### `getPureCompName(name, prefix)` 
 
 
 **描述**：<p>获取组件简称</p>
@@ -114,14 +116,12 @@ getFullCompName('press-swiper-item', 'press-')
 
 **返回**: <p>简称</p>
 <pre class="prettyprint source lang-ts"><code>getPureCompName('press-swiper-item', 'press-')
-getPureCompName('swiper-item', 'press-')
-
-//swiper-item
+getPureCompName('swiper-item', 'press-') // swiper-item
 </code></pre>
 
 <a name="extractClass"></a>
 
-## `extractClass(params)` 
+### `extractClass(params)` 
 
 
 **描述**：<p>提取 Vue 组件的 class</p>
@@ -140,7 +140,7 @@ getPureCompName('swiper-item', 'press-')
 
 <a name="extractEvent"></a>
 
-## `extractEvent(params)` 
+### `extractEvent(params)` 
 
 
 **描述**：<p>提取 Vue 组件的 event</p>
@@ -159,7 +159,7 @@ getPureCompName('swiper-item', 'press-')
 
 <a name="extractProps"></a>
 
-## `extractProps(params)` 
+### `extractProps(params)` 
 
 
 **描述**：<p>提取 Vue 组件的 props</p>

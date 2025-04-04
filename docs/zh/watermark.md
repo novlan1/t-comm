@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { createWatcherMark } from 't-comm';
@@ -10,7 +12,7 @@ import { createWatcherMark} from 't-comm/lib/watermark/index';
 ```
 
 
-## `createWatcherMark(params)` 
+### `createWatcherMark(params)` 
 
 
 **描述**：<p>canvas 实现 watermark</p>

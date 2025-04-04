@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -30,7 +32,7 @@ import {
 ```
 
 
-## `NUMBER_CHI_MAP` 
+### `NUMBER_CHI_MAP` 
 
 
 **描述**：<p>阿拉伯数字和中文数字映射表，0 - 32</p>
@@ -50,7 +52,7 @@ console.log(NUMBER_CHI_MAP[2]);
 ```
 <a name="getUnitPreviousRatio"></a>
 
-## `getUnitPreviousRatio(value, preValue)` 
+### `getUnitPreviousRatio(value, preValue)` 
 
 
 **描述**：<p>获取相对于过去数据的比例</p>
@@ -75,7 +77,7 @@ getUnitPreviousRatio(1, 0)
 ```
 <a name="getPartRatio"></a>
 
-## `getPartRatio(summary, part)` 
+### `getPartRatio(summary, part)` 
 
 
 **描述**：<p>获取占比</p>
@@ -109,7 +111,7 @@ getRatio(1, .5)
 ```
 <a name="getThousandSeparator"></a>
 
-## `getThousandSeparator(value)` 
+### `getThousandSeparator(value)` 
 
 
 **描述**：<p>获取千分位分隔符</p>
@@ -138,7 +140,7 @@ getThousandSeparator('12312312')
 ```
 <a name="getThousandSeparator2"></a>
 
-## `getThousandSeparator2(value)` 
+### `getThousandSeparator2(value)` 
 
 
 **描述**：<p>获取千分位分隔符，处理数字之间有空格的情况</p>
@@ -163,7 +165,7 @@ getThousandSeparator2('12345678 123456789')
 ```
 <a name="random"></a>
 
-## `random(min, max)` 
+### `random(min, max)` 
 
 
 **描述**：<p>在区间内获取随机整数</p>
@@ -185,7 +187,7 @@ random(0, 19) // 1
 ```
 <a name="padZero"></a>
 
-## `padZero(num, [targetLength])` 
+### `padZero(num, [targetLength])` 
 
 
 **描述**：<p>数字左侧加 0，直到满足长度要求</p>
@@ -209,7 +211,7 @@ padZero(1, 3); // 001
 ```
 <a name="addNumber"></a>
 
-## `addNumber(num1, num2)` 
+### `addNumber(num1, num2)` 
 
 
 **描述**：<p>add num and avoid float number</p>
@@ -233,7 +235,7 @@ addNumber(0.1, 0.2); // 0.3
 ```
 <a name="range"></a>
 
-## `range(num, min, max)` 
+### `range(num, min, max)` 
 
 
 **描述**：<p>根据边界值修正数字</p>

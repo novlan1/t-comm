@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -18,7 +20,7 @@ import {
 ```
 
 
-## `getPageTotal(dist)` 
+### `getPageTotal(dist)` 
 
 
 **描述**：<p>统计页面总数、分包数目等</p>
@@ -39,7 +41,7 @@ getPageTotal('./dist/dev/mp-weixin')
 ```
 <a name="getComponentInfo"></a>
 
-## `getComponentInfo(dist)` 
+### `getComponentInfo(dist)` 
 
 
 **描述**：<p>统计组件数目、wxml大小、wxss大小、js大小等</p>
@@ -60,7 +62,7 @@ getComponentInfo('./dist/dev/mp-weixin')
 ```
 <a name="saveMpImage"></a>
 
-## `saveMpImage(url, options)` 
+### `saveMpImage(url, options)` 
 
 
 **描述**：<p>小程序下保存图片</p>

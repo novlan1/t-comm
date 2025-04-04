@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { dailyMerge } from 't-comm';
@@ -10,7 +12,7 @@ import { dailyMerge} from 't-comm/lib/daily-merge/index';
 ```
 
 
-## `dailyMerge(param0)` 
+### `dailyMerge(param0)` 
 
 
 **描述**：<p>每日合并</p>

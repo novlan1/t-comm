@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -44,7 +46,7 @@ import {
 ```
 
 
-## `isIdCard(idCard)` 
+### `isIdCard(idCard)` 
 
 
 **描述**：<p>判断是否合法的身份证号
@@ -76,7 +78,7 @@ isIdCard('34052419800101001X')
 ```
 <a name="isRegExp"></a>
 
-## `isRegExp(value)` 
+### `isRegExp(value)` 
 
 
 **描述**：<p>判断数据是不是正则对象</p>
@@ -105,7 +107,7 @@ isRegExp(/\d/)
 ```
 <a name="isDate"></a>
 
-## `isDate(value)` 
+### `isDate(value)` 
 
 
 **描述**：<p>判断数据是不是时间对象</p>
@@ -134,7 +136,7 @@ isDate(new Date())
 ```
 <a name="isFunction"></a>
 
-## `isFunction(value)` 
+### `isFunction(value)` 
 
 
 **描述**：<p>判断数据是不是函数</p>
@@ -163,7 +165,7 @@ isFunction(()=>{})
 ```
 <a name="isExternal"></a>
 
-## `isExternal(path)` 
+### `isExternal(path)` 
 
 
 **描述**：<p>判断是否外部资源</p>
@@ -179,7 +181,7 @@ isFunction(()=>{})
 
 <a name="validURL"></a>
 
-## `validURL(url)` 
+### `validURL(url)` 
 
 
 **描述**：<p>判断是否URL</p>
@@ -195,7 +197,7 @@ isFunction(()=>{})
 
 <a name="validLowerCase"></a>
 
-## `validLowerCase(str)` 
+### `validLowerCase(str)` 
 
 
 **描述**：<p>判断是否小写</p>
@@ -211,7 +213,7 @@ isFunction(()=>{})
 
 <a name="validUpperCase"></a>
 
-## `validUpperCase(str)` 
+### `validUpperCase(str)` 
 
 
 **描述**：<p>判断是否大写</p>
@@ -227,7 +229,7 @@ isFunction(()=>{})
 
 <a name="validAlphabets"></a>
 
-## `validAlphabets(str)` 
+### `validAlphabets(str)` 
 
 
 **描述**：<p>判断是否字母字符串</p>
@@ -243,7 +245,7 @@ isFunction(()=>{})
 
 <a name="validEmail"></a>
 
-## `validEmail(email)` 
+### `validEmail(email)` 
 
 
 **描述**：<p>判断是否合法邮箱地址</p>
@@ -259,7 +261,7 @@ isFunction(()=>{})
 
 <a name="isString"></a>
 
-## `isString(str)` 
+### `isString(str)` 
 
 
 **描述**：<p>判断是否字符串</p>
@@ -275,7 +277,7 @@ isFunction(()=>{})
 
 <a name="isArray"></a>
 
-## `isArray(arg)` 
+### `isArray(arg)` 
 
 
 **描述**：<p>判断是否数组</p>
@@ -291,7 +293,7 @@ isFunction(()=>{})
 
 <a name="isQQNumber"></a>
 
-## `isQQNumber(qq)` 
+### `isQQNumber(qq)` 
 
 
 **描述**：<p>判断是否合法的QQ号码</p>
@@ -307,7 +309,7 @@ isFunction(()=>{})
 
 <a name="isEmail"></a>
 
-## `isEmail(email)` 
+### `isEmail(email)` 
 
 
 **描述**：<p>判断是否合法的邮箱号码</p>
@@ -323,7 +325,7 @@ isFunction(()=>{})
 
 <a name="isMobile"></a>
 
-## `isMobile(phone)` 
+### `isMobile(phone)` 
 
 
 **描述**：<p>判断是否合法的手机号</p>
@@ -339,7 +341,7 @@ isFunction(()=>{})
 
 <a name="isTel"></a>
 
-## `isTel(tel)` 
+### `isTel(tel)` 
 
 
 **描述**：<p>判断是否合法的电话号码</p>

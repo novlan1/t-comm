@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { toPromise } from 't-comm';
@@ -10,7 +12,7 @@ import { toPromise} from 't-comm/lib/promise/index';
 ```
 
 
-## `toPromise(promiseLike)` 
+### `toPromise(promiseLike)` 
 
 
 **描述**：<p>将函数转成 Promise</p>

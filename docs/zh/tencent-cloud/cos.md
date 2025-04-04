@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { uploadCOSFile } from 't-comm';
@@ -10,7 +12,7 @@ import { uploadCOSFile} from 't-comm/lib/tencent-cloud/cos/index';
 ```
 
 
-## `uploadCOSFile(config)` 
+### `uploadCOSFile(config)` 
 
 
 **描述**：<p>COS上传</p>

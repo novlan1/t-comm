@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { buildAndUpload } from 't-comm';
@@ -10,7 +12,7 @@ import { buildAndUpload} from 't-comm/lib/build-upload/index';
 ```
 
 
-## `buildAndUpload(options)` 
+### `buildAndUpload(options)` 
 
 
 **描述**：<p>打包并上传到服务器</p>

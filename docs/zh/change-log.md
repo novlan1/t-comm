@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { insertDocChangeLog } from 't-comm';
@@ -10,7 +12,7 @@ import { insertDocChangeLog} from 't-comm/lib/change-log/index';
 ```
 
 
-## `insertDocChangeLog(params)` 
+### `insertDocChangeLog(params)` 
 
 
 **描述**：<p>同步最新版本的更新日志</p>

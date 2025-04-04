@@ -9,7 +9,7 @@ const template = fs.readFileSync('./script/docs-jsdoc/template.hbs', 'utf8');
 const configure =  path.resolve(process.cwd(), './script/docs-jsdoc/jsdoc2md.json');
 
 function getAllExports(str) {
-  const reg = /\n##\s`?([^()\n`]+)/g;
+  const reg = /\n###\s`?([^()\n`]+)/g;
   let regRes = reg.exec(str);
   const res = [];
 
@@ -30,7 +30,7 @@ function getInsertImportWay(methods, fileName) {
   if (methods.length <= 2) {
     const methodStr = methods.join(', ');
     return `
-<h2>引入</h2>
+<h3>引入</h3>
 
 \`\`\`ts
 import { ${methodStr} } from 't-comm';
@@ -43,7 +43,7 @@ import { ${methodStr}} from 't-comm/lib/${newFileName}';
 
   const methodStr = methods.join(',\n  ');
   return `
-<h2>引入</h2>
+<h3>引入</h3>
 
 \`\`\`ts
 import {
@@ -94,7 +94,7 @@ const makeMarkDownDoc = function (sourceName, sourceRootPath, outputPath) {
       'example-lang': 'typescript',
       files: path.resolve(process.cwd(), sourcePath),
       'name-format': 'backticks',
-      'heading-depth': 2,
+      'heading-depth': 3,
       'module-index-format': 'none',
       configure,
       template,
@@ -122,7 +122,9 @@ const makeMarkDownDoc = function (sourceName, sourceRootPath, outputPath) {
         const allExports = getAllExports(newText);
         const importWayStr = getInsertImportWay(allExports, sourcePath);
 
-        fs.outputFile(path.resolve(process.cwd(), `${outputPath}/${outputName}.md`), `[[toc]]\n${importWayStr}\n${newText}`);
+        fs.outputFile(path.resolve(process.cwd(), `${outputPath}/${outputName}.md`), `<h3 style="margin-bottom: -1rem;">目录</h3>
+
+[[toc]]\n${importWayStr}\n${newText}`);
       }
     })
     .catch((err) => {

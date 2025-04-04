@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -20,7 +22,7 @@ import {
 ```
 
 
-## `genCustomEventImgAndSendRobot(options)` 
+### `genCustomEventImgAndSendRobot(options)` 
 
 
 **描述**：<p>获取自定义事件图片并发送</p>
@@ -94,7 +96,7 @@ genCustomEventImgAndSendRobot({
 ```
 <a name="genMultiImgAndSendRobot"></a>
 
-## `genMultiImgAndSendRobot(options)` 
+### `genMultiImgAndSendRobot(options)` 
 
 
 **描述**：<p>生成多个图片并发送机器人</p>
@@ -181,7 +183,7 @@ await genMultiImgAndSendRobot({
 ```
 <a name="parseResult"></a>
 
-## `parseResult()` 
+### `parseResult()` 
 
 
 **描述**：<p>[
@@ -202,7 +204,7 @@ firstScreen: 1000,
 
 <a name="genSummaryDataAndSendRobot"></a>
 
-## `genSummaryDataAndSendRobot(options)` 
+### `genSummaryDataAndSendRobot(options)` 
 
 
 **描述**：<p>生成TAM汇总数据并发送到机器人</p>

@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { sleep } from 't-comm';
@@ -10,7 +12,7 @@ import { sleep} from 't-comm/lib/sleep/index';
 ```
 
 
-## `sleep(ms)` 
+### `sleep(ms)` 
 
 
 **描述**：<p>等待一段时间</p>

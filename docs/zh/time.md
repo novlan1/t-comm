@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { timeStampFormat, dateFormat } from 't-comm';
@@ -10,7 +12,7 @@ import { timeStampFormat, dateFormat} from 't-comm/lib/time/index';
 ```
 
 
-## `timeStampFormat(timestamp, fmt, [defaultVal])` 
+### `timeStampFormat(timestamp, fmt, [defaultVal])` 
 
 
 **描述**：<p>将时间戳格式化</p>
@@ -39,7 +41,7 @@ const res = timeStampFormat(stamp, 'yyyy-MM-dd hh:mm:ss')
 ```
 <a name="dateFormat"></a>
 
-## `dateFormat(date, format)` 
+### `dateFormat(date, format)` 
 
 
 **描述**：<p>将日期格式化</p>

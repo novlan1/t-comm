@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { getBase64FromUrl } from 't-comm';
@@ -10,7 +12,7 @@ import { getBase64FromUrl} from 't-comm/lib/console/index';
 ```
 
 
-## `getBase64FromUrl(url)` 
+### `getBase64FromUrl(url)` 
 
 
 **描述**：<p>获取图片，并转 base64</p>

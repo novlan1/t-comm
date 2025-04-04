@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { showFunctionalComponent, showFunctionalComponentQueue } from 't-comm';
@@ -10,7 +12,7 @@ import { showFunctionalComponent, showFunctionalComponentQueue} from 't-comm/lib
 ```
 
 
-## `showFunctionalComponent(vueInstance, dialogComponent, dialogOptions)` 
+### `showFunctionalComponent(vueInstance, dialogComponent, dialogOptions)` 
 
 
 **描述**：<p>函数式调用组件</p>
@@ -48,7 +50,7 @@ function showDateTimePicker(this: any, {
 ```
 <a name="showFunctionalComponentQueue"></a>
 
-## `showFunctionalComponentQueue(context, dialogList, dialogComponent)` 
+### `showFunctionalComponentQueue(context, dialogList, dialogComponent)` 
 
 
 **描述**：<p>根据弹窗队列（dialogList）依次弹出</p>

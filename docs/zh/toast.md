@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -26,7 +28,7 @@ import {
 ```
 
 
-## `showToast` 
+### `showToast` 
 
 
 **描述**：<p>显示普通Toast</p>
@@ -48,7 +50,7 @@ Toast.show('文本', 3000);
 ```
 <a name="showSuccess"></a>
 
-## `showSuccess` 
+### `showSuccess` 
 
 
 **描述**：<p>显示成功样式Toast（toast带√样式）</p>
@@ -70,7 +72,7 @@ Toast.showSuccess('文本', 3000);
 ```
 <a name="showFail"></a>
 
-## `showFail` 
+### `showFail` 
 
 
 **描述**：<p>显示失败样式 Toast(toast带！样式)</p>
@@ -92,7 +94,7 @@ Toast.showFail('文本', 3000);
 ```
 <a name="clearToast"></a>
 
-## `clearToast` 
+### `clearToast` 
 
 
 **描述**：<p>清除（隐藏）上一个toast</p>
@@ -110,7 +112,7 @@ clearToast();
 ```
 <a name="showLoading"></a>
 
-## `showLoading` 
+### `showLoading` 
 
 
 **描述**：<p>显示loading Toast</p>
@@ -140,7 +142,7 @@ Toast.showLoading({
 ```
 <a name="dismissLoading"></a>
 
-## `dismissLoading` 
+### `dismissLoading` 
 
 
 **描述**：<p>隐藏loading toast</p>
@@ -156,7 +158,7 @@ Toast.dismissLoading();
 ```
 <a name="Toast"></a>
 
-## `Toast` 
+### `Toast` 
 
 
 **描述**：<p>Toast 对象</p>

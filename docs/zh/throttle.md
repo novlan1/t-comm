@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { throttle } from 't-comm';
@@ -10,7 +12,7 @@ import { throttle} from 't-comm/lib/throttle/index';
 ```
 
 
-## `throttle(fn, time)` 
+### `throttle(fn, time)` 
 
 
 **描述**：<p>节流</p>

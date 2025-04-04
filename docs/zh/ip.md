@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { getIPAddress, getIPAddressStr } from 't-comm';
@@ -10,7 +12,7 @@ import { getIPAddress, getIPAddressStr} from 't-comm/lib/ip/index';
 ```
 
 
-## `getIPAddress()` 
+### `getIPAddress()` 
 
 
 **描述**：<p>获取ip地址</p>
@@ -26,7 +28,7 @@ getIPAddress() // 10.10.10.10
 ```
 <a name="getIPAddressStr"></a>
 
-## `getIPAddressStr()` 
+### `getIPAddressStr()` 
 
 
 **描述**：<p>获取ip的字符串</p>

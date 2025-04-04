@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { rgb2hsv, hsv2rgb } from 't-comm';
@@ -10,7 +12,7 @@ import { rgb2hsv, hsv2rgb} from 't-comm/lib/color/index';
 ```
 
 
-## `rgb2hsv()` 
+### `rgb2hsv()` 
 
 
 **描述**：<p>Converts an RGB color value to HSV
@@ -23,7 +25,7 @@ import { rgb2hsv, hsv2rgb} from 't-comm/lib/color/index';
 
 <a name="hsv2rgb"></a>
 
-## `hsv2rgb()` 
+### `hsv2rgb()` 
 
 
 **描述**：<p>Converts an HSV color value to RGB.

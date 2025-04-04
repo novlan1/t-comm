@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -20,7 +22,7 @@ import {
 ```
 
 
-## `loader` 
+### `loader` 
 
 
 **描述**：<p>以 Callback 的方式加载 js 文件</p>
@@ -44,20 +46,20 @@ import {
 
 <a name="loader..privateFinish"></a>
 
-### `loader~privateFinish()` ⇒ <code>void</code>
+#### `loader~privateFinish()` ⇒ <code>void</code>
 <p>Final handler for error or completion.</p>
 <p><strong>Note</strong>: Will only be called <em>once</em>.</p>
 
 **Kind**: inner method of [<code>loader</code>](#loader)  
 <a name="loader..privateError"></a>
 
-### `loader~privateError()` ⇒ <code>void</code>
+#### `loader~privateError()` ⇒ <code>void</code>
 <p>Error handler</p>
 
 **Kind**: inner method of [<code>loader</code>](#loader)  
 <a name="loaderUnity"></a>
 
-## `loaderUnity` 
+### `loaderUnity` 
 
 
 **描述**：<p>以 Promise 或者 Callback 的方式加载 js 文件，取决于是否传递 Callback</p>
@@ -76,7 +78,7 @@ import {
 
 <a name="loadJS"></a>
 
-## `loadJS(url)` 
+### `loadJS(url)` 
 
 
 **描述**：<p>以 Promise 的方式加载 js 文件</p>
@@ -94,7 +96,7 @@ import {
 
 <a name="loadCSS"></a>
 
-## `loadCSS(url)` 
+### `loadCSS(url)` 
 
 
 **描述**：<p>动态加载CSS</p>

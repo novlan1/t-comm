@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { initGlobalVue3EBus, initDiffVue3EBus } from 't-comm';
@@ -10,7 +12,7 @@ import { initGlobalVue3EBus, initDiffVue3EBus} from 't-comm/lib/e-bus/index';
 ```
 
 
-## `initGlobalVue3EBus` 
+### `initGlobalVue3EBus` 
 
 
 **描述**：<p>挂载统一的eBus，所有实例共用一个</p>
@@ -26,7 +28,7 @@ import { initGlobalVue3EBus, initDiffVue3EBus} from 't-comm/lib/e-bus/index';
 
 <a name="initDiffVue3EBus"></a>
 
-## `initDiffVue3EBus` 
+### `initDiffVue3EBus` 
 
 
 **描述**：<p>挂载唯一的eBus，不同实例用不同的</p>

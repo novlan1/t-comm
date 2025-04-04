@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { uploadFile } from 't-comm';
@@ -10,7 +12,7 @@ import { uploadFile} from 't-comm/lib/uploader/index';
 ```
 
 
-## `uploadFile(file)` 
+### `uploadFile(file)` 
 
 
 **描述**：<p>上传文件</p>

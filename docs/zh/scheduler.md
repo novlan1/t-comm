@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { Scheduler  } from 't-comm';
@@ -10,7 +12,7 @@ import { Scheduler } from 't-comm/lib/scheduler/index';
 ```
 
 
-## Scheduler 
+### Scheduler 
 
 
 **参数**：
@@ -19,7 +21,7 @@ import { Scheduler } from 't-comm/lib/scheduler/index';
 
 <a name="new_Scheduler_new"></a>
 
-### `new Scheduler([maxConcurrency])`
+#### `new Scheduler([maxConcurrency])`
 <p>异步任务调度器，同一时间只能执行 n 个任务</p>
 
 

@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { PollingRequest  } from 't-comm';
@@ -10,7 +12,7 @@ import { PollingRequest } from 't-comm/lib/polling/index';
 ```
 
 
-## PollingRequest 
+### PollingRequest 
 
 
 **参数**：
@@ -25,7 +27,7 @@ import { PollingRequest } from 't-comm/lib/polling/index';
 
 <a name="new_PollingRequest_new"></a>
 
-### `new PollingRequest([maxPollingTime], [timeInterval])`
+#### `new PollingRequest([maxPollingTime], [timeInterval])`
 <p>轮询</p>
 
 
@@ -44,13 +46,13 @@ polling.polling(cb);
 ```
 <a name="PollingRequest+reset"></a>
 
-### `pollingRequest.reset()`
+#### `pollingRequest.reset()`
 <p>重置，即取消轮询</p>
 
 **Kind**: instance method of [<code>PollingRequest</code>](#PollingRequest)  
 <a name="PollingRequest+polling"></a>
 
-### `pollingRequest.polling(func)`
+#### `pollingRequest.polling(func)`
 <p>开始轮询</p>
 
 **Kind**: instance method of [<code>PollingRequest</code>](#PollingRequest)  

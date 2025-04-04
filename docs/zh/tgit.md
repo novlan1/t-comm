@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -36,7 +38,7 @@ import {
 ```
 
 
-## `getBranchLifeCycle(options)` 
+### `getBranchLifeCycle(options)` 
 
 
 **描述**：<p>获取tGit上某分支生命周期</p>
@@ -68,7 +70,7 @@ getBranchLifeCycle({
 ```
 <a name="getProjectDefaultBranch"></a>
 
-## `getProjectDefaultBranch(options)` 
+### `getProjectDefaultBranch(options)` 
 
 
 **描述**：<p>获取默认分支</p>
@@ -98,7 +100,7 @@ getProjectDefaultBranch({
 ```
 <a name="getBranchesByProjectName"></a>
 
-## `getBranchesByProjectName(options)` 
+### `getBranchesByProjectName(options)` 
 
 
 **描述**：<p>获取仓库的分支列表</p>
@@ -129,7 +131,7 @@ getBranchesByProjectName({
 ```
 <a name="getOneBranchDetail"></a>
 
-## `getOneBranchDetail(options)` 
+### `getOneBranchDetail(options)` 
 
 
 **描述**：<p>获取分支详情</p>
@@ -161,7 +163,7 @@ getOneBranchDetail({
 ```
 <a name="getOneCommitDetail"></a>
 
-## `getOneCommitDetail(options)` 
+### `getOneCommitDetail(options)` 
 
 
 **描述**：<p>获取commit详情</p>
@@ -193,7 +195,7 @@ getOneCommitDetail({
 ```
 <a name="createMR"></a>
 
-## `createMR(options)` 
+### `createMR(options)` 
 
 
 **描述**：<p>创建MR</p>
@@ -227,7 +229,7 @@ createMR({
 ```
 <a name="getMrList"></a>
 
-## `getMrList(options)` 
+### `getMrList(options)` 
 
 
 **描述**：<p>获取MR列表</p>
@@ -257,7 +259,7 @@ getMrList({
 ```
 <a name="getOneMrComments"></a>
 
-## `getOneMrComments(options)` 
+### `getOneMrComments(options)` 
 
 
 **描述**：<p>获取MR的一条评论</p>
@@ -289,7 +291,7 @@ getOneMrComments({
 ```
 <a name="getOneProjectDetail"></a>
 
-## `getOneProjectDetail(options)` 
+### `getOneProjectDetail(options)` 
 
 
 **描述**：<p>获取仓库详情</p>
@@ -319,7 +321,7 @@ getOneProjectDetail({
 ```
 <a name="getOneProjectBySearch"></a>
 
-## `getOneProjectBySearch(options)` 
+### `getOneProjectBySearch(options)` 
 
 
 **描述**：<p>通过搜索获取一个项目信息</p>
@@ -351,7 +353,7 @@ getOneProjectBySearch({
 ```
 <a name="getAllProjects"></a>
 
-## `getAllProjects(privateToken, search)` 
+### `getAllProjects(privateToken, search)` 
 
 
 **描述**：<p>获取某个token名下所有项目</p>
@@ -377,7 +379,7 @@ console.log(projects)
 ```
 <a name="deleteTGitProject"></a>
 
-## `deleteTGitProject(options)` 
+### `deleteTGitProject(options)` 
 
 
 **描述**：<p>删除一个项目</p>

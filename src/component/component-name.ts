@@ -30,9 +30,7 @@ export function getFullCompName(name = '', prefix = '') {
  * @returns 简称
  * ```ts
  * getPureCompName('press-swiper-item', 'press-')
- * getPureCompName('swiper-item', 'press-')
- *
- * //swiper-item
+ * getPureCompName('swiper-item', 'press-') // swiper-item
  * ```
  */
 export function getPureCompName(name = '', prefix = '') {

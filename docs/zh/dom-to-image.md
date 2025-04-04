@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -18,7 +20,7 @@ import {
 ```
 
 
-## `convertDomToImage(trigger, imageElId)` 
+### `convertDomToImage(trigger, imageElId)` 
 
 
 **描述**：<p>Dom转化为图片</p>
@@ -40,7 +42,7 @@ Dom2Image.convertDomToImage("app", "appImage");
 ```
 <a name="urlToBase64"></a>
 
-## `urlToBase64(src)` 
+### `urlToBase64(src)` 
 
 
 **描述**：<p>解决图片跨域问题，将网络图片URL转为base64 URL。</p>
@@ -63,7 +65,7 @@ Dom2Image.urlToBase64("http://test.com/image.png").then(url=>{});
 ```
 <a name="convertImageToCanvas"></a>
 
-## `convertImageToCanvas(image)` 
+### `convertImageToCanvas(image)` 
 
 
 **描述**：<p>image url转canvas</p>

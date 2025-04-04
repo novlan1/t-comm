@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { getDeps } from 't-comm';
@@ -10,7 +12,7 @@ import { getDeps} from 't-comm/lib/rollup/index';
 ```
 
 
-## `getDeps(dir)` 
+### `getDeps(dir)` 
 
 
 **描述**：<p>获取依赖列表</p>

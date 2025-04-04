@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -18,7 +20,7 @@ import {
 ```
 
 
-## `fetchWeatherData()` 
+### `fetchWeatherData()` 
 
 
 **描述**：<p>获取天气信息</p>
@@ -38,7 +40,7 @@ fetchWeatherData().then(content => {
 ```
 <a name="sendWeatherRobotMsg"></a>
 
-## `sendWeatherRobotMsg(options)` 
+### `sendWeatherRobotMsg(options)` 
 
 
 **描述**：<p>获取天气信息并发送</p>
@@ -59,7 +61,7 @@ fetchWeatherData().then(content => {
 
 <a name="getWeatherRobotContent"></a>
 
-## `getWeatherRobotContent()` 
+### `getWeatherRobotContent()` 
 
 
 **描述**：<p>获取深圳天气信息，可用于通过机器人发送到群聊</p>

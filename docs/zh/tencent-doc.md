@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { getTencentDocUserInfo } from 't-comm';
@@ -10,7 +12,7 @@ import { getTencentDocUserInfo} from 't-comm/lib/tencent-doc/index';
 ```
 
 
-## `getTencentDocUserInfo()` 
+### `getTencentDocUserInfo()` 
 
 
 **描述**：<p>用于获取用户信息，同时也可以用来校验 AccessToken 的有效性。</p>

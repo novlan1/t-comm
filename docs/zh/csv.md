@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { generateCSV, generateCSVData } from 't-comm';
@@ -10,7 +12,7 @@ import { generateCSV, generateCSVData} from 't-comm/lib/csv/index';
 ```
 
 
-## `generateCSV(dataList)` 
+### `generateCSV(dataList)` 
 
 
 **描述**：<p>生成 CSV 文件内容，可以用于 fs.writeFileSync 输出</p>
@@ -32,7 +34,7 @@ generateCSV([['a','b'], ['1', '2']]);
 ```
 <a name="generateCSVData"></a>
 
-## `generateCSVData(list, headMap)` 
+### `generateCSVData(list, headMap)` 
 
 
 **描述**：<p>生成 CSV 所需数据，可用于传递给 generateCSV 方法</p>

@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -18,7 +20,7 @@ import {
 ```
 
 
-## `savePersist(key, value, expireMsec)` 
+### `savePersist(key, value, expireMsec)` 
 
 
 **描述**：<p>写入持久化存储localStorage。仅用于浏览器端，value里不能有循环引用</p>
@@ -47,7 +49,7 @@ const name2 = getPersist('name'); // undefined
 ```
 <a name="getPersist"></a>
 
-## `getPersist(key)` 
+### `getPersist(key)` 
 
 
 **描述**：<p>读取持久化存储</p>
@@ -65,7 +67,7 @@ const name2 = getPersist('name'); // undefined
 
 <a name="clearPersist"></a>
 
-## `clearPersist([key])` 
+### `clearPersist([key])` 
 
 
 **描述**：<p>持久化存储。清理。传 key 就删除。不传清理所有过期的。</p>

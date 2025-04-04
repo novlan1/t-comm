@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { readEnvVariable, writeEnvTokenToNpmRC } from 't-comm';
@@ -10,7 +12,7 @@ import { readEnvVariable, writeEnvTokenToNpmRC} from 't-comm/lib/env-variable/in
 ```
 
 
-## `readEnvVariable(key, filepath)` 
+### `readEnvVariable(key, filepath)` 
 
 
 **描述**：<p>读取文件中环境变量的值，支持：</p>
@@ -33,7 +35,7 @@ import { readEnvVariable, writeEnvTokenToNpmRC} from 't-comm/lib/env-variable/in
 
 <a name="writeEnvTokenToNpmRC"></a>
 
-## `writeEnvTokenToNpmRC()` 
+### `writeEnvTokenToNpmRC()` 
 
 
 **描述**：<p>将 .env.local 中 NPM_TOKEN 的值写入到 .npmrc 中</p>

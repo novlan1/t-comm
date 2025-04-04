@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -20,7 +22,7 @@ import {
 ```
 
 
-## `getCookie(key)` 
+### `getCookie(key)` 
 
 
 **描述**：<p>获取cookie</p>
@@ -45,7 +47,7 @@ const res = getCookie('name')
 ```
 <a name="setCookie"></a>
 
-## `setCookie(key, value, [hours])` 
+### `setCookie(key, value, [hours])` 
 
 
 **描述**：<p>设置cookie</p>
@@ -68,7 +70,7 @@ setCookie('name', 'mike')
 ```
 <a name="clearCookie"></a>
 
-## `clearCookie(key)` 
+### `clearCookie(key)` 
 
 
 **描述**：<p>清除cookie</p>
@@ -89,7 +91,7 @@ clearCookie('name');
 ```
 <a name="clearAll"></a>
 
-## `clearAll(domain)` 
+### `clearAll(domain)` 
 
 
 **描述**：<p>清除全部cookie</p>

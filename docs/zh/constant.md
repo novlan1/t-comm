@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { GID_MAP } from 't-comm';
@@ -10,7 +12,7 @@ import { GID_MAP} from 't-comm/lib/constant/index';
 ```
 
 
-## `GID_MAP` 
+### `GID_MAP` 
 
 
 **描述**：<p>GID 映射表</p>

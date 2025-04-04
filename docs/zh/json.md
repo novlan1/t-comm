@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { safeJsonParse } from 't-comm';
@@ -10,7 +12,7 @@ import { safeJsonParse} from 't-comm/lib/json/index';
 ```
 
 
-## `safeJsonParse(data, defaultValue)` 
+### `safeJsonParse(data, defaultValue)` 
 
 
 **描述**：<p>加了 try-catch 的 JSON.parse</p>

@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { debounceRun, debounce } from 't-comm';
@@ -10,7 +12,7 @@ import { debounceRun, debounce} from 't-comm/lib/debounce/index';
 ```
 
 
-## `debounceRun` 
+### `debounceRun` 
 
 
 **描述**：<p>不用生成中间函数的防抖</p>
@@ -31,7 +33,7 @@ debounceRun(func, args, {
 ``
 <a name="debounce"></a>
 
-## `debounce(fn, time, immediate)` 
+### `debounce(fn, time, immediate)` 
 
 
 **描述**：<p>防抖，场景：搜索</p>

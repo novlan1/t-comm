@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { loadDotenv } from 't-comm';
@@ -10,7 +12,7 @@ import { loadDotenv} from 't-comm/lib/dotenv/index';
 ```
 
 
-## `loadDotenv(file, param)` 
+### `loadDotenv(file, param)` 
 
 
 **描述**：<p>用 dotenv-expand 加载环境变量</p>

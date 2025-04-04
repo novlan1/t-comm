@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -24,7 +26,7 @@ import {
 ```
 
 
-## `handleImgUnit` 
+### `handleImgUnit` 
 
 
 **描述**：<p>处理图片尺寸，即去掉单位 px/rem，将 string 类型转为 number 类型
@@ -62,7 +64,7 @@ handleImgUnit('5rem')
 ```
 <a name="getHttpsUrl"></a>
 
-## `getHttpsUrl` 
+### `getHttpsUrl` 
 
 
 **描述**：<p>将图片地址由 http 替换为 https 协议</p>
@@ -78,7 +80,7 @@ handleImgUnit('5rem')
 
 <a name="tinyImage"></a>
 
-## `tinyImage` 
+### `tinyImage` 
 
 
 **描述**：<p>压缩图片，会依次执行 getHttpsUrl, getCdnUrl, getCompressImgUrl</p>
@@ -96,7 +98,7 @@ handleImgUnit('5rem')
 
 <a name="isSupportedWebp"></a>
 
-## `isSupportedWebp` 
+### `isSupportedWebp` 
 
 
 **描述**：<p>判断当前浏览器是否支持 webp</p>
@@ -109,7 +111,7 @@ handleImgUnit('5rem')
 
 <a name="getCdnUrl"></a>
 
-## `getCdnUrl(url)` 
+### `getCdnUrl(url)` 
 
 
 **描述**：<p>获取 cdn 链接</p>
@@ -125,7 +127,7 @@ handleImgUnit('5rem')
 
 <a name="getCompressImgUrl"></a>
 
-## `getCompressImgUrl(url, [imageWidth], [imageHeight])` 
+### `getCompressImgUrl(url, [imageWidth], [imageHeight])` 
 
 
 **描述**：<p>获取压缩后的图片</p>

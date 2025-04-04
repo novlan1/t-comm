@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -20,7 +22,7 @@ import {
 ```
 
 
-## `findRouteName(path, routes)` 
+### `findRouteName(path, routes)` 
 
 
 **描述**：<p>根据路由表，找到 path 对应的 路由名称</p>
@@ -46,7 +48,7 @@ console.log('name', name);
 ```
 <a name="getRouterFuncPath"></a>
 
-## `getRouterFuncPath(route)` 
+### `getRouterFuncPath(route)` 
 
 
 **描述**：<p>根据路由跳转时的参数，提取 path 和其他参数</p>
@@ -62,7 +64,7 @@ console.log('name', name);
 
 <a name="getH5CurrentUrl"></a>
 
-## `getH5CurrentUrl(route)` 
+### `getH5CurrentUrl(route)` 
 
 
 **描述**：<p>小程序下，获取对应的 H5 路由信息</p>
@@ -83,7 +85,7 @@ getH5CurrentUrl(this.$route);
 ```
 <a name="uniHookRouter"></a>
 
-## `uniHookRouter()` 
+### `uniHookRouter()` 
 
 
 **描述**：<p>拦截路由</p>

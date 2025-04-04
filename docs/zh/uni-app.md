@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import { getRouteLeaveCache, startUniProject } from 't-comm';
@@ -10,7 +12,7 @@ import { getRouteLeaveCache, startUniProject} from 't-comm/lib/uni-app/index';
 ```
 
 
-## `getRouteLeaveCache()` 
+### `getRouteLeaveCache()` 
 
 
 **描述**：<p>路由离开前记住缓存，返回后不刷新页面</p>
@@ -29,7 +31,7 @@ import { getRouteLeaveCache, startUniProject} from 't-comm/lib/uni-app/index';
 
 <a name="startUniProject"></a>
 
-## `startUniProject(options)` 
+### `startUniProject(options)` 
 
 
 **描述**：<p>启动 uni-app 项目</p>

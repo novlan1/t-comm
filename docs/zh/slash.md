@@ -1,6 +1,8 @@
+<h3 style="margin-bottom: -1rem;">目录</h3>
+
 [[toc]]
 
-<h2>引入</h2>
+<h3>引入</h3>
 
 ```ts
 import {
@@ -18,7 +20,7 @@ import {
 ```
 
 
-## `removeFirstSlash([str])` 
+### `removeFirstSlash([str])` 
 
 
 **描述**：<p>移除第一个反斜杠</p>
@@ -43,7 +45,7 @@ removeFirstSlash('/abc/ddd/')
 ```
 <a name="removeLastSlash"></a>
 
-## `removeLastSlash([str])` 
+### `removeLastSlash([str])` 
 
 
 **描述**：<p>移除最后一个反斜杠</p>
@@ -68,7 +70,7 @@ removeLastSlash('/abc/')
 ```
 <a name="removeFirstAndLastSlash"></a>
 
-## `removeFirstAndLastSlash([str])` 
+### `removeFirstAndLastSlash([str])` 
 
 
 **描述**：<p>移除第一个和最后一个反斜杠</p>
