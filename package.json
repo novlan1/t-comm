@@ -16,7 +16,7 @@
     "url": "git+https://github.com/novlan1/t-comm.git"
   },
   "license": "MIT",
-  "author": "ygw",
+  "author": "novlan1",
   "sideEffects": "false",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
