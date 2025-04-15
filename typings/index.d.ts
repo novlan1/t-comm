@@ -9,6 +9,7 @@ declare const GameHelper: any;
 declare const getCurrentPages: any;
 declare const wx: any;
 declare const WeixinJSBridge: any;
+declare const PassFactory: any;
 
 declare interface Window {
   VConsole?: any;

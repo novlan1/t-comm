@@ -6,7 +6,7 @@ import { checkNodeEnv } from '../env/env';
  * @param {string} key 键
  * @param {string} value 值
  * @param {number} expireMsec 过期时间，单位毫秒
- * @return {boolean} 是否存储成功
+ * @returns {boolean} 是否存储成功
  *
  * @example
  * const res = savePersist('name', 'mike', 30 * 86400 * 1000); // true
@@ -41,7 +41,7 @@ export function savePersist(key: string, value: string, expireMsec = 0) {
 /**
  * 读取持久化存储
  * @param {string} key
- * @return {string} key对应的值
+ * @returns {string} key对应的值
  */
 export function getPersist(key: string) {
   if (checkNodeEnv()) {
@@ -74,7 +74,7 @@ export function getPersist(key: string) {
 /**
  * 持久化存储。清理。传 key 就删除。不传清理所有过期的。
  * @param {string} [key]
- * @return {boolean} 是否清楚成功
+ * @returns {boolean} 是否清楚成功
  */
 export function clearPersist(key?: string) {
   if (checkNodeEnv()) {

@@ -8,6 +8,10 @@ const clearLibFile = async (cb) => {
     encoding: 'utf-8',
     stdio: 'inherit',
   });
+  execSync(`rm -rf ${PATHS.es}`, {
+    encoding: 'utf-8',
+    stdio: 'inherit',
+  });
   log.progress('Deleted lib file');
   cb();
 };

@@ -365,7 +365,7 @@ export function flattenPreData(preDataList: Array<IPreData>, key: string): {
  * @param {Array<object>} list 现在数据
  * @param {Array<object>} preList 参照数据
  * @param {string} key 唯一key名称
- * @return {Array<object>} 对比结果，增加为list的每一项增加previousValue和ratio属性
+ * @returns {Array<object>} 对比结果，增加为list的每一项增加previousValue和ratio属性
  * @example
  * const list = [
  *   {

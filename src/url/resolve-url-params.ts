@@ -1,6 +1,5 @@
 /**
- * @export resolveUrlParams
- * @description 提取链接参数，兼容hash模式和history模式，以及拼接异常情况
+ * 提取链接参数，兼容hash模式和history模式，以及拼接异常情况
  * @param {string} [url=''] 地址
  * @param {string} [key=''] 可选，若不为空，则提取返回该key对应的参数值
  * @returns 地址参数对象，或者是指定参数值

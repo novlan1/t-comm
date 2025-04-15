@@ -67,6 +67,7 @@ const ROLLUP_EXTERNALS = [
   // ...Object.keys(pkg.dependencies),
   /@babel\/runtime/,
   'axios',
+  'press-ui/press-toast/index',
 ];
 
 

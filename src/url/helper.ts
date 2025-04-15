@@ -23,7 +23,7 @@ export function decode(str = '') {
  * 将参数对象转成字符串
  * @docgen
  * @function stringifyParams
- * @param {Object} { params } 参数对象
+ * @param {Object} params 参数对象
  * @returns {String}
  */
 export function stringifyParams(params: Record<string, string | number>) {
@@ -59,7 +59,7 @@ export function addUrlParam(url: string, key: string, value: string) {
  * @param {string} url
  * @param {object} params
  * @param {boolean} [shouldOverride=false]
- * @return {string}
+ * @returns {string}
  */
 export function addUrlParams(url: string, params: object, shouldOverride = false) {
   // 使用正则表达式找到当前 URL 中的哈希部分

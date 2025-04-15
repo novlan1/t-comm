@@ -4,8 +4,7 @@ import type { FilterParams } from './types';
 
 
 /**
- * @export filterUrlParams
- * @description 根据地址长度，进行过滤地址参数，允许指定保留特定参数
+ * 根据地址长度，进行过滤地址参数，允许指定保留特定参数
  * @param {object} [params={ limit: 1024 }] 参数
  * @param {number} params.url 待过滤地址，默认当前页面地址
  * @param {number} params.limit 参数长度限制

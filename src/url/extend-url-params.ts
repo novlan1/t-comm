@@ -2,8 +2,7 @@ import { formatUrlParams } from './format-url-params';
 import { resolveUrlParams } from './resolve-url-params';
 
 /**
- * @export extendUrlParams
- * @description 拼接额外参数
+ * 拼接额外参数
  * @param {string} url 地址
  * @param {string} removeKeyArr 待添加的参数对象
  * @returns 重新拼接的地址

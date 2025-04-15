@@ -1,0 +1,1 @@
+export { loginByIntl } from './login';

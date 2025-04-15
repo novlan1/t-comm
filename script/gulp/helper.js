@@ -15,6 +15,7 @@ const log = {
 const PATHS = {
   root: path.join(process.cwd(), '/'),
   lib: path.join(process.cwd(), '/lib'),
+  es: path.join(process.cwd(), '/es'),
 };
 
 

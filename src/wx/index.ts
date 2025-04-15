@@ -6,3 +6,4 @@ export {
 export {
   configWx,
 } from './wx-config';
+export * from './types';

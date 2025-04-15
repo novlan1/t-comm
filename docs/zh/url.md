@@ -131,7 +131,7 @@ const url2 = formatUrlParams('http://www.test.com?a=1&b=2&c=3#/detail?d=4', { f:
 
 <a name="stringifyParams"></a>
 
-### `stringifyParams({)` 
+### `stringifyParams(params)` 
 
 
 **描述**：<p>将参数对象转成字符串</p>
@@ -142,7 +142,7 @@ const url2 = formatUrlParams('http://www.test.com?a=1&b=2&c=3#/detail?d=4', { f:
 
 | 参数名 | 类型 | 描述 |
 | --- | --- | --- |
-| { | <code>Object</code> | <p>params } 参数对象</p> |
+| params | <code>Object</code> | <p>参数对象</p> |
 
 
 
@@ -185,7 +185,7 @@ const url2 = formatUrlParams('http://www.test.com?a=1&b=2&c=3#/detail?d=4', { f:
 
 <a name="stringifyParams"></a>
 
-### `stringifyParams({)` 
+### `stringifyParams(params)` 
 
 
 **描述**：<p>将参数对象转成字符串</p>
@@ -196,7 +196,7 @@ const url2 = formatUrlParams('http://www.test.com?a=1&b=2&c=3#/detail?d=4', { f:
 
 | 参数名 | 类型 | 描述 |
 | --- | --- | --- |
-| { | <code>Object</code> | <p>params } 参数对象</p> |
+| params | <code>Object</code> | <p>参数对象</p> |
 
 
 

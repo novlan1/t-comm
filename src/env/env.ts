@@ -119,7 +119,7 @@ export function initEnv() {
 
 /**
  * 检查是否是node环境
- * @return {boolean} 是否node环境
+ * @returns {boolean} 是否node环境
  * @example
 
   const res = checkNodeEnv();

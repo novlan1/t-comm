@@ -13,3 +13,5 @@ export {
   getGitTagTime,
 } from './git';
 export { transformGitToSSH } from './ssh';
+
+export * from './types';

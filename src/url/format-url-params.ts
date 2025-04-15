@@ -1,6 +1,5 @@
 /**
- * @export formatUrlParams
- * @description 根据传入的参数，移除原来的所有参数，根据传入的 keepParamsObj 进行重新拼接地址，以 hash 模式返回
+ * 根据传入的参数，移除原来的所有参数，根据传入的 keepParamsObj 进行重新拼接地址，以 hash 模式返回
  * @param {string} url 地址
  * @param {object} keepParamsObj 参数对象
  * @returns 只有传入参数的地址

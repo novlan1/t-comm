@@ -22,10 +22,10 @@ import { genSignature, getWxCfg} from 't-comm/lib/wx/index';
 **参数**：
 
 
-| 参数名 | 描述 |
-| --- | --- |
-| ticket | <p>票据</p> |
-| url | <p>当前url，不包括#之后的部分</p> |
+| 参数名 | 类型 | 描述 |
+| --- | --- | --- |
+| ticket | <code>string</code> | <p>票据</p> |
+| url | <code>string</code> | <p>当前url，不包括#之后的部分</p> |
 
 **返回**: <p>signature</p>
 

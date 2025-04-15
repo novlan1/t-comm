@@ -1,6 +1,6 @@
 import path from 'path';
 
-import { readFileSync } from '../';
+import { readFileSync } from '../fs/fs';
 
 /**
  * 获取依赖列表

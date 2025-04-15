@@ -6,7 +6,7 @@ import { EMOJI_MAP } from './config';
 import type { ITestList } from './types';
 
 
-const TRIGGER_MAP = {
+export const TRIGGER_MAP = {
   MANUAL: '手动',
   TIME_TRIGGER: '定时',
   WEB_HOOK: 'WebHook',

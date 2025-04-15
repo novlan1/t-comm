@@ -3,8 +3,7 @@ import { resolveUrlParams } from './resolve-url-params';
 
 
 /**
- * @export keepUrlParams
- * @description 除保留参数外，一律移除
+ * 除保留参数外，一律移除
  * @param {string} url 地址
  * @param {string} removeKeyArr 待保留的参数名集合
  * @returns 重新拼接的地址

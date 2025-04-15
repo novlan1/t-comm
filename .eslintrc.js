@@ -10,10 +10,9 @@ module.exports = {
       {
         groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object', 'type'],
         'newlines-between': 'always-and-inside-groups',
-        named: true,
         alphabetize: {
           order: 'asc',
-          caseInsensitive: false,
+          caseInsensitive: true,
         },
         pathGroups: [
           {

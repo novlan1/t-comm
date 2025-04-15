@@ -29,7 +29,7 @@ const PATH_REGEXP = new RegExp([
   * @ignore
   * @param  {string}  str
   * @param  {Object=} options
-  * @return {!Array}
+  * @returns {!Array}
   */
 function parse(str: string, options?: any) {
   const tokens = [];
@@ -109,7 +109,7 @@ function parse(str: string, options?: any) {
   * @ignore
   * @param  {string}             str
   * @param  {Object=}            options
-  * @return {!function(Object=, Object=)}
+  * @returns {!function(Object=, Object=)}
   */
 function compile(str: string, options?: any) {
   return tokensToFunction(parse(str, options));
@@ -198,7 +198,7 @@ function tokensToFunction(tokens: Array<any>) {
   * Escape a regular expression string.
   * @ignore
   * @param  {string} str
-  * @return {string}
+  * @returns {string}
   */
 function escapeString(str: string) {
   return str.replace(/([.+*?=^!:${}()[\]|/\\])/g, '\\$1');
@@ -208,7 +208,7 @@ function escapeString(str: string) {
   * Escape the capturing group by escaping special characters and meaning.
   * @ignore
   * @param  {string} group
-  * @return {string}
+  * @returns {string}
   */
 function escapeGroup(group: string) {
   return group.replace(/([=!:$/()])/g, '\\$1');
@@ -218,7 +218,7 @@ function escapeGroup(group: string) {
   * Get the flags for a regexp from the options.
   * @ignore
   * @param  {Object} options
-  * @return {string}
+  * @returns {string}
   */
 function flags(options: any) {
   return options?.sensitive ? '' : 'i';
@@ -229,7 +229,7 @@ function flags(options: any) {
   * @ignore
   * @param  {!RegExp} path
   * @param  {Array=}  keys
-  * @return {!RegExp}
+  * @returns {!RegExp}
   */
 function regexpToRegexp(path: any, keys?: Array<any>) {
   if (!keys) return path;
@@ -260,7 +260,7 @@ function regexpToRegexp(path: any, keys?: Array<any>) {
   * @param  {!Array}  path
   * @param  {Array=}  keys
   * @param  {Object=} options
-  * @return {!RegExp}
+  * @returns {!RegExp}
   */
 function arrayToRegexp(path: any, keys?: Array<any>, options?: any): any {
   const parts = [];
@@ -278,7 +278,7 @@ function arrayToRegexp(path: any, keys?: Array<any>, options?: any): any {
   * @param  {string}  path
   * @param  {Array=}  keys
   * @param  {Object=} options
-  * @return {!RegExp}
+  * @returns {!RegExp}
   */
 function stringToRegexp(path: string, keys?: Array<any>, options?: any) {
   return tokensToRegExp(parse(path, options), keys, options);
@@ -290,7 +290,7 @@ function stringToRegexp(path: string, keys?: Array<any>, options?: any) {
   * @param  {!Array}  tokens
   * @param  {Array=}  keys
   * @param  {Object=} options
-  * @return {!RegExp}
+  * @returns {!RegExp}
   */
 function tokensToRegExp(tokens: Array<any>, keys?: Array<any>, options?: any) {
   options = options || {};
@@ -354,7 +354,7 @@ function tokensToRegExp(tokens: Array<any>, keys?: Array<any>, options?: any) {
   * @param  {(string|RegExp|Array)} path
   * @param  {Array=}                keys
   * @param  {Object=}               options
-  * @return {!RegExp}
+  * @returns {!RegExp}
   */
 function pathToRegexp(path: string | RegExp | Array<any>, keys?: Array<any>, options?: any) {
   if (path instanceof RegExp) {

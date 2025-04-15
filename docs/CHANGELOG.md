@@ -1,5 +1,36 @@
 # 更新日志
 
+### [1.5.14](https://github.com/novlan1/t-comm/compare/v1.5.13...v1.5.14) (2025-04-09)
+
+
+### Documentation 📖
+
+* update docs ([629440f](https://github.com/novlan1/t-comm/commit/629440f6afd421e0549f032b3a50759e068b65ea))
+
+
+### Features 🎉
+
+* **omit:** add omit ([8664d5a](https://github.com/novlan1/t-comm/commit/8664d5a989dbb03a3bcf2868bbb44f9517cb1ab9))
+
+### [1.5.13](https://github.com/novlan1/t-comm/compare/v1.5.12...v1.5.13) (2025-04-09)
+
+
+### Documentation 📖
+
+* update docs ([84bc5c3](https://github.com/novlan1/t-comm/commit/84bc5c33c5d3b4c1e587aaf1fc33bfe5e991ece1))
+* update docs ([03c605a](https://github.com/novlan1/t-comm/commit/03c605a8d1e684ce13d859c3ba961e5a0a6923f2))
+
+
+### Chore 🚀 
+
+* add license ([de26fcb](https://github.com/novlan1/t-comm/commit/de26fcbfa33c41efd6377a39f1b2208246c19c86))
+* update vscodee settings.json ([e2b7619](https://github.com/novlan1/t-comm/commit/e2b76190733e6ec110dbd151cbd06230c475b69c))
+
+
+### Features 🎉
+
+* **intl:** add login by intl ([c0acb94](https://github.com/novlan1/t-comm/commit/c0acb94020c3b33b8f011bfff918bc5bb554edda))
+
 ### [1.5.12](https://github.com/novlan1/t-comm/compare/v1.5.11...v1.5.12) (2025-03-26)
 
 

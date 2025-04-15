@@ -278,7 +278,7 @@ class JsDocHandler {
    * ```
    * @private
    * @param {string} content
-   * @return {object} sourceMap
+   * @returns {object} sourceMap
    */
   getSourceMap(file: string) {
     const html = this.path.resolve(this.docsPath, file);

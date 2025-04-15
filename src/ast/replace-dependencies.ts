@@ -5,7 +5,6 @@ import { IImportType, IParsedConfigItem } from './types';
 /**
  * 替换引用
  *
- * @export
  * @param {string} content 输入内容
  * @param {Array<IParsedConfigItem>} parsedConfigList 替换配置
  * @param {string} keyword 提前返回关键词

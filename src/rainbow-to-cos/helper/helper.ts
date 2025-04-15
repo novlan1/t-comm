@@ -6,8 +6,8 @@ import { getCosUrlLink } from '../../tencent-cloud/cos/link';
 
 import { RAINBOW_VALUE_TYPE_MAP } from './value-type';
 
-import type { RainbowKeyValueType } from './value-type';
 import type { ICosInfo, ILocalConfig } from '../types';
+import type { RainbowKeyValueType } from './value-type';
 
 
 export function getSaveFileName({

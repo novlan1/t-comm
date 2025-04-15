@@ -16,3 +16,4 @@ export { extendUrlParams } from './extend-url-params';
 export { removeUrlParams } from './remove-url-params';
 export { keepUrlParams } from './keep-url-params';
 export { filterUrlParams } from './filter-url-params';
+export * from './types';
