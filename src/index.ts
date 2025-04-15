@@ -80,6 +80,7 @@ export * from './sheet';
 export * from './slash';
 export * from './sleep';
 export * from './storage';
+export * from './sync-repo';
 export * from './tam';
 export * from './tencent-cloud';
 export * from './tencent-doc';

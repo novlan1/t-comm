@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.15](https://github.com/novlan1/t-comm/compare/v1.5.14...v1.5.15) (2025-04-15)
+
+
+### 👷 Continuous Integration | CI 配置
+
+* update build config ([14f45d5](https://github.com/novlan1/t-comm/commit/14f45d5c43d191af64d0355b96b4d13324ea27a7))
+* update build config ([6d13c5a](https://github.com/novlan1/t-comm/commit/6d13c5a4e0ea7cff49f2c2cb090e18ea261610d6))
+
+
+### ✏️ Documentation | 文档
+
+* update docs ([ecffbf9](https://github.com/novlan1/t-comm/commit/ecffbf9fd0e5ce75637408e37303d182e7a5d598))
+
+
+### 🚀 Chore | 构建/工程依赖/工具
+
+* update deps ([4d4e424](https://github.com/novlan1/t-comm/commit/4d4e42425f92516f94e486a2f10c4d0f9e766170))
+* update deps ([4e79fed](https://github.com/novlan1/t-comm/commit/4e79fed8baa0e6a848e2aa7988639b8d5dd02429))
+* update deps ([8d9f647](https://github.com/novlan1/t-comm/commit/8d9f647baa90e9a760d4bd98ba0d213a0019a490))
+
+
+### ✨ Features | 新功能
+
+* **sync-repo:** add replaceContent ([9463f62](https://github.com/novlan1/t-comm/commit/9463f623f6433be92b71750a137bf5391e5793c6))
+
 ### [1.5.14](https://github.com/novlan1/t-comm/compare/v1.5.13...v1.5.14) (2025-04-09)
 
 
