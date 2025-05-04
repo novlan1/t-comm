@@ -15,7 +15,10 @@ export function postFile(fileDataInfo: any, fileKeyValue: Array<any>, options?: 
     const req = http.request(options, (res) => {
       // res.setEncoding("utf8");
       res.on('data', (chunk) => {
-        const result = JSON.parse(chunk);
+        let result = {};
+        try {
+          result = JSON.parse(chunk);
+        } catch {}
         console.log('[postFile] result: ', result);
         resolve(result);
       });

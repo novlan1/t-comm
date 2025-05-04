@@ -101,8 +101,11 @@ launchGNGameRoom({
 | params | <code>object</code> | <p>拉起参数</p> |
 | params.roomId | <code>string</code> | <p>房间 Id</p> |
 | params.roomPwd | <code>string</code> | <p>房间 Pwd</p> |
+| params.source | <code>string</code> | <p>来源</p> |
 | [params.wxJSLink] | <code>string</code> | <p>wx js link</p> |
 | [params.env] | <code>object</code> | <p>环境对象</p> |
+| [params.useGPHelperSchemePrefix] | <code>object</code> | <p>是否使用特殊 scheme</p> |
+| [params.justLaunchGame] | <code>object</code> | <p>是否仅拉起 app，不进入房间</p> |
 
 **返回**: <p>Promise&lt;boolean | number&gt;</p>
 

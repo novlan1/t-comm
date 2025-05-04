@@ -43,15 +43,15 @@ export function composeRobotContent(usefulData: Array<any> = []): string {
  */
 export function compareData(usefulData: Array<object> = []): boolean {
   const FILE_NAME = 'alarm.json';
-  let preData = '{}';
+  let preData = {};
 
   try {
-    preData = readJsonLog(FILE_NAME);
+    preData = JSON.parse(readJsonLog(FILE_NAME));
   } catch (e) {
     console.log('[compareData] err: ', e);
   }
 
-  const isSame = JSON.stringify(JSON.parse(preData)) === JSON.stringify(usefulData);
+  const isSame = JSON.stringify(preData) === JSON.stringify(usefulData);
 
   saveJsonToLog(usefulData, FILE_NAME);
 

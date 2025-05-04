@@ -6,7 +6,9 @@
 
 ```ts
 import {
+  getRandomString,
   checkStringLength,
+  randomString,
   replaceAllPolyfill,
   camelize,
   hyphenate,
@@ -20,7 +22,9 @@ import {
 
 // or
 import {
+  getRandomString,
   checkStringLength,
+  randomString,
   replaceAllPolyfill,
   camelize,
   hyphenate,
@@ -33,6 +37,31 @@ import {
 } from 't-comm/lib/base/string/index';
 ```
 
+
+### `getRandomString` 
+
+
+**描述**：<p>获取随机字符串</p>
+
+**参数**：
+
+
+| 参数名 | 类型 | 描述 |
+| --- | --- | --- |
+| length | <code>number</code> | <p>字符串长度，默认 32</p> |
+
+**返回**: <code>string</code><br>
+
+<p>字符串</p>
+
+**示例**
+
+```ts
+randomString()
+
+randomString(16)
+```
+<a name="checkStringLength"></a>
 
 ### `checkStringLength(str, [num])` 
 
@@ -55,6 +84,31 @@ import {
 checkStringLength('123', 2) // true
 checkStringLength('123', 3) // true
 checkStringLength('123', 4) // false
+```
+<a name="randomString"></a>
+
+### `randomString(length)` 
+
+
+**描述**：<p>获取随机字符串</p>
+
+**参数**：
+
+
+| 参数名 | 类型 | 描述 |
+| --- | --- | --- |
+| length | <code>number</code> | <p>字符串长度，默认 32</p> |
+
+**返回**: <code>string</code><br>
+
+<p>字符串</p>
+
+**示例**
+
+```ts
+randomString()
+
+randomString(16)
 ```
 <a name="replaceAllPolyfill"></a>
 

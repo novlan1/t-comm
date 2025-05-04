@@ -14,7 +14,11 @@ export default class MsdkLocation implements LocationInterface {
         callJsBrowserAdapter().then(() => {
           addMsdkNativeCallbackListener((data: any) => {
             console.log('addMsdkNativeCallbackListener', data);
-            const response = JSON.parse(data);
+
+            let response;
+            try {
+              response = JSON.parse(data);
+            } catch {}
             if (response?.cmd === 'reqLocation') {
               if (response?.ret === 0) {
                 const location = { lat: response.latitude || response.lat, lng: response.longitude || response.lng };

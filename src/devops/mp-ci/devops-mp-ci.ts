@@ -34,7 +34,11 @@ async function updateOrCreateInstance({
   templateIdMap,
   onlyCollectNoUsedPipeline,
 }: Record<string, any>) {
-  const newConfig = JSON.parse(rainbowMap[mpCIKey].value);
+  let newConfig: Record<string, any> = {};
+  try {
+    newConfig = JSON.parse(rainbowMap[mpCIKey].value);
+  } catch {}
+
   const robotMapKey = isWxCI ? 'robotMap' : 'qqRobotMap';
   const newInfo = newConfig[robotMapKey] || {};
   const robotMap = parseRobotMap(newInfo);
@@ -45,7 +49,7 @@ async function updateOrCreateInstance({
       robot,
       env,
       branch,
-      ciKey: newConfig.ci.name,
+      ciKey: newConfig.ci?.name,
       prefix: isWxCI ? CI_PREFIX_MAP.wx : CI_PREFIX_MAP.qq,
     });
     console.log('[pipelineName]', pipelineName);

@@ -9,8 +9,15 @@ import {
 import type { IBaseLaunchParams } from './types';
 
 
+export const LAUNCH_GP_SOURCE_MAP = {
+  NORMAL: 6,
+  SUBWAY_MODE: 7,
+};
+
+
 export const GAME_SCHEME_PREFIX_MAP = {
   GP: 'pubgmhd1106467070://?',
+  GP_IN_HELPER: 'wxc4c0253df149f02d://?',
   GN: 'gnyx1110329808://?type=Contest&',
   MJ: 'happymjscheme://matchFrom=1?',
 };
@@ -30,12 +37,24 @@ export function getWxGameCircleUrl(gid: string | number) {
   return ` https://game.weixin.qq.com/cgi-bin/h5/static/gamecenter/detail.html?appid=${appId}&ssid=39&autoinstall=1&type=1#wechat_redirect`;
 }
 
-export function getGPSchemeParam(roomId: string | number, roomPwd: string | number) {
+export function getGPSchemeParam(
+  roomId: string | number,
+  roomPwd: string | number,
+
+  options?: {
+    source?: string | number;
+  },
+) {
   const time = Math.floor(new Date().getTime() / 60000);
 
-  const schemeParam = `rmid:${roomId},rmpw:${roomPwd},t:${time}`;
+  let schemeParam = `rmid:${roomId},rmpw:${roomPwd},t:${time}`;
+  if (options?.source) {
+    schemeParam += `,source:${options?.source || ''}`;
+  }
+
   return schemeParam;
 }
+
 
 function getQRcodeUrl(launchParams: Record<string, any>) {
   const qrCodeUrl = composeUrlQuery(window.location.href, {

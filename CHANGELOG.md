@@ -2,6 +2,56 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.20](https://github.com/novlan1/t-comm/compare/v1.5.19...v1.5.20) (2025-05-02)
+
+
+### ✨ Features | 新功能
+
+* 优化getMentionRtx ([e7f1532](https://github.com/novlan1/t-comm/commit/e7f1532191eb5c479d8fe38e833a29253bc21a99))
+
+### [1.5.19](https://github.com/novlan1/t-comm/compare/v1.5.18...v1.5.19) (2025-04-30)
+
+
+### ✨ Features | 新功能
+
+* **random:** add getRandomNumber ([a152767](https://github.com/novlan1/t-comm/commit/a152767ca4e08274e2b31e02894467e987dd2cec))
+
+### [1.5.18](https://github.com/novlan1/t-comm/compare/v1.5.17...v1.5.18) (2025-04-25)
+
+
+### ✨ Features | 新功能
+
+* **rtx:** add getMentionRtx ([e08036f](https://github.com/novlan1/t-comm/commit/e08036fed3df99cc1eebf5f6d6e713dfe8631763))
+
+
+### ✏️ Documentation | 文档
+
+* update docs ([eca3418](https://github.com/novlan1/t-comm/commit/eca34188ac423af7f90d64d116be192e605b65fa))
+
+### [1.5.17](https://github.com/novlan1/t-comm/compare/v1.5.16...v1.5.17) (2025-04-23)
+
+
+### ✨ Features | 新功能
+
+* **launch:** support source and justLaunchGame ([1add994](https://github.com/novlan1/t-comm/commit/1add994939f6de17a23a60ece3e6bed1db5453ba))
+
+### [1.5.16](https://github.com/novlan1/t-comm/compare/v1.5.15...v1.5.16) (2025-04-23)
+
+
+### 🚀 Chore | 构建/工程依赖/工具
+
+* lint ([8b2262f](https://github.com/novlan1/t-comm/commit/8b2262f75c26a78dc49f7cc2aa62fe461f265a78))
+
+
+### ✏️ Documentation | 文档
+
+* **string:** update docs ([b8e97ad](https://github.com/novlan1/t-comm/commit/b8e97ad37a9fee97def56db111d27522c0db0b76))
+
+
+### ✨ Features | 新功能
+
+* **launch:** support other scheme prefix ([5c8f8b1](https://github.com/novlan1/t-comm/commit/5c8f8b19ff7be387130047f3e6d8c19f1c73cfa4))
+
 ### [1.5.15](https://github.com/novlan1/t-comm/compare/v1.5.14...v1.5.15) (2025-04-15)
 
 

@@ -155,6 +155,12 @@ export function random(min: number, max: number) {
 }
 
 
+export function getRandomNumber(min: number, max: number) {
+  const result = Math.random() * (max - min) + min;
+  return result;
+}
+
+
 /**
  * 数字左侧加 0，直到满足长度要求
  * @param {string | number} num 当前数字
