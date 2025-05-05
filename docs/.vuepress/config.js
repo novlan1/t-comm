@@ -18,6 +18,31 @@ module.exports = {
     [
       'link', { rel: 'icon', href: 'https://mike-1255355338.cos.ap-guangzhou.myqcloud.com/article/2023/10/own_mike_5489135b5a3b9258d8.png' },
     ],
+    [
+      'script',
+      {
+        src: 'https://tam.cdn-go.cn/aegis-sdk/latest/aegis.min.js',
+      },
+    ],
+    [
+      'script',
+      {},
+      `
+      console.log('Aegis', window.Aegis);
+      if (typeof Aegis === 'function') {
+        var aegis = new Aegis({
+          id: 'YrK6DHb3O67zG2k6xE', // 上报 id
+          uin: 'xxx', // 用户唯一 ID（可选）
+          reportApiSpeed: true, // 接口测速
+          reportAssetSpeed: true, // 静态资源测速
+          spa: true, // spa 应用页面跳转的时候开启 pv 计算
+          hostUrl: 'https://rumt-zh.com'
+        });
+        console.log('aegis', aegis);
+      }
+      console.log('welcome notes of novlan1!');
+      `,
+    ],
   ],
   markdown: {
     // 显示行号
