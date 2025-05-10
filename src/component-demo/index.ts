@@ -1,0 +1,1 @@
+export { getUserComponentDemo } from './user';

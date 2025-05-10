@@ -1,5 +1,40 @@
 # 更新日志
 
+### [1.5.24](https://github.com/novlan1/t-comm/compare/v1.5.23...v1.5.24) (2025-05-10)
+
+
+### Features 🎉
+
+* **set:** add getConfig/setConfig/initConfig/setWithString ([80f580e](https://github.com/novlan1/t-comm/commit/80f580e506fb515f56dcff696b1c03c4adfc0289))
+
+### [1.5.23](https://github.com/novlan1/t-comm/compare/v1.5.22...v1.5.23) (2025-05-07)
+
+
+### Features 🎉
+
+* **eslint:** update aliasMap param ([d521062](https://github.com/novlan1/t-comm/commit/d521062dd3d301f75805629d6882c0ec8f9c5d33))
+
+### [1.5.22](https://github.com/novlan1/t-comm/compare/v1.5.21...v1.5.22) (2025-05-07)
+
+
+### Features 🎉
+
+* **stylelint-rules:** add stylelint-rules, component-demo; update eslint-import-settings ([0dcabad](https://github.com/novlan1/t-comm/commit/0dcabad65e2e7e0896361d81c5123537ef713903))
+
+### [1.5.21](https://github.com/novlan1/t-comm/compare/v1.5.20...v1.5.21) (2025-05-07)
+
+
+### Chore 🚀 
+
+* update deps ([21f5851](https://github.com/novlan1/t-comm/commit/21f5851b0aaf67a4e0a54ecd3a22401c49a53ff2))
+
+
+### Features 🎉
+
+* add aegis ([6af13df](https://github.com/novlan1/t-comm/commit/6af13df087ae6481dffe9ada5f147f3715d044f1))
+* **eslint-rules:** add eslint-rules ([8d22c58](https://github.com/novlan1/t-comm/commit/8d22c58d5cda72cfd4a6d0040c6cbb487b761e00))
+* **object:** add deep-set ([d62117f](https://github.com/novlan1/t-comm/commit/d62117fd097e1a9ddafd596bfad1938224f1ac36))
+
 ### [1.5.20](https://github.com/novlan1/t-comm/compare/v1.5.19...v1.5.20) (2025-05-02)
 
 

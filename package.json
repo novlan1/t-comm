@@ -1,6 +1,6 @@
 {
   "name": "t-comm",
-  "version": "1.5.20",
+  "version": "1.5.24",
   "description": "专业、稳定、纯粹的工具库",
   "keywords": [
     "t-comm",
@@ -86,6 +86,10 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-typescript": "^7.16.7",
     "@microsoft/api-extractor": "^7.19.4",
+    "@plugin-light/project-config-uni-vite": "latest",
+    "@plugin-light/project-config-uni-vue": "latest",
+    "@plugin-light/project-config-vite": "latest",
+    "@plugin-light/project-config-vue": "latest",
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-json": "^4.1.0",
@@ -117,7 +121,7 @@
     "eslint-import-resolver-node": "0.3.9",
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-jest": "25",
-    "eslint-plugin-light": "1.0.3",
+    "eslint-plugin-light": "1.0.4",
     "eslint-plugin-prettier": "4.2.1",
     "eslint-plugin-react": "7.26.1",
     "eslint-plugin-react-hooks": "4.2.0",

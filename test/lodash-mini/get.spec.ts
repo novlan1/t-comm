@@ -8,5 +8,8 @@ describe('lodashGet', () => {
 
     expect(get({ a: [{ b: 1 }] }, 'a[0].b', 3)).toBe(1);
     expect(get({ a: { b: { c: { d: 1 } } } }, 'a.b.c.d', 3)).toBe(1);
+
+    expect(get({ a: [{ b: { c: 3 } }] }, 'a[0].b.c')).toBe(3);
+    expect(get({ a: [{ b: { c: 3 } }] }, 'a.0.b.c')).toBe(3);
   });
 });

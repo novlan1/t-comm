@@ -5,12 +5,47 @@
 <h3>引入</h3>
 
 ```ts
-import { toHumpObj, extend } from 't-comm';
+import {
+  deepSet,
+  toHumpObj,
+  extend
+} from 't-comm';
 
 // or
-import { toHumpObj, extend} from 't-comm/lib/base/object/index';
+import {
+  deepSet,
+  toHumpObj,
+  extend
+} from 't-comm/lib/base/object/index';
 ```
 
+
+### `deepSet(keyStr, target, value)` 
+
+
+**描述**：<p>深度赋值</p>
+
+**参数**：
+
+
+| 参数名 | 描述 |
+| --- | --- |
+| keyStr | <p>以点拼接的 key，比如 foo.bar</p> |
+| target | <p>目标对象</p> |
+| value | <p>目标值</p> |
+
+
+
+**示例**
+
+```ts
+const obj = { a: { b: 1 } };
+deepSet('a.c', obj, 2);
+
+console.log(obj);
+// { a: { b: 1, c: 2 } }
+```
+<a name="toHumpObj"></a>
 
 ### `toHumpObj(obj)` 
 

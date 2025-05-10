@@ -7,6 +7,7 @@
 ```ts
 import {
   isIdCard,
+  isIndex,
   isRegExp,
   isDate,
   isFunction,
@@ -27,6 +28,7 @@ import {
 // or
 import {
   isIdCard,
+  isIndex,
   isRegExp,
   isDate,
   isFunction,
@@ -76,6 +78,25 @@ isIdCard('123')
 isIdCard('34052419800101001X')
 // true
 ```
+<a name="isIndex"></a>
+
+### `isIndex(value, [length])` 
+
+
+**描述**：<p>Checks if <code>value</code> is a valid array-like index.</p>
+
+**参数**：
+
+
+| 参数名 | 类型 | 默认值 | 描述 |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  | <p>The value to check.</p> |
+| [length] | <code>number</code> | <code>MAX_SAFE_INTEGER</code> | <p>The upper bounds of a valid index.</p> |
+
+**返回**: <code>boolean</code><br>
+
+<p>Returns <code>true</code> if <code>value</code> is a valid index, else <code>false</code>.</p>
+
 <a name="isRegExp"></a>
 
 ### `isRegExp(value)` 
