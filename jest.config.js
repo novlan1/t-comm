@@ -1,7 +1,7 @@
 // process.env.TZ = 'GMT+0800';
 
 module.exports = {
-  globalSetup: './jest-global-setup.js',
+  globalSetup: './jest.config-global-setup.js',
   preset: 'ts-jest',
   moduleFileExtensions: ['js', 'jsx', 'json', 'vue', 'ts'],
   globals: {
