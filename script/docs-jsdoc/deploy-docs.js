@@ -16,6 +16,7 @@ const DEPLOY_CONFIG = {
   targetDirName: 't-comm',
 };
 
+console.log('process.env', process.env);
 
 function main() {
   require('dotenv').config({ path: ENV_FILE });
@@ -24,7 +25,7 @@ function main() {
     --user ${DEPLOY_CONFIG.user} \
     --email ${DEPLOY_CONFIG.email} \
     --dir ${DEPLOY_CONFIG.targetDir} \
-    --token ${DEPLOY_CONFIG.token} \
+    --token "${DEPLOY_CONFIG.token}" \
     --branch ${DEPLOY_CONFIG.branch} \
     --increment 1 \
     --message "${DEPLOY_CONFIG.commitMessage}" \
