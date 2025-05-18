@@ -38,7 +38,7 @@
     "build": "gulp build",
     "changelog": "gulp changelog",
     "docs:build": "bash generateDocs.sh",
-    "docs:build:docs": "PUBLISH_PATH=/docs/t-comm npm run docs:build:new",
+    "docs:build:docs": "PUBLISH_PATH=/docs/t-comm/ npm run docs:build:new",
     "docs:build:new": "vuepress build docs",
     "docs:deploy": "node script/docs-jsdoc/deploy",
     "docs:deploy:docs": "node script/docs-jsdoc/deploy-docs",
