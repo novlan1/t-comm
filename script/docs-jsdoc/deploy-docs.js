@@ -4,7 +4,11 @@ const ENV_FILE = '.env.local';
 const CLI_FILE = './bin/cli';
 const DEPLOY_CONFIG = {
   repo: 'docs',
+  user: 'novlan1',
+  email: '1576271227@qq.com',
+
   targetDir: './docs/.vuepress/dist/',
+  token: process.env.ACCESS_TOKEN || '',
   branch: 'main',
 
   commitMessage: 'docs: update docs of t-comm',
@@ -17,7 +21,10 @@ function main() {
   require('dotenv').config({ path: ENV_FILE });
 
   execSync(`node ${CLI_FILE} deploy:github --repo ${DEPLOY_CONFIG.repo} \
+    --user ${DEPLOY_CONFIG.user} \
+    --email ${DEPLOY_CONFIG.email} \
     --dir ${DEPLOY_CONFIG.targetDir} \
+    --token ${DEPLOY_CONFIG.token} \
     --branch ${DEPLOY_CONFIG.branch} \
     --increment 1 \
     --message "${DEPLOY_CONFIG.commitMessage}" \
