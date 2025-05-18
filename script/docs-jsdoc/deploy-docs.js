@@ -16,7 +16,6 @@ const DEPLOY_CONFIG = {
   targetDirName: 't-comm',
 };
 
-console.log('process.env', process.env);
 
 function main() {
   require('dotenv').config({ path: ENV_FILE });
