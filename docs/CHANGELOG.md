@@ -1,5 +1,38 @@
 # 更新日志
 
+### [1.5.28](https://github.com/novlan1/t-comm/compare/v1.5.27...v1.5.28) (2025-05-18)
+
+
+### Features 🎉
+
+* **ci:** add deploy-increment ([dd6ce71](https://github.com/novlan1/t-comm/commit/dd6ce71b19346e8eb458364a59ebd01a70339f32))
+
+### [1.5.27](https://github.com/novlan1/t-comm/compare/v1.5.26...v1.5.27) (2025-05-13)
+
+
+### Features 🎉
+
+* **stylelint-rules:** add linebreaks rule ([a93e7c6](https://github.com/novlan1/t-comm/commit/a93e7c6d3b9e0720a6ccd6ad81dce7711a6a18d2))
+
+### [1.5.26](https://github.com/novlan1/t-comm/compare/v1.5.25...v1.5.26) (2025-05-12)
+
+
+### Features 🎉
+
+* **lint:** 支持忽略子模块 ([203819e](https://github.com/novlan1/t-comm/commit/203819ef2bd1bfaee1a16aceb4690155071278a4))
+
+### [1.5.25](https://github.com/novlan1/t-comm/compare/v1.5.24...v1.5.25) (2025-05-11)
+
+
+### Chore 🚀 
+
+* update deps ([30fc6e2](https://github.com/novlan1/t-comm/commit/30fc6e24670a00c5a1db085e55c222cee7ddaf4b))
+
+
+### Features 🎉
+
+* **disk:** add getAvailableDiskSize ([33abd6d](https://github.com/novlan1/t-comm/commit/33abd6d14504d20e4d14b4858c562ea898126ca8))
+
 ### [1.5.24](https://github.com/novlan1/t-comm/compare/v1.5.23...v1.5.24) (2025-05-10)
 
 

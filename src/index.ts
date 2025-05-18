@@ -23,6 +23,7 @@ export * from './date';
 export * from './debounce';
 export * from './devops';
 export * from './dialog';
+export * from './disk';
 export * from './dom';
 export * from './dom-to-image';
 export * from './dotenv';

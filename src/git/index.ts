@@ -14,4 +14,6 @@ export {
 } from './git';
 export { transformGitToSSH } from './ssh';
 
+export { getSubmodulePathList } from './submodule';
+
 export * from './types';

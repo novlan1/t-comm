@@ -1,6 +1,6 @@
 {
   "name": "t-comm",
-  "version": "1.5.24",
+  "version": "1.5.28",
   "description": "专业、稳定、纯粹的工具库",
   "keywords": [
     "t-comm",
@@ -41,6 +41,7 @@
     "docs:build:new": "vuepress build docs",
     "docs:deploy": "node script/docs-jsdoc/deploy",
     "docs:deploy:mine": "node script/docs-jsdoc/docs-mine",
+    "docs:deploy:docs": "node script/docs-jsdoc/deploy-docs",
     "docs:dev": "vuepress dev docs",
     "docs:gen": "npm run docs:gen:new",
     "docs:gen:new": "node script/docs-jsdoc/markdown",

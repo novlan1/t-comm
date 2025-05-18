@@ -10,6 +10,7 @@ import { execCommand } from '../node/node-command';
 import { batchSendWxRobotMarkdown } from '../wecom-robot/batch-send';
 
 import { FILE_TYPE_MAP } from './config';
+import { ignoreSubmoduleInESLint, ignoreSubmoduleInStyleLint } from './helper';
 
 import type { FileMap, JSErrorFile, SCSSErrorFile } from './types';
 
@@ -248,6 +249,8 @@ export async function checkLint({
 
   lintFiles = Object.keys(FILE_TYPE_MAP),
   throwError = true,
+
+  ignoreSubmodules = true,
 }: {
   privateToken: string;
   gitApiPrefix: string;
@@ -271,10 +274,17 @@ export async function checkLint({
 
   lintFiles?: string[];
   throwError?: boolean;
+  ignoreSubmodules?: boolean;
 }) {
   if (!checkAll && (!sourceBranch || !targetBranch)) {
     throw new Error('增量模式，必须提供 sourceBranch 和 targetBranch！');
   }
+
+  if (ignoreSubmodules) {
+    ignoreSubmoduleInESLint(workspace);
+    ignoreSubmoduleInStyleLint(workspace);
+  }
+
   const fileMap: FileMap = Object.keys(FILE_TYPE_MAP)
     .filter(item => lintFiles.includes(item))
     .reduce((acc, key) => ({

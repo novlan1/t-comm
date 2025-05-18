@@ -1,0 +1,1 @@
+export { getAvailableDiskSize } from './disk';

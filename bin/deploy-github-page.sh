@@ -30,6 +30,6 @@ git remote remove origin
 git remote add origin https://${token}@github.com/${userName}/${repoName}
 
 git add .
-git commit -m"$commitMessage"
+git commit -m"$commitMessage" --no-verify
 git checkout -b $branch
 git push origin $branch --force

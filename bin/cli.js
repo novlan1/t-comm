@@ -76,6 +76,9 @@ program
   .option('--token <token>', 'Github Token')
   .option('--branch <branch>', 'Repository Branch')
   .option('--message <message>', 'Commit Message')
+  .option('--increment <increment>', 'Is Increment')
+  .option('--playgroundDir <playgroundDir>', 'Playground Dir')
+  .option('--targetDirName <targetDirName>', 'Target Dir Name')
   .action(deployGithubPage);
 
 
