@@ -20,8 +20,8 @@ function main() {
     --dir ${DEPLOY_CONFIG.targetDir} \
     --branch ${DEPLOY_CONFIG.branch} \
     --increment 1 \
-    --message ${DEPLOY_CONFIG.commitMessage} \
-    --playgroundDir ${DEPLOY_CONFIG.playgroundDir} \
+    --message "${DEPLOY_CONFIG.commitMessage}" \
+    --playgroundDir "${DEPLOY_CONFIG.playgroundDir}" \
     --targetDirName ${DEPLOY_CONFIG.targetDirName}
     `, {
     stdio: 'inherit',
