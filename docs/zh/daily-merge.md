@@ -1,14 +1,14 @@
-<h3 style="margin-bottom: -1rem;">目录</h3>
 
-[[toc]]
-
-<h3>引入</h3>
+### 引入
 
 ```ts
 import { dailyMerge } from 't-comm';
 
-// or
+// 不支持 tree-shaking 的项目
 import { dailyMerge} from 't-comm/lib/daily-merge/index';
+
+// 只支持 ESM 的项目
+import { dailyMerge} from 't-comm/es/daily-merge/index';
 ```
 
 

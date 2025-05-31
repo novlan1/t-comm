@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
+import { getCanvas } from './get-canvas';
 /**
  * 为图片增加文字
  *
@@ -30,8 +30,11 @@ export async function addTextForImg({
   height: number;
   textList: Array<string>;
   imgPath: string;
-}) {
-  const canvasLibrary = require('canvas');
+}): Promise<string> {
+  const canvasLibrary = getCanvas();
+  if (!canvasLibrary) return '';
+
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   const sizeOf = require('image-size');
   const { createCanvas, loadImage } = canvasLibrary;
 

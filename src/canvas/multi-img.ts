@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { saveBase64ImgToFile } from '../node-img';
 
+import { getCanvas } from './get-canvas';
+
 /**
  * 绘制多张图
  * @param {object} config 输入参数
@@ -17,10 +19,12 @@ export async function mergeMultiCanvasPic({
   imgs,
 }: {
   imgs: Array<string>
-}) {
+}): Promise<string> {
   const path = require('path');
   const sizeOf = require('image-size');
-  const canvasLibrary = require('canvas');
+  const canvasLibrary = getCanvas();
+  if (!canvasLibrary) return '';
+
   const { createCanvas, loadImage } = canvasLibrary;
 
   const getSavePath = (i: number) => path.resolve(__dirname, `${i}.png`);

@@ -1,14 +1,14 @@
-<h3 style="margin-bottom: -1rem;">目录</h3>
 
-[[toc]]
-
-<h3>引入</h3>
+### 引入
 
 ```ts
 import { setWithString, merge } from 't-comm';
 
-// or
+// 不支持 tree-shaking 的项目
 import { setWithString, merge} from 't-comm/lib/lodash-mini/index';
+
+// 只支持 ESM 的项目
+import { setWithString, merge} from 't-comm/es/lodash-mini/index';
 ```
 
 

@@ -1,8 +1,5 @@
-<h3 style="margin-bottom: -1rem;">目录</h3>
 
-[[toc]]
-
-<h3>引入</h3>
+### 引入
 
 ```ts
 import {
@@ -20,7 +17,7 @@ import {
   deleteTGitProject
 } from 't-comm';
 
-// or
+// 不支持 tree-shaking 的项目
 import {
   getBranchLifeCycle,
   getProjectDefaultBranch,
@@ -35,6 +32,22 @@ import {
   getAllProjects,
   deleteTGitProject
 } from 't-comm/lib/tgit/index';
+
+// 只支持 ESM 的项目
+import {
+  getBranchLifeCycle,
+  getProjectDefaultBranch,
+  getBranchesByProjectName,
+  getOneBranchDetail,
+  getOneCommitDetail,
+  createMR,
+  getMrList,
+  getOneMrComments,
+  getOneProjectDetail,
+  getOneProjectBySearch,
+  getAllProjects,
+  deleteTGitProject
+} from 't-comm/es/tgit/index';
 ```
 
 

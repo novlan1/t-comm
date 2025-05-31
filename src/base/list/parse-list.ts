@@ -220,8 +220,8 @@ export function getPreviousRatio(
     Object.keys(item).forEach((key) => {
       const obj = item[key] as any;
 
-      if (typeof obj.value === 'number') {
-        const uniqVal = (item[uniqKey] as any).value;
+      if (typeof obj?.value === 'number') {
+        const uniqVal = (item[uniqKey] as any)?.value;
         const preValue = preDataMap?.[uniqVal]?.[key];
 
         if (preValue === undefined) {

@@ -10,8 +10,9 @@ npm run build
 
 发布：
 
-```bash
-npm run release-patch && npm publish
+```diff
+- npm run release-patch && npm publish
++ 流水线发布
 ```
 
 ## 文档
@@ -19,7 +20,7 @@ npm run release-patch && npm publish
 根据`jsdoc`生成文档：
 
 ```bash
-npm run docs:gen:new
+npm run docs:gen
 ```
 
 文档开发：
@@ -31,11 +32,25 @@ npm run docs:dev
 文档打包：
 
 ```bash
-npm run docs:build:new
+npm run docs:build
 ```
 
 文档部署：
 
 ```bash
 npm run docs:deploy
+```
+
+## 单元测试
+
+执行单元测试：
+
+```bash
+npm run test
+```
+
+打开测试报告：
+
+```bash
+open test/unit/coverage/lcov-report/index.html
 ```

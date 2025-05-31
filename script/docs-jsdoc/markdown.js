@@ -30,30 +30,38 @@ function getInsertImportWay(methods, fileName) {
   if (methods.length <= 2) {
     const methodStr = methods.join(', ');
     return `
-<h3>引入</h3>
+### 引入
 
 \`\`\`ts
 import { ${methodStr} } from 't-comm';
 
-// or
+// 不支持 tree-shaking 的项目
 import { ${methodStr}} from 't-comm/lib/${newFileName}';
+
+// 只支持 ESM 的项目
+import { ${methodStr}} from 't-comm/es/${newFileName}';
 \`\`\`
 `;
   }
 
   const methodStr = methods.join(',\n  ');
   return `
-<h3>引入</h3>
+### 引入
 
 \`\`\`ts
 import {
   ${methodStr}
 } from 't-comm';
 
-// or
+// 不支持 tree-shaking 的项目
 import {
   ${methodStr}
 } from 't-comm/lib/${newFileName}';
+
+// 只支持 ESM 的项目
+import {
+  ${methodStr}
+} from 't-comm/es/${newFileName}';
 \`\`\`
 `;
 }
@@ -99,7 +107,10 @@ const makeMarkDownDoc = function (sourceName, sourceRootPath, outputPath) {
       configure,
       template,
     })
-    .then((mdStr) => {
+    .then((mdStr = '') => {
+      if (!mdStr) {
+        console.log('[empty]', sourcePath);
+      }
       // 删除第一行的 a 标签，否则 vueperss 生成侧边栏的时候，会出错
       const lines = mdStr
         .replace(/&nbsp;/g, ' ')
@@ -122,9 +133,7 @@ const makeMarkDownDoc = function (sourceName, sourceRootPath, outputPath) {
         const allExports = getAllExports(newText);
         const importWayStr = getInsertImportWay(allExports, sourcePath);
 
-        fs.outputFile(path.resolve(process.cwd(), `${outputPath}/${outputName}.md`), `<h3 style="margin-bottom: -1rem;">目录</h3>
-
-[[toc]]\n${importWayStr}\n${newText}`);
+        fs.outputFile(path.resolve(process.cwd(), `${outputPath}/${outputName}.md`), `${importWayStr}\n${newText}`);
       }
     })
     .catch((err) => {

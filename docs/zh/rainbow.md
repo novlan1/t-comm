@@ -1,8 +1,5 @@
-<h3 style="margin-bottom: -1rem;">目录</h3>
 
-[[toc]]
-
-<h3>引入</h3>
+### 引入
 
 ```ts
 import {
@@ -17,7 +14,7 @@ import {
   fetchRainbowConfig
 } from 't-comm';
 
-// or
+// 不支持 tree-shaking 的项目
 import {
   addOrUpdateRainbowKV,
   addRainbowKV,
@@ -29,6 +26,19 @@ import {
   queryGroupInfo,
   fetchRainbowConfig
 } from 't-comm/lib/rainbow/index';
+
+// 只支持 ESM 的项目
+import {
+  addOrUpdateRainbowKV,
+  addRainbowKV,
+  updateRainbowKV,
+  createRainbowPublishJob,
+  publishRainbowTask,
+  closeRainbowTask,
+  updateRainbowKVAndPublish,
+  queryGroupInfo,
+  fetchRainbowConfig
+} from 't-comm/es/rainbow/index';
 ```
 
 

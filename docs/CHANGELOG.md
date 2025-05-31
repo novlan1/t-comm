@@ -1,5 +1,123 @@
 # 更新日志
 
+### [1.5.40](https://github.com/novlan1/t-comm/compare/v1.5.39...v1.5.40) (2025-05-31)
+
+
+### Features 🎉
+
+* **git:** 增加缓存不重复获取 ([237b836](https://github.com/novlan1/t-comm/commit/237b8362084e4144182de2f6230045a4984db749))
+
+### [1.5.39](https://github.com/novlan1/t-comm/compare/v1.5.38...v1.5.39) (2025-05-28)
+
+
+### Features 🎉
+
+* **minimatch:** add checkFileBaseMinimatch ([25599aa](https://github.com/novlan1/t-comm/commit/25599aa2be01c7c46535754c2cc9801092d5aa05))
+
+### [1.5.38](https://github.com/novlan1/t-comm/compare/v1.5.37...v1.5.38) (2025-05-27)
+
+
+### Features 🎉
+
+* **sheet:** add excelToJson and jsonToExcel ([ac9f7cc](https://github.com/novlan1/t-comm/commit/ac9f7cc952fa442aefebcf8315aa7cb26cbe6e4e))
+
+### [1.5.37](https://github.com/novlan1/t-comm/compare/v1.5.36...v1.5.37) (2025-05-27)
+
+
+### Features 🎉
+
+* **sheet:** add excelToJson and jsonToExcel ([042334f](https://github.com/novlan1/t-comm/commit/042334f2f8232f803bd1063f3fecbf764ca65509))
+* **ts:** 优化检查命令 ([35c6839](https://github.com/novlan1/t-comm/commit/35c6839ad3c1402bc94367f1c6175a5dfd07c2ad))
+
+### [1.5.36](https://github.com/novlan1/t-comm/compare/v1.5.35...v1.5.36) (2025-05-26)
+
+
+### Features 🎉
+
+* **ts-check:** update title of ts-check ([0ebc9e1](https://github.com/novlan1/t-comm/commit/0ebc9e18d4e6b64a104b058658d1870e82b806f0))
+
+### [1.5.35](https://github.com/novlan1/t-comm/compare/v1.5.34...v1.5.35) (2025-05-26)
+
+
+### Features 🎉
+
+* **ts-check:** update title of ts-check ([00fc9ec](https://github.com/novlan1/t-comm/commit/00fc9ec695177767ba29c075af0d3764d427fd2d))
+
+### [1.5.34](https://github.com/novlan1/t-comm/compare/v1.5.33...v1.5.34) (2025-05-26)
+
+
+### Features 🎉
+
+* **ts:** 优化评论条件 ([a2c178c](https://github.com/novlan1/t-comm/commit/a2c178ccb9b774fd6c89eac2cf166333ca45e847))
+
+### [1.5.33](https://github.com/novlan1/t-comm/compare/v1.5.32...v1.5.33) (2025-05-26)
+
+
+### Features 🎉
+
+* **ts-check:** add command option ([a6d33b2](https://github.com/novlan1/t-comm/commit/a6d33b23b0984822f73183fc8b9c244f1f92295f))
+
+### [1.5.32](https://github.com/novlan1/t-comm/compare/v1.5.31...v1.5.32) (2025-05-26)
+
+
+### Tests ✅
+
+* update test cases ([4c74b61](https://github.com/novlan1/t-comm/commit/4c74b616d35608845a3096018d4c74381b2767e4))
+
+
+### Documentation 📖
+
+* update docs ([773431e](https://github.com/novlan1/t-comm/commit/773431e32d060a09f05afaaebcc8affbd2610caa))
+* update docs ([4271ae3](https://github.com/novlan1/t-comm/commit/4271ae31522af7769208c7a78007f72e486dbd9e))
+* update docs ([8fb9428](https://github.com/novlan1/t-comm/commit/8fb942803e5116e9dd50000f1427c5401333b95f))
+* update docs ([ece3a40](https://github.com/novlan1/t-comm/commit/ece3a4049b6d4f272cfa394d52de39a252030070))
+* update docs ([149e01d](https://github.com/novlan1/t-comm/commit/149e01de7ecd888f774f9b1711e7a88bddc8279b))
+* update docs ([d20d3b1](https://github.com/novlan1/t-comm/commit/d20d3b155be4a5caa4b37a9c050a4af3b8e6d53f))
+* use vitepress ([4b8ef46](https://github.com/novlan1/t-comm/commit/4b8ef46b77563d4c15b580c409c35214820ffc6e))
+
+
+### Features 🎉
+
+* **ts:** add ts-error-check ([eef8bef](https://github.com/novlan1/t-comm/commit/eef8bef433cce52651edb8dc16d269e12e88a382))
+
+
+### Chore 🚀 
+
+* lint ([b59b4d6](https://github.com/novlan1/t-comm/commit/b59b4d6e92575fcd3db856a6706d7a63c59186b8))
+* remove travis.yml, generateDocs.sh ([8f4b297](https://github.com/novlan1/t-comm/commit/8f4b29789053640fb216926cc30fff2a5e472cc2))
+* **ts:** remove docs/.vitepress/**/* ([eceb953](https://github.com/novlan1/t-comm/commit/eceb953d2c50d3e98a128aedee877e690a87545e))
+
+### [1.5.31](https://github.com/novlan1/t-comm/compare/v1.5.30...v1.5.31) (2025-05-19)
+
+
+### Features 🎉
+
+* **husky:** 优化 check-js-files ([c1d7276](https://github.com/novlan1/t-comm/commit/c1d72766a7bced093a215844153b79ec99c7db64))
+
+### [1.5.30](https://github.com/novlan1/t-comm/compare/v1.5.29...v1.5.30) (2025-05-19)
+
+
+### Features 🎉
+
+* **husky:** 优化 check-js-files ([04fea2c](https://github.com/novlan1/t-comm/commit/04fea2c40b048453fb084bafedc539fe0f42d409))
+
+### [1.5.29](https://github.com/novlan1/t-comm/compare/v1.5.28...v1.5.29) (2025-05-19)
+
+
+### Documentation 📖
+
+* update docs ([68b43dc](https://github.com/novlan1/t-comm/commit/68b43dc9f6058fc9524308dc209cd37b082299a0))
+* update docs ([f2c62a8](https://github.com/novlan1/t-comm/commit/f2c62a8003a661c2ccf4c36813e724fc24b85395))
+* update docs ([ea3c0dc](https://github.com/novlan1/t-comm/commit/ea3c0dcdbff84797a6a89e7f199dfdebe002481a))
+* update docs ([7351636](https://github.com/novlan1/t-comm/commit/735163666aa9e9f8e9b63687f2872948e21e3050))
+* update docs ([e868c17](https://github.com/novlan1/t-comm/commit/e868c178ea11c475d35b439afde1c44f6cb74f43))
+* update docs ([71c8fe1](https://github.com/novlan1/t-comm/commit/71c8fe11497be57c65c1a3cc2e50c887a0af003f))
+
+
+### Features 🎉
+
+* **husky:** add check-js-files ([3165784](https://github.com/novlan1/t-comm/commit/31657841510cf728c1045acdbcd119894c14b52e))
+
 ### [1.5.28](https://github.com/novlan1/t-comm/compare/v1.5.27...v1.5.28) (2025-05-18)
 
 

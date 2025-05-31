@@ -1,0 +1,20 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "丰富易用的工具集",
+  "license": "MIT",
+  "author": "guowangyang",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run docs:build",
+    "dev": "npm run docs:dev",
+    "docs:build": "vitepress build",
+    "docs:dev": "vitepress dev",
+    "docs:preview": "vitepress preview"
+  },
+  "dependencies": {
+    "vitepress": "^1.6.3"
+  }
+}

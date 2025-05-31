@@ -10,3 +10,6 @@
 /docs/.vuepress/dist/*
 
 barcode/
+
+.vitepress/cache/deps/
+!.vitepress

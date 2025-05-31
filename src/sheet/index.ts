@@ -1,1 +1,1 @@
-export { getJsonFromSheet } from './sheet';
+export { getJsonFromSheet, excelToJson, jsonToExcel } from './sheet';

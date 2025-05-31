@@ -29,7 +29,6 @@
 
 1. 安装依赖
 
-
 ```bash
 npm install t-comm -S
 ```
@@ -56,7 +55,7 @@ timeStampFormat(stamp, 'yyyy-MM-dd hh:mm:ss');
 // 2020-11-27 08:23:24
 ```
 
-还可以从 `es` 目录中导入，适合一些不支持 `CJS` 的项目。
+还可以从 `es` 目录中导入，适合一些不支持 [CommonJS](https://nodejs.org/api/modules.html) 的项目。
 
 ```ts
 import { timeStampFormat } from 't-comm/es/time/time';

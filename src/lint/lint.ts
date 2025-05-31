@@ -1,16 +1,16 @@
 import fs from 'fs';
 import path from 'path';
 
-import axios from 'axios';
-
 import { readFileSync, writeFileSync } from '../fs/fs';
-import { getGitCurBranch } from '../git/git';
 import { execCommand } from '../node/node-command';
 
 import { batchSendWxRobotMarkdown } from '../wecom-robot/batch-send';
 
 import { FILE_TYPE_MAP } from './config';
+import { createMRNote, createMRComment } from './git';
 import { ignoreSubmoduleInESLint, ignoreSubmoduleInStyleLint } from './helper';
+import { genReportInfo, genTitle } from './message';
+
 
 import type { FileMap, JSErrorFile, SCSSErrorFile } from './types';
 
@@ -33,75 +33,6 @@ function removeParserOptionsProject(workspace: string) {
     console.log('已删除 parserOptions.project');
     writeFileSync(configFile, newContent);
   }
-}
-
-
-async function createMRNote({
-  privateToken,
-  gitApiPrefix,
-
-  projectName,
-  mrId,
-
-  body,
-  path,
-  line,
-
-  lineType = 'new',
-
-  // 严重程度 可选值 0、1、2、3
-  // 0 : "default"（默认）1 : "slight"（轻微）
-  // 2 : "normal"（一般）3 : "serious"（严重
-  risk = 3,
-
-  // 需解决 可选值 0、1、2
-  // 0 : "default"（默认）
-  // 1 : "unresolved"（未解决）
-  // 2 : "resolved"（已解决）
-  resolveState = 1,
-
-  // 默认值为 true，发通知给相关用户
-  notifyEnabled = true,
-
-}: {
-  privateToken: string;
-  gitApiPrefix: string;
-
-  projectName: string;
-  mrId: string | number;
-
-  body: any;
-  path: string;
-  line: number;
-
-  lineType?: string;
-  risk?: 0 | 1 | 2 | 3;
-
-  resolveState?: 0 | 1 | 2;
-  notifyEnabled?: boolean;
-
-}) {
-  return new Promise((resolve, reject) => {
-    axios({
-      url: `${gitApiPrefix}/projects/${encodeURIComponent(projectName)}/merge_requests/${mrId}/notes?private_token=${privateToken}`,
-      method: 'POST',
-      data: {
-        body,
-        path,
-        line,
-        line_type: lineType,
-        risk,
-        resolve_state: resolveState,
-        notify_enabled: notifyEnabled,
-      },
-    }).then((res) => {
-      resolve(res.data);
-    })
-      .catch((err) => {
-        console.log('err', err);
-        reject(err);
-      });
-  });
 }
 
 
@@ -194,36 +125,6 @@ async function tryCreateMRNote({
   }
 }
 
-
-async function createMRComment({
-  projectName,
-  mrId,
-  data,
-  privateToken,
-  gitApiPrefix,
-}: {
-  projectName: string;
-  mrId: string | number;
-  data: any;
-  privateToken: string;
-  gitApiPrefix: string;
-}): Promise<any> {
-  return new Promise((resolve, reject) => {
-    axios({
-      url: `${gitApiPrefix}/projects/${encodeURIComponent(projectName)}/merge_request/${mrId}/comments?private_token=${privateToken}`,
-      method: 'POST',
-      data: {
-        note: data,
-      },
-    }).then((res) => {
-      resolve(res.data);
-    })
-      .catch((err) => {
-        console.log('err', err);
-        reject(err);
-      });
-  });
-}
 
 export async function checkLint({
   privateToken,
@@ -575,22 +476,26 @@ function genRobotMessage({
   mentionList?: string[];
   workspace: string;
 }): string {
-  const genTitle = (prefix: string) => (`${prefix}${checkAll ? '【LINT】全量模式' : '【LINT】增量模式'}`);
   const postFixList = postFix ? [postFix] : [];
-  const curBranch = getGitCurBranch(workspace);
 
-  const repoAndMrInfo = [
-    mrUrl ? `[${mrUrl}](${mrUrl})` : '',
-    (sourceBranch && targetBranch) ? `${sourceBranch} => ${targetBranch}` : '',
-    (checkAll && repo && repoUrl) ? `[${repo}](${repoUrl})` : '',
-    (checkAll && curBranch) ? `分支: ${curBranch}` : '',
-  ].filter(item => item);
+  const repoAndMrInfo = genReportInfo({
+    workspace,
+
+    mrUrl,
+    sourceBranch,
+    targetBranch,
+
+    repo,
+    repoUrl,
+
+    checkAll,
+  });
 
   const allTotal = Object.values(fileMap).reduce((acc, item) => acc + (item.total ?? 0), 0);
 
   if (!allTotal) {
     return [
-      genTitle('✅'),
+      genTitle('✅', checkAll),
       ...repoAndMrInfo,
       '未发现代码规范异常',
       ...postFixList,
@@ -608,7 +513,7 @@ function genRobotMessage({
 
   return [
     [
-      genTitle('⚠️'),
+      genTitle('⚠️', checkAll),
       // '遵守代码规范是防止项目腐化的第一步',
       ...repoAndMrInfo,
       `可在[流水线](${buildUrl})中查看详情，或本地运行 \`npx eslint --fix file\` 等命令`,

@@ -1,14 +1,14 @@
-<h3 style="margin-bottom: -1rem;">目录</h3>
 
-[[toc]]
-
-<h3>引入</h3>
+### 引入
 
 ```ts
 import { watchRainbowToCosAndSendRobot } from 't-comm';
 
-// or
+// 不支持 tree-shaking 的项目
 import { watchRainbowToCosAndSendRobot} from 't-comm/lib/rainbow-to-cos/index';
+
+// 只支持 ESM 的项目
+import { watchRainbowToCosAndSendRobot} from 't-comm/es/rainbow-to-cos/index';
 ```
 
 

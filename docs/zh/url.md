@@ -1,8 +1,5 @@
-<h3 style="margin-bottom: -1rem;">目录</h3>
 
-[[toc]]
-
-<h3>引入</h3>
+### 引入
 
 ```ts
 import {
@@ -26,7 +23,7 @@ import {
   getUrlPara
 } from 't-comm';
 
-// or
+// 不支持 tree-shaking 的项目
 import {
   extendUrlParams,
   filterUrlParams,
@@ -47,6 +44,28 @@ import {
   decodeUrlParam,
   getUrlPara
 } from 't-comm/lib/url/index';
+
+// 只支持 ESM 的项目
+import {
+  extendUrlParams,
+  filterUrlParams,
+  formatUrlParams,
+  decode,
+  stringifyParams,
+  addUrlParam,
+  decode,
+  stringifyParams,
+  addUrlParam,
+  addUrlParams,
+  keepUrlParams,
+  removeUrlParams,
+  resolveUrlParams,
+  getQueryObj,
+  composeUrlQuery,
+  encodeUrlParam,
+  decodeUrlParam,
+  getUrlPara
+} from 't-comm/es/url/index';
 ```
 
 

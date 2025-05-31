@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { getAccCellWidth as oriGetAccCellWidth } from '../base/list';
 
+import { getCanvas } from './get-canvas';
+
 const cellHeight = 20;
 const extraHeight = 15;
 const extraBottom = 10;
@@ -93,7 +95,11 @@ export function createCanvasTable({
   cellWidthList: Array<number>
   title: string
 }): string {
-  const { createCanvas } = require('canvas');
+  const canvasLibrary = getCanvas();
+  if (!canvasLibrary) return '';
+
+  const { createCanvas } = canvasLibrary;
+
   const getAccCellWidth = oriGetAccCellWidth.bind(null, cellWidthList);
 
   const width = getAccCellWidth(headers.length - 1) * 2 + extraWidth * 4;

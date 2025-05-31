@@ -2,6 +2,32 @@ import { execCommand } from '../node/node-command';
 
 import type { IGitCommitInfo } from './types';
 
+const DEFAULT_COMMIT_INFO = {
+  author: 'UNKNOWN',
+  message: 'UNKNOWN',
+  hash: 'UNKNOWN',
+  date: 'UNKNOWN',
+  timeStamp: '0',
+  branch: '',
+};
+
+const localInfo = {
+  curBranch: '',
+  gotCurBranch: false,
+
+  commitInfo: {
+    ...DEFAULT_COMMIT_INFO,
+  },
+  gotCommitInfo: false,
+
+  gitAuthor: '',
+  gotGitAuthor: false,
+
+
+  commitMessage: '',
+  gotCommitMessage: false,
+};
+
 /**
  * 获取当前分支
  * @returns {string} 分支名称
@@ -12,13 +38,20 @@ import type { IGitCommitInfo } from './types';
  *
  * // => master
  */
-export function getGitCurBranch(root?: string) {
+export function getGitCurBranch(root?: string, useCache = true) {
+  if (useCache && localInfo.gotCurBranch) {
+    return localInfo.curBranch;
+  }
+
   let res = '';
   try {
     res = execCommand('git symbolic-ref --short -q HEAD', root);
   } catch (err) {
     console.log('[getGitCurBranch] error: ', err);
   }
+
+  localInfo.curBranch = res;
+  localInfo.gotCurBranch = true;
   return res;
 }
 
@@ -35,19 +68,32 @@ export function getGitCurBranch(root?: string) {
  * // '优化一部分文档'
  * ```
  */
-export function getGitCommitMessage(root?: string, mergeCommit = false, splitMessage = false) {
+export function getGitCommitMessage(
+  root?: string,
+  mergeCommit = false,
+  splitMessage = false,
+  useCache = true,
+) {
+  if (useCache && localInfo.gotCommitMessage) {
+    return localInfo.commitMessage;
+  }
+
   const infoMessage = execCommand(
     `git log ${mergeCommit ? '' : '--no-merges'} -1 \
   --format=%s | cat`,
     root,
   );
 
+  let result = '';
   if (splitMessage) {
-    const message = (infoMessage.split(':')[1] || infoMessage.split('：')[1] || '').trim();
-    return message;
+    result = (infoMessage.split(':')[1] || infoMessage.split('：')[1] || '').trim();
+  } else {
+    result = infoMessage;
   }
 
-  return infoMessage;
+  localInfo.gotCommitMessage = true;
+  localInfo.commitMessage = result;
+  return result;
 }
 
 
@@ -71,7 +117,17 @@ export function getGitCommitMessage(root?: string, mergeCommit = false, splitMes
  * }
  * ```
  */
-export function getGitCommitInfo(root?: string, mergeCommit = false, splitMessage = false): IGitCommitInfo {
+export function getGitCommitInfo(
+  root?: string,
+  mergeCommit = false,
+  splitMessage = false,
+  useCache = true,
+): IGitCommitInfo {
+  if (useCache && localInfo.gotCommitInfo) {
+    return localInfo.commitInfo;
+  }
+
+
   const command = `
   git log ${mergeCommit ? '' : '--no-merges'} -1 \
   --date=iso --pretty=format:'{"author": "%aN", "hash": "%h", "date": "%ad", "timeStamp": "%at"},' \
@@ -80,12 +136,7 @@ export function getGitCommitInfo(root?: string, mergeCommit = false, splitMessag
   perl -pe 's/},]/}]/'`;
   const stdout = execCommand(command, root);
   let info = {
-    author: 'UNKNOWN',
-    message: 'UNKNOWN',
-    hash: 'UNKNOWN',
-    date: 'UNKNOWN',
-    timeStamp: '0',
-    branch: '',
+    ...DEFAULT_COMMIT_INFO,
   };
 
   try {
@@ -98,6 +149,8 @@ export function getGitCommitInfo(root?: string, mergeCommit = false, splitMessag
   info.branch = getGitCurBranch(root);
   info.message = getGitCommitMessage(root, mergeCommit, splitMessage);
 
+  localInfo.gotCommitInfo = true;
+  localInfo.commitInfo = info;
   return info;
 }
 
@@ -145,7 +198,15 @@ export function getGitTagTime(tag: string, root?: string) {
  * @param isPriorGit - 是否优先使用git用户信息
  * @returns user
  */
-export function getGitAuthor(isPriorGit = false, root?: string) {
+export function getGitAuthor(
+  isPriorGit = false,
+  root?: string,
+  useCache = true,
+) {
+  if (useCache && localInfo.gotGitAuthor) {
+    return localInfo.gitAuthor;
+  }
+
   const envAuthor = process.env.VUE_APP_AUTHOR;
   let gitAuthor = '';
   try {
@@ -153,8 +214,15 @@ export function getGitAuthor(isPriorGit = false, root?: string) {
   } catch (err) {
     console.log('[getAuthor] err: ', err);
   }
+
+  let result = '';
   if (isPriorGit) {
-    return gitAuthor || envAuthor || '';
+    result = gitAuthor || envAuthor || '';
+  } else {
+    result = envAuthor || gitAuthor || '';
   }
-  return envAuthor || gitAuthor || '';
+
+  localInfo.gitAuthor = result;
+  localInfo.gotGitAuthor = true;
+  return result;
 }

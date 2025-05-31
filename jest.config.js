@@ -3,7 +3,7 @@
 module.exports = {
   globalSetup: './jest.config-global-setup.js',
   preset: 'ts-jest',
-  moduleFileExtensions: ['js', 'jsx', 'json', 'vue', 'ts'],
+  moduleFileExtensions: ['js', 'jsx', 'json', 'ts'],
   globals: {
     'ts-jest': {
       tsconfig: {
@@ -12,7 +12,7 @@ module.exports = {
     },
   },
   transform: {
-    '^.+\\.vue$': 'vue-jest',
+    // '^.+\\.vue$': 'vue-jest',
     '.+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$':
       'jest-transform-stub',
     '^.+\\.jsx?$': 'babel-jest',

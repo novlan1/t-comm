@@ -2,7 +2,7 @@ const { execSync } = require('child_process');
 
 const ENV_FILE = '.env.local';
 const REPO = 't-comm';
-const TARGET_DIR = 'docs/.vuepress/dist';
+const TARGET_DIR = 'docs/.vitepress/dist';
 
 
 function main() {

@@ -5,6 +5,7 @@
   },
   "include": [
     "**/*.ts",
-    "**/*.js"
+    "**/*.js",
+    "docs/.vitepress/**/*"
   ]
 }

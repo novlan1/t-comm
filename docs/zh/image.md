@@ -1,8 +1,5 @@
-<h3 style="margin-bottom: -1rem;">目录</h3>
 
-[[toc]]
-
-<h3>引入</h3>
+### 引入
 
 ```ts
 import {
@@ -14,7 +11,7 @@ import {
   getCompressImgUrl
 } from 't-comm';
 
-// or
+// 不支持 tree-shaking 的项目
 import {
   handleImgUnit,
   getHttpsUrl,
@@ -23,6 +20,16 @@ import {
   getCdnUrl,
   getCompressImgUrl
 } from 't-comm/lib/image/index';
+
+// 只支持 ESM 的项目
+import {
+  handleImgUnit,
+  getHttpsUrl,
+  tinyImage,
+  isSupportedWebp,
+  getCdnUrl,
+  getCompressImgUrl
+} from 't-comm/es/image/index';
 ```
 
 

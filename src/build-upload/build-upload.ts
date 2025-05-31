@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
+import { readFileSync } from '../fs/fs';
 import { execCommand } from '../node/node-command';
 import { getPublishBashPath } from '../publish/helper';
 
 const DEFAULT_HOST_TARGET_DIR = '/root/ft_local';
 
-function build({ files, bundleName }: {
+export function build({ files, bundleName }: {
   files: Array<string>;
   bundleName: string;
 }) {
@@ -39,7 +40,7 @@ function build({ files, bundleName }: {
 }
 
 
-function upload({
+export function upload({
   root,
   bundleName,
   hostName,
@@ -101,13 +102,13 @@ export async function buildAndUpload({
   const pkgPath = path.resolve(root, 'package.json');
   const fs = require('fs');
   if (!fs.existsSync(root)) {
-    return;
+    throw new Error('ERROR: root 不存在');
   }
   if (!fs.existsSync(pkgPath)) {
     throw new Error('ERROR: package.json 不存在');
   }
 
-  const files = require(pkgPath).files || [];
+  const { files = [] } = readFileSync(pkgPath, true);
 
   if (files.indexOf('.env.local') < 0 && fs.existsSync('.env.local')) {
     files.push('.env.local');
@@ -116,12 +117,13 @@ export async function buildAndUpload({
   const flag = await build({ files, bundleName });
   if (!flag) return;
 
-  upload({
+  await upload({
     root,
     bundleName,
     hostName,
     hostPwd,
     hostTargetDir,
   });
+  return files;
 }
 

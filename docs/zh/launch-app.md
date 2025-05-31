@@ -1,8 +1,5 @@
-<h3 style="margin-bottom: -1rem;">目录</h3>
 
-[[toc]]
-
-<h3>引入</h3>
+### 引入
 
 ```ts
 import {
@@ -19,7 +16,7 @@ import {
   gotoX5MGame
 } from 't-comm';
 
-// or
+// 不支持 tree-shaking 的项目
 import {
   getOpenGameScheme,
   launchApp,
@@ -33,6 +30,21 @@ import {
   gotoTDGame,
   gotoX5MGame
 } from 't-comm/lib/launch-app/index';
+
+// 只支持 ESM 的项目
+import {
+  getOpenGameScheme,
+  launchApp,
+  gotoWzGame,
+  gotoWzCommunity,
+  gotoGPGame,
+  gotoDzGame,
+  gotoMJGame,
+  gotoLOLMGame,
+  gotoTLBBGame,
+  gotoTDGame,
+  gotoX5MGame
+} from 't-comm/es/launch-app/index';
 ```
 
 

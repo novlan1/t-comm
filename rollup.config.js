@@ -99,7 +99,7 @@ const allRollupConfig = [
     external: ROLLUP_EXTERNALS,
     plugins: [
       typescript({
-        tsconfig: './tsconfig-es.json',
+        tsconfig: './tsconfig.es.json',
       }),
       ...ROLLUP_PLUGINS,
     ],

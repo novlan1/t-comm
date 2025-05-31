@@ -17,7 +17,7 @@ export function compareTwoObj(originObj: Record<string, any> = {}, newObj: Recor
   };
 
   Object.keys(originObj).map((key) => {
-    if (!newObj[key]) {
+    if (newObj[key] === undefined) {
       res.DELETED.push(key);
     } else if (!isObjectEqual(newObj[key], originObj[key])) {
       res.UPDATED.push(key);
@@ -25,7 +25,7 @@ export function compareTwoObj(originObj: Record<string, any> = {}, newObj: Recor
   });
 
   Object.keys(newObj).map((key) => {
-    if (!originObj[key]) {
+    if (originObj[key] === undefined) {
       res.ADDED.push(key);
     }
   });

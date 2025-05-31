@@ -9,7 +9,7 @@ const DEPLOY_CONFIG = {
   user: 'novlan1',
   email: '1576271227@qq.com',
 
-  targetDir: './docs/.vuepress/dist/',
+  targetDir: './docs/.vitepress/dist/',
   token: process.env.ACCESS_TOKEN || process.env.DEPLOY_GITHUB_PAGE_TOKEN || '',
   branch: 'main',
 
@@ -20,7 +20,6 @@ const DEPLOY_CONFIG = {
 
 
 function main() {
-
   execSync(`node ${CLI_FILE} deploy:github --repo ${DEPLOY_CONFIG.repo} \
     --user ${DEPLOY_CONFIG.user} \
     --email ${DEPLOY_CONFIG.email} \
